@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">6141</span>
+<span class="leancloud-visitors-count">6142</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -304,7 +304,7 @@ code.has-jax {
 </ul>
 <h2 id="描述顺序表的结构">描述顺序表的结构</h2>
 <p>为了描述顺序表，需要知道：① 顺序表的起始地址；② 顺序表的最大长度；③ 顺序表的当前长度。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#</span><span style="color:#75715e">define MaxSize 1000</span><span style="color:#75715e">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#define MaxSize 1000
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> {
     <span style="color:#66d9ef">int</span> data[MaxSize];
     <span style="color:#66d9ef">int</span> length;
@@ -313,14 +313,14 @@ code.has-jax {
 <h3 id="最长平台">最长平台</h3>
 <p>给定一个有$n$个元素的整型数组$data$,其中连续的<!-- raw HTML omitted -->相等元素构成的子序列<!-- raw HTML omitted -->称为平台，请设计一个算法求 $data$ 中最长平台的长度。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
-<span style="color:#66d9ef">int</span> linerArith<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span><span style="color:#f92672">:</span><span style="color:#f92672">:</span>maximumPlatform(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> length) {
+<span style="color:#66d9ef">int</span> linerArith<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>maximumPlatform(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> length) {
     <span style="color:#66d9ef">int</span> start <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
     <span style="color:#66d9ef">int</span> maxLen <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
     <span style="color:#66d9ef">int</span> curLen <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
 
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;</span> length; <span style="color:#f92672">+</span><span style="color:#f92672">+</span>i) {
-        <span style="color:#66d9ef">if</span> (data[i] <span style="color:#f92672">=</span><span style="color:#f92672">=</span> data[start]) {
-            curLen<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;</span> length; <span style="color:#f92672">++</span>i) {
+        <span style="color:#66d9ef">if</span> (data[i] <span style="color:#f92672">==</span> data[start]) {
+            curLen<span style="color:#f92672">++</span>;
         } <span style="color:#66d9ef">else</span> {
             <span style="color:#66d9ef">if</span> (curLen <span style="color:#f92672">&gt;</span> maxLen) {
                 maxLen <span style="color:#f92672">=</span> curLen;
@@ -338,67 +338,67 @@ code.has-jax {
 </code></pre></div><h3 id="以key为轴调整">以key为轴调整</h3>
 <p>设有一个数组 $data$ , 其元素为整型数据，设计一个算法将 $data$ 中所有小于 $key$ 的整数放在前半部分，大于等于 $key$ 的整数放在后半部分。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
-<span style="color:#66d9ef">void</span> linerArith<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span><span style="color:#f92672">:</span><span style="color:#f92672">:</span>rotate(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> length, <span style="color:#66d9ef">int</span> key) {
-    assert(length <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>);
+<span style="color:#66d9ef">void</span> linerArith<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>rotate(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> length, <span style="color:#66d9ef">int</span> key) {
+    assert(length <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>);
     <span style="color:#66d9ef">int</span> start <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, end <span style="color:#f92672">=</span> length <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
     <span style="color:#66d9ef">while</span> (start <span style="color:#f92672">&lt;</span> end) {
-        <span style="color:#66d9ef">while</span> (start <span style="color:#f92672">&lt;</span> end <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> data[start] <span style="color:#f92672">&lt;</span> key) {
-            start<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+        <span style="color:#66d9ef">while</span> (start <span style="color:#f92672">&lt;</span> end <span style="color:#f92672">&amp;&amp;</span> data[start] <span style="color:#f92672">&lt;</span> key) {
+            start<span style="color:#f92672">++</span>;
         }
-        <span style="color:#66d9ef">while</span> (start <span style="color:#f92672">&lt;</span> end <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> data[end] <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> key) {
-            end<span style="color:#f92672">-</span><span style="color:#f92672">-</span>;
+        <span style="color:#66d9ef">while</span> (start <span style="color:#f92672">&lt;</span> end <span style="color:#f92672">&amp;&amp;</span> data[end] <span style="color:#f92672">&gt;=</span> key) {
+            end<span style="color:#f92672">--</span>;
         }
         <span style="color:#66d9ef">if</span> (start <span style="color:#f92672">&lt;</span> end) {
-            std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>swap(data[start], data[end]);
+            std<span style="color:#f92672">::</span>swap(data[start], data[end]);
         }
     }
 }
 </code></pre></div><h3 id="以第一个元素为轴调整">以第一个元素为轴调整</h3>
 <p>设有一个数组 $data$，其元素为整型。设计一个尽可能高效的算法，<!-- raw HTML omitted -->以第一个元素为分界线<!-- raw HTML omitted -->，将所有小于等于它的元素移到该元素前面，将所有大于它的元素移到该元素的后面。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
-<span style="color:#66d9ef">void</span> linerArith<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span><span style="color:#f92672">:</span><span style="color:#f92672">:</span>rotateByFirst(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> length) {
-    assert(length <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>);
+<span style="color:#66d9ef">void</span> linerArith<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>rotateByFirst(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> length) {
+    assert(length <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>);
     <span style="color:#66d9ef">int</span> start <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, end <span style="color:#f92672">=</span> length <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
     T pivot <span style="color:#f92672">=</span> data[<span style="color:#ae81ff">0</span>];
 
     <span style="color:#66d9ef">while</span> (start <span style="color:#f92672">&lt;</span> end) {
-        <span style="color:#66d9ef">while</span> (start <span style="color:#f92672">&lt;</span> end <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> data[start] <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> pivot) {
-            start<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+        <span style="color:#66d9ef">while</span> (start <span style="color:#f92672">&lt;</span> end <span style="color:#f92672">&amp;&amp;</span> data[start] <span style="color:#f92672">&lt;=</span> pivot) {
+            start<span style="color:#f92672">++</span>;
         }
 
-        <span style="color:#66d9ef">while</span> (start <span style="color:#f92672">&lt;</span> end <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> data[end] <span style="color:#f92672">&gt;</span> pivot) {
-            end<span style="color:#f92672">-</span><span style="color:#f92672">-</span>;
+        <span style="color:#66d9ef">while</span> (start <span style="color:#f92672">&lt;</span> end <span style="color:#f92672">&amp;&amp;</span> data[end] <span style="color:#f92672">&gt;</span> pivot) {
+            end<span style="color:#f92672">--</span>;
         }
 
         <span style="color:#66d9ef">if</span> (start <span style="color:#f92672">&lt;</span> end) {
-            std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>swap(data[start], data[end]);
+            std<span style="color:#f92672">::</span>swap(data[start], data[end]);
         }
     }
     <span style="color:#75715e">//因为忽略了第一个元素，因此这里需要检查最终位置的那个元素和第一个元素的大小关系
 </span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (data[start] <span style="color:#f92672">&lt;</span> pivot) {
-        std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>swap(data[start], data[<span style="color:#ae81ff">0</span>]);
+        std<span style="color:#f92672">::</span>swap(data[start], data[<span style="color:#ae81ff">0</span>]);
     }
 }
 
 <span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
-<span style="color:#66d9ef">void</span> linerArith<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span><span style="color:#f92672">:</span><span style="color:#f92672">:</span>rotateByFirstVersion2(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> length) {
-    assert(length <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>);
+<span style="color:#66d9ef">void</span> linerArith<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>rotateByFirstVersion2(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> length) {
+    assert(length <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>);
     <span style="color:#66d9ef">int</span> start <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, end <span style="color:#f92672">=</span> length <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
     <span style="color:#66d9ef">int</span> pivot <span style="color:#f92672">=</span> data[<span style="color:#ae81ff">0</span>];
 
     <span style="color:#66d9ef">while</span> (start <span style="color:#f92672">&lt;</span> end) {
-        <span style="color:#66d9ef">while</span> (start <span style="color:#f92672">&lt;</span> end <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> data[end] <span style="color:#f92672">&gt;</span> pivot) {
-            end<span style="color:#f92672">-</span><span style="color:#f92672">-</span>;
+        <span style="color:#66d9ef">while</span> (start <span style="color:#f92672">&lt;</span> end <span style="color:#f92672">&amp;&amp;</span> data[end] <span style="color:#f92672">&gt;</span> pivot) {
+            end<span style="color:#f92672">--</span>;
         }
         <span style="color:#66d9ef">if</span> (start <span style="color:#f92672">&lt;</span> end) {
-            data[start<span style="color:#f92672">+</span><span style="color:#f92672">+</span>] <span style="color:#f92672">=</span> data[end];
+            data[start<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> data[end];
         }
 
-        <span style="color:#66d9ef">while</span> (start <span style="color:#f92672">&lt;</span> end <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> data[start] <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> pivot) {
-            start<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+        <span style="color:#66d9ef">while</span> (start <span style="color:#f92672">&lt;</span> end <span style="color:#f92672">&amp;&amp;</span> data[start] <span style="color:#f92672">&lt;=</span> pivot) {
+            start<span style="color:#f92672">++</span>;
         }
         <span style="color:#66d9ef">if</span> (start <span style="color:#f92672">&lt;</span> end) {
-            data[end<span style="color:#f92672">-</span><span style="color:#f92672">-</span>] <span style="color:#f92672">=</span> data[start];
+            data[end<span style="color:#f92672">--</span>] <span style="color:#f92672">=</span> data[start];
         }
     }
     data[start] <span style="color:#f92672">=</span> pivot; <span style="color:#75715e">//找到最终位置
@@ -406,21 +406,21 @@ code.has-jax {
 
 <span style="color:#75715e">//剑指offer里快速排序的思路,该算法可以保持相对次序不变
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
-<span style="color:#66d9ef">void</span> linerArith<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span><span style="color:#f92672">:</span><span style="color:#f92672">:</span>rotateByFirstVersion3(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> length) {
-    assert(length <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>);
+<span style="color:#66d9ef">void</span> linerArith<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>rotateByFirstVersion3(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> length) {
+    assert(length <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>);
     <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
     T pivot <span style="color:#f92672">=</span> data[<span style="color:#ae81ff">0</span>];
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&lt;</span> length; <span style="color:#f92672">+</span><span style="color:#f92672">+</span>j) {
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&lt;</span> length; <span style="color:#f92672">++</span>j) {
         <span style="color:#75715e">//是小于不是&lt;=,因为第一个元素要被替换掉
 </span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (data[j] <span style="color:#f92672">&lt;</span> pivot) {
-            i<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+            i<span style="color:#f92672">++</span>;
             <span style="color:#66d9ef">if</span> (i <span style="color:#f92672">&lt;</span> j) {
-                std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>swap(data[i], data[j]);
+                std<span style="color:#f92672">::</span>swap(data[i], data[j]);
             }
         }
     }
     <span style="color:#75715e">//最后交换下标为0的元素和下标为i的元素
-</span><span style="color:#75715e"></span>    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>swap(data[<span style="color:#ae81ff">0</span>],data[i]);
+</span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>swap(data[<span style="color:#ae81ff">0</span>],data[i]);
 }
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">move1</span>(SqList <span style="color:#f92672">&amp;</span>L) {
     <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
@@ -429,10 +429,10 @@ code.has-jax {
     <span style="color:#66d9ef">int</span> tmp;
 
     <span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;</span> j) {
-        <span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;</span> j <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> L.data[j] <span style="color:#f92672">&gt;</span> pivot)
-            j<span style="color:#f92672">-</span><span style="color:#f92672">-</span>;
-        <span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;</span> j <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> L.data[i] <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> pivot)  <span style="color:#75715e">//第一个元素肯定会被忽略掉
-</span><span style="color:#75715e"></span>            i<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+        <span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;</span> j <span style="color:#f92672">&amp;&amp;</span> L.data[j] <span style="color:#f92672">&gt;</span> pivot)
+            j<span style="color:#f92672">--</span>;
+        <span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;</span> j <span style="color:#f92672">&amp;&amp;</span> L.data[i] <span style="color:#f92672">&lt;=</span> pivot)  <span style="color:#75715e">//第一个元素肯定会被忽略掉
+</span><span style="color:#75715e"></span>            i<span style="color:#f92672">++</span>;
 
         <span style="color:#75715e">//此处可以添加一个 i &lt; j 的判断，这里省略掉是因为前面已经判断i&lt;j,
 </span><span style="color:#75715e"></span>        <span style="color:#75715e">//所以到这里的时候最多也是i==j, 这时候直接交换也是没有副作用的
@@ -455,16 +455,16 @@ code.has-jax {
     <span style="color:#66d9ef">int</span> pivot <span style="color:#f92672">=</span> L.data[<span style="color:#ae81ff">0</span>];
 
     <span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;</span> j) {
-        <span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;</span> j <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> L.data[j] <span style="color:#f92672">&gt;</span> pivot) j<span style="color:#f92672">-</span><span style="color:#f92672">-</span>; <span style="color:#75715e">//先从最后开始，因为第一个元素需要首先被替换
+        <span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;</span> j <span style="color:#f92672">&amp;&amp;</span> L.data[j] <span style="color:#f92672">&gt;</span> pivot) j<span style="color:#f92672">--</span>; <span style="color:#75715e">//先从最后开始，因为第一个元素需要首先被替换
 </span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (i <span style="color:#f92672">&lt;</span> j) {
             L.data[i] <span style="color:#f92672">=</span> L.data[j];
-            i<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+            i<span style="color:#f92672">++</span>;
         }
 
-        <span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;</span> j <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> L.data[i] <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> pivot) i<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+        <span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;</span> j <span style="color:#f92672">&amp;&amp;</span> L.data[i] <span style="color:#f92672">&lt;=</span> pivot) i<span style="color:#f92672">++</span>;
         <span style="color:#66d9ef">if</span> (i <span style="color:#f92672">&lt;</span> j) {
             L.data[j] <span style="color:#f92672">=</span> L.data[i];
-            j<span style="color:#f92672">-</span><span style="color:#f92672">-</span>;
+            j<span style="color:#f92672">--</span>;
         }
     }
     L.data[i] <span style="color:#f92672">=</span> pivot;  <span style="color:#75715e">//最后找到最终的位置
@@ -477,9 +477,9 @@ code.has-jax {
     <span style="color:#66d9ef">int</span> pivot <span style="color:#f92672">=</span> L.data[<span style="color:#ae81ff">0</span>];
     <span style="color:#66d9ef">int</span> tmp;
 
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&lt;</span> L.length; j<span style="color:#f92672">+</span><span style="color:#f92672">+</span>) {
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&lt;</span> L.length; j<span style="color:#f92672">++</span>) {
         <span style="color:#66d9ef">if</span> (data[j] <span style="color:#f92672">&lt;</span> pivot) {
-            i<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+            i<span style="color:#f92672">++</span>;
             <span style="color:#66d9ef">if</span> (i <span style="color:#f92672">&lt;</span> j)  <span style="color:#75715e">//是小于不是&lt;=,因为第一个元素要被替换掉
 </span><span style="color:#75715e"></span>            {
                 tmp <span style="color:#f92672">=</span> L.data[i];
@@ -495,24 +495,24 @@ code.has-jax {
 </code></pre></div><h3 id="删除元素">删除元素</h3>
 <p>已知长度为$n$的数组$data$，编写一个时间复杂度为$O(n)$,空间复杂度为$O(1)$ 的算法，该算法删除线性表中所有值为$value$的元素。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
-<span style="color:#66d9ef">int</span> linerArith<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span><span style="color:#f92672">:</span><span style="color:#f92672">:</span>deleteSameElement(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> length, <span style="color:#66d9ef">int</span> value) {
-    assert(length <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>);
+<span style="color:#66d9ef">int</span> linerArith<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>deleteSameElement(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> length, <span style="color:#66d9ef">int</span> value) {
+    assert(length <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>);
     <span style="color:#66d9ef">int</span> base <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> length; <span style="color:#f92672">+</span><span style="color:#f92672">+</span>i) {
-        <span style="color:#66d9ef">if</span> (data[i] <span style="color:#f92672">!</span><span style="color:#f92672">=</span> value) {
-            data[base<span style="color:#f92672">+</span><span style="color:#f92672">+</span>] <span style="color:#f92672">=</span> data[i];
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> length; <span style="color:#f92672">++</span>i) {
+        <span style="color:#66d9ef">if</span> (data[i] <span style="color:#f92672">!=</span> value) {
+            data[base<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> data[i];
         }
     }
     <span style="color:#66d9ef">return</span> base;
 }
 
 <span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
-<span style="color:#66d9ef">int</span> linerArith<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span><span style="color:#f92672">:</span><span style="color:#f92672">:</span>deleteSameElement(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> length, <span style="color:#66d9ef">int</span> value) {
-    assert(length <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>);
+<span style="color:#66d9ef">int</span> linerArith<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>deleteSameElement(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> length, <span style="color:#66d9ef">int</span> value) {
+    assert(length <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>);
     <span style="color:#66d9ef">int</span> count <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;   <span style="color:#75715e">//不同的是记录目前等于value的元素个数
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> length; <span style="color:#f92672">+</span><span style="color:#f92672">+</span>i) {
-        <span style="color:#66d9ef">if</span> (data[i] <span style="color:#f92672">=</span><span style="color:#f92672">=</span> value) {
-            count<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> length; <span style="color:#f92672">++</span>i) {
+        <span style="color:#66d9ef">if</span> (data[i] <span style="color:#f92672">==</span> value) {
+            count<span style="color:#f92672">++</span>;
         } <span style="color:#66d9ef">else</span> {
             data[i <span style="color:#f92672">-</span> count] <span style="color:#f92672">=</span> data[i];
         }
@@ -540,31 +540,31 @@ code.has-jax {
 </code></pre></div><hr>
 <h2 id="建立单链表">建立单链表</h2>
 <p>建立单链表有两种方式，一种是从头部插入；另一种是从尾部插入。从头部插入节点生成的单链表，最后<!-- raw HTML omitted -->节点元素顺序与插入元素的顺序相反，即成逆序排列了。<!-- raw HTML omitted --></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">creatLinkedList</span>(LinkedList <span style="color:#f92672">*</span><span style="color:#f92672">&amp;</span>L, <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>a, <span style="color:#66d9ef">int</span> n) {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">creatLinkedList</span>(LinkedList <span style="color:#f92672">*&amp;</span>L, <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>a, <span style="color:#66d9ef">int</span> n) {
     LinkedList <span style="color:#f92672">*</span>cur;
     L <span style="color:#f92672">=</span> (LinkedList <span style="color:#f92672">*</span>) malloc(<span style="color:#66d9ef">sizeof</span>(LinkedList));
-    L<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next <span style="color:#f92672">=</span> NULL;
+    L<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> NULL;
 
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> n; i<span style="color:#f92672">+</span><span style="color:#f92672">+</span>) {
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> n; i<span style="color:#f92672">++</span>) {
         cur <span style="color:#f92672">=</span> (LinkedList <span style="color:#f92672">*</span>)(malloc(<span style="color:#66d9ef">sizeof</span>(LinkedList)));
-        cur<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>data <span style="color:#f92672">=</span> a[i];
-        cur<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next <span style="color:#f92672">=</span> L<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;
-        L<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next <span style="color:#f92672">=</span> cur;  <span style="color:#75715e">//当前节点成为哨兵节点的下一个节点
+        cur<span style="color:#f92672">-&gt;</span>data <span style="color:#f92672">=</span> a[i];
+        cur<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> L<span style="color:#f92672">-&gt;</span>next;
+        L<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> cur;  <span style="color:#75715e">//当前节点成为哨兵节点的下一个节点
 </span><span style="color:#75715e"></span>    }
 }
 </code></pre></div><p>尾插法是在单链表的尾部插入节点元素，最后<!-- raw HTML omitted -->生成的单链表的节点元素顺序和插入元素的顺序是相同的<!-- raw HTML omitted -->。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">creatLinkedList</span>(LinkedList <span style="color:#f92672">*</span><span style="color:#f92672">&amp;</span>L, <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>a, <span style="color:#66d9ef">int</span> n) {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">creatLinkedList</span>(LinkedList <span style="color:#f92672">*&amp;</span>L, <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>a, <span style="color:#66d9ef">int</span> n) {
     LinkedList <span style="color:#f92672">*</span>cur, <span style="color:#f92672">*</span>tail;
     L <span style="color:#f92672">=</span> (LinkedList <span style="color:#f92672">*</span>) malloc(<span style="color:#66d9ef">sizeof</span>(LinkedList));
     tail <span style="color:#f92672">=</span> L; <span style="color:#75715e">//tail始终指向最后的节点，开始时指向链表的头结点
 </span><span style="color:#75715e"></span>
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> n; i<span style="color:#f92672">+</span><span style="color:#f92672">+</span>) {
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> n; i<span style="color:#f92672">++</span>) {
         cur <span style="color:#f92672">=</span> (LinkedList <span style="color:#f92672">*</span>) malloc(<span style="color:#66d9ef">sizeof</span>(LinkedList));
-        cur<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>data <span style="color:#f92672">=</span> a[i];
-        tail<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next <span style="color:#f92672">=</span> cur;
+        cur<span style="color:#f92672">-&gt;</span>data <span style="color:#f92672">=</span> a[i];
+        tail<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> cur;
         tail <span style="color:#f92672">=</span> cur;
     }
-    tail<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next <span style="color:#f92672">=</span> NULL;
+    tail<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> NULL;
 }
 </code></pre></div><h2 id="基本操作">基本操作</h2>
 <ol>
@@ -575,14 +575,14 @@ code.has-jax {
   <span style="color:#66d9ef">int</span> j<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
   LinkedList <span style="color:#f92672">*</span>cur<span style="color:#f92672">=</span>L;
   
-  <span style="color:#66d9ef">while</span>(cur<span style="color:#f92672">!</span><span style="color:#f92672">=</span>NULL <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> j<span style="color:#f92672">&lt;</span>i)
+  <span style="color:#66d9ef">while</span>(cur<span style="color:#f92672">!=</span>NULL <span style="color:#f92672">&amp;&amp;</span> j<span style="color:#f92672">&lt;</span>i)
   {
-    j<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
-    cur<span style="color:#f92672">=</span>cur<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;
+    j<span style="color:#f92672">++</span>;
+    cur<span style="color:#f92672">=</span>cur<span style="color:#f92672">-&gt;</span>next;
   }
-  <span style="color:#66d9ef">if</span>(NULL<span style="color:#f92672">=</span><span style="color:#f92672">=</span>cur) <span style="color:#66d9ef">return</span> false;
+  <span style="color:#66d9ef">if</span>(NULL<span style="color:#f92672">==</span>cur) <span style="color:#66d9ef">return</span> false;
        
-  result<span style="color:#f92672">=</span>cur<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>data;
+  result<span style="color:#f92672">=</span>cur<span style="color:#f92672">-&gt;</span>data;
   <span style="color:#66d9ef">return</span> true;
   
 }
@@ -591,29 +591,29 @@ code.has-jax {
 </ol>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">findNode</span>(LinkedList <span style="color:#f92672">*</span>L,<span style="color:#66d9ef">int</span> key)
 {
-  LinkedList <span style="color:#f92672">*</span>cur<span style="color:#f92672">=</span>L<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;
+  LinkedList <span style="color:#f92672">*</span>cur<span style="color:#f92672">=</span>L<span style="color:#f92672">-&gt;</span>next;
   <span style="color:#66d9ef">int</span> index<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
   
-  <span style="color:#66d9ef">while</span>(cur<span style="color:#f92672">!</span><span style="color:#f92672">=</span>NULL <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> cur<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>data<span style="color:#f92672">!</span><span style="color:#f92672">=</span>key)
+  <span style="color:#66d9ef">while</span>(cur<span style="color:#f92672">!=</span>NULL <span style="color:#f92672">&amp;&amp;</span> cur<span style="color:#f92672">-&gt;</span>data<span style="color:#f92672">!=</span>key)
   {
-    index<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
-    cur<span style="color:#f92672">=</span>cur<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;
+    index<span style="color:#f92672">++</span>;
+    cur<span style="color:#f92672">=</span>cur<span style="color:#f92672">-&gt;</span>next;
   }
   
-  <span style="color:#66d9ef">if</span>(cur<span style="color:#f92672">!</span><span style="color:#f92672">=</span>NULL) <span style="color:#66d9ef">return</span> index;
+  <span style="color:#66d9ef">if</span>(cur<span style="color:#f92672">!=</span>NULL) <span style="color:#66d9ef">return</span> index;
   <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;  <span style="color:#75715e">//返回-1，表示没有找到该元素
 </span><span style="color:#75715e"></span>}
 </code></pre></div><hr>
 <ol start="3">
 <li>
 <p>插入元素：将值为$x$的元素的新节点插入到第$i$个节点的位置上，即先在单链表中找到插入节点的前驱节点，即第$i-1$个节点，再在其后插入新节点。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"> cur<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next<span style="color:#f92672">=</span>pre<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;  <span style="color:#75715e">//cur表示将要插入到链表中的节点,插入的位置是节点pre之后
-</span><span style="color:#75715e"></span> pre<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next<span style="color:#f92672">=</span>cur;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"> cur<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">=</span>pre<span style="color:#f92672">-&gt;</span>next;  <span style="color:#75715e">//cur表示将要插入到链表中的节点,插入的位置是节点pre之后
+</span><span style="color:#75715e"></span> pre<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">=</span>cur;
 </code></pre></div></li>
 <li>
 <p>删除元素:将单链表中的第$i$个节点删除。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"> cur<span style="color:#f92672">=</span>pre<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;     <span style="color:#75715e">//pre-&gt;next是待删除的节点，cur是待删除节点的上一个节点
-</span><span style="color:#75715e"></span> pre<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next<span style="color:#f92672">=</span>cur<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"> cur<span style="color:#f92672">=</span>pre<span style="color:#f92672">-&gt;</span>next;     <span style="color:#75715e">//pre-&gt;next是待删除的节点，cur是待删除节点的上一个节点
+</span><span style="color:#75715e"></span> pre<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">=</span>cur<span style="color:#f92672">-&gt;</span>next;
  free (cur);
 </code></pre></div></li>
 </ol>
@@ -622,14 +622,14 @@ code.has-jax {
 <p>有一个线性表$(a_1,a_2,&hellip;,a_n)$ 采用带哨兵节点的单链表$L$存储，设计一个就地算法将其就地逆置，<!-- raw HTML omitted -->所谓“就地”是指算法的辅助空间为$O(1)$。<!-- raw HTML omitted --></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">reverse</span>(LinkedList <span style="color:#f92672">*</span> <span style="color:#f92672">&amp;</span> L) <span style="color:#75715e">//传入引用
 </span><span style="color:#75715e"></span>{
-  LinkedList <span style="color:#f92672">*</span>cur<span style="color:#f92672">=</span>L<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;
+  LinkedList <span style="color:#f92672">*</span>cur<span style="color:#f92672">=</span>L<span style="color:#f92672">-&gt;</span>next;
   LinkedList <span style="color:#f92672">*</span>next;
-  L<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next<span style="color:#f92672">=</span>NULL;
-  <span style="color:#66d9ef">while</span>(cur<span style="color:#f92672">!</span><span style="color:#f92672">=</span>NULL)
+  L<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">=</span>NULL;
+  <span style="color:#66d9ef">while</span>(cur<span style="color:#f92672">!=</span>NULL)
   {
-    next<span style="color:#f92672">=</span>ptr<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;    <span style="color:#75715e">//先保存下一个节点，然后使用头插法进行逆置
-</span><span style="color:#75715e"></span>    cur<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next<span style="color:#f92672">=</span>L<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next; 
-    L<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next<span style="color:#f92672">=</span>cur;
+    next<span style="color:#f92672">=</span>ptr<span style="color:#f92672">-&gt;</span>next;    <span style="color:#75715e">//先保存下一个节点，然后使用头插法进行逆置
+</span><span style="color:#75715e"></span>    cur<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">=</span>L<span style="color:#f92672">-&gt;</span>next; 
+    L<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">=</span>cur;
     cur<span style="color:#f92672">=</span>next;
   }
 }
@@ -638,52 +638,52 @@ code.has-jax {
 <h2 id="拆分链表">拆分链表</h2>
 <p>设$C={a_1,b_1,a_2,b_2,&hellip;,a_n,b_n}$ 为一线性表，采用带哨兵节点的$hc$单链表存放，设计一个就地算法，将其拆分为两个线性表（它们都是用单链表存放）使得$A={a_1,a_2,&hellip;,a_n},B={b_n,b_{n-1},&hellip;,b_2,b_1}$，即$A$是正序排列，$B$是逆序排列。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">//参数传入引用，ha存储是A，hb存储的是B
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">split</span>(LinkedList <span style="color:#f92672">*</span>hc,LinkedList <span style="color:#f92672">*</span><span style="color:#f92672">&amp;</span>ha,LinkedList <span style="color:#f92672">*</span><span style="color:#f92672">&amp;</span> hb)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">split</span>(LinkedList <span style="color:#f92672">*</span>hc,LinkedList <span style="color:#f92672">*&amp;</span>ha,LinkedList <span style="color:#f92672">*&amp;</span> hb)
 {
   LinkedList <span style="color:#f92672">*</span>tail<span style="color:#f92672">=</span>ha;
-  LinkedList <span style="color:#f92672">*</span>cur<span style="color:#f92672">=</span>hc<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;
+  LinkedList <span style="color:#f92672">*</span>cur<span style="color:#f92672">=</span>hc<span style="color:#f92672">-&gt;</span>next;
   LinkedList <span style="color:#f92672">*</span>next;
   
-  hb<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next<span style="color:#f92672">=</span>NULL;
-  <span style="color:#66d9ef">while</span>(cur <span style="color:#f92672">!</span><span style="color:#f92672">=</span> NULL)
+  hb<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">=</span>NULL;
+  <span style="color:#66d9ef">while</span>(cur <span style="color:#f92672">!=</span> NULL)
   {
-    tail<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next<span style="color:#f92672">=</span>cur;      <span style="color:#75715e">//尾插法
+    tail<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">=</span>cur;      <span style="color:#75715e">//尾插法
 </span><span style="color:#75715e"></span>    tail<span style="color:#f92672">=</span>cur;
     
-    cur<span style="color:#f92672">=</span>cur<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;
+    cur<span style="color:#f92672">=</span>cur<span style="color:#f92672">-&gt;</span>next;
     
-    next<span style="color:#f92672">=</span>cur<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;
-    cur<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next<span style="color:#f92672">=</span> hb<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;  <span style="color:#75715e">//头插法
-</span><span style="color:#75715e"></span>    hb<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next<span style="color:#f92672">=</span> cur;
+    next<span style="color:#f92672">=</span>cur<span style="color:#f92672">-&gt;</span>next;
+    cur<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">=</span> hb<span style="color:#f92672">-&gt;</span>next;  <span style="color:#75715e">//头插法
+</span><span style="color:#75715e"></span>    hb<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">=</span> cur;
     cur<span style="color:#f92672">=</span>next;
   }
-  tail<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next<span style="color:#f92672">=</span>NULL;  <span style="color:#75715e">//别忘了
+  tail<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">=</span>NULL;  <span style="color:#75715e">//别忘了
 </span><span style="color:#75715e"></span>}
 </code></pre></div><h2 id="递增排序">递增排序</h2>
 <p>有一个带哨兵结点的单链表$L$,设计一个算法使其元素<!-- raw HTML omitted -->递增有序<!-- raw HTML omitted -->。最基本的想法是使用<!-- raw HTML omitted -->直接插入排序<!-- raw HTML omitted -->的思想，一个一个排，不同于数组排序，这里<!-- raw HTML omitted -->单链表只能从头开始查找。<!-- raw HTML omitted --></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> sort<span style="color:#960050;background-color:#1e0010">（</span>LinkedList <span style="color:#f92672">*</span> <span style="color:#f92672">&amp;</span>L)
 {
-  LinkedList <span style="color:#f92672">*</span>cur<span style="color:#f92672">=</span>L<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;
-  LinkedList <span style="color:#f92672">*</span>next<span style="color:#f92672">=</span>cur<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;
+  LinkedList <span style="color:#f92672">*</span>cur<span style="color:#f92672">=</span>L<span style="color:#f92672">-&gt;</span>next;
+  LinkedList <span style="color:#f92672">*</span>next<span style="color:#f92672">=</span>cur<span style="color:#f92672">-&gt;</span>next;
   LinkedList <span style="color:#f92672">*</span>pre,<span style="color:#f92672">*</span>assist; <span style="color:#75715e">//
 </span><span style="color:#75715e"></span>  
-  cur<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next<span style="color:#f92672">=</span>NULL;   <span style="color:#75715e">//只含有一个元素的有序单链表
+  cur<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">=</span>NULL;   <span style="color:#75715e">//只含有一个元素的有序单链表
 </span><span style="color:#75715e"></span>  cur<span style="color:#f92672">=</span>next;
   
-  <span style="color:#66d9ef">while</span>(cur<span style="color:#f92672">!</span><span style="color:#f92672">=</span>NULL)
+  <span style="color:#66d9ef">while</span>(cur<span style="color:#f92672">!=</span>NULL)
   {
-    next<span style="color:#f92672">=</span>cur<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;   <span style="color:#75715e">//首先保存下一个链表节点
+    next<span style="color:#f92672">=</span>cur<span style="color:#f92672">-&gt;</span>next;   <span style="color:#75715e">//首先保存下一个链表节点
 </span><span style="color:#75715e"></span>    pre<span style="color:#f92672">=</span>L;            <span style="color:#75715e">//单链表只能从头开始往后寻找节点
 </span><span style="color:#75715e"></span>    
-    assist<span style="color:#f92672">=</span>pre<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next; <span style="color:#75715e">//assist从头开始遍历
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">while</span>(assist<span style="color:#f92672">!</span><span style="color:#f92672">=</span>NULL <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> assist<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>data <span style="color:#f92672">&lt;</span> cur<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>data)
+    assist<span style="color:#f92672">=</span>pre<span style="color:#f92672">-&gt;</span>next; <span style="color:#75715e">//assist从头开始遍历
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">while</span>(assist<span style="color:#f92672">!=</span>NULL <span style="color:#f92672">&amp;&amp;</span> assist<span style="color:#f92672">-&gt;</span>data <span style="color:#f92672">&lt;</span> cur<span style="color:#f92672">-&gt;</span>data)
     {
       pre<span style="color:#f92672">=</span>assist;   <span style="color:#75715e">//pre记录插入位置的前一个节点
-</span><span style="color:#75715e"></span>      assist<span style="color:#f92672">=</span>assist<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;
+</span><span style="color:#75715e"></span>      assist<span style="color:#f92672">=</span>assist<span style="color:#f92672">-&gt;</span>next;
     }
     
-    cur<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next<span style="color:#f92672">=</span>pre<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next; <span style="color:#75715e">//pre的下一个节点就是要插入的位置
-</span><span style="color:#75715e"></span>    pre<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next<span style="color:#f92672">=</span>cur;       <span style="color:#75715e">//pre的下一个节点就是要插入的位置
+    cur<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">=</span>pre<span style="color:#f92672">-&gt;</span>next; <span style="color:#75715e">//pre的下一个节点就是要插入的位置
+</span><span style="color:#75715e"></span>    pre<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">=</span>cur;       <span style="color:#75715e">//pre的下一个节点就是要插入的位置
 </span><span style="color:#75715e"></span>    
     cur<span style="color:#f92672">=</span>next;   
   }
@@ -691,29 +691,29 @@ code.has-jax {
 </code></pre></div><hr>
 <h2 id="公共节点">公共节点</h2>
 <p>给定两个单链表，编写算法找出其公共的节点。第一种方法分析：从头到尾扫描单链表$A$，判断当前元素是否在单链表$B$中出现，若在则插入到单链表$C$中。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">findSameNode</span>(LinkedList <span style="color:#f92672">*</span>A,LinkedList <span style="color:#f92672">*</span>B,LinkedList <span style="color:#f92672">*</span><span style="color:#f92672">&amp;</span>C)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">findSameNode</span>(LinkedList <span style="color:#f92672">*</span>A,LinkedList <span style="color:#f92672">*</span>B,LinkedList <span style="color:#f92672">*&amp;</span>C)
 {
-  LinkedList <span style="color:#f92672">*</span>curA<span style="color:#f92672">=</span>A<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;
-  LinkedList <span style="color:#f92672">*</span>curB<span style="color:#f92672">=</span>B<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;
+  LinkedList <span style="color:#f92672">*</span>curA<span style="color:#f92672">=</span>A<span style="color:#f92672">-&gt;</span>next;
+  LinkedList <span style="color:#f92672">*</span>curB<span style="color:#f92672">=</span>B<span style="color:#f92672">-&gt;</span>next;
   LinkedList <span style="color:#f92672">*</span>tail;       <span style="color:#75715e">//尾插法构建新的单链表
 </span><span style="color:#75715e"></span>  
   C<span style="color:#f92672">=</span>(LinkedList<span style="color:#f92672">*</span>)malloc(<span style="color:#66d9ef">sizeof</span>(LinkedList));  <span style="color:#75715e">//静态存储区分配内存
-</span><span style="color:#75715e"></span>  C<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next<span style="color:#f92672">=</span>NULL;
+</span><span style="color:#75715e"></span>  C<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">=</span>NULL;
   tail<span style="color:#f92672">=</span>C;
-  <span style="color:#66d9ef">while</span>(curA<span style="color:#f92672">!</span><span style="color:#f92672">=</span>NULL)
+  <span style="color:#66d9ef">while</span>(curA<span style="color:#f92672">!=</span>NULL)
   {
-    curB<span style="color:#f92672">=</span>B<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;
-    <span style="color:#66d9ef">while</span>(curB<span style="color:#f92672">!</span><span style="color:#f92672">=</span>NULL <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> curB<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>data<span style="color:#f92672">!</span><span style="color:#f92672">=</span> curA<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>data)
-              curB<span style="color:#f92672">=</span>curB<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;
+    curB<span style="color:#f92672">=</span>B<span style="color:#f92672">-&gt;</span>next;
+    <span style="color:#66d9ef">while</span>(curB<span style="color:#f92672">!=</span>NULL <span style="color:#f92672">&amp;&amp;</span> curB<span style="color:#f92672">-&gt;</span>data<span style="color:#f92672">!=</span> curA<span style="color:#f92672">-&gt;</span>data)
+              curB<span style="color:#f92672">=</span>curB<span style="color:#f92672">-&gt;</span>next;
     
-    <span style="color:#66d9ef">if</span>(curB<span style="color:#f92672">!</span><span style="color:#f92672">=</span>NULL)
+    <span style="color:#66d9ef">if</span>(curB<span style="color:#f92672">!=</span>NULL)
     {
-      tail<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next<span style="color:#f92672">=</span>curA;
+      tail<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">=</span>curA;
       tail<span style="color:#f92672">=</span>curA;
     }
-    curA<span style="color:#f92672">=</span>curA<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;
+    curA<span style="color:#f92672">=</span>curA<span style="color:#f92672">-&gt;</span>next;
   }
-  tail<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next<span style="color:#f92672">=</span>NULL;  <span style="color:#75715e">//尾插法最后应该将尾巴的next域置空
+  tail<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">=</span>NULL;  <span style="color:#75715e">//尾插法最后应该将尾巴的next域置空
 </span><span style="color:#75715e"></span>}
 </code></pre></div><p>第二种方法分析：借用<!-- raw HTML omitted -->两个辅助栈，分别存储两个链表遍历时的序列，然后同时将两个辅助栈中元素弹出，直到弹出的元素不相等，<!-- raw HTML omitted -->弹出时采用头插法进行构造新的单链表。</p>
 <p>第三种方法分析：首先遍历两个链表，得到两个单链表的长度差$k$，然后长的单链表<!-- raw HTML omitted -->先走$k-1$步，<!-- raw HTML omitted -->然后短的和长的同时走，直到遇到相等的元素，即为新的单链表的首节点。</p>
@@ -730,14 +730,14 @@ code.has-jax {
    assist<span style="color:#f92672">=</span>R[i];
    R[i]<span style="color:#f92672">=</span>R[j];
    R[j]<span style="color:#f92672">=</span>assist;
-   i<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
-   j<span style="color:#f92672">-</span><span style="color:#f92672">-</span>;
+   i<span style="color:#f92672">++</span>;
+   j<span style="color:#f92672">--</span>;
  }
 }
 
 <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">leftShift</span>(<span style="color:#66d9ef">int</span> R[],<span style="color:#66d9ef">int</span> n,<span style="color:#66d9ef">int</span> p)
 {
-  <span style="color:#66d9ef">if</span>(p<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span>p<span style="color:#f92672">&lt;</span>n)
+  <span style="color:#66d9ef">if</span>(p<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span>p<span style="color:#f92672">&lt;</span>n)
   {
    reverse(R,<span style="color:#ae81ff">0</span>,n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>);
    reverse(R,<span style="color:#ae81ff">0</span>,n<span style="color:#f92672">-</span>p<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>);
@@ -752,16 +752,16 @@ code.has-jax {
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">search</span>(<span style="color:#66d9ef">int</span> A[], <span style="color:#66d9ef">int</span> B[], <span style="color:#66d9ef">int</span> n) {
     <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, k <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
 
-    <span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;</span> n <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> j <span style="color:#f92672">&lt;</span> n) {
-        k<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+    <span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;</span> n <span style="color:#f92672">&amp;&amp;</span> j <span style="color:#f92672">&lt;</span> n) {
+        k<span style="color:#f92672">++</span>;
         <span style="color:#66d9ef">if</span> (A[i] <span style="color:#f92672">&lt;</span> B[j]) {
-            <span style="color:#66d9ef">if</span> (k <span style="color:#f92672">=</span><span style="color:#f92672">=</span> n)
+            <span style="color:#66d9ef">if</span> (k <span style="color:#f92672">==</span> n)
                 <span style="color:#66d9ef">return</span> A[i];
-            i<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+            i<span style="color:#f92672">++</span>;
         } <span style="color:#66d9ef">else</span> {
-            <span style="color:#66d9ef">if</span> (k <span style="color:#f92672">=</span><span style="color:#f92672">=</span> n)
+            <span style="color:#66d9ef">if</span> (k <span style="color:#f92672">==</span> n)
                 <span style="color:#66d9ef">return</span> B[j];
-            j<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+            j<span style="color:#f92672">++</span>;
         }
     }
 }
@@ -775,15 +775,15 @@ code.has-jax {
     startB <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
     endB <span style="color:#f92672">=</span> n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
 
-    <span style="color:#66d9ef">while</span> (startA <span style="color:#f92672">!</span><span style="color:#f92672">=</span> endA <span style="color:#f92672">|</span><span style="color:#f92672">|</span> startB <span style="color:#f92672">!</span><span style="color:#f92672">=</span> endB) {
+    <span style="color:#66d9ef">while</span> (startA <span style="color:#f92672">!=</span> endA <span style="color:#f92672">||</span> startB <span style="color:#f92672">!=</span> endB) {
         midA <span style="color:#f92672">=</span> (startA <span style="color:#f92672">+</span> endA) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>;
         midB <span style="color:#f92672">=</span> (startB <span style="color:#f92672">+</span> endB) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>;
 
-        <span style="color:#66d9ef">if</span> (A[midA] <span style="color:#f92672">=</span><span style="color:#f92672">=</span> B[midB])
+        <span style="color:#66d9ef">if</span> (A[midA] <span style="color:#f92672">==</span> B[midB])
             <span style="color:#66d9ef">return</span> A[midA];
 
         <span style="color:#66d9ef">if</span> (A[midA] <span style="color:#f92672">&lt;</span> B[midB]) {
-            <span style="color:#66d9ef">if</span> ((startA <span style="color:#f92672">+</span> endA) <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)<span style="color:#75715e">//若元素个数为奇数时
+            <span style="color:#66d9ef">if</span> ((startA <span style="color:#f92672">+</span> endA) <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)<span style="color:#75715e">//若元素个数为奇数时
 </span><span style="color:#75715e"></span>            {
                 startA <span style="color:#f92672">=</span> midA;  <span style="color:#75715e">//舍弃A中间点以前的部分且保留中间点
 </span><span style="color:#75715e"></span>                endB <span style="color:#f92672">=</span> midB;    <span style="color:#75715e">//舍弃B中间点以后的部分且保留中间点
@@ -793,7 +793,7 @@ code.has-jax {
 </span><span style="color:#75715e"></span>                endB <span style="color:#f92672">=</span> midB;      <span style="color:#75715e">//舍弃B的后半部分
 </span><span style="color:#75715e"></span>            }
         } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (A[midA] <span style="color:#f92672">&gt;</span> B[midB]) {
-            <span style="color:#66d9ef">if</span> ((startA <span style="color:#f92672">+</span> endA) <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)<span style="color:#75715e">//若元素个数为奇数时
+            <span style="color:#66d9ef">if</span> ((startA <span style="color:#f92672">+</span> endA) <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)<span style="color:#75715e">//若元素个数为奇数时
 </span><span style="color:#75715e"></span>            {
                 endA <span style="color:#f92672">=</span> midA;  <span style="color:#75715e">//舍弃A中间点以后的部分且保留中间点
 </span><span style="color:#75715e"></span>                startB <span style="color:#f92672">=</span> midB;<span style="color:#75715e">//舍弃B中间点以前的部分且保留中间点
@@ -825,11 +825,11 @@ code.has-jax {
   <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>count<span style="color:#f92672">=</span>(<span style="color:#66d9ef">int</span><span style="color:#f92672">*</span>)malloc(<span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">int</span>)<span style="color:#f92672">*</span>n);
   <span style="color:#66d9ef">int</span> index<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
   
-  <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;i<span style="color:#f92672">&lt;</span>n;i<span style="color:#f92672">+</span><span style="color:#f92672">+</span>) count[i]<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
+  <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;i<span style="color:#f92672">&lt;</span>n;i<span style="color:#f92672">++</span>) count[i]<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
   
-  <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;i<span style="color:#f92672">&lt;</span>n;i<span style="color:#f92672">+</span><span style="color:#f92672">+</span>)
+  <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;i<span style="color:#f92672">&lt;</span>n;i<span style="color:#f92672">++</span>)
   {
-    count[A[i]]<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+    count[A[i]]<span style="color:#f92672">++</span>;
     <span style="color:#66d9ef">if</span>(count[A[i]) <span style="color:#f92672">&gt;</span> count[A[index]]) index<span style="color:#f92672">=</span>A[i];
   }
   
@@ -849,18 +849,18 @@ code.has-jax {
  {
     <span style="color:#66d9ef">while</span>(i<span style="color:#f92672">&lt;</span>j)
     {
-      <span style="color:#66d9ef">while</span>(i<span style="color:#f92672">&lt;</span>j <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> A[j]<span style="color:#f92672">&gt;</span>tmp) j<span style="color:#f92672">-</span><span style="color:#f92672">-</span>;
+      <span style="color:#66d9ef">while</span>(i<span style="color:#f92672">&lt;</span>j <span style="color:#f92672">&amp;&amp;</span> A[j]<span style="color:#f92672">&gt;</span>tmp) j<span style="color:#f92672">--</span>;
       A[i]<span style="color:#f92672">=</span>A[j];
       <span style="color:#66d9ef">if</span>(i<span style="color:#f92672">&lt;</span>j)
       {
         A[i]<span style="color:#f92672">=</span>A[j];
-        i<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+        i<span style="color:#f92672">++</span>;
        } 
-      <span style="color:#66d9ef">while</span>(i<span style="color:#f92672">&lt;</span>j <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> A[i]<span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span>tmp) i<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+      <span style="color:#66d9ef">while</span>(i<span style="color:#f92672">&lt;</span>j <span style="color:#f92672">&amp;&amp;</span> A[i]<span style="color:#f92672">&lt;=</span>tmp) i<span style="color:#f92672">++</span>;
       <span style="color:#66d9ef">if</span>(i<span style="color:#f92672">&lt;</span>j)
       {
         A[j]<span style="color:#f92672">=</span>A[i];
-        j<span style="color:#f92672">-</span><span style="color:#f92672">-</span>;
+        j<span style="color:#f92672">--</span>;
        } 
     }
     quickSort(A,start,i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>);
@@ -876,13 +876,13 @@ code.has-jax {
  <span style="color:#66d9ef">int</span> pivot<span style="color:#f92672">=</span>A[<span style="color:#ae81ff">0</span>];
  <span style="color:#66d9ef">int</span> count<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;
  <span style="color:#66d9ef">int</span> count2<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
- <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;i<span style="color:#f92672">&lt;</span>n;i<span style="color:#f92672">+</span><span style="color:#f92672">+</span>)
+ <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;i<span style="color:#f92672">&lt;</span>n;i<span style="color:#f92672">++</span>)
  {
-   <span style="color:#66d9ef">if</span>(A[i]<span style="color:#f92672">=</span><span style="color:#f92672">=</span>base)
-      count<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+   <span style="color:#66d9ef">if</span>(A[i]<span style="color:#f92672">==</span>base)
+      count<span style="color:#f92672">++</span>;
    <span style="color:#66d9ef">else</span> 
    {  
-       <span style="color:#66d9ef">if</span>(count<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span>) count<span style="color:#f92672">-</span><span style="color:#f92672">-</span>;
+       <span style="color:#66d9ef">if</span>(count<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span>) count<span style="color:#f92672">--</span>;
        <span style="color:#66d9ef">else</span> 
        {
         pivot<span style="color:#f92672">=</span>A[i];
@@ -894,10 +894,10 @@ code.has-jax {
  <span style="color:#66d9ef">if</span>(count <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>)   
  {
     count2<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;  
-    <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;i<span style="color:#f92672">&lt;</span>n;i<span style="color:#f92672">+</span><span style="color:#f92672">+</span>)
+    <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;i<span style="color:#f92672">&lt;</span>n;i<span style="color:#f92672">++</span>)
     {
-      <span style="color:#66d9ef">if</span>(pivot<span style="color:#f92672">=</span><span style="color:#f92672">=</span>A[i])
-        count2<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+      <span style="color:#66d9ef">if</span>(pivot<span style="color:#f92672">==</span>A[i])
+        count2<span style="color:#f92672">++</span>;
     }
     
     <span style="color:#66d9ef">if</span>(count2 <span style="color:#f92672">&gt;</span> n<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>)

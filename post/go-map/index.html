@@ -273,11 +273,11 @@ code.has-jax {
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">colors</span>[<span style="color:#e6db74">&#34;Red&#34;</span>] = <span style="color:#e6db74">&#34;#da1337&#34;</span>  <span style="color:#75715e">//产生运行时错误
 </span><span style="color:#75715e"></span>
 <span style="color:#75715e">//Runtime Error:
-</span><span style="color:#75715e"></span><span style="color:#75715e">//panic: runtime error: assignment to entry in nil map
+</span><span style="color:#75715e">//panic: runtime error: assignment to entry in nil map
 </span></code></pre></div><p>相比于值为<code>nil</code>的映射，<!-- raw HTML omitted -->空映射有初始化过程，但是映射此时的容量为<code>0</code><!-- raw HTML omitted -->，此时的映射是可以用来存储键值对的：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// 创建一个空映射，用来存储颜色以及颜色对应的十六进制代码
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">colors</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">string</span>{} <span style="color:#75715e">//空映射
-</span><span style="color:#75715e"></span><span style="color:#75715e">// 将 Red 的代码加入到映射
+</span><span style="color:#75715e">// 将 Red 的代码加入到映射
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">colors</span>[<span style="color:#e6db74">&#34;Red&#34;</span>] = <span style="color:#e6db74">&#34;#da1337&#34;</span>
 </code></pre></div><p>内容为空的映射与<code>nil</code>是不同的，<!-- raw HTML omitted -->空映射可以添加键值，<code>nil</code>字典不可以添加键值<!-- raw HTML omitted -->：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">m1</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">int</span>   <span style="color:#75715e">//nil映射

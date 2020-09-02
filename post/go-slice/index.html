@@ -309,7 +309,7 @@ code.has-jax {
 <p>空切片相对于<code>nil</code>切片而言，<!-- raw HTML omitted -->已经完成了初始化——即其内部指针已经被赋值为非<code>0</code>，而<code>nil</code>切片内部的指针为<code>nil</code>。<!-- raw HTML omitted -->但是，空切片的<code>len(s)</code>和<code>cap(s)</code>的值都为<code>0</code>。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// 使用 make 创建空的整型切片
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">slice1</span> <span style="color:#f92672">:=</span> make([]<span style="color:#66d9ef">int</span>, <span style="color:#ae81ff">0</span>) <span style="color:#75715e">//空切片
-</span><span style="color:#75715e"></span><span style="color:#75715e">// 使用切片字面量创建空的整型切片
+</span><span style="color:#75715e">// 使用切片字面量创建空的整型切片
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">slice2</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">int</span>{}      <span style="color:#75715e">//nil切片
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">slice1</span><span style="color:#f92672">==</span><span style="color:#66d9ef">nil</span>,<span style="color:#a6e22e">slice2</span><span style="color:#f92672">==</span><span style="color:#66d9ef">nil</span>)<span style="color:#75715e">//false false
 </span></code></pre></div><p>![c600](<a href="http://oqe76o492.bkt.clouddn.com/">http://oqe76o492.bkt.clouddn.com/</a>屏幕快照 2017-08-03 下午4.29.26.png)</p>
@@ -333,7 +333,7 @@ code.has-jax {
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">slice</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">30</span>, <span style="color:#ae81ff">40</span>, <span style="color:#ae81ff">50</span>}
 <span style="color:#a6e22e">newSlice</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">slice</span>[<span style="color:#ae81ff">1</span>:<span style="color:#ae81ff">3</span>]
 <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">slice</span>,<span style="color:#a6e22e">newSlice</span>)<span style="color:#75715e">//[10 20 30 40 50] [20 30]
-</span><span style="color:#75715e"></span><span style="color:#75715e">// 修改newSlice索引为1的元素，同时也修改了原来的 slice 的索引为 2 的元素
+</span><span style="color:#75715e">// 修改newSlice索引为1的元素，同时也修改了原来的 slice 的索引为 2 的元素
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">newSlice</span>[<span style="color:#ae81ff">1</span>] = <span style="color:#ae81ff">35</span>
 <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">slice</span>,<span style="color:#a6e22e">newSlice</span>) <span style="color:#75715e">//[10 20 35 40 50] [35 88]
 </span><span style="color:#75715e"></span>

@@ -263,7 +263,7 @@ code.has-jax {
 <p>如果启动页的图片资源需要修改，那应该将图片重命名，不要使用上次的命令，如果使用上次的名字，启动的时候还是会读缓存图片：</p>
 <p><img src="https://i.loli.net/2020/07/01/8ew7Tad9fkIyqtZ.jpg" alt="-c"></p>
 <h2 id="清理启动页缓存">清理启动页缓存</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">let</span> path = libraryPath.appendingPathComponent(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">SplashBoard</span><span style="color:#e6db74">&#34;</span>).appendingPathComponent(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Snapshots</span><span style="color:#e6db74">&#34;</span>)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">let</span> path = libraryPath.appendingPathComponent(<span style="color:#e6db74">&#34;SplashBoard&#34;</span>).appendingPathComponent(<span style="color:#e6db74">&#34;Snapshots&#34;</span>)
 <span style="color:#66d9ef">do</span> {
     <span style="color:#66d9ef">if</span> FileManager.<span style="color:#66d9ef">default</span>.fileExists(atPath: path.path){
         <span style="color:#66d9ef">try</span> FileManager.<span style="color:#66d9ef">default</span>.removeItem(at: path)

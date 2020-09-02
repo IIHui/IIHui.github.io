@@ -254,11 +254,11 @@ code.has-jax {
     <div class="post-body" itemprop="articleBody">
     <p><img src="https://i.loli.net/2018/12/24/5c202e20888e2.jpg" alt="-c"></p>
 <p><img src="https://i.loli.net/2018/12/24/5c20371015057.jpg" alt="-c"></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">self</span>.webView.scrollView.addObserver(<span style="color:#66d9ef">self</span>, forKeyPath: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">contentSize</span><span style="color:#e6db74">&#34;</span>, options: .new, context: <span style="color:#66d9ef">nil</span>)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">self</span>.webView.scrollView.addObserver(<span style="color:#66d9ef">self</span>, forKeyPath: <span style="color:#e6db74">&#34;contentSize&#34;</span>, options: .new, context: <span style="color:#66d9ef">nil</span>)
     }
 
 <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">observeValue</span>(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> key = keyPath, key == <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">contentSize</span><span style="color:#e6db74">&#34;</span>{
+        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> key = keyPath, key == <span style="color:#e6db74">&#34;contentSize&#34;</span>{
             <span style="color:#66d9ef">let</span> fittingSize = <span style="color:#66d9ef">self</span>.webView.sizeThatFits(CGSize.zero)
             <span style="color:#66d9ef">self</span>.webView.frame = CGRect(x: <span style="color:#ae81ff">0</span>, y: noteTitleTextField.frame.height, width: fittingSize.width, height: fittingSize.height)
         }

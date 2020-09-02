@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">126</span>
+<span class="leancloud-visitors-count">121</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -253,15 +253,15 @@ code.has-jax {
     </header>
     <div class="post-body" itemprop="articleBody">
     <h2 id="仿导航栏添加阴影">仿导航栏添加阴影</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">设</span><span style="color:#75715e">置</span><span style="color:#75715e">阴</span><span style="color:#75715e">影</span><span style="color:#75715e">颜</span><span style="color:#75715e">色</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">// 设置阴影颜色</span>
 navBGView.layer.shadowColor = UIColor.lightGray.cgColor
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">设</span><span style="color:#75715e">置</span><span style="color:#75715e">阴</span><span style="color:#75715e">影</span><span style="color:#75715e">偏</span><span style="color:#75715e">移</span><span style="color:#75715e">范</span><span style="color:#75715e">围</span>
+<span style="color:#75715e">// 设置阴影偏移范围</span>
 navBGView.layer.shadowOffset = CGSize(width: <span style="color:#ae81ff">0</span>, height: <span style="color:#ae81ff">1.8</span>)
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">设</span><span style="color:#75715e">置</span><span style="color:#75715e">阴</span><span style="color:#75715e">影</span><span style="color:#75715e">颜</span><span style="color:#75715e">色</span><span style="color:#75715e">的</span><span style="color:#75715e">透</span><span style="color:#75715e">明</span><span style="color:#75715e">度</span>
+<span style="color:#75715e">// 设置阴影颜色的透明度</span>
 navBGView.layer.shadowOpacity = <span style="color:#ae81ff">0.2</span>
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">设</span><span style="color:#75715e">置</span><span style="color:#75715e">阴</span><span style="color:#75715e">影</span><span style="color:#75715e">的</span><span style="color:#75715e">半</span><span style="color:#75715e">径</span>
+<span style="color:#75715e">// 设置阴影的半径</span>
 navBGView.layer.shadowRadius = <span style="color:#ae81ff">2.5</span>
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">设</span><span style="color:#75715e">置</span><span style="color:#75715e">阴</span><span style="color:#75715e">影</span><span style="color:#75715e">路</span><span style="color:#75715e">径</span>
+<span style="color:#75715e">// 设置阴影路径</span>
 navBGView.layer.shadowPath = UIBezierPath.<span style="color:#66d9ef">init</span>(rect: navBGView.bounds).cgPath
 </code></pre></div><p>通过设置<code>1.2.3</code>步仿导航栏的阴影就可以出现,如果对阴影有特别的需要,可再设置<code>4.5</code>这两个步骤。</p>
 <p><a href="https://www.jianshu.com/p/c9b897fb6936">参考资料</a></p>

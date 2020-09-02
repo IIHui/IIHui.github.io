@@ -295,12 +295,12 @@ code.has-jax {
 <h3 id="直接插入排序">直接插入排序</h3>
 <p>直接插入排序，是在有序的基础上对数据元素进行直接插入，代码如下所示：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
-<span style="color:#66d9ef">void</span> innerSort<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span><span style="color:#f92672">:</span><span style="color:#f92672">:</span>insertSort(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> length) {
-    assert(length <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>);
+<span style="color:#66d9ef">void</span> innerSort<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>insertSort(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> length) {
+    assert(length <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>);
     <span style="color:#66d9ef">int</span> curItem, j;
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;</span> length; <span style="color:#f92672">+</span><span style="color:#f92672">+</span>i) {
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;</span> length; <span style="color:#f92672">++</span>i) {
         curItem <span style="color:#f92672">=</span> data[i];
-        <span style="color:#66d9ef">for</span> (j <span style="color:#f92672">=</span> i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#f92672">-</span><span style="color:#f92672">-</span>j) {
+        <span style="color:#66d9ef">for</span> (j <span style="color:#f92672">=</span> i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>; <span style="color:#f92672">--</span>j) {
             <span style="color:#66d9ef">if</span> (curItem <span style="color:#f92672">&lt;</span> data[j]) {
                 data[j <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> data[j];
             } <span style="color:#66d9ef">else</span> {
@@ -328,22 +328,22 @@ code.has-jax {
 </li>
 <li>
 <p>直接插入是<!-- raw HTML omitted -->稳定的排序算法<!-- raw HTML omitted -->。</p>
+<hr>
 </li>
 </ul>
-<hr>
 <h3 id="折半插入排序">折半插入排序</h3>
 <p>折半插入排序，在<!-- raw HTML omitted -->查找插入位置的时候使用二分查找<!-- raw HTML omitted -->，代码如下：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
-<span style="color:#66d9ef">void</span> innerSort<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span><span style="color:#f92672">:</span><span style="color:#f92672">:</span>binInsertSort(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> length) {
-    assert(length <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>);
+<span style="color:#66d9ef">void</span> innerSort<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>binInsertSort(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> length) {
+    assert(length <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>);
     <span style="color:#66d9ef">int</span> start, mid, end, curItem;
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;</span> length; <span style="color:#f92672">+</span><span style="color:#f92672">+</span>i) {
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;</span> length; <span style="color:#f92672">++</span>i) {
         start <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
         end <span style="color:#f92672">=</span> i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
         curItem <span style="color:#f92672">=</span> data[i];
-        <span style="color:#66d9ef">while</span> (start <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> end) {
+        <span style="color:#66d9ef">while</span> (start <span style="color:#f92672">&lt;=</span> end) {
             mid <span style="color:#f92672">=</span> start <span style="color:#f92672">+</span> (end <span style="color:#f92672">-</span> start) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>; <span style="color:#75715e">//尽可能地避免溢出
-</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> (data[mid] <span style="color:#f92672">=</span><span style="color:#f92672">=</span> curItem) {
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> (data[mid] <span style="color:#f92672">==</span> curItem) {
                 end <span style="color:#f92672">=</span> mid; <span style="color:#75715e">//end+1便是插入位置
 </span><span style="color:#75715e"></span>                <span style="color:#66d9ef">break</span>;
             } <span style="color:#66d9ef">else</span> <span style="color:#a6e22e">if</span> (data[mid] <span style="color:#f92672">&lt;</span> curItem) {
@@ -353,7 +353,7 @@ code.has-jax {
             }
         }
         <span style="color:#75715e">//最终的插入位置为end+1,因此需要将end+1所在的元素移开
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> end <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>; <span style="color:#f92672">-</span><span style="color:#f92672">-</span>j) {
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&gt;=</span> end <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>; <span style="color:#f92672">--</span>j) {
             data[j <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> data[j];
         }
         <span style="color:#75715e">//放到最终的插入位置 end+1
@@ -383,20 +383,20 @@ code.has-jax {
 </li>
 </ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
-<span style="color:#66d9ef">void</span> innerSort<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span><span style="color:#f92672">:</span><span style="color:#f92672">:</span>shellSort(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> length) {
-    assert(length <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>);
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> step <span style="color:#f92672">=</span> length <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>; step <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>; step <span style="color:#f92672">/</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>) {
+<span style="color:#66d9ef">void</span> innerSort<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>shellSort(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> length) {
+    assert(length <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>);
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> step <span style="color:#f92672">=</span> length <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>; step <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>; step <span style="color:#f92672">/=</span> <span style="color:#ae81ff">2</span>) {
         assistShellSort(data, length, step);
     }
 }
 
 <span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
-<span style="color:#66d9ef">void</span> innerSort<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span><span style="color:#f92672">:</span><span style="color:#f92672">:</span>assistShellSort(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> length, <span style="color:#66d9ef">int</span> step) {
-    assert(length <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> step <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>);
+<span style="color:#66d9ef">void</span> innerSort<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>assistShellSort(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> length, <span style="color:#66d9ef">int</span> step) {
+    assert(length <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;&amp;</span> step <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>);
     <span style="color:#66d9ef">int</span> j, curItem;
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> step; i <span style="color:#f92672">&lt;</span> length; <span style="color:#f92672">+</span><span style="color:#f92672">+</span>i) {
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> step; i <span style="color:#f92672">&lt;</span> length; <span style="color:#f92672">++</span>i) {
         curItem <span style="color:#f92672">=</span> data[i];
-        <span style="color:#66d9ef">for</span> (j <span style="color:#f92672">=</span> i <span style="color:#f92672">-</span> step; j <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">-</span><span style="color:#f92672">=</span> step) {
+        <span style="color:#66d9ef">for</span> (j <span style="color:#f92672">=</span> i <span style="color:#f92672">-</span> step; j <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">-=</span> step) {
             <span style="color:#66d9ef">if</span> (data[j] <span style="color:#f92672">&gt;</span> curItem) {
                 data[j <span style="color:#f92672">+</span> step] <span style="color:#f92672">=</span> data[j];
             } <span style="color:#66d9ef">else</span> {
@@ -440,12 +440,12 @@ code.has-jax {
 </ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">//大数沉底的冒泡排序
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
-<span style="color:#66d9ef">void</span> innerSort<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span><span style="color:#f92672">:</span><span style="color:#f92672">:</span>bubbleSort(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> length) {
-    assert(length <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>);
+<span style="color:#66d9ef">void</span> innerSort<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>bubbleSort(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> length) {
+    assert(length <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>);
     <span style="color:#66d9ef">bool</span> flag;  <span style="color:#75715e">//标识本趟是否有交换
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;</span> length; <span style="color:#f92672">+</span><span style="color:#f92672">+</span>i) {
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;</span> length; <span style="color:#f92672">++</span>i) {
         flag <span style="color:#f92672">=</span> false;  <span style="color:#75715e">//赋值为false表示还没有数据交换
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> length <span style="color:#f92672">-</span> i; <span style="color:#f92672">+</span><span style="color:#f92672">+</span>j) {
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> length <span style="color:#f92672">-</span> i; <span style="color:#f92672">++</span>j) {
             <span style="color:#66d9ef">if</span> (data[j] <span style="color:#f92672">&gt;</span> data[j <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>]) {
                 swap(data[j], data[j <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>]);
                 flag <span style="color:#f92672">=</span> true;  <span style="color:#75715e">//本论循环中有数据元素进行交换
@@ -463,11 +463,11 @@ code.has-jax {
 </span><span style="color:#75715e"></span>{
     <span style="color:#66d9ef">bool</span> flag <span style="color:#f92672">=</span> false;
 
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;</span> n; <span style="color:#f92672">+</span><span style="color:#f92672">+</span>i) {
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;</span> n; <span style="color:#f92672">++</span>i) {
         flag <span style="color:#f92672">=</span> false;
-        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> n <span style="color:#f92672">-</span> i; <span style="color:#f92672">+</span><span style="color:#f92672">+</span>j) {
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> n <span style="color:#f92672">-</span> i; <span style="color:#f92672">++</span>j) {
             <span style="color:#66d9ef">if</span> (data[j] <span style="color:#f92672">&lt;</span> data[j <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>]) {
-                std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>swap(data[j], data[j <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>]);
+                std<span style="color:#f92672">::</span>swap(data[j], data[j <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>]);
                 flag <span style="color:#f92672">=</span> true;
             }
         }
@@ -546,15 +546,15 @@ code.has-jax {
     <span style="color:#66d9ef">int</span> cur <span style="color:#f92672">=</span> data[start];
     <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> start, j <span style="color:#f92672">=</span> end;
     <span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;</span> j) {
-        <span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;</span> j <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> data[j] <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> cur) j<span style="color:#f92672">-</span><span style="color:#f92672">-</span>;
+        <span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;</span> j <span style="color:#f92672">&amp;&amp;</span> data[j] <span style="color:#f92672">&gt;=</span> cur) j<span style="color:#f92672">--</span>;
         <span style="color:#66d9ef">if</span> (i <span style="color:#f92672">&lt;</span> j) {
             data[i] <span style="color:#f92672">=</span> data[j];
-            i<span style="color:#f92672">+</span><span style="color:#f92672">+</span><span style="color:#f92672">:</span>
+            i<span style="color:#f92672">++:</span>
         }
-        <span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;</span> j <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> data[j] <span style="color:#f92672">&lt;</span> cur) j<span style="color:#f92672">-</span><span style="color:#f92672">-</span>;
+        <span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;</span> j <span style="color:#f92672">&amp;&amp;</span> data[j] <span style="color:#f92672">&lt;</span> cur) j<span style="color:#f92672">--</span>;
         <span style="color:#66d9ef">if</span> (i <span style="color:#f92672">&lt;</span> j) {
             data[j] <span style="color:#f92672">=</span> data[i];
-            j<span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">:</span>
+            j<span style="color:#f92672">--:</span>
         }
     }
     data[i] <span style="color:#f92672">=</span> cur;
@@ -573,33 +573,33 @@ code.has-jax {
     cur.start <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
     cur.high <span style="color:#f92672">=</span> length <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
 
-    stack[top<span style="color:#f92672">+</span><span style="color:#f92672">+</span>] <span style="color:#f92672">=</span> cur;
+    stack[top<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> cur;
 
-    <span style="color:#66d9ef">while</span> (top <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
-        cur <span style="color:#f92672">=</span> stack[top<span style="color:#f92672">-</span><span style="color:#f92672">-</span>];
+    <span style="color:#66d9ef">while</span> (top <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
+        cur <span style="color:#f92672">=</span> stack[top<span style="color:#f92672">--</span>];
         index <span style="color:#f92672">=</span> partition(data, length, cur.start, cur.high); <span style="color:#75715e">//调用随机选择基准的函数
 </span><span style="color:#75715e"></span>
         <span style="color:#66d9ef">if</span> (index <span style="color:#f92672">&gt;</span> cur.start) {
             left.start <span style="color:#f92672">=</span> cur.start;
             left.high <span style="color:#f92672">=</span> index <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
-            stack[<span style="color:#f92672">+</span><span style="color:#f92672">+</span>top] <span style="color:#f92672">=</span> left;
+            stack[<span style="color:#f92672">++</span>top] <span style="color:#f92672">=</span> left;
         }
         <span style="color:#66d9ef">if</span> (index <span style="color:#f92672">&lt;</span> cur.high) {
             right.start <span style="color:#f92672">=</span> index <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
             right.high <span style="color:#f92672">=</span> cur.high;
-            stack[<span style="color:#f92672">+</span><span style="color:#f92672">+</span>top] <span style="color:#f92672">=</span> right;
+            stack[<span style="color:#f92672">++</span>top] <span style="color:#f92672">=</span> right;
         }
     }
 }
 </code></pre></div><p>第三个种方式是<!-- raw HTML omitted -->随机选择一个元素作为基准<!-- raw HTML omitted -->进行调整算法：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
-<span style="color:#66d9ef">void</span> innerSort<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span><span style="color:#f92672">:</span><span style="color:#f92672">:</span>quickSort(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> length) {
+<span style="color:#66d9ef">void</span> innerSort<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>quickSort(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> length) {
     quickSort(data, <span style="color:#ae81ff">0</span>, length <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>);
 }
 
 <span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
-<span style="color:#66d9ef">void</span> innerSort<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span><span style="color:#f92672">:</span><span style="color:#f92672">:</span>quickSort(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> start, <span style="color:#66d9ef">int</span> end) {
-    <span style="color:#66d9ef">if</span> (start <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> start <span style="color:#f92672">&lt;</span> end) {
+<span style="color:#66d9ef">void</span> innerSort<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>quickSort(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> start, <span style="color:#66d9ef">int</span> end) {
+    <span style="color:#66d9ef">if</span> (start <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> start <span style="color:#f92672">&lt;</span> end) {
         <span style="color:#66d9ef">int</span> pivot <span style="color:#f92672">=</span> getPivot(data, start, end);
         <span style="color:#66d9ef">if</span> (pivot <span style="color:#f92672">&gt;</span> start) {
             quickSort(data, start, pivot <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>);
@@ -612,35 +612,35 @@ code.has-jax {
 }
 
 <span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
-<span style="color:#66d9ef">int</span> innerSort<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span><span style="color:#f92672">:</span><span style="color:#f92672">:</span>getPivot(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> start, <span style="color:#66d9ef">int</span> end) {
-    assert(start <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> start <span style="color:#f92672">&lt;</span> end);
+<span style="color:#66d9ef">int</span> innerSort<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>getPivot(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> start, <span style="color:#66d9ef">int</span> end) {
+    assert(start <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> start <span style="color:#f92672">&lt;</span> end);
 
     <span style="color:#66d9ef">int</span> index <span style="color:#f92672">=</span> random(start, end);
     <span style="color:#66d9ef">int</span> small <span style="color:#f92672">=</span> start <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
     swap(data[index], data[end]);
 
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> start; i <span style="color:#f92672">&lt;</span> end; <span style="color:#f92672">+</span><span style="color:#f92672">+</span>i) {
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> start; i <span style="color:#f92672">&lt;</span> end; <span style="color:#f92672">++</span>i) {
         <span style="color:#66d9ef">if</span> (data[i] <span style="color:#f92672">&lt;</span> data[end]) {
-            <span style="color:#f92672">+</span><span style="color:#f92672">+</span>small;
-            <span style="color:#66d9ef">if</span> (small <span style="color:#f92672">!</span><span style="color:#f92672">=</span> i) {
+            <span style="color:#f92672">++</span>small;
+            <span style="color:#66d9ef">if</span> (small <span style="color:#f92672">!=</span> i) {
                 swap(data[small], data[i]);
             }
         }
     }
-    <span style="color:#f92672">+</span><span style="color:#f92672">+</span>small;
+    <span style="color:#f92672">++</span>small;
     swap(data[small], data[end]);
     <span style="color:#66d9ef">return</span> small;
 }
 
 <span style="color:#75715e">//http://notes.maxwi.com/2016/04/10/cpp-random/
-</span><span style="color:#75715e"></span><span style="color:#75715e">//https://www.cnblogs.com/byhj/p/4149467.html
+</span><span style="color:#75715e">//https://www.cnblogs.com/byhj/p/4149467.html
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
-<span style="color:#66d9ef">int</span> innerSort<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span><span style="color:#f92672">:</span><span style="color:#f92672">:</span>random(<span style="color:#66d9ef">int</span> start, <span style="color:#66d9ef">int</span> end) {
+<span style="color:#66d9ef">int</span> innerSort<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>random(<span style="color:#66d9ef">int</span> start, <span style="color:#66d9ef">int</span> end) {
 <span style="color:#75715e">//    static std::default_random_engine e;
-</span><span style="color:#75715e"></span><span style="color:#75715e">//    static std::uniform_int_distribution&lt;unsigned&gt; u(start, end);
-</span><span style="color:#75715e"></span><span style="color:#75715e">//    int result = u(e);
+</span><span style="color:#75715e">//    static std::uniform_int_distribution&lt;unsigned&gt; u(start, end);
+</span><span style="color:#75715e">//    int result = u(e);
 </span><span style="color:#75715e"></span>    srand(time(<span style="color:#ae81ff">0</span>));
-    <span style="color:#66d9ef">int</span> result <span style="color:#f92672">=</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>rand() <span style="color:#f92672">%</span> (end <span style="color:#f92672">-</span> start <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> start;
+    <span style="color:#66d9ef">int</span> result <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>rand() <span style="color:#f92672">%</span> (end <span style="color:#f92672">-</span> start <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> start;
     <span style="color:#66d9ef">return</span> result;
 }
 </code></pre></div><p>上面这种方法<!-- raw HTML omitted -->应该注意后面是<code>small++</code>之后再交换，想象一下全部有序就能理解了😂<!-- raw HTML omitted -->。</p>
@@ -675,19 +675,19 @@ code.has-jax {
 <h3 id="简单选择排序">简单选择排序</h3>
 <p>简单选择排序：每一趟在$n-i(i=1,2,&hellip;,n-1)$个数据元素中$R[i],R[i+1],&hellip;,R[n-1]$中选择最小的数据元素作为有序序列中第$i$个数据元素。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
-<span style="color:#66d9ef">void</span> innerSort<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span><span style="color:#f92672">:</span><span style="color:#f92672">:</span>selectSort(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> length) {
-    assert(length <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>);
+<span style="color:#66d9ef">void</span> innerSort<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>selectSort(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> length) {
+    assert(length <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>);
     <span style="color:#66d9ef">int</span> index;
     <span style="color:#75715e">//从0开始便于index的取值，因为数组下标是从0开始的
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> length <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; <span style="color:#f92672">+</span><span style="color:#f92672">+</span>i) {
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> length <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; <span style="color:#f92672">++</span>i) {
         index <span style="color:#f92672">=</span> i;
-        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&lt;</span> length; <span style="color:#f92672">+</span><span style="color:#f92672">+</span>j) {
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&lt;</span> length; <span style="color:#f92672">++</span>j) {
             <span style="color:#66d9ef">if</span> (data[index] <span style="color:#f92672">&gt;</span> data[j]) {
                 index <span style="color:#f92672">=</span> j;
             }
         }
-        <span style="color:#66d9ef">if</span> (index <span style="color:#f92672">!</span><span style="color:#f92672">=</span> i) {
-            std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>swap(data[index], data[i]);
+        <span style="color:#66d9ef">if</span> (index <span style="color:#f92672">!=</span> i) {
+            std<span style="color:#f92672">::</span>swap(data[index], data[i]);
         }
     }
 }
@@ -700,40 +700,40 @@ code.has-jax {
 </li>
 <li>
 <p>空间复杂度为$O(1)$。</p>
+<hr>
 </li>
 </ul>
-<hr>
 <h3 id="堆排序">堆排序</h3>
 <p>可以把堆<!-- raw HTML omitted --> 看成一棵完全二叉树，<!-- raw HTML omitted -->满足：任何一个非叶子节点的值都不大于(或不小于）其左右孩子节点的值，若父亲大孩子小，则这样的堆叫做大顶堆，若父亲小孩子大，则这样的堆叫做小顶堆。</p>
 <p>根据堆的定义，代表堆的这棵完全二叉树的<!-- raw HTML omitted -->根节点的值是最大的或者最小的<!-- raw HTML omitted -->，因此将一个无序的序列调整为一个堆，就可以找出这个序列的最大（最小）值，然后将找出的这个值交换到序列的最后（或最前），这样<!-- raw HTML omitted -->有序序列元素增加<code>1</code>个，无序序列中元素减少<code>1</code>个<!-- raw HTML omitted -->，对新的无序序列重复这样的操作就可以实现排序。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
-<span style="color:#66d9ef">void</span> innerSort<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span><span style="color:#f92672">:</span><span style="color:#f92672">:</span>heapSort(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> length) {
-    assert(length <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>);
+<span style="color:#66d9ef">void</span> innerSort<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>heapSort(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> length) {
+    assert(length <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>);
     <span style="color:#75715e">//首先从(length-2)/2开始调整，让他成为大顶堆
 </span><span style="color:#75715e"></span>    <span style="color:#75715e">//当数组下标是从0开始的时候i的初始值就为(length-2)/2，下标为1开始时为(length-1)/2
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> (length <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>; i <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#f92672">-</span><span style="color:#f92672">-</span>i) {
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> (length <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>; i <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>; <span style="color:#f92672">--</span>i) {
         assistHeapSort(data, i, length <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>);
     }
 
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> length <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; <span style="color:#f92672">-</span><span style="color:#f92672">-</span>j) {
-        std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>swap(data[<span style="color:#ae81ff">0</span>], data[j]);
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> length <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">1</span>; <span style="color:#f92672">--</span>j) {
+        std<span style="color:#f92672">::</span>swap(data[<span style="color:#ae81ff">0</span>], data[j]);
         assistHeapSort(data, <span style="color:#ae81ff">0</span>, j <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>);
     }
 }
 
 <span style="color:#75715e">//构建大顶堆,堆顶元素data[start]
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
-<span style="color:#66d9ef">void</span> innerSort<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span><span style="color:#f92672">:</span><span style="color:#f92672">:</span>assistHeapSort(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> start, <span style="color:#66d9ef">int</span> end) {
-    assert(start <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> end <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> start <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>);
+<span style="color:#66d9ef">void</span> innerSort<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>assistHeapSort(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> start, <span style="color:#66d9ef">int</span> end) {
+    assert(start <span style="color:#f92672">&lt;=</span> end <span style="color:#f92672">&amp;&amp;</span> start <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>);
     <span style="color:#66d9ef">int</span> parent <span style="color:#f92672">=</span> start, child <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> start <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
-    <span style="color:#66d9ef">while</span> (child <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> end) {
+    <span style="color:#66d9ef">while</span> (child <span style="color:#f92672">&lt;=</span> end) {
         <span style="color:#75715e">//注意控制条件是child &lt; end，不越界
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (child <span style="color:#f92672">&lt;</span> end <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> data[child] <span style="color:#f92672">&lt;</span> data[child <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>]) {
-            child<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (child <span style="color:#f92672">&lt;</span> end <span style="color:#f92672">&amp;&amp;</span> data[child] <span style="color:#f92672">&lt;</span> data[child <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>]) {
+            child<span style="color:#f92672">++</span>;
         }
 
         <span style="color:#66d9ef">if</span> (data[parent] <span style="color:#f92672">&lt;</span> data[child]) {
-            std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>swap(data[parent], data[child]);
+            std<span style="color:#f92672">::</span>swap(data[parent], data[child]);
         }
         parent <span style="color:#f92672">=</span> child;
         child <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> parent <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
@@ -760,7 +760,7 @@ code.has-jax {
 <h2 id="归并排序">归并排序</h2>
 <p>二路归并排序：<!-- raw HTML omitted -->将两个有序的子序列合并成一个新的有序子序列。<!-- raw HTML omitted -->归并的思想：将序列看成是$n$个有序子序列，每个序列的长度为$1$,然后两两归并，得到$⌈\frac{n}{2}⌉$个长度为$2$,的有序子序列，然后两两归并&hellip;，如此重复，直到得到一个长度为 $n$ 的有序子序列。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">mergeSort</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> length) {
-    assert(length <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">|</span><span style="color:#f92672">|</span> data <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>);
+    assert(length <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> data <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>);
 
     <span style="color:#66d9ef">auto</span> <span style="color:#f92672">*</span>copy <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span>[length];
 
@@ -774,7 +774,7 @@ code.has-jax {
 }
 
 <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">mergeSort</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>copy, <span style="color:#66d9ef">int</span> start, <span style="color:#66d9ef">int</span> end) {
-    <span style="color:#66d9ef">if</span> (start <span style="color:#f92672">=</span><span style="color:#f92672">=</span> end) {
+    <span style="color:#66d9ef">if</span> (start <span style="color:#f92672">==</span> end) {
         copy[start] <span style="color:#f92672">=</span> data[start];
         <span style="color:#66d9ef">return</span>;
     }
@@ -784,26 +784,26 @@ code.has-jax {
 
     <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> start, j <span style="color:#f92672">=</span> start <span style="color:#f92672">+</span> length <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, k <span style="color:#f92672">=</span> start;
 
-    <span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> start <span style="color:#f92672">+</span> length <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> j <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> end) {
+    <span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;=</span> start <span style="color:#f92672">+</span> length <span style="color:#f92672">&amp;&amp;</span> j <span style="color:#f92672">&lt;=</span> end) {
         <span style="color:#66d9ef">if</span> (data[i] <span style="color:#f92672">&lt;</span> data[j])
-            copy[k<span style="color:#f92672">+</span><span style="color:#f92672">+</span>] <span style="color:#f92672">=</span> data[i<span style="color:#f92672">+</span><span style="color:#f92672">+</span>];
+            copy[k<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> data[i<span style="color:#f92672">++</span>];
         <span style="color:#66d9ef">else</span>
-            copy[k<span style="color:#f92672">+</span><span style="color:#f92672">+</span>] <span style="color:#f92672">=</span> data[j<span style="color:#f92672">+</span><span style="color:#f92672">+</span>];
+            copy[k<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> data[j<span style="color:#f92672">++</span>];
     }
 
-    <span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> start <span style="color:#f92672">+</span> length)
-        copy[k<span style="color:#f92672">+</span><span style="color:#f92672">+</span>] <span style="color:#f92672">=</span> data[i<span style="color:#f92672">+</span><span style="color:#f92672">+</span>];
+    <span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;=</span> start <span style="color:#f92672">+</span> length)
+        copy[k<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> data[i<span style="color:#f92672">++</span>];
 
-    <span style="color:#66d9ef">while</span> (j <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> end)
-        copy[k<span style="color:#f92672">+</span><span style="color:#f92672">+</span>] <span style="color:#f92672">=</span> data[j<span style="color:#f92672">+</span><span style="color:#f92672">+</span>];
+    <span style="color:#66d9ef">while</span> (j <span style="color:#f92672">&lt;=</span> end)
+        copy[k<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> data[j<span style="color:#f92672">++</span>];
 
-    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> start; i <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> end; <span style="color:#f92672">+</span><span style="color:#f92672">+</span>i) {
+    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> start; i <span style="color:#f92672">&lt;=</span> end; <span style="color:#f92672">++</span>i) {
         data[i] <span style="color:#f92672">=</span> copy[i];
     }
 }
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
-<span style="color:#66d9ef">void</span> innerSort<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span><span style="color:#f92672">:</span><span style="color:#f92672">:</span>mergeSort(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> length) {
-    assert(length <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>);
+<span style="color:#66d9ef">void</span> innerSort<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>mergeSort(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> length) {
+    assert(length <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>);
     <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>assist <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span>[length];
     memcpy(assist, data, length <span style="color:#f92672">*</span> <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">int</span>));
     assistMergeSort(data, assist, <span style="color:#ae81ff">0</span>, length <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>);
@@ -811,7 +811,7 @@ code.has-jax {
 }
 
 <span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
-<span style="color:#66d9ef">void</span> innerSort<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span><span style="color:#f92672">:</span><span style="color:#f92672">:</span>assistMergeSort(T <span style="color:#f92672">*</span>data, T <span style="color:#f92672">*</span>assist, <span style="color:#66d9ef">int</span> start, <span style="color:#66d9ef">int</span> end) {
+<span style="color:#66d9ef">void</span> innerSort<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>assistMergeSort(T <span style="color:#f92672">*</span>data, T <span style="color:#f92672">*</span>assist, <span style="color:#66d9ef">int</span> start, <span style="color:#66d9ef">int</span> end) {
     <span style="color:#66d9ef">if</span> (start <span style="color:#f92672">&lt;</span> end) {
         <span style="color:#66d9ef">int</span> mid <span style="color:#f92672">=</span> start <span style="color:#f92672">+</span> (end <span style="color:#f92672">-</span> start) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>;
         assistMergeSort(data, assist, start, mid);
@@ -819,21 +819,21 @@ code.has-jax {
 
         <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> start, j <span style="color:#f92672">=</span> mid <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, k <span style="color:#f92672">=</span> start;
 
-        <span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> mid <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> j <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> end) {
-            <span style="color:#66d9ef">if</span> (data[i] <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> data[j]) {
-                assist[k<span style="color:#f92672">+</span><span style="color:#f92672">+</span>] <span style="color:#f92672">=</span> data[i<span style="color:#f92672">+</span><span style="color:#f92672">+</span>];
+        <span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;=</span> mid <span style="color:#f92672">&amp;&amp;</span> j <span style="color:#f92672">&lt;=</span> end) {
+            <span style="color:#66d9ef">if</span> (data[i] <span style="color:#f92672">&lt;=</span> data[j]) {
+                assist[k<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> data[i<span style="color:#f92672">++</span>];
             } <span style="color:#66d9ef">else</span> {
-                assist[k<span style="color:#f92672">+</span><span style="color:#f92672">+</span>] <span style="color:#f92672">=</span> data[j<span style="color:#f92672">+</span><span style="color:#f92672">+</span>];
+                assist[k<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> data[j<span style="color:#f92672">++</span>];
             }
         }
-        <span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> mid) {
-            assist[k<span style="color:#f92672">+</span><span style="color:#f92672">+</span>] <span style="color:#f92672">=</span> data[i<span style="color:#f92672">+</span><span style="color:#f92672">+</span>];
+        <span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;=</span> mid) {
+            assist[k<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> data[i<span style="color:#f92672">++</span>];
         }
-        <span style="color:#66d9ef">while</span> (j <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> end) {
-            assist[k<span style="color:#f92672">+</span><span style="color:#f92672">+</span>] <span style="color:#f92672">=</span> data[j<span style="color:#f92672">+</span><span style="color:#f92672">+</span>];
+        <span style="color:#66d9ef">while</span> (j <span style="color:#f92672">&lt;=</span> end) {
+            assist[k<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> data[j<span style="color:#f92672">++</span>];
         }
 
-        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> l <span style="color:#f92672">=</span> start; l <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> end; <span style="color:#f92672">+</span><span style="color:#f92672">+</span>l) {
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> l <span style="color:#f92672">=</span> start; l <span style="color:#f92672">&lt;=</span> end; <span style="color:#f92672">++</span>l) {
             data[l] <span style="color:#f92672">=</span> assist[l];
         }
     }
@@ -863,16 +863,16 @@ code.has-jax {
 <p>然后根据数组<code>count</code>来将<code>A</code>中的元素排到正确的位置。当输入的元素是<code>n</code>个<code>0</code>到<code>k</code>之间的整数时，它的运行时间是$Θ(n + k)$。</p>
 <p>计数排序<!-- raw HTML omitted -->不是比较排序，排序的速度快于任何比较排序算法<!-- raw HTML omitted -->。由于用来计数的数组<code>count</code>的长度取决于待排序数组中数据的范围（<!-- raw HTML omitted -->等于待排序数组的最大值与最小值的差加上<code>1</code><!-- raw HTML omitted -->），这使得计数排序对于数据范围很大的数组，需要大量内存。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
-<span style="color:#66d9ef">void</span> innerSort<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span><span style="color:#f92672">:</span><span style="color:#f92672">:</span>countSort(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> length) {
-    assert(length <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>);
+<span style="color:#66d9ef">void</span> innerSort<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>countSort(T <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> length) {
+    assert(length <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>);
     <span style="color:#66d9ef">int</span> min <span style="color:#f92672">=</span> data[<span style="color:#ae81ff">0</span>], max <span style="color:#f92672">=</span> data[<span style="color:#ae81ff">0</span>];
 
     <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>assistArr <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span>[length]{<span style="color:#ae81ff">0</span>};
     <span style="color:#66d9ef">int</span> inc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
 
     <span style="color:#75715e">//先找出最大值和最小值
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> length; <span style="color:#f92672">+</span><span style="color:#f92672">+</span>i) {
-        assert(data[i] <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>);
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> length; <span style="color:#f92672">++</span>i) {
+        assert(data[i] <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>);
         <span style="color:#66d9ef">if</span> (data[i] <span style="color:#f92672">&gt;</span> max) {
             max <span style="color:#f92672">=</span> data[i];
         }
@@ -884,26 +884,26 @@ code.has-jax {
     <span style="color:#66d9ef">if</span> (min <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
         inc <span style="color:#f92672">=</span> abs(min);
     }
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> length; <span style="color:#f92672">+</span><span style="color:#f92672">+</span>i) {
-        data[i] <span style="color:#f92672">+</span><span style="color:#f92672">=</span> inc;
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> length; <span style="color:#f92672">++</span>i) {
+        data[i] <span style="color:#f92672">+=</span> inc;
     }
     <span style="color:#66d9ef">int</span> countLength <span style="color:#f92672">=</span> (max <span style="color:#f92672">+</span> inc <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);
     <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>countArr <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span>[countLength]{<span style="color:#ae81ff">0</span>};
 
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> length; <span style="color:#f92672">+</span><span style="color:#f92672">+</span>i) {
-        countArr[data[i]]<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> length; <span style="color:#f92672">++</span>i) {
+        countArr[data[i]]<span style="color:#f92672">++</span>;
     }
 
     <span style="color:#75715e">//注意是计数数组的上界限
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&lt;</span> countLength; <span style="color:#f92672">+</span><span style="color:#f92672">+</span>j) {
-        countArr[j] <span style="color:#f92672">+</span><span style="color:#f92672">=</span> countArr[j <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>];
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&lt;</span> countLength; <span style="color:#f92672">++</span>j) {
+        countArr[j] <span style="color:#f92672">+=</span> countArr[j <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>];
     }
 
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> k <span style="color:#f92672">=</span> length <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; k <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#f92672">-</span><span style="color:#f92672">-</span>k) {
-        assistArr[<span style="color:#f92672">-</span><span style="color:#f92672">-</span>countArr[data[k]]] <span style="color:#f92672">=</span> data[k];
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> k <span style="color:#f92672">=</span> length <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; k <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>; <span style="color:#f92672">--</span>k) {
+        assistArr[<span style="color:#f92672">--</span>countArr[data[k]]] <span style="color:#f92672">=</span> data[k];
     }
 
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> length; <span style="color:#f92672">+</span><span style="color:#f92672">+</span>i) {
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> length; <span style="color:#f92672">++</span>i) {
         data[i] <span style="color:#f92672">=</span> assistArr[i] <span style="color:#f92672">-</span> inc;
     }
     <span style="color:#66d9ef">delete</span>[] assistArr;
@@ -942,7 +942,7 @@ code.has-jax {
     <span style="color:#66d9ef">int</span> max <span style="color:#f92672">=</span> getMax(data, length); <span style="color:#75715e">//找出待排序数组中最大的那个数
 </span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> radix <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
 
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> exp <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; exp <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> max; exp <span style="color:#f92672">*</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>) {
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> exp <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; exp <span style="color:#f92672">&lt;=</span> max; exp <span style="color:#f92672">*=</span> <span style="color:#ae81ff">10</span>) {
         bucketSort(data, length, exp, radix);
     }
 }
@@ -951,19 +951,19 @@ code.has-jax {
     <span style="color:#66d9ef">auto</span> <span style="color:#f92672">*</span>count <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span>[radix]{<span style="color:#ae81ff">0</span>};
     <span style="color:#66d9ef">auto</span> <span style="color:#f92672">*</span>result <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span>[length];
 
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> length; <span style="color:#f92672">+</span><span style="color:#f92672">+</span>i) {
-        count[(data[i] <span style="color:#f92672">/</span> exp) <span style="color:#f92672">%</span> radix]<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;  <span style="color:#75715e">//(data[i] / exp) 获取当前位的数值
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> length; <span style="color:#f92672">++</span>i) {
+        count[(data[i] <span style="color:#f92672">/</span> exp) <span style="color:#f92672">%</span> radix]<span style="color:#f92672">++</span>;  <span style="color:#75715e">//(data[i] / exp) 获取当前位的数值
 </span><span style="color:#75715e"></span>    }
 
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&lt;</span> radix; <span style="color:#f92672">+</span><span style="color:#f92672">+</span>j) {
-        count[j] <span style="color:#f92672">+</span><span style="color:#f92672">=</span> count[j <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>];
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&lt;</span> radix; <span style="color:#f92672">++</span>j) {
+        count[j] <span style="color:#f92672">+=</span> count[j <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>];
     }
 
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> length <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#f92672">-</span><span style="color:#f92672">-</span>i) {
-        result[<span style="color:#f92672">-</span><span style="color:#f92672">-</span>count[(data[i] <span style="color:#f92672">/</span> exp) <span style="color:#f92672">%</span> radix]] <span style="color:#f92672">=</span> data[i];
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> length <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>; <span style="color:#f92672">--</span>i) {
+        result[<span style="color:#f92672">--</span>count[(data[i] <span style="color:#f92672">/</span> exp) <span style="color:#f92672">%</span> radix]] <span style="color:#f92672">=</span> data[i];
     }
 
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> length; <span style="color:#f92672">+</span><span style="color:#f92672">+</span>i) {
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> length; <span style="color:#f92672">++</span>i) {
         data[i] <span style="color:#f92672">=</span> result[i];
     }
     <span style="color:#66d9ef">delete</span>[] result;

@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">4768</span>
+<span class="leancloud-visitors-count">4773</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -258,20 +258,20 @@ code.has-jax {
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">findKeyInMatrix</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>matrix, <span style="color:#66d9ef">int</span> rows, <span style="color:#66d9ef">int</span> colums, <span style="color:#66d9ef">int</span> key) {
     <span style="color:#66d9ef">bool</span> found <span style="color:#f92672">=</span> false;
 
-    <span style="color:#66d9ef">if</span> (matrix <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> rows <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> colums <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>) {
+    <span style="color:#66d9ef">if</span> (matrix <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">&amp;&amp;</span> rows <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> colums <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>) {
         <span style="color:#66d9ef">int</span> row <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
         <span style="color:#66d9ef">int</span> column <span style="color:#f92672">=</span> colums <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; <span style="color:#75715e">//row=0,column=colums-1表示定位到右上角的元素
 </span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> cur <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
 
-        <span style="color:#66d9ef">while</span> (row <span style="color:#f92672">&lt;</span> rows <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> colums <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>) {
+        <span style="color:#66d9ef">while</span> (row <span style="color:#f92672">&lt;</span> rows <span style="color:#f92672">&amp;&amp;</span> colums <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>) {
             cur <span style="color:#f92672">=</span> matrix[row <span style="color:#f92672">*</span> colums <span style="color:#f92672">+</span> column];
-            <span style="color:#66d9ef">if</span> (cur <span style="color:#f92672">=</span><span style="color:#f92672">=</span> key) {
+            <span style="color:#66d9ef">if</span> (cur <span style="color:#f92672">==</span> key) {
                 found <span style="color:#f92672">=</span> true;
                 <span style="color:#66d9ef">break</span>;
             } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (cur <span style="color:#f92672">&gt;</span> key) {
-                column<span style="color:#f92672">-</span><span style="color:#f92672">-</span>;
+                column<span style="color:#f92672">--</span>;
             } <span style="color:#66d9ef">else</span> {
-                row<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+                row<span style="color:#f92672">++</span>;
             }
         };
     }
@@ -294,8 +294,8 @@ code.has-jax {
 
 };
 
-CMyString <span style="color:#f92672">&amp;</span>CMyString<span style="color:#f92672">:</span><span style="color:#f92672">:</span><span style="color:#66d9ef">operator</span><span style="color:#f92672">=</span>(<span style="color:#66d9ef">const</span> CMyString <span style="color:#f92672">&amp;</span>str) {
-    <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">this</span> <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>str) {
+CMyString <span style="color:#f92672">&amp;</span>CMyString<span style="color:#f92672">::</span><span style="color:#66d9ef">operator</span><span style="color:#f92672">=</span>(<span style="color:#66d9ef">const</span> CMyString <span style="color:#f92672">&amp;</span>str) {
+    <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">this</span> <span style="color:#f92672">!=</span> <span style="color:#f92672">&amp;</span>str) {
         CMyString <span style="color:#a6e22e">tmp</span>(str);
         <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>ptmp <span style="color:#f92672">=</span> tmp.pdata;
         tmp.pdata <span style="color:#f92672">=</span> pdata;
@@ -310,31 +310,31 @@ CMyString <span style="color:#f92672">&amp;</span>CMyString<span style="color:#f
 <p>从尾到头打印链表中的元素，有两种解决方法，一种是递归算法，另一种是利用栈来实现非递归算法。下面是递归算法的实现：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">recPrintLinkedList</span>(LinkedNode <span style="color:#f92672">*</span>head)
 {
-    <span style="color:#66d9ef">if</span> (head <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>)
+    <span style="color:#66d9ef">if</span> (head <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>)
     {
-        recPrintLinkedList(head<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next);
-        std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout<span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span>head<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>data<span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>;
+        recPrintLinkedList(head<span style="color:#f92672">-&gt;</span>next);
+        std<span style="color:#f92672">::</span>cout<span style="color:#f92672">&lt;&lt;</span>head<span style="color:#f92672">-&gt;</span>data<span style="color:#f92672">&lt;&lt;</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>;
     }
 }
 </code></pre></div><p>非递归算法是<!-- raw HTML omitted -->借助栈的后进先出的特性<!-- raw HTML omitted -->，首先遍历链表的所有元素，并将它们存入到栈中。当遍历完栈的时候就可以出栈：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">nonRecPrintLinkedList</span>(LinkedNode <span style="color:#f92672">*</span>head)
 {
-    <span style="color:#66d9ef">if</span>(head <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>)
+    <span style="color:#66d9ef">if</span>(head <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>)
     {
-        stack<span style="color:#f92672">&lt;</span>LinkedNode<span style="color:#f92672">*</span><span style="color:#f92672">&gt;</span> st;
+        stack<span style="color:#f92672">&lt;</span>LinkedNode<span style="color:#f92672">*&gt;</span> st;
         LinkedNode <span style="color:#f92672">*</span> cur <span style="color:#f92672">=</span> head;
         
-        <span style="color:#66d9ef">while</span>(cur <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>)
+        <span style="color:#66d9ef">while</span>(cur <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>)
         {
             st.push(cur);
-            cur <span style="color:#f92672">=</span> cur<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;
+            cur <span style="color:#f92672">=</span> cur<span style="color:#f92672">-&gt;</span>next;
         }
         
         <span style="color:#66d9ef">while</span>(<span style="color:#f92672">!</span>st.empty())
         {
             cur <span style="color:#f92672">=</span> st.top();
             st.pop();
-            std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout<span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span>cur<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>data<span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">\t</span><span style="color:#e6db74">&#39;</span>;
+            std<span style="color:#f92672">::</span>cout<span style="color:#f92672">&lt;&lt;</span>cur<span style="color:#f92672">-&gt;</span>data<span style="color:#f92672">&lt;&lt;</span><span style="color:#e6db74">&#39;\t&#39;</span>;
         }
     }
 }
@@ -357,13 +357,13 @@ CMyString <span style="color:#f92672">&amp;</span>CMyString<span style="color:#f
 };
 
 <span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
-<span style="color:#66d9ef">void</span> stackQueue<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span><span style="color:#f92672">:</span><span style="color:#f92672">:</span>push(<span style="color:#66d9ef">const</span> T <span style="color:#f92672">&amp;</span>node) 
+<span style="color:#66d9ef">void</span> stackQueue<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>push(<span style="color:#66d9ef">const</span> T <span style="color:#f92672">&amp;</span>node) 
 {
   stack1.push(node);
 }
 
 <span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
-<span style="color:#66d9ef">void</span> stackQueue<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span><span style="color:#f92672">:</span><span style="color:#f92672">:</span>pop() 
+<span style="color:#66d9ef">void</span> stackQueue<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>pop() 
 {
   <span style="color:#66d9ef">if</span> (stack2.empty()) {
     <span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>stack1.empty()) 
@@ -373,13 +373,13 @@ CMyString <span style="color:#f92672">&amp;</span>CMyString<span style="color:#f
     }
   }
   <span style="color:#66d9ef">if</span> (stack2.empty()) 
-    <span style="color:#66d9ef">throw</span> string(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">queue is empty!</span><span style="color:#e6db74">&#34;</span>);
+    <span style="color:#66d9ef">throw</span> string(<span style="color:#e6db74">&#34;queue is empty!&#34;</span>);
   
   stack2.pop();
 }
 
 <span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
-T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span><span style="color:#f92672">:</span><span style="color:#f92672">:</span>top() 
+T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>top() 
 {
   <span style="color:#66d9ef">return</span> stack2.top();
 }
@@ -399,9 +399,9 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
     queue<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> queue2;
 };
 
-<span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span><span style="color:#66d9ef">void</span> queueStack<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span><span style="color:#f92672">:</span><span style="color:#f92672">:</span>push(<span style="color:#66d9ef">const</span> T <span style="color:#f92672">&amp;</span>node)
+<span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span><span style="color:#66d9ef">void</span> queueStack<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>push(<span style="color:#66d9ef">const</span> T <span style="color:#f92672">&amp;</span>node)
 {
-    <span style="color:#66d9ef">if</span>(queue1.empty() <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> queue2.empty())
+    <span style="color:#66d9ef">if</span>(queue1.empty() <span style="color:#f92672">&amp;&amp;</span> queue2.empty())
     {
         queue1.push(node);
     }
@@ -414,14 +414,14 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
         queue2.push(node);
     }
     <span style="color:#66d9ef">else</span>
-        <span style="color:#66d9ef">throw</span> <span style="color:#a6e22e">string</span>(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Error!</span><span style="color:#e6db74">&#34;</span>);
+        <span style="color:#66d9ef">throw</span> <span style="color:#a6e22e">string</span>(<span style="color:#e6db74">&#34;Error!&#34;</span>);
 }
 
-<span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>T queueStack<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span><span style="color:#f92672">:</span><span style="color:#f92672">:</span>pop()
+<span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>T queueStack<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>pop()
 {
-   <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span>queue1.empty() <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> queue2.empty())
+   <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span>queue1.empty() <span style="color:#f92672">&amp;&amp;</span> queue2.empty())
    {
-       <span style="color:#66d9ef">while</span>(queue1.size() <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>)
+       <span style="color:#66d9ef">while</span>(queue1.size() <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span>)
        {
           queue2.push(queue1.front());
           queue1.pop();
@@ -430,9 +430,9 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
        queue1.pop();
        <span style="color:#66d9ef">return</span>  data;
    }
-    <span style="color:#66d9ef">else</span> <span style="color:#a6e22e">if</span>(queue1.empty() <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> <span style="color:#f92672">!</span>queue2.empty())
+    <span style="color:#66d9ef">else</span> <span style="color:#a6e22e">if</span>(queue1.empty() <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>queue2.empty())
    {
-       <span style="color:#66d9ef">while</span>(queue2.size() <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>)
+       <span style="color:#66d9ef">while</span>(queue2.size() <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span>)
        {
            queue1.push(queue2.front());
            queue2.pop();
@@ -442,14 +442,14 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
        <span style="color:#66d9ef">return</span>  data;
    }
     <span style="color:#66d9ef">else</span>
-       <span style="color:#66d9ef">throw</span> <span style="color:#a6e22e">string</span>(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Error!</span><span style="color:#e6db74">&#34;</span>);
+       <span style="color:#66d9ef">throw</span> <span style="color:#a6e22e">string</span>(<span style="color:#e6db74">&#34;Error!&#34;</span>);
 }
 </code></pre></div><hr>
 <h2 id="快速排序">快速排序</h2>
 <p>快速排序中，基准元素的选择有<code>3</code>种方式：①选择待排序区间左边的第一个元素。②选择待排序空间的中间元素。③随机从待排序区间中选择一个元素。下面的代码是随机选择基准元素：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">quickSortPartition</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>input, <span style="color:#66d9ef">int</span> length, <span style="color:#66d9ef">int</span> start, <span style="color:#66d9ef">int</span> end)
 {
-    <span style="color:#66d9ef">if</span> (input <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">|</span><span style="color:#f92672">|</span> start <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">|</span><span style="color:#f92672">|</span> length <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">|</span><span style="color:#f92672">|</span> end <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> length)
+    <span style="color:#66d9ef">if</span> (input <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">||</span> start <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> length <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> end <span style="color:#f92672">&gt;=</span> length)
     {
         <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;  <span style="color:#75715e">// 参数错误
 </span><span style="color:#75715e"></span>    }
@@ -460,11 +460,11 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
     <span style="color:#66d9ef">int</span> small <span style="color:#f92672">=</span> start <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
 
     swap(input[index], input[end]);
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> start; i <span style="color:#f92672">&lt;</span> end; <span style="color:#f92672">+</span><span style="color:#f92672">+</span>i)
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> start; i <span style="color:#f92672">&lt;</span> end; <span style="color:#f92672">++</span>i)
     {
         <span style="color:#66d9ef">if</span> (input[i] <span style="color:#f92672">&lt;</span> input[end])
         {
-            small<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+            small<span style="color:#f92672">++</span>;
             <span style="color:#66d9ef">if</span> (small <span style="color:#f92672">&lt;</span> i)
             {
                 swap(input[small], input[i]);
@@ -472,14 +472,14 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
         }
     }
     
-    small<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+    small<span style="color:#f92672">++</span>;
     swap(input[small], input[end]);
     <span style="color:#66d9ef">return</span> small;
 }
 
 <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">quickSortMore</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>input, <span style="color:#66d9ef">int</span> length, <span style="color:#66d9ef">int</span> start, <span style="color:#66d9ef">int</span> end)
 {
-   <span style="color:#66d9ef">if</span> (start <span style="color:#f92672">=</span><span style="color:#f92672">=</span> end)
+   <span style="color:#66d9ef">if</span> (start <span style="color:#f92672">==</span> end)
        <span style="color:#66d9ef">return</span>;
     
     <span style="color:#66d9ef">int</span> index <span style="color:#f92672">=</span> quickSortPartition(input,length,start,end);
@@ -496,31 +496,31 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
 <p>最简单的方法是从头到尾遍历一遍数组，就可以找到最小的元素，但是<!-- raw HTML omitted -->这种方法没有用到旋转数组的前部和后部是有序这一特点<!-- raw HTML omitted -->。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">findSpinArrayMin</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> length)
 {
-    <span style="color:#66d9ef">if</span> (data <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">|</span><span style="color:#f92672">|</span> length <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>)
+    <span style="color:#66d9ef">if</span> (data <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">||</span> length <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>)
         <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
 
     <span style="color:#66d9ef">int</span> start <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
     <span style="color:#66d9ef">int</span> end <span style="color:#f92672">=</span> length <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
     <span style="color:#66d9ef">int</span> mid, result <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
 
-    <span style="color:#66d9ef">while</span> (data[start] <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> data[end])
+    <span style="color:#66d9ef">while</span> (data[start] <span style="color:#f92672">&gt;=</span> data[end])
     {
-        <span style="color:#66d9ef">if</span> (end <span style="color:#f92672">-</span> start <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>)
+        <span style="color:#66d9ef">if</span> (end <span style="color:#f92672">-</span> start <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>)
         {
            mid <span style="color:#f92672">=</span> end;
            <span style="color:#66d9ef">break</span>;
         }
         mid <span style="color:#f92672">=</span> (start <span style="color:#f92672">+</span> end) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>;
 
-        <span style="color:#66d9ef">if</span> (data[start] <span style="color:#f92672">=</span><span style="color:#f92672">=</span> data[mid] <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> data[mid] <span style="color:#f92672">=</span><span style="color:#f92672">=</span> data[end])
+        <span style="color:#66d9ef">if</span> (data[start] <span style="color:#f92672">==</span> data[mid] <span style="color:#f92672">&amp;&amp;</span> data[mid] <span style="color:#f92672">==</span> data[end])
         {
             <span style="color:#66d9ef">return</span> minInOrder(data, start, end);
         }
 
-        <span style="color:#66d9ef">if</span> (data[mid] <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> data[end])
+        <span style="color:#66d9ef">if</span> (data[mid] <span style="color:#f92672">&gt;=</span> data[end])
             start <span style="color:#f92672">=</span> mid;
 
-        <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (data[mid] <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> data[end])
+        <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (data[mid] <span style="color:#f92672">&lt;=</span> data[end])
             end <span style="color:#f92672">=</span> mid;
     }
 
@@ -531,7 +531,7 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
 {
     <span style="color:#66d9ef">int</span> result <span style="color:#f92672">=</span> data[start];
 
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> start <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> end; <span style="color:#f92672">+</span><span style="color:#f92672">+</span>i)
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> start <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;=</span> end; <span style="color:#f92672">++</span>i)
     {
         <span style="color:#66d9ef">if</span> (result <span style="color:#f92672">&gt;</span> data[i])
             result <span style="color:#f92672">=</span> data[i];
@@ -543,7 +543,7 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
 <p>首先根据定义很容易想到递归算法，但是递归算法会重复计算很多次，所以实际上浪费了很多资源</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">long</span> <span style="color:#66d9ef">long</span> <span style="color:#a6e22e">recFibonacci</span>(<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> n)
 {
-    <span style="color:#66d9ef">if</span> (n <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>)
+    <span style="color:#66d9ef">if</span> (n <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">1</span>)
         <span style="color:#66d9ef">return</span> n;
     <span style="color:#66d9ef">else</span>
         <span style="color:#66d9ef">return</span> recFibonacci(n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> recFibonacci(n <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>);
@@ -551,12 +551,12 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
 </code></pre></div><p>使用非递归解法，不必重复计算</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">long</span> <span style="color:#66d9ef">long</span> <span style="color:#a6e22e">nonRecFibonacci</span>(<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> n)
 {
-    <span style="color:#66d9ef">if</span> (n <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>)
+    <span style="color:#66d9ef">if</span> (n <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">1</span>)
         <span style="color:#66d9ef">return</span> n;
 
     <span style="color:#66d9ef">long</span> <span style="color:#66d9ef">long</span> first <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, second <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, result <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
 
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>; i <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> n; i<span style="color:#f92672">+</span><span style="color:#f92672">+</span>)
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>; i <span style="color:#f92672">&lt;=</span> n; i<span style="color:#f92672">++</span>)
     {
         result <span style="color:#f92672">=</span> first <span style="color:#f92672">+</span> second;
         first <span style="color:#f92672">=</span> second;
@@ -573,7 +573,7 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
     <span style="color:#66d9ef">double</span> result <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0</span>;
     <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> absExponent <span style="color:#f92672">=</span> (<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span>) (exponent);
 
-    <span style="color:#66d9ef">if</span> (base <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0.000001</span> <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> base <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0.000001</span> <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> exponent <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>)
+    <span style="color:#66d9ef">if</span> (base <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0.000001</span> <span style="color:#f92672">&amp;&amp;</span> base <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0.000001</span> <span style="color:#f92672">&amp;&amp;</span> exponent <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>)
         <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
 
 
@@ -582,9 +582,9 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
         absExponent <span style="color:#f92672">=</span> (<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span>) (<span style="color:#f92672">-</span>exponent);
     }
 
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">unsigned</span>  <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> absExponent; <span style="color:#f92672">+</span><span style="color:#f92672">+</span>i)
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">unsigned</span>  <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> absExponent; <span style="color:#f92672">++</span>i)
     {
-        result <span style="color:#f92672">*</span><span style="color:#f92672">=</span> base;
+        result <span style="color:#f92672">*=</span> base;
     }
 
     <span style="color:#66d9ef">if</span> (exponent <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>)
@@ -597,17 +597,17 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
 <p>![c600](<a href="http://oqe76o492.bkt.clouddn.com/">http://oqe76o492.bkt.clouddn.com/</a>屏幕快照 2017-08-17 下午2.42.37.png)</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">double</span> <span style="color:#a6e22e">powerOptimize</span>(<span style="color:#66d9ef">double</span> base, <span style="color:#66d9ef">int</span> exponent)
 {
-    <span style="color:#66d9ef">if</span> (exponent <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
+    <span style="color:#66d9ef">if</span> (exponent <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
         <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
 
-    <span style="color:#66d9ef">if</span> (exponent <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>)
+    <span style="color:#66d9ef">if</span> (exponent <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>)
         <span style="color:#66d9ef">return</span> base;
 
-    <span style="color:#66d9ef">double</span> result <span style="color:#f92672">=</span> powerOptimize(base, exponent <span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>);
-    result <span style="color:#f92672">*</span><span style="color:#f92672">=</span> result;
+    <span style="color:#66d9ef">double</span> result <span style="color:#f92672">=</span> powerOptimize(base, exponent <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">1</span>);
+    result <span style="color:#f92672">*=</span> result;
 
-    <span style="color:#66d9ef">if</span> ((exponent <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0x1</span>) <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>)
-        result <span style="color:#f92672">*</span><span style="color:#f92672">=</span> base;
+    <span style="color:#66d9ef">if</span> ((exponent <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0x1</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>)
+        result <span style="color:#f92672">*=</span> base;
 
     <span style="color:#66d9ef">return</span> result;
 }
@@ -617,8 +617,8 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">printNdigits</span>(<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> n)
 {
     <span style="color:#66d9ef">auto</span> <span style="color:#f92672">*</span>digits <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">char</span>[n <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>];
-    memset(digits, <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">0</span><span style="color:#e6db74">&#39;</span>, (n <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">char</span>));
-    digits[n] <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">\0</span><span style="color:#e6db74">&#39;</span>;
+    memset(digits, <span style="color:#e6db74">&#39;0&#39;</span>, (n <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">char</span>));
+    digits[n] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;\0&#39;</span>;
 
     <span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>incrementByone(digits))
     {
@@ -634,27 +634,27 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
     <span style="color:#66d9ef">int</span> takeOver <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
     <span style="color:#66d9ef">int</span> cur <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
 
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span> i <span style="color:#f92672">=</span> length<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#f92672">-</span><span style="color:#f92672">-</span>i)
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span> i <span style="color:#f92672">=</span> length<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>; <span style="color:#f92672">--</span>i)
     {
-      cur <span style="color:#f92672">=</span> digits[i]<span style="color:#f92672">-</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">0</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">+</span>takeOver;
-       <span style="color:#66d9ef">if</span>( i<span style="color:#f92672">=</span><span style="color:#f92672">=</span>length<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) 
-            cur <span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+      cur <span style="color:#f92672">=</span> digits[i]<span style="color:#f92672">-</span><span style="color:#e6db74">&#39;0&#39;</span><span style="color:#f92672">+</span>takeOver;
+       <span style="color:#66d9ef">if</span>( i<span style="color:#f92672">==</span>length<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) 
+            cur <span style="color:#f92672">++</span>;
         
         <span style="color:#66d9ef">if</span>(cur <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">10</span>)
         {
-            <span style="color:#66d9ef">if</span>(i <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
+            <span style="color:#66d9ef">if</span>(i <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
                 isOverFlow <span style="color:#f92672">=</span> true;
             <span style="color:#66d9ef">else</span>
             {
-                cur <span style="color:#f92672">-</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
-                digits[i]<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">0</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">+</span>cur;
+                cur <span style="color:#f92672">-=</span> <span style="color:#ae81ff">10</span>;
+                digits[i]<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;0&#39;</span><span style="color:#f92672">+</span>cur;
                 takeOver <span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;
             }
             
         }
         <span style="color:#66d9ef">else</span>
         {
-            digits[i]<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">0</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">+</span>cur;
+            digits[i]<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;0&#39;</span><span style="color:#f92672">+</span>cur;
             <span style="color:#66d9ef">break</span>;
         }
     }
@@ -664,24 +664,24 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
 
 <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">printNumber</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>digits)
 {
-    <span style="color:#66d9ef">if</span> (digits <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>)
+    <span style="color:#66d9ef">if</span> (digits <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>)
     {
-        <span style="color:#66d9ef">while</span> (<span style="color:#f92672">*</span>digits <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">0</span><span style="color:#e6db74">&#39;</span>)
+        <span style="color:#66d9ef">while</span> (<span style="color:#f92672">*</span>digits <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;0&#39;</span>)
         {
-            digits<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+            digits<span style="color:#f92672">++</span>;
         }
-        cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> digits <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> endl;
+        cout <span style="color:#f92672">&lt;&lt;</span> digits <span style="color:#f92672">&lt;&lt;</span> endl;
     }
 }
 </code></pre></div><p>递归方式，如果将前面的数字补0的话，就会发现n位所有十进制数其实就是n个从0开始到9的全排列，就是把数字从0到9排列一遍，就得到了十进制的全排列。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">newPrintNdigts</span>(<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> n)
 {
     <span style="color:#66d9ef">auto</span> <span style="color:#f92672">*</span>digits <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">char</span>[n <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>];
-    digits[n] <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">\0</span><span style="color:#e6db74">&#39;</span>;
+    digits[n] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;\0&#39;</span>;
 
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span>; <span style="color:#f92672">+</span><span style="color:#f92672">+</span>i)
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span>; <span style="color:#f92672">++</span>i)
     {
-        digits[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span><span style="color:#66d9ef">char</span>(i<span style="color:#f92672">+</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">0</span><span style="color:#e6db74">&#39;</span>);
+        digits[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span><span style="color:#66d9ef">char</span>(i<span style="color:#f92672">+</span><span style="color:#e6db74">&#39;0&#39;</span>);
         recPrintNdigits(digits,n,<span style="color:#ae81ff">0</span>);
     }
     <span style="color:#66d9ef">delete</span>[] digits;
@@ -689,15 +689,15 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
 
 <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">recPrintNdigits</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>digits, <span style="color:#66d9ef">int</span> length, <span style="color:#66d9ef">int</span> index)
 {
-    <span style="color:#66d9ef">if</span>(index <span style="color:#f92672">=</span><span style="color:#f92672">=</span> length<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+    <span style="color:#66d9ef">if</span>(index <span style="color:#f92672">==</span> length<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
     {
         printNumber(digits);
         <span style="color:#66d9ef">return</span>;
     } 
 
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span>; <span style="color:#f92672">+</span><span style="color:#f92672">+</span>i)
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span>; <span style="color:#f92672">++</span>i)
     {
-        digits[index<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">char</span>(i<span style="color:#f92672">+</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">0</span><span style="color:#e6db74">&#39;</span>);
+        digits[index<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">char</span>(i<span style="color:#f92672">+</span><span style="color:#e6db74">&#39;0&#39;</span>);
         recPrintNdigits(digits,length,index<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>);
     }
 }
@@ -706,32 +706,32 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
 <p>在 $O(1)$ 时间复杂度内删除某个节点,假设要删除的节点一定在链表中。如果删除的不是尾节点，则只要将它的下一个节点的数据移到该节点即可。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">deleteLinkedNode</span>(LinkedNode <span style="color:#f92672">*</span> <span style="color:#f92672">&amp;</span>root, LinkedNode <span style="color:#f92672">*</span> key)
 {
-    <span style="color:#66d9ef">if</span>( root <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>  <span style="color:#f92672">|</span><span style="color:#f92672">|</span> key <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">|</span><span style="color:#f92672">|</span> <span style="color:#f92672">!</span>isNodeInLinkedList(root, key))
+    <span style="color:#66d9ef">if</span>( root <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span>  <span style="color:#f92672">||</span> key <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">||</span> <span style="color:#f92672">!</span>isNodeInLinkedList(root, key))
         <span style="color:#66d9ef">return</span>;
 
-    <span style="color:#66d9ef">if</span>(key<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>)  <span style="color:#75715e">//删除的如果不是尾节点
+    <span style="color:#66d9ef">if</span>(key<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>)  <span style="color:#75715e">//删除的如果不是尾节点
 </span><span style="color:#75715e"></span>    {
-        LinkedNode <span style="color:#f92672">*</span> next <span style="color:#f92672">=</span> key<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;
-        key<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>data <span style="color:#f92672">=</span> next<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>data;
-        key<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next <span style="color:#f92672">=</span> next<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;
+        LinkedNode <span style="color:#f92672">*</span> next <span style="color:#f92672">=</span> key<span style="color:#f92672">-&gt;</span>next;
+        key<span style="color:#f92672">-&gt;</span>data <span style="color:#f92672">=</span> next<span style="color:#f92672">-&gt;</span>data;
+        key<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> next<span style="color:#f92672">-&gt;</span>next;
         <span style="color:#66d9ef">delete</span> next;
         next <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
     }
-    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span>( root<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>) <span style="color:#75715e">//删除的是尾节点，而且链表只有一个节点
+    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span>( root<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span>) <span style="color:#75715e">//删除的是尾节点，而且链表只有一个节点
 </span><span style="color:#75715e"></span>    {
         <span style="color:#66d9ef">delete</span> root;
         root <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
     } <span style="color:#66d9ef">else</span> <span style="color:#75715e">//删除的是尾节点，且链表不止一个节点
 </span><span style="color:#75715e"></span>    {
         LinkedNode <span style="color:#f92672">*</span> pre <span style="color:#f92672">=</span> root;
-        LinkedNode <span style="color:#f92672">*</span> cur <span style="color:#f92672">=</span> root<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;
+        LinkedNode <span style="color:#f92672">*</span> cur <span style="color:#f92672">=</span> root<span style="color:#f92672">-&gt;</span>next;
 
-        <span style="color:#66d9ef">while</span>(cur <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span> )
+        <span style="color:#66d9ef">while</span>(cur <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> )
         {
             pre <span style="color:#f92672">=</span> cur;
-            cur <span style="color:#f92672">=</span> cur<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;
+            cur <span style="color:#f92672">=</span> cur<span style="color:#f92672">-&gt;</span>next;
         }
-        pre<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
+        pre<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
         <span style="color:#66d9ef">delete</span> cur;
         cur <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
     }
@@ -742,23 +742,23 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
 <p>基本思路是用两个指针，其中第一个游标先向前走 <code>k-1</code>次，然后和另外一个游标一起往前走，如果第一个游标走到尾节点，那么第二个游标也就到了倒数第 <code>k</code>个节点。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">LinkedNode <span style="color:#f92672">*</span><span style="color:#a6e22e">findLastKthNodeFaster</span>(LinkedNode <span style="color:#f92672">*</span>root, <span style="color:#66d9ef">int</span> k)
 {
-    <span style="color:#66d9ef">if</span>( root <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">|</span><span style="color:#f92672">|</span> k <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
+    <span style="color:#66d9ef">if</span>( root <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">||</span> k <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>)
         <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nullptr</span>;
 
     LinkedNode <span style="color:#f92672">*</span> cur <span style="color:#f92672">=</span> root;
     LinkedNode <span style="color:#f92672">*</span> result <span style="color:#f92672">=</span> root;
 
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> k<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>; <span style="color:#f92672">+</span><span style="color:#f92672">+</span>i)
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> k<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>; <span style="color:#f92672">++</span>i)
     {
-        <span style="color:#66d9ef">if</span> (cur<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>)  <span style="color:#75715e">//要考虑k的值是否超过了链表的总节点数目
-</span><span style="color:#75715e"></span>            cur <span style="color:#f92672">=</span> cur<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;
+        <span style="color:#66d9ef">if</span> (cur<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>)  <span style="color:#75715e">//要考虑k的值是否超过了链表的总节点数目
+</span><span style="color:#75715e"></span>            cur <span style="color:#f92672">=</span> cur<span style="color:#f92672">-&gt;</span>next;
         <span style="color:#66d9ef">else</span>
             <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nullptr</span>;
     }
-    <span style="color:#66d9ef">while</span> (cur <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>)
+    <span style="color:#66d9ef">while</span> (cur <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>)
     {
-        cur <span style="color:#f92672">=</span> cur<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;
-        result <span style="color:#f92672">=</span> result<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;
+        cur <span style="color:#f92672">=</span> cur<span style="color:#f92672">-&gt;</span>next;
+        result <span style="color:#f92672">=</span> result<span style="color:#f92672">-&gt;</span>next;
     }
     <span style="color:#66d9ef">return</span> result;
 }
@@ -768,19 +768,19 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
 <p>定义一个函数，输入一个链表的头节点，反转该链表并输出反转后链表的头结点。分为递归和非递归解法，非递归使用头插法即可</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">LinkedNode <span style="color:#f92672">*</span> <span style="color:#a6e22e">reverseLinkedList</span>(LinkedNode <span style="color:#f92672">*</span>pHead)
 {
-    <span style="color:#66d9ef">if</span> (pHead <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>)
+    <span style="color:#66d9ef">if</span> (pHead <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span>)
         <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nullptr</span>;
     
     LinkedNode <span style="color:#f92672">*</span>newHead <span style="color:#f92672">=</span> pHead;
-    LinkedNode <span style="color:#f92672">*</span>cur <span style="color:#f92672">=</span> pHead<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;
-    newHead<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
+    LinkedNode <span style="color:#f92672">*</span>cur <span style="color:#f92672">=</span> pHead<span style="color:#f92672">-&gt;</span>next;
+    newHead<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
 
     LinkedNode <span style="color:#f92672">*</span>next <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
 
-    <span style="color:#66d9ef">while</span> (cur <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>)
+    <span style="color:#66d9ef">while</span> (cur <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>)
     {
-        next <span style="color:#f92672">=</span> cur<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;
-        cur<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next <span style="color:#f92672">=</span> newHead;
+        next <span style="color:#f92672">=</span> cur<span style="color:#f92672">-&gt;</span>next;
+        cur<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> newHead;
         newHead <span style="color:#f92672">=</span> cur;
         cur <span style="color:#f92672">=</span> next;
     }
@@ -794,20 +794,20 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
     LinkedNode <span style="color:#f92672">*</span>tmp <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
     LinkedNode <span style="color:#f92672">*</span>recurHead <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
 
-    <span style="color:#66d9ef">if</span>(head <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>)
+    <span style="color:#66d9ef">if</span>(head <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span>)
     {
         <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nullptr</span>;
     }
 
-    <span style="color:#66d9ef">if</span>(head<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>)
+    <span style="color:#66d9ef">if</span>(head<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span>)
         <span style="color:#66d9ef">return</span>  head;
     <span style="color:#66d9ef">else</span>
     {
         cur <span style="color:#f92672">=</span> head;
-        tmp <span style="color:#f92672">=</span> head<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;
+        tmp <span style="color:#f92672">=</span> head<span style="color:#f92672">-&gt;</span>next;
         recurHead <span style="color:#f92672">=</span> recurReversionLinkedList(tmp); <span style="color:#75715e">//得到反转之后的头节点
-</span><span style="color:#75715e"></span>        tmp<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next <span style="color:#f92672">=</span> cur; <span style="color:#75715e">//此时tmp就是最后一个节点了,应该将cur放到此时的最后一个节点tmp的后面
-</span><span style="color:#75715e"></span>        cur<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
+</span><span style="color:#75715e"></span>        tmp<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> cur; <span style="color:#75715e">//此时tmp就是最后一个节点了,应该将cur放到此时的最后一个节点tmp的后面
+</span><span style="color:#75715e"></span>        cur<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
         <span style="color:#66d9ef">return</span>  recurHead;
     }
 }
@@ -816,7 +816,7 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
 <p>给定一段字符串，仅压缩连续重复出现的字符，例如字符串<code>abcbc</code>压缩后为<code>1a1b1c</code>，<code>xxxyyyyzz</code>压缩后为<code>3x4y2z</code></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">compressString</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>src)
 {
-    assert(src <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>);
+    assert(src <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>);
     <span style="color:#66d9ef">auto</span> length <span style="color:#f92672">=</span> strlen(src);
 
     <span style="color:#66d9ef">auto</span> <span style="color:#f92672">*</span>result <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">char</span>[<span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> length <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>];  <span style="color:#75715e">//当字符都不相同时，压缩后的字符串长度变为原来的2倍
@@ -824,21 +824,21 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
     <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, k <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
     <span style="color:#66d9ef">char</span> cur;
 
-    <span style="color:#66d9ef">while</span> (src[i] <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">\0</span><span style="color:#e6db74">&#39;</span>)
+    <span style="color:#66d9ef">while</span> (src[i] <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;\0&#39;</span>)
     {
         cur <span style="color:#f92672">=</span> src[i];
         j <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
-        <span style="color:#66d9ef">while</span> (src[j] <span style="color:#f92672">=</span><span style="color:#f92672">=</span> cur)
+        <span style="color:#66d9ef">while</span> (src[j] <span style="color:#f92672">==</span> cur)
         {
-            j<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+            j<span style="color:#f92672">++</span>;
         }
 
-        result[k<span style="color:#f92672">+</span><span style="color:#f92672">+</span>] <span style="color:#f92672">=</span> (<span style="color:#66d9ef">char</span>) (j <span style="color:#f92672">-</span> i <span style="color:#f92672">+</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">0</span><span style="color:#e6db74">&#39;</span>);
-        result[k<span style="color:#f92672">+</span><span style="color:#f92672">+</span>] <span style="color:#f92672">=</span> cur;
+        result[k<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> (<span style="color:#66d9ef">char</span>) (j <span style="color:#f92672">-</span> i <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;0&#39;</span>);
+        result[k<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> cur;
         i <span style="color:#f92672">=</span> j;
     }
-    result[k] <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">\0</span><span style="color:#e6db74">&#39;</span>;
-    cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> result <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> endl;
+    result[k] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;\0&#39;</span>;
+    cout <span style="color:#f92672">&lt;&lt;</span> result <span style="color:#f92672">&lt;&lt;</span> endl;
     <span style="color:#66d9ef">delete</span>[] result;
 }
 </code></pre></div><hr>
@@ -850,46 +850,46 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
     <span style="color:#66d9ef">auto</span> i <span style="color:#f92672">=</span> length <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
     <span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
 
-    <span style="color:#66d9ef">while</span> (str[i] <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74"> </span><span style="color:#e6db74">&#39;</span>)  i<span style="color:#f92672">-</span><span style="color:#f92672">-</span>;
-    str[i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">\0</span><span style="color:#e6db74">&#39;</span>;
+    <span style="color:#66d9ef">while</span> (str[i] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39; &#39;</span>)  i<span style="color:#f92672">--</span>;
+    str[i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;\0&#39;</span>;
 
     i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-    <span style="color:#66d9ef">while</span> (str[i] <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74"> </span><span style="color:#e6db74">&#39;</span>) i<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+    <span style="color:#66d9ef">while</span> (str[i] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39; &#39;</span>) i<span style="color:#f92672">++</span>;
 
 
-    <span style="color:#66d9ef">while</span>(str[i] <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">\0</span><span style="color:#e6db74">&#39;</span>)
+    <span style="color:#66d9ef">while</span>(str[i] <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;\0&#39;</span>)
     {
-        str[j<span style="color:#f92672">+</span><span style="color:#f92672">+</span>] <span style="color:#f92672">=</span> str[i<span style="color:#f92672">+</span><span style="color:#f92672">+</span>];
+        str[j<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> str[i<span style="color:#f92672">++</span>];
 
-        <span style="color:#66d9ef">if</span>(str[i] <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74"> </span><span style="color:#e6db74">&#39;</span>)
+        <span style="color:#66d9ef">if</span>(str[i] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39; &#39;</span>)
         {
-            <span style="color:#66d9ef">while</span>(str[i] <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74"> </span><span style="color:#e6db74">&#39;</span>) i<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
-            str[j<span style="color:#f92672">+</span><span style="color:#f92672">+</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74"> </span><span style="color:#e6db74">&#39;</span>;
+            <span style="color:#66d9ef">while</span>(str[i] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39; &#39;</span>) i<span style="color:#f92672">++</span>;
+            str[j<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39; &#39;</span>;
         }
     }
-    str[j] <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">\0</span><span style="color:#e6db74">&#39;</span>;
-    cout<span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">***</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span>str<span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">***</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span>endl;
+    str[j] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;\0&#39;</span>;
+    cout<span style="color:#f92672">&lt;&lt;</span><span style="color:#e6db74">&#34;***&#34;</span><span style="color:#f92672">&lt;&lt;</span>str<span style="color:#f92672">&lt;&lt;</span><span style="color:#e6db74">&#34;***&#34;</span><span style="color:#f92672">&lt;&lt;</span>endl;
 }
 </code></pre></div><hr>
 <h2 id="合并两个有序的链表">合并两个有序的链表</h2>
 <p>当得到两个链表中值较小的头节点并把它链接到已经合并的链表之后，<!-- raw HTML omitted -->两个链表剩余的节点依然是有序的<!-- raw HTML omitted -->，因此合并的步骤和之前的步骤一样。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">LinkedNode <span style="color:#f92672">*</span><span style="color:#a6e22e">mergeOrderLinkedList</span>(LinkedNode <span style="color:#f92672">*</span>head1, LinkedNode <span style="color:#f92672">*</span>head2)
 {
-    <span style="color:#66d9ef">if</span> (head1 <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>)
+    <span style="color:#66d9ef">if</span> (head1 <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span>)
         <span style="color:#66d9ef">return</span> head2;
-    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (head2 <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>)
+    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (head2 <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span>)
         <span style="color:#66d9ef">return</span> head1;
 
     LinkedNode <span style="color:#f92672">*</span>mergeHead <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
 
-    <span style="color:#66d9ef">if</span> (head1<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>data <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> head2<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>data)
+    <span style="color:#66d9ef">if</span> (head1<span style="color:#f92672">-&gt;</span>data <span style="color:#f92672">&lt;=</span> head2<span style="color:#f92672">-&gt;</span>data)
     {
         mergeHead <span style="color:#f92672">=</span> head1;
-        mergeHead<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next <span style="color:#f92672">=</span> mergeOrderLinkedList(head1<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next, head2);
+        mergeHead<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> mergeOrderLinkedList(head1<span style="color:#f92672">-&gt;</span>next, head2);
     } <span style="color:#66d9ef">else</span>
     {
         mergeHead <span style="color:#f92672">=</span> head2;
-        mergeHead<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next <span style="color:#f92672">=</span> mergeOrderLinkedList(head1, head2<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next);
+        mergeHead<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> mergeOrderLinkedList(head1, head2<span style="color:#f92672">-&gt;</span>next);
     }
 
     <span style="color:#66d9ef">return</span> mergeHead;
@@ -900,19 +900,19 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">hasSubTree</span>(BinTreeNode <span style="color:#f92672">*</span>root1, BinTreeNode <span style="color:#f92672">*</span>root2)
 {
     <span style="color:#66d9ef">bool</span> result <span style="color:#f92672">=</span> false;
-    <span style="color:#66d9ef">if</span>(root1 <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> root2 <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span> )
+    <span style="color:#66d9ef">if</span>(root1 <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">&amp;&amp;</span> root2 <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> )
     {
-        <span style="color:#66d9ef">if</span>(root1<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>data <span style="color:#f92672">=</span><span style="color:#f92672">=</span> root2<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>data)
+        <span style="color:#66d9ef">if</span>(root1<span style="color:#f92672">-&gt;</span>data <span style="color:#f92672">==</span> root2<span style="color:#f92672">-&gt;</span>data)
            result <span style="color:#f92672">=</span> DoesTree1HasTree2(root1,root2);
         
-        <span style="color:#66d9ef">if</span>(false <span style="color:#f92672">=</span><span style="color:#f92672">=</span> result)
+        <span style="color:#66d9ef">if</span>(false <span style="color:#f92672">==</span> result)
         {
-            result <span style="color:#f92672">=</span> hasSubTree(root1<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>leftChild,root2);
+            result <span style="color:#f92672">=</span> hasSubTree(root1<span style="color:#f92672">-&gt;</span>leftChild,root2);
         }
         
-        <span style="color:#66d9ef">if</span>(false <span style="color:#f92672">=</span><span style="color:#f92672">=</span> result)
+        <span style="color:#66d9ef">if</span>(false <span style="color:#f92672">==</span> result)
         {
-            result <span style="color:#f92672">=</span> hasSubTree(root1<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>rightChild,root2);
+            result <span style="color:#f92672">=</span> hasSubTree(root1<span style="color:#f92672">-&gt;</span>rightChild,root2);
         }
     }
     
@@ -921,82 +921,82 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
 
 <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">DoesTree1HasTree2</span>(BinTreeNode <span style="color:#f92672">*</span>root1, BinTreeNode <span style="color:#f92672">*</span>root2)
 {
-    <span style="color:#66d9ef">if</span>(root2 <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>)
+    <span style="color:#66d9ef">if</span>(root2 <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span>)
         <span style="color:#66d9ef">return</span> true;
-    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span>(root1 <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>)
+    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span>(root1 <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span>)
         <span style="color:#66d9ef">return</span> false;
     
-    <span style="color:#66d9ef">if</span>(root1<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>data <span style="color:#f92672">!</span><span style="color:#f92672">=</span> root2<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>data)
+    <span style="color:#66d9ef">if</span>(root1<span style="color:#f92672">-&gt;</span>data <span style="color:#f92672">!=</span> root2<span style="color:#f92672">-&gt;</span>data)
         <span style="color:#66d9ef">return</span> false;
     
     
-    <span style="color:#66d9ef">return</span> DoesTree1HasTree2(root1<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>rightChild,root2<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>leftChild) <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> DoesTree1HasTree2(root1<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>rightChild,root2<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>rightChild);
+    <span style="color:#66d9ef">return</span> DoesTree1HasTree2(root1<span style="color:#f92672">-&gt;</span>rightChild,root2<span style="color:#f92672">-&gt;</span>leftChild) <span style="color:#f92672">&amp;&amp;</span> DoesTree1HasTree2(root1<span style="color:#f92672">-&gt;</span>rightChild,root2<span style="color:#f92672">-&gt;</span>rightChild);
 }
 </code></pre></div><hr>
 <h2 id="树的镜像">树的镜像</h2>
 <p>先前序遍历这棵树的每一个节点，如果遍历到的节点有子节点则交换它们，当交换完所有的非叶子节点的左右子节点之后，就得到了树的镜像</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">changeToMirror</span>(BinTreeNode <span style="color:#f92672">*</span>root)
 {
-    <span style="color:#66d9ef">if</span> (root <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>)
+    <span style="color:#66d9ef">if</span> (root <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span>)
         <span style="color:#66d9ef">return</span>;
 
-    <span style="color:#66d9ef">if</span> (root<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>leftChild <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> root<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>rightChild <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>)
+    <span style="color:#66d9ef">if</span> (root<span style="color:#f92672">-&gt;</span>leftChild <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">&amp;&amp;</span> root<span style="color:#f92672">-&gt;</span>rightChild <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span>)
         <span style="color:#66d9ef">return</span>;
 
     BinTreeNode <span style="color:#f92672">*</span>tmp;
-    tmp <span style="color:#f92672">=</span> root<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>leftChild;
-    root<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>leftChild <span style="color:#f92672">=</span> root<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>rightChild;
-    root<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>rightChild <span style="color:#f92672">=</span> tmp;
+    tmp <span style="color:#f92672">=</span> root<span style="color:#f92672">-&gt;</span>leftChild;
+    root<span style="color:#f92672">-&gt;</span>leftChild <span style="color:#f92672">=</span> root<span style="color:#f92672">-&gt;</span>rightChild;
+    root<span style="color:#f92672">-&gt;</span>rightChild <span style="color:#f92672">=</span> tmp;
     
-    <span style="color:#66d9ef">if</span>(<span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">!</span><span style="color:#f92672">=</span> root<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>leftChild)
-        changeToMirror(root<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>leftChild);
+    <span style="color:#66d9ef">if</span>(<span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">!=</span> root<span style="color:#f92672">-&gt;</span>leftChild)
+        changeToMirror(root<span style="color:#f92672">-&gt;</span>leftChild);
     
-    <span style="color:#66d9ef">if</span>(<span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">!</span><span style="color:#f92672">=</span> root<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>rightChild)
-        changeToMirror(root<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>rightChild);
+    <span style="color:#66d9ef">if</span>(<span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">!=</span> root<span style="color:#f92672">-&gt;</span>rightChild)
+        changeToMirror(root<span style="color:#f92672">-&gt;</span>rightChild);
 }
 </code></pre></div><hr>
 <h2 id="顺时针打印矩阵">顺时针打印矩阵</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">clockwisePrintMatrix</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span><span style="color:#f92672">*</span>input, <span style="color:#66d9ef">int</span> columns, <span style="color:#66d9ef">int</span> rows)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">clockwisePrintMatrix</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">**</span>input, <span style="color:#66d9ef">int</span> columns, <span style="color:#66d9ef">int</span> rows)
 {
-    <span style="color:#66d9ef">if</span> (input <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">|</span><span style="color:#f92672">|</span> columns <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>)
+    <span style="color:#66d9ef">if</span> (input <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">||</span> columns <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>)
         <span style="color:#66d9ef">return</span>;
 
     <span style="color:#66d9ef">int</span> start <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-    <span style="color:#66d9ef">while</span> (columns <span style="color:#f92672">&gt;</span> start <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> rows <span style="color:#f92672">&gt;</span> start <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>) <span style="color:#75715e">//打印进行的条件
+    <span style="color:#66d9ef">while</span> (columns <span style="color:#f92672">&gt;</span> start <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">&amp;&amp;</span> rows <span style="color:#f92672">&gt;</span> start <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>) <span style="color:#75715e">//打印进行的条件
 </span><span style="color:#75715e"></span>    {
         printMatrixInCircle(input, columns, rows, start);
-        start<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+        start<span style="color:#f92672">++</span>;
     }
 }
 
-<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">printMatrixInCircle</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span><span style="color:#f92672">*</span>input, <span style="color:#66d9ef">int</span> rows, <span style="color:#66d9ef">int</span> columns, <span style="color:#66d9ef">int</span> start)
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">printMatrixInCircle</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">**</span>input, <span style="color:#66d9ef">int</span> rows, <span style="color:#66d9ef">int</span> columns, <span style="color:#66d9ef">int</span> start)
 {
     <span style="color:#66d9ef">int</span> endX <span style="color:#f92672">=</span> columns <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> start; <span style="color:#75715e">//记录行的最右边
 </span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> endY <span style="color:#f92672">=</span> rows <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> start;    <span style="color:#75715e">//记录列的最下边
 </span><span style="color:#75715e"></span>
     <span style="color:#75715e">//从左往右打印一行
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> start; i <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> endX ; <span style="color:#f92672">+</span><span style="color:#f92672">+</span>i)
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> start; i <span style="color:#f92672">&lt;=</span> endX ; <span style="color:#f92672">++</span>i)
     {
-        cout<span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span>input[start][i]<span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>;
+        cout<span style="color:#f92672">&lt;&lt;</span>input[start][i]<span style="color:#f92672">&lt;&lt;</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>;
     }
 
     <span style="color:#75715e">//从上往下打印一列
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> start<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>;  i<span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> endY; <span style="color:#f92672">+</span><span style="color:#f92672">+</span>i)
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> start<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>;  i<span style="color:#f92672">&lt;=</span> endY; <span style="color:#f92672">++</span>i)
     {
-        cout<span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span>input[i][endX]<span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>;
+        cout<span style="color:#f92672">&lt;&lt;</span>input[i][endX]<span style="color:#f92672">&lt;&lt;</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>;
     }
 
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> endX<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span>start ; <span style="color:#f92672">-</span><span style="color:#f92672">-</span>i)
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> endX<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&gt;=</span>start ; <span style="color:#f92672">--</span>i)
     {
-        cout<span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span>input[endY][i]<span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>;
+        cout<span style="color:#f92672">&lt;&lt;</span>input[endY][i]<span style="color:#f92672">&lt;&lt;</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>;
     }
 
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> endY<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&gt;</span> start ; <span style="color:#f92672">-</span><span style="color:#f92672">-</span>i)
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> endY<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&gt;</span> start ; <span style="color:#f92672">--</span>i)
     {
-        cout<span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span>input[i][start]<span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>;
+        cout<span style="color:#f92672">&lt;&lt;</span>input[i][start]<span style="color:#f92672">&lt;&lt;</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>;
     }
     
-    cout<span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span>endl;
+    cout<span style="color:#f92672">&lt;&lt;</span>endl;
 }
 </code></pre></div><hr>
 <h2 id="包含min函数的栈">包含min函数的栈</h2>
@@ -1014,27 +1014,27 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
     <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>nextPop <span style="color:#f92672">=</span> popOrder;
     stack<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> st;
 
-    <span style="color:#66d9ef">if</span> (pushOrder <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> popOrder <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> length <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>)
+    <span style="color:#66d9ef">if</span> (pushOrder <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">&amp;&amp;</span> popOrder <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">&amp;&amp;</span> length <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>)
     {
         <span style="color:#66d9ef">while</span> ((nextPop <span style="color:#f92672">-</span> popOrder) <span style="color:#f92672">&lt;</span> length)
         {
-            <span style="color:#66d9ef">while</span> (st.empty() <span style="color:#f92672">|</span><span style="color:#f92672">|</span> <span style="color:#f92672">*</span>nextPop <span style="color:#f92672">!</span><span style="color:#f92672">=</span> st.top())
+            <span style="color:#66d9ef">while</span> (st.empty() <span style="color:#f92672">||</span> <span style="color:#f92672">*</span>nextPop <span style="color:#f92672">!=</span> st.top())
             {
-                <span style="color:#66d9ef">if</span> ((nextPush <span style="color:#f92672">-</span> pushOrder) <span style="color:#f92672">=</span><span style="color:#f92672">=</span> length)
+                <span style="color:#66d9ef">if</span> ((nextPush <span style="color:#f92672">-</span> pushOrder) <span style="color:#f92672">==</span> length)
                     <span style="color:#66d9ef">break</span>;
 
                 st.push(<span style="color:#f92672">*</span>nextPush);
-                nextPush<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+                nextPush<span style="color:#f92672">++</span>;
             }
 
-            <span style="color:#66d9ef">if</span> (st.top() <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#f92672">*</span>nextPush)
+            <span style="color:#66d9ef">if</span> (st.top() <span style="color:#f92672">!=</span> <span style="color:#f92672">*</span>nextPush)
                 <span style="color:#66d9ef">break</span>;
 
-            nextPop<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+            nextPop<span style="color:#f92672">++</span>;
             st.pop();
         }
 
-        <span style="color:#66d9ef">if</span> (st.empty() <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> (nextPop <span style="color:#f92672">-</span> popOrder <span style="color:#f92672">=</span><span style="color:#f92672">=</span> length))
+        <span style="color:#66d9ef">if</span> (st.empty() <span style="color:#f92672">&amp;&amp;</span> (nextPop <span style="color:#f92672">-</span> popOrder <span style="color:#f92672">==</span> length))
             result <span style="color:#f92672">=</span> true;
     }
 
@@ -1046,31 +1046,31 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
     <span style="color:#66d9ef">bool</span> result <span style="color:#f92672">=</span> false;
     <span style="color:#66d9ef">auto</span> length <span style="color:#f92672">=</span> strlen(pushOrder);
 
-    <span style="color:#66d9ef">if</span>(popOrder <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> pushOrder <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> length <span style="color:#f92672">=</span><span style="color:#f92672">=</span> strlen(popOrder))
+    <span style="color:#66d9ef">if</span>(popOrder <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">&amp;&amp;</span> pushOrder <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">&amp;&amp;</span> length <span style="color:#f92672">==</span> strlen(popOrder))
     {
         stack<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span><span style="color:#f92672">&gt;</span> st;
         <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> nextPush <span style="color:#f92672">=</span> pushOrder;
         <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> nextPop <span style="color:#f92672">=</span> popOrder;
 
-        <span style="color:#66d9ef">while</span>(<span style="color:#f92672">*</span>nextPop <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">\0</span><span style="color:#e6db74">&#39;</span>)
+        <span style="color:#66d9ef">while</span>(<span style="color:#f92672">*</span>nextPop <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;\0&#39;</span>)
         {
-            <span style="color:#66d9ef">while</span>(st.empty() <span style="color:#f92672">|</span><span style="color:#f92672">|</span> <span style="color:#f92672">*</span>nextPop <span style="color:#f92672">!</span><span style="color:#f92672">=</span> st.top())
+            <span style="color:#66d9ef">while</span>(st.empty() <span style="color:#f92672">||</span> <span style="color:#f92672">*</span>nextPop <span style="color:#f92672">!=</span> st.top())
             {
-                <span style="color:#66d9ef">if</span>(<span style="color:#f92672">*</span>nextPush <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">\0</span><span style="color:#e6db74">&#39;</span>)
+                <span style="color:#66d9ef">if</span>(<span style="color:#f92672">*</span>nextPush <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;\0&#39;</span>)
                     <span style="color:#66d9ef">break</span>;
 
                 st.push(<span style="color:#f92672">*</span>nextPush);
-                nextPush<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+                nextPush<span style="color:#f92672">++</span>;
             }
 
-            <span style="color:#66d9ef">if</span>(<span style="color:#f92672">*</span>nextPop <span style="color:#f92672">!</span><span style="color:#f92672">=</span> st.top())
+            <span style="color:#66d9ef">if</span>(<span style="color:#f92672">*</span>nextPop <span style="color:#f92672">!=</span> st.top())
                 <span style="color:#66d9ef">break</span>;
 
-            nextPop<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+            nextPop<span style="color:#f92672">++</span>;
             st.pop();
         }
 
-        <span style="color:#66d9ef">if</span>(st.empty() <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> <span style="color:#f92672">*</span>nextPop <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">\0</span><span style="color:#e6db74">&#39;</span>)
+        <span style="color:#66d9ef">if</span>(st.empty() <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">*</span>nextPop <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;\0&#39;</span>)
             result <span style="color:#f92672">=</span> true;
     }
 
@@ -1083,25 +1083,25 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
 {
     <span style="color:#66d9ef">bool</span> result <span style="color:#f92672">=</span> false;
 
-    <span style="color:#66d9ef">if</span> (input <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">|</span><span style="color:#f92672">|</span> length <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
+    <span style="color:#66d9ef">if</span> (input <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">||</span> length <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>)
         <span style="color:#66d9ef">return</span> result;
 
     <span style="color:#66d9ef">int</span> cur <span style="color:#f92672">=</span> input[length <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>];  <span style="color:#75715e">//根节点
 </span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> index <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
     <span style="color:#66d9ef">int</span> mid <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
 
-    <span style="color:#66d9ef">while</span> (index <span style="color:#f92672">&lt;</span> length <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> input[index] <span style="color:#f92672">&lt;</span> cur)
+    <span style="color:#66d9ef">while</span> (index <span style="color:#f92672">&lt;</span> length <span style="color:#f92672">&amp;&amp;</span> input[index] <span style="color:#f92672">&lt;</span> cur)
     {
-        index<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+        index<span style="color:#f92672">++</span>;
     }
     mid <span style="color:#f92672">=</span> index;
 
-    <span style="color:#66d9ef">while</span> (index <span style="color:#f92672">&lt;</span> length <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> input[index] <span style="color:#f92672">&gt;</span> cur)
+    <span style="color:#66d9ef">while</span> (index <span style="color:#f92672">&lt;</span> length <span style="color:#f92672">&amp;&amp;</span> input[index] <span style="color:#f92672">&gt;</span> cur)
     {
-        index<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+        index<span style="color:#f92672">++</span>;
     }
 
-    <span style="color:#66d9ef">if</span> (index <span style="color:#f92672">=</span><span style="color:#f92672">=</span> length <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#75715e">//注意边界判断
+    <span style="color:#66d9ef">if</span> (index <span style="color:#f92672">==</span> length <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#75715e">//注意边界判断
 </span><span style="color:#75715e"></span>    {
         <span style="color:#66d9ef">bool</span> left <span style="color:#f92672">=</span> false, right <span style="color:#f92672">=</span> false;
         <span style="color:#66d9ef">if</span> (mid <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>)
@@ -1110,7 +1110,7 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
         <span style="color:#66d9ef">if</span> (mid <span style="color:#f92672">&lt;</span> length <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)
             right <span style="color:#f92672">=</span> verifySquenceOfBST(input <span style="color:#f92672">+</span> mid, length <span style="color:#f92672">-</span> mid <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>);
 
-        result <span style="color:#f92672">=</span> left <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> right;
+        result <span style="color:#f92672">=</span> left <span style="color:#f92672">&amp;&amp;</span> right;
     }
 
     <span style="color:#66d9ef">return</span> result;
@@ -1120,7 +1120,7 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
 <p>输入一棵二叉树和一个整数，打印二叉树中节点值的和为输入整数的所有路径。<!-- raw HTML omitted -->从树的根节点开始往下一直到<!-- raw HTML omitted -->某一节点<!-- raw HTML omitted -->所经过的节点形成一条路径<!-- raw HTML omitted -->。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">findPath</span>(BinTreeNode <span style="color:#f92672">*</span>root, <span style="color:#66d9ef">int</span> sum)
 {
-    <span style="color:#66d9ef">if</span> (root <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>)
+    <span style="color:#66d9ef">if</span> (root <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span>)
         <span style="color:#66d9ef">return</span>;
 
     vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span><span style="color:#f92672">&gt;</span> path;
@@ -1130,25 +1130,25 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
 
 <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">findPath</span>(BinTreeNode <span style="color:#f92672">*</span>root, vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&amp;</span>path, <span style="color:#66d9ef">int</span> sum, <span style="color:#66d9ef">int</span> currentsum)
 {
-    currentsum <span style="color:#f92672">+</span><span style="color:#f92672">=</span> root<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>data;
-    path.push_back(root<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>data);
-    <span style="color:#66d9ef">if</span> (sum <span style="color:#f92672">=</span><span style="color:#f92672">=</span> currentsum)
+    currentsum <span style="color:#f92672">+=</span> root<span style="color:#f92672">-&gt;</span>data;
+    path.push_back(root<span style="color:#f92672">-&gt;</span>data);
+    <span style="color:#66d9ef">if</span> (sum <span style="color:#f92672">==</span> currentsum)
     {
-        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span> it <span style="color:#f92672">=</span> path.begin(); it <span style="color:#f92672">!</span><span style="color:#f92672">=</span> path.end(); it<span style="color:#f92672">+</span><span style="color:#f92672">+</span>)
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span> it <span style="color:#f92672">=</span> path.begin(); it <span style="color:#f92672">!=</span> path.end(); it<span style="color:#f92672">++</span>)
         {
-            cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#f92672">*</span>it <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">\t</span><span style="color:#e6db74">&#39;</span>;
+            cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#f92672">*</span>it <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\t&#39;</span>;
         }
-        cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> endl;
+        cout <span style="color:#f92672">&lt;&lt;</span> endl;
     }
 
-    <span style="color:#66d9ef">if</span> (root<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>leftChild <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>)
+    <span style="color:#66d9ef">if</span> (root<span style="color:#f92672">-&gt;</span>leftChild <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>)
     {
-        findPath(root<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>leftChild, path, currentsum, sum);
+        findPath(root<span style="color:#f92672">-&gt;</span>leftChild, path, currentsum, sum);
     }
 
-    <span style="color:#66d9ef">if</span> (root<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>rightChild <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>)
+    <span style="color:#66d9ef">if</span> (root<span style="color:#f92672">-&gt;</span>rightChild <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>)
     {
-        findPath(root<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>rightChild, path, currentsum, sum);
+        findPath(root<span style="color:#f92672">-&gt;</span>rightChild, path, currentsum, sum);
     }
 
     path.pop_back();
@@ -1156,58 +1156,58 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
 </code></pre></div><p>不用vector算法的写法：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">printSumPath</span>(BinTreeNode <span style="color:#f92672">*</span>root, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>path, <span style="color:#66d9ef">int</span> length, <span style="color:#66d9ef">int</span> sum)
 {
-    <span style="color:#66d9ef">if</span> (root <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>)
+    <span style="color:#66d9ef">if</span> (root <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span>)
         <span style="color:#66d9ef">return</span>;
 
-    path[length] <span style="color:#f92672">=</span> root<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>data;
-    sum <span style="color:#f92672">-</span><span style="color:#f92672">=</span> root<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>data;
-    length<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+    path[length] <span style="color:#f92672">=</span> root<span style="color:#f92672">-&gt;</span>data;
+    sum <span style="color:#f92672">-=</span> root<span style="color:#f92672">-&gt;</span>data;
+    length<span style="color:#f92672">++</span>;
 
-    <span style="color:#66d9ef">if</span> (<span style="color:#ae81ff">0</span> <span style="color:#f92672">=</span><span style="color:#f92672">=</span> sum)
+    <span style="color:#66d9ef">if</span> (<span style="color:#ae81ff">0</span> <span style="color:#f92672">==</span> sum)
     {
-        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> length; <span style="color:#f92672">+</span><span style="color:#f92672">+</span>i)
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;=</span> length; <span style="color:#f92672">++</span>i)
         {
-            cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> path[i];
+            cout <span style="color:#f92672">&lt;&lt;</span> path[i];
         }
-        cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> endl;
+        cout <span style="color:#f92672">&lt;&lt;</span> endl;
     }
 
-    <span style="color:#66d9ef">if</span> (root<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>leftChild <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>)
+    <span style="color:#66d9ef">if</span> (root<span style="color:#f92672">-&gt;</span>leftChild <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>)
     {
-        printSumPath(root<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>leftChild, path, length, sum);
+        printSumPath(root<span style="color:#f92672">-&gt;</span>leftChild, path, length, sum);
     }
 
-    <span style="color:#66d9ef">if</span> (root<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>rightChild <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>)
+    <span style="color:#66d9ef">if</span> (root<span style="color:#f92672">-&gt;</span>rightChild <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>)
     {
-        printSumPath(root<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>rightChild, path, length, sum);
+        printSumPath(root<span style="color:#f92672">-&gt;</span>rightChild, path, length, sum);
     }
 
-    length<span style="color:#f92672">-</span><span style="color:#f92672">-</span>;  <span style="color:#75715e">//减不减其实无所谓
+    length<span style="color:#f92672">--</span>;  <span style="color:#75715e">//减不减其实无所谓
 </span><span style="color:#75715e"></span>}
 </code></pre></div><hr>
 <h2 id="二叉树中和为某一值的路径">二叉树中和为某一值的路径</h2>
 <p>一棵二叉树每个节点包含一个整数，设计一个算法输出所有满足条件的路径：在此路径上所有给定的节点之和为给定值，<!-- raw HTML omitted -->不必从根节点开始<!-- raw HTML omitted --></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">printSumPath</span>(BinTreeNode <span style="color:#f92672">*</span>root, vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&amp;</span>path, <span style="color:#66d9ef">int</span> sum, <span style="color:#66d9ef">int</span> level)
 {
-   <span style="color:#66d9ef">if</span>(root <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>)
+   <span style="color:#66d9ef">if</span>(root <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>)
    {
-       path.push_back(root<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>data);
+       path.push_back(root<span style="color:#f92672">-&gt;</span>data);
        
        <span style="color:#66d9ef">int</span> currentSum <span style="color:#f92672">=</span> sum;
 
-       <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> level; i <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; <span style="color:#f92672">+</span><span style="color:#f92672">+</span>i)
+       <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> level; i <span style="color:#f92672">&gt;=</span><span style="color:#ae81ff">0</span>; <span style="color:#f92672">++</span>i)
        {
-           currentSum<span style="color:#f92672">-</span><span style="color:#f92672">=</span>path[i];
+           currentSum<span style="color:#f92672">-=</span>path[i];
            
-           <span style="color:#66d9ef">if</span>(currentSum <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
+           <span style="color:#66d9ef">if</span>(currentSum <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
                printSumPath(path,i,level);
        }
-       level<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
-       <span style="color:#66d9ef">if</span>(root<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>leftChild <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>)
-           printSumPath(root<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>leftChild,path,sum,level);
+       level<span style="color:#f92672">++</span>;
+       <span style="color:#66d9ef">if</span>(root<span style="color:#f92672">-&gt;</span>leftChild <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>)
+           printSumPath(root<span style="color:#f92672">-&gt;</span>leftChild,path,sum,level);
        
-       <span style="color:#66d9ef">if</span>(root<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>rightChild <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>)
-           printSumPath(root<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>rightChild,path,sum,level);
+       <span style="color:#66d9ef">if</span>(root<span style="color:#f92672">-&gt;</span>rightChild <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>)
+           printSumPath(root<span style="color:#f92672">-&gt;</span>rightChild,path,sum,level);
        
        path.pop_back();
    }
@@ -1215,11 +1215,11 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
 
 <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">printSumPath</span>(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span><span style="color:#f92672">&gt;</span> path, <span style="color:#66d9ef">int</span> start, <span style="color:#66d9ef">int</span> end)
 {
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> start; i <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> end; <span style="color:#f92672">+</span><span style="color:#f92672">+</span>i)
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> start; i <span style="color:#f92672">&lt;=</span> end; <span style="color:#f92672">++</span>i)
     {
-        cout<span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span>path[i]<span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">\t</span><span style="color:#e6db74">&#39;</span>;
+        cout<span style="color:#f92672">&lt;&lt;</span>path[i]<span style="color:#f92672">&lt;&lt;</span><span style="color:#e6db74">&#39;\t&#39;</span>;
     }
-    cout<span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span>endl;
+    cout<span style="color:#f92672">&lt;&lt;</span>endl;
 }
 </code></pre></div><hr>
 

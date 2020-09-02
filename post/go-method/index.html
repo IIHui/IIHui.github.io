@@ -355,7 +355,7 @@ code.has-jax {
 <p>指针类型的<code>receiver</code><!-- raw HTML omitted -->必须是合法地址（包括<code>nil</code>），或能获取实例的地址，<!-- raw HTML omitted -->否则会出现运行时错误。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">b</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">N</span>
 <span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">value</span>() <span style="color:#75715e">//b 相当于nil,可以调用，但是会出现运行时错误，因为没有指向具体实例，所以在传参数时出现错误
-</span><span style="color:#75715e"></span><span style="color:#75715e">//N{}.pointer()
+</span><span style="color:#75715e">//N{}.pointer()
 </span></code></pre></div></li>
 <li>
 <p>别名类型能定义方法的前提是其原始类型没有定义过该方法。</p>
@@ -447,13 +447,13 @@ code.has-jax {
 <span style="color:#a6e22e">f2</span> <span style="color:#f92672">:=</span> (<span style="color:#f92672">*</span><span style="color:#a6e22e">N</span>).<span style="color:#a6e22e">test</span> <span style="color:#75715e">//尽管*N方法集包装test方法receiver类型不同，但编译器会保证按原定义类型拷贝传值
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">f2</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">n</span>)
 <span style="color:#75715e">//main.n:,0xc42006e1a8,25
-</span><span style="color:#75715e"></span><span style="color:#75715e">//test.n:,0xc42006e1c8,25
-</span><span style="color:#75715e"></span><span style="color:#75715e">//test.n:,0xc42006e1d8,25
+</span><span style="color:#75715e">//test.n:,0xc42006e1c8,25
+</span><span style="color:#75715e">//test.n:,0xc42006e1d8,25
 </span></code></pre></div><p>还可以直接以表达式的方式调用</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">N</span>.<span style="color:#a6e22e">test</span>(<span style="color:#a6e22e">n</span>)
 (<span style="color:#f92672">*</span><span style="color:#a6e22e">N</span>).<span style="color:#a6e22e">test</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">n</span>)
 <span style="color:#75715e">//test.n:,0xc42006e1c8,25
-</span><span style="color:#75715e"></span><span style="color:#75715e">//test.n:,0xc42006e1d8,25
+</span><span style="color:#75715e">//test.n:,0xc42006e1d8,25
 </span></code></pre></div><hr>
 <h3 id="method-value">Method Value</h3>
 <p>基于实例或指针引用的<code>method value</code>，参数签名不会改变，依旧按正常方式调用，但当<code>method value</code>被赋值给变量或作为参数传递时，会立即计算并复制该方法执行所需的<code>receiver</code>对象与其绑定，以便在稍后的执行时，能隐式传入<code>receiver</code>参数。</p>
@@ -472,8 +472,8 @@ code.has-jax {
 <span style="color:#a6e22e">t1</span>()
 <span style="color:#a6e22e">t2</span>()
 <span style="color:#75715e">//main.n:,0xc42000e258,28
-</span><span style="color:#75715e"></span><span style="color:#75715e">//test.n:,0xc42000e278,26
-</span><span style="color:#75715e"></span><span style="color:#75715e">//test.n:,0xc42000e288,27
+</span><span style="color:#75715e">//test.n:,0xc42000e278,26
+</span><span style="color:#75715e">//test.n:,0xc42000e288,27
 </span></code></pre></div><p>当<code>method value</code>作为参数时，会复制含<code>receiver</code>在内的整个<code>method value</code></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">call</span>(<span style="color:#a6e22e">m</span> <span style="color:#66d9ef">func</span>()){
     <span style="color:#a6e22e">m</span>()
@@ -491,8 +491,8 @@ code.has-jax {
 <span style="color:#a6e22e">call</span>(<span style="color:#a6e22e">p</span>.<span style="color:#a6e22e">test</span>)
 
 <span style="color:#75715e">//main.n:,0xc42006e1a8,25
-</span><span style="color:#75715e"></span><span style="color:#75715e">//test.n:,0xc42006e1c8,26
-</span><span style="color:#75715e"></span><span style="color:#75715e">//test.n:,0xc42006e1d8,27
+</span><span style="color:#75715e">//test.n:,0xc42006e1c8,26
+</span><span style="color:#75715e">//test.n:,0xc42006e1d8,27
 </span></code></pre></div><p>如果目标方法的<code>receiver</code>是指针类型，那么被复制的仅是指针</p>
 <p>只要<code>receiver</code>参数类型正确，使用<code>nil</code>同样可以执行</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">N</span> <span style="color:#66d9ef">int</span>

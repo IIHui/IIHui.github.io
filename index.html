@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
 <head>
-	<meta name="generator" content="Hugo 0.63.2" />
+	<meta name="generator" content="Hugo 0.74.3" />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
@@ -230,7 +230,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1782</span>
+<span class="leancloud-visitors-count">1786</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -305,7 +305,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">335</span>
+<span class="leancloud-visitors-count">338</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -316,7 +316,7 @@ code.has-jax {
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    as是在编译期间执行的，as?和as!是在运行时执行的。 print(4 as Double) //print4.0 print(4 as! Double) //crash 上面第二行代码会崩溃是因为as?和as!是在运行时执行，运行时4已经赋值为Int类型。 UITableView中需要reload数据的解决方案 增加内存缓存 在prepare
+    as是在编译期间执行的，as?和as!是在运行时执行的。 print(4 as Double) // print 4.0 print(4 as! Double) // crash 上面第二行代码会崩溃是因为as?和as!是在运行时执行，运行时4已经赋值为Int类型。 UITableView中需要reload数据的解决方案 增加内存缓存 在prep
     </div>
     
     <div class="post-more-link text-center">
@@ -332,7 +332,7 @@ code.has-jax {
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
         <a class="post-title-link" href="https://iihui.github.io/post/ios-image/" itemprop="url">
-        image
+        image 处理
         </a>
       </h1>
       <div class="post-meta">
@@ -380,7 +380,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">202</span>
+<span class="leancloud-visitors-count">185</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -391,7 +391,7 @@ code.has-jax {
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    ///将图片裁剪为带外围⭕️的圆形图 ///-Parameters: ///-rail:外围圆的宽度 ///-color:外围圆的颜色 ///-Returns:生成新的图片 func circleImageWidthRail(rail: CGFloat, color: UIColor) -&gt; UIImage? { let size = CGSize(width: self.size.width + 2 * rail, height: self.size.height + 2 * rail) UIGraphicsBeginImageContextWithOptions(size, false, 0) let path = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: size.width, height: size.height)) color.set() path.fill() let imgPath = UIBezierPath(ovalIn: CGRect(x: rail, y: rail, width: self.size.width, height: self.size.height))
+    添加外圆 /// 将图片裁剪为带外围⭕️的圆形图 /// - Parameters: /// - rail: 外围圆的宽度 /// - color: 外围圆的颜色 /// - Returns: 生成新的图片 func circleImageWidthRail(rail: CGFloat, color: UIColor) -&gt; UIImage? { let size = CGSize(width: self.size.width + 2 * rail, height: self.size.height + 2 * rail) UIGraphicsBeginImageContextWithOptions(size, false, 0) let path = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: size.width, height: size.height)) color.set() path.fill() let imgPath = UIBezierPath(ovalIn: CGRect(x: rail, y: rail, width: self.size.width, height: self.size.height)) imgPath.addClip() self.draw(at: CGPoint(x: rail, y: rail)) let newImg = UIGraphicsGetImageFromCurrentImageContext() UIGraphicsEndImageContext() return newImg } 裁剪为圆
     </div>
     
     <div class="post-more-link text-center">
@@ -674,7 +674,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1962</span>
+<span class="leancloud-visitors-count">1965</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -824,7 +824,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">158</span>
+<span class="leancloud-visitors-count">156</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -835,7 +835,7 @@ code.has-jax {
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    字典合并 第一个字典先提供一些默认值，对于相同的key如果第二个字典中存在相应的value，则第一个字典的value被第二个字典覆盖掉。 //默认字段 var defaultInfo: [String: Any] = [ &#34;sys_id&#34;: sysID, &#34;type&#34;: action.rawValue, &#34;ystId&#34;: activeUser.pid, &#34;deviceId&#34;: deviceID, &#34;platform&#34;: platform, &#34;pubVer&#34;: pubVersion, &#34;buildVer&#34;: buildVersion, &#34;deviceModel&#34;: deviceModel, &#34;serverTime&#34;: logTime, &#34;deviceTime&#34;: deviceTimeStr, &#34;startTime&#34;: logTime, &#34;endTime&#34;: logTime, &#34;networkType&#34;: networkInfo._networkType, &#34;networkName&#34;: networkInfo._networkName, &#34;ip&#34;: networkInfo.ip, &#34;inuseId&#34;: inuseID, &#34;gpsLng&#34;: gps.lng, &#34;gpsLat&#34;: gps.lat, ] if let _args =
+    字典合并 第一个字典先提供一些默认值，对于相同的key如果第二个字典中存在相应的value，则第一个字典的value被第二个字典覆盖掉。 // 默认字段 var defaultInfo: [String: Any] = [ &#34;sys_id&#34;: sysID, &#34;type&#34;: action.rawValue, &#34;ystId&#34;: activeUser.pid, &#34;deviceId&#34;: deviceID, &#34;platform&#34;: platform, &#34;pubVer&#34;: pubVersion, &#34;buildVer&#34;: buildVersion, &#34;deviceModel&#34;: deviceModel, &#34;serverTime&#34;: logTime, &#34;deviceTime&#34;: deviceTimeStr, &#34;startTime&#34;: logTime, &#34;endTime&#34;: logTime, &#34;networkType&#34;: networkInfo._networkType, &#34;networkName&#34;: networkInfo._networkName, &#34;ip&#34;: networkInfo.ip, &#34;inuseId&#34;: inuseID, &#34;gpsLng&#34;: gps.lng, &#34;gpsLat&#34;: gps.lat, ] if let _args = args
     </div>
     
     <div class="post-more-link text-center">
@@ -899,7 +899,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">367</span>
+<span class="leancloud-visitors-count">337</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -910,7 +910,7 @@ code.has-jax {
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    毫秒级时间戳距当前时间 ///将毫秒级别的时间戳转换为约定的格式，0～60秒显示几秒前，1～60分显示xx分钟前，1～24小时显示xx小时前，1～10天显示xx天前，否则显示yyyy-MM-dd ///-ParametertimeStamp:毫
+    毫秒级时间戳距当前时间 /// 将毫秒级别的时间戳转换为约定的格式，0～60秒显示几秒前，1～60分显示xx分钟前，1～24小时显示xx小时前，1～10天显示xx天前，否则显示yyyy-MM-dd /// - Parameter timeStamp: 毫秒级别时间戳字符串 /// - Returns: 转换后的字符串 private func
     </div>
     
     <div class="post-more-link text-center">
@@ -974,7 +974,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">872</span>
+<span class="leancloud-visitors-count">768</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -985,7 +985,7 @@ code.has-jax {
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    在文字后面添加红点 ///使用富文本的方式在UILabel文本后面添加红点 ///-Parameteradd:isNeedAdd为true表示要加红点，否则不需要 ///-Returns:处理后的富文本 func addRedDot(isNeedAdd: Bool) -&gt; NSMutableAttributedString { var text: String = (self.text ?? &#34;&#34;) if isNeedAdd { text += &#34;&#34; let contentText =
+    在文字后面添加红点 /// 使用富文本的方式在UILabel文本后面添加红点 /// - Parameter add: isNeedAdd 为true表示要加红点，否则不需要 /// - Returns: 处理后的富文本 func addRedDot(isNeedAdd: Bool) -&gt; NSMutableAttributedString { var text: String = (self.text ?? &#34;&#34;) if isNeedAdd { text += &#34; &#34; let contentText = NSMutableAttributedString(string: text) let attach = NSTextAttachment() let dotImg = UIImage(named: &#34;reddot&#34;) let width: CGFloat = 10 attach.bounds = CGRect(x: 0, y: 0.5, width: width, height: width) attach.image = dotImg let attrText
     </div>
     
     <div class="post-more-link text-center">
@@ -1049,7 +1049,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">126</span>
+<span class="leancloud-visitors-count">121</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -1060,7 +1060,7 @@ code.has-jax {
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    仿导航栏添加阴影 //设置阴影颜色 navBGView.layer.shadowColor = UIColor.lightGray.cgColor //设置阴影偏移范围 navBGView.layer.shadowOffset = CGSize(width: 0, height: 1.8) //设置阴影颜色的透明度 navBGView.layer.shadowOpacity = 0.2 //设置阴影的半径 navBGView.layer.shadowRadius = 2.5 //设置阴影路径 navBGView.layer.shadowPath = UIBezierPath.init(rect: navBGView.bounds).cgPath 通过设置1.2.3步仿导航栏的阴影就可以出现,如果对阴影有特别的需要,可再设置4.5这两个步
+    仿导航栏添加阴影 // 设置阴影颜色 navBGView.layer.shadowColor = UIColor.lightGray.cgColor // 设置阴影偏移范围 navBGView.layer.shadowOffset = CGSize(width: 0, height: 1.8) // 设置阴影颜色的透明度 navBGView.layer.shadowOpacity = 0.2 // 设置阴影的半径 navBGView.layer.shadowRadius = 2.5 // 设置阴影路径 navBGView.layer.shadowPath = UIBezierPath.init(rect: navBGView.bounds).cgPath 通过设置1.2.3步仿导航栏的阴影就可以出现,如果对阴影有特别的需要,可再设置4.5这两个步骤。 参考资
     </div>
     
     <div class="post-more-link text-center">
@@ -1349,7 +1349,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">560</span>
+<span class="leancloud-visitors-count">547</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -1360,7 +1360,7 @@ code.has-jax {
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    范型类型 Swift允许自定义的范型类型包括类、结构体、枚举类型。 struct Stack { var items = [Int]() mutating func push(_ item:Int){ items.append(item) } mutating func pop(_ item:Int) -&gt; Int { return items.removeLast() } } //调用 var stack_int = Stack() stack_int.push(7) stack_int.push(3) stack_int.push(2) print(stack_int)//Stack(items:[7,3,2]) 类型约束 范型函数和范型类型虽然可以和任何类型一起使用，但有时需要限制使用的类型，此时就需要使用类型约束。
+    范型类型 Swift允许自定义的范型类型包括类、结构体、枚举类型。 struct Stack { var items = [Int]() mutating func push(_ item:Int){ items.append(item) } mutating func pop(_ item:Int) -&gt; Int { return items.removeLast() } } //调用 var stack_int = Stack() stack_int.push(7) stack_int.push(3) stack_int.push(2) print(stack_int)//Stack(items: [7, 3, 2]) 类型约束 范型函数和范型类型虽然可以和任何类型一起使用，但有时需要限制使用的类型，此时就需要使用类型
     </div>
     
     <div class="post-more-link text-center">

@@ -272,9 +272,9 @@ code.has-jax {
 	panic(<span style="color:#e6db74">&#34;触发异常&#34;</span>)   <span style="color:#75715e">//在defer之后执行
 </span><span style="color:#75715e"></span>}     
 <span style="color:#75715e">//打印后
-</span><span style="color:#75715e"></span><span style="color:#75715e">//打印中
-</span><span style="color:#75715e"></span><span style="color:#75715e">//打印前
-</span><span style="color:#75715e"></span><span style="color:#75715e">//panic: 触发异常
+</span><span style="color:#75715e">//打印中
+</span><span style="color:#75715e">//打印前
+</span><span style="color:#75715e">//panic: 触发异常
 </span></code></pre></div><p>编译器<!-- raw HTML omitted -->通过插入额外的指令来实现延迟调用<!-- raw HTML omitted -->执行，而<!-- raw HTML omitted --><code>return</code>和<code>panic</code>语句都会终止当前函数流程，引发延迟调用。<!-- raw HTML omitted -->此外，<code>return</code>语句不是<code>ret</code>汇编指令，它会更新返回值，如下例所示：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TestDefer</span>() (<span style="color:#a6e22e">z</span> <span style="color:#66d9ef">int</span>) {
 	<span style="color:#66d9ef">defer</span> <span style="color:#66d9ef">func</span>() {

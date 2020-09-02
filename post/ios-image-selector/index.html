@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">924</span>
+<span class="leancloud-visitors-count">918</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -254,7 +254,7 @@ code.has-jax {
     <div class="post-body" itemprop="articleBody">
     <h2 id="第一步">第一步</h2>
 <p><code>JSAPI</code>中有个文件选择器，而文件选择器中有选择多个图片的功能。首先在<code>WebviewController.swift</code>中找到:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">case</span> UrlSchema.fileSelectorSchema.rawValue: <span style="color:#75715e">//</span><span style="color:#75715e">文</span><span style="color:#75715e">件</span><span style="color:#75715e">选</span><span style="color:#75715e">择</span><span style="color:#75715e">器</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">case</span> UrlSchema.fileSelectorSchema.rawValue: <span style="color:#75715e">//文件选择器</span>
 fileSelectorService.presentFileSelector(<span style="color:#66d9ef">self</span>.webConfig, params: paramDic)
 </code></pre></div><hr>
 <h2 id="第二步">第二步</h2>
@@ -266,21 +266,21 @@ fileSelectorService.presentFileSelector(<span style="color:#66d9ef">self</span>.
 <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">presentFileSelector</span>(<span style="color:#66d9ef">_</span> webConfig: WebConfig, params: NSDictionary) {
     <span style="color:#66d9ef">self</span>.urlParams = params
     <span style="color:#66d9ef">var</span> webFileType:WebFileType?
-    <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> type = params[<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">type</span><span style="color:#e6db74">&#34;</span>] <span style="color:#66d9ef">as</span>? String ,type <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">&#34;</span>{
+    <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> type = params[<span style="color:#e6db74">&#34;type&#34;</span>] <span style="color:#66d9ef">as</span>? String ,type <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;&#34;</span>{
         <span style="color:#66d9ef">switch</span> type {
-        <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">video</span><span style="color:#e6db74">&#34;</span>:
+        <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;video&#34;</span>:
             webFileType = .video
             <span style="color:#66d9ef">break</span>
-        <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">photo</span><span style="color:#e6db74">&#34;</span>:
+        <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;photo&#34;</span>:
             webFileType = .image
             <span style="color:#66d9ef">break</span>
-        <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">audio</span><span style="color:#e6db74">&#34;</span>:
+        <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;audio&#34;</span>:
             webFileType = .audio
             <span style="color:#66d9ef">break</span>
-        <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">document</span><span style="color:#e6db74">&#34;</span>:
+        <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;document&#34;</span>:
             webFileType = .doc
             <span style="color:#66d9ef">break</span>
-        <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">compressed</span><span style="color:#e6db74">&#34;</span>:
+        <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;compressed&#34;</span>:
             webFileType = .compressed
             <span style="color:#66d9ef">break</span>
         <span style="color:#66d9ef">default</span> :
@@ -288,16 +288,16 @@ fileSelectorService.presentFileSelector(<span style="color:#66d9ef">self</span>.
             <span style="color:#66d9ef">break</span>
         }
     }
-    <span style="color:#66d9ef">let</span> maxCount = (params[<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">maxCount</span><span style="color:#e6db74">&#34;</span>] <span style="color:#66d9ef">as</span>? NSString)?.integerValue
-    <span style="color:#66d9ef">let</span> showDownloadFile = (params[<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">showDownloadFile</span><span style="color:#e6db74">&#34;</span>] <span style="color:#66d9ef">as</span>? String) == <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">false</span><span style="color:#e6db74">&#34;</span> ? <span style="color:#66d9ef">false</span> : <span style="color:#66d9ef">true</span>
+    <span style="color:#66d9ef">let</span> maxCount = (params[<span style="color:#e6db74">&#34;maxCount&#34;</span>] <span style="color:#66d9ef">as</span>? NSString)?.integerValue
+    <span style="color:#66d9ef">let</span> showDownloadFile = (params[<span style="color:#e6db74">&#34;showDownloadFile&#34;</span>] <span style="color:#66d9ef">as</span>? String) == <span style="color:#e6db74">&#34;false&#34;</span> ? <span style="color:#66d9ef">false</span> : <span style="color:#66d9ef">true</span>
     
-    <span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">由</span><span style="color:#75715e">于</span><span style="color:#75715e">I</span><span style="color:#75715e">m</span><span style="color:#75715e">a</span><span style="color:#75715e">g</span><span style="color:#75715e">e</span><span style="color:#75715e">S</span><span style="color:#75715e">e</span><span style="color:#75715e">l</span><span style="color:#75715e">e</span><span style="color:#75715e">c</span><span style="color:#75715e">t</span><span style="color:#75715e">o</span><span style="color:#75715e">r</span><span style="color:#75715e">（</span><span style="color:#75715e">U</span><span style="color:#75715e">I</span><span style="color:#75715e">V</span><span style="color:#75715e">i</span><span style="color:#75715e">e</span><span style="color:#75715e">w</span><span style="color:#75715e">C</span><span style="color:#75715e">o</span><span style="color:#75715e">n</span><span style="color:#75715e">t</span><span style="color:#75715e">r</span><span style="color:#75715e">o</span><span style="color:#75715e">l</span><span style="color:#75715e">l</span><span style="color:#75715e">e</span><span style="color:#75715e">r</span><span style="color:#75715e">）</span><span style="color:#75715e">无</span><span style="color:#75715e">法</span><span style="color:#75715e">继</span><span style="color:#75715e">承</span><span style="color:#75715e">F</span><span style="color:#75715e">i</span><span style="color:#75715e">l</span><span style="color:#75715e">e</span><span style="color:#75715e">S</span><span style="color:#75715e">e</span><span style="color:#75715e">l</span><span style="color:#75715e">e</span><span style="color:#75715e">c</span><span style="color:#75715e">t</span><span style="color:#75715e">o</span><span style="color:#75715e">r</span><span style="color:#75715e">B</span><span style="color:#75715e">a</span><span style="color:#75715e">s</span><span style="color:#75715e">e</span><span style="color:#75715e">V</span><span style="color:#75715e">i</span><span style="color:#75715e">e</span><span style="color:#75715e">w</span><span style="color:#75715e">C</span><span style="color:#75715e">o</span><span style="color:#75715e">n</span><span style="color:#75715e">t</span><span style="color:#75715e">r</span><span style="color:#75715e">o</span><span style="color:#75715e">l</span><span style="color:#75715e">l</span><span style="color:#75715e">e</span><span style="color:#75715e">r</span><span style="color:#75715e">(</span><span style="color:#75715e">U</span><span style="color:#75715e">I</span><span style="color:#75715e">T</span><span style="color:#75715e">a</span><span style="color:#75715e">b</span><span style="color:#75715e">l</span><span style="color:#75715e">e</span><span style="color:#75715e">V</span><span style="color:#75715e">i</span><span style="color:#75715e">e</span><span style="color:#75715e">w</span><span style="color:#75715e">C</span><span style="color:#75715e">o</span><span style="color:#75715e">n</span><span style="color:#75715e">t</span><span style="color:#75715e">r</span><span style="color:#75715e">o</span><span style="color:#75715e">l</span><span style="color:#75715e">l</span><span style="color:#75715e">e</span><span style="color:#75715e">r</span><span style="color:#75715e">)</span>
-    <span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">所</span><span style="color:#75715e">以</span><span style="color:#75715e">改</span><span style="color:#75715e">用</span><span style="color:#75715e">这</span><span style="color:#75715e">种</span><span style="color:#75715e">方</span><span style="color:#75715e">式</span><span style="color:#75715e">实</span><span style="color:#75715e">现</span><span style="color:#75715e">判</span><span style="color:#75715e">断</span>
-    <span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">根</span><span style="color:#75715e">据</span><span style="color:#75715e">v</span><span style="color:#75715e">e</span><span style="color:#75715e">r</span><span style="color:#75715e">s</span><span style="color:#75715e">i</span><span style="color:#75715e">o</span><span style="color:#75715e">n</span><span style="color:#75715e">和</span><span style="color:#75715e">t</span><span style="color:#75715e">y</span><span style="color:#75715e">p</span><span style="color:#75715e">e</span><span style="color:#75715e">决</span><span style="color:#75715e">定</span><span style="color:#75715e">使</span><span style="color:#75715e">用</span><span style="color:#75715e">文</span><span style="color:#75715e">件</span><span style="color:#75715e">选</span><span style="color:#75715e">择</span><span style="color:#75715e">/</span><span style="color:#75715e">图</span><span style="color:#75715e">片</span><span style="color:#75715e">选</span><span style="color:#75715e">择</span>
-    <span style="color:#66d9ef">let</span> version = params[<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">version</span><span style="color:#e6db74">&#34;</span>] <span style="color:#66d9ef">as</span>! String
-    <span style="color:#66d9ef">if</span> version == <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">1</span><span style="color:#e6db74">&#34;</span> {
+    <span style="color:#75715e">// 由于ImageSelector（UIViewController）无法继承FileSelectorBaseViewController(UITableViewController)</span>
+    <span style="color:#75715e">// 所以改用这种方式实现判断</span>
+    <span style="color:#75715e">// 根据version和type决定使用文件选择/图片选择</span>
+    <span style="color:#66d9ef">let</span> version = params[<span style="color:#e6db74">&#34;version&#34;</span>] <span style="color:#66d9ef">as</span>! String
+    <span style="color:#66d9ef">if</span> version == <span style="color:#e6db74">&#34;1&#34;</span> {
         <span style="color:#66d9ef">self</span>.presentFileSelector(type: webFileType, showDownloadFile: showDownloadFile, webConfig: webConfig, maxCount: maxCount, fileSelectorProtocol: <span style="color:#66d9ef">self</span>)
-    } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> version == <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">2</span><span style="color:#e6db74">&#34;</span> {
+    } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> version == <span style="color:#e6db74">&#34;2&#34;</span> {
         <span style="color:#66d9ef">if</span> webFileType == .video <span style="color:#f92672">||</span> webFileType == .image {
             <span style="color:#66d9ef">self</span>.presentImageSelector(type: webFileType, showDownloadFile: showDownloadFile, webConfig: webConfig, maxCount: maxCount, fileSelectorProtocol: <span style="color:#66d9ef">self</span>)
         }<span style="color:#66d9ef">else</span>  {
@@ -321,7 +321,7 @@ fileSelectorService.presentFileSelector(<span style="color:#66d9ef">self</span>.
 <span style="color:#66d9ef">extension</span> <span style="color:#a6e22e">ImageSelectorRouter</span> {
     
     <span style="color:#66d9ef">var</span> newInstance:ImageSelectorViewController {
-        <span style="color:#66d9ef">return</span> router.sbFileManage.instantiateViewController(withIdentifier: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">ImageSelectorViewController</span><span style="color:#e6db74">&#34;</span>) <span style="color:#66d9ef">as</span>! ImageSelectorViewController
+        <span style="color:#66d9ef">return</span> router.sbFileManage.instantiateViewController(withIdentifier: <span style="color:#e6db74">&#34;ImageSelectorViewController&#34;</span>) <span style="color:#66d9ef">as</span>! ImageSelectorViewController
     }
     
     <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">presentImageSelector</span>(type:WebFileType?, showDownloadFile: Bool, webConfig:WebConfig,maxCount:Int?,fileSelectorProtocol:FileSelectorCallbackProtocol?,albumModel:AlbumSelectorViewModel? = <span style="color:#66d9ef">nil</span>) {
@@ -341,7 +341,7 @@ fileSelectorService.presentFileSelector(<span style="color:#66d9ef">self</span>.
         present(fromVC, toVC: nc)
     }
     
-    <span style="color:#75715e">//</span><span style="color:#75715e">首</span><span style="color:#75715e">页</span><span style="color:#75715e">扫</span><span style="color:#75715e">一</span><span style="color:#75715e">扫</span><span style="color:#75715e">使</span><span style="color:#75715e">用</span><span style="color:#75715e"> </span><span style="color:#75715e">和</span><span style="color:#75715e"> </span><span style="color:#75715e">j</span><span style="color:#75715e">s</span><span style="color:#75715e">a</span><span style="color:#75715e">p</span><span style="color:#75715e">i</span>
+    <span style="color:#75715e">//首页扫一扫使用 和 jsapi</span>
     <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">presentImageSelector</span>(fileSelectorProtocol: FileSelectorCallbackProtocol) {
         <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> fromVC = (UIApplication.shared.delegate <span style="color:#66d9ef">as</span>? AppDelegate)?.topViewController <span style="color:#66d9ef">else</span> { <span style="color:#66d9ef">return</span> }
         <span style="color:#66d9ef">let</span> vc = newInstance
@@ -359,26 +359,26 @@ fileSelectorService.presentFileSelector(<span style="color:#66d9ef">self</span>.
 <h2 id="第四步">第四步</h2>
 <p>根据第三步的代码，将上面的<code>presentImageSelector</code>方法中的代码加入到<code>NewNoteViewController</code>中:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">fileprivate <span style="color:#66d9ef">var</span> imageSelectorPicker:ImageSelectorViewController{
-    <span style="color:#66d9ef">let</span> instance = router.sbFileManage.instantiateViewController(withIdentifier: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">ImageSelectorViewController</span><span style="color:#e6db74">&#34;</span>) <span style="color:#66d9ef">as</span>! ImageSelectorViewController
+    <span style="color:#66d9ef">let</span> instance = router.sbFileManage.instantiateViewController(withIdentifier: <span style="color:#e6db74">&#34;ImageSelectorViewController&#34;</span>) <span style="color:#66d9ef">as</span>! ImageSelectorViewController
     instance.presenter.type = .image
     instance.presenter.albumModel = <span style="color:#66d9ef">nil</span>
-    <span style="color:#75715e">//</span><span style="color:#75715e">i</span><span style="color:#75715e">n</span><span style="color:#75715e">s</span><span style="color:#75715e">t</span><span style="color:#75715e">a</span><span style="color:#75715e">n</span><span style="color:#75715e">c</span><span style="color:#75715e">e</span><span style="color:#75715e">.</span><span style="color:#75715e">p</span><span style="color:#75715e">r</span><span style="color:#75715e">e</span><span style="color:#75715e">s</span><span style="color:#75715e">e</span><span style="color:#75715e">n</span><span style="color:#75715e">t</span><span style="color:#75715e">e</span><span style="color:#75715e">r</span><span style="color:#75715e">.</span><span style="color:#75715e">m</span><span style="color:#75715e">a</span><span style="color:#75715e">x</span><span style="color:#75715e">C</span><span style="color:#75715e">o</span><span style="color:#75715e">u</span><span style="color:#75715e">n</span><span style="color:#75715e">t</span><span style="color:#75715e"> </span><span style="color:#75715e">=</span><span style="color:#75715e"> </span><span style="color:#75715e">1</span><span style="color:#75715e">0</span>
+    <span style="color:#75715e">//instance.presenter.maxCount = 10</span>
     instance.presenter.showDownloadFile = <span style="color:#66d9ef">true</span>
     instance.fileSelectorProtocol = <span style="color:#66d9ef">self</span>
     <span style="color:#66d9ef">return</span> instance
 }
 </code></pre></div><p>然后再处理回调，将获得的图片先进行压缩然后进行拦截展示：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">extension</span> <span style="color:#a6e22e">NewNoteViewController</span>:FileSelectorCallbackProtocol {
-    <span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">文</span><span style="color:#75715e">件</span><span style="color:#75715e">选</span><span style="color:#75715e">择</span><span style="color:#75715e">回</span><span style="color:#75715e">调</span>
+    <span style="color:#75715e">// 文件选择回调</span>
     <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">didFinishSelectFile</span>(<span style="color:#66d9ef">_</span> files: [FileSelectorCallbackModel]) {
         <span style="color:#66d9ef">for</span> file <span style="color:#66d9ef">in</span> files {
             <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> image = file.fileImage {
                 <span style="color:#66d9ef">let</span> imageSrc = <span style="color:#66d9ef">self</span>.newNoteViewControllerPresenter.insertImage(image: image)
-                <span style="color:#66d9ef">var</span> isNeedRestoreRange = <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">N</span><span style="color:#e6db74">&#34;</span>
+                <span style="color:#66d9ef">var</span> isNeedRestoreRange = <span style="color:#e6db74">&#34;N&#34;</span>
                 <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">self</span>.newNoteViewControllerPresenter.isLowerBoundaryVersion(boundaryVersion: <span style="color:#66d9ef">self</span>.boundaryVersion){
-                    isNeedRestoreRange = <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Y</span><span style="color:#e6db74">&#34;</span>
+                    isNeedRestoreRange = <span style="color:#e6db74">&#34;Y&#34;</span>
                 }
-                <span style="color:#66d9ef">self</span>.webView.stringByEvaluatingJavaScript(from: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">insertImage(&#39;</span><span style="color:#e6db74">\(</span>imageSrc<span style="color:#e6db74">)</span><span style="color:#e6db74">&#39;,&#39;</span><span style="color:#e6db74">\(</span>isNeedRestoreRange<span style="color:#e6db74">)</span><span style="color:#e6db74">&#39;)</span><span style="color:#e6db74">&#34;</span>)
+                <span style="color:#66d9ef">self</span>.webView.stringByEvaluatingJavaScript(from: <span style="color:#e6db74">&#34;insertImage(&#39;</span><span style="color:#e6db74">\(</span>imageSrc<span style="color:#e6db74">)</span><span style="color:#e6db74">&#39;,&#39;</span><span style="color:#e6db74">\(</span>isNeedRestoreRange<span style="color:#e6db74">)</span><span style="color:#e6db74">&#39;)&#34;</span>)
             }
         }
     }

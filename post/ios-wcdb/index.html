@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">116</span>
+<span class="leancloud-visitors-count">114</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -256,8 +256,8 @@ code.has-jax {
 <p>自定义类型要遵循<code>ColumnCodable</code>才能入库：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">UserOrgType</span>: String, ColumnCodable {
     
-    <span style="color:#66d9ef">case</span> CMB = <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">CMB</span><span style="color:#e6db74">&#34;</span>
-    <span style="color:#66d9ef">case</span> ODC = <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">3</span><span style="color:#e6db74">&#34;</span>
+    <span style="color:#66d9ef">case</span> CMB = <span style="color:#e6db74">&#34;CMB&#34;</span>
+    <span style="color:#66d9ef">case</span> ODC = <span style="color:#e6db74">&#34;3&#34;</span>
     
     <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">var</span> columnType: ColumnType = .text
     
@@ -269,7 +269,7 @@ code.has-jax {
         <span style="color:#66d9ef">return</span> FundamentalValue(<span style="color:#66d9ef">self</span>.rawValue)
     }
 }
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">//</span><span style="color:#75715e">/</span><span style="color:#75715e"> </span><span style="color:#75715e">查</span><span style="color:#75715e">看</span><span style="color:#75715e">用</span><span style="color:#75715e">户</span><span style="color:#75715e">表</span><span style="color:#75715e">是</span><span style="color:#75715e">否</span><span style="color:#75715e">为</span><span style="color:#75715e">空</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">/// 查看用户表是否为空</span>
 <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">isEmpty</span>() -&gt; Bool {
     <span style="color:#66d9ef">do</span> {
         <span style="color:#66d9ef">let</span> count = <span style="color:#66d9ef">try</span> DBManager_V2.shared.userDb.getValue(on: UserInfoModel_V2.CodingKeys.openId.count(), fromTable: tableName).int64Value

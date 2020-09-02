@@ -284,11 +284,11 @@ code.has-jax {
     }
     
     <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">didReceiveLatestVersion</span>(<span style="color:#66d9ef">_</span> jsonData: JSON) {
-        <span style="color:#66d9ef">let</span> retCode = jsonData[<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">data</span><span style="color:#e6db74">&#34;</span>][<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">retCode</span><span style="color:#e6db74">&#34;</span>].stringValue
-        <span style="color:#66d9ef">let</span> message = jsonData[<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">data</span><span style="color:#e6db74">&#34;</span>][<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">changeLog</span><span style="color:#e6db74">&#34;</span>].stringValue
-        <span style="color:#66d9ef">let</span> updateUrl = jsonData[<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">data</span><span style="color:#e6db74">&#34;</span>][<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">appUrl</span><span style="color:#e6db74">&#34;</span>].stringValue
-        <span style="color:#66d9ef">let</span> isLatest = (retCode == <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">0</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">||</span> retCode == <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">&#34;</span>)
-        <span style="color:#66d9ef">let</span> minOSVersion = jsonData[<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">data</span><span style="color:#e6db74">&#34;</span>][<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">minOSVersion</span><span style="color:#e6db74">&#34;</span>].string
+        <span style="color:#66d9ef">let</span> retCode = jsonData[<span style="color:#e6db74">&#34;data&#34;</span>][<span style="color:#e6db74">&#34;retCode&#34;</span>].stringValue
+        <span style="color:#66d9ef">let</span> message = jsonData[<span style="color:#e6db74">&#34;data&#34;</span>][<span style="color:#e6db74">&#34;changeLog&#34;</span>].stringValue
+        <span style="color:#66d9ef">let</span> updateUrl = jsonData[<span style="color:#e6db74">&#34;data&#34;</span>][<span style="color:#e6db74">&#34;appUrl&#34;</span>].stringValue
+        <span style="color:#66d9ef">let</span> isLatest = (retCode == <span style="color:#e6db74">&#34;0&#34;</span> <span style="color:#f92672">||</span> retCode == <span style="color:#e6db74">&#34;&#34;</span>)
+        <span style="color:#66d9ef">let</span> minOSVersion = jsonData[<span style="color:#e6db74">&#34;data&#34;</span>][<span style="color:#e6db74">&#34;minOSVersion&#34;</span>].string
         
         appDelegate.isLatest = isLatest
         delegate?.updateUIForLatestVersion(shouldUpdate: <span style="color:#f92672">!</span>isLatest, updateMessage: message, updateUrl: updateUrl, minOSVersion: minOSVersion)
@@ -323,11 +323,11 @@ code.has-jax {
     
     <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">requestLatestVersion</span>(<span style="color:#66d9ef">_</span> async: Bool) {
         <span style="color:#66d9ef">let</span> dataDic = NSMutableDictionary()
-        dataDic[<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">rand</span><span style="color:#e6db74">&#34;</span>] = UUID().uuidString
-        dataDic[<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">buildVersion</span><span style="color:#e6db74">&#34;</span>] = updateService.buildVersion
-        dataDic[<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">pubVersion</span><span style="color:#e6db74">&#34;</span>] = updateService.publishVersion
+        dataDic[<span style="color:#e6db74">&#34;rand&#34;</span>] = UUID().uuidString
+        dataDic[<span style="color:#e6db74">&#34;buildVersion&#34;</span>] = updateService.buildVersion
+        dataDic[<span style="color:#e6db74">&#34;pubVersion&#34;</span>] = updateService.publishVersion
         <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> activeUser = userInfoService.activeUserEntity {
-            dataDic[<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">pathID</span><span style="color:#e6db74">&#34;</span>] = activeUser.pathID
+            dataDic[<span style="color:#e6db74">&#34;pathID&#34;</span>] = activeUser.pathID
         }
         
         <span style="color:#66d9ef">let</span> metaDic = getDefaultMetaData(ConfigRequestAction.getLatestVersion)
@@ -367,8 +367,8 @@ code.has-jax {
             <span style="color:#66d9ef">let</span> sysF = (UIDevice.current.systemVersion <span style="color:#66d9ef">as</span> NSString).floatValue
             
             <span style="color:#66d9ef">if</span> minF <span style="color:#f92672">&gt;</span> sysF {
-                <span style="color:#66d9ef">let</span> alertView = UIAlertView(title: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">发现更新</span><span style="color:#e6db74">&#34;</span>, message: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">最新版移事通已不再支持您的手机系统版本，请升级手机系统到</span><span style="color:#e6db74">\(</span>minOS<span style="color:#e6db74">)</span><span style="color:#e6db74">或以上后再检查更新</span><span style="color:#e6db74">&#34;</span>, delegate: <span style="color:#66d9ef">self</span>, cancelButtonTitle: <span style="color:#66d9ef">nil</span>
-otherButtonTitles: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">确定</span><span style="color:#e6db74">&#34;</span>.localized)
+                <span style="color:#66d9ef">let</span> alertView = UIAlertView(title: <span style="color:#e6db74">&#34;发现更新&#34;</span>, message: <span style="color:#e6db74">&#34;最新版移事通已不再支持您的手机系统版本，请升级手机系统到</span><span style="color:#e6db74">\(</span>minOS<span style="color:#e6db74">)</span><span style="color:#e6db74">或以上后再检查更新&#34;</span>, delegate: <span style="color:#66d9ef">self</span>, cancelButtonTitle: <span style="color:#66d9ef">nil</span>
+otherButtonTitles: <span style="color:#e6db74">&#34;确定&#34;</span>.localized)
                 alertView.tag = <span style="color:#ae81ff">102</span>
                 alertView.show()
                 <span style="color:#66d9ef">return</span>
@@ -376,11 +376,11 @@ otherButtonTitles: <span style="color:#e6db74">&#34;</span><span style="color:#e
         }
         
         <span style="color:#66d9ef">self</span>.newAppUrl = updateUrl
-        <span style="color:#66d9ef">let</span> alertVC = UIAlertView(title: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">发现更新</span><span style="color:#e6db74">&#34;</span>.localized, message: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">&#34;</span>, delegate: <span style="color:#66d9ef">self</span>, cancelButtonTitle: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">取消</span><span style="color:#e6db74">&#34;</span>.localized, otherButtonTitles: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">更新</span><span style="color:#e6db74">&#34;</span>.localized)
+        <span style="color:#66d9ef">let</span> alertVC = UIAlertView(title: <span style="color:#e6db74">&#34;发现更新&#34;</span>.localized, message: <span style="color:#e6db74">&#34;&#34;</span>, delegate: <span style="color:#66d9ef">self</span>, cancelButtonTitle: <span style="color:#e6db74">&#34;取消&#34;</span>.localized, otherButtonTitles: <span style="color:#e6db74">&#34;更新&#34;</span>.localized)
         alertVC.tag = <span style="color:#ae81ff">100</span>
         alertVC.extShow(.<span style="color:#66d9ef">left</span>, messageStr: updateMessage)
     } <span style="color:#66d9ef">else</span> {
-        <span style="color:#66d9ef">let</span> alertView = FlashAlertView(message: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">已经是最新版本</span><span style="color:#e6db74">&#34;</span>.localized, delegate: <span style="color:#66d9ef">nil</span>)
+        <span style="color:#66d9ef">let</span> alertView = FlashAlertView(message: <span style="color:#e6db74">&#34;已经是最新版本&#34;</span>.localized, delegate: <span style="color:#66d9ef">nil</span>)
         alertView.show()
     }
 }

@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">651</span>
+<span class="leancloud-visitors-count">654</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -262,12 +262,12 @@ code.has-jax {
     
     <span style="color:#66d9ef">let</span> data = fileHandle.readDataToEndOfFile()
 
-    <span style="color:#66d9ef">if</span> <span style="color:#75715e">/*</span><span style="color:#75715e"> </span><span style="color:#75715e">o</span><span style="color:#75715e">n</span><span style="color:#75715e">l</span><span style="color:#75715e">y</span><span style="color:#75715e">R</span><span style="color:#75715e">e</span><span style="color:#75715e">a</span><span style="color:#75715e">d</span><span style="color:#75715e"> </span><span style="color:#75715e">*/</span> {
+    <span style="color:#66d9ef">if</span> <span style="color:#75715e">/* onlyRead */</span> {
         fileHandle.closeFile()
         <span style="color:#66d9ef">return</span>
     }
     
-    <span style="color:#66d9ef">let</span> shouldWrite = <span style="color:#75715e">/*</span><span style="color:#75715e"> </span><span style="color:#75715e">是</span><span style="color:#75715e">否</span><span style="color:#75715e">需</span><span style="color:#75715e">要</span><span style="color:#75715e">写</span><span style="color:#75715e">文</span><span style="color:#75715e">件</span><span style="color:#75715e"> </span><span style="color:#75715e">*/</span>
+    <span style="color:#66d9ef">let</span> shouldWrite = <span style="color:#75715e">/* 是否需要写文件 */</span>
     <span style="color:#66d9ef">guard</span> shouldWrite <span style="color:#66d9ef">else</span> {
         fileHandle.closeFile()
         <span style="color:#66d9ef">return</span>
@@ -283,9 +283,9 @@ code.has-jax {
     <span style="color:#66d9ef">defer</span> { fileHandle.closeFile() }
     <span style="color:#66d9ef">let</span> data = fileHandle.readDataToEndOfFile()
 
-    <span style="color:#66d9ef">if</span> <span style="color:#75715e">/*</span><span style="color:#75715e"> </span><span style="color:#75715e">o</span><span style="color:#75715e">n</span><span style="color:#75715e">l</span><span style="color:#75715e">y</span><span style="color:#75715e">R</span><span style="color:#75715e">e</span><span style="color:#75715e">a</span><span style="color:#75715e">d</span><span style="color:#75715e"> </span><span style="color:#75715e">*/</span> { <span style="color:#66d9ef">return</span> }
+    <span style="color:#66d9ef">if</span> <span style="color:#75715e">/* onlyRead */</span> { <span style="color:#66d9ef">return</span> }
     
-    <span style="color:#66d9ef">let</span> shouldWrite = <span style="color:#75715e">/*</span><span style="color:#75715e"> </span><span style="color:#75715e">是</span><span style="color:#75715e">否</span><span style="color:#75715e">需</span><span style="color:#75715e">要</span><span style="color:#75715e">写</span><span style="color:#75715e">文</span><span style="color:#75715e">件</span><span style="color:#75715e"> </span><span style="color:#75715e">*/</span>
+    <span style="color:#66d9ef">let</span> shouldWrite = <span style="color:#75715e">/* 是否需要写文件 */</span>
     <span style="color:#66d9ef">guard</span> shouldWrite <span style="color:#66d9ef">else</span> { <span style="color:#66d9ef">return</span> }
     
     fileHandle.seekToEndOfFile()
@@ -297,9 +297,9 @@ code.has-jax {
 <p>虽然<code>defer</code>后面跟了一个闭包，但是它更多地像是一个语法糖，和我们所熟知的闭包特性不一样，<!-- raw HTML omitted -->并不会持有里面的值<!-- raw HTML omitted -->：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">foo</span>() {
     <span style="color:#66d9ef">var</span> number = <span style="color:#ae81ff">1</span>
-    <span style="color:#66d9ef">defer</span> { print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Statement 2: </span><span style="color:#e6db74">\(</span>number<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>) }
+    <span style="color:#66d9ef">defer</span> { print(<span style="color:#e6db74">&#34;Statement 2: </span><span style="color:#e6db74">\(</span>number<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>) }
     number = <span style="color:#ae81ff">100</span>
-    print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Statement 1: </span><span style="color:#e6db74">\(</span>number<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
+    print(<span style="color:#e6db74">&#34;Statement 1: </span><span style="color:#e6db74">\(</span>number<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
 }
 </code></pre></div><p>上面代码将会输出：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">Statement <span style="color:#ae81ff">1</span>: <span style="color:#ae81ff">100</span>
@@ -315,9 +315,9 @@ Statement <span style="color:#ae81ff">2</span>: <span style="color:#ae81ff">100<
  }
 
 <span style="color:#66d9ef">let</span> f = Foo()
-f.foo() <span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">0</span>
-f.foo() <span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">1</span>
-f.num   <span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">2</span>
+f.foo() <span style="color:#75715e">// 0</span>
+f.foo() <span style="color:#75715e">// 1</span>
+f.num   <span style="color:#75715e">// 2</span>
 </code></pre></div><hr>
 <p><a href="https://onevcat.com/2018/11/defer/">摘抄自</a></p>
 

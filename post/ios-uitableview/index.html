@@ -257,14 +257,14 @@ code.has-jax {
 </blockquote>
 <h2 id="点击不变色">点击不变色</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">tableView</span>(<span style="color:#66d9ef">_</span> tableView: UITableView, cellForRowAt indexPath: IndexPath) -&gt; UITableViewCell {
-     <span style="color:#66d9ef">let</span> cellId = <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">noteDetailInfoCell</span><span style="color:#e6db74">&#34;</span>
+     <span style="color:#66d9ef">let</span> cellId = <span style="color:#e6db74">&#34;noteDetailInfoCell&#34;</span>
      <span style="color:#66d9ef">let</span> cell = tableView.dequeueReusableCell(withIdentifier: cellId, <span style="color:#66d9ef">for</span>: indexPath) <span style="color:#66d9ef">as</span>! NoteDetailInfoCell
     cell.titleLabel.text = info[indexPath.row<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>].<span style="color:#ae81ff">0</span>
-    cell.titleLabel.textColor = <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">878997</span><span style="color:#e6db74">&#34;</span>.extHexStringToUIColor()
+    cell.titleLabel.textColor = <span style="color:#e6db74">&#34;878997&#34;</span>.extHexStringToUIColor()
     cell.infoLabel.text = info[indexPath.row<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>].<span style="color:#ae81ff">1</span>
-    cell.infoLabel.textColor = <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">4b5169</span><span style="color:#e6db74">&#34;</span>.extHexStringToUIColor()
+    cell.infoLabel.textColor = <span style="color:#e6db74">&#34;4b5169&#34;</span>.extHexStringToUIColor()
     <span style="color:#66d9ef">self</span>.notetitleLabel.text = info[<span style="color:#ae81ff">0</span>].<span style="color:#ae81ff">1</span>
-    cell.selectionStyle = .<span style="color:#66d9ef">none</span>  <span style="color:#75715e">//</span><span style="color:#75715e">点</span><span style="color:#75715e">击</span><span style="color:#75715e">某</span><span style="color:#75715e">行</span><span style="color:#75715e">不</span><span style="color:#75715e">变</span><span style="color:#75715e">色</span>
+    cell.selectionStyle = .<span style="color:#66d9ef">none</span>  <span style="color:#75715e">//点击某行不变色</span>
     <span style="color:#66d9ef">return</span> cell
 }
 </code></pre></div><p><a href="http://www.hackmz.com">链接</a></p>

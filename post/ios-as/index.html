@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">335</span>
+<span class="leancloud-visitors-count">338</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -255,8 +255,8 @@ code.has-jax {
     <blockquote>
 <p><code>as</code>是在编译期间执行的，<code>as?</code>和<code>as!</code>是在运行时执行的。</p>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">print(<span style="color:#ae81ff">4</span> <span style="color:#66d9ef">as</span> Double) <span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">p</span><span style="color:#75715e">r</span><span style="color:#75715e">i</span><span style="color:#75715e">n</span><span style="color:#75715e">t</span><span style="color:#75715e"> </span><span style="color:#75715e">4</span><span style="color:#75715e">.</span><span style="color:#75715e">0</span>
-print(<span style="color:#ae81ff">4</span> <span style="color:#66d9ef">as</span>! Double) <span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">c</span><span style="color:#75715e">r</span><span style="color:#75715e">a</span><span style="color:#75715e">s</span><span style="color:#75715e">h</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">print(<span style="color:#ae81ff">4</span> <span style="color:#66d9ef">as</span> Double) <span style="color:#75715e">// print 4.0</span>
+print(<span style="color:#ae81ff">4</span> <span style="color:#66d9ef">as</span>! Double) <span style="color:#75715e">// crash</span>
 </code></pre></div><p>上面第二行代码会崩溃是因为<code>as?</code>和<code>as!</code>是在运行时执行，运行时<code>4</code>已经赋值为<code>Int</code>类型。</p>
 <h2 id="uitableview中需要reload数据的解决方案">UITableView中需要reload数据的解决方案</h2>
 <h3 id="增加内存缓存">增加内存缓存</h3>
@@ -330,8 +330,8 @@ print(<span style="color:#ae81ff">4</span> <span style="color:#66d9ef">as</span>
 
     <div class="post-nav-prev post-nav-item">
     
-        <a href="https://iihui.github.io/post/ios-image/" rel="prev" title="image">
-        image <i class="fa fa-chevron-right"></i>
+        <a href="https://iihui.github.io/post/ios-image/" rel="prev" title="image 处理">
+        image 处理 <i class="fa fa-chevron-right"></i>
         </a>
     
     </div>

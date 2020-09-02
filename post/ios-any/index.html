@@ -270,30 +270,30 @@ code.has-jax {
 <p>操作符<code>is</code>检查一个实例是否某个确定的类或者其子类类型，如果是则返回<code>true</code>，否则返回<code>false</code>。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Cat</span> {
     <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">hairColor</span>() -&gt; String {
-        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">五颜六色</span><span style="color:#e6db74">&#34;</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;五颜六色&#34;</span>
     }
 }
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">WhiteCat</span>: Cat {
     <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">hairColor</span>() -&gt; String {
-        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">白色</span><span style="color:#e6db74">&#34;</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;白色&#34;</span>
     }
 }
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BlackCat</span>: Cat {
     <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">hairColor</span>() -&gt; String {
-        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">黑色</span><span style="color:#e6db74">&#34;</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;黑色&#34;</span>
     }
 }
-<span style="color:#75715e">//</span><span style="color:#75715e">必</span><span style="color:#75715e">须</span><span style="color:#75715e">符</span><span style="color:#75715e">合</span><span style="color:#75715e">`</span><span style="color:#75715e">C</span><span style="color:#75715e">a</span><span style="color:#75715e">t</span><span style="color:#75715e">`</span><span style="color:#75715e">类</span><span style="color:#75715e">以</span><span style="color:#75715e">及</span><span style="color:#75715e">其</span><span style="color:#75715e">子</span><span style="color:#75715e">类</span><span style="color:#75715e">，</span><span style="color:#75715e">类</span><span style="color:#75715e">型</span><span style="color:#75715e">推</span><span style="color:#75715e">断</span><span style="color:#75715e">需</span><span style="color:#75715e">要</span>
+<span style="color:#75715e">//必须符合`Cat`类以及其子类，类型推断需要</span>
 <span style="color:#66d9ef">let</span> kinds = [WhiteCat(),BlackCat(),WhiteCat(),WhiteCat()]
 <span style="color:#66d9ef">for</span> item <span style="color:#66d9ef">in</span> kinds {
     <span style="color:#66d9ef">if</span> item <span style="color:#66d9ef">is</span> WhiteCat {
-        print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">白猫</span><span style="color:#e6db74">&#34;</span>)<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">3</span><span style="color:#75715e">次</span>
+        print(<span style="color:#e6db74">&#34;白猫&#34;</span>)<span style="color:#75715e">// 3次</span>
     }
     <span style="color:#66d9ef">if</span> item <span style="color:#66d9ef">is</span> BlackCat {
-        print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">黑猫</span><span style="color:#e6db74">&#34;</span>)<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">1</span><span style="color:#75715e">次</span>
+        print(<span style="color:#e6db74">&#34;黑猫&#34;</span>)<span style="color:#75715e">// 1次</span>
     }
     <span style="color:#66d9ef">if</span> item <span style="color:#66d9ef">is</span> Cat {
-        print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">猫</span><span style="color:#e6db74">&#34;</span>)<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">4</span><span style="color:#75715e">次</span>
+        print(<span style="color:#e6db74">&#34;猫&#34;</span>)<span style="color:#75715e">// 4次</span>
     }
 }
 </code></pre></div><h1 id="向下转换">向下转换</h1>

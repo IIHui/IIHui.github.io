@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1782</span>
+<span class="leancloud-visitors-count">1786</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -258,7 +258,7 @@ code.has-jax {
 <p><img src="https://i.loli.net/2020/02/07/z4ijTtkEwpmg5CQ.jpg" alt="-c"></p>
 <h1 id="代码高亮支持">代码高亮支持</h1>
 <p>插入<code>Golang、Swift</code>和<code>OC</code>代码段时发现并不能正常高亮，查资料发现是<code>Next</code>主题默认不支持这几种语言的语法高亮，因此需要在<code>head.html</code>的<code>&lt;/head&gt;</code>前添加如下代码：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">    <span style="color:#75715e">&lt;!--</span><span style="color:#75715e"> add by cxh </span><span style="color:#75715e">--&gt;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">    <span style="color:#75715e">&lt;!-- add by cxh --&gt;</span>
     &lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai-sublime.min.css&#34;</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span>&gt;
     &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
     &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
@@ -278,7 +278,7 @@ code.has-jax {
             &lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;margin-top:10px;&#34;</span>&gt;
                 标题：{{ .Title }}
                 &lt;<span style="color:#f92672">br</span> /&gt;作者：阿呆&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">target</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;_blank&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/&#34;</span>&gt;{{ .Site.Author.name }}&lt;/<span style="color:#f92672">a</span>&gt;
-                <span style="color:#75715e">&lt;!--</span><span style="color:#75715e"> &lt;br /&gt;关注：andy_SHui </span><span style="color:#75715e">--&gt;</span>
+                <span style="color:#75715e">&lt;!-- &lt;br /&gt;关注：andy_SHui --&gt;</span>
                 &lt;<span style="color:#f92672">br</span> /&gt;地址：{{ .Permalink }}
                 &lt;<span style="color:#f92672">br</span> /&gt;声明：自由转载-非商用-保持署名（创作共享3.0许可证）
             &lt;/<span style="color:#f92672">p</span>&gt;
@@ -426,13 +426,13 @@ toc: true
 <p><code>katex.html</code>文件的内容如下所示：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
 &lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en&#34;</span>&gt;
-<span style="color:#75715e">&lt;!--</span><span style="color:#75715e"> CSS File </span><span style="color:#75715e">--&gt;</span>
+<span style="color:#75715e">&lt;!-- CSS File --&gt;</span>
 
 &lt;<span style="color:#f92672">head</span>&gt;
     &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span>&gt;
     &lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css&#34;</span> <span style="color:#a6e22e">integrity</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv&#34;</span> <span style="color:#a6e22e">crossorigin</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;anonymous&#34;</span>&gt;
 
-    <span style="color:#75715e">&lt;!--</span><span style="color:#75715e"> JS Fle </span><span style="color:#75715e">--&gt;</span>
+    <span style="color:#75715e">&lt;!-- JS Fle --&gt;</span>
     &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">defer</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js&#34;</span> <span style="color:#a6e22e">integrity</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O&#34;</span> <span style="color:#a6e22e">crossorigin</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;anonymous&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
 &lt;/<span style="color:#f92672">head</span>&gt;
 &lt;<span style="color:#f92672">body</span>&gt;

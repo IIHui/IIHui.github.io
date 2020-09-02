@@ -268,8 +268,8 @@ code.has-jax {
 <p>如果使用<code>... </code>替代数组的长度，<code>Go</code>语言会根据初始化时数组元素的数量来确定该数组的长度。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">array1</span> <span style="color:#f92672">:=</span> [<span style="color:#ae81ff">5</span>]<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">20</span>,<span style="color:#ae81ff">30</span>,<span style="color:#ae81ff">40</span>,<span style="color:#ae81ff">50</span>} <span style="color:#75715e">//前面的数字5来确定数组的长度
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">array2</span> <span style="color:#f92672">:=</span> [<span style="color:#f92672">...</span>]<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>}    <span style="color:#75715e">//后面的数据元素来确定数组的长度
-</span><span style="color:#75715e"></span><span style="color:#75715e">// var array3 [...]int =[...]int{12,35.89}这种方式是不行的，
-</span><span style="color:#75715e"></span><span style="color:#75715e">//也就是说[...]int 声明数组的时候，[...]int只能出现在=的右边，不能在左边出现
+</span><span style="color:#75715e">// var array3 [...]int =[...]int{12,35.89}这种方式是不行的，
+</span><span style="color:#75715e">//也就是说[...]int 声明数组的时候，[...]int只能出现在=的右边，不能在左边出现
 </span></code></pre></div><p>如果知道数组的长度，并且准备给每个值都指定具体值，就可以使用如下的形式来声明数组：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">array</span> <span style="color:#f92672">:=</span>[<span style="color:#ae81ff">5</span>]<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">1</span>:<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">2</span>:<span style="color:#ae81ff">20</span>}     <span style="color:#75715e">//数组长度已知，给数组中某些元素赋予特殊的值
 </span></code></pre></div><p>![c600](<a href="http://oqe76o492.bkt.clouddn.com/">http://oqe76o492.bkt.clouddn.com/</a>屏幕快照 2017-08-03 下午3.21.09.png)</p>
@@ -337,7 +337,7 @@ code.has-jax {
 <p>分清指针数组和数组指针：数组的地址为数组指针，而数组中的元素类型为指针则为数组指针。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">d11</span>,<span style="color:#a6e22e">d12</span><span style="color:#f92672">:=</span><span style="color:#ae81ff">20</span>,<span style="color:#ae81ff">10</span>
 <span style="color:#a6e22e">d13</span><span style="color:#f92672">:=</span>[<span style="color:#f92672">...</span>]<span style="color:#f92672">*</span><span style="color:#66d9ef">int</span>{<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">d11</span>,<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">d12</span>} <span style="color:#75715e">//指针数组
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">d14</span><span style="color:#f92672">:=</span><span style="color:#f92672">&amp;</span><span style="color:#a6e22e">d13</span>   <span style="color:#75715e">//数组指针
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">d14</span><span style="color:#f92672">:=&amp;</span><span style="color:#a6e22e">d13</span>   <span style="color:#75715e">//数组指针
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">d13</span>,<span style="color:#a6e22e">d14</span>)  <span style="color:#75715e">//[0xc420072250 0xc420072258] &amp;[0xc420072250 0xc420072258]
 </span></code></pre></div></li>
 <li>

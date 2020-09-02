@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1962</span>
+<span class="leancloud-visitors-count">1965</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -275,7 +275,7 @@ code.has-jax {
 </li>
 <li>
 <p>空标识符可用来临时规避编译器对未使用变量和导入包的错误检查，但是<!-- raw HTML omitted -->它是预置成员，不能重新定义<!-- raw HTML omitted -->。 <!-- raw HTML omitted -->导入包时使用空标识符的目的是为了使用包中初始化函数以进行初始化<!-- raw HTML omitted -->，而一般的变量定义中使用空标识符是<!-- raw HTML omitted -->为了舍弃错误的处理<!-- raw HTML omitted -->（一般不建议这么做，因为出现错误时应当进行相应的处理）。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">y,<span style="color:#66d9ef">_</span> := strconv.Atoi(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">12</span><span style="color:#e6db74">&#34;</span>)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">y,<span style="color:#66d9ef">_</span> := strconv.Atoi(<span style="color:#e6db74">&#34;12&#34;</span>)
 println(y)
 </code></pre></div></li>
 </ul>
@@ -305,9 +305,9 @@ println(x,y)
 <p>可以使用<!-- raw HTML omitted -->成组的方式定义个多个或多种变量，<!-- raw HTML omitted -->即使用一个<code>var</code>关键词定义<!-- raw HTML omitted -->多种类型<!-- raw HTML omitted -->的变量：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">var</span> (
     x, y int
-    a, s = <span style="color:#ae81ff">100</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">abc</span><span style="color:#e6db74">&#34;</span> <span style="color:#75715e">//</span><span style="color:#75715e">这</span><span style="color:#75715e">一</span><span style="color:#75715e">行</span><span style="color:#75715e">两</span><span style="color:#75715e">个</span><span style="color:#75715e">变</span><span style="color:#75715e">量</span><span style="color:#75715e">，</span><span style="color:#75715e">并</span><span style="color:#75715e">且</span><span style="color:#75715e">类</span><span style="color:#75715e">型</span><span style="color:#75715e">不</span><span style="color:#75715e">相</span><span style="color:#75715e">同</span>
+    a, s = <span style="color:#ae81ff">100</span>, <span style="color:#e6db74">&#34;abc&#34;</span> <span style="color:#75715e">//这一行两个变量，并且类型不相同</span>
 )
-fmt.Println(x, y, a, s) <span style="color:#75715e">//</span><span style="color:#75715e">0</span><span style="color:#75715e"> </span><span style="color:#75715e">0</span><span style="color:#75715e"> </span><span style="color:#75715e">1</span><span style="color:#75715e">0</span><span style="color:#75715e">0</span><span style="color:#75715e"> </span><span style="color:#75715e">a</span><span style="color:#75715e">b</span><span style="color:#75715e">c</span>
+fmt.Println(x, y, a, s) <span style="color:#75715e">//0 0 100 abc</span>
 </code></pre></div></li>
 <li>
 <p>赋值操作<!-- raw HTML omitted -->必须确保左右值类型相同<!-- raw HTML omitted -->，（<!-- raw HTML omitted -->有3种情况例外，详见基本类型中的类型转换规则<!-- raw HTML omitted -->）如果等式两边的类型不同则会出现编译错误。</p>

@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">158</span>
+<span class="leancloud-visitors-count">156</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -254,29 +254,29 @@ code.has-jax {
     <div class="post-body" itemprop="articleBody">
     <h2 id="字典合并">字典合并</h2>
 <p>第一个字典先提供一些默认值，对于相同的<code>key</code>如果第二个字典中存在相应的<code>value</code>，则第一个字典的<code>value</code>被第二个字典覆盖掉。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">默</span><span style="color:#75715e">认</span><span style="color:#75715e">字</span><span style="color:#75715e">段</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">// 默认字段</span>
 <span style="color:#66d9ef">var</span> defaultInfo: [String: Any] = [
-    <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">sys_id</span><span style="color:#e6db74">&#34;</span>: sysID,
-    <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">type</span><span style="color:#e6db74">&#34;</span>: action.rawValue,
-    <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">ystId</span><span style="color:#e6db74">&#34;</span>: activeUser.pid,
-    <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">deviceId</span><span style="color:#e6db74">&#34;</span>: deviceID,
-    <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">platform</span><span style="color:#e6db74">&#34;</span>: platform,
-    <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">pubVer</span><span style="color:#e6db74">&#34;</span>: pubVersion,
-    <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">buildVer</span><span style="color:#e6db74">&#34;</span>: buildVersion,
-    <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">deviceModel</span><span style="color:#e6db74">&#34;</span>: deviceModel,
-    <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">serverTime</span><span style="color:#e6db74">&#34;</span>: logTime,
-    <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">deviceTime</span><span style="color:#e6db74">&#34;</span>: deviceTimeStr,
-    <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">startTime</span><span style="color:#e6db74">&#34;</span>: logTime,
-    <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">endTime</span><span style="color:#e6db74">&#34;</span>: logTime,
-    <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">networkType</span><span style="color:#e6db74">&#34;</span>: networkInfo._networkType,
-    <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">networkName</span><span style="color:#e6db74">&#34;</span>: networkInfo._networkName,
-    <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">ip</span><span style="color:#e6db74">&#34;</span>: networkInfo.ip,
-    <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">inuseId</span><span style="color:#e6db74">&#34;</span>: inuseID,
-    <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">gpsLng</span><span style="color:#e6db74">&#34;</span>: gps.lng,
-    <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">gpsLat</span><span style="color:#e6db74">&#34;</span>: gps.lat,
+    <span style="color:#e6db74">&#34;sys_id&#34;</span>: sysID,
+    <span style="color:#e6db74">&#34;type&#34;</span>: action.rawValue,
+    <span style="color:#e6db74">&#34;ystId&#34;</span>: activeUser.pid,
+    <span style="color:#e6db74">&#34;deviceId&#34;</span>: deviceID,
+    <span style="color:#e6db74">&#34;platform&#34;</span>: platform,
+    <span style="color:#e6db74">&#34;pubVer&#34;</span>: pubVersion,
+    <span style="color:#e6db74">&#34;buildVer&#34;</span>: buildVersion,
+    <span style="color:#e6db74">&#34;deviceModel&#34;</span>: deviceModel,
+    <span style="color:#e6db74">&#34;serverTime&#34;</span>: logTime,
+    <span style="color:#e6db74">&#34;deviceTime&#34;</span>: deviceTimeStr,
+    <span style="color:#e6db74">&#34;startTime&#34;</span>: logTime,
+    <span style="color:#e6db74">&#34;endTime&#34;</span>: logTime,
+    <span style="color:#e6db74">&#34;networkType&#34;</span>: networkInfo._networkType,
+    <span style="color:#e6db74">&#34;networkName&#34;</span>: networkInfo._networkName,
+    <span style="color:#e6db74">&#34;ip&#34;</span>: networkInfo.ip,
+    <span style="color:#e6db74">&#34;inuseId&#34;</span>: inuseID,
+    <span style="color:#e6db74">&#34;gpsLng&#34;</span>: gps.lng,
+    <span style="color:#e6db74">&#34;gpsLat&#34;</span>: gps.lat,
 ]
 <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> _args = args {
-    defaultInfo.merge(_args, uniquingKeysWith: { $1 }) <span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">注</span><span style="color:#75715e">意</span><span style="color:#75715e">是</span><span style="color:#75715e">用</span><span style="color:#75715e">d</span><span style="color:#75715e">e</span><span style="color:#75715e">f</span><span style="color:#75715e">a</span><span style="color:#75715e">u</span><span style="color:#75715e">l</span><span style="color:#75715e">t</span><span style="color:#75715e">I</span><span style="color:#75715e">n</span><span style="color:#75715e">f</span><span style="color:#75715e">o</span><span style="color:#75715e"> </span><span style="color:#75715e">去</span><span style="color:#75715e">m</span><span style="color:#75715e">e</span><span style="color:#75715e">r</span><span style="color:#75715e">g</span><span style="color:#75715e">e</span><span style="color:#75715e"> </span><span style="color:#75715e">字</span><span style="color:#75715e">典</span><span style="color:#75715e">_</span><span style="color:#75715e">a</span><span style="color:#75715e">r</span><span style="color:#75715e">g</span><span style="color:#75715e">s</span>
+    defaultInfo.merge(_args, uniquingKeysWith: { $1 }) <span style="color:#75715e">// 注意是用defaultInfo 去merge 字典_args</span>
 }
 </code></pre></div>
     </div>

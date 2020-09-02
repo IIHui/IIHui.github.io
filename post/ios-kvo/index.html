@@ -265,9 +265,9 @@ code.has-jax {
 </span><span style="color:#75715e"> - KeyPath 要监听的属性
 </span><span style="color:#75715e"> - options 选项(方便在监听的方法中拿到属性值)
 </span><span style="color:#75715e"> */</span>
-[person addObserver:person forKeyPath:<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">name</span><span style="color:#e6db74">&#34;</span> options:NSKeyValueObservingOptionNew <span style="color:#f92672">|</span> NSKeyValueObservingOptionOld context:nil];
+[person addObserver:person forKeyPath:<span style="color:#e6db74">@&#34;name&#34;</span> options:NSKeyValueObservingOptionNew <span style="color:#f92672">|</span> NSKeyValueObservingOptionOld context:nil];
 <span style="color:#75715e">// 移除监听
-</span><span style="color:#75715e"></span>[person removeObserver:person forKeyPath:<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">name</span><span style="color:#e6db74">&#34;</span>];
+</span><span style="color:#75715e"></span>[person removeObserver:person forKeyPath:<span style="color:#e6db74">@&#34;name&#34;</span>];
 <span style="color:#75715e">/**
 </span><span style="color:#75715e"> *  当监听的属性值发生改变
 </span><span style="color:#75715e"> *
@@ -277,20 +277,20 @@ code.has-jax {
 </span><span style="color:#75715e"> *  @param context 上下文
 </span><span style="color:#75715e"> */</span>
 - (<span style="color:#66d9ef">void</span>)<span style="color:#a6e22e">observeValueForKeyPath:</span>(NSString <span style="color:#f92672">*</span>)keyPath <span style="color:#a6e22e">ofObject:</span>(<span style="color:#66d9ef">id</span>)object <span style="color:#a6e22e">change:</span>(NSDictionary<span style="color:#f92672">&lt;</span>NSString <span style="color:#f92672">*</span>,<span style="color:#66d9ef">id</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">*</span>)change <span style="color:#a6e22e">context:</span>(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>)context{
-    NSLog(<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">%@------%@------%@</span><span style="color:#e6db74">&#34;</span>, keyPath, object, change);
+    NSLog(<span style="color:#e6db74">@&#34;%@------%@------%@&#34;</span>, keyPath, object, change);
 }
 </code></pre></div><h2 id="添加监听">添加监听</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#75715e">//第一个参数 observer观察者 （这里观察self.myKVO对象的属性变化）
-</span><span style="color:#75715e"></span><span style="color:#75715e">//第二个参数 keyPath被观察的属性名称(这里观察 self.myKVO 中 num 属性值的改变)
-</span><span style="color:#75715e"></span><span style="color:#75715e">//第三个参数 options： 观察属性的新值、旧值等的一些配置（枚举值，可以根据需要设置，例如这里可以使用两项）
-</span><span style="color:#75715e"></span><span style="color:#75715e">//第四个参数 context： 上下文，可以为 KVO 的回调方法传值（例如设定为一个放置数据的字典）
+</span><span style="color:#75715e">//第二个参数 keyPath被观察的属性名称(这里观察 self.myKVO 中 num 属性值的改变)
+</span><span style="color:#75715e">//第三个参数 options： 观察属性的新值、旧值等的一些配置（枚举值，可以根据需要设置，例如这里可以使用两项）
+</span><span style="color:#75715e">//第四个参数 context： 上下文，可以为 KVO 的回调方法传值（例如设定为一个放置数据的字典）
 </span><span style="color:#75715e"></span>- (<span style="color:#66d9ef">void</span>)<span style="color:#a6e22e">addObserver:</span>(NSObject <span style="color:#f92672">*</span>)observer <span style="color:#a6e22e">forKeyPath:</span>(NSString <span style="color:#f92672">*</span>)keyPath <span style="color:#a6e22e">options:</span>(NSKeyValueObservingOptions)options <span style="color:#a6e22e">context:</span>(nullable <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>)context;
 </code></pre></div><h2 id="实现协议">实现协议</h2>
 <p>在回调方法中处理属性值发生变化。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#75715e">//keyPath:属性名称
-</span><span style="color:#75715e"></span><span style="color:#75715e">//object:被观察的对象
-</span><span style="color:#75715e"></span><span style="color:#75715e">//change:变化前后的值都存储在change字典中
-</span><span style="color:#75715e"></span><span style="color:#75715e">//context:注册观察者时，context 传过来的值
+</span><span style="color:#75715e">//object:被观察的对象
+</span><span style="color:#75715e">//change:变化前后的值都存储在change字典中
+</span><span style="color:#75715e">//context:注册观察者时，context 传过来的值
 </span><span style="color:#75715e"></span>
 - (<span style="color:#66d9ef">void</span>)<span style="color:#a6e22e">observeValueForKeyPath:</span>(nullable NSString <span style="color:#f92672">*</span>)keyPath <span style="color:#a6e22e">ofObject:</span>(nullable <span style="color:#66d9ef">id</span>)object <span style="color:#a6e22e">change:</span>(nullable NSDictionary <span style="color:#f92672">*</span>)change <span style="color:#a6e22e">context:</span>(nullable <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>)context;
 </code></pre></div><h2 id="移除观察者">移除观察者。</h2>
@@ -315,12 +315,12 @@ code.has-jax {
 <li>属性初始化时，<code>willSet</code>和<code>didSet</code>不会调用。只有初始化上下文之外，属性值发生变化时才会调用。</li>
 <li><!-- raw HTML omitted -->即使设置的值和原来的一样<!-- raw HTML omitted -->，<code>willSet</code>和<code>didSet</code>也会被调用。</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">var</span> firstName: String = <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">First</span><span style="color:#e6db74">&#34;</span> {
-    <span style="color:#66d9ef">willSet</span> {   <span style="color:#75715e">//</span><span style="color:#75715e">新</span><span style="color:#75715e">值</span><span style="color:#75715e">设</span><span style="color:#75715e">置</span><span style="color:#75715e">之</span><span style="color:#75715e">前</span><span style="color:#75715e">被</span><span style="color:#75715e">调</span><span style="color:#75715e">用</span><span style="color:#75715e">，</span><span style="color:#75715e">在</span><span style="color:#75715e">此</span><span style="color:#75715e">可</span><span style="color:#75715e">以</span><span style="color:#75715e">进</span><span style="color:#75715e">行</span><span style="color:#75715e">条</span><span style="color:#75715e">件</span><span style="color:#75715e">筛</span><span style="color:#75715e">选</span><span style="color:#75715e">，</span><span style="color:#75715e">过</span><span style="color:#75715e">滤</span><span style="color:#75715e">数</span><span style="color:#75715e">据</span>
-        print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">willSet的新值是</span><span style="color:#e6db74">\(</span>newValue<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">var</span> firstName: String = <span style="color:#e6db74">&#34;First&#34;</span> {
+    <span style="color:#66d9ef">willSet</span> {   <span style="color:#75715e">//新值设置之前被调用，在此可以进行条件筛选，过滤数据</span>
+        print(<span style="color:#e6db74">&#34;willSet的新值是</span><span style="color:#e6db74">\(</span>newValue<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
     }
-    <span style="color:#66d9ef">didSet</span> { <span style="color:#75715e">//</span><span style="color:#75715e">新</span><span style="color:#75715e">值</span><span style="color:#75715e">设</span><span style="color:#75715e">置</span><span style="color:#75715e">之</span><span style="color:#75715e">后</span><span style="color:#75715e">立</span><span style="color:#75715e">即</span><span style="color:#75715e">调</span><span style="color:#75715e">用</span><span style="color:#75715e">，</span><span style="color:#75715e">在</span><span style="color:#75715e">此</span><span style="color:#75715e">可</span><span style="color:#75715e">以</span><span style="color:#75715e">进</span><span style="color:#75715e">行</span><span style="color:#75715e">条</span><span style="color:#75715e">件</span><span style="color:#75715e">筛</span><span style="color:#75715e">选</span><span style="color:#75715e">，</span><span style="color:#75715e">过</span><span style="color:#75715e">滤</span><span style="color:#75715e">数</span><span style="color:#75715e">据</span><span style="color:#75715e">,</span><span style="color:#75715e">可</span><span style="color:#75715e">以</span><span style="color:#75715e">直</span><span style="color:#75715e">接</span><span style="color:#75715e">绑</span><span style="color:#75715e">定</span><span style="color:#75715e">数</span><span style="color:#75715e">据</span><span style="color:#75715e">到</span><span style="color:#75715e">U</span><span style="color:#75715e">I</span><span style="color:#75715e">上</span><span style="color:#75715e">面</span>
-        print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">didSet的旧值是</span><span style="color:#e6db74">\(</span>oldValue<span style="color:#e6db74">)</span><span style="color:#e6db74"> --- 新值是 </span><span style="color:#e6db74">\(</span>firstName<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
+    <span style="color:#66d9ef">didSet</span> { <span style="color:#75715e">//新值设置之后立即调用，在此可以进行条件筛选，过滤数据,可以直接绑定数据到UI上面</span>
+        print(<span style="color:#e6db74">&#34;didSet的旧值是</span><span style="color:#e6db74">\(</span>oldValue<span style="color:#e6db74">)</span><span style="color:#e6db74"> --- 新值是 </span><span style="color:#e6db74">\(</span>firstName<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
         <span style="color:#66d9ef">self</span>.nameLabel.text = firstName
     }
 }

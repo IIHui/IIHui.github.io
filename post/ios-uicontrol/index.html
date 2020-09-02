@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">176</span>
+<span class="leancloud-visitors-count">174</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -262,11 +262,11 @@ code.has-jax {
             <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">var</span> token = NSUUID().uuidString
         }
 
-        <span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">确</span><span style="color:#75715e">保</span><span style="color:#75715e">不</span><span style="color:#75715e">是</span><span style="color:#75715e">子</span><span style="color:#75715e">类</span>
+        <span style="color:#75715e">// 确保不是子类</span>
         <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">self</span> <span style="color:#f92672">!=</span> UIControl.<span style="color:#66d9ef">self</span> {
             <span style="color:#66d9ef">return</span>
         }
-        <span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">防</span><span style="color:#75715e">止</span><span style="color:#75715e">手</span><span style="color:#75715e">动</span><span style="color:#75715e">调</span><span style="color:#75715e">用</span><span style="color:#75715e">，</span><span style="color:#75715e">造</span><span style="color:#75715e">成</span><span style="color:#75715e">交</span><span style="color:#75715e">换</span><span style="color:#75715e">多</span><span style="color:#75715e">次</span>
+        <span style="color:#75715e">// 防止手动调用，造成交换多次</span>
         DispatchQueue.once(token: Static.token) {
             MethodSwizzlingTools.exchangeSelector(object: <span style="color:#66d9ef">self</span>, originalSelector: <span style="color:#66d9ef">#selector</span>(UIControl.sendAction(<span style="color:#66d9ef">_</span>:to:<span style="color:#66d9ef">for</span>:)), swizzledSelector: <span style="color:#66d9ef">#selector</span>(userSendAction(<span style="color:#66d9ef">_</span>:to:<span style="color:#66d9ef">for</span>:)))
         }

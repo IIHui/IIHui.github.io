@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">5989</span>
+<span class="leancloud-visitors-count">5955</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -319,7 +319,7 @@ code.has-jax {
 print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">\(</span>size.<span style="color:#ae81ff">0</span><span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
 print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">\(</span>size.width<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
 
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">也</span><span style="color:#75715e">可</span><span style="color:#75715e">以</span><span style="color:#75715e">不</span><span style="color:#75715e">对</span><span style="color:#75715e">元</span><span style="color:#75715e">素</span><span style="color:#75715e">命</span><span style="color:#75715e">名</span>
+<span style="color:#75715e">// 也可以不对元素命名</span>
 <span style="color:#66d9ef">let</span> size = (<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">10</span>)
 </code></pre></div><p>在函数需要返回多个值时，元组非常有用，但它并不适合复杂的数据表达（此时建立<code>mode</code>会更好）。在使用元组时尽量使用命名，要不然过段时间可能忘记元组中各个元素的含义，并且尽量只在临时需要时使用。</p>
 <p>元组在交换两个值的时候非常有用，如下的代码便可以交换两个变量的值：</p>
@@ -327,7 +327,7 @@ print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">\(</sp
 </code></pre></div><h2 id="协议合成">协议合成</h2>
 <p>假如一个函数希望某个参数同时满足<code>ProtocolA</code>和<code>ProtocolB</code>，可以采用<code>ProtocolA &amp; ProtocolB</code>这样的格式进行组合，称为协议合成（<code>protocol composition</code>）。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">testComposition</span>(protocols: ProtocolA <span style="color:#f92672">&amp;</span> ProtocolB) {
- <span style="color:#75715e">//</span><span style="color:#75715e">c</span><span style="color:#75715e">o</span><span style="color:#75715e">d</span><span style="color:#75715e">e</span>
+ <span style="color:#75715e">//code</span>
 }
 </code></pre></div><h2 id="可选协议">可选协议</h2>
 <p><code>Swift</code>的<code>protocol</code>本身不允许可选项，要求所有方法都是必须实现的。但是，由于<code>Swift</code>和<code>OC</code>可以混编，为了方便和<code>OC</code>打交道，<code>Swift</code>支持在<code>protocol</code>中使用<code>optional</code>关键字作为前缀来定义可选要求，且协议可选要求都必须带上<code>objc</code>属性。</p>
@@ -366,21 +366,21 @@ print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">\(</sp
 
 <span style="color:#66d9ef">extension</span> <span style="color:#a6e22e">A2</span> {
     <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">method1</span>() {
-        <span style="color:#66d9ef">return</span> print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">hi</span><span style="color:#e6db74">&#34;</span>)
+        <span style="color:#66d9ef">return</span> print(<span style="color:#e6db74">&#34;hi&#34;</span>)
     }
 
     <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">method2</span>() {
-        <span style="color:#66d9ef">return</span> print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">hi</span><span style="color:#e6db74">&#34;</span>)
+        <span style="color:#66d9ef">return</span> print(<span style="color:#e6db74">&#34;hi&#34;</span>)
     }
 }
 
 <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">B2</span>: A2 {
     <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">method1</span>() {
-        <span style="color:#66d9ef">return</span> print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">hello</span><span style="color:#e6db74">&#34;</span>)
+        <span style="color:#66d9ef">return</span> print(<span style="color:#e6db74">&#34;hello&#34;</span>)
     }
 
     <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">method2</span>() {
-        <span style="color:#66d9ef">return</span> print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">hello</span><span style="color:#e6db74">&#34;</span>)
+        <span style="color:#66d9ef">return</span> print(<span style="color:#e6db74">&#34;hello&#34;</span>)
     }
 }
 
@@ -414,21 +414,21 @@ print(sum(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</sp
 </code></pre></div><h2 id="区间运算符">区间运算符</h2>
 <p><code>Swift</code>提供了几种简单的能够表达一个区间的值的区间运算符，包括全闭区间，半开半闭区间，单侧区间，如下所示：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">let</span> data = [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>]
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">闭</span><span style="color:#75715e">区</span><span style="color:#75715e">间</span><span style="color:#75715e">运</span><span style="color:#75715e">算</span><span style="color:#75715e">符</span><span style="color:#75715e">，</span><span style="color:#75715e">表</span><span style="color:#75715e">示</span><span style="color:#75715e">截</span><span style="color:#75715e">取</span><span style="color:#75715e">下</span><span style="color:#75715e">标</span><span style="color:#75715e">0</span><span style="color:#75715e">～</span><span style="color:#75715e">2</span><span style="color:#75715e">的</span><span style="color:#75715e">数</span><span style="color:#75715e">组</span><span style="color:#75715e">元</span><span style="color:#75715e">素</span>
+<span style="color:#75715e">// 闭区间运算符，表示截取下标0～2的数组元素</span>
 data[<span style="color:#ae81ff">0.</span>..<span style="color:#ae81ff">2</span>]
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">半</span><span style="color:#75715e">开</span><span style="color:#75715e">区</span><span style="color:#75715e">间</span><span style="color:#75715e">运</span><span style="color:#75715e">算</span><span style="color:#75715e">符</span><span style="color:#75715e">，</span><span style="color:#75715e">表</span><span style="color:#75715e">示</span><span style="color:#75715e">截</span><span style="color:#75715e">取</span><span style="color:#75715e">下</span><span style="color:#75715e">标</span><span style="color:#75715e">0</span><span style="color:#75715e">～</span><span style="color:#75715e">1</span><span style="color:#75715e">的</span><span style="color:#75715e">数</span><span style="color:#75715e">组</span><span style="color:#75715e">元</span><span style="color:#75715e">素</span>
+<span style="color:#75715e">// 半开区间运算符，表示截取下标0～1的数组元素</span>
 data[<span style="color:#ae81ff">0.</span>.&lt;<span style="color:#ae81ff">2</span>]
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">单</span><span style="color:#75715e">侧</span><span style="color:#75715e">区</span><span style="color:#75715e">间</span><span style="color:#75715e">运</span><span style="color:#75715e">算</span><span style="color:#75715e">符</span><span style="color:#75715e">，</span><span style="color:#75715e">表</span><span style="color:#75715e">示</span><span style="color:#75715e">截</span><span style="color:#75715e">取</span><span style="color:#75715e">开</span><span style="color:#75715e">始</span><span style="color:#75715e">到</span><span style="color:#75715e">下</span><span style="color:#75715e">标</span><span style="color:#75715e">2</span><span style="color:#75715e">的</span><span style="color:#75715e">数</span><span style="color:#75715e">组</span><span style="color:#75715e">元</span><span style="color:#75715e">素</span>
+<span style="color:#75715e">// 单侧区间运算符，表示截取开始到下标2的数组元素</span>
 data[...<span style="color:#ae81ff">2</span>]
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">单</span><span style="color:#75715e">侧</span><span style="color:#75715e">区</span><span style="color:#75715e">间</span><span style="color:#75715e">运</span><span style="color:#75715e">算</span><span style="color:#75715e">符</span><span style="color:#75715e">，</span><span style="color:#75715e">表</span><span style="color:#75715e">示</span><span style="color:#75715e">截</span><span style="color:#75715e">取</span><span style="color:#75715e">从</span><span style="color:#75715e">下</span><span style="color:#75715e">标</span><span style="color:#75715e">2</span><span style="color:#75715e">到</span><span style="color:#75715e">结</span><span style="color:#75715e">束</span><span style="color:#75715e">的</span><span style="color:#75715e">数</span><span style="color:#75715e">组</span><span style="color:#75715e">元</span><span style="color:#75715e">素</span>
+<span style="color:#75715e">// 单侧区间运算符，表示截取从下标2到结束的数组元素</span>
 data[<span style="color:#ae81ff">2.</span>..]
 </code></pre></div><p>还可以通过<code>...</code>和<code>..&lt;</code>来连接两个字符串：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">判</span><span style="color:#75715e">断</span><span style="color:#75715e">是</span><span style="color:#75715e">否</span><span style="color:#75715e">包</span><span style="color:#75715e">含</span><span style="color:#75715e">大</span><span style="color:#75715e">写</span><span style="color:#75715e">字</span><span style="color:#75715e">母</span><span style="color:#75715e">，</span><span style="color:#75715e">并</span><span style="color:#75715e">打</span><span style="color:#75715e">印</span>
-<span style="color:#66d9ef">let</span> str = <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Hello</span><span style="color:#e6db74">&#34;</span>
-<span style="color:#66d9ef">let</span> test = <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">A</span><span style="color:#e6db74">&#34;</span>...<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Z</span><span style="color:#e6db74">&#34;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">// 判断是否包含大写字母，并打印</span>
+<span style="color:#66d9ef">let</span> str = <span style="color:#e6db74">&#34;Hello&#34;</span>
+<span style="color:#66d9ef">let</span> test = <span style="color:#e6db74">&#34;A&#34;</span>...<span style="color:#e6db74">&#34;Z&#34;</span>
 <span style="color:#66d9ef">for</span> c <span style="color:#66d9ef">in</span> str {
     <span style="color:#66d9ef">if</span> test.contains(String(c)) {
-        print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">\(</span>c<span style="color:#e6db74">)</span><span style="color:#e6db74">是大写字母</span><span style="color:#e6db74">&#34;</span>)
+        print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">\(</span>c<span style="color:#e6db74">)</span><span style="color:#e6db74">是大写字母&#34;</span>)
     }
 }
 
@@ -460,12 +460,12 @@ data[<span style="color:#ae81ff">2.</span>..]
     ...
 }
 
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">不</span><span style="color:#75715e">使</span><span style="color:#75715e">用</span><span style="color:#75715e">尾</span><span style="color:#75715e">随</span><span style="color:#75715e">闭</span><span style="color:#75715e">包</span>
+<span style="color:#75715e">// 不使用尾随闭包</span>
 test(closure: {
     ...
 })
 
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">使</span><span style="color:#75715e">用</span><span style="color:#75715e">尾</span><span style="color:#75715e">随</span><span style="color:#75715e">闭</span><span style="color:#75715e">包</span>
+<span style="color:#75715e">// 使用尾随闭包</span>
 test() {
     ...
 }
@@ -483,12 +483,12 @@ test() {
 </code></pre></div><p>将一个闭包标记为<code>@escaping</code>意味着必须在闭包中显式地引用<code>self</code>，而非逃逸闭包则不需要。这个<code>self</code>提醒可能会一不小心就捕获了<code>self</code>，要注意循环引用。</p>
 <h3 id="自动闭包">自动闭包</h3>
 <p>自动闭包是一种自动创建的闭包，用于包装传递给函数作为参数的表达式。这种闭包不接受任何参数，让你能够省略闭包的花括号，用一个普通的表达式来替代显式的闭包。并且自动闭包<!-- raw HTML omitted -->可以能够延迟求值<!-- raw HTML omitted -->，因为直到调用到这个闭包，代码段才会被执行。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">未</span><span style="color:#75715e">使</span><span style="color:#75715e">用</span><span style="color:#75715e">自</span><span style="color:#75715e">动</span><span style="color:#75715e">闭</span><span style="color:#75715e">包</span><span style="color:#75715e">，</span><span style="color:#75715e">需</span><span style="color:#75715e">要</span><span style="color:#75715e">显</span><span style="color:#75715e">示</span><span style="color:#75715e">用</span><span style="color:#75715e">花</span><span style="color:#75715e">括</span><span style="color:#75715e">号</span><span style="color:#75715e">说</span><span style="color:#75715e">明</span><span style="color:#75715e">这</span><span style="color:#75715e">个</span><span style="color:#75715e">参</span><span style="color:#75715e">数</span><span style="color:#75715e">是</span><span style="color:#75715e">一</span><span style="color:#75715e">个</span><span style="color:#75715e">闭</span><span style="color:#75715e">包</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">// 未使用自动闭包，需要显示用花括号说明这个参数是一个闭包</span>
 <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">test</span>(closure: () -&gt; Bool) {
 }
 test(closure: { <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2</span> } )
 
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">使</span><span style="color:#75715e">用</span><span style="color:#75715e">自</span><span style="color:#75715e">动</span><span style="color:#75715e">闭</span><span style="color:#75715e">包</span><span style="color:#75715e">，</span><span style="color:#75715e">只</span><span style="color:#75715e">需</span><span style="color:#75715e">要</span><span style="color:#75715e">传</span><span style="color:#75715e">递</span><span style="color:#75715e">表</span><span style="color:#75715e">达</span><span style="color:#75715e">式</span>
+<span style="color:#75715e">// 使用自动闭包，只需要传递表达式</span>
 <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">test</span>(closure: <span style="color:#66d9ef">@autoclosure</span> () -&gt; String) {
 }
 test(customer: <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2</span>)
@@ -500,14 +500,14 @@ test(customer: <span style="color:#ae81ff">1</span> <span style="color:#f92672">
     <span style="color:#66d9ef">case</span> mix(Food, Food)
 }
 </code></pre></div><p>此时编译器会提示<code>Recursive enum 'Food' is not marked 'indirect'</code>，原因是因为枚举成员中出现了递归调用。因此，需要在枚举成员前加上<code>indirect</code>来表示成员可递归。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">标</span><span style="color:#75715e">记</span><span style="color:#75715e">整</span><span style="color:#75715e">个</span><span style="color:#75715e">枚</span><span style="color:#75715e">举</span><span style="color:#75715e">是</span><span style="color:#75715e">递</span><span style="color:#75715e">归</span><span style="color:#75715e">枚</span><span style="color:#75715e">举</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">// 标记整个枚举是递归枚举</span>
 <span style="color:#66d9ef">indirect</span> <span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Food</span> {
     <span style="color:#66d9ef">case</span> beef
     <span style="color:#66d9ef">case</span> potato
     <span style="color:#66d9ef">case</span> mix(Food, Food)
 }
 
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">仅</span><span style="color:#75715e">标</span><span style="color:#75715e">记</span><span style="color:#75715e">存</span><span style="color:#75715e">在</span><span style="color:#75715e">递</span><span style="color:#75715e">归</span><span style="color:#75715e">的</span><span style="color:#75715e">枚</span><span style="color:#75715e">举</span><span style="color:#75715e">成</span><span style="color:#75715e">员</span>
+<span style="color:#75715e">// 仅标记存在递归的枚举成员</span>
 <span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Food</span> {
     <span style="color:#66d9ef">case</span> beef
     <span style="color:#66d9ef">case</span> potato
@@ -522,7 +522,7 @@ test(customer: <span style="color:#ae81ff">1</span> <span style="color:#f92672">
     <span style="color:#66d9ef">var</span> height: CGFloat
 }
 </code></pre></div><p>还可以通过<code>Lazy</code>来标示该属性位延迟存储属性，类似于<code>OC</code>常说的懒加载：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">lazy</span> <span style="color:#66d9ef">var</span> fileName: String = <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">data.txt</span><span style="color:#e6db74">&#34;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">lazy</span> <span style="color:#66d9ef">var</span> fileName: String = <span style="color:#e6db74">&#34;data.txt&#34;</span>
 </code></pre></div><p>如果一个被标志为<code>lazy</code>的属性在没有初始化时就同时被多个线程访问，则无法保证该属性只会初始化一次，即它是非线性安全的。</p>
 <h3 id="计算属性">计算属性</h3>
 <p>除存储属性外，类，结构体和枚举定义计算属性。计算属性不直接存储值，而是提供一个<code>getter</code>和一个可选<code>setter</code>，来间接获取和设置其它属性和变量的值。</p>
@@ -561,11 +561,11 @@ test(customer: <span style="color:#ae81ff">1</span> <span style="color:#f92672">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">let</span> b = B()
 b.number = <span style="color:#ae81ff">0</span>
 
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">输</span><span style="color:#75715e">出</span>
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">g</span><span style="color:#75715e">e</span><span style="color:#75715e">t</span>
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">w</span><span style="color:#75715e">i</span><span style="color:#75715e">l</span><span style="color:#75715e">l</span><span style="color:#75715e">S</span><span style="color:#75715e">e</span><span style="color:#75715e">t</span>
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">s</span><span style="color:#75715e">e</span><span style="color:#75715e">t</span>
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">d</span><span style="color:#75715e">i</span><span style="color:#75715e">d</span><span style="color:#75715e">S</span><span style="color:#75715e">e</span><span style="color:#75715e">t</span>
+<span style="color:#75715e">// 输出</span>
+<span style="color:#75715e">// get</span>
+<span style="color:#75715e">// willSet</span>
+<span style="color:#75715e">// set</span>
+<span style="color:#75715e">// didSet</span>
 </code></pre></div><p>首先出现<code>get</code>是因为实现<code>didSet，didSet</code>中用到<code>oldValue</code>，而这个值需要在整个<code>set</code>动作之前进行获取并存储待用，否则将无法确保正确性。如果我们不实现<code>didSet</code>的话，这次<code>get</code>操作也将不存在。？？？</p>
 <hr>
 <h2 id="is和as">is和as</h2>
@@ -577,11 +577,11 @@ b.number = <span style="color:#ae81ff">0</span>
 <span style="color:#66d9ef">let</span> obj: AnyObject = ClassB()
 
 <span style="color:#66d9ef">if</span> (obj <span style="color:#66d9ef">is</span> ClassA) {
-    print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">属于 ClassA</span><span style="color:#e6db74">&#34;</span>)
+    print(<span style="color:#e6db74">&#34;属于 ClassA&#34;</span>)
 }
 
 <span style="color:#66d9ef">if</span> (obj <span style="color:#66d9ef">is</span> ClassB) {
-    print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">属于 ClassB</span><span style="color:#e6db74">&#34;</span>)
+    print(<span style="color:#e6db74">&#34;属于 ClassB&#34;</span>)
 }
 </code></pre></div><hr>
 <h3 id="as">as</h3>
@@ -592,9 +592,9 @@ b.number = <span style="color:#ae81ff">0</span>
 
 <span style="color:#66d9ef">for</span> item <span style="color:#66d9ef">in</span> medias {
     <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> movie = item <span style="color:#66d9ef">as</span>? Movie { 
-        print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">It&#39;s Movie</span><span style="color:#e6db74">&#34;</span>)
+        print(<span style="color:#e6db74">&#34;It&#39;s Movie&#34;</span>)
     } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> song = item <span style="color:#66d9ef">as</span>? Song {
-        print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">It&#39;s Song</span><span style="color:#e6db74">&#34;</span>)
+        print(<span style="color:#e6db74">&#34;It&#39;s Song&#34;</span>)
     }
 }
 </code></pre></div><h2 id="扩展下标">扩展下标</h2>
@@ -609,13 +609,13 @@ b.number = <span style="color:#ae81ff">0</span>
     }
 }
 <span style="color:#ae81ff">746381295</span>[<span style="color:#ae81ff">0</span>]
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">返</span><span style="color:#75715e">回</span><span style="color:#75715e"> </span><span style="color:#75715e">5</span>
+<span style="color:#75715e">// 返回 5</span>
 <span style="color:#ae81ff">746381295</span>[<span style="color:#ae81ff">1</span>]
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">返</span><span style="color:#75715e">回</span><span style="color:#75715e"> </span><span style="color:#75715e">9</span>
+<span style="color:#75715e">// 返回 9</span>
 <span style="color:#ae81ff">746381295</span>[<span style="color:#ae81ff">2</span>]
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">返</span><span style="color:#75715e">回</span><span style="color:#75715e"> </span><span style="color:#75715e">2</span>
+<span style="color:#75715e">// 返回 2</span>
 <span style="color:#ae81ff">746381295</span>[<span style="color:#ae81ff">8</span>]
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">返</span><span style="color:#75715e">回</span><span style="color:#75715e"> </span><span style="color:#75715e">7</span>
+<span style="color:#75715e">// 返回 7</span>
 </code></pre></div><h2 id="mutating">mutating</h2>
 <p>结构体和枚举类型中修改<code>self</code>或其属性的方法必须将该实例方法标注为<code>mutating</code>，否则无法在方法里改变自己的变量：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">MyCar</span> {
@@ -634,48 +634,48 @@ b.number = <span style="color:#ae81ff">0</span>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">let</span> data = <span style="color:#ae81ff">1.</span>..<span style="color:#ae81ff">3</span>
 <span style="color:#66d9ef">let</span> result = data.map {
     (i: Int) -&gt; Int <span style="color:#66d9ef">in</span>
-    print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">正在处理 </span><span style="color:#e6db74">\(</span>i<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
+    print(<span style="color:#e6db74">&#34;正在处理 </span><span style="color:#e6db74">\(</span>i<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
     <span style="color:#66d9ef">return</span> i <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>
 }
 
-print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">准备访问结果</span><span style="color:#e6db74">&#34;</span>)
+print(<span style="color:#e6db74">&#34;准备访问结果&#34;</span>)
 <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> result {
-    print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">操作后结果为 </span><span style="color:#e6db74">\(</span>i<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
+    print(<span style="color:#e6db74">&#34;操作后结果为 </span><span style="color:#e6db74">\(</span>i<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
 }
 
-print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">操作完毕</span><span style="color:#e6db74">&#34;</span>)
+print(<span style="color:#e6db74">&#34;操作完毕&#34;</span>)
 </code></pre></div><p>这段代码的输出为：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">正</span><span style="color:#75715e">在</span><span style="color:#75715e">处</span><span style="color:#75715e">理</span><span style="color:#75715e"> </span><span style="color:#75715e">1</span>
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">正</span><span style="color:#75715e">在</span><span style="color:#75715e">处</span><span style="color:#75715e">理</span><span style="color:#75715e"> </span><span style="color:#75715e">2</span>
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">正</span><span style="color:#75715e">在</span><span style="color:#75715e">处</span><span style="color:#75715e">理</span><span style="color:#75715e"> </span><span style="color:#75715e">3</span>
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">准</span><span style="color:#75715e">备</span><span style="color:#75715e">访</span><span style="color:#75715e">问</span><span style="color:#75715e">结</span><span style="color:#75715e">果</span>
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">操</span><span style="color:#75715e">作</span><span style="color:#75715e">后</span><span style="color:#75715e">结</span><span style="color:#75715e">果</span><span style="color:#75715e">为</span><span style="color:#75715e"> </span><span style="color:#75715e">2</span>
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">操</span><span style="color:#75715e">作</span><span style="color:#75715e">后</span><span style="color:#75715e">结</span><span style="color:#75715e">果</span><span style="color:#75715e">为</span><span style="color:#75715e"> </span><span style="color:#75715e">4</span>
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">操</span><span style="color:#75715e">作</span><span style="color:#75715e">后</span><span style="color:#75715e">结</span><span style="color:#75715e">果</span><span style="color:#75715e">为</span><span style="color:#75715e"> </span><span style="color:#75715e">6</span>
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">操</span><span style="color:#75715e">作</span><span style="color:#75715e">完</span><span style="color:#75715e">毕</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">// 正在处理 1</span>
+<span style="color:#75715e">// 正在处理 2</span>
+<span style="color:#75715e">// 正在处理 3</span>
+<span style="color:#75715e">// 准备访问结果</span>
+<span style="color:#75715e">// 操作后结果为 2</span>
+<span style="color:#75715e">// 操作后结果为 4</span>
+<span style="color:#75715e">// 操作后结果为 6</span>
+<span style="color:#75715e">// 操作完毕</span>
 </code></pre></div><p>而如果先进行一次<code>lazy</code>操作的话，就能得到延时运行版本的容器：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">let</span> data = <span style="color:#ae81ff">1.</span>..<span style="color:#ae81ff">3</span>
 <span style="color:#66d9ef">let</span> result = data.<span style="color:#66d9ef">lazy</span>.map {
     (i: Int) -&gt; Int <span style="color:#66d9ef">in</span>
-    print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">正在处理 </span><span style="color:#e6db74">\(</span>i<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
+    print(<span style="color:#e6db74">&#34;正在处理 </span><span style="color:#e6db74">\(</span>i<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
     <span style="color:#66d9ef">return</span> i <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>
 }
 
-print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">准备访问结果</span><span style="color:#e6db74">&#34;</span>)
+print(<span style="color:#e6db74">&#34;准备访问结果&#34;</span>)
 <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> result {
-    print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">操作后结果为 </span><span style="color:#e6db74">\(</span>i<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
+    print(<span style="color:#e6db74">&#34;操作后结果为 </span><span style="color:#e6db74">\(</span>i<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
 }
 
-print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">操作完毕</span><span style="color:#e6db74">&#34;</span>)
+print(<span style="color:#e6db74">&#34;操作完毕&#34;</span>)
 </code></pre></div><p>此时的运行结果为：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">准</span><span style="color:#75715e">备</span><span style="color:#75715e">访</span><span style="color:#75715e">问</span><span style="color:#75715e">结</span><span style="color:#75715e">果</span>
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">正</span><span style="color:#75715e">在</span><span style="color:#75715e">处</span><span style="color:#75715e">理</span><span style="color:#75715e"> </span><span style="color:#75715e">1</span>
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">操</span><span style="color:#75715e">作</span><span style="color:#75715e">后</span><span style="color:#75715e">结</span><span style="color:#75715e">果</span><span style="color:#75715e">为</span><span style="color:#75715e"> </span><span style="color:#75715e">2</span>
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">正</span><span style="color:#75715e">在</span><span style="color:#75715e">处</span><span style="color:#75715e">理</span><span style="color:#75715e"> </span><span style="color:#75715e">2</span>
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">操</span><span style="color:#75715e">作</span><span style="color:#75715e">后</span><span style="color:#75715e">结</span><span style="color:#75715e">果</span><span style="color:#75715e">为</span><span style="color:#75715e"> </span><span style="color:#75715e">4</span>
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">正</span><span style="color:#75715e">在</span><span style="color:#75715e">处</span><span style="color:#75715e">理</span><span style="color:#75715e"> </span><span style="color:#75715e">3</span>
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">操</span><span style="color:#75715e">作</span><span style="color:#75715e">后</span><span style="color:#75715e">结</span><span style="color:#75715e">果</span><span style="color:#75715e">为</span><span style="color:#75715e"> </span><span style="color:#75715e">6</span>
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">操</span><span style="color:#75715e">作</span><span style="color:#75715e">完</span><span style="color:#75715e">毕</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">// 准备访问结果</span>
+<span style="color:#75715e">// 正在处理 1</span>
+<span style="color:#75715e">// 操作后结果为 2</span>
+<span style="color:#75715e">// 正在处理 2</span>
+<span style="color:#75715e">// 操作后结果为 4</span>
+<span style="color:#75715e">// 正在处理 3</span>
+<span style="color:#75715e">// 操作后结果为 6</span>
+<span style="color:#75715e">// 操作完毕</span>
 </code></pre></div><h2 id="log与编译符号">Log与编译符号</h2>
 <p>在调试或者记日志的时候，有时需要将当前文件的名字和那些必要的信息作为参数一起打印出来，<code>Swift</code>中有几个很有用的编译符号，用来处理类似这样的需求，它们分别是：</p>
 <ul>
@@ -699,28 +699,28 @@ print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">操作
 <span style="color:#66d9ef">let</span> result = nums.map{ $0 <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> }
 print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">\(</span>result<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
 
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">输</span><span style="color:#75715e">出</span><span style="color:#75715e">：</span><span style="color:#75715e">[</span><span style="color:#75715e">2</span><span style="color:#75715e">,</span><span style="color:#75715e"> </span><span style="color:#75715e">4</span><span style="color:#75715e">,</span><span style="color:#75715e"> </span><span style="color:#75715e">6</span><span style="color:#75715e">]</span>
+<span style="color:#75715e">// 输出：[2, 4, 6]</span>
 </code></pre></div><p>但如果改成对某个<code>Int？</code>乘<code>2</code>呢？期望如果这个<code>Int？</code>有值的话，就取出值进行乘<code>2</code>的操作；如果是<code>nil</code>的话就直接将<code>nil</code>赋给结果。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">let</span> num: Int? = <span style="color:#ae81ff">3</span>
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">l</span><span style="color:#75715e">e</span><span style="color:#75715e">t</span><span style="color:#75715e"> </span><span style="color:#75715e">n</span><span style="color:#75715e">u</span><span style="color:#75715e">m</span><span style="color:#75715e">:</span><span style="color:#75715e"> </span><span style="color:#75715e">I</span><span style="color:#75715e">n</span><span style="color:#75715e">t</span><span style="color:#75715e">?</span><span style="color:#75715e"> </span><span style="color:#75715e">=</span><span style="color:#75715e"> </span><span style="color:#75715e">n</span><span style="color:#75715e">i</span><span style="color:#75715e">l</span>
+<span style="color:#75715e">// let num: Int? = nil</span>
 
 <span style="color:#66d9ef">var</span> result: Int?
 <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> num = num {
     result = num
 }
-print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">\(</span>String<span style="color:#e6db74">(</span>describing: result<span style="color:#e6db74">)</span><span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
+print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">\(</span>String<span style="color:#e6db74">(</span>describing: result<span style="color:#e6db74">))</span><span style="color:#e6db74">&#34;</span>)
 
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">n</span><span style="color:#75715e">u</span><span style="color:#75715e">m</span><span style="color:#75715e"> </span><span style="color:#75715e">=</span><span style="color:#75715e"> </span><span style="color:#75715e">3</span><span style="color:#75715e">时</span><span style="color:#75715e">，</span><span style="color:#75715e">打</span><span style="color:#75715e">印</span><span style="color:#75715e">O</span><span style="color:#75715e">p</span><span style="color:#75715e">t</span><span style="color:#75715e">i</span><span style="color:#75715e">o</span><span style="color:#75715e">n</span><span style="color:#75715e">a</span><span style="color:#75715e">l</span><span style="color:#75715e">(</span><span style="color:#75715e">6</span><span style="color:#75715e">)</span>
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">n</span><span style="color:#75715e">u</span><span style="color:#75715e">m</span><span style="color:#75715e"> </span><span style="color:#75715e">=</span><span style="color:#75715e"> </span><span style="color:#75715e">n</span><span style="color:#75715e">i</span><span style="color:#75715e">l</span><span style="color:#75715e">时</span><span style="color:#75715e">，</span><span style="color:#75715e">打</span><span style="color:#75715e">印</span><span style="color:#75715e">n</span><span style="color:#75715e">i</span><span style="color:#75715e">l</span>
+<span style="color:#75715e">// num = 3时，打印Optional(6)</span>
+<span style="color:#75715e">// num = nil时，打印nil</span>
 </code></pre></div><p>如果使用<code>Optional Map</code>，刚才的例子就可以改为：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">let</span> num: Int? = <span style="color:#ae81ff">3</span>
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">l</span><span style="color:#75715e">e</span><span style="color:#75715e">t</span><span style="color:#75715e"> </span><span style="color:#75715e">n</span><span style="color:#75715e">u</span><span style="color:#75715e">m</span><span style="color:#75715e">:</span><span style="color:#75715e"> </span><span style="color:#75715e">I</span><span style="color:#75715e">n</span><span style="color:#75715e">t</span><span style="color:#75715e">?</span><span style="color:#75715e"> </span><span style="color:#75715e">=</span><span style="color:#75715e"> </span><span style="color:#75715e">n</span><span style="color:#75715e">i</span><span style="color:#75715e">l</span>
+<span style="color:#75715e">// let num: Int? = nil</span>
 
 <span style="color:#66d9ef">let</span> result = num.map { $0 <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> }
-print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">\(</span>String<span style="color:#e6db74">(</span>describing: result<span style="color:#e6db74">)</span><span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
+print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">\(</span>String<span style="color:#e6db74">(</span>describing: result<span style="color:#e6db74">))</span><span style="color:#e6db74">&#34;</span>)
 
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">n</span><span style="color:#75715e">u</span><span style="color:#75715e">m</span><span style="color:#75715e"> </span><span style="color:#75715e">=</span><span style="color:#75715e"> </span><span style="color:#75715e">3</span><span style="color:#75715e">时</span><span style="color:#75715e">，</span><span style="color:#75715e">打</span><span style="color:#75715e">印</span><span style="color:#75715e">O</span><span style="color:#75715e">p</span><span style="color:#75715e">t</span><span style="color:#75715e">i</span><span style="color:#75715e">o</span><span style="color:#75715e">n</span><span style="color:#75715e">a</span><span style="color:#75715e">l</span><span style="color:#75715e">(</span><span style="color:#75715e">6</span><span style="color:#75715e">)</span>
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">n</span><span style="color:#75715e">u</span><span style="color:#75715e">m</span><span style="color:#75715e"> </span><span style="color:#75715e">=</span><span style="color:#75715e"> </span><span style="color:#75715e">n</span><span style="color:#75715e">i</span><span style="color:#75715e">l</span><span style="color:#75715e">时</span><span style="color:#75715e">，</span><span style="color:#75715e">打</span><span style="color:#75715e">印</span><span style="color:#75715e">n</span><span style="color:#75715e">i</span><span style="color:#75715e">l</span>
+<span style="color:#75715e">// num = 3时，打印Optional(6)</span>
+<span style="color:#75715e">// num = nil时，打印nil</span>
 </code></pre></div><h2 id="map与flatmap">map与flatmap</h2>
 <p>都会对数组中的每一个元素调用一次闭包函数，并返回该元素所映射的值，最终返回一个新数组。但<code>flatmap</code>更进一步，多做了一些事情：</p>
 <ul>
@@ -731,10 +731,10 @@ print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">\(</sp
 <p><a href="https://juejin.im/post/5e5cf951e51d452712105052">摘抄自这里</a></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AlertController</span>: UIAlertController {
 
-    <span style="color:#75715e">//</span><span style="color:#75715e">/</span><span style="color:#75715e"> </span><span style="color:#75715e">B</span><span style="color:#75715e">u</span><span style="color:#75715e">t</span><span style="color:#75715e">t</span><span style="color:#75715e">o</span><span style="color:#75715e">n</span><span style="color:#75715e">s</span><span style="color:#75715e"> </span><span style="color:#75715e">b</span><span style="color:#75715e">a</span><span style="color:#75715e">c</span><span style="color:#75715e">k</span><span style="color:#75715e">g</span><span style="color:#75715e">r</span><span style="color:#75715e">o</span><span style="color:#75715e">u</span><span style="color:#75715e">n</span><span style="color:#75715e">d</span><span style="color:#75715e"> </span><span style="color:#75715e">c</span><span style="color:#75715e">o</span><span style="color:#75715e">l</span><span style="color:#75715e">o</span><span style="color:#75715e">r</span><span style="color:#75715e">.</span>
+    <span style="color:#75715e">/// Buttons background color.</span>
     <span style="color:#66d9ef">var</span> buttonBackgroundColor: UIColor = .darkGray {
         <span style="color:#66d9ef">didSet</span> {
-            <span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">I</span><span style="color:#75715e">n</span><span style="color:#75715e">v</span><span style="color:#75715e">a</span><span style="color:#75715e">l</span><span style="color:#75715e">i</span><span style="color:#75715e">d</span><span style="color:#75715e">a</span><span style="color:#75715e">t</span><span style="color:#75715e">e</span><span style="color:#75715e"> </span><span style="color:#75715e">c</span><span style="color:#75715e">u</span><span style="color:#75715e">r</span><span style="color:#75715e">r</span><span style="color:#75715e">e</span><span style="color:#75715e">n</span><span style="color:#75715e">t</span><span style="color:#75715e"> </span><span style="color:#75715e">c</span><span style="color:#75715e">o</span><span style="color:#75715e">l</span><span style="color:#75715e">o</span><span style="color:#75715e">r</span><span style="color:#75715e">s</span><span style="color:#75715e"> </span><span style="color:#75715e">o</span><span style="color:#75715e">n</span><span style="color:#75715e"> </span><span style="color:#75715e">c</span><span style="color:#75715e">h</span><span style="color:#75715e">a</span><span style="color:#75715e">n</span><span style="color:#75715e">g</span><span style="color:#75715e">e</span><span style="color:#75715e">.</span>
+            <span style="color:#75715e">// Invalidate current colors on change.</span>
             view.setNeedsLayout()
         }
     }
@@ -742,20 +742,20 @@ print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">\(</sp
     <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">viewDidLayoutSubviews</span>() {
         <span style="color:#66d9ef">super</span>.viewDidLayoutSubviews()
 
-        <span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">T</span><span style="color:#75715e">r</span><span style="color:#75715e">a</span><span style="color:#75715e">v</span><span style="color:#75715e">e</span><span style="color:#75715e">r</span><span style="color:#75715e">s</span><span style="color:#75715e">e</span><span style="color:#75715e"> </span><span style="color:#75715e">v</span><span style="color:#75715e">i</span><span style="color:#75715e">e</span><span style="color:#75715e">w</span><span style="color:#75715e"> </span><span style="color:#75715e">h</span><span style="color:#75715e">i</span><span style="color:#75715e">e</span><span style="color:#75715e">r</span><span style="color:#75715e">a</span><span style="color:#75715e">r</span><span style="color:#75715e">c</span><span style="color:#75715e">h</span><span style="color:#75715e">y</span><span style="color:#75715e">.</span>
+        <span style="color:#75715e">// Traverse view hierarchy.</span>
         view.allViews.forEach {
-            <span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">I</span><span style="color:#75715e">f</span><span style="color:#75715e"> </span><span style="color:#75715e">t</span><span style="color:#75715e">h</span><span style="color:#75715e">e</span><span style="color:#75715e">r</span><span style="color:#75715e">e</span><span style="color:#75715e"> </span><span style="color:#75715e">w</span><span style="color:#75715e">a</span><span style="color:#75715e">s</span><span style="color:#75715e"> </span><span style="color:#75715e">a</span><span style="color:#75715e">n</span><span style="color:#75715e">y</span><span style="color:#75715e"> </span><span style="color:#75715e">n</span><span style="color:#75715e">o</span><span style="color:#75715e">n</span><span style="color:#75715e">-</span><span style="color:#75715e">c</span><span style="color:#75715e">l</span><span style="color:#75715e">e</span><span style="color:#75715e">a</span><span style="color:#75715e">r</span><span style="color:#75715e"> </span><span style="color:#75715e">b</span><span style="color:#75715e">a</span><span style="color:#75715e">c</span><span style="color:#75715e">k</span><span style="color:#75715e">g</span><span style="color:#75715e">r</span><span style="color:#75715e">o</span><span style="color:#75715e">u</span><span style="color:#75715e">n</span><span style="color:#75715e">d</span><span style="color:#75715e"> </span><span style="color:#75715e">c</span><span style="color:#75715e">o</span><span style="color:#75715e">l</span><span style="color:#75715e">o</span><span style="color:#75715e">r</span><span style="color:#75715e">,</span><span style="color:#75715e"> </span><span style="color:#75715e">u</span><span style="color:#75715e">p</span><span style="color:#75715e">d</span><span style="color:#75715e">a</span><span style="color:#75715e">t</span><span style="color:#75715e">e</span><span style="color:#75715e"> </span><span style="color:#75715e">t</span><span style="color:#75715e">o</span><span style="color:#75715e"> </span><span style="color:#75715e">c</span><span style="color:#75715e">u</span><span style="color:#75715e">s</span><span style="color:#75715e">t</span><span style="color:#75715e">o</span><span style="color:#75715e">m</span><span style="color:#75715e"> </span><span style="color:#75715e">b</span><span style="color:#75715e">a</span><span style="color:#75715e">c</span><span style="color:#75715e">k</span><span style="color:#75715e">g</span><span style="color:#75715e">r</span><span style="color:#75715e">o</span><span style="color:#75715e">u</span><span style="color:#75715e">n</span><span style="color:#75715e">d</span><span style="color:#75715e">.</span>
+            <span style="color:#75715e">// If there was any non-clear background color, update to custom background.</span>
             <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> color = $0.backgroundColor, color <span style="color:#f92672">!=</span> .clear {
                 $0.backgroundColor = buttonBackgroundColor
             }
-            <span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">I</span><span style="color:#75715e">f</span><span style="color:#75715e"> </span><span style="color:#75715e">v</span><span style="color:#75715e">i</span><span style="color:#75715e">e</span><span style="color:#75715e">w</span><span style="color:#75715e"> </span><span style="color:#75715e">i</span><span style="color:#75715e">s</span><span style="color:#75715e"> </span><span style="color:#75715e">U</span><span style="color:#75715e">I</span><span style="color:#75715e">V</span><span style="color:#75715e">i</span><span style="color:#75715e">s</span><span style="color:#75715e">u</span><span style="color:#75715e">a</span><span style="color:#75715e">l</span><span style="color:#75715e">E</span><span style="color:#75715e">f</span><span style="color:#75715e">f</span><span style="color:#75715e">e</span><span style="color:#75715e">c</span><span style="color:#75715e">t</span><span style="color:#75715e">V</span><span style="color:#75715e">i</span><span style="color:#75715e">e</span><span style="color:#75715e">w</span><span style="color:#75715e">,</span><span style="color:#75715e"> </span><span style="color:#75715e">r</span><span style="color:#75715e">e</span><span style="color:#75715e">m</span><span style="color:#75715e">o</span><span style="color:#75715e">v</span><span style="color:#75715e">e</span><span style="color:#75715e"> </span><span style="color:#75715e">i</span><span style="color:#75715e">t</span><span style="color:#75715e">&#39;</span><span style="color:#75715e">s</span><span style="color:#75715e"> </span><span style="color:#75715e">e</span><span style="color:#75715e">f</span><span style="color:#75715e">f</span><span style="color:#75715e">e</span><span style="color:#75715e">c</span><span style="color:#75715e">t</span><span style="color:#75715e"> </span><span style="color:#75715e">a</span><span style="color:#75715e">n</span><span style="color:#75715e">d</span><span style="color:#75715e"> </span><span style="color:#75715e">c</span><span style="color:#75715e">u</span><span style="color:#75715e">s</span><span style="color:#75715e">t</span><span style="color:#75715e">o</span><span style="color:#75715e">m</span><span style="color:#75715e">i</span><span style="color:#75715e">s</span><span style="color:#75715e">e</span><span style="color:#75715e"> </span><span style="color:#75715e">c</span><span style="color:#75715e">o</span><span style="color:#75715e">l</span><span style="color:#75715e">o</span><span style="color:#75715e">r</span><span style="color:#75715e">.</span>
+            <span style="color:#75715e">// If view is UIVisualEffectView, remove it&#39;s effect and customise color.</span>
             <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> visualEffectView = $0 <span style="color:#66d9ef">as</span>? UIVisualEffectView {
                 visualEffectView.effect = <span style="color:#66d9ef">nil</span>
                 visualEffectView.backgroundColor = buttonBackgroundColor
             }
         }
 
-        <span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">U</span><span style="color:#75715e">p</span><span style="color:#75715e">d</span><span style="color:#75715e">a</span><span style="color:#75715e">t</span><span style="color:#75715e">e</span><span style="color:#75715e"> </span><span style="color:#75715e">b</span><span style="color:#75715e">a</span><span style="color:#75715e">c</span><span style="color:#75715e">k</span><span style="color:#75715e">g</span><span style="color:#75715e">r</span><span style="color:#75715e">o</span><span style="color:#75715e">u</span><span style="color:#75715e">n</span><span style="color:#75715e">d</span><span style="color:#75715e"> </span><span style="color:#75715e">c</span><span style="color:#75715e">o</span><span style="color:#75715e">l</span><span style="color:#75715e">o</span><span style="color:#75715e">r</span><span style="color:#75715e"> </span><span style="color:#75715e">o</span><span style="color:#75715e">f</span><span style="color:#75715e"> </span><span style="color:#75715e">p</span><span style="color:#75715e">o</span><span style="color:#75715e">p</span><span style="color:#75715e">o</span><span style="color:#75715e">v</span><span style="color:#75715e">e</span><span style="color:#75715e">r</span><span style="color:#75715e">P</span><span style="color:#75715e">r</span><span style="color:#75715e">e</span><span style="color:#75715e">s</span><span style="color:#75715e">e</span><span style="color:#75715e">n</span><span style="color:#75715e">t</span><span style="color:#75715e">a</span><span style="color:#75715e">t</span><span style="color:#75715e">i</span><span style="color:#75715e">o</span><span style="color:#75715e">n</span><span style="color:#75715e">C</span><span style="color:#75715e">o</span><span style="color:#75715e">n</span><span style="color:#75715e">t</span><span style="color:#75715e">r</span><span style="color:#75715e">o</span><span style="color:#75715e">l</span><span style="color:#75715e">l</span><span style="color:#75715e">e</span><span style="color:#75715e">r</span><span style="color:#75715e"> </span><span style="color:#75715e">(</span><span style="color:#75715e">f</span><span style="color:#75715e">o</span><span style="color:#75715e">r</span><span style="color:#75715e"> </span><span style="color:#75715e">i</span><span style="color:#75715e">P</span><span style="color:#75715e">a</span><span style="color:#75715e">d</span><span style="color:#75715e">s</span><span style="color:#75715e">)</span><span style="color:#75715e">.</span>
+        <span style="color:#75715e">// Update background color of popoverPresentationController (for iPads).</span>
         popoverPresentationController?.backgroundColor = buttonBackgroundColor
     }
 
@@ -764,7 +764,7 @@ print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">\(</sp
 
 <span style="color:#66d9ef">extension</span> <span style="color:#a6e22e">UIView</span> {
 
-    <span style="color:#75715e">//</span><span style="color:#75715e">/</span><span style="color:#75715e"> </span><span style="color:#75715e">A</span><span style="color:#75715e">l</span><span style="color:#75715e">l</span><span style="color:#75715e"> </span><span style="color:#75715e">c</span><span style="color:#75715e">h</span><span style="color:#75715e">i</span><span style="color:#75715e">l</span><span style="color:#75715e">d</span><span style="color:#75715e"> </span><span style="color:#75715e">s</span><span style="color:#75715e">u</span><span style="color:#75715e">b</span><span style="color:#75715e">v</span><span style="color:#75715e">i</span><span style="color:#75715e">e</span><span style="color:#75715e">w</span><span style="color:#75715e">s</span><span style="color:#75715e"> </span><span style="color:#75715e">i</span><span style="color:#75715e">n</span><span style="color:#75715e"> </span><span style="color:#75715e">v</span><span style="color:#75715e">i</span><span style="color:#75715e">e</span><span style="color:#75715e">w</span><span style="color:#75715e"> </span><span style="color:#75715e">h</span><span style="color:#75715e">i</span><span style="color:#75715e">e</span><span style="color:#75715e">r</span><span style="color:#75715e">a</span><span style="color:#75715e">r</span><span style="color:#75715e">c</span><span style="color:#75715e">h</span><span style="color:#75715e">y</span><span style="color:#75715e"> </span><span style="color:#75715e">p</span><span style="color:#75715e">l</span><span style="color:#75715e">u</span><span style="color:#75715e">s</span><span style="color:#75715e"> </span><span style="color:#75715e">s</span><span style="color:#75715e">e</span><span style="color:#75715e">l</span><span style="color:#75715e">f</span><span style="color:#75715e">.</span>
+    <span style="color:#75715e">/// All child subviews in view hierarchy plus self.</span>
     fileprivate <span style="color:#66d9ef">var</span> allViews: [UIView] {
         <span style="color:#66d9ef">var</span> views = [<span style="color:#66d9ef">self</span>]
         subviews.forEach {
@@ -779,7 +779,7 @@ print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">\(</sp
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">extension</span> <span style="color:#a6e22e">UIViewController</span> {
 
     <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">notify</span>(msg: String) -&gt; Void {
-        <span style="color:#66d9ef">let</span> alert = UIAlertController(title: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">&#34;</span>, message: msg, preferredStyle: .alert)
+        <span style="color:#66d9ef">let</span> alert = UIAlertController(title: <span style="color:#e6db74">&#34;&#34;</span>, message: msg, preferredStyle: .alert)
         <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> visualEffectView = alert.view.searchVisualEffectsSubview() {
             visualEffectView.effect = UIBlurEffect(style: .light)
         }
@@ -794,7 +794,7 @@ print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">\(</sp
 }
 
 
-<span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">h</span><span style="color:#75715e">t</span><span style="color:#75715e">t</span><span style="color:#75715e">p</span><span style="color:#75715e">s</span><span style="color:#75715e">:</span><span style="color:#75715e">/</span><span style="color:#75715e">/</span><span style="color:#75715e">s</span><span style="color:#75715e">t</span><span style="color:#75715e">a</span><span style="color:#75715e">c</span><span style="color:#75715e">k</span><span style="color:#75715e">o</span><span style="color:#75715e">v</span><span style="color:#75715e">e</span><span style="color:#75715e">r</span><span style="color:#75715e">f</span><span style="color:#75715e">l</span><span style="color:#75715e">o</span><span style="color:#75715e">w</span><span style="color:#75715e">.</span><span style="color:#75715e">c</span><span style="color:#75715e">o</span><span style="color:#75715e">m</span><span style="color:#75715e">/</span><span style="color:#75715e">q</span><span style="color:#75715e">u</span><span style="color:#75715e">e</span><span style="color:#75715e">s</span><span style="color:#75715e">t</span><span style="color:#75715e">i</span><span style="color:#75715e">o</span><span style="color:#75715e">n</span><span style="color:#75715e">s</span><span style="color:#75715e">/</span><span style="color:#75715e">2</span><span style="color:#75715e">6</span><span style="color:#75715e">8</span><span style="color:#75715e">6</span><span style="color:#75715e">3</span><span style="color:#75715e">4</span><span style="color:#75715e">6</span><span style="color:#75715e">0</span><span style="color:#75715e">/</span><span style="color:#75715e">h</span><span style="color:#75715e">o</span><span style="color:#75715e">w</span><span style="color:#75715e">-</span><span style="color:#75715e">t</span><span style="color:#75715e">o</span><span style="color:#75715e">-</span><span style="color:#75715e">c</span><span style="color:#75715e">h</span><span style="color:#75715e">a</span><span style="color:#75715e">n</span><span style="color:#75715e">g</span><span style="color:#75715e">e</span><span style="color:#75715e">-</span><span style="color:#75715e">t</span><span style="color:#75715e">h</span><span style="color:#75715e">e</span><span style="color:#75715e">-</span><span style="color:#75715e">b</span><span style="color:#75715e">a</span><span style="color:#75715e">c</span><span style="color:#75715e">k</span><span style="color:#75715e">g</span><span style="color:#75715e">r</span><span style="color:#75715e">o</span><span style="color:#75715e">u</span><span style="color:#75715e">n</span><span style="color:#75715e">d</span><span style="color:#75715e">-</span><span style="color:#75715e">c</span><span style="color:#75715e">o</span><span style="color:#75715e">l</span><span style="color:#75715e">o</span><span style="color:#75715e">r</span><span style="color:#75715e">-</span><span style="color:#75715e">o</span><span style="color:#75715e">f</span><span style="color:#75715e">-</span><span style="color:#75715e">t</span><span style="color:#75715e">h</span><span style="color:#75715e">e</span><span style="color:#75715e">-</span><span style="color:#75715e">u</span><span style="color:#75715e">i</span><span style="color:#75715e">a</span><span style="color:#75715e">l</span><span style="color:#75715e">e</span><span style="color:#75715e">r</span><span style="color:#75715e">t</span><span style="color:#75715e">c</span><span style="color:#75715e">o</span><span style="color:#75715e">n</span><span style="color:#75715e">t</span><span style="color:#75715e">r</span><span style="color:#75715e">o</span><span style="color:#75715e">l</span><span style="color:#75715e">l</span><span style="color:#75715e">e</span><span style="color:#75715e">r</span>
+<span style="color:#75715e">// https://stackoverflow.com/questions/26863460/how-to-change-the-background-color-of-the-uialertcontroller</span>
     <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">searchVisualEffectsSubview</span>() -&gt; UIVisualEffectView? {
         <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> visualEffectView = <span style="color:#66d9ef">self</span> <span style="color:#66d9ef">as</span>? UIVisualEffectView {
             <span style="color:#66d9ef">return</span> visualEffectView
@@ -831,7 +831,7 @@ print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">\(</sp
             attributeString.addAttributes([NSAttributedString.Key.foregroundColor: titleColor],
                     range: NSMakeRange(<span style="color:#ae81ff">0</span>, title.count))
         }
-        <span style="color:#66d9ef">self</span>.setValue(attributeString, forKey: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">attributedTitle</span><span style="color:#e6db74">&#34;</span>)
+        <span style="color:#66d9ef">self</span>.setValue(attributeString, forKey: <span style="color:#e6db74">&#34;attributedTitle&#34;</span>)
     }
 
     <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">setMessage</span>(font: UIFont?, color: UIColor? = <span style="color:#66d9ef">nil</span>) {
@@ -848,22 +848,22 @@ print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">\(</sp
             attributeString.addAttributes([NSAttributedString.Key.foregroundColor: messageColor],
                     range: NSMakeRange(<span style="color:#ae81ff">0</span>, message.count))
         }
-        <span style="color:#66d9ef">self</span>.setValue(attributeString, forKey: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">attributedMessage</span><span style="color:#e6db74">&#34;</span>)
+        <span style="color:#66d9ef">self</span>.setValue(attributeString, forKey: <span style="color:#e6db74">&#34;attributedMessage&#34;</span>)
     }
 
     <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">setTint</span>(color: UIColor) {
         <span style="color:#66d9ef">self</span>.view.tintColor = color
     }
 }
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">//</span><span style="color:#75715e">/</span><span style="color:#75715e"> </span><span style="color:#75715e">增</span><span style="color:#75715e">加</span><span style="color:#75715e">或</span><span style="color:#75715e">者</span><span style="color:#75715e">删</span><span style="color:#75715e">除</span><span style="color:#75715e">红</span><span style="color:#75715e">点</span><span style="color:#75715e">，</span><span style="color:#75715e">使</span><span style="color:#75715e">用</span><span style="color:#75715e">在</span><span style="color:#75715e">L</span><span style="color:#75715e">a</span><span style="color:#75715e">b</span><span style="color:#75715e">e</span><span style="color:#75715e">l</span><span style="color:#75715e">上</span><span style="color:#75715e">U</span><span style="color:#75715e">I</span><span style="color:#75715e">I</span><span style="color:#75715e">m</span><span style="color:#75715e">a</span><span style="color:#75715e">g</span><span style="color:#75715e">e</span><span style="color:#75715e">V</span><span style="color:#75715e">i</span><span style="color:#75715e">e</span><span style="color:#75715e">w</span><span style="color:#75715e">的</span><span style="color:#75715e">方</span><span style="color:#75715e">式</span><span style="color:#75715e">,</span><span style="color:#75715e">仅</span><span style="color:#75715e">限</span><span style="color:#75715e">于</span><span style="color:#75715e">左</span><span style="color:#75715e">对</span><span style="color:#75715e">齐</span>
-<span style="color:#75715e">//</span><span style="color:#75715e">/</span><span style="color:#75715e"> </span><span style="color:#75715e">-</span><span style="color:#75715e"> </span><span style="color:#75715e">P</span><span style="color:#75715e">a</span><span style="color:#75715e">r</span><span style="color:#75715e">a</span><span style="color:#75715e">m</span><span style="color:#75715e">e</span><span style="color:#75715e">t</span><span style="color:#75715e">e</span><span style="color:#75715e">r</span><span style="color:#75715e"> </span><span style="color:#75715e">a</span><span style="color:#75715e">d</span><span style="color:#75715e">d</span><span style="color:#75715e">:</span><span style="color:#75715e"> </span><span style="color:#75715e">a</span><span style="color:#75715e">d</span><span style="color:#75715e">d</span><span style="color:#75715e"> </span><span style="color:#75715e">为</span><span style="color:#75715e">t</span><span style="color:#75715e">r</span><span style="color:#75715e">u</span><span style="color:#75715e">e</span><span style="color:#75715e">表</span><span style="color:#75715e">示</span><span style="color:#75715e">要</span><span style="color:#75715e">加</span><span style="color:#75715e">红</span><span style="color:#75715e">点</span><span style="color:#75715e">，</span><span style="color:#75715e">否</span><span style="color:#75715e">则</span><span style="color:#75715e">移</span><span style="color:#75715e">除</span><span style="color:#75715e">原</span><span style="color:#75715e">来</span><span style="color:#75715e">的</span><span style="color:#75715e">红</span><span style="color:#75715e">点</span><span style="color:#75715e">（</span><span style="color:#75715e">如</span><span style="color:#75715e">果</span><span style="color:#75715e">有</span><span style="color:#75715e">的</span><span style="color:#75715e">话</span><span style="color:#75715e">）</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">/// 增加或者删除红点，使用在Label上UIImageView的方式,仅限于左对齐</span>
+<span style="color:#75715e">/// - Parameter add: add 为true表示要加红点，否则移除原来的红点（如果有的话）</span>
 <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">addOrRemoveRedDot</span>(<span style="color:#66d9ef">_</span> add: Bool) {
     <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> superView = <span style="color:#66d9ef">self</span>.superview {
         <span style="color:#66d9ef">let</span> dotView = superView.viewWithTag(<span style="color:#ae81ff">10000</span>)
         dotView?.removeFromSuperview()
         <span style="color:#66d9ef">if</span> add {
-            <span style="color:#66d9ef">let</span> leading = (<span style="color:#66d9ef">self</span>.text ?? <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">&#34;</span>).widthWithConstrainedHeight(height: <span style="color:#66d9ef">self</span>.frame.height, fontSize: <span style="color:#66d9ef">self</span>.font.pointSize) <span style="color:#f92672">+</span> <span style="color:#ae81ff">4.0</span>
-            <span style="color:#66d9ef">let</span> dot = UIImage(named: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">reddot</span><span style="color:#e6db74">&#34;</span>)
+            <span style="color:#66d9ef">let</span> leading = (<span style="color:#66d9ef">self</span>.text ?? <span style="color:#e6db74">&#34;&#34;</span>).widthWithConstrainedHeight(height: <span style="color:#66d9ef">self</span>.frame.height, fontSize: <span style="color:#66d9ef">self</span>.font.pointSize) <span style="color:#f92672">+</span> <span style="color:#ae81ff">4.0</span>
+            <span style="color:#66d9ef">let</span> dot = UIImage(named: <span style="color:#e6db74">&#34;reddot&#34;</span>)
             <span style="color:#66d9ef">let</span> dotView = UIImageView(image: dot)
             dotView.tag = <span style="color:#ae81ff">10000</span>
             dotView.translatesAutoresizingMaskIntoConstraints = <span style="color:#66d9ef">false</span>
@@ -880,16 +880,16 @@ print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">\(</sp
         }
     }
 }
-<span style="color:#75715e">//</span><span style="color:#75715e">/</span><span style="color:#75715e"> </span><span style="color:#75715e">使</span><span style="color:#75715e">用</span><span style="color:#75715e">富</span><span style="color:#75715e">文</span><span style="color:#75715e">本</span><span style="color:#75715e">的</span><span style="color:#75715e">方</span><span style="color:#75715e">式</span><span style="color:#75715e">在</span><span style="color:#75715e">U</span><span style="color:#75715e">I</span><span style="color:#75715e">L</span><span style="color:#75715e">a</span><span style="color:#75715e">b</span><span style="color:#75715e">e</span><span style="color:#75715e">l</span><span style="color:#75715e">文</span><span style="color:#75715e">本</span><span style="color:#75715e">后</span><span style="color:#75715e">面</span><span style="color:#75715e">添</span><span style="color:#75715e">加</span><span style="color:#75715e">红</span><span style="color:#75715e">点</span>
-<span style="color:#75715e">//</span><span style="color:#75715e">/</span><span style="color:#75715e"> </span><span style="color:#75715e">-</span><span style="color:#75715e"> </span><span style="color:#75715e">P</span><span style="color:#75715e">a</span><span style="color:#75715e">r</span><span style="color:#75715e">a</span><span style="color:#75715e">m</span><span style="color:#75715e">e</span><span style="color:#75715e">t</span><span style="color:#75715e">e</span><span style="color:#75715e">r</span><span style="color:#75715e"> </span><span style="color:#75715e">a</span><span style="color:#75715e">d</span><span style="color:#75715e">d</span><span style="color:#75715e">:</span><span style="color:#75715e"> </span><span style="color:#75715e">i</span><span style="color:#75715e">s</span><span style="color:#75715e">N</span><span style="color:#75715e">e</span><span style="color:#75715e">e</span><span style="color:#75715e">d</span><span style="color:#75715e">A</span><span style="color:#75715e">d</span><span style="color:#75715e">d</span><span style="color:#75715e"> </span><span style="color:#75715e">为</span><span style="color:#75715e">t</span><span style="color:#75715e">r</span><span style="color:#75715e">u</span><span style="color:#75715e">e</span><span style="color:#75715e">表</span><span style="color:#75715e">示</span><span style="color:#75715e">要</span><span style="color:#75715e">加</span><span style="color:#75715e">红</span><span style="color:#75715e">点</span><span style="color:#75715e">，</span><span style="color:#75715e">否</span><span style="color:#75715e">则</span><span style="color:#75715e">不</span><span style="color:#75715e">需</span><span style="color:#75715e">要</span>
-<span style="color:#75715e">//</span><span style="color:#75715e">/</span><span style="color:#75715e"> </span><span style="color:#75715e">-</span><span style="color:#75715e"> </span><span style="color:#75715e">R</span><span style="color:#75715e">e</span><span style="color:#75715e">t</span><span style="color:#75715e">u</span><span style="color:#75715e">r</span><span style="color:#75715e">n</span><span style="color:#75715e">s</span><span style="color:#75715e">:</span><span style="color:#75715e"> </span><span style="color:#75715e">处</span><span style="color:#75715e">理</span><span style="color:#75715e">后</span><span style="color:#75715e">的</span><span style="color:#75715e">富</span><span style="color:#75715e">文</span><span style="color:#75715e">本</span>
+<span style="color:#75715e">/// 使用富文本的方式在UILabel文本后面添加红点</span>
+<span style="color:#75715e">/// - Parameter add: isNeedAdd 为true表示要加红点，否则不需要</span>
+<span style="color:#75715e">/// - Returns: 处理后的富文本</span>
 <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">addRedDot</span>(isNeedAdd: Bool) -&gt; NSMutableAttributedString {
-    <span style="color:#66d9ef">var</span> text: String = (<span style="color:#66d9ef">self</span>.text ?? <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">&#34;</span>)
+    <span style="color:#66d9ef">var</span> text: String = (<span style="color:#66d9ef">self</span>.text ?? <span style="color:#e6db74">&#34;&#34;</span>)
     <span style="color:#66d9ef">if</span> isNeedAdd {
-        text <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74"> </span><span style="color:#e6db74">&#34;</span>
+        text <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34; &#34;</span>
         <span style="color:#66d9ef">let</span> contentText = NSMutableAttributedString(string: text)
         <span style="color:#66d9ef">let</span> attach = NSTextAttachment()
-        <span style="color:#66d9ef">let</span> dotImg = UIImage(named: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">reddot</span><span style="color:#e6db74">&#34;</span>)
+        <span style="color:#66d9ef">let</span> dotImg = UIImage(named: <span style="color:#e6db74">&#34;reddot&#34;</span>)
         <span style="color:#66d9ef">let</span> width: CGFloat = <span style="color:#ae81ff">10</span>
         attach.bounds = CGRect(x: <span style="color:#ae81ff">0</span>, y: <span style="color:#ae81ff">0.5</span>, width: width, height: width)
         attach.image = dotImg

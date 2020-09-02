@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">790</span>
+<span class="leancloud-visitors-count">781</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -261,14 +261,14 @@ code.has-jax {
         <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> sessionID = userInfoService.activeUser?.sessionID, <span style="color:#66d9ef">let</span> sessionIDSM = userInfoService.activeUse
             <span style="color:#66d9ef">return</span>
         }
-        <span style="color:#66d9ef">let</span> parameters = [<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">sessionID</span><span style="color:#e6db74">&#34;</span>: sessionID]
+        <span style="color:#66d9ef">let</span> parameters = [<span style="color:#e6db74">&#34;sessionID&#34;</span>: sessionID]
         <span style="color:#66d9ef">let</span> formatter = DateFormatter()
-        formatter.dateFormat = <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">yyyy-MM-dd HH:mm:ss</span><span style="color:#e6db74">&#34;</span>
-        <span style="color:#66d9ef">let</span> temName = <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">\(</span>formatter.string<span style="color:#e6db74">(</span>from: Date<span style="color:#e6db74">(</span><span style="color:#e6db74">)</span><span style="color:#e6db74">)</span><span style="color:#e6db74">)</span><span style="color:#e6db74">-</span><span style="color:#e6db74">\(</span>deviceID<span style="color:#e6db74">)</span><span style="color:#e6db74">.txt</span><span style="color:#e6db74">&#34;</span>
+        formatter.dateFormat = <span style="color:#e6db74">&#34;yyyy-MM-dd HH:mm:ss&#34;</span>
+        <span style="color:#66d9ef">let</span> temName = <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">\(</span>formatter.string<span style="color:#e6db74">(</span>from: Date<span style="color:#e6db74">()))</span><span style="color:#e6db74">-</span><span style="color:#e6db74">\(</span>deviceID<span style="color:#e6db74">)</span><span style="color:#e6db74">.txt&#34;</span>
         <span style="color:#66d9ef">let</span> temPath = <span style="color:#66d9ef">self</span>.statisticsDir.path.stringByAppendingPathComponent(temName)
         <span style="color:#66d9ef">let</span> path = <span style="color:#66d9ef">self</span>.statisticsDir.path.stringByAppendingPathComponent(fileName)
         <span style="color:#66d9ef">try</span> FileManager.<span style="color:#66d9ef">default</span>.moveItem(atPath: path, toPath: temPath)
-        <span style="color:#75715e">//</span><span style="color:#75715e"> </span><span style="color:#75715e">遍</span><span style="color:#75715e">历</span><span style="color:#75715e">埋</span><span style="color:#75715e">点</span><span style="color:#75715e">文</span><span style="color:#75715e">件</span><span style="color:#75715e">夹</span><span style="color:#75715e">下</span><span style="color:#75715e">的</span><span style="color:#75715e">埋</span><span style="color:#75715e">点</span><span style="color:#75715e">数</span><span style="color:#75715e">据</span><span style="color:#75715e">文</span><span style="color:#75715e">件</span><span style="color:#75715e">,</span><span style="color:#75715e">以</span><span style="color:#75715e">获</span><span style="color:#75715e">取</span>
+        <span style="color:#75715e">// 遍历埋点文件夹下的埋点数据文件,以获取</span>
         <span style="color:#66d9ef">let</span> fileList = <span style="color:#66d9ef">try</span> FileManager.<span style="color:#66d9ef">default</span>.contentsOfDirectory(atPath: statisticsDir.path)
         <span style="color:#66d9ef">let</span> needUploadFileList = fileList.filter {
             $0 <span style="color:#f92672">!=</span> <span style="color:#66d9ef">self</span>.fileName
@@ -285,7 +285,7 @@ code.has-jax {
 }
 <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">uploadFile</span>(data: Data, parameters: [String: String], file: String, path: String) {
     Alamofire.upload(multipartFormData: { multipartFormData <span style="color:#66d9ef">in</span>
-        multipartFormData.append(data, withName: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">file</span><span style="color:#e6db74">&#34;</span>, fileName: file, mimeType: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">text/plain</span><span style="color:#e6db74">&#34;</span>)
+        multipartFormData.append(data, withName: <span style="color:#e6db74">&#34;file&#34;</span>, fileName: file, mimeType: <span style="color:#e6db74">&#34;text/plain&#34;</span>)
         <span style="color:#66d9ef">for</span> (key, value) <span style="color:#66d9ef">in</span> parameters {
             <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> valueData = value.data(using: .utf8) {
                 multipartFormData.append(valueData, withName: key)
@@ -316,11 +316,11 @@ code.has-jax {
 }
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">requestImage</span>(url: String, completionHandler: @escaping (<span style="color:#66d9ef">_</span> image: UIImage?) -&gt; Void) {
     <span style="color:#66d9ef">self</span>.tokenHttpController.requestLoginDataAndToken(type: .base64, success: { (data, token) <span style="color:#66d9ef">in</span>
-        <span style="color:#66d9ef">let</span> data = data?.extStringByUrlEncode ?? <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">&#34;</span>
-        <span style="color:#66d9ef">let</span> token = token?.extStringByUrlEncode ?? <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">&#34;</span>
+        <span style="color:#66d9ef">let</span> data = data?.extStringByUrlEncode ?? <span style="color:#e6db74">&#34;&#34;</span>
+        <span style="color:#66d9ef">let</span> token = token?.extStringByUrlEncode ?? <span style="color:#e6db74">&#34;&#34;</span>
         <span style="color:#66d9ef">let</span> header: HTTPHeaders = [
-            <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">data</span><span style="color:#e6db74">&#34;</span>: data,
-            <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">token</span><span style="color:#e6db74">&#34;</span>: token
+            <span style="color:#e6db74">&#34;data&#34;</span>: data,
+            <span style="color:#e6db74">&#34;token&#34;</span>: token
         ]
         Alamofire.request(url, method: .<span style="color:#66d9ef">get</span>, headers: header).response { (response) <span style="color:#66d9ef">in</span>
             <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> data = response.data {
@@ -343,38 +343,38 @@ code.has-jax {
         <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> dataJson = jsonStr.data(using: String.Encoding.utf8) {
             <span style="color:#66d9ef">do</span>{
                 <span style="color:#66d9ef">let</span> json = <span style="color:#66d9ef">try</span> JSON(data:dataJson)
-                data[<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">configHash</span><span style="color:#e6db74">&#34;</span>] = json[<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">configHash</span><span style="color:#e6db74">&#34;</span>].stringValue
+                data[<span style="color:#e6db74">&#34;configHash&#34;</span>] = json[<span style="color:#e6db74">&#34;configHash&#34;</span>].stringValue
             }<span style="color:#66d9ef">catch</span>{
-                data[<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">configHash</span><span style="color:#e6db74">&#34;</span>] = <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">&#34;</span>
+                data[<span style="color:#e6db74">&#34;configHash&#34;</span>] = <span style="color:#e6db74">&#34;&#34;</span>
             }
         }
     }<span style="color:#66d9ef">else</span>{
-        data[<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">configHash</span><span style="color:#e6db74">&#34;</span>] = <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">&#34;</span>
+        data[<span style="color:#e6db74">&#34;configHash&#34;</span>] = <span style="color:#e6db74">&#34;&#34;</span>
     }
     
     <span style="color:#66d9ef">switch</span> UIDevice.current.userInterfaceIdiom{
-    <span style="color:#66d9ef">case</span> .pad: data[<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">type</span><span style="color:#e6db74">&#34;</span>] = <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Pad</span><span style="color:#e6db74">&#34;</span>
-    <span style="color:#66d9ef">case</span> .phone: data[<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">type</span><span style="color:#e6db74">&#34;</span>] = <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Phone</span><span style="color:#e6db74">&#34;</span>
+    <span style="color:#66d9ef">case</span> .pad: data[<span style="color:#e6db74">&#34;type&#34;</span>] = <span style="color:#e6db74">&#34;Pad&#34;</span>
+    <span style="color:#66d9ef">case</span> .phone: data[<span style="color:#e6db74">&#34;type&#34;</span>] = <span style="color:#e6db74">&#34;Phone&#34;</span>
     <span style="color:#66d9ef">default</span>:<span style="color:#66d9ef">break</span>
     }
     
     <span style="color:#66d9ef">var</span> bodyData = [String:Any]()
-    bodyData[<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">meta</span><span style="color:#e6db74">&#34;</span>] = meta
-    bodyData[<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">data</span><span style="color:#e6db74">&#34;</span>] = data
+    bodyData[<span style="color:#e6db74">&#34;meta&#34;</span>] = meta
+    bodyData[<span style="color:#e6db74">&#34;data&#34;</span>] = data
         
     Alamofire.request(url, method: .post, parameters: bodyData,encoding: JSONEncoding.<span style="color:#66d9ef">default</span>).responseJSON{ response <span style="color:#66d9ef">in</span>
         <span style="color:#66d9ef">switch</span> response.result{
         <span style="color:#66d9ef">case</span> .success(<span style="color:#66d9ef">let</span> value):            
             <span style="color:#66d9ef">let</span> json = JSON(value)
-            <span style="color:#66d9ef">let</span> subJSON = json[<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">data</span><span style="color:#e6db74">&#34;</span>]
-            <span style="color:#66d9ef">let</span> retCode = subJSON[<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">retCode</span><span style="color:#e6db74">&#34;</span>].stringValue
-            <span style="color:#75715e">//</span><span style="color:#75715e">r</span><span style="color:#75715e">e</span><span style="color:#75715e">t</span><span style="color:#75715e">C</span><span style="color:#75715e">o</span><span style="color:#75715e">d</span><span style="color:#75715e">e</span><span style="color:#75715e"> </span><span style="color:#75715e">为</span><span style="color:#75715e">1</span><span style="color:#75715e">表</span><span style="color:#75715e">示</span><span style="color:#75715e">有</span><span style="color:#75715e">更</span><span style="color:#75715e">新</span><span style="color:#75715e">，</span><span style="color:#75715e">0</span><span style="color:#75715e">表</span><span style="color:#75715e">示</span><span style="color:#75715e">没</span><span style="color:#75715e">有</span><span style="color:#75715e">更</span><span style="color:#75715e">新</span><span style="color:#75715e">，</span><span style="color:#75715e">其</span><span style="color:#75715e">它</span><span style="color:#75715e">表</span><span style="color:#75715e">示</span><span style="color:#75715e">出</span><span style="color:#75715e">错</span>
+            <span style="color:#66d9ef">let</span> subJSON = json[<span style="color:#e6db74">&#34;data&#34;</span>]
+            <span style="color:#66d9ef">let</span> retCode = subJSON[<span style="color:#e6db74">&#34;retCode&#34;</span>].stringValue
+            <span style="color:#75715e">//retCode 为1表示有更新，0表示没有更新，其它表示出错</span>
             <span style="color:#66d9ef">switch</span> retCode{
-            <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">1</span><span style="color:#e6db74">&#34;</span>:
+            <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;1&#34;</span>:
                 completionHandler(subJSON)
-            <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">0</span><span style="color:#e6db74">&#34;</span>: <span style="color:#66d9ef">break</span>
+            <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;0&#34;</span>: <span style="color:#66d9ef">break</span>
             <span style="color:#66d9ef">default</span>:
-                <span style="color:#66d9ef">let</span> msg = subJSON[<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">retMsg</span><span style="color:#e6db74">&#34;</span>].stringValue
+                <span style="color:#66d9ef">let</span> msg = subJSON[<span style="color:#e6db74">&#34;retMsg&#34;</span>].stringValue
                 DPrint(msg)
             }
         <span style="color:#66d9ef">case</span> .failure(<span style="color:#66d9ef">let</span> error):
@@ -384,12 +384,12 @@ code.has-jax {
 }
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">bindUserDevice</span>(with model: LoginUserModel, and existUsers: ExistUsers, block: @escaping (<span style="color:#66d9ef">_</span> model: UserInfoModel?, <span style="color:#66d9ef">_</span> errorMsg: String?) -&gt; Void) {
     <span style="color:#66d9ef">var</span> dataDic = Dictionary&lt;String, String&gt;()
-    dataDic[<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">rand</span><span style="color:#e6db74">&#34;</span>] = UUID().uuidString
+    dataDic[<span style="color:#e6db74">&#34;rand&#34;</span>] = UUID().uuidString
     
     <span style="color:#66d9ef">var</span> metaDic = <span style="color:#66d9ef">self</span>.getDefaultMetaDic(forAction: ConfigRequestAction.bindUserDeviceV2)
-    metaDic[<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">ystID</span><span style="color:#e6db74">&#34;</span>] = model.ystId
-    metaDic[<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">sapID</span><span style="color:#e6db74">&#34;</span>] = model.sapId
-    metaDic[<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">inuseID</span><span style="color:#e6db74">&#34;</span>] = model.inUseId
+    metaDic[<span style="color:#e6db74">&#34;ystID&#34;</span>] = model.ystId
+    metaDic[<span style="color:#e6db74">&#34;sapID&#34;</span>] = model.sapId
+    metaDic[<span style="color:#e6db74">&#34;inuseID&#34;</span>] = model.inUseId
     
     <span style="color:#66d9ef">let</span> parameters = <span style="color:#66d9ef">self</span>.getRequestPostParameters(metaDic: metaDic, dataDic: dataDic)
     
@@ -397,14 +397,14 @@ code.has-jax {
         <span style="color:#66d9ef">switch</span> response.result {
         <span style="color:#66d9ef">case</span> .success(<span style="color:#66d9ef">let</span> value):
             <span style="color:#66d9ef">let</span> json = JSON(value)
-            <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> retCode = json[<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">data</span><span style="color:#e6db74">&#34;</span>][<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">retCode</span><span style="color:#e6db74">&#34;</span>].string, retCode == <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">0</span><span style="color:#e6db74">&#34;</span> {
-                <span style="color:#66d9ef">let</span> model = UserInfoModel(from: json[<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">data</span><span style="color:#e6db74">&#34;</span>])
+            <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> retCode = json[<span style="color:#e6db74">&#34;data&#34;</span>][<span style="color:#e6db74">&#34;retCode&#34;</span>].string, retCode == <span style="color:#e6db74">&#34;0&#34;</span> {
+                <span style="color:#66d9ef">let</span> model = UserInfoModel(from: json[<span style="color:#e6db74">&#34;data&#34;</span>])
                 block(model, <span style="color:#66d9ef">nil</span>)
             } <span style="color:#66d9ef">else</span> {
-                block(<span style="color:#66d9ef">nil</span>, json[<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">data</span><span style="color:#e6db74">&#34;</span>][<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">retMsg</span><span style="color:#e6db74">&#34;</span>].stringValue)
+                block(<span style="color:#66d9ef">nil</span>, json[<span style="color:#e6db74">&#34;data&#34;</span>][<span style="color:#e6db74">&#34;retMsg&#34;</span>].stringValue)
             }
         <span style="color:#66d9ef">case</span> .failure(<span style="color:#66d9ef">_</span>):
-            block(<span style="color:#66d9ef">nil</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">network is poor</span><span style="color:#e6db74">&#34;</span>)
+            block(<span style="color:#66d9ef">nil</span>, <span style="color:#e6db74">&#34;network is poor&#34;</span>)
         }
     }
 }

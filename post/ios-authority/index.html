@@ -268,20 +268,20 @@ code.has-jax {
 <p><code>.notDetermined</code> <!-- raw HTML omitted -->没有询问过<!-- raw HTML omitted -->用户是否授权，所以是未确定状态。</p>
 </li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">//</span><span style="color:#75715e">MARK:</span><span style="color:#75715e">检</span><span style="color:#75715e">查</span><span style="color:#75715e">相</span><span style="color:#75715e">机</span><span style="color:#75715e">访</span><span style="color:#75715e">问</span><span style="color:#75715e">权</span><span style="color:#75715e">限</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">//</span><span style="color:#75715e">MARK:</span><span style="color:#75715e">检查相机访问权限</span>
 <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">cameraPermissionCheck</span>(){
     <span style="color:#66d9ef">let</span> authStatus = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
     <span style="color:#66d9ef">switch</span> authStatus {
     <span style="color:#66d9ef">case</span> .denied, .restricted:
-        <span style="color:#66d9ef">let</span> alert = UIAlertController(title: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">提示</span><span style="color:#e6db74">&#34;</span>.localized, message: CameraAccessMsg, preferredStyle: .alert)
-        <span style="color:#66d9ef">let</span> settingAction = UIAlertAction(title: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">去设置</span><span style="color:#e6db74">&#34;</span>.localized, style: .<span style="color:#66d9ef">default</span>) { (<span style="color:#66d9ef">_</span>) <span style="color:#66d9ef">in</span>
+        <span style="color:#66d9ef">let</span> alert = UIAlertController(title: <span style="color:#e6db74">&#34;提示&#34;</span>.localized, message: CameraAccessMsg, preferredStyle: .alert)
+        <span style="color:#66d9ef">let</span> settingAction = UIAlertAction(title: <span style="color:#e6db74">&#34;去设置&#34;</span>.localized, style: .<span style="color:#66d9ef">default</span>) { (<span style="color:#66d9ef">_</span>) <span style="color:#66d9ef">in</span>
             <span style="color:#66d9ef">let</span> url = NSURL(string: UIApplicationOpenSettingsURLString)<span style="color:#f92672">!</span>
             <span style="color:#66d9ef">if</span> UIApplication.shared.canOpenURL(url <span style="color:#66d9ef">as</span> URL){
                 UIApplication.shared.openURL(url <span style="color:#66d9ef">as</span> URL)
             }
         }
-        <span style="color:#66d9ef">let</span> cancelAction = UIAlertAction(title: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">取消</span><span style="color:#e6db74">&#34;</span>.localized, style: .cancel) { (<span style="color:#66d9ef">_</span>) <span style="color:#66d9ef">in</span>
-            DPrint(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">cancel!</span><span style="color:#e6db74">&#34;</span>)
+        <span style="color:#66d9ef">let</span> cancelAction = UIAlertAction(title: <span style="color:#e6db74">&#34;取消&#34;</span>.localized, style: .cancel) { (<span style="color:#66d9ef">_</span>) <span style="color:#66d9ef">in</span>
+            DPrint(<span style="color:#e6db74">&#34;cancel!&#34;</span>)
         }
         alert.addAction(settingAction)
         alert.addAction(cancelAction)
@@ -290,19 +290,19 @@ code.has-jax {
     }
 }
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">cameraPermissionCheck</span>(){
-    <span style="color:#66d9ef">let</span> msg = <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">没有相机访问权限，请移步到设置--&gt;隐私--&gt;相机--&gt;APP</span><span style="color:#e6db74">&#34;</span>
+    <span style="color:#66d9ef">let</span> msg = <span style="color:#e6db74">&#34;没有相机访问权限，请移步到设置--&gt;隐私--&gt;相机--&gt;APP&#34;</span>
     <span style="color:#66d9ef">let</span> authStatus = AVCaptureDevice.authorizationStatus(<span style="color:#66d9ef">for</span>: .video)
     <span style="color:#66d9ef">switch</span> authStatus {
     <span style="color:#66d9ef">case</span> .denied, .restricted,.notDetermined:
-        <span style="color:#66d9ef">let</span> alert = UIAlertController(title: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">提示</span><span style="color:#e6db74">&#34;</span>, message: msg, preferredStyle: .alert)
-        <span style="color:#66d9ef">let</span> settingAction = UIAlertAction(title: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">去设置</span><span style="color:#e6db74">&#34;</span>, style: .<span style="color:#66d9ef">default</span>) { (<span style="color:#66d9ef">_</span>) <span style="color:#66d9ef">in</span>
+        <span style="color:#66d9ef">let</span> alert = UIAlertController(title: <span style="color:#e6db74">&#34;提示&#34;</span>, message: msg, preferredStyle: .alert)
+        <span style="color:#66d9ef">let</span> settingAction = UIAlertAction(title: <span style="color:#e6db74">&#34;去设置&#34;</span>, style: .<span style="color:#66d9ef">default</span>) { (<span style="color:#66d9ef">_</span>) <span style="color:#66d9ef">in</span>
             <span style="color:#66d9ef">let</span> url = URL(string: UIApplicationOpenSettingsURLString)
             <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> cameraURL = url,UIApplication.shared.canOpenURL(cameraURL){
                 UIApplication.shared.open(cameraURL, options: [:], completionHandler: <span style="color:#66d9ef">nil</span>)
             }
         }
-        <span style="color:#66d9ef">let</span> cancelAction = UIAlertAction(title: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">取消</span><span style="color:#e6db74">&#34;</span>, style: .cancel) { (<span style="color:#66d9ef">_</span>) <span style="color:#66d9ef">in</span>
-            print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">点击了取消</span><span style="color:#e6db74">&#34;</span>)
+        <span style="color:#66d9ef">let</span> cancelAction = UIAlertAction(title: <span style="color:#e6db74">&#34;取消&#34;</span>, style: .cancel) { (<span style="color:#66d9ef">_</span>) <span style="color:#66d9ef">in</span>
+            print(<span style="color:#e6db74">&#34;点击了取消&#34;</span>)
         }
         alert.addAction(settingAction)
         alert.addAction(cancelAction)
@@ -319,15 +319,15 @@ code.has-jax {
 <h2 id="麦克风权限检查">麦克风权限检查</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">let</span> status = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeAudio) 
 <span style="color:#66d9ef">if</span> status == .denied <span style="color:#f92672">||</span> status == .restricted {
-    <span style="color:#66d9ef">let</span> message = <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">麦克风访问权限被禁用，请前往系统设置-&gt;隐私-&gt;麦克风中，启用本程序对麦克风的访问权限</span><span style="color:#e6db74">&#34;</span>.localized
-    <span style="color:#66d9ef">let</span> tipsAlertController = UIAlertController(title: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">提示</span><span style="color:#e6db74">&#34;</span>.localized, message: message, preferredStyle: .alert)
-    <span style="color:#66d9ef">let</span> confirm = UIAlertAction(title: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">去设置</span><span style="color:#e6db74">&#34;</span>.localized, style: .<span style="color:#66d9ef">default</span>){  (<span style="color:#66d9ef">_</span>) <span style="color:#66d9ef">in</span>
+    <span style="color:#66d9ef">let</span> message = <span style="color:#e6db74">&#34;麦克风访问权限被禁用，请前往系统设置-&gt;隐私-&gt;麦克风中，启用本程序对麦克风的访问权限&#34;</span>.localized
+    <span style="color:#66d9ef">let</span> tipsAlertController = UIAlertController(title: <span style="color:#e6db74">&#34;提示&#34;</span>.localized, message: message, preferredStyle: .alert)
+    <span style="color:#66d9ef">let</span> confirm = UIAlertAction(title: <span style="color:#e6db74">&#34;去设置&#34;</span>.localized, style: .<span style="color:#66d9ef">default</span>){  (<span style="color:#66d9ef">_</span>) <span style="color:#66d9ef">in</span>
         <span style="color:#66d9ef">let</span> url = NSURL(string: UIApplicationOpenSettingsURLString)<span style="color:#f92672">!</span>
         <span style="color:#66d9ef">if</span> UIApplication.shared.canOpenURL(url <span style="color:#66d9ef">as</span> URL) {
             UIApplication.shared.openURL(url <span style="color:#66d9ef">as</span> URL)
         }
     }
-    <span style="color:#66d9ef">let</span> cancelAction = UIAlertAction(title: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">取消</span><span style="color:#e6db74">&#34;</span>.localized, style: .cancel) { (<span style="color:#66d9ef">_</span>) <span style="color:#66d9ef">in</span>
+    <span style="color:#66d9ef">let</span> cancelAction = UIAlertAction(title: <span style="color:#e6db74">&#34;取消&#34;</span>.localized, style: .cancel) { (<span style="color:#66d9ef">_</span>) <span style="color:#66d9ef">in</span>
         <span style="color:#66d9ef">self</span>.dismiss(animated: <span style="color:#66d9ef">true</span>, completion: <span style="color:#66d9ef">nil</span>)
     }
     

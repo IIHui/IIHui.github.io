@@ -319,9 +319,9 @@ code.has-jax {
 <span style="color:#a6e22e">f</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">file</span> {
    <span style="color:#a6e22e">name</span>: <span style="color:#e6db74">&#34;test.dat&#34;</span>
 <span style="color:#75715e">// attr: {   //错误
-</span><span style="color:#75715e"></span><span style="color:#75715e">//   owner: 1,
-</span><span style="color:#75715e"></span><span style="color:#75715e">//   perm: 0755,
-</span><span style="color:#75715e"></span><span style="color:#75715e">//},
+</span><span style="color:#75715e">//   owner: 1,
+</span><span style="color:#75715e">//   perm: 0755,
+</span><span style="color:#75715e">//},
 </span><span style="color:#75715e"></span>}
 
 <span style="color:#a6e22e">f</span>.<span style="color:#a6e22e">attr</span>.<span style="color:#a6e22e">owner</span>  = <span style="color:#ae81ff">1</span>  <span style="color:#75715e">//也可以在初始化语句中再次定义，但那样看上去会非常丑陋
@@ -468,8 +468,8 @@ println(<span style="color:#a6e22e">unsafe</span>.<span style="color:#a6e22e">Si
 <h3 id="字段标签">字段标签</h3>
 <p>字段标签并不是注释，而是用来<!-- raw HTML omitted -->对字段进行描述的元数据。尽管它不属于数据成员，但却是类型的组成部分。<!-- raw HTML omitted -->在运行期，可用反射获取标签信息，它常被用作格式校验，数据库关系映射等。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">user</span> <span style="color:#66d9ef">struct</span>{
- <span style="color:#a6e22e">name</span> <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">昵称</span><span style="color:#e6db74">`</span>
- <span style="color:#a6e22e">sex</span> <span style="color:#66d9ef">type</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">性别</span><span style="color:#e6db74">`</span>
+ <span style="color:#a6e22e">name</span> <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`昵称`</span>
+ <span style="color:#a6e22e">sex</span> <span style="color:#66d9ef">type</span> <span style="color:#e6db74">`性别`</span>
 }
 
 </code></pre></div><hr>

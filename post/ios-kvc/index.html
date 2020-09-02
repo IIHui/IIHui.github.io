@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">4725</span>
+<span class="leancloud-visitors-count">4726</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -294,36 +294,36 @@ code.has-jax {
     NSString<span style="color:#f92672">*</span> _isName;
 }
 <span style="color:#75715e">// -(void)setName:(NSString*)name{
-</span><span style="color:#75715e"></span><span style="color:#75715e">//     toSetName = name;
-</span><span style="color:#75715e"></span><span style="color:#75715e">// }
-</span><span style="color:#75715e"></span><span style="color:#75715e">//-(NSString*)getName{
-</span><span style="color:#75715e"></span><span style="color:#75715e">//    return toSetName;
-</span><span style="color:#75715e"></span><span style="color:#75715e">//}
+</span><span style="color:#75715e">//     toSetName = name;
+</span><span style="color:#75715e">// }
+</span><span style="color:#75715e">//-(NSString*)getName{
+</span><span style="color:#75715e">//    return toSetName;
+</span><span style="color:#75715e">//}
 </span><span style="color:#75715e"></span>+(<span style="color:#66d9ef">BOOL</span>)<span style="color:#a6e22e">accessInstanceVariablesDirectly</span>{
     <span style="color:#66d9ef">return</span> NO;
 }
 -(<span style="color:#66d9ef">id</span>)<span style="color:#a6e22e">valueForUndefinedKey:</span>(NSString <span style="color:#f92672">*</span>)key{
-    NSLog(<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">出现异常，该key不存在%@</span><span style="color:#e6db74">&#34;</span>,key);
+    NSLog(<span style="color:#e6db74">@&#34;出现异常，该key不存在%@&#34;</span>,key);
     <span style="color:#66d9ef">return</span> nil;
 }
 -(<span style="color:#66d9ef">void</span>)<span style="color:#a6e22e">setValue:</span>(<span style="color:#66d9ef">id</span>)value <span style="color:#a6e22e">forUndefinedKey:</span>(NSString <span style="color:#f92672">*</span>)key{
-     NSLog(<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">出现异常，该key不存在%@</span><span style="color:#e6db74">&#34;</span>,key);
+     NSLog(<span style="color:#e6db74">@&#34;出现异常，该key不存在%@&#34;</span>,key);
 }
 <span style="color:#66d9ef">@end</span>
 <span style="color:#66d9ef">int</span> main(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> argv[]) {
     <span style="color:#66d9ef">@autoreleasepool</span> {
         <span style="color:#75715e">// insert code here...
 </span><span style="color:#75715e"></span>        Dog<span style="color:#f92672">*</span> dog <span style="color:#f92672">=</span> [Dog new];
-        [dog setValue:<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">newName</span><span style="color:#e6db74">&#34;</span> forKey:<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">name</span><span style="color:#e6db74">&#34;</span>];
-        NSString<span style="color:#f92672">*</span> name <span style="color:#f92672">=</span> [dog valueForKey:<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">toSetName</span><span style="color:#e6db74">&#34;</span>];
-        NSLog(<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">%@</span><span style="color:#e6db74">&#34;</span>,name);
+        [dog setValue:<span style="color:#e6db74">@&#34;newName&#34;</span> forKey:<span style="color:#e6db74">@&#34;name&#34;</span>];
+        NSString<span style="color:#f92672">*</span> name <span style="color:#f92672">=</span> [dog valueForKey:<span style="color:#e6db74">@&#34;toSetName&#34;</span>];
+        NSLog(<span style="color:#e6db74">@&#34;%@&#34;</span>,name);
     }
     <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
 }
 
 </code></pre></div><p>上面代码的输出为：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#ae81ff">2020</span><span style="color:#f92672">-</span><span style="color:#ae81ff">02</span><span style="color:#f92672">-</span><span style="color:#ae81ff">15</span> <span style="color:#ae81ff">09</span><span style="color:#f92672">:</span><span style="color:#ae81ff">33</span><span style="color:#f92672">:</span><span style="color:#ae81ff">48.596397</span><span style="color:#f92672">+</span><span style="color:#ae81ff">0800</span> test[<span style="color:#ae81ff">52035</span><span style="color:#f92672">:</span><span style="color:#ae81ff">3057928</span>] <span style="color:#960050;background-color:#1e0010">出</span><span style="color:#960050;background-color:#1e0010">现</span><span style="color:#960050;background-color:#1e0010">异</span><span style="color:#960050;background-color:#1e0010">常</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#960050;background-color:#1e0010">该</span>key不存在name
-<span style="color:#ae81ff">2020</span><span style="color:#f92672">-</span><span style="color:#ae81ff">02</span><span style="color:#f92672">-</span><span style="color:#ae81ff">15</span> <span style="color:#ae81ff">09</span><span style="color:#f92672">:</span><span style="color:#ae81ff">33</span><span style="color:#f92672">:</span><span style="color:#ae81ff">48.596949</span><span style="color:#f92672">+</span><span style="color:#ae81ff">0800</span> test[<span style="color:#ae81ff">52035</span><span style="color:#f92672">:</span><span style="color:#ae81ff">3057928</span>] <span style="color:#960050;background-color:#1e0010">出</span><span style="color:#960050;background-color:#1e0010">现</span><span style="color:#960050;background-color:#1e0010">异</span><span style="color:#960050;background-color:#1e0010">常</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#960050;background-color:#1e0010">该</span>key不存在toSetName
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#ae81ff">2020</span><span style="color:#f92672">-</span><span style="color:#ae81ff">02</span><span style="color:#f92672">-</span><span style="color:#ae81ff">15</span> <span style="color:#ae81ff">09</span><span style="color:#f92672">:</span><span style="color:#ae81ff">33</span><span style="color:#f92672">:</span><span style="color:#ae81ff">48.596397</span><span style="color:#f92672">+</span><span style="color:#ae81ff">0800</span> test[<span style="color:#ae81ff">52035</span><span style="color:#f92672">:</span><span style="color:#ae81ff">3057928</span>] <span style="color:#960050;background-color:#1e0010">出现异常，该</span>key不存在name
+<span style="color:#ae81ff">2020</span><span style="color:#f92672">-</span><span style="color:#ae81ff">02</span><span style="color:#f92672">-</span><span style="color:#ae81ff">15</span> <span style="color:#ae81ff">09</span><span style="color:#f92672">:</span><span style="color:#ae81ff">33</span><span style="color:#f92672">:</span><span style="color:#ae81ff">48.596949</span><span style="color:#f92672">+</span><span style="color:#ae81ff">0800</span> test[<span style="color:#ae81ff">52035</span><span style="color:#f92672">:</span><span style="color:#ae81ff">3057928</span>] <span style="color:#960050;background-color:#1e0010">出现异常，该</span>key不存在toSetName
 <span style="color:#ae81ff">2020</span><span style="color:#f92672">-</span><span style="color:#ae81ff">02</span><span style="color:#f92672">-</span><span style="color:#ae81ff">15</span> <span style="color:#ae81ff">09</span><span style="color:#f92672">:</span><span style="color:#ae81ff">33</span><span style="color:#f92672">:</span><span style="color:#ae81ff">48.596987</span><span style="color:#f92672">+</span><span style="color:#ae81ff">0800</span> test[<span style="color:#ae81ff">52035</span><span style="color:#f92672">:</span><span style="color:#ae81ff">3057928</span>] (null)
 </code></pre></div><p>这是因为重写了<code>+(BOOL)accessInstanceVariablesDirectly</code>，并让它返回了<code>NO</code>之后，<code>KVC</code>不再去找<code>name</code>系列成员变量，而是直接调用<code>setValue：forUndefinedKey：</code>。所以如果不想让自定义的类实现<code>KVC</code>，则可以像上面那样做。</p>
 <p>如果将下面的注释取消：</p>
@@ -336,7 +336,7 @@ code.has-jax {
 </code></pre></div><p>并将<code>NSString* name = [dog valueForKey:@&quot;toSetName&quot;]</code>; 换成 <code>NSString* name = [dog valueForKey:@&quot;name&quot;];</code>就可以得到正确的结果了：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#ae81ff">2020</span><span style="color:#f92672">-</span><span style="color:#ae81ff">02</span><span style="color:#f92672">-</span><span style="color:#ae81ff">15</span> <span style="color:#ae81ff">09</span><span style="color:#f92672">:</span><span style="color:#ae81ff">59</span><span style="color:#f92672">:</span><span style="color:#ae81ff">52.961889</span><span style="color:#f92672">+</span><span style="color:#ae81ff">0800</span> test[<span style="color:#ae81ff">52736</span><span style="color:#f92672">:</span><span style="color:#ae81ff">3072979</span>] newName
 </code></pre></div><p>根据上面的寻找机制，按照如下修改，仍然可以设置<code>name</code>的值：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#75715e">#</span><span style="color:#75715e">import &#34;Dog.h&#34;</span><span style="color:#75715e">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#75715e">#import &#34;Dog.h&#34;
 </span><span style="color:#75715e"></span>
 <span style="color:#66d9ef">@implementation</span> <span style="color:#a6e22e">Dog</span> {
     NSString<span style="color:#f92672">*</span> toSetName;
@@ -346,33 +346,33 @@ code.has-jax {
     NSString<span style="color:#f92672">*</span> _isName;
 }
 <span style="color:#75715e">// -(void)setName:(NSString*)name{
-</span><span style="color:#75715e"></span><span style="color:#75715e">//     toSetName = name;
-</span><span style="color:#75715e"></span><span style="color:#75715e">// }
-</span><span style="color:#75715e"></span><span style="color:#75715e">//-(NSString*)getName{
-</span><span style="color:#75715e"></span><span style="color:#75715e">//    return toSetName;
-</span><span style="color:#75715e"></span><span style="color:#75715e">//}
+</span><span style="color:#75715e">//     toSetName = name;
+</span><span style="color:#75715e">// }
+</span><span style="color:#75715e">//-(NSString*)getName{
+</span><span style="color:#75715e">//    return toSetName;
+</span><span style="color:#75715e">//}
 </span><span style="color:#75715e"></span>+(<span style="color:#66d9ef">BOOL</span>)<span style="color:#a6e22e">accessInstanceVariablesDirectly</span>{
     <span style="color:#66d9ef">return</span> YES;
 }
 -(<span style="color:#66d9ef">id</span>)<span style="color:#a6e22e">valueForUndefinedKey:</span>(NSString <span style="color:#f92672">*</span>)key{
-    NSLog(<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">出现异常，该key不存在%@</span><span style="color:#e6db74">&#34;</span>,key);
+    NSLog(<span style="color:#e6db74">@&#34;出现异常，该key不存在%@&#34;</span>,key);
     <span style="color:#66d9ef">return</span> nil;
 }
 -(<span style="color:#66d9ef">void</span>)<span style="color:#a6e22e">setValue:</span>(<span style="color:#66d9ef">id</span>)value <span style="color:#a6e22e">forUndefinedKey:</span>(NSString <span style="color:#f92672">*</span>)key{
-     NSLog(<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">出现异常，该key不存在%@</span><span style="color:#e6db74">&#34;</span>,key);
+     NSLog(<span style="color:#e6db74">@&#34;出现异常，该key不存在%@&#34;</span>,key);
 }
 <span style="color:#66d9ef">@end</span>
 
-<span style="color:#75715e">#</span><span style="color:#75715e">import &lt;Foundation</span><span style="color:#75715e">/</span><span style="color:#75715e">Foundation.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">import &#34;Dog.h&#34;</span><span style="color:#75715e">
+<span style="color:#75715e">#import &lt;Foundation/Foundation.h&gt;
+</span><span style="color:#75715e">#import &#34;Dog.h&#34;
 </span><span style="color:#75715e"></span>
 <span style="color:#66d9ef">int</span> main(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> argv[]) {
     <span style="color:#66d9ef">@autoreleasepool</span> {
         <span style="color:#75715e">// insert code here...
 </span><span style="color:#75715e"></span>        Dog <span style="color:#f92672">*</span> dog <span style="color:#f92672">=</span> [Dog new];
-        [dog setValue:<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">newName</span><span style="color:#e6db74">&#34;</span> forKey:<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">name</span><span style="color:#e6db74">&#34;</span>];
-        NSString<span style="color:#f92672">*</span> name <span style="color:#f92672">=</span> [dog valueForKey:<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">name</span><span style="color:#e6db74">&#34;</span>];
-        NSLog(<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">%@</span><span style="color:#e6db74">&#34;</span>,name);
+        [dog setValue:<span style="color:#e6db74">@&#34;newName&#34;</span> forKey:<span style="color:#e6db74">@&#34;name&#34;</span>];
+        NSString<span style="color:#f92672">*</span> name <span style="color:#f92672">=</span> [dog valueForKey:<span style="color:#e6db74">@&#34;name&#34;</span>];
+        NSLog(<span style="color:#e6db74">@&#34;%@&#34;</span>,name);
     }
     <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
     
@@ -426,15 +426,15 @@ code.has-jax {
     <span style="color:#66d9ef">@autoreleasepool</span> {
         People<span style="color:#f92672">*</span> people1 <span style="color:#f92672">=</span> [People new];
         Address<span style="color:#f92672">*</span> addr <span style="color:#f92672">=</span> [Address new];
-        addr.country <span style="color:#f92672">=</span> <span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">China</span><span style="color:#e6db74">&#34;</span>;
+        addr.country <span style="color:#f92672">=</span> <span style="color:#e6db74">@&#34;China&#34;</span>;
         people1.address <span style="color:#f92672">=</span> addr;
         NSString<span style="color:#f92672">*</span> country1 <span style="color:#f92672">=</span> people1.address.country;
-        NSString <span style="color:#f92672">*</span> country2 <span style="color:#f92672">=</span> [people1 valueForKeyPath:<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">address.country</span><span style="color:#e6db74">&#34;</span>];
-        NSLog(<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">country1:%@   country2:%@</span><span style="color:#e6db74">&#34;</span>,country1,country2);
-        [people1 setValue:<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">USA</span><span style="color:#e6db74">&#34;</span> forKeyPath:<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">address.country</span><span style="color:#e6db74">&#34;</span>];
+        NSString <span style="color:#f92672">*</span> country2 <span style="color:#f92672">=</span> [people1 valueForKeyPath:<span style="color:#e6db74">@&#34;address.country&#34;</span>];
+        NSLog(<span style="color:#e6db74">@&#34;country1:%@   country2:%@&#34;</span>,country1,country2);
+        [people1 setValue:<span style="color:#e6db74">@&#34;USA&#34;</span> forKeyPath:<span style="color:#e6db74">@&#34;address.country&#34;</span>];
         country1 <span style="color:#f92672">=</span> people1.address.country;
-        country2 <span style="color:#f92672">=</span> [people1 valueForKeyPath:<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">address.country</span><span style="color:#e6db74">&#34;</span>];
-        NSLog(<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">country1:%@   country2:%@</span><span style="color:#e6db74">&#34;</span>,country1,country2);
+        country2 <span style="color:#f92672">=</span> [people1 valueForKeyPath:<span style="color:#e6db74">@&#34;address.country&#34;</span>];
+        NSLog(<span style="color:#e6db74">@&#34;country1:%@   country2:%@&#34;</span>,country1,country2);
     }
     <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
 }
@@ -446,17 +446,17 @@ code.has-jax {
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#66d9ef">@implementation</span> <span style="color:#a6e22e">People</span>
 
 -(<span style="color:#66d9ef">void</span>)<span style="color:#a6e22e">setNilValueForKey:</span>(NSString <span style="color:#f92672">*</span>)key{
-    NSLog(<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">不能将%@设成nil</span><span style="color:#e6db74">&#34;</span>,key);
+    NSLog(<span style="color:#e6db74">@&#34;不能将%@设成nil&#34;</span>,key);
 }
 <span style="color:#66d9ef">@end</span>
 </code></pre></div><h2 id="非对象和自定义对象">非对象和自定义对象</h2>
 <p>不是每一个方法都返回对象，但是<code>valueForKey：</code>总是返回一个<code>id</code>对象。如果原本的变量类型是值类型或者结构体，返回值会封装成<code>NSNumber</code>或者<code>NSValue</code>对象。这两个类会处理从数字，布尔值到指针和结构体的任何类型。然后，如果需要使用的话，需手动转换成原来的类型。尽管<code>valueForKey</code>会自动将值类型封装成对象，但是<code>setValue：forKey：</code>却不行。必须手动将值类型转换成<code>NSNumber</code>或者<code>NSValue</code>类型，才能传递过去。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">Address<span style="color:#f92672">*</span> add2 <span style="color:#f92672">=</span> [Address new];
-add2.country <span style="color:#f92672">=</span> <span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">England</span><span style="color:#e6db74">&#34;</span>;
-[people1 setValue:add2 forKey:<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">address</span><span style="color:#e6db74">&#34;</span>];
+add2.country <span style="color:#f92672">=</span> <span style="color:#e6db74">@&#34;England&#34;</span>;
+[people1 setValue:add2 forKey:<span style="color:#e6db74">@&#34;address&#34;</span>];
 NSString<span style="color:#f92672">*</span> country1 <span style="color:#f92672">=</span> people1.address.country;
-NSString <span style="color:#f92672">*</span> country2 <span style="color:#f92672">=</span> [people1 valueForKeyPath:<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">address.country</span><span style="color:#e6db74">&#34;</span>];
-NSLog(<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">country1:%@   country2:%@</span><span style="color:#e6db74">&#34;</span>,country1,country2);
+NSString <span style="color:#f92672">*</span> country2 <span style="color:#f92672">=</span> [people1 valueForKeyPath:<span style="color:#e6db74">@&#34;address.country&#34;</span>];
+NSLog(<span style="color:#e6db74">@&#34;country1:%@   country2:%@&#34;</span>,country1,country2);
 </code></pre></div><h2 id="缺点">缺点</h2>
 <ul>
 <li>
@@ -479,7 +479,7 @@ NSLog(<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">count
 <p><img src="https://i.loli.net/2020/02/15/USyvOpWMc9TweXt.jpg" alt="-c"></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">let count:UnsafeMutablePointer<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">UInt32</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span>  UnsafeMutablePointer<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">UInt32</span><span style="color:#f92672">&gt;</span>()
 var properties <span style="color:#f92672">=</span> class_copyIvarList(UITextField.self, count)
-<span style="color:#66d9ef">while</span> properties.memory.debugDescription <span style="color:#f92672">!</span><span style="color:#f92672">=</span>  <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">0x0000000000000000</span><span style="color:#e6db74">&#34;</span>{
+<span style="color:#66d9ef">while</span> properties.memory.debugDescription <span style="color:#f92672">!=</span>  <span style="color:#e6db74">&#34;0x0000000000000000&#34;</span>{
     let t <span style="color:#f92672">=</span> ivar_getName(properties.memory)
     let n <span style="color:#f92672">=</span> NSString(CString: t, encoding: NSUTF8StringEncoding)
     print(n)                                                         <span style="color:#75715e">//打印出所有属性，这里我用了Swift语言
@@ -504,14 +504,14 @@ Optional(_iconView)
 <p><code>Apple</code>对<code>KVC</code>的<code>valueForKey:</code>方法作了一些特殊的实现，比如说<code>NSArray</code>和<code>NSSet</code>这样的容器类就实现了这些方法，所以可以用<code>KVC</code>很方便地操作集合。</p>
 <h3 id="高阶消息传递">高阶消息传递</h3>
 <p>当对容器类使用<code>KVC</code>时，<code>valueForKey:</code>将会被传递给容器中的每一个对象，而不是容器本身进行操作。结果会被添加进返回的容器中。这样，开发者可以很方便的操作集合来返回另一个集合。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">NSArray<span style="color:#f92672">*</span> arrStr <span style="color:#f92672">=</span> <span style="color:#ae81ff">@[</span><span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">english</span><span style="color:#e6db74">&#34;</span>,<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">franch</span><span style="color:#e6db74">&#34;</span>,<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">chinese</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">]</span>;
-NSArray<span style="color:#f92672">*</span> arrCapStr <span style="color:#f92672">=</span> [arrStr valueForKey:<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">capitalizedString</span><span style="color:#e6db74">&#34;</span>];
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">NSArray<span style="color:#f92672">*</span> arrStr <span style="color:#f92672">=</span> <span style="color:#ae81ff">@[</span><span style="color:#e6db74">@&#34;english&#34;</span>,<span style="color:#e6db74">@&#34;franch&#34;</span>,<span style="color:#e6db74">@&#34;chinese&#34;</span><span style="color:#ae81ff">]</span>;
+NSArray<span style="color:#f92672">*</span> arrCapStr <span style="color:#f92672">=</span> [arrStr valueForKey:<span style="color:#e6db74">@&#34;capitalizedString&#34;</span>];
 <span style="color:#66d9ef">for</span> (NSString<span style="color:#f92672">*</span> str  <span style="color:#66d9ef">in</span> arrCapStr) {
-    NSLog(<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">%@</span><span style="color:#e6db74">&#34;</span>,str);
+    NSLog(<span style="color:#e6db74">@&#34;%@&#34;</span>,str);
 }
-NSArray<span style="color:#f92672">*</span> arrCapStrLength <span style="color:#f92672">=</span> [arrStr valueForKeyPath:<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">capitalizedString.length</span><span style="color:#e6db74">&#34;</span>];
+NSArray<span style="color:#f92672">*</span> arrCapStrLength <span style="color:#f92672">=</span> [arrStr valueForKeyPath:<span style="color:#e6db74">@&#34;capitalizedString.length&#34;</span>];
 <span style="color:#66d9ef">for</span> (NSNumber<span style="color:#f92672">*</span> length  <span style="color:#66d9ef">in</span> arrCapStrLength) {
-    NSLog(<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">%ld</span><span style="color:#e6db74">&#34;</span>,(<span style="color:#66d9ef">long</span>)length.integerValue);
+    NSLog(<span style="color:#e6db74">@&#34;%ld&#34;</span>,(<span style="color:#66d9ef">long</span>)length.integerValue);
 }
 
 <span style="color:#75715e">//结果

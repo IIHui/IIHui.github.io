@@ -284,7 +284,7 @@ code.has-jax {
 <span style="color:#a6e22e">ReactDOM</span>.<span style="color:#a6e22e">render</span>(
   <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">h1</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">style</span>} <span style="color:#a6e22e">onclick</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">clickHandler</span>} <span style="color:#f92672">&gt;</span>
      <span style="color:#a6e22e">Hello</span>, <span style="color:#a6e22e">world</span><span style="color:#f92672">!</span>
-  <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#960050;background-color:#1e0010">h</span><span style="color:#960050;background-color:#1e0010">1</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+  <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/h1&gt;</span>
   document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;example&#39;</span>)
 );
 </code></pre></div><p>上面代码写在一个文件中，封装了结构、样式和逻辑，完全违背了<!-- raw HTML omitted -->关注点分离<!-- raw HTML omitted -->的原则。但是，这种方式有利于组件的隔离。<!-- raw HTML omitted -->每个组件包含了所有需要用到的代码，不依赖外部，组件之间没有耦合，很方便复用<!-- raw HTML omitted -->。所以，随着<code>React</code>的走红和组件模式深入人心，这种<!-- raw HTML omitted -->关注点混合<!-- raw HTML omitted -->的新写法逐渐成为主流。</p>
@@ -312,13 +312,13 @@ code.has-jax {
 <hr>
 <h3 id="标签选择器">标签选择器</h3>
 <p>标签选择器，即将<code>HTML</code>中的标签作为选择器：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css"><span style="color:#f92672">p</span> { <span style="color:#960050;background-color:#1e0010">&lt;</span><span style="color:#960050;background-color:#1e0010">!</span><span style="color:#960050;background-color:#1e0010">-</span><span style="color:#960050;background-color:#1e0010">-</span><span style="color:#960050;background-color:#1e0010">标</span><span style="color:#960050;background-color:#1e0010">签</span><span style="color:#960050;background-color:#1e0010">选</span><span style="color:#960050;background-color:#1e0010">择</span><span style="color:#960050;background-color:#1e0010">器</span><span style="color:#960050;background-color:#1e0010">-</span><span style="color:#960050;background-color:#1e0010">-</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
-    <span style="color:#66d9ef">line-height</span>: <span style="color:#66d9ef">auto</span>;  <span style="color:#960050;background-color:#1e0010">/</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#960050;background-color:#1e0010">行</span><span style="color:#960050;background-color:#1e0010">距</span><span style="color:#960050;background-color:#1e0010">自</span><span style="color:#960050;background-color:#1e0010">动</span><span style="color:#960050;background-color:#1e0010">变</span><span style="color:#960050;background-color:#1e0010">化</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css"><span style="color:#f92672">p</span> { <span style="color:#960050;background-color:#1e0010">&lt;!--标签选择器--&gt;</span>
+    <span style="color:#66d9ef">line-height</span>: <span style="color:#66d9ef">auto</span>;  <span style="color:#960050;background-color:#1e0010">//行距自动变化</span>
     <span style="color:#66d9ef">margin-top</span>: <span style="color:#ae81ff">0</span><span style="color:#66d9ef">px</span>;
     <span style="color:#66d9ef">margin-bottom</span>: <span style="color:#ae81ff">15</span><span style="color:#66d9ef">px</span>; <span style="color:#75715e">/*24*/</span>
 }
 
-<span style="color:#f92672">html</span><span style="color:#f92672">,</span> <span style="color:#f92672">body</span> { <span style="color:#960050;background-color:#1e0010">&lt;</span><span style="color:#960050;background-color:#1e0010">!</span><span style="color:#960050;background-color:#1e0010">-</span><span style="color:#960050;background-color:#1e0010">-</span><span style="color:#960050;background-color:#1e0010">标</span><span style="color:#960050;background-color:#1e0010">签</span><span style="color:#960050;background-color:#1e0010">选</span><span style="color:#960050;background-color:#1e0010">择</span><span style="color:#960050;background-color:#1e0010">器</span><span style="color:#960050;background-color:#1e0010">-</span><span style="color:#960050;background-color:#1e0010">-</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+<span style="color:#f92672">html</span><span style="color:#f92672">,</span> <span style="color:#f92672">body</span> { <span style="color:#960050;background-color:#1e0010">&lt;!--标签选择器--&gt;</span>
 	<span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">0</span>;
 	<span style="color:#66d9ef">margin</span>: <span style="color:#ae81ff">0</span>;
 	<span style="color:#66d9ef">font-family</span>: Arial, Helvetica, <span style="color:#66d9ef">sans-serif</span>;

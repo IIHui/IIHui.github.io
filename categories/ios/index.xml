@@ -17,16 +17,16 @@
       <pubDate>Mon, 17 Aug 2020 08:00:07 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/ios-as/</guid>
-      <description>as是在编译期间执行的，as?和as!是在运行时执行的。 print(4 as Double) //print4.0 print(4 as! Double) //crash 上面第二行代码会崩溃是因为as?和as!是在运行时执行，运行时4已经赋值为Int类型。 UITableView中需要reload数据的解决方案 增加内存缓存 在prepare</description>
+      <description>as是在编译期间执行的，as?和as!是在运行时执行的。 print(4 as Double) // print 4.0 print(4 as! Double) // crash 上面第二行代码会崩溃是因为as?和as!是在运行时执行，运行时4已经赋值为Int类型。 UITableView中需要reload数据的解决方案 增加内存缓存 在prep</description>
     </item>
     
     <item>
-      <title>image</title>
+      <title>image 处理</title>
       <link>https://iihui.github.io/post/ios-image/</link>
       <pubDate>Wed, 05 Aug 2020 11:46:48 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/ios-image/</guid>
-      <description>///将图片裁剪为带外围⭕️的圆形图 ///-Parameters: ///-rail:外围圆的宽度 ///-color:外围圆的颜色 ///-Returns:生成新的图片 func circleImageWidthRail(rail: CGFloat, color: UIColor) -&amp;gt; UIImage? { let size = CGSize(width: self.size.width + 2 * rail, height: self.size.height + 2 * rail) UIGraphicsBeginImageContextWithOptions(size, false, 0) let path = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: size.width, height: size.height)) color.set() path.fill() let imgPath = UIBezierPath(ovalIn: CGRect(x: rail, y: rail, width: self.size.width, height: self.size.height))</description>
+      <description>添加外圆 /// 将图片裁剪为带外围⭕️的圆形图 /// - Parameters: /// - rail: 外围圆的宽度 /// - color: 外围圆的颜色 /// - Returns: 生成新的图片 func circleImageWidthRail(rail: CGFloat, color: UIColor) -&amp;gt; UIImage? { let size = CGSize(width: self.size.width + 2 * rail, height: self.size.height + 2 * rail) UIGraphicsBeginImageContextWithOptions(size, false, 0) let path = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: size.width, height: size.height)) color.set() path.fill() let imgPath = UIBezierPath(ovalIn: CGRect(x: rail, y: rail, width: self.size.width, height: self.size.height)) imgPath.addClip() self.draw(at: CGPoint(x: rail, y: rail)) let newImg = UIGraphicsGetImageFromCurrentImageContext() UIGraphicsEndImageContext() return newImg } 裁剪为圆</description>
     </item>
     
     <item>
@@ -53,7 +53,7 @@
       <pubDate>Thu, 30 Jul 2020 08:18:10 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/ios-dict/</guid>
-      <description>字典合并 第一个字典先提供一些默认值，对于相同的key如果第二个字典中存在相应的value，则第一个字典的value被第二个字典覆盖掉。 //默认字段 var defaultInfo: [String: Any] = [ &amp;#34;sys_id&amp;#34;: sysID, &amp;#34;type&amp;#34;: action.rawValue, &amp;#34;ystId&amp;#34;: activeUser.pid, &amp;#34;deviceId&amp;#34;: deviceID, &amp;#34;platform&amp;#34;: platform, &amp;#34;pubVer&amp;#34;: pubVersion, &amp;#34;buildVer&amp;#34;: buildVersion, &amp;#34;deviceModel&amp;#34;: deviceModel, &amp;#34;serverTime&amp;#34;: logTime, &amp;#34;deviceTime&amp;#34;: deviceTimeStr, &amp;#34;startTime&amp;#34;: logTime, &amp;#34;endTime&amp;#34;: logTime, &amp;#34;networkType&amp;#34;: networkInfo._networkType, &amp;#34;networkName&amp;#34;: networkInfo._networkName, &amp;#34;ip&amp;#34;: networkInfo.ip, &amp;#34;inuseId&amp;#34;: inuseID, &amp;#34;gpsLng&amp;#34;: gps.lng, &amp;#34;gpsLat&amp;#34;: gps.lat, ] if let _args =</description>
+      <description>字典合并 第一个字典先提供一些默认值，对于相同的key如果第二个字典中存在相应的value，则第一个字典的value被第二个字典覆盖掉。 // 默认字段 var defaultInfo: [String: Any] = [ &amp;#34;sys_id&amp;#34;: sysID, &amp;#34;type&amp;#34;: action.rawValue, &amp;#34;ystId&amp;#34;: activeUser.pid, &amp;#34;deviceId&amp;#34;: deviceID, &amp;#34;platform&amp;#34;: platform, &amp;#34;pubVer&amp;#34;: pubVersion, &amp;#34;buildVer&amp;#34;: buildVersion, &amp;#34;deviceModel&amp;#34;: deviceModel, &amp;#34;serverTime&amp;#34;: logTime, &amp;#34;deviceTime&amp;#34;: deviceTimeStr, &amp;#34;startTime&amp;#34;: logTime, &amp;#34;endTime&amp;#34;: logTime, &amp;#34;networkType&amp;#34;: networkInfo._networkType, &amp;#34;networkName&amp;#34;: networkInfo._networkName, &amp;#34;ip&amp;#34;: networkInfo.ip, &amp;#34;inuseId&amp;#34;: inuseID, &amp;#34;gpsLng&amp;#34;: gps.lng, &amp;#34;gpsLat&amp;#34;: gps.lat, ] if let _args = args</description>
     </item>
     
     <item>
@@ -62,7 +62,7 @@
       <pubDate>Wed, 29 Jul 2020 19:21:23 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/ios-date/</guid>
-      <description>毫秒级时间戳距当前时间 ///将毫秒级别的时间戳转换为约定的格式，0～60秒显示几秒前，1～60分显示xx分钟前，1～24小时显示xx小时前，1～10天显示xx天前，否则显示yyyy-MM-dd ///-ParametertimeStamp:毫</description>
+      <description>毫秒级时间戳距当前时间 /// 将毫秒级别的时间戳转换为约定的格式，0～60秒显示几秒前，1～60分显示xx分钟前，1～24小时显示xx小时前，1～10天显示xx天前，否则显示yyyy-MM-dd /// - Parameter timeStamp: 毫秒级别时间戳字符串 /// - Returns: 转换后的字符串 private func</description>
     </item>
     
     <item>
@@ -71,7 +71,7 @@
       <pubDate>Wed, 29 Jul 2020 18:59:27 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/ios-richtext/</guid>
-      <description>在文字后面添加红点 ///使用富文本的方式在UILabel文本后面添加红点 ///-Parameteradd:isNeedAdd为true表示要加红点，否则不需要 ///-Returns:处理后的富文本 func addRedDot(isNeedAdd: Bool) -&amp;gt; NSMutableAttributedString { var text: String = (self.text ?? &amp;#34;&amp;#34;) if isNeedAdd { text += &amp;#34;&amp;#34; let contentText =</description>
+      <description>在文字后面添加红点 /// 使用富文本的方式在UILabel文本后面添加红点 /// - Parameter add: isNeedAdd 为true表示要加红点，否则不需要 /// - Returns: 处理后的富文本 func addRedDot(isNeedAdd: Bool) -&amp;gt; NSMutableAttributedString { var text: String = (self.text ?? &amp;#34;&amp;#34;) if isNeedAdd { text += &amp;#34; &amp;#34; let contentText = NSMutableAttributedString(string: text) let attach = NSTextAttachment() let dotImg = UIImage(named: &amp;#34;reddot&amp;#34;) let width: CGFloat = 10 attach.bounds = CGRect(x: 0, y: 0.5, width: width, height: width) attach.image = dotImg let attrText</description>
     </item>
     
     <item>
@@ -80,7 +80,7 @@
       <pubDate>Wed, 29 Jul 2020 17:13:19 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/ios-navigation/</guid>
-      <description>仿导航栏添加阴影 //设置阴影颜色 navBGView.layer.shadowColor = UIColor.lightGray.cgColor //设置阴影偏移范围 navBGView.layer.shadowOffset = CGSize(width: 0, height: 1.8) //设置阴影颜色的透明度 navBGView.layer.shadowOpacity = 0.2 //设置阴影的半径 navBGView.layer.shadowRadius = 2.5 //设置阴影路径 navBGView.layer.shadowPath = UIBezierPath.init(rect: navBGView.bounds).cgPath 通过设置1.2.3步仿导航栏的阴影就可以出现,如果对阴影有特别的需要,可再设置4.5这两个步</description>
+      <description>仿导航栏添加阴影 // 设置阴影颜色 navBGView.layer.shadowColor = UIColor.lightGray.cgColor // 设置阴影偏移范围 navBGView.layer.shadowOffset = CGSize(width: 0, height: 1.8) // 设置阴影颜色的透明度 navBGView.layer.shadowOpacity = 0.2 // 设置阴影的半径 navBGView.layer.shadowRadius = 2.5 // 设置阴影路径 navBGView.layer.shadowPath = UIBezierPath.init(rect: navBGView.bounds).cgPath 通过设置1.2.3步仿导航栏的阴影就可以出现,如果对阴影有特别的需要,可再设置4.5这两个步骤。 参考资</description>
     </item>
     
     <item>
@@ -107,7 +107,7 @@
       <pubDate>Tue, 30 Jun 2020 08:58:17 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/swift-generirs/</guid>
-      <description>范型类型 Swift允许自定义的范型类型包括类、结构体、枚举类型。 struct Stack { var items = [Int]() mutating func push(_ item:Int){ items.append(item) } mutating func pop(_ item:Int) -&amp;gt; Int { return items.removeLast() } } //调用 var stack_int = Stack() stack_int.push(7) stack_int.push(3) stack_int.push(2) print(stack_int)//Stack(items:[7,3,2]) 类型约束 范型函数和范型类型虽然可以和任何类型一起使用，但有时需要限制使用的类型，此时就需要使用类型约束。</description>
+      <description>范型类型 Swift允许自定义的范型类型包括类、结构体、枚举类型。 struct Stack { var items = [Int]() mutating func push(_ item:Int){ items.append(item) } mutating func pop(_ item:Int) -&amp;gt; Int { return items.removeLast() } } //调用 var stack_int = Stack() stack_int.push(7) stack_int.push(3) stack_int.push(2) print(stack_int)//Stack(items: [7, 3, 2]) 类型约束 范型函数和范型类型虽然可以和任何类型一起使用，但有时需要限制使用的类型，此时就需要使用类型</description>
     </item>
     
     <item>
@@ -152,7 +152,7 @@
       <pubDate>Mon, 25 May 2020 23:18:53 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/ios-wcdb/</guid>
-      <description>自定义类型入库 自定义类型要遵循ColumnCodable才能入库： enum UserOrgType: String, ColumnCodable { case CMB = &amp;#34;CMB&amp;#34; case ODC = &amp;#34;3&amp;#34; static var columnType: ColumnType = .text init(with value: FundamentalValue) { self = UserOrgType(rawValue: value.stringValue) ?? UserOrgType.CMB } func archivedValue() -&amp;gt; FundamentalValue { return FundamentalValue(self.rawValue) } } ///查看用户表是否为空 func isEmpty() -&amp;gt; Bool { do { let count = try DBManager_V2.shared.userDb.getValue(on: UserInfoModel_V2.CodingKeys.openId.count(), fromTable: tableName).int64Value return count == 0 } catch let error { printError(msg: error.localizedDescription, type: .db) return true } }</description>
+      <description>自定义类型入库 自定义类型要遵循ColumnCodable才能入库： enum UserOrgType: String, ColumnCodable { case CMB = &amp;#34;CMB&amp;#34; case ODC = &amp;#34;3&amp;#34; static var columnType: ColumnType = .text init(with value: FundamentalValue) { self = UserOrgType(rawValue: value.stringValue) ?? UserOrgType.CMB } func archivedValue() -&amp;gt; FundamentalValue { return FundamentalValue(self.rawValue) } } /// 查看用户表是否为空 func isEmpty() -&amp;gt; Bool { do { let count = try DBManager_V2.shared.userDb.getValue(on: UserInfoModel_V2.CodingKeys.openId.count(), fromTable: tableName).int64Value return count == 0 } catch let error { printError(msg: error.localizedDescription, type: .db) return true } }</description>
     </item>
     
     <item>
@@ -296,7 +296,7 @@
       <pubDate>Fri, 14 Feb 2020 20:53:50 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/ios-uicontrol/</guid>
-      <description>UIControl是UIView的子类，也是UIResponder的子类。是UIButton，UISwitch，UITextField等控件的父类。它本身定义了一些属性和方法，但是不能直接使用。 方法交换 extension UIControl { class func swizzleMethod() { struct Static { static var token = NSUUID().uuidString } //确</description>
+      <description>UIControl是UIView的子类，也是UIResponder的子类。是UIButton，UISwitch，UITextField等控件的父类。它本身定义了一些属性和方法，但是不能直接使用。 方法交换 extension UIControl { class func swizzleMethod() { struct Static { static var token = NSUUID().uuidString } // 确保</description>
     </item>
     
     <item>

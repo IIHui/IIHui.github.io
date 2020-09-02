@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">770</span>
+<span class="leancloud-visitors-count">772</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -280,9 +280,9 @@ code.has-jax {
 <h1 id="测试代码">测试代码</h1>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Swift" data-lang="Swift"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">UIKit</span>
 
-<span style="color:#66d9ef">let</span> APP_ID = <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">XXXXX</span><span style="color:#e6db74">&#34;</span>
-<span style="color:#66d9ef">let</span> API_KEY = <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">XXXXX</span><span style="color:#e6db74">&#34;</span>
-<span style="color:#66d9ef">let</span> SECRET_KEY = <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">XXXXX</span><span style="color:#e6db74">&#34;</span> 
+<span style="color:#66d9ef">let</span> APP_ID = <span style="color:#e6db74">&#34;XXXXX&#34;</span>
+<span style="color:#66d9ef">let</span> API_KEY = <span style="color:#e6db74">&#34;XXXXX&#34;</span>
+<span style="color:#66d9ef">let</span> SECRET_KEY = <span style="color:#e6db74">&#34;XXXXX&#34;</span> 
 
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ViewController</span>: UIViewController, BDSSpeechSynthesizerDelegate {
 
@@ -331,8 +331,8 @@ code.has-jax {
     }
 
     <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">configOffline</span>() {
-        <span style="color:#66d9ef">let</span> offlineEngineSpeechData = Bundle.main.path(forResource: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Chinese_And_English_Speech_Female</span><span style="color:#e6db74">&#34;</span>, ofType: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">dat</span><span style="color:#e6db74">&#34;</span>)
-        <span style="color:#66d9ef">let</span> offlineChineseAndEnglishTextData = Bundle.main.path(forResource: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Chinese_And_English_Text</span><span style="color:#e6db74">&#34;</span>, ofType: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">dat</span><span style="color:#e6db74">&#34;</span>)
+        <span style="color:#66d9ef">let</span> offlineEngineSpeechData = Bundle.main.path(forResource: <span style="color:#e6db74">&#34;Chinese_And_English_Speech_Female&#34;</span>, ofType: <span style="color:#e6db74">&#34;dat&#34;</span>)
+        <span style="color:#66d9ef">let</span> offlineChineseAndEnglishTextData = Bundle.main.path(forResource: <span style="color:#e6db74">&#34;Chinese_And_English_Text&#34;</span>, ofType: <span style="color:#e6db74">&#34;dat&#34;</span>)
 
         <span style="color:#66d9ef">let</span> error = <span style="color:#66d9ef">self</span>.synthesiser.loadOfflineEngine(offlineChineseAndEnglishTextData, speechDataPath: offlineEngineSpeechData, licenseFilePath: <span style="color:#66d9ef">nil</span>, withAppCode: APP_ID)
         <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> err = error {
@@ -350,14 +350,14 @@ code.has-jax {
     
     <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">viewDidDisappear</span>(<span style="color:#66d9ef">_</span> animated: Bool) {
         <span style="color:#66d9ef">super</span>.viewDidDisappear(animated)
-        <span style="color:#66d9ef">self</span>.synthesiser.speakSentence(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">进入后台</span><span style="color:#e6db74">&#34;</span>, withError: <span style="color:#66d9ef">nil</span>)
+        <span style="color:#66d9ef">self</span>.synthesiser.speakSentence(<span style="color:#e6db74">&#34;进入后台&#34;</span>, withError: <span style="color:#66d9ef">nil</span>)
     }
 }
 
 <span style="color:#66d9ef">extension</span> <span style="color:#a6e22e">ViewController</span>: UITextViewDelegate {
     <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">textViewDidChange</span>(<span style="color:#66d9ef">_</span> textView: UITextView) {
         <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> text = textView.text {
-            <span style="color:#75715e">//</span><span style="color:#75715e">s</span><span style="color:#75715e">e</span><span style="color:#75715e">l</span><span style="color:#75715e">f</span><span style="color:#75715e">.</span><span style="color:#75715e">s</span><span style="color:#75715e">y</span><span style="color:#75715e">n</span><span style="color:#75715e">t</span><span style="color:#75715e">h</span><span style="color:#75715e">e</span><span style="color:#75715e">s</span><span style="color:#75715e">i</span><span style="color:#75715e">s</span><span style="color:#75715e">e</span><span style="color:#75715e">r</span><span style="color:#75715e">?</span><span style="color:#75715e">.</span><span style="color:#75715e">s</span><span style="color:#75715e">p</span><span style="color:#75715e">e</span><span style="color:#75715e">a</span><span style="color:#75715e">k</span><span style="color:#75715e">S</span><span style="color:#75715e">e</span><span style="color:#75715e">n</span><span style="color:#75715e">t</span><span style="color:#75715e">e</span><span style="color:#75715e">n</span><span style="color:#75715e">c</span><span style="color:#75715e">e</span><span style="color:#75715e">(</span><span style="color:#75715e">t</span><span style="color:#75715e">e</span><span style="color:#75715e">x</span><span style="color:#75715e">t</span><span style="color:#75715e">,</span><span style="color:#75715e"> </span><span style="color:#75715e">w</span><span style="color:#75715e">i</span><span style="color:#75715e">t</span><span style="color:#75715e">h</span><span style="color:#75715e">E</span><span style="color:#75715e">r</span><span style="color:#75715e">r</span><span style="color:#75715e">o</span><span style="color:#75715e">r</span><span style="color:#75715e">:</span><span style="color:#75715e"> </span><span style="color:#75715e">n</span><span style="color:#75715e">i</span><span style="color:#75715e">l</span><span style="color:#75715e">)</span>
+            <span style="color:#75715e">//self.synthesiser?.speakSentence(text, withError: nil)</span>
             print(text)
         }
     }

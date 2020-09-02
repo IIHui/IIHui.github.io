@@ -257,11 +257,11 @@ code.has-jax {
 </blockquote>
 <h2 id="switch中使用">switch中使用</h2>
 <p>在<code>switch</code>语句中使用，<code>where</code>一般是配合<code>if let</code>来用于限定某些条件，例如：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">let</span> names = [<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">dog</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">cat</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">fish</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">bigDog</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">bigCat</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">bigFish</span><span style="color:#e6db74">&#34;</span>]
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">let</span> names = [<span style="color:#e6db74">&#34;dog&#34;</span>, <span style="color:#e6db74">&#34;cat&#34;</span>, <span style="color:#e6db74">&#34;fish&#34;</span>, <span style="color:#e6db74">&#34;bigDog&#34;</span>, <span style="color:#e6db74">&#34;bigCat&#34;</span>, <span style="color:#e6db74">&#34;bigFish&#34;</span>]
 names.forEach {
     <span style="color:#66d9ef">switch</span> $0 {
-    <span style="color:#66d9ef">case</span> <span style="color:#66d9ef">let</span> name <span style="color:#66d9ef">where</span> name.hasPrefix(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">big</span><span style="color:#e6db74">&#34;</span>):
-        print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">wow this is a </span><span style="color:#e6db74">\(</span>name<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
+    <span style="color:#66d9ef">case</span> <span style="color:#66d9ef">let</span> name <span style="color:#66d9ef">where</span> name.hasPrefix(<span style="color:#e6db74">&#34;big&#34;</span>):
+        print(<span style="color:#e6db74">&#34;wow this is a </span><span style="color:#e6db74">\(</span>name<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
     <span style="color:#66d9ef">default</span>:
         <span style="color:#66d9ef">break</span>
     }
@@ -269,8 +269,8 @@ names.forEach {
 </code></pre></div><hr>
 <h2 id="for-in中使用">for in中使用</h2>
 <p>在<code>for in</code>使用，也是用于添加限定条件(过滤)，例如：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">let</span> names = [<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">dog</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">cat</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">fish</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">bigDog</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">bigCat</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">bigFish</span><span style="color:#e6db74">&#34;</span>]
-<span style="color:#66d9ef">for</span> name <span style="color:#66d9ef">in</span> names <span style="color:#66d9ef">where</span> name == <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">dog</span><span style="color:#e6db74">&#34;</span> {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">let</span> names = [<span style="color:#e6db74">&#34;dog&#34;</span>, <span style="color:#e6db74">&#34;cat&#34;</span>, <span style="color:#e6db74">&#34;fish&#34;</span>, <span style="color:#e6db74">&#34;bigDog&#34;</span>, <span style="color:#e6db74">&#34;bigCat&#34;</span>, <span style="color:#e6db74">&#34;bigFish&#34;</span>]
+<span style="color:#66d9ef">for</span> name <span style="color:#66d9ef">in</span> names <span style="color:#66d9ef">where</span> name == <span style="color:#e6db74">&#34;dog&#34;</span> {
     print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">\(</span>name<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
 }
 </code></pre></div><hr>

@@ -256,7 +256,7 @@ code.has-jax {
 <p><code>LLDB</code>是一个庞大的工具,内置了许多有用的命令。</p>
 </blockquote>
 <h2 id="命令语法结构">命令语法结构</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">&lt;command&gt; <span style="color:#f92672">[</span>&lt;subcommand&gt; <span style="color:#f92672">[</span>&lt;subcommand&gt;...<span style="color:#f92672">]</span><span style="color:#f92672">]</span> &lt;action&gt; <span style="color:#f92672">[</span>-options <span style="color:#f92672">[</span>option-value<span style="color:#f92672">]</span><span style="color:#f92672">]</span> <span style="color:#f92672">[</span>argument <span style="color:#f92672">[</span>argument...<span style="color:#f92672">]</span><span style="color:#f92672">]</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">&lt;command&gt; <span style="color:#f92672">[</span>&lt;subcommand&gt; <span style="color:#f92672">[</span>&lt;subcommand&gt;...<span style="color:#f92672">]]</span> &lt;action&gt; <span style="color:#f92672">[</span>-options <span style="color:#f92672">[</span>option-value<span style="color:#f92672">]]</span> <span style="color:#f92672">[</span>argument <span style="color:#f92672">[</span>argument...<span style="color:#f92672">]]</span>
 </code></pre></div><p>其中：</p>
 <ul>
 <li><code>command</code>和<code>subcommand</code>为<code>LLDB</code>调试命令的名称，命令和子命令按照层级结构来排列：一个命令对象为跟随其的子命令对象创建一个上下文，子命令又为其子命令创建一个上下文，依此类推。</li>

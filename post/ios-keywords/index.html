@@ -248,11 +248,11 @@ code.has-jax {
     <span style="color:#66d9ef">convenience</span> <span style="color:#66d9ef">init</span>(hex: String) {
         <span style="color:#66d9ef">var</span> cString: String = hex.trimmingCharacters(<span style="color:#66d9ef">in</span>: .whitespacesAndNewlines).uppercased()
         
-        <span style="color:#66d9ef">if</span> (cString.hasPrefix(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#</span><span style="color:#e6db74">&#34;</span>)) {
+        <span style="color:#66d9ef">if</span> (cString.hasPrefix(<span style="color:#e6db74">&#34;#&#34;</span>)) {
             cString.remove(at: cString.startIndex)
         }
         
-        assert(cString.count == <span style="color:#ae81ff">6</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">无效的hex值</span><span style="color:#e6db74">&#34;</span>)
+        assert(cString.count == <span style="color:#ae81ff">6</span>, <span style="color:#e6db74">&#34;无效的hex值&#34;</span>)
         
         <span style="color:#66d9ef">var</span> rgbValue: UInt64 = <span style="color:#ae81ff">0</span>
         Scanner(string: cString).scanHexInt64(&amp;rgbValue)

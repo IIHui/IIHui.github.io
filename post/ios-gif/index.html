@@ -262,7 +262,7 @@ code.has-jax {
 
     <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">viewDidLoad</span>() {
         <span style="color:#66d9ef">super</span>.viewDidLoad()
-        <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> path = Bundle.main.path(forResource: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">demo</span><span style="color:#e6db74">&#34;</span>, ofType:<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">gif</span><span style="color:#e6db74">&#34;</span>) <span style="color:#66d9ef">else</span>{
+        <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> path = Bundle.main.path(forResource: <span style="color:#e6db74">&#34;demo&#34;</span>, ofType:<span style="color:#e6db74">&#34;gif&#34;</span>) <span style="color:#66d9ef">else</span>{
             <span style="color:#66d9ef">return</span>
         }
         <span style="color:#66d9ef">let</span> url = URL(fileURLWithPath: path)
@@ -272,7 +272,7 @@ code.has-jax {
             <span style="color:#66d9ef">let</span> webView = UIWebView()
             webView.frame = CGRect(x: <span style="color:#ae81ff">0</span>, y: <span style="color:#ae81ff">100</span>, width: <span style="color:#66d9ef">self</span>.view.frame.width, height: <span style="color:#ae81ff">600</span>)
             webView.scalesPageToFit = <span style="color:#66d9ef">true</span>
-            webView.load(gifData, mimeType: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">image/gif</span><span style="color:#e6db74">&#34;</span>, textEncodingName: String(), baseURL: NSURL() <span style="color:#66d9ef">as</span> URL)
+            webView.load(gifData, mimeType: <span style="color:#e6db74">&#34;image/gif&#34;</span>, textEncodingName: String(), baseURL: NSURL() <span style="color:#66d9ef">as</span> URL)
             <span style="color:#66d9ef">self</span>.view.addSubview(webView)
         }<span style="color:#66d9ef">catch</span>{}
 
@@ -292,7 +292,7 @@ code.has-jax {
         imageView.frame = CGRect(x: <span style="color:#ae81ff">0</span>, y: <span style="color:#ae81ff">100</span>, width: <span style="color:#66d9ef">self</span>.view.frame.width, height: <span style="color:#ae81ff">600</span>)
         <span style="color:#66d9ef">self</span>.view.addSubview(imageView)
         
-        <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> path = Bundle.main.path(forResource: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">demo</span><span style="color:#e6db74">&#34;</span>, ofType:<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">gif</span><span style="color:#e6db74">&#34;</span>) <span style="color:#66d9ef">else</span>{
+        <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> path = Bundle.main.path(forResource: <span style="color:#e6db74">&#34;demo&#34;</span>, ofType:<span style="color:#e6db74">&#34;gif&#34;</span>) <span style="color:#66d9ef">else</span>{
             <span style="color:#66d9ef">return</span>
         }
         <span style="color:#66d9ef">let</span> url = URL(fileURLWithPath: path)

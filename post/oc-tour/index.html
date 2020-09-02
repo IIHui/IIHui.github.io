@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">6540</span>
+<span class="leancloud-visitors-count">6542</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -295,11 +295,11 @@ code.has-jax {
 <h3 id="字符串">字符串</h3>
 <p>作为<code>C</code>语言的超集，<code>OC</code>支持<code>C</code>语言字符串方面的约定：单个字符被单引号包括，字符串被双引号包括。但是，大多数<code>OC</code>通常不使用<code>C</code>语言风格的字符串，大多数框架把字符串传递给<code>NSString</code>对象<code>NSString</code>类提供了字符串的类包装，包含了所有你期望的优点——包括对保存任意长度字符串的内建内存管理机制，支持<code>Unicode</code>，<code>printf</code>风格的格式化工具等。</p>
 <p>因为这种字符串使用的非常频繁，<!-- raw HTML omitted --><code>OC</code>提供了一个助记符可以方便地从常量值创建<code>NSString</code>对象<!-- raw HTML omitted -->，即在普通的双引号字符串前放置一个<code>@</code>符号:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">NSString<span style="color:#f92672">*</span> myString <span style="color:#f92672">=</span> <span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">My String</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
-NSString<span style="color:#f92672">*</span> anotherString <span style="color:#f92672">=</span> [NSString stringWithFormat:<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">%d %s</span><span style="color:#e6db74">&#34;</span>, <span style="color:#ae81ff">1</span>, <span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">String</span><span style="color:#e6db74">&#34;</span>];
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">NSString<span style="color:#f92672">*</span> myString <span style="color:#f92672">=</span> <span style="color:#e6db74">@&#34;My String</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
+NSString<span style="color:#f92672">*</span> anotherString <span style="color:#f92672">=</span> [NSString stringWithFormat:<span style="color:#e6db74">@&#34;%d %s&#34;</span>, <span style="color:#ae81ff">1</span>, <span style="color:#e6db74">@&#34;String&#34;</span>];
 
 <span style="color:#75715e">// 从一个C语言字符串创建Objective-C字符串
-</span><span style="color:#75715e"></span>NSString<span style="color:#f92672">*</span>  fromCString <span style="color:#f92672">=</span> [NSString stringWithCString:<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">A C string</span><span style="color:#e6db74">&#34;</span> 
+</span><span style="color:#75715e"></span>NSString<span style="color:#f92672">*</span>  fromCString <span style="color:#f92672">=</span> [NSString stringWithCString:<span style="color:#e6db74">&#34;A C string&#34;</span> 
 encoding:NSASCIIStringEncoding];
 </code></pre></div><hr>
 <h3 id="类">类</h3>
@@ -408,7 +408,7 @@ encoding:NSASCIIStringEncoding];
 <hr>
 <h4 id="属性">属性</h4>
 <p>属性使用一个等式来表示：<code>@property = 成员变量 + getter + setter</code>，即一个属性包含了一个成员变量以及该成员变量的<code>getter</code>和<code>setter</code>方法：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#66d9ef">@property</span> <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">成</span><span style="color:#960050;background-color:#1e0010">员</span><span style="color:#960050;background-color:#1e0010">变</span><span style="color:#960050;background-color:#1e0010">量</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">getter</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">setter</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#66d9ef">@property</span> <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">成员变量</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">getter</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">setter</span>
 </code></pre></div><p>为什么<code>OC</code>要添加属性，这就要从成员变量说起。成员变量的写法，一般如下：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#66d9ef">@interface</span> <span style="color:#a6e22e">Person</span> :<span style="color:#a6e22e">NSObject</span>
 { 
@@ -443,12 +443,12 @@ encoding:NSASCIIStringEncoding];
 <ul>
 <li>读写性<code>readonly,readwrite</code>。其中<code>readonly</code>表示只能读取, 不能写入（系统默认是可读写的）</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#66d9ef">@property</span> (<span style="color:#66d9ef">readonly</span>)NSString <span style="color:#f92672">*</span>name; <span style="color:#960050;background-color:#1e0010">表</span><span style="color:#960050;background-color:#1e0010">示</span><span style="color:#960050;background-color:#1e0010">只</span><span style="color:#960050;background-color:#1e0010">能</span><span style="color:#960050;background-color:#1e0010">读</span><span style="color:#960050;background-color:#1e0010">取</span>
-<span style="color:#66d9ef">@property</span> (<span style="color:#66d9ef">readwrite</span>)NSString <span style="color:#f92672">*</span>name<span style="color:#960050;background-color:#1e0010">；</span><span style="color:#960050;background-color:#1e0010">表</span><span style="color:#960050;background-color:#1e0010">示</span><span style="color:#960050;background-color:#1e0010">可</span><span style="color:#960050;background-color:#1e0010">以</span><span style="color:#960050;background-color:#1e0010">读</span><span style="color:#960050;background-color:#1e0010">写</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#66d9ef">@property</span> (<span style="color:#66d9ef">readonly</span>)NSString <span style="color:#f92672">*</span>name; <span style="color:#960050;background-color:#1e0010">表示只能读取</span>
+<span style="color:#66d9ef">@property</span> (<span style="color:#66d9ef">readwrite</span>)NSString <span style="color:#f92672">*</span>name<span style="color:#960050;background-color:#1e0010">；表示可以读写</span>
 </code></pre></div><ul>
 <li>原子性控制<code>atomic，nonatomic</code>。其中<code>atomic</code>表示属性对应的<code>setter</code>和<code>getter</code>方法在多线程访问下绝对安全。而<code>nonatomic</code>表示不做线程安全处理，只是普通的<code>setter</code>和<code>getter</code>方法。使用<code>atomic</code>, 需要<!-- raw HTML omitted -->不断地对<code>setter</code>和<code>getter</code>加锁解锁以保证线程安全, 会很占用系统资源, 降低系统性能<!-- raw HTML omitted -->。</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#66d9ef">@property</span>(<span style="color:#66d9ef">readwrite</span>,<span style="color:#66d9ef">nonatomic</span>)NSString <span style="color:#f92672">*</span>name;<span style="color:#960050;background-color:#1e0010">表</span><span style="color:#960050;background-color:#1e0010">示</span>name <span style="color:#960050;background-color:#1e0010">可</span><span style="color:#960050;background-color:#1e0010">读</span><span style="color:#960050;background-color:#1e0010">写</span>, <span style="color:#960050;background-color:#1e0010">无</span><span style="color:#960050;background-color:#1e0010">原</span><span style="color:#960050;background-color:#1e0010">子</span><span style="color:#960050;background-color:#1e0010">性</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#66d9ef">@property</span>(<span style="color:#66d9ef">readwrite</span>,<span style="color:#66d9ef">nonatomic</span>)NSString <span style="color:#f92672">*</span>name;<span style="color:#960050;background-color:#1e0010">表示</span>name <span style="color:#960050;background-color:#1e0010">可读写</span>, <span style="color:#960050;background-color:#1e0010">无原子性</span>
 </code></pre></div><ul>
 <li>
 <p>语义设置<code>assign, retain, copy,strong,weak</code>。这5个属性决定了<code>setter</code>方法中是如何赋值的。</p>
@@ -524,7 +524,7 @@ encoding:NSASCIIStringEncoding];
 <li><code>sharedApplication</code>方法：它是创建和获得<code>UIApplication</code>实例的实例方法。</li>
 <li><code>openURL</code>:方法：该方法可以打开一些内置的<code>iOS</code>应用，其中包括打开浏览器、打开<code>Google</code>地图、拨打电话、发送短信和发送<code>Email</code>等。</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[[UIApplication sharedApplication] openURL: [NSURL URLWithString:<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">http://www.baidu.com</span><span style="color:#e6db74">&#34;</span>]];
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[[UIApplication sharedApplication] openURL: [NSURL URLWithString:<span style="color:#e6db74">@&#34;http://www.baidu.com&#34;</span>]];
 </code></pre></div><hr>
 <h3 id="委托模式">委托模式</h3>
 <p>委托：<!-- raw HTML omitted -->某个对象指定另一个对象处理某些特定任务（某些方法的实现）<!-- raw HTML omitted -->的设计模式。例如当没空的时候委托别人帮忙买火车票，<!-- raw HTML omitted -->乘车人、乘车日期以及出发地和目的地就是协议「规定」<!-- raw HTML omitted -->（协议通俗的说就是某种规定，如果能执行这种规定就说遵守了某个协议）。</p>
@@ -547,7 +547,7 @@ encoding:NSASCIIStringEncoding];
 <h4 id="场景">场景</h4>
 <p>场景：<code>Boss</code>准备举行一场<code>party</code>，准备邀请<code>Atany</code>来参加<code>party</code>，但是<code>Boss</code>没空写<code>email</code>给<code>Atany</code>，于是他委托<code>Henry</code>与<code>Mary</code>来做这件事情。</p>
 <p>在<code>YGViewController.h</code>（根控制器，程序第一个界面，类似于<code>Boss</code>）中首先定义协议，接着声明委托变量（<code>Boss</code>并没有实现<code>inviteToMyParty</code>这个方法，他没有自己去邀请）：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#75715e">#</span><span style="color:#75715e">import &lt;UIKit</span><span style="color:#75715e">/</span><span style="color:#75715e">UIKit.h&gt;</span><span style="color:#75715e">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#75715e">#import &lt;UIKit/UIKit.h&gt;
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">@protocol</span> <span style="color:#a6e22e">InviteDelegate</span>
 -(<span style="color:#66d9ef">void</span>)<span style="color:#a6e22e">inviteToMyParty:</span>(NSString <span style="color:#f92672">*</span>)personName;<span style="color:#75715e">//1.1定义协议与方法
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">@end</span>
@@ -561,24 +561,24 @@ encoding:NSASCIIStringEncoding];
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">- (<span style="color:#66d9ef">IBAction</span>)<span style="color:#a6e22e">ClickByMary:</span>(<span style="color:#66d9ef">id</span>)sender {
     Mary <span style="color:#f92672">*</span>mary <span style="color:#f92672">=</span> [[Mary alloc]init];
     self.delegate <span style="color:#f92672">=</span> mary;<span style="color:#75715e">//1.3设置代理
-</span><span style="color:#75715e"></span>    [self.delegate inviteToMyParty:<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">atany</span><span style="color:#e6db74">&#34;</span>];<span style="color:#75715e">//1.4通过委托变量调用委托方法
+</span><span style="color:#75715e"></span>    [self.delegate inviteToMyParty:<span style="color:#e6db74">@&#34;atany&#34;</span>];<span style="color:#75715e">//1.4通过委托变量调用委托方法
 </span><span style="color:#75715e"></span>}
 - (<span style="color:#66d9ef">IBAction</span>)<span style="color:#a6e22e">ClickByHenry:</span>(<span style="color:#66d9ef">id</span>)sender {
     Henry <span style="color:#f92672">*</span>henry <span style="color:#f92672">=</span> [[Henry alloc]init];
     self.delegate <span style="color:#f92672">=</span> henry;<span style="color:#75715e">//1.3设置代理
-</span><span style="color:#75715e"></span>    [self.delegate inviteToMyParty:<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">atany</span><span style="color:#e6db74">&#34;</span>];<span style="color:#75715e">//1.4通过委托变量调用委托方法
+</span><span style="color:#75715e"></span>    [self.delegate inviteToMyParty:<span style="color:#e6db74">@&#34;atany&#34;</span>];<span style="color:#75715e">//1.4通过委托变量调用委托方法
 </span><span style="color:#75715e"></span>}
 </code></pre></div><p><code>BOSS</code>可以选择不同的代理（<code>Henry</code>与<code>Mary</code>）来做这件事情（<code>inviteToMyParty</code>），而自己却不用做。以<code>Henry</code>为例，首先遵循协议，然后实现协议中的委托方法：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#75715e">#</span><span style="color:#75715e">import &lt;UIKit</span><span style="color:#75715e">/</span><span style="color:#75715e">UIKit.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">import &#34;YGViewController.h&#34;</span><span style="color:#75715e">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#75715e">#import &lt;UIKit/UIKit.h&gt;
+</span><span style="color:#75715e">#import &#34;YGViewController.h&#34;
 </span><span style="color:#75715e"></span>
 <span style="color:#66d9ef">@interface</span> <span style="color:#a6e22e">Henry</span> : <span style="color:#a6e22e">UIViewController</span> <span style="color:#f92672">&lt;</span>InviteDelegate<span style="color:#f92672">&gt;</span><span style="color:#75715e">//2.1遵循协议
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">@end</span>
 
 <span style="color:#f92672">-</span>(<span style="color:#66d9ef">void</span>)inviteToMyParty:(NSString <span style="color:#f92672">*</span>)personName{
-    NSString <span style="color:#f92672">*</span>hello <span style="color:#f92672">=</span> [NSString stringWithFormat:<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">Hello,%@</span><span style="color:#e6db74">&#34;</span>,personName];
-    NSString <span style="color:#f92672">*</span>str <span style="color:#f92672">=</span> [NSString stringWithFormat:<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">Hey Boy,this is Henry,Come to our party Please!!</span><span style="color:#e6db74">&#34;</span>];
-    UIAlertView <span style="color:#f92672">*</span>alert <span style="color:#f92672">=</span> [[UIAlertView alloc]initWithTitle:hello message:str delegate:self cancelButtonTitle:<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">OK</span><span style="color:#e6db74">&#34;</span> otherButtonTitles:nil];
+    NSString <span style="color:#f92672">*</span>hello <span style="color:#f92672">=</span> [NSString stringWithFormat:<span style="color:#e6db74">@&#34;Hello,%@&#34;</span>,personName];
+    NSString <span style="color:#f92672">*</span>str <span style="color:#f92672">=</span> [NSString stringWithFormat:<span style="color:#e6db74">@&#34;Hey Boy,this is Henry,Come to our party Please!!&#34;</span>];
+    UIAlertView <span style="color:#f92672">*</span>alert <span style="color:#f92672">=</span> [[UIAlertView alloc]initWithTitle:hello message:str delegate:self cancelButtonTitle:<span style="color:#e6db74">@&#34;OK&#34;</span> otherButtonTitles:nil];
     [alert show];
 }
 </code></pre></div><hr>

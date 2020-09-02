@@ -274,7 +274,7 @@ code.has-jax {
 <li>
 <p>标准库<code>strconv</code>可在不同进制（字符串）间转换。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">x</span>,<span style="color:#a6e22e">_</span><span style="color:#f92672">:=</span><span style="color:#a6e22e">strconv</span>.<span style="color:#a6e22e">ParseInt</span>(<span style="color:#e6db74">&#34;1100100&#34;</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">32</span>) <span style="color:#75715e">//解释给定字符，2表示字符串是的基数是2，即以2进制表示，
-</span><span style="color:#75715e"></span><span style="color:#75715e">//32表示给出的结果至少要适应32位，返回值的类型为int64
+</span><span style="color:#75715e">//32表示给出的结果至少要适应32位，返回值的类型为int64
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">y</span>,<span style="color:#a6e22e">_</span><span style="color:#f92672">:=</span><span style="color:#a6e22e">strconv</span>.<span style="color:#a6e22e">ParseInt</span>(<span style="color:#e6db74">&#34;0144&#34;</span>,<span style="color:#ae81ff">8</span>,<span style="color:#ae81ff">32</span>) <span style="color:#75715e">//字符串是8进制
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">z</span>,<span style="color:#a6e22e">_</span><span style="color:#f92672">:=</span><span style="color:#a6e22e">strconv</span>.<span style="color:#a6e22e">ParseInt</span>(<span style="color:#e6db74">&#34;64&#34;</span>,<span style="color:#ae81ff">16</span>,<span style="color:#ae81ff">32</span>)  <span style="color:#75715e">//字符串是16进制
 </span><span style="color:#75715e"></span>
@@ -343,7 +343,7 @@ code.has-jax {
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">p</span> <span style="color:#f92672">:=</span> new(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">int</span>)
 <span style="color:#a6e22e">t</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">p</span>
 <span style="color:#75715e">//t[&#34;a&#34;] = 100
-</span><span style="color:#75715e"></span><span style="color:#75715e">//fmt.Println(t) //panic: assignment to entry in nil map
+</span><span style="color:#75715e">//fmt.Println(t) //panic: assignment to entry in nil map
 </span></code></pre></div><hr>
 <h2 id="别名">别名</h2>
 <p>在官方文档中，专门提到了两个别名<code> byte  alias for unit8</code>以及<code>rune  alias for int32</code></p>
@@ -386,8 +386,8 @@ code.has-jax {
 </ul>
 <p>容易被忽略的是<!-- raw HTML omitted -->结构体的标签<code>struct tag</code> 它属于类型组成的一部分<!-- raw HTML omitted -->，而不仅仅是元数据描述</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span> <span style="color:#66d9ef">struct</span> {
-	<span style="color:#a6e22e">x</span> <span style="color:#66d9ef">int</span>    <span style="color:#e6db74">`</span><span style="color:#e6db74">x</span><span style="color:#e6db74">`</span>
-	<span style="color:#a6e22e">s</span> <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">s</span><span style="color:#e6db74">`</span>
+	<span style="color:#a6e22e">x</span> <span style="color:#66d9ef">int</span>    <span style="color:#e6db74">`x`</span>
+	<span style="color:#a6e22e">s</span> <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`s`</span>
 }
 
 <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">b</span> <span style="color:#66d9ef">struct</span> {
@@ -403,7 +403,7 @@ code.has-jax {
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">x</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">100</span>
 <span style="color:#a6e22e">p</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">x</span>
 <span style="color:#75715e">//p++  //不能加
-</span><span style="color:#75715e"></span><span style="color:#75715e">//p+1  //不能加，只能比较是否相等
+</span><span style="color:#75715e">//p+1  //不能加，只能比较是否相等
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">p2</span> = <span style="color:#a6e22e">p</span>
 <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">p2</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">p</span>) <span style="color:#75715e">//true
 </span></code></pre></div><p>在指针的比较中，如果两个指针<!-- raw HTML omitted -->指向同一个地址，或都为<code>nil</code>则相等<!-- raw HTML omitted --></p>
