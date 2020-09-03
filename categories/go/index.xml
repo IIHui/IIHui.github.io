@@ -21,6 +21,24 @@
     </item>
     
     <item>
+      <title>Go枚举</title>
+      <link>https://iihui.github.io/post/post/go-iota/</link>
+      <pubDate>Sat, 01 Aug 2020 20:19:22 +0000</pubDate>
+      
+      <guid>https://iihui.github.io/post/post/go-iota/</guid>
+      <description>Go中没明确意义上的enum定义，但是可以借助iota来生成一组自增常量值来实现枚举，iota是一个比较奇怪的存在，它只能用在const的声明中，是一个从0开始的行数索引器。 iota 按行递增 首先，iota是一个行数索引器,它是按行递增的。 const ( x1 =</description>
+    </item>
+    
+    <item>
+      <title>Go常量</title>
+      <link>https://iihui.github.io/post/go-let-nsconflict-halo-mac10.15.6/</link>
+      <pubDate>Sat, 01 Aug 2020 18:02:05 +0000</pubDate>
+      
+      <guid>https://iihui.github.io/post/go-let-nsconflict-halo-mac10.15.6/</guid>
+      <description>常量值必须是编译期间可确定的字符、字符串、数字或者布尔值。常量的类型可以指定，或者由编译器通过初始化值推断，不支持C或者C++数字类型后缀。可在函数代码块中定义常量，不使用的常量不会引发编译错误。 const x, y int = 12, 0x12 const s = &amp;#34;hello world&amp;#34; const c = &amp;#39;我&amp;</description>
+    </item>
+    
+    <item>
       <title>Go常量</title>
       <link>https://iihui.github.io/post/go-let/</link>
       <pubDate>Sat, 01 Aug 2020 18:02:05 +0000</pubDate>
@@ -30,11 +48,29 @@
     </item>
     
     <item>
+      <title>Go常量</title>
+      <link>https://iihui.github.io/post/post/go-let/</link>
+      <pubDate>Sat, 01 Aug 2020 18:02:05 +0000</pubDate>
+      
+      <guid>https://iihui.github.io/post/post/go-let/</guid>
+      <description>常量值必须是编译期间可确定的字符、字符串、数字或者布尔值。常量的类型可以指定，或者由编译器通过初始化值推断，不支持C或者C++数字类型后缀。可在函数代码块中定义常量，不使用的常量不会引发编译错误。 const x, y int = 12, 0x12 const s = &amp;#34;hello world&amp;#34; const c = &amp;#39;我&amp;</description>
+    </item>
+    
+    <item>
       <title>Go变量</title>
       <link>https://iihui.github.io/post/go-var/</link>
       <pubDate>Sat, 01 Aug 2020 16:05:43 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/go-var/</guid>
+      <description>Go中每一个文件都以package声明开头，表明文件属于哪一个包。package声明后面是import声明，然后是不区分顺序的包级别的类型，变量、常量和函数的声明。对于包级别的声明不仅对于包含其声明的源文件可见，而且对于同一包里面的所有的源</description>
+    </item>
+    
+    <item>
+      <title>Go变量</title>
+      <link>https://iihui.github.io/post/post/go-var/</link>
+      <pubDate>Sat, 01 Aug 2020 16:05:43 +0000</pubDate>
+      
+      <guid>https://iihui.github.io/post/post/go-var/</guid>
       <description>Go中每一个文件都以package声明开头，表明文件属于哪一个包。package声明后面是import声明，然后是不区分顺序的包级别的类型，变量、常量和函数的声明。对于包级别的声明不仅对于包含其声明的源文件可见，而且对于同一包里面的所有的源</description>
     </item>
     
