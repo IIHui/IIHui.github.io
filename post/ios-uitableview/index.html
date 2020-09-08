@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">742</span>
+<span class="leancloud-visitors-count">833</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -283,6 +283,21 @@ code.has-jax {
         }
     }
     <span style="color:#66d9ef">return</span> cell
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">/// 从服务端获取用户头像</span>
+<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">getHeaderImageFromRemote</span>(user: ContactsUser, indexPath: IndexPath) {
+    <span style="color:#66d9ef">self</span>.contactsHeadPhotoService.getServerImage(user: user) { [<span style="color:#66d9ef">weak</span> <span style="color:#66d9ef">self</span>] <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span>
+        DispatchQueue.main.async { [<span style="color:#66d9ef">weak</span> <span style="color:#66d9ef">self</span>] <span style="color:#66d9ef">in</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">self</span>?.tableView.cellForRow(at: indexPath) <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+                <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">self</span>?.isSearching == <span style="color:#66d9ef">true</span> {
+                    <span style="color:#66d9ef">self</span>?.tableView.reloadRows(at: [indexPath], with: .<span style="color:#66d9ef">none</span>)
+                } <span style="color:#66d9ef">else</span> {
+                    <span style="color:#75715e">//非搜索状态时有可能有相同的联系人在不同的分组，所以选择全部reload</span>
+                    <span style="color:#66d9ef">self</span>?.tableView.reloadData()
+                }
+            }
+        }
+    }
 }
 </code></pre></div><h3 id="使用prepareforreuse">使用prepareForReuse()</h3>
 <p>使用<code>KingFisher</code>请求图片资源时，由于有些图片返回较慢，因为<code>cell</code>复用，可能会导致图片出现错乱，此时可以在<code>prepareForReuse</code>先取消相应的网络请求。</p>
