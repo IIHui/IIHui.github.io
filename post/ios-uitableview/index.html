@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">726</span>
+<span class="leancloud-visitors-count">729</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -276,7 +276,7 @@ code.has-jax {
         } <span style="color:#66d9ef">else</span> {
             <span style="color:#66d9ef">self</span>.presenter.requestImage(id: model.sessionID,indexPath: indexPath) { [<span style="color:#66d9ef">weak</span> <span style="color:#66d9ef">self</span>] index <span style="color:#66d9ef">in</span>
                 DispatchQueue.main.async { [<span style="color:#66d9ef">weak</span> <span style="color:#66d9ef">self</span>] <span style="color:#66d9ef">in</span>
-                    tableView.reload
+                     tableView.reloadRows(at: [index], with: .<span style="color:#66d9ef">none</span>)
                     }
                 }
             }
