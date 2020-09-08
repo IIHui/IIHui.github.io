@@ -363,15 +363,6 @@
     </item>
     
     <item>
-      <title>UITableView</title>
-      <link>https://iihui.github.io/post/ios-uitableview/</link>
-      <pubDate>Mon, 17 Dec 2018 14:08:45 +0000</pubDate>
-      
-      <guid>https://iihui.github.io/post/ios-uitableview/</guid>
-      <description>在iOS开发中，UITableViewController的使用频率较高，这篇文章主要用于记录使用过程中的一些 点击cell不变色 func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -&amp;gt; UITableViewCell { let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! NoteDetailInfoCell cell.selectionStyle = .none //点击该cell不变色 return cell } 异步更新 在UITableView中经常</description>
-    </item>
-    
-    <item>
       <title>给图片添加点击监听</title>
       <link>https://iihui.github.io/post/js-img/</link>
       <pubDate>Mon, 17 Dec 2018 08:34:15 +0000</pubDate>

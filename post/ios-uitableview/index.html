@@ -202,8 +202,8 @@ code.has-jax {
     <i class="fa fa-calendar-o"></i>
 </span>
 <span class="post-meta-item-text">创建: </span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-12-17">
-    2018-12-17
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2019-12-17">
+    2019-12-17
 </time>
 </span>
 &nbsp; | &nbsp;
@@ -212,8 +212,8 @@ code.has-jax {
     <i class="fa fa-calendar-check-o"></i>
 </span>
 <span class="post-meta-item-text">更新: </span>
-<time itemprop="dateUpdated" content="2018-12-17">
-    2018-12-17
+<time itemprop="dateUpdated" content="2019-12-17">
+    2019-12-17
 </time>
 </span> 
       
@@ -226,8 +226,8 @@ code.has-jax {
   <span class="post-meta-item-text">分类: </span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="https://iihui.github.io/categories/code" itemprop="url" rel="index">
-        <span itemprop="name">code</span>
+      <a href="https://iihui.github.io/categories/ios" itemprop="url" rel="index">
+        <span itemprop="name">iOS</span>
       </a>
       &nbsp; 
     </span>
@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">729</span>
+<span class="leancloud-visitors-count">742</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -253,7 +253,7 @@ code.has-jax {
     </header>
     <div class="post-body" itemprop="articleBody">
     <blockquote>
-<p>在<code>iOS</code>开发中，<code>UITableViewController</code>的使用频率较高，这篇文章主要用于记录使用过程中的一些</p>
+<p>在<code>iOS</code>开发中，<code>UITableViewController</code>的使用频率较高，这篇文章主要用于记录一些常用的使用方法和问题解决方案。</p>
 </blockquote>
 <h2 id="点击cell不变色">点击cell不变色</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">tableView</span>(<span style="color:#66d9ef">_</span> tableView: UITableView, cellForRowAt indexPath: IndexPath) -&gt; UITableViewCell {
@@ -262,7 +262,7 @@ code.has-jax {
     <span style="color:#66d9ef">return</span> cell
 }
 </code></pre></div><hr>
-<h2 id="异步更新">异步更新</h2>
+<h2 id="cell异步更新">Cell异步更新</h2>
 <p>在<code>UITableView</code>中经常要使用到异步请求，请求回来之后要更新相应<code>cell</code>的外观，由于<code>UITableView</code>的<code>cell</code>存在复用问题，因此要异步请求返回之后要特别小心处理。目前个人总结可以有三种方式。</p>
 <h3 id="使用内存缓存">使用内存缓存</h3>
 <p>在<code>presenter</code>中增加缓存，一般使用<code>map</code>来实现，一般以<code>indexPath</code>作为<code>key</code>（也可以其他具有唯一性的<code>id</code>作为<code>key</code>），以异步请求之后返回的某项数据作为<code>value</code>。异步返回之后，更新缓存，然后再在<!-- raw HTML omitted -->主线程中<!-- raw HTML omitted -->调用<code>reload</code>方法。</p>
@@ -333,16 +333,16 @@ code.has-jax {
         <div class="post-nav">
     <div class="post-nav-next post-nav-item">
     
-        <a href="https://iihui.github.io/post/ios-kvo/" rel="next" title="KVO 介绍">
-        <i class="fa fa-chevron-left"></i> KVO 介绍
+        <a href="https://iihui.github.io/post/ios-alamofire/" rel="next" title="Almofire的使用">
+        <i class="fa fa-chevron-left"></i> Almofire的使用
         </a>
     
     </div>
 
     <div class="post-nav-prev post-nav-item">
     
-        <a href="https://iihui.github.io/post/js-img/" rel="prev" title="给图片添加点击监听">
-        给图片添加点击监听 <i class="fa fa-chevron-right"></i>
+        <a href="https://iihui.github.io/post/travel-guizhou/" rel="prev" title="贵州之行">
+        贵州之行 <i class="fa fa-chevron-right"></i>
         </a>
     
     </div>
@@ -483,7 +483,7 @@ code.has-jax {
     <li>
       <ul>
         <li><a href="#点击cell不变色">点击cell不变色</a></li>
-        <li><a href="#异步更新">异步更新</a>
+        <li><a href="#cell异步更新">Cell异步更新</a>
           <ul>
             <li><a href="#使用内存缓存">使用内存缓存</a></li>
             <li><a href="#使用prepareforreuse">使用prepareForReuse()</a></li>

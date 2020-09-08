@@ -1307,6 +1307,25 @@ KVO为子类的观察者属性重写调用存取方法的工作原理在代码�
     </entry>
     
      <entry>
+        <title>UITableView</title>
+        <url>https://iihui.github.io/post/ios-uitableview/</url>
+        <categories>
+          <category>iOS</category>
+        </categories>
+        <tags>
+          <tag>iOS</tag>
+        </tags>
+        <content type="html">  在iOS开发中，UITableViewController的使用频率较高，这篇文章主要用于记录一些常用的使用方法和问题解决方案。
+ 点击cell不变色 func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -&amp;gt; UITableViewCell { let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! NoteDetailInfoCell cell.selectionStyle = .none //点击该cell不变色 return cell }  Cell异步更新 在UITableView中经常要使用到异步请求，请求回来之后要更新相应cell的外观，由于UITableView的cell存在复用问题，因此要异步请求返回之后要特别小心处理。目前个人总结可以有三种方式。
+使用内存缓存 在presenter中增加缓存，一般使用map来实现，一般以indexPath作为key（也可以其他具有唯一性的id作为key），以异步请求之后返回的某项数据作为value。异步返回之后，更新缓存，然后再在主线程中调用reload方法。
+override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -&amp;gt; UITableViewCell { let cell = tableView.dequeueReusableCell(withIdentifier: self.zhGroupCellIdentifier, for: indexPath) let model = self.presenter.dataSource[indexPath.row] if let groupCell: ZHGroupCell = cell as? ZHGroupCell { groupCell.nameLbl.text = model.sessionName if let image = self.presenter.headCache[model.sessionID] { groupCell.imgView.image = image } else { self.presenter.requestImage(id: model.sessionID,indexPath: indexPath) { [weak self] index in DispatchQueue.main.async { [weak self] in tableView.reloadRows(at: [index], with: .none) } } } } } return cell } 使用prepareForReuse() 使用KingFisher请求图片资源时，由于有些图片返回较慢，因为cell复用，可能会导致图片出现错乱，此时可以在prepareForReuse先取消相应的网络请求。
+/// 因为使用kingfisher进行图片下载为异步的，所以要解决复用问题 override func prepareForReuse() { super.prepareForReuse() self.headerImageView.kf.cancelDownloadTask() self.dkImageView.kf.cancelDownloadTask() } 设置对应cell 首先异步请求时多加一个indexPath参数，异步返回时把返回的数据和indexPath作为回调参数，然后根据indexPath找到对应的cell，最后更新cell的外观。
+override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -&amp;gt; UITableViewCell { let cell = tableView.dequeueReusableCell(withIdentifier: self.zhGroupCellIdentifier, for: indexPath) let model = self.presenter.dataSource[indexPath.row] if let groupCell: ZHGroupCell = cell as? ZHGroupCell { groupCell.nameLbl.text = model.sessionName if let image = self.presenter.headCache[model.sessionID] { groupCell.imgView.image = image } else { self.presenter.requestImage(id: model.sessionID,indexPath: indexPath) { [weak self] index in DispatchQueue.main.async { [weak self] in if let cell = tableView.cellForRow(at: index) as? ZHGroupCell,let model = self?.presenter.dataSource[index.row] { cell.imgView?.image = self?.presenter.headCache[model.sessionID] } } } } } return cell } 分组显示 链接
+range
+ </content>
+    </entry>
+    
+     <entry>
         <title>贵州之行</title>
         <url>https://iihui.github.io/post/travel-guizhou/</url>
         <categories>
@@ -1871,25 +1890,6 @@ Person *person = [Person alloc] init]; /* 作用:给对象绑定一个监听器(
   Swift中属性观察器 在Swift中有两个属性观察者willSet和didSet,类似于触发器。用来监控属性除初始化之外的属性值变化，当属性值发生变化时可以对此作出响应。
  不仅可以在属性值发生变化后触发didSet,也可以在属性值改变前触发willSet。 给属性添加观察者必须要声明清楚属性的类型，否则编译器报错。 willSet可以带一个newName的参数，没有的话，默认命名为newValue。 didSet 可以带一个oldName的参数，表示旧的值，不带的话，默认命名为oldValue。 属性初始化时，willSet和didSet不会调用。只有初始化上下文之外，属性值发生变化时才会调用。 即使设置的值和原来的一样，willSet和didSet也会被调用。  var firstName: String = &amp;#34;First&amp;#34; { willSet { //新值设置之前被调用，在此可以进行条件筛选，过滤数据 print(&amp;#34;willSet的新值是\(newValue)&amp;#34;) } didSet { //新值设置之后立即调用，在此可以进行条件筛选，过滤数据,可以直接绑定数据到UI上面 print(&amp;#34;didSet的旧值是\(oldValue)--- 新值是 \(firstName)&amp;#34;) self.nameLabel.text = firstName } }  Swift实现KVO值监听 利用设计模式中的观察者模式，观察者定义了对象之间的一对多依赖。当一个对象改变状态时，它的所有依赖者都会收到通知并自动更新。观察者模式适用在一个被观察者（数据源）要通知多个观察者的场景。
 参考资料 参考资料
- </content>
-    </entry>
-    
-     <entry>
-        <title>UITableView</title>
-        <url>https://iihui.github.io/post/ios-uitableview/</url>
-        <categories>
-          <category>code</category>
-        </categories>
-        <tags>
-          <tag>iOS</tag>
-        </tags>
-        <content type="html">  在iOS开发中，UITableViewController的使用频率较高，这篇文章主要用于记录使用过程中的一些
- 点击cell不变色 func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -&amp;gt; UITableViewCell { let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! NoteDetailInfoCell cell.selectionStyle = .none //点击该cell不变色 return cell }  异步更新 在UITableView中经常要使用到异步请求，请求回来之后要更新相应cell的外观，由于UITableView的cell存在复用问题，因此要异步请求返回之后要特别小心处理。目前个人总结可以有三种方式。
-使用内存缓存 在presenter中增加缓存，一般使用map来实现，一般以indexPath作为key（也可以其他具有唯一性的id作为key），以异步请求之后返回的某项数据作为value。异步返回之后，更新缓存，然后再在主线程中调用reload方法。
-override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -&amp;gt; UITableViewCell { let cell = tableView.dequeueReusableCell(withIdentifier: self.zhGroupCellIdentifier, for: indexPath) let model = self.presenter.dataSource[indexPath.row] if let groupCell: ZHGroupCell = cell as? ZHGroupCell { groupCell.nameLbl.text = model.sessionName if let image = self.presenter.headCache[model.sessionID] { groupCell.imgView.image = image } else { self.presenter.requestImage(id: model.sessionID,indexPath: indexPath) { [weak self] index in DispatchQueue.main.async { [weak self] in tableView.reloadRows(at: [index], with: .none) } } } } } return cell } 使用prepareForReuse() 使用KingFisher请求图片资源时，由于有些图片返回较慢，因为cell复用，可能会导致图片出现错乱，此时可以在prepareForReuse先取消相应的网络请求。
-/// 因为使用kingfisher进行图片下载为异步的，所以要解决复用问题 override func prepareForReuse() { super.prepareForReuse() self.headerImageView.kf.cancelDownloadTask() self.dkImageView.kf.cancelDownloadTask() } 设置对应cell 首先异步请求时多加一个indexPath参数，异步返回时把返回的数据和indexPath作为回调参数，然后根据indexPath找到对应的cell，最后更新cell的外观。
-override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -&amp;gt; UITableViewCell { let cell = tableView.dequeueReusableCell(withIdentifier: self.zhGroupCellIdentifier, for: indexPath) let model = self.presenter.dataSource[indexPath.row] if let groupCell: ZHGroupCell = cell as? ZHGroupCell { groupCell.nameLbl.text = model.sessionName if let image = self.presenter.headCache[model.sessionID] { groupCell.imgView.image = image } else { self.presenter.requestImage(id: model.sessionID,indexPath: indexPath) { [weak self] index in DispatchQueue.main.async { [weak self] in if let cell = tableView.cellForRow(at: index) as? ZHGroupCell,let model = self?.presenter.dataSource[index.row] { cell.imgView?.image = self?.presenter.headCache[model.sessionID] } } } } } return cell } 分组显示 链接
-range
  </content>
     </entry>
     
