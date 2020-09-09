@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">823</span>
+<span class="leancloud-visitors-count">825</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -263,9 +263,9 @@ code.has-jax {
 }
 </code></pre></div><hr>
 <h2 id="cell异步更新">Cell异步更新</h2>
-<p>在<code>UITableView</code>中经常要使用到异步请求，请求回来之后要更新相应<code>cell</code>的外观，由于<code>UITableView</code>的<code>cell</code>存在复用问题，因此要异步请求返回之后要特别小心处理。目前个人总结可以有三种方式。</p>
+<p>在<code>UITableView</code>中经常要使用到异步请求，请求回来之后要更新相应<code>cell</code>的外观，由于<code>UITableView</code>中的<code>cell</code>存在复用问题，因此异步请求返回之后要特别小心处理。目前个人总结可以有三种方式。</p>
 <h3 id="使用内存缓存">使用内存缓存</h3>
-<p>在<code>presenter</code>中增加缓存，一般使用<code>map</code>来实现，一般以<code>indexPath</code>作为<code>key</code>（也可以其他具有唯一性的<code>id</code>作为<code>key</code>），以异步请求之后返回的某项数据作为<code>value</code>。异步返回之后，更新缓存，然后再在<!-- raw HTML omitted -->主线程中<!-- raw HTML omitted -->调用<code>reload</code>方法。</p>
+<p>在<code>presenter</code>中增加缓存，一般使用<code>map</code>来实现，然后一般以<code>indexPath</code>作为<code>key</code>（也可以其他具有唯一性的<code>id</code>作为<code>key</code>），以异步请求之后返回的某项数据作为<code>value</code>。异步返回之后，更新缓存，然后再在<!-- raw HTML omitted -->主线程中<!-- raw HTML omitted -->调用<code>reload</code>方法。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">tableView</span>(<span style="color:#66d9ef">_</span> tableView: UITableView, cellForRowAt indexPath: IndexPath) -&gt; UITableViewCell {
     <span style="color:#66d9ef">let</span> cell = tableView.dequeueReusableCell(withIdentifier: <span style="color:#66d9ef">self</span>.zhGroupCellIdentifier, <span style="color:#66d9ef">for</span>: indexPath)
     <span style="color:#66d9ef">let</span> model = <span style="color:#66d9ef">self</span>.presenter.dataSource[indexPath.row]
