@@ -408,12 +408,12 @@
     </item>
     
     <item>
-      <title>UITableView</title>
+      <title>UITableView 使用</title>
       <link>https://iihui.github.io/post/ios-uitableview/</link>
       <pubDate>Tue, 17 Dec 2019 14:08:45 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/ios-uitableview/</guid>
-      <description>在iOS开发中，UITableViewController的使用频率较高，这篇文章主要用于记录一些常用的使用方法和问题解决方案。 点击cell不变色 func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -&amp;gt; UITableViewCell { let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! NoteDetailInfoCell cell.selectionStyle = .none //点击该cell不变色 return cell } Cell异步更新 在U</description>
+      <description>在iOS开发中，UITableView的使用频率较高，这篇文章主要用于记录一些常用的使用方法和问题解决方案。 点击cell不变色 func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -&amp;gt; UITableViewCell { let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! NoteDetailInfoCell cell.selectionStyle = .none //点击该cell不变色 return cell } Cell异步更新 在UITableView</description>
     </item>
     
     <item>
