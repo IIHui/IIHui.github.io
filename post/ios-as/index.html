@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">273</span>
+<span class="leancloud-visitors-count">298</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -274,6 +274,19 @@ print(<span style="color:#ae81ff">4</span> <span style="color:#66d9ef">as</span>
     }
 }
 </code></pre></div><p><img src="https://i.loli.net/2020/08/27/v8ylw9iXNqoPC53.jpg" alt="-c"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">setupUI1</span>(){
+    <span style="color:#66d9ef">let</span> view = UIView()
+    view.backgroundColor = .red
+    <span style="color:#66d9ef">self</span>.view.addSubview(view)
+    view.snp.makeConstraints(){ maker <span style="color:#66d9ef">in</span>
+        maker.top.equalTo(<span style="color:#66d9ef">self</span>.bottomLayoutGuide.snp.top
+.inset(<span style="color:#f92672">-</span><span style="color:#ae81ff">60</span>)
+        maker.bottom.equalToSuperview()
+        maker.leading.equalToSuperview()
+        maker.trailing.equalToSuperview()
+    }
+}
+</code></pre></div><h2 id="顶部适配">顶部适配</h2>
 <p>同样顶部也可以这样适配，如下图所示：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">setupUI</span>(){
         <span style="color:#66d9ef">let</span> bottomView = UIView()
@@ -473,6 +486,7 @@ print(<span style="color:#ae81ff">4</span> <span style="color:#66d9ef">as</span>
     <li>
       <ul>
         <li><a href="#底部工具栏适配">底部工具栏适配</a></li>
+        <li><a href="#顶部适配">顶部适配</a></li>
       </ul>
     </li>
   </ul>
