@@ -26,7 +26,7 @@
       <pubDate>Mon, 17 Aug 2020 08:00:07 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/ios-as/</guid>
-      <description>as是在编译期间执行的，as?和as!是在运行时执行的。 print(4 as Double) // print 4.0 print(4 as! Double) // crash 上面第二行代码会崩溃是因为as?和as!是在运行时执行，运行时4已经赋值为Int类型。 topLayoutGuide private func topLayoutGuideTest(){ let view = UIView() view.backgroundColor = .red self.view.addSubview(view) view.snp.makeConstraints(){ maker in maker.leading.equalToSuperview() maker.trailing.equalToSuperview() maker.top.equalTo(self.topLayoutGuide.snp.top) maker.bottom.equalTo(self.topLayoutGuide.snp.bottom) } } 带导航栏 不带导航栏 bottomLayoutGuide private func bottomLayoutGuideTest(){ let view = UIView()</description>
+      <description>as是在编译期间执行的，as?和as!是在运行时执行的。 print(4 as Double) // print 4.0 print(4 as! Double) // crash 上面第二行代码会崩溃是因为as?和as!是在运行时执行，运行时4已经赋值为Int类型。 topLayoutGuide topLayoutGuide和bottomLayoutGuide是UIVi</description>
     </item>
     
     <item>

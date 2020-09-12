@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">379</span>
+<span class="leancloud-visitors-count">466</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -259,6 +259,9 @@ code.has-jax {
 print(<span style="color:#ae81ff">4</span> <span style="color:#66d9ef">as</span>! Double) <span style="color:#75715e">// crash</span>
 </code></pre></div><p>上面第二行代码会崩溃是因为<code>as?</code>和<code>as!</code>是在运行时执行，运行时<code>4</code>已经赋值为<code>Int</code>类型。</p>
 <h2 id="toplayoutguide">topLayoutGuide</h2>
+<blockquote>
+<p><code>topLayoutGuide</code>和<code>bottomLayoutGuide</code>是<code>UIViewController</code>的两个只读属性与<code>view</code>属于同级。这两个属性是<code>7.0</code>引入的，<code>11.0</code>废弃的。</p>
+</blockquote>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">topLayoutGuideTest</span>(){
     <span style="color:#66d9ef">let</span> view = UIView()
     view.backgroundColor = .red
