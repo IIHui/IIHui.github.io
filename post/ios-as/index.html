@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">466</span>
+<span class="leancloud-visitors-count">612</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">1 分钟</span>
+<span class="leancloud-visitors-count">2 分钟</span>
 </span>
       </div>
     </header>
@@ -260,7 +260,7 @@ print(<span style="color:#ae81ff">4</span> <span style="color:#66d9ef">as</span>
 </code></pre></div><p>上面第二行代码会崩溃是因为<code>as?</code>和<code>as!</code>是在运行时执行，运行时<code>4</code>已经赋值为<code>Int</code>类型。</p>
 <h2 id="toplayoutguide">topLayoutGuide</h2>
 <blockquote>
-<p><code>topLayoutGuide</code>和<code>bottomLayoutGuide</code>是<code>UIViewController</code>的两个只读属性与<code>view</code>属于同级。这两个属性是<code>7.0</code>引入的，<code>11.0</code>废弃的。</p>
+<p><code>topLayoutGuide</code>和<code>bottomLayoutGuide</code>是<code>UIViewController</code>的两个只读属性与<code>view</code>属于同级。这两个属性是<code>7.0</code>引入的，<code>11.0</code>废弃的。<code>topLayoutGuide</code>要区分界面是否有导航栏。若没有导航栏,<code>topLayoutGuide</code>的顶部与状态栏顶部对齐，底部与状态栏的底部对齐。若有导航栏，<code>topLayoutGuide</code>的顶部与状态栏顶部对齐，底部与导航栏的底部对齐。</p>
 </blockquote>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">topLayoutGuideTest</span>(){
     <span style="color:#66d9ef">let</span> view = UIView()
@@ -274,10 +274,11 @@ print(<span style="color:#ae81ff">4</span> <span style="color:#66d9ef">as</span>
         
     }
 }
-</code></pre></div><h3 id="带导航栏">带导航栏</h3>
-<p><img src="https://i.loli.net/2020/09/12/39DoegPQblzFxk4.jpg" alt="-c"></p>
+</code></pre></div><p>上面的代码对于根据是否有导航栏，表现是不同的，如下面两个图所示</p>
 <h3 id="不带导航栏">不带导航栏</h3>
 <p><img src="https://i.loli.net/2020/09/12/VlRev2hEMui85Cx.jpg" alt="-c"></p>
+<h3 id="带导航栏">带导航栏</h3>
+<p><img src="https://i.loli.net/2020/09/12/39DoegPQblzFxk4.jpg" alt="-c"></p>
 <h2 id="bottomlayoutguide">bottomLayoutGuide</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">bottomLayoutGuideTest</span>(){
     <span style="color:#66d9ef">let</span> view = UIView()
@@ -536,8 +537,8 @@ print(<span style="color:#ae81ff">4</span> <span style="color:#66d9ef">as</span>
       <ul>
         <li><a href="#toplayoutguide">topLayoutGuide</a>
           <ul>
-            <li><a href="#带导航栏">带导航栏</a></li>
             <li><a href="#不带导航栏">不带导航栏</a></li>
+            <li><a href="#带导航栏">带导航栏</a></li>
           </ul>
         </li>
         <li><a href="#bottomlayoutguide">bottomLayoutGuide</a></li>
