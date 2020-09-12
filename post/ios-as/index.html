@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">328</span>
+<span class="leancloud-visitors-count">358</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -258,6 +258,24 @@ code.has-jax {
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">print(<span style="color:#ae81ff">4</span> <span style="color:#66d9ef">as</span> Double) <span style="color:#75715e">// print 4.0</span>
 print(<span style="color:#ae81ff">4</span> <span style="color:#66d9ef">as</span>! Double) <span style="color:#75715e">// crash</span>
 </code></pre></div><p>上面第二行代码会崩溃是因为<code>as?</code>和<code>as!</code>是在运行时执行，运行时<code>4</code>已经赋值为<code>Int</code>类型。</p>
+<h2 id="toplayoutguide">topLayoutGuide</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">topLayoutGuideTest</span>(){
+    <span style="color:#66d9ef">let</span> view = UIView()
+    view.backgroundColor = .red
+    <span style="color:#66d9ef">self</span>.view.addSubview(view)
+    view.snp.makeConstraints(){ maker <span style="color:#66d9ef">in</span>
+        maker.leading.equalToSuperview()
+        maker.trailing.equalToSuperview()
+        maker.top.equalTo(<span style="color:#66d9ef">self</span>.topLayoutGuide.snp.top)
+        maker.bottom.equalTo(<span style="color:#66d9ef">self</span>.topLayoutGuide.snp.bottom)
+        
+    }
+}
+</code></pre></div><h3 id="带导航栏">带导航栏</h3>
+<p><img src="https://i.loli.net/2020/09/12/39DoegPQblzFxk4.jpg" alt="-c"></p>
+<h3 id="不带导航栏">不带导航栏</h3>
+<p><img src="https://i.loli.net/2020/09/12/VlRev2hEMui85Cx.jpg" alt="-c"></p>
+<hr>
 <h2 id="底部工具栏适配">底部工具栏适配</h2>
 <p>这两天在做分组群聊选择器需要在底部加两个按钮,这就涉及到刘海屏的适配问题，可以在<code>storyBoard</code>中通过约束来实现适配，如下图所示：</p>
 <p><img src="https://i.loli.net/2020/08/26/8zkjKLbBMAegHZl.jpg" alt="-c"></p>
@@ -501,6 +519,12 @@ print(<span style="color:#ae81ff">4</span> <span style="color:#66d9ef">as</span>
   <ul>
     <li>
       <ul>
+        <li><a href="#toplayoutguide">topLayoutGuide</a>
+          <ul>
+            <li><a href="#带导航栏">带导航栏</a></li>
+            <li><a href="#不带导航栏">不带导航栏</a></li>
+          </ul>
+        </li>
         <li><a href="#底部工具栏适配">底部工具栏适配</a></li>
         <li><a href="#顶部适配">顶部适配</a></li>
       </ul>
