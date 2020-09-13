@@ -1056,7 +1056,7 @@ ideviceinstaller -i xxx.ipa 如果连接了多部手机，需要更加设备的U
 ideviceinstaller -u xxx -i xxx.ipa 如果要查看连接到电脑上的所有手机的UDID，需要使用如下命令：
 idevice_id -l 如果要查看详信息，需要用到ideviceinfo命令，下面的-s选项表示只是展示一些简单的信息：
 ideviceinfo -s 查看安装的App 如果要查看手机安装的第三方App，则使用如下命令：
-ideviceinstaller -l 卸载应用 ideviceinstaller -u [udid] -U [bundleId]  </content>
+ideviceinstaller -l 卸载应用 ideviceinstaller -u [udid] -U [bundleId]  word默认语言 defaults write com.microsoft.Word AppleLanguages &amp;#39;(&amp;#34;zh-cn&amp;#34;)&amp;#39; defaults write com.microsoft.Powerpoint AppleLanguages &amp;#39;(&amp;#34;zh-cn&amp;#34;)&amp;#39; defaults write com.microsoft.Excel AppleLanguages &amp;#39;(&amp;#34;zh-cn&amp;#34;)&amp;#39; </content>
     </entry>
     
      <entry>
