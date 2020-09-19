@@ -6,7 +6,7 @@
     <description>Recent content on Keep It Simple</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 17 Aug 2020 08:00:07 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 18 Sep 2020 10:09:24 +0000</lastBuildDate>
     
 	<atom:link href="https://iihui.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -18,6 +18,15 @@
       
       <guid>https://iihui.github.io/post/hugo-next/</guid>
       <description>从兰陵子处下载了Next主题，修改了主题下面的config.toml配置文件(配置文件的路径如下图所示)。但发现有很多地方还是需要修改才能满足自己的需求，因为对前端了解较少，故以此为记。 代码高亮支持 插入Golang、Swift和OC代码段时</description>
+    </item>
+    
+    <item>
+      <title>使用`charles`</title>
+      <link>https://iihui.github.io/post/tool-charles/</link>
+      <pubDate>Fri, 18 Sep 2020 10:09:24 +0000</pubDate>
+      
+      <guid>https://iihui.github.io/post/tool-charles/</guid>
+      <description>安装证书 首先打开charles，然后点击菜单栏的Help，选择SSL Proxing，然后选择Install Charles Root Certificate on a Mobile Device or Remote Browser，如下图所示： 接着会出现如下图所示的提示： 根据提示，首先在手机上设置代理，如下步骤所示： 输入chls.</description>
     </item>
     
     <item>
