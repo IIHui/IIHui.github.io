@@ -47,7 +47,7 @@ katex.html文件的内容如下所示：
         <content type="html">  charles可以将自己设置成网络访问的代理服务器，使得所有的网络访问请求都通过它来完成，从而实现网络封包的截取和分析，作为网络访问的监视器。当App连接charles的代理访问互联网时，charles可以监控这个程序发送和接收的所有数据。它允许查看app的所有连接互联网通信信息，这些信息包括request,response和headers（包含cookies与caching信息）。
  安装证书 首先打开charles，然后点击菜单栏的Help，选择SSL Proxing，然后选择Install Charles Root Certificate on a Mobile Device or Remote Browser，如下图所示：
 接着会出现如下图所示的提示：
-根据提示，首先在手机上设置代理，如下步骤所示：
+根据提示，首先在手机上设置代理(具体代理的设置要根据上面的提示)，如下步骤所示：
 输入chls.pro/ssl后，charles会弹出下面的提示，然后点击允许即可：
 然后打开Safari浏览器，再次输入chls.pro/ssl点击前往，然后弹出下载配置描述文件，点击允许，下载好之后打开设置，然后会出现已下载描述文件如下图所示：
 点击已下载描述文件，会弹出下面的界面，再点击安装，接着会有警告，再次点击安装，如下图所示：
