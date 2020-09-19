@@ -17,7 +17,7 @@
       <pubDate>Fri, 18 Sep 2020 10:09:24 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/tool-charles/</guid>
-      <description>charles可以将自己设置成网络访问的代理服务器，使得所有的网络访问请求都通过它来完成，从而实现网络封包的截取和分析，作为网络访问的监视器。当App连接charles的代理访问互联网时，charles可以监控这个程序发送和接收的所有数据。</description>
+      <description>charles是一款可以用于iOS的抓包工具，可以将它设置成网络访问的代理服务器，使得所有的网络访问请求都通过它来完成，从而实现网络封包的截取和分析，作为网络访问的监视器。当App连接charles的代理访问互联网时，charles可以监控</description>
     </item>
     
     <item>
