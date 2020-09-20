@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">847</span>
+<span class="leancloud-visitors-count">849</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -256,7 +256,9 @@ code.has-jax {
 <p>自从苹果推出刘海屏之后，<code>App</code>的开发就要做相应的适配，适配过程通常会用到<code>topLayoutGuide</code>和<code>bottomLayoutGuide</code>或者<code>safeAreaLayoutGuide</code>。<code>topLayoutGuide</code>和<code>bottomLayoutGuide</code>是<code>UIViewController</code>的两个只读属性与<code>view</code>属于同级。这两个属性是<code>iOS 7.0</code>引入的，而在<code>iOS 11.0</code>开始废弃。而<code>safeAreaLayoutGuide</code>是<code>iOS 11.0</code>之后才引入的。</p>
 </blockquote>
 <h2 id="toplayoutguide">topLayoutGuide</h2>
+<blockquote>
 <p><code>topLayoutGuide</code>区分界面是否有导航栏。若没有导航栏,<code>topLayoutGuide</code>的顶部与状态栏顶部对齐，<!-- raw HTML omitted -->底部与状态栏的底部对齐<!-- raw HTML omitted -->。若有导航栏，<code>topLayoutGuide</code>的顶部与状态栏顶部对齐，<!-- raw HTML omitted -->底部与导航栏的底部对齐<!-- raw HTML omitted -->。</p>
+</blockquote>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">topLayoutGuideTest</span>(){
     <span style="color:#66d9ef">let</span> view = UIView()
     view.backgroundColor = .red
@@ -274,7 +276,9 @@ code.has-jax {
 <h3 id="有导航栏">有导航栏</h3>
 <p><img src="https://i.loli.net/2020/09/12/39DoegPQblzFxk4.jpg" alt="-c"></p>
 <h2 id="bottomlayoutguide">bottomLayoutGuide</h2>
-<p><code>bottomLayoutGuide</code>要区分有没有是否刘海屏，对于刘海屏<code>bottomLayoutGuide</code>底部与手机屏幕底部，<code>bottomLayoutGuide</code>的顶部与底部圆角的顶部对齐。对于非刘海屏，<code>bottomLayoutGuide</code>的顶部和底部与都与屏幕底部对齐。</p>
+<blockquote>
+<p><code>bottomLayoutGuide</code>要区分有没有是否刘海屏。对于刘海屏<code>bottomLayoutGuide</code>底部与手机屏幕底部对其，<code>bottomLayoutGuide</code>的顶部与底部圆角的顶部对齐；对于非刘海屏，<code>bottomLayoutGuide</code>的<!-- raw HTML omitted -->顶部和底部与都与屏幕底部对齐<!-- raw HTML omitted -->。</p>
+</blockquote>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">bottomLayoutGuideTest</span>(){
     <span style="color:#66d9ef">let</span> view = UIView()
     view.backgroundColor = .red
