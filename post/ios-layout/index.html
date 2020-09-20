@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">695</span>
+<span class="leancloud-visitors-count">792</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -252,7 +252,10 @@ code.has-jax {
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    <h2 id="toplayoutguide">topLayoutGuide</h2>
+    <blockquote>
+<p>自从苹果推出刘海屏之后，<code>App</code>的开发就要做相应的适配，适配过程通常会用到<code>topLayoutGuide</code>和<code>bottomLayoutGuide</code>或者<code>safeAreaLayoutGuide</code>。不同的版本使用</p>
+</blockquote>
+<h2 id="toplayoutguide">topLayoutGuide</h2>
 <blockquote>
 <p><code>topLayoutGuide</code>和<code>bottomLayoutGuide</code>是<code>UIViewController</code>的两个只读属性与<code>view</code>属于同级。这两个属性是<code>7.0</code>引入的，<code>11.0</code>废弃的。<code>topLayoutGuide</code>要区分界面是否有导航栏。若没有导航栏,<code>topLayoutGuide</code>的顶部与状态栏顶部对齐，底部与状态栏的底部对齐。若有导航栏，<code>topLayoutGuide</code>的顶部与状态栏顶部对齐，底部与导航栏的底部对齐。</p>
 </blockquote>
@@ -265,7 +268,6 @@ code.has-jax {
         maker.trailing.equalToSuperview()
         maker.top.equalTo(<span style="color:#66d9ef">self</span>.topLayoutGuide.snp.top)
         maker.bottom.equalTo(<span style="color:#66d9ef">self</span>.topLayoutGuide.snp.bottom)
-        
     }
 }
 </code></pre></div><p>上面的代码对于根据是否有导航栏，表现是不同的，如下面两个图所示</p>

@@ -35,7 +35,7 @@
       <pubDate>Mon, 17 Aug 2020 08:00:07 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/ios-layout/</guid>
-      <description>topLayoutGuide topLayoutGuide和bottomLayoutGuide是UIViewController的两个只读属性与view属于同级。这两个属性是7.0引入的，11.0废弃的。topLayoutGuide要区分界面是否有导航栏。若没有导航栏</description>
+      <description>自从苹果推出刘海屏之后，App的开发就要做相应的适配，适配过程通常会用到topLayoutGuide和bottomLayoutGuide或者safeAreaLayoutGuide。不同的版本使用 topLayoutGuide topLayoutGuide和bottomL</description>
     </item>
     
     <item>
