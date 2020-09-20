@@ -253,12 +253,10 @@ code.has-jax {
     </header>
     <div class="post-body" itemprop="articleBody">
     <blockquote>
-<p>自从苹果推出刘海屏之后，<code>App</code>的开发就要做相应的适配，适配过程通常会用到<code>topLayoutGuide</code>和<code>bottomLayoutGuide</code>或者<code>safeAreaLayoutGuide</code>。<code>topLayoutGuide</code>和<code>bottomLayoutGuide</code>是<code>UIViewController</code>的两个只读属性与<code>view</code>属于同级。这两个属性是<code>iOS 7.0</code>引入的，而在<code>iOS 11.0</code>开始废弃。而<code>safeAreaLayoutGuide</code>是<code>iOS 11.0</code>之后引入的。</p>
+<p>自从苹果推出刘海屏之后，<code>App</code>的开发就要做相应的适配，适配过程通常会用到<code>topLayoutGuide</code>和<code>bottomLayoutGuide</code>或者<code>safeAreaLayoutGuide</code>。<code>topLayoutGuide</code>和<code>bottomLayoutGuide</code>是<code>UIViewController</code>的两个只读属性与<code>view</code>属于同级。这两个属性是<code>iOS 7.0</code>引入的，而在<code>iOS 11.0</code>开始废弃。而<code>safeAreaLayoutGuide</code>是<code>iOS 11.0</code>之后才引入的。</p>
 </blockquote>
 <h2 id="toplayoutguide">topLayoutGuide</h2>
-<blockquote>
-<p><code>topLayoutGuide</code>要区分界面是否有导航栏。若没有导航栏,<code>topLayoutGuide</code>的顶部与状态栏顶部对齐，底部与状态栏的底部对齐。若有导航栏，<code>topLayoutGuide</code>的顶部与状态栏顶部对齐，底部与导航栏的底部对齐。</p>
-</blockquote>
+<p><code>topLayoutGuide</code>区分界面是否有导航栏。若没有导航栏,<code>topLayoutGuide</code>的顶部与状态栏顶部对齐，<!-- raw HTML omitted -->底部与状态栏的底部对齐<!-- raw HTML omitted -->。若有导航栏，<code>topLayoutGuide</code>的顶部与状态栏顶部对齐，<!-- raw HTML omitted -->底部与导航栏的底部对齐<!-- raw HTML omitted -->。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">topLayoutGuideTest</span>(){
     <span style="color:#66d9ef">let</span> view = UIView()
     view.backgroundColor = .red
