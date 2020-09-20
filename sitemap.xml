@@ -210,18 +210,6 @@ func newInt() *int { return new(int) } func newInt() *int { var dummy int return
     </entry>
     
      <entry>
-        <title>时间相关</title>
-        <url>https://iihui.github.io/post/ios-date-nsconflict-halo-mac10.15.6/</url>
-        <categories>
-          <category>iOS</category>
-        </categories>
-        <tags>
-          <tag>iOS</tag>
-        </tags>
-        <content type="html"> 毫秒级时间戳距当前时间 /// 将毫秒级别的时间戳转换为约定的格式，0～60秒显示几秒前，1～60分显示xx分钟前，1～24小时显示xx小时前，1～10天显示xx天前，否则显示yyyy-MM-dd /// - Parameter timeStamp: 毫秒级别时间戳字符串 /// - Returns: 转换后的字符串 private func convertTime(timeStamp: String) -&amp;gt; String { let currentTimeSeconds = Date().timeIntervalSince1970 if let timeDouble = Double(timeStamp) { let timeStampSeconds: TimeInterval = TimeInterval(timeDouble / 1000) let reduceTime: TimeInterval = currentTimeSeconds - timeStampSeconds //时间差小于60秒 if reduceTime &amp;lt; 60 { return &amp;#34;几秒前&amp;#34; } //时间差大于一分钟小于60分钟内 let minutes = Int(reduceTime / 60) if minutes &amp;lt; 60 { return &amp;#34;\(minutes)分钟前&amp;#34; } let hours = Int(reduceTime / 3600) if hours &amp;lt; 24 { return &amp;#34;\(hours)小时前&amp;#34; } let days = Int(reduceTime / 3600 / 24) if days &amp;lt; 10 { return &amp;#34;\(days)天前&amp;#34; } let date = NSDate(timeIntervalSince1970: timeStampSeconds) let dateFormat = DateFormatter() dateFormat.dateFormat = &amp;#34;yyyy-MM-dd&amp;#34; return dateFormat.string(from: date as Date) } else { return &amp;#34;未知时间&amp;#34; } }  </content>
-    </entry>
-    
-     <entry>
         <title>时间相关处理</title>
         <url>https://iihui.github.io/post/ios-date/</url>
         <categories>
@@ -621,23 +609,6 @@ extension UIColor { convenience init(hex: String) { var cString: String = hex.tr
     
      <entry>
         <title>git 使用</title>
-        <url>https://iihui.github.io/post/tool-git-usage-nsconflict-halo-mac10.15.4/</url>
-        <categories>
-          <category>code</category>
-        </categories>
-        <tags>
-          <tag>git</tag>
-        </tags>
-        <content type="html"> 清理文件 本地.git文件太大，可以使用git gc命令清理不必要的文件并优化本地存储库，其中gc是garbage collection的缩写:
-git gc [--aggressive] [--auto] [--quiet] [--prune=&amp;lt;date&amp;gt; | --no-prune] [--force] [--keep-largest-pack] 更多参数讲解
-大小写敏感 默认情况下git追踪的项目对文件名大小写是不敏感的，但是git提供了命令可以使得当前项目或者所有项目都能区分文件名的大小写。
-当前项目 打开终端，利用cd命令，将目录切换到git仓库下，输入如下命令使其对文件名大小写敏感：
-git config core.ignorecase false 所有项目 如果想要所有项目都对文件名大小写敏感，就需要进行全局设置。执行如下命令，改变git的全局设置即可：
-git config --global core.ignorecase false </content>
-    </entry>
-    
-     <entry>
-        <title>git 使用</title>
         <url>https://iihui.github.io/post/tool-git-usage/</url>
         <categories>
           <category>code</category>
@@ -868,26 +839,6 @@ extension NSObject { static func swizzlingForClass(_ forClass: AnyClass, origina
 let didAddMethod: Bool = class_addMethod(object, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod)) 上面的代码中如果didAddMethod返回为false，则说明可以直接进行方法交换，如果返回值为true，则说明在子类中添加originalSelector成功，并且originalSelector指向了子类的swizzledMethod的实现。但是swizzledSelector的实现还是它原来的实现，接下来就要将swizzledSelector指向originalMethod的实现。因此，完整的代码应该如下所示：
 static func exchangeSelector(object:AnyClass,originalSelector: Selector, swizzledSelector: Selector) { guard let originalMethod = class_getInstanceMethod(object, originalSelector) else { return } guard let swizzledMethod = class_getInstanceMethod(object, swizzledSelector) else { return } let didAddMethod: Bool = class_addMethod(object, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod)) if didAddMethod { class_replaceMethod(object, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod)) } else { method_exchangeImplementations(originalMethod, swizzledMethod) } } 构建工具类 因为当前App埋点的时候很多地方需要使用到方法交换，因此决定写一个专门的工具类来实现Swift的方法交换，如下所示：
 class MethodSwizzlingTools { static func exchangeSelector(object: AnyClass, originalSelector: Selector, swizzledSelector: Selector) { //对于class_getInstanceMethod方法，若类没有实现对应的方法，但父类实现了，则这个函数会返回父类的方法 guard let originalMethod = class_getInstanceMethod(object, originalSelector) else { return } guard let swizzledMethod = class_getInstanceMethod(object, swizzledSelector) else { return } //参考https://juejin.im/post/5cb6df44e51d456e6f45c6f1 let didAddMethod: Bool = class_addMethod(object, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod)) if didAddMethod { class_replaceMethod(object, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod)) } else { method_exchangeImplementations(originalMethod, swizzledMethod) } } //交换两个不同类的方法，这两个类应该满足父子关系 static func exchangeSelector(originalClass: AnyClass, originalSelector: Selector, swizzledClass: AnyClass, swizzledSelector: Selector) { guard let originalMethod = class_getInstanceMethod(originalClass, originalSelector), let swizzledMethod = class_getInstanceMethod(swizzledClass, swizzledSelector) else { return } let didAddMethod: Bool = class_addMethod(originalClass, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod)) if didAddMethod { class_replaceMethod(swizzledClass, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod)) } else { method_exchangeImplementations(originalMethod, swizzledMethod) } } }  参考资料 参考资料
-</content>
-    </entry>
-    
-     <entry>
-        <title>Any,AnyObject,AnyClass</title>
-        <url>https://iihui.github.io/post/ios-any-nsconflict-halo-mac10.15.5/</url>
-        <categories>
-          <category>code</category>
-        </categories>
-        <tags>
-          <tag>swift</tag><tag>iOS</tag>
-        </tags>
-        <content type="html">  最近在看Swift中的方法交换，遇到Any、AnyObject与AnyClass次数挺多的，所以在网上找了一些文章看了一下，以此为记。
- AnyObject AnyObject类似于OC中的id类型，表示任意的class类型。但在Swift中由于String、Array等都变成结构体了，AnyObject的适用范围就变窄了。
-实际上AnyObject是一个成员为空的协议@objc public protocol AnyObject {}。它注释的第一行:The protocol to which all classes implicitly conform表明所有的类都隐式遵守了这个协议。
-Any Any也是一个协议，根据其注释The protocol to which all types implicitly conform.表明所有的类型都遵守该协议，包括基本数据类型，enum, struct, func等等。
-AnyClass AnyClass表示任意类的元类型。根据AnyClass的定义typealias AnyClass = AnyObject .Type可知它为AnyObject.Type的别名。AnyObject.Type中的.Type就是获取元类型。例如。对于Student类，Student.Type就是获取Student的元类型。
-再根据注释The protocol to which all class types implicitly conform，可知道所有的类的类型都隐式遵守这个协议。
-重要区别 AnyObject代表任意class类型的对象实例，Any代表任意类型，甚至包括方法类型，所以AnyObject是Any的子集。
- 参考资料 参考资料
 </content>
     </entry>
     

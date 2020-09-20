@@ -22,15 +22,6 @@
     
     <item>
       <title>git 使用</title>
-      <link>https://iihui.github.io/post/tool-git-usage-nsconflict-halo-mac10.15.4/</link>
-      <pubDate>Tue, 24 Mar 2020 09:36:27 +0000</pubDate>
-      
-      <guid>https://iihui.github.io/post/tool-git-usage-nsconflict-halo-mac10.15.4/</guid>
-      <description>清理文件 本地.git文件太大，可以使用git gc命令清理不必要的文件并优化本地存储库，其中gc是garbage collection的缩写: git gc [--aggressive] [--auto] [--quiet] [--prune=&amp;lt;date&amp;gt; | --no-prune] [--force] [--keep-largest-pack] 更多参数讲解 大小写敏感 默认情况下git追踪的项目对文件名大小写是不敏感的，但是gi</description>
-    </item>
-    
-    <item>
-      <title>git 使用</title>
       <link>https://iihui.github.io/post/tool-git-usage/</link>
       <pubDate>Tue, 24 Mar 2020 09:36:27 +0000</pubDate>
       
@@ -45,15 +36,6 @@
       
       <guid>https://iihui.github.io/post/clion-test/</guid>
       <description>首先在github下载最新的googletest，解压之后重命名为googletest。然后将其放入到CLion工程目录下，接着修改工程的CMakeList.txt文件。最后，修改main函数，编写单元测试用例。 下载 在github下载最新的</description>
-    </item>
-    
-    <item>
-      <title>Any,AnyObject,AnyClass</title>
-      <link>https://iihui.github.io/post/ios-any-nsconflict-halo-mac10.15.5/</link>
-      <pubDate>Tue, 18 Feb 2020 21:14:39 +0000</pubDate>
-      
-      <guid>https://iihui.github.io/post/ios-any-nsconflict-halo-mac10.15.5/</guid>
-      <description>最近在看Swift中的方法交换，遇到Any、AnyObject与AnyClass次数挺多的，所以在网上找了一些文章看了一下，以此为记。 AnyObject AnyObject类似于OC中的id类型，表示任意的class类型。但在Swift中由于String、A</description>
     </item>
     
     <item>

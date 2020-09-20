@@ -66,15 +66,6 @@
     </item>
     
     <item>
-      <title>时间相关</title>
-      <link>https://iihui.github.io/post/ios-date-nsconflict-halo-mac10.15.6/</link>
-      <pubDate>Wed, 29 Jul 2020 19:21:23 +0000</pubDate>
-      
-      <guid>https://iihui.github.io/post/ios-date-nsconflict-halo-mac10.15.6/</guid>
-      <description>毫秒级时间戳距当前时间 /// 将毫秒级别的时间戳转换为约定的格式，0～60秒显示几秒前，1～60分显示xx分钟前，1～24小时显示xx小时前，1～10天显示xx天前，否则显示yyyy-MM-dd /// - Parameter timeStamp: 毫秒级别时间戳字符串 /// - Returns: 转换后的字符串 private func</description>
-    </item>
-    
-    <item>
       <title>时间相关处理</title>
       <link>https://iihui.github.io/post/ios-date/</link>
       <pubDate>Wed, 29 Jul 2020 19:21:23 +0000</pubDate>
@@ -306,15 +297,6 @@
       
       <guid>https://iihui.github.io/post/ios-addmethod/</guid>
       <description>Swizzle是OC的黑魔法之一，可以在运行时对两个方法的实现进行交换，也就是用户可以用自己的方法替换原来的方法实现，做一些其它事情。Swift也可以使用运行时的方法交换，如果要了解Swift的方法交换，首先应该了解class_addMet</description>
-    </item>
-    
-    <item>
-      <title>Any,AnyObject,AnyClass</title>
-      <link>https://iihui.github.io/post/ios-any-nsconflict-halo-mac10.15.5/</link>
-      <pubDate>Tue, 18 Feb 2020 21:14:39 +0000</pubDate>
-      
-      <guid>https://iihui.github.io/post/ios-any-nsconflict-halo-mac10.15.5/</guid>
-      <description>最近在看Swift中的方法交换，遇到Any、AnyObject与AnyClass次数挺多的，所以在网上找了一些文章看了一下，以此为记。 AnyObject AnyObject类似于OC中的id类型，表示任意的class类型。但在Swift中由于String、A</description>
     </item>
     
     <item>
