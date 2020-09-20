@@ -82,7 +82,7 @@ safeAreaLayoutGuide.snp private func setupUI2() { let topView = UIView() topView
     </entry>
     
      <entry>
-        <title>image 处理</title>
+        <title>UIImage</title>
         <url>https://iihui.github.io/post/ios-image/</url>
         <categories>
           <category>iOS</category>
@@ -96,18 +96,6 @@ safeAreaLayoutGuide.snp private func setupUI2() { let topView = UIView() topView
     
      <entry>
         <title>UITabBar</title>
-        <url>https://iihui.github.io/post/ios-uitabbar-nsconflict-halo-mac10.15.6/</url>
-        <categories>
-          <category>iOS</category>
-        </categories>
-        <tags>
-          <tag>iOS</tag>
-        </tags>
-        <content type="html"> 双击检测 private let intervalThreshold: Double = 0.8 private var dkLastClickedDate: Date? = nil private var ePaperLastClickedDate: Date? = nil func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -&amp;gt; Bool { if tabBarController.selectedIndex == 1,let nav = tabBarController.selectedViewController as? UINavigationController,let vc:NewsViewController = nav.visibleViewController let date = Date() switch vc.segmentedView.selectedIndex { case 0: if let lastDate = self.ePaperLastClickedDate, (date.timeIntervalSince1970 - lastDate.timeIntervalSince1970) &amp;lt; intervalThreshold { NotificationCenter.default.post(name: .ePaperScrollToTopNotification, object: nil) } self.ePaperLastClickedDate = date case 1: if let lastDate = self.dkLastClickedDate, (date.timeIntervalSince1970 - lastDate.timeIntervalSince1970) &amp;lt; intervalThreshold { NotificationCenter.default.post(name: .dkScrollToTopNotification, object: nil) } self.dkLastClickedDate = date default: break } } return true } </content>
-    </entry>
-    
-     <entry>
-        <title>UITabBar 相关</title>
         <url>https://iihui.github.io/post/ios-uitabbar/</url>
         <categories>
           <category>iOS</category>
