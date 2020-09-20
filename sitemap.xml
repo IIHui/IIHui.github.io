@@ -95,7 +95,7 @@ safeAreaLayoutGuide.snp private func setupUI2() { let topView = UIView() topView
     </entry>
     
      <entry>
-        <title>UITabBar</title>
+        <title>UITabBarController</title>
         <url>https://iihui.github.io/post/ios-uitabbar/</url>
         <categories>
           <category>iOS</category>
