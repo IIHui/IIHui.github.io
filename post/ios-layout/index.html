@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
-    <title>image - Keep It Simple</title>
+    <title>刘海屏适配 - Keep It Simple</title>
     <meta name="keywords" content="博客,思考,读书,笔记,技术,分享">
     
-    <meta property="og:title" content="image">
+    <meta property="og:title" content="刘海屏适配">
     <meta property="og:site_name" content="Keep It Simple">
     <meta property="og:image" content="/img/author.jpg"> 
-    <meta name="title" content="image - Keep It Simple" />
+    <meta name="title" content="刘海屏适配 - Keep It Simple" />
     <meta name="description" content="Swift | Go | C&#43;&#43; "> 
     <link rel="shortcut icon" href="https://iihui.github.io/img/favicon.ico" />
     <link rel="apple-touch-icon" href="https://iihui.github.io/img/apple-touch-icon.png" />
@@ -192,8 +192,8 @@ code.has-jax {
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="https://iihui.github.io/post/ios-image-nsconflict-halo-mac10.15.6/" itemprop="url">
-        image
+        <a class="post-title-link" href="https://iihui.github.io/post/ios-layout/" itemprop="url">
+        刘海屏适配
         </a>
       </h1>
       <div class="post-meta">
@@ -202,8 +202,8 @@ code.has-jax {
     <i class="fa fa-calendar-o"></i>
 </span>
 <span class="post-meta-item-text">创建: </span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2020-08-05">
-    2020-08-05
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2020-08-17">
+    2020-08-17
 </time>
 </span>
 &nbsp; | &nbsp;
@@ -212,8 +212,8 @@ code.has-jax {
     <i class="fa fa-calendar-check-o"></i>
 </span>
 <span class="post-meta-item-text">更新: </span>
-<time itemprop="dateUpdated" content="2020-08-05">
-    2020-08-05
+<time itemprop="dateUpdated" content="2020-08-17">
+    2020-08-17
 </time>
 </span> 
       
@@ -241,47 +241,132 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">176</span>
+<span class="leancloud-visitors-count">695</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">1 分钟</span>
+<span class="leancloud-visitors-count">2 分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">/// 将图片裁剪为带外围⭕️的圆形图</span>
-<span style="color:#75715e">/// - Parameters:</span>
-<span style="color:#75715e">///   - rail: 外围圆的宽度</span>
-<span style="color:#75715e">///   - color: 外围圆的颜色</span>
-<span style="color:#75715e">/// - Returns: 生成新的图片</span>
-<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">circleImageWidthRail</span>(rail: CGFloat, color: UIColor) -&gt; UIImage? {
-    <span style="color:#66d9ef">let</span> size = CGSize(width: <span style="color:#66d9ef">self</span>.size.width <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> rail, height: <span style="color:#66d9ef">self</span>.size.height <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> rail)
-    UIGraphicsBeginImageContextWithOptions(size, <span style="color:#66d9ef">false</span>, <span style="color:#ae81ff">0</span>)
-    <span style="color:#66d9ef">let</span> path = UIBezierPath(ovalIn: CGRect(x: <span style="color:#ae81ff">0</span>, y: <span style="color:#ae81ff">0</span>, width: size.width, height: size.height))
-    color.<span style="color:#66d9ef">set</span>()
-    path.fill()
-    <span style="color:#66d9ef">let</span> imgPath = UIBezierPath(ovalIn: CGRect(x: rail, y: rail, width: <span style="color:#66d9ef">self</span>.size.width, height: <span style="color:#66d9ef">self</span>.size.height))
-    imgPath.addClip()
-    <span style="color:#66d9ef">self</span>.draw(at: CGPoint(x: rail, y: rail))
-    <span style="color:#66d9ef">let</span> newImg = UIGraphicsGetImageFromCurrentImageContext()
-    UIGraphicsEndImageContext()
-    <span style="color:#66d9ef">return</span> newImg
+    <h2 id="toplayoutguide">topLayoutGuide</h2>
+<blockquote>
+<p><code>topLayoutGuide</code>和<code>bottomLayoutGuide</code>是<code>UIViewController</code>的两个只读属性与<code>view</code>属于同级。这两个属性是<code>7.0</code>引入的，<code>11.0</code>废弃的。<code>topLayoutGuide</code>要区分界面是否有导航栏。若没有导航栏,<code>topLayoutGuide</code>的顶部与状态栏顶部对齐，底部与状态栏的底部对齐。若有导航栏，<code>topLayoutGuide</code>的顶部与状态栏顶部对齐，底部与导航栏的底部对齐。</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">topLayoutGuideTest</span>(){
+    <span style="color:#66d9ef">let</span> view = UIView()
+    view.backgroundColor = .red
+    <span style="color:#66d9ef">self</span>.view.addSubview(view)
+    view.snp.makeConstraints(){ maker <span style="color:#66d9ef">in</span>
+        maker.leading.equalToSuperview()
+        maker.trailing.equalToSuperview()
+        maker.top.equalTo(<span style="color:#66d9ef">self</span>.topLayoutGuide.snp.top)
+        maker.bottom.equalTo(<span style="color:#66d9ef">self</span>.topLayoutGuide.snp.bottom)
+        
+    }
 }
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">/// 将图片裁剪为圆形图</span>
-<span style="color:#75715e">/// - Returns:生成新的图片</span>
-<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">circleImage</span>() -&gt; UIImage? {
-    UIGraphicsBeginImageContextWithOptions(<span style="color:#66d9ef">self</span>.size, <span style="color:#66d9ef">false</span>, <span style="color:#ae81ff">0</span>)
-    <span style="color:#66d9ef">let</span> imgPath = UIBezierPath(ovalIn: CGRect(x: <span style="color:#ae81ff">0</span>, y: <span style="color:#ae81ff">0</span>, width: <span style="color:#66d9ef">self</span>.size.width, height: <span style="color:#66d9ef">self</span>.size.height))
-    imgPath.addClip()
-    <span style="color:#66d9ef">self</span>.draw(at: CGPoint(x: <span style="color:#ae81ff">0</span>, y: <span style="color:#ae81ff">0</span>))
-    <span style="color:#66d9ef">let</span> newImg = UIGraphicsGetImageFromCurrentImageContext()
-    UIGraphicsEndImageContext()
-    <span style="color:#66d9ef">return</span> newImg
+</code></pre></div><p>上面的代码对于根据是否有导航栏，表现是不同的，如下面两个图所示</p>
+<h3 id="不带导航栏">不带导航栏</h3>
+<p><img src="https://i.loli.net/2020/09/12/VlRev2hEMui85Cx.jpg" alt="-c"></p>
+<h3 id="带导航栏">带导航栏</h3>
+<p><img src="https://i.loli.net/2020/09/12/39DoegPQblzFxk4.jpg" alt="-c"></p>
+<h2 id="bottomlayoutguide">bottomLayoutGuide</h2>
+<p><code>bottomLayoutGuide</code>要区分有没有是否刘海屏，对于刘海屏<code>bottomLayoutGuide</code>底部与手机屏幕底部，<code>bottomLayoutGuide</code>的顶部与底部圆角的顶部对齐。对于非刘海屏，<code>bottomLayoutGuide</code>的顶部和底部与都与屏幕底部对齐。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">bottomLayoutGuideTest</span>(){
+    <span style="color:#66d9ef">let</span> view = UIView()
+    view.backgroundColor = .red
+    <span style="color:#66d9ef">self</span>.view.addSubview(view)
+    view.snp.makeConstraints(){ maker <span style="color:#66d9ef">in</span>
+        maker.leading.equalToSuperview()
+        maker.trailing.equalToSuperview()
+        maker.top.equalTo(<span style="color:#66d9ef">self</span>.bottomLayoutGuide.snp.top)
+        maker.bottom.equalTo(<span style="color:#66d9ef">self</span>.bottomLayoutGuide.snp.bottom)
+    }
 }
-</code></pre></div><p><a href="https://stackoverflow.com/questions/29046571/cut-a-uiimage-into-a-circle/29046647">参考资料</a></p>
+</code></pre></div><p><img src="https://i.loli.net/2020/09/12/bqiMulGhRpDKNd1.jpg" alt="-c"></p>
+<h2 id="safearealayoutguide">safeAreaLayoutGuide</h2>
+<p><code>iOS 11.0</code>之后引入<code>safeAreaLayoutGuide</code>，它属于</p>
+<h2 id="底部工具栏适配">底部工具栏适配</h2>
+<p>这两天在做分组群聊选择器需要在底部加两个按钮,这就涉及到刘海屏的适配问题，可以在<code>storyBoard</code>中通过约束来实现适配，如下图所示：</p>
+<p><img src="https://i.loli.net/2020/08/26/8zkjKLbBMAegHZl.jpg" alt="-c"></p>
+<p>使用<code>SnapKit</code>同样可以达到适配的目的，如下图所示：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">setupUI</span>(){
+    <span style="color:#66d9ef">let</span> view = UIView()
+    view.backgroundColor = .red
+    <span style="color:#66d9ef">self</span>.view.addSubview(view)
+    view.snp.makeConstraints(){ maker <span style="color:#66d9ef">in</span>
+        maker.bottom.equalToSuperview()
+        maker.top.equalTo(<span style="color:#66d9ef">self</span>.view.safeAreaLayoutGuide.snp.bottom).inset(<span style="color:#ae81ff">60</span>)
+        maker.leading.equalToSuperview()
+        maker.trailing.equalToSuperview()
+    }
+}
+</code></pre></div><p><img src="https://i.loli.net/2020/08/27/v8ylw9iXNqoPC53.jpg" alt="-c"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">setupUI</span>(){
+    <span style="color:#66d9ef">let</span> view = UIView()
+    view.backgroundColor = .red
+    <span style="color:#66d9ef">self</span>.view.addSubview(view)
+    view.snp.makeConstraints(){ maker <span style="color:#66d9ef">in</span>
+        maker.top.equalTo(<span style="color:#66d9ef">self</span>.bottomLayoutGuide.snp.top
+.inset(<span style="color:#f92672">-</span><span style="color:#ae81ff">60</span>)
+        maker.bottom.equalToSuperview()
+        maker.leading.equalToSuperview()
+        maker.trailing.equalToSuperview()
+    }
+}
+</code></pre></div><h2 id="顶部适配">顶部适配</h2>
+<p>同样顶部也可以这样适配，如下图所示：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">setupUI2</span>() {
+    <span style="color:#66d9ef">let</span> bottomView = UIView()
+    bottomView.backgroundColor = .red
+    <span style="color:#66d9ef">self</span>.view.addSubview(bottomView)
+    bottomView.snp.makeConstraints { maker <span style="color:#66d9ef">in</span>
+        maker.bottom.equalToSuperview()
+        maker.top.equalTo(<span style="color:#66d9ef">self</span>.view.safeAreaLayoutGuide.snp.bottom).inset(<span style="color:#ae81ff">60</span>)
+        maker.leading.equalToSuperview()
+        maker.trailing.equalToSuperview()
+    }
+    
+    <span style="color:#66d9ef">let</span> topView = UIView()
+    
+    topView.backgroundColor = .blue
+    
+    <span style="color:#66d9ef">self</span>.view.addSubview(topView)
+    topView.snp.makeConstraints { maker <span style="color:#66d9ef">in</span>
+        maker.leading.equalToSuperview()
+        maker.trailing.equalToSuperview()
+        maker.top.equalToSuperview()
+        maker.bottom.equalTo(<span style="color:#66d9ef">self</span>.view.safeAreaLayoutGuide.snp.top).inset(<span style="color:#ae81ff">60</span>)
+    }
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">setupUI3</span>() {
+    <span style="color:#66d9ef">let</span> bottomView = UIView()
+    bottomView.backgroundColor = .red
+    <span style="color:#66d9ef">self</span>.view.addSubview(bottomView)
+    bottomView.snp.makeConstraints { maker <span style="color:#66d9ef">in</span>
+        maker.bottom.equalToSuperview()
+        maker.top.equalTo(<span style="color:#66d9ef">self</span>.bottomLayoutGuide.snp.top).inset(<span style="color:#f92672">-</span><span style="color:#ae81ff">60</span>)
+        maker.leading.equalToSuperview()
+        maker.trailing.equalToSuperview()
+    }
+    
+    <span style="color:#66d9ef">let</span> topView = UIView()
+    
+    topView.backgroundColor = .blue
+    
+    <span style="color:#66d9ef">self</span>.view.addSubview(topView)
+    topView.snp.makeConstraints { maker <span style="color:#66d9ef">in</span>
+        maker.leading.equalToSuperview()
+        maker.trailing.equalToSuperview()
+        maker.top.equalToSuperview()
+        maker.bottom.equalTo(<span style="color:#66d9ef">self</span>.topLayoutGuide.snp.bottom).inset(<span style="color:#f92672">-</span><span style="color:#ae81ff">60</span>)
+    }
+}
+</code></pre></div><p><img src="https://i.loli.net/2020/08/27/ijLDWOtAQuFsHIB.jpg" alt=""></p>
+<p><a href="https://www.jianshu.com/p/f2aba4796463">参考资料</a></p>
 
     </div>
     <footer class="post-footer">
@@ -298,16 +383,16 @@ code.has-jax {
         <div class="post-nav">
     <div class="post-nav-next post-nav-item">
     
-        <a href="https://iihui.github.io/post/ios-layout/" rel="next" title="刘海屏适配">
-        <i class="fa fa-chevron-left"></i> 刘海屏适配
+        <a href="https://iihui.github.io/post/tool-charles/" rel="next" title="使用charles">
+        <i class="fa fa-chevron-left"></i> 使用charles
         </a>
     
     </div>
 
     <div class="post-nav-prev post-nav-item">
     
-        <a href="https://iihui.github.io/post/ios-image/" rel="prev" title="image 处理">
-        image 处理 <i class="fa fa-chevron-right"></i>
+        <a href="https://iihui.github.io/post/ios-image-nsconflict-halo-mac10.15.6/" rel="prev" title="image">
+        image <i class="fa fa-chevron-right"></i>
         </a>
     
     </div>
@@ -321,10 +406,10 @@ code.has-jax {
         </div>
         <div>
             <p style="margin-top:10px;">
-                标题：image
+                标题：刘海屏适配
                 <br />作者：阿呆<a target="_blank" href="https://iihui.github.io/"></a>
                 
-                <br />地址：https://iihui.github.io/post/ios-image-nsconflict-halo-mac10.15.6/
+                <br />地址：https://iihui.github.io/post/ios-layout/
                 <br />声明：自由转载-非商用-保持署名（创作共享4.0许可证）
             </p>
         </div>
@@ -443,7 +528,24 @@ code.has-jax {
     
 <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
     <div class="post-toc">
-        <div class="post-toc-content"><nav id="TableOfContents"></nav></div>
+        <div class="post-toc-content"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#toplayoutguide">topLayoutGuide</a>
+          <ul>
+            <li><a href="#不带导航栏">不带导航栏</a></li>
+            <li><a href="#带导航栏">带导航栏</a></li>
+          </ul>
+        </li>
+        <li><a href="#bottomlayoutguide">bottomLayoutGuide</a></li>
+        <li><a href="#safearealayoutguide">safeAreaLayoutGuide</a></li>
+        <li><a href="#底部工具栏适配">底部工具栏适配</a></li>
+        <li><a href="#顶部适配">顶部适配</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
     </div>
 </section>
 
