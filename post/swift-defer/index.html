@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">654</span>
+<span class="leancloud-visitors-count">737</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -319,6 +319,13 @@ f.foo() <span style="color:#75715e">// 0</span>
 f.foo() <span style="color:#75715e">// 1</span>
 f.num   <span style="color:#75715e">// 2</span>
 </code></pre></div><hr>
+<h2 id="as">as</h2>
+<blockquote>
+<p><code>as</code>是在编译期间执行的，<code>as?</code>和<code>as!</code>是在运行时执行的。</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">print(<span style="color:#ae81ff">4</span> <span style="color:#66d9ef">as</span> Double) <span style="color:#75715e">// print 4.0</span>
+print(<span style="color:#ae81ff">4</span> <span style="color:#66d9ef">as</span>! Double) <span style="color:#75715e">// crash</span>
+</code></pre></div><p>上面第二行代码会崩溃是因为<code>as?</code>和<code>as!</code>是在运行时执行，运行时<code>4</code>已经赋值为<code>Int</code>类型。</p>
 <p><a href="https://onevcat.com/2018/11/defer/">摘抄自</a></p>
 
     </div>
@@ -489,6 +496,7 @@ f.num   <span style="color:#75715e">// 2</span>
         <li><a href="#作用域">作用域</a></li>
         <li><a href="#defer闭包不持有值">defer闭包不持有值</a></li>
         <li><a href="#执行时机">执行时机</a></li>
+        <li><a href="#as">as</a></li>
       </ul>
     </li>
   </ul>
