@@ -35,7 +35,7 @@
       <pubDate>Mon, 17 Aug 2020 08:00:07 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/ios-layout/</guid>
-      <description>自从苹果推出刘海屏之后，App的开发就要做相应的适配，适配过程通常会用到topLayoutGuide和bottomLayoutGuide或者safeAreaLayoutGuide。topLayoutGuide和bottomLayoutGui</description>
+      <description>自从苹果推出刘海屏之后，App开发就要做相应的适配，适配过程通常会用到topLayoutGuide和bottomLayoutGuide或者safeAreaLayoutGuide。topLayoutGuide和bottomLayoutGuid</description>
     </item>
     
     <item>
