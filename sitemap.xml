@@ -44,12 +44,12 @@ katex.html文件的内容如下所示：
         <tags>
           <tag>iOS</tag>
         </tags>
-        <content type="html">  charles是一款用于iOS的抓包工具，可以将它设置成网络访问的代理服务器，使得所有的网络访问请求都通过它来完成，从而实现网络封包的截取和分析，以作为网络访问的监视器。当App连接charles代理访问互联网时，charles可以监控这个App发送和接收的所有数据。它允许查看App的所有连接互联网通信信息，这些信息包括request,response和headers（包含cookies与caching信息）。
+        <content type="html">  charles是一款用于iOS的抓包工具，可以将它设置成网络访问的代理服务器，使得所有的网络访问请求都通过它来完成，从而实现网络封包的截取和分析，以作为网络访问的监视器。当App连接charles代理访问互联网时，charles可以监控这个App发送和接收的所有数据，这些信息包括request,response和headers（包含cookies与caching）。
  安装证书 首先打开charles，然后点击菜单栏的Help，选择SSL Proxing，然后选择Install Charles Root Certificate on a Mobile Device or Remote Browser，如下图所示：
 接着会出现如下图的提示：
-根据提示，首先在手机上设置代理(具体代理的设置要根据上面的提示)，如下步骤所示：
-输入chls.pro/ssl后，charles会弹出下面的提示，然后点击允许即可：
-然后打开Safari浏览器，再次输入chls.pro/ssl点击前往，然后弹出下载配置描述文件，点击允许，下载好之后打开设置，然后会出现已下载描述文件如下图所示：
+根据提示，首先在手机上设置代理(具体代理的设置要根据相应的提示)，具体步骤如下所示：
+输入chls.pro/ssl后，charles会弹出下面的提示，然后点击允许：
+接着打开Safari浏览器，输入chls.pro/ssl，再点击前往，然后弹出下载配置描述文件，点击允许，下载好之后打开设置，然后会出现已下载描述文件步骤如下图所示：
 点击已下载描述文件，会弹出下面的界面，再点击安装，接着会有警告，再次点击安装，如下图所示：
 https抓包 安装好描述文件之后，就可以进行抓包，默认http的请求都可以直接查看，但是https的请求不能直接查看，需要设置。有两种方式可以设置https，一种是直接在SSL Proxying Settings中设置，另外一种是在请求地址目录上选中右键。
 第一种 打开charles，在菜单栏中选择Proxy，再选择SSL Proxying Settings,如下图所示：
