@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1095</span>
+<span class="leancloud-visitors-count">1115</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -292,6 +292,18 @@ code.has-jax {
     }
 }
 </code></pre></div><p><img src="https://i.loli.net/2020/09/12/bqiMulGhRpDKNd1.jpg" alt="-c"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">bottomLayoutGuideTest</span>(){
+    <span style="color:#66d9ef">let</span> view = UIView()
+    view.backgroundColor = .red
+    <span style="color:#66d9ef">self</span>.view.addSubview(view)
+    view.snp.makeConstraints(){ maker <span style="color:#66d9ef">in</span>
+        maker.leading.equalToSuperview()
+        maker.trailing.equalToSuperview()
+        maker.bottom.equalTo(<span style="color:#66d9ef">self</span>.bottomLayoutGuide.snp.top)
+        maker.height.equalTo(<span style="color:#ae81ff">20</span>)
+    }
+}
+</code></pre></div><p><img src="https://i.loli.net/2020/09/25/YXcVHhe9ERw2UOi.jpg" alt="-c"></p>
 <h2 id="safearealayoutguide">safeAreaLayoutGuide</h2>
 <blockquote>
 <p><code>iOS 11.0</code>之后引入了<code>safe area</code>，它用于定义视图的安全可视区域，可以保证在<code>safe area</code>区域内的子<code>view</code>不会被遮挡。<code>UIKit</code>定义的<code>navigation controller</code>、<code>tabbar controller</code>会展示一个顶部的导航栏或者底部的<code>tabbar</code>，也会遮挡一部分 <code>child view controller</code>的视图。<code>safe area</code>描述当前<code>view</code>不被父<code>Controller</code>的控件挡住的区域。</p>
