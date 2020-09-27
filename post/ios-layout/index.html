@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1115</span>
+<span class="leancloud-visitors-count">1136</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -304,7 +304,19 @@ code.has-jax {
     }
 }
 </code></pre></div><p><img src="https://i.loli.net/2020/09/25/6EqK2RB1HJ73zVd.jpg" alt="-c"></p>
-<hr>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">self</span>.view.addSubview(<span style="color:#66d9ef">self</span>.performanceView)
+<span style="color:#66d9ef">self</span>.performanceView.snp.makeConstraints { maker <span style="color:#66d9ef">in</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#75715e">#available</span>(<span style="color:#75715e">iOS</span> <span style="color:#ae81ff">11.0</span>, <span style="color:#f92672">*</span>) {
+        maker.trailing.equalTo(<span style="color:#66d9ef">self</span>.view.safeAreaLayoutGuide.snp.trailing).inset(<span style="color:#ae81ff">20</span>)
+        maker.bottom.equalTo(<span style="color:#66d9ef">self</span>.view.safeAreaLayoutGuide.snp.bottom).inset(<span style="color:#ae81ff">15</span>)
+    } <span style="color:#66d9ef">else</span> {
+        maker.trailing.equalToSuperview().inset(<span style="color:#ae81ff">20</span>)
+        maker.bottom.equalTo(<span style="color:#66d9ef">self</span>.bottomLayoutGuide.snp.top).inset(<span style="color:#f92672">-</span><span style="color:#ae81ff">15</span>)
+    }
+    maker.width.equalTo(<span style="color:#ae81ff">200</span>)
+    maker.height.equalTo(<span style="color:#ae81ff">40</span>)
+}
+</code></pre></div><hr>
 <h2 id="safearealayoutguide">safeAreaLayoutGuide</h2>
 <blockquote>
 <p><code>iOS 11.0</code>之后引入了<code>safe area</code>，它用于定义视图的安全可视区域，可以保证在<code>safe area</code>区域内的子<code>view</code>不会被遮挡。<code>UIKit</code>定义的<code>navigation controller</code>、<code>tabbar controller</code>会展示一个顶部的导航栏或者底部的<code>tabbar</code>，也会遮挡一部分 <code>child view controller</code>的视图。<code>safe area</code>描述当前<code>view</code>不被父<code>Controller</code>的控件挡住的区域。</p>
