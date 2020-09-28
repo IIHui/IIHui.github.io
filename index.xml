@@ -53,7 +53,7 @@
       <pubDate>Sun, 02 Aug 2020 21:04:47 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/ios-uitabbar/</guid>
-      <description>storyboard 可以从直接添加UITabBarController到storyboard中，也可以在现有的ViewController中添加UITabBarController 双击检测 private let intervalThreshold: Double = 0.8 private var dkLastClickedDate: Date? = nil private var ePaperLastClickedDate: Date? = nil func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -&amp;gt; Bool { if tabBarController.selectedIndex == 1,let nav = tabBarController.selectedViewController</description>
+      <description>storyboard 可以从直接添加UITabBarController到storyboard中，也可以在现有的ViewController中添加UITabBarController。 现有添加 如下图所示，在storyboard中先选择已有的ViewContro</description>
     </item>
     
     <item>
