@@ -305,7 +305,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">826</span>
+<span class="leancloud-visitors-count">841</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -530,7 +530,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">100</span>
+<span class="leancloud-visitors-count">181</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -541,7 +541,13 @@ code.has-jax {
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    双击检测 private let intervalThreshold: Double = 0.8 private var dkLastClickedDate: Date? = nil private var ePaperLastClickedDate: Date? = nil func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -&gt; Bool { if tabBarController.selectedIndex == 1,let nav = tabBarController.selectedViewController as? UINavigationController,let vc:NewsViewController = nav.visibleViewController let date = Date() switch vc.segmentedView.selectedIndex { case 0: if let lastDate = self.ePaperLastClickedDate, (date.timeIntervalSince1970 - lastDate.timeIntervalSince1970) &lt; intervalThreshold { NotificationCenter.default.post(name: .ePaperScrollToTopNotification, object: nil) } self.ePaperLastClickedDate = date case 1: if let lastDate = self.dkLastClickedDate, (date.timeIntervalSince1970 - lastDate.timeIntervalSince1970) &lt; intervalThreshold { NotificationCenter.default.post(name: .dkScrollToTopNotification, object: nil) } self.dkLastClickedDate = date default: break } } return true }
+    storyboard 可以从直接添加UITabBarController到storyboard中，也可以在现有的ViewController中添加UITabBarController 双击检测 private let intervalThreshold: Double = 0.8 private var dkLastClickedDate: Date? = nil private var ePaperLastClickedDate: Date? = nil func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -&gt; Bool { if tabBarController.selectedIndex == 1,let nav = tabBarController.selectedViewController
+    </div>
+    
+    <div class="post-more-link text-center">
+    <a class="btn" href="https://iihui.github.io/post/ios-uitabbar/" rel="contents">
+      阅读全文 &raquo;
+    </a>
     </div>
     
     <footer class="post-footer"><div class="post-eof"></div></footer>
