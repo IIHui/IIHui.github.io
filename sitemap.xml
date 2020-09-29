@@ -106,6 +106,7 @@ safeAreaLayoutGuide.snp private func setupUI2() { let topView = UIView() topView
         </tags>
         <content type="html"> storyboard 可以从直接添加UITabBarController到storyboard中，也可以在现有的ViewController中添加UITabBarController。
 现有添加 如下图所示，在storyboard中先选择已有的ViewController，如下图标号1所示，先选中左边第一个按钮，然后在标号2处点击，选中Tab Bar Controller:
+除了在右下角添加，也可以在菜单栏添加，如下图所示，首先选中已有的ViewController，然后在菜单栏上选择Editor--&amp;gt;Embed In --&amp;gt; Tab Bar Controller:
 双击检测 private let intervalThreshold: Double = 0.8 private var dkLastClickedDate: Date? = nil private var ePaperLastClickedDate: Date? = nil func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -&amp;gt; Bool { if tabBarController.selectedIndex == 1,let nav = tabBarController.selectedViewController as? UINavigationController,let vc:NewsViewController = nav.visibleViewController let date = Date() switch vc.segmentedView.selectedIndex { case 0: if let lastDate = self.ePaperLastClickedDate, (date.timeIntervalSince1970 - lastDate.timeIntervalSince1970) &amp;lt; intervalThreshold { NotificationCenter.default.post(name: .ePaperScrollToTopNotification, object: nil) } self.ePaperLastClickedDate = date case 1: if let lastDate = self.dkLastClickedDate, (date.timeIntervalSince1970 - lastDate.timeIntervalSince1970) &amp;lt; intervalThreshold { NotificationCenter.default.post(name: .dkScrollToTopNotification, object: nil) } self.dkLastClickedDate = date default: break } } return true } </content>
     </entry>
     
