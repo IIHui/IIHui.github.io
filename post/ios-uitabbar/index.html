@@ -241,25 +241,32 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">341</span>
+<span class="leancloud-visitors-count">538</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">1 分钟</span>
+<span class="leancloud-visitors-count">2 分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    <h2 id="storyboard">storyboard</h2>
-<p>可以从直接添加<code>UITabBarController</code>到<code>storyboard</code>中，也可以在现有的<code>ViewController</code>中添加<code>UITabBarController</code>。</p>
-<h3 id="现有添加">现有添加</h3>
+    <h2 id="添加tab">添加Tab</h2>
+<p>既可以直接添加<code>UITabBarController</code>到<code>storyboard</code>中，也可以在现有的<code>ViewController</code>之前添加<code>UITabBarController</code>。</p>
+<h3 id="直接添加">直接添加</h3>
+<p>如图所示在<code>Xcode 12</code>右上角点击<code>+</code>号，然后输入<code>Tab</code>，在出现的提示中选中<code>Tab Bar Controller</code>，然后拖到<code>storyboard</code>中即可：</p>
+<p><img src="https://i.loli.net/2020/09/30/SOt9bKsvhZDQY1d.jpg" alt="-c"></p>
+<h3 id="已有中添加">已有中添加</h3>
+<p>往已有的<code>ViewController</code>之前添加<code>Tab Bar Controller</code>，有两种方式。第一种是在<code>storyboard</code>编辑界面的右下角的<code>Embed In</code>中添加；另一种是在菜单栏的<code>Editor</code>中添加。</p>
+<h4 id="编辑界面">编辑界面</h4>
 <p>如下图所示，在<code>storyboard</code>中先选择已有的<code>ViewController</code>，如下图标号<code>1</code>所示，先选中左边第一个按钮，然后在标号<code>2</code>处点击，选中<code>Tab Bar Controller</code>:</p>
 <p><img src="https://i.loli.net/2020/09/28/4CzXb2Peg7ShTty.jpg" alt="-c"></p>
-<p><img src="https://i.loli.net/2020/09/28/SJ6UkEGwc9XrbgY.jpg" alt="-c"></p>
+<h2 id="添加navigation">添加Navigation</h2>
+<h4 id="菜单栏中">菜单栏中</h4>
 <p>除了在右下角添加，也可以在菜单栏中添加。如下图所示，首先选中已有的<code>ViewController</code>，然后在菜单栏上选择<code>Editor--&gt;Embed In --&gt; Tab Bar Controller</code>:</p>
 <p><img src="https://i.loli.net/2020/09/29/lf2dqXQytn8PCFr.jpg" alt="-c"></p>
+<p><img src="https://i.loli.net/2020/09/28/SJ6UkEGwc9XrbgY.jpg" alt="-c"></p>
 <h2 id="双击检测">双击检测</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">let</span> intervalThreshold: Double = <span style="color:#ae81ff">0.8</span>
 <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">var</span> dkLastClickedDate: Date? = <span style="color:#66d9ef">nil</span>
@@ -449,9 +456,23 @@ code.has-jax {
   <ul>
     <li>
       <ul>
-        <li><a href="#storyboard">storyboard</a>
+        <li><a href="#添加tab">添加Tab</a>
           <ul>
-            <li><a href="#现有添加">现有添加</a></li>
+            <li><a href="#直接添加">直接添加</a></li>
+            <li><a href="#已有中添加">已有中添加</a>
+              <ul>
+                <li><a href="#编辑界面">编辑界面</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#添加navigation">添加Navigation</a>
+          <ul>
+            <li>
+              <ul>
+                <li><a href="#菜单栏中">菜单栏中</a></li>
+              </ul>
+            </li>
           </ul>
         </li>
         <li><a href="#双击检测">双击检测</a></li>
