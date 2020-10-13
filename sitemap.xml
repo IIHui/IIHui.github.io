@@ -104,7 +104,7 @@ safeAreaLayoutGuide.snp private func setupUI2() { let topView = UIView() topView
         <tags>
           <tag>iOS</tag>
         </tags>
-        <content type="html"> 添加Tab 既可以直接添加UITabBarController到storyboard中，也可以在现有的ViewController之前添加UITabBarController。
+        <content type="html"> 添加Tab 既可以直接添加UITabBarController到storyboard中，也可以在现有的ViewController中添加UITabBarController。
 直接添加 如图所示在Xcode 12右上角点击&#43;号，然后输入Tab，在出现的提示中选中Tab Bar Controller，然后拖到storyboard中即可：
 已有中添加 往已有的ViewController之前添加Tab Bar Controller，有两种方式。第一种是在storyboard编辑界面的右下角的Embed In中添加；另一种是在菜单栏的Editor中添加。
 编辑界面 如下图所示，在storyboard中先选择已有的ViewController，如下图标号1所示，先选中左边第一个按钮，然后在标号2处点击，选中Tab Bar Controller:
