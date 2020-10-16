@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1426</span>
+<span class="leancloud-visitors-count">1492</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -253,11 +253,11 @@ code.has-jax {
     </header>
     <div class="post-body" itemprop="articleBody">
     <h2 id="判断是否为2的n次方">判断是否为2的n次方</h2>
-<p>对于整数数来说，如果一个数为$x=2^n$,那么必然有一位为<code>1</code>，右边其它位全为<code>0</code>。那么$(x-1)$在其对应为<code>1</code>的位置为<code>0</code>，对应位右边全部为<code>1</code>。因此，<code>x&amp;(x-1)</code>的值则为<code>0</code>。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#f92672">!</span>(x<span style="color:#f92672">&amp;</span>(x<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>))  <span style="color:#75715e">//正整数
+<p>对于整数数来说，如果一个数为$x=2^n$,那么必然有一位为<code>1</code>，右边其它位全为<code>0</code>。那么$(x-1)$在其对应为<code>1</code>的位置上为<code>0</code>，对应位右边全部为<code>1</code>。因此，<code>x&amp;(x-1)</code>的值则为<code>0</code>。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">(x<span style="color:#f92672">&amp;</span>(x<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)  <span style="color:#75715e">//正整数
 </span></code></pre></div><hr>
 <h2 id="位运算实现加法">位运算实现加法</h2>
-<p>对于二进制的加法，首先如果<!-- raw HTML omitted -->不考虑进位<!-- raw HTML omitted -->时：<code>1+1=0</code>，<code>0+1=1</code>，<code>1+0=1</code>，<code>0+0=0</code>，这是二进制的异或。然后，再考虑进位<code>1+1=1</code>，<code>1+0=0</code>，<code>0+1=0</code>，<code>0+0=0</code>，这是二进制的与运算。</p>
+<p>对于二进制加法，如果<!-- raw HTML omitted -->不考虑相加时的进位<!-- raw HTML omitted -->，则有：<code>1+1=0</code>，<code>0+1=1</code>，<code>1+0=1</code>，<code>0+0=0</code>，这是二进制的异或。然后，再考虑相加时有进位的情况：<code>1+1=1</code>，<code>1+0=0</code>，<code>0+1=0</code>，<code>0+0=0</code>，这是二进制的与运算。</p>
 <p>因此，二进制可以按照如下的方式进行：①首先不考虑进位的情况时，计算各位的累加得到值的累加<code>a</code>；②然后考虑有进位的情况，先计算进位并将其左移得到<code>b</code>，如果<code>b</code>的值为<code>0</code>，那么<code>a</code>的值就是最后的计算结果，如果<code>b</code>的值不为<code>0</code>，则<code>a+b</code>是最后的结果。</p>
 <h3 id="非递归实现">非递归实现</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">add</span>(<span style="color:#66d9ef">int</span> x,<span style="color:#66d9ef">int</span> y) {
@@ -269,6 +269,22 @@ code.has-jax {
       carray <span style="color:#f92672">=</span> tmp;
    }
    <span style="color:#66d9ef">return</span> result;
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Arithmetic</span> {
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">add</span>(x:Int ,y:Int) -&gt; Int {
+        <span style="color:#66d9ef">var</span> sum = x
+        <span style="color:#66d9ef">var</span> carry = y
+        <span style="color:#66d9ef">while</span> carry <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span> {
+            <span style="color:#66d9ef">let</span> tmp = (sum <span style="color:#f92672">&amp;</span> carry) <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">1</span>
+            sum <span style="color:#f92672">^=</span> carry
+            carry = tmp
+        }
+        <span style="color:#66d9ef">return</span> sum
+    }
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">testArith</span>() <span style="color:#66d9ef">throws</span> {
+    XCTAssert(Arithmetic.add(x:<span style="color:#ae81ff">23</span>,y:<span style="color:#ae81ff">23</span>) == <span style="color:#ae81ff">46</span>)
 }
 </code></pre></div><hr>
 <h3 id="递归方式实现">递归方式实现</h3>
