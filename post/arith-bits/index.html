@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1492</span>
+<span class="leancloud-visitors-count">1561</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">3 分钟</span>
+<span class="leancloud-visitors-count">4 分钟</span>
 </span>
       </div>
     </header>
@@ -285,6 +285,21 @@ code.has-jax {
 
 <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">testArith</span>() <span style="color:#66d9ef">throws</span> {
     XCTAssert(Arithmetic.add(x:<span style="color:#ae81ff">23</span>,y:<span style="color:#ae81ff">23</span>) == <span style="color:#ae81ff">46</span>)
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">/// 位运算加法</span>
+<span style="color:#75715e">/// - Parameters:</span>
+<span style="color:#75715e">///   - a: 被加数</span>
+<span style="color:#75715e">///   - b: 加数</span>
+<span style="color:#75715e">/// - Returns: a + b 的和</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">add</span>(a: Int, b: Int) -&gt; Int {
+    <span style="color:#66d9ef">var</span> sum = a
+    <span style="color:#66d9ef">var</span> carry = b
+    <span style="color:#66d9ef">while</span> carry <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span> {
+        <span style="color:#66d9ef">let</span> tmp = (sum <span style="color:#f92672">&amp;</span> carry)
+        sum = sum <span style="color:#f92672">^=</span> carry
+        carry = tmp
+    }
+    <span style="color:#66d9ef">return</span> sum
 }
 </code></pre></div><hr>
 <h3 id="递归方式实现">递归方式实现</h3>
