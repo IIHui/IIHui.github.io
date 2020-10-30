@@ -105,10 +105,10 @@ safeAreaLayoutGuide private func setupUI2() { let topView = UIView() topView.bac
           <tag>iOS</tag>
         </tags>
         <content type="html"> 添加Tab 既可以直接添加UITabBarController到storyboard中，也可以在现有的ViewController中添加UITabBarController。
-直接添加 如图所示在Xcode 12右上角点击&#43;号，然后输入Tab，在出现的提示中选中Tab Bar Controller，然后拖到storyboard中即可：
-已有中添加 往已有的ViewController之前添加Tab Bar Controller，有两种方式。第一种是在storyboard编辑界面的右下角的Embed In中添加；另一种是在菜单栏的Editor中添加。
-编辑界面 如下图所示，在storyboard中先选择已有的ViewController，如下图标号1所示，先选中左边第一个按钮，然后在标号2处点击，选中Tab Bar Controller:
-添加Navigation 菜单栏中 除了在右下角添加，也可以在菜单栏中添加。如下图所示，首先选中已有的ViewController，然后在菜单栏上选择Editor--&amp;gt;Embed In --&amp;gt; Tab Bar Controller:
+直接添加 如下图所示，在Xcode 12右上角点击&#43;号，然后输入Tab，在出现的提示中选中Tab Bar Controller，拖到storyboard，然后松开即可添加：
+已有中添加 在已有的ViewController之前添加Tab Bar Controller，有两种方式。第一种是在storyboard编辑界面的右下角的Embed In中添加；另一种是在菜单栏的Editor下添加。
+Storyboard编辑界面右下角 如下图所示，在storyboard中先选择已有的ViewController，如下图标号1所示，先选中左边第一个按钮，然后在标号2处点击，选中Tab Bar Controller:
+添加Navigation 菜单栏Editor下 除了在storyboard右下角添加，也可以在菜单栏中添加。如下图所示，首先选中已有的ViewController，然后在菜单栏上选择Editor --&amp;gt; Embed In --&amp;gt; Tab Bar Controller:
 双击检测 private let intervalThreshold: Double = 0.8 private var dkLastClickedDate: Date? = nil private var ePaperLastClickedDate: Date? = nil func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -&amp;gt; Bool { if tabBarController.selectedIndex == 1,let nav = tabBarController.selectedViewController as? UINavigationController,let vc:NewsViewController = nav.visibleViewController let date = Date() switch vc.segmentedView.selectedIndex { case 0: if let lastDate = self.ePaperLastClickedDate, (date.timeIntervalSince1970 - lastDate.timeIntervalSince1970) &amp;lt; intervalThreshold { NotificationCenter.default.post(name: .ePaperScrollToTopNotification, object: nil) } self.ePaperLastClickedDate = date case 1: if let lastDate = self.dkLastClickedDate, (date.timeIntervalSince1970 - lastDate.timeIntervalSince1970) &amp;lt; intervalThreshold { NotificationCenter.default.post(name: .dkScrollToTopNotification, object: nil) } self.dkLastClickedDate = date default: break } } return true } </content>
     </entry>
     
