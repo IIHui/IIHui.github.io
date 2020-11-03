@@ -6,10 +6,19 @@
     <description>Recent content in iOS on Keep It Simple</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 18 Sep 2020 10:09:24 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 03 Nov 2020 10:33:04 +0000</lastBuildDate>
     
 	<atom:link href="https://iihui.github.io/tags/ios/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>PromiseKit使用</title>
+      <link>https://iihui.github.io/post/ios-promisekit/</link>
+      <pubDate>Tue, 03 Nov 2020 10:33:04 +0000</pubDate>
+      
+      <guid>https://iihui.github.io/post/ios-promisekit/</guid>
+      <description>PromiseKit是简化异步编程的一种非必要的方式，可以提高代码的可读性和维护性，让代码更加优雅，主要用于解决“回调地狱”问题。 Promise设计模式 所谓Promise设计模式，是借用生活中的“承诺”一词来描述异步编程中的回调模型。承诺是</description>
+    </item>
     
     <item>
       <title>使用charles</title>
