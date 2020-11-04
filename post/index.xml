@@ -26,7 +26,7 @@
       <pubDate>Tue, 03 Nov 2020 10:33:04 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/ios-promisekit/</guid>
-      <description>PromiseKit是简化异步编程的一种非必要的方式，可以提高代码的可读性和维护性，让代码更加优雅，主要用于解决“回调地狱”问题。 Promise设计模式 所谓Promise设计模式，是借用生活中的“承诺”一词来描述异步编程中的回调模型。承诺是</description>
+      <description>PromiseKit是简化异步编程的一种非必要方式，使用它可以提高代码的可读性和维护性，让代码更加优雅。PromiseKit主要用于解决「回调地狱」问题。 回调地狱 为了保证异步代码的执行顺序，将异步代码嵌套在回调函数中，当异步的方法多了，就会</description>
     </item>
     
     <item>

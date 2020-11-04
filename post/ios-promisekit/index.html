@@ -241,31 +241,37 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">913</span>
+<span class="leancloud-visitors-count">1028</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">2 分钟</span>
+<span class="leancloud-visitors-count">3 分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
     <blockquote>
-<p><code>PromiseKit</code>是简化异步编程的一种非必要的方式，可以提高代码的可读性和维护性，让代码更加优雅，主要用于解决“回调地狱”问题。</p>
+<p><code>PromiseKit</code>是简化异步编程的一种非必要方式，使用它可以提高代码的可读性和维护性，让代码更加优雅。<code>PromiseKit</code>主要用于解决「回调地狱」问题。</p>
+</blockquote>
+<p><img src="https://i.loli.net/2020/11/04/2uh6ZGDMwmQKzgy.jpg" alt=""></p>
+<h2 id="回调地狱">回调地狱</h2>
+<blockquote>
+<p>为了保证异步代码的执行顺序，将异步代码嵌套在回调函数中，当异步的方法多了，就会产生回调地狱<code>callback hell</code>，使得代码不清晰，难以维护。</p>
 </blockquote>
 <h2 id="promise设计模式">Promise设计模式</h2>
-<p>所谓<code>Promise</code>设计模式，是借用生活中的“承诺”一词来描述异步编程中的回调模型。承诺是一种对未来的期许，它有两个特点：</p>
+<p>所谓<code>Promise</code>设计模式，是借用生活中的「承诺」一词来描述异步编程中的回调模型。「承诺」是一种对未来的期许，它有两个特点：</p>
 <ul>
 <li>
 <p>描述未来的一种状态或动作。</p>
 </li>
 <li>
-<p>承诺具有不确定行，承诺可以兑现<code>fullfill</code>，也可能被<code>rejected</code>。</p>
+<p>承诺具有不确定性，可以兑现<code>fullfill</code>，也可能被<code>rejected</code>。</p>
 </li>
 </ul>
-<p>例如，如果编写一个方法从网络获取图片，网络操作一般都是异步的，所以完全适用于承诺模式。所以这个方法就是一个承诺。它不用直接返回一个 <code>Image</code>，而是返回一个承诺对象，只有当网络请求到需要的数据时，这个承诺才会兑现（返回一个 <code>Image</code> 对象给调用者），否则承诺被拒绝（网络错误或者图片不存在），无论兑现还是拒绝，这个承诺对象都会标记为已解决（<code>resolve</code>)，已解决的承诺会被销毁。如果既不兑现，也不拒绝，则这个承诺会一直有效（即未解决）。</p>
+<p>例如，编写一个方法从网络获取图片，网络操作一般都是异步的，所以完全适用于承诺模式。所以这个方法就是一个承诺。它不用直接返回一个 <code>Image</code>，而是返回一个承诺对象，只有当网络请求到需要的数据时，这个承诺才会兑现（返回一个<code>Image</code>对象给调用者），否则承诺被拒绝（网络错误或者图片不存在），无论兑现还是拒绝，这个承诺对象都会标记为已解决（<code>resolve</code>)，已解决的承诺会被销毁。如果既不兑现，也不拒绝，则这个承诺会一直有效（即未解决）。</p>
+<h2 id="promisekit">PromiseKit</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">UIApplication.shared.isNetworkActivityIndicatorVisible = <span style="color:#66d9ef">true</span>
 
 <span style="color:#66d9ef">let</span> fetchImage = URLSession.shared.dataTask(.promise, with: url).compactMap{ UIImage(data: $0.data) }
@@ -281,7 +287,8 @@ firstly {
 }.<span style="color:#66d9ef">catch</span> { error <span style="color:#66d9ef">in</span>
     <span style="color:#66d9ef">self</span>.show(UIAlertController(<span style="color:#66d9ef">for</span>: error), sender: <span style="color:#66d9ef">self</span>)
 }
-</code></pre></div><h2 id="then-and-done">then and done</h2>
+</code></pre></div><p>在<code>PromiseKit</code>中<code>Promise</code>是一个对象。</p>
+<h2 id="then-and-done">then and done</h2>
 <p><code>done</code>和<code>then</code>的区别是，<code>done</code>不再返回<code>promise</code>，它一般用于<code>success</code>部分。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">firstly {
     login()
@@ -526,7 +533,9 @@ group.notify(queue: .main) {
   <ul>
     <li>
       <ul>
+        <li><a href="#回调地狱">回调地狱</a></li>
         <li><a href="#promise设计模式">Promise设计模式</a></li>
+        <li><a href="#promisekit">PromiseKit</a></li>
         <li><a href="#then-and-done">then and done</a></li>
         <li><a href="#catch">catch</a></li>
         <li><a href="#ensure">ensure</a></li>
