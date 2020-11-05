@@ -50,7 +50,13 @@ katex.html文件的内容如下所示：
   描述未来的一种状态或动作。
   承诺具有不确定性，可以兑现fullfill，也可能被rejected。
   例如，编写一个方法从网络获取图片，网络操作一般都是异步的，所以完全适用于承诺模式。所以这个方法就是一个承诺。它不用直接返回一个 Image，而是返回一个承诺对象，只有当网络请求到需要的数据时，这个承诺才会兑现（返回一个Image对象给调用者），否则承诺被拒绝（网络错误或者图片不存在），无论兑现还是拒绝，这个承诺对象都会标记为已解决（resolve)，已解决的承诺会被销毁。如果既不兑现，也不拒绝，则这个承诺会一直有效（即未解决）。
-PromiseKit UIApplication.shared.isNetworkActivityIndicatorVisible = true let fetchImage = URLSession.shared.dataTask(.promise, with: url).compactMap{ UIImage(data: $0.data) } let fetchLocation = CLLocationManager.requestLocation().lastValue firstly { when(fulfilled: fetchImage, fetchLocation) }.done { image, location in self.imageView.image = image self.label.text = &amp;#34;\(location)&amp;#34; }.ensure { UIApplication.shared.isNetworkActivityIndicatorVisible = false }.catch { error in self.show(UIAlertController(for: error), sender: self) } 在PromiseKit中Promise是一个对象。
+PromiseKit 一个典型的promise链如下所示：
+firstly { promise1() }.then { promise2() }.then { promise3() }.ensure { // something that should happen whatever the outcome }.done { // all promises are resolved // handle final logic here }.catch { // handle error here } UIApplication.shared.isNetworkActivityIndicatorVisible = true let fetchImage = URLSession.shared.dataTask(.promise, with: url).compactMap{ UIImage(data: $0.data) } let fetchLocation = CLLocationManager.requestLocation().lastValue firstly { when(fulfilled: fetchImage, fetchLocation) }.done { image, location in self.imageView.image = image self.label.text = &amp;#34;\(location)&amp;#34; }.ensure { UIApplication.shared.isNetworkActivityIndicatorVisible = false }.catch { error in self.show(UIAlertController(for: error), sender: self) } 对象状态 在PromiseKit中Promise是一个对象。它保存异步数据操作，同时提供统一的异步数据操作事件处理的接口。
+  pending表示promise对象当前正在等待异步事件处理中；
+  fulfilled指的是promise对象当前处理的异步事件已经成功完成；
+  rejected表示promise对象当前处理的异步事件没有成功。
+  promise对象每次执行完then和catch方法后，这两个方法会返回先前的promise对象，同时根据异步操作结果改变promise对象的状态。
+北京的日誌
 then and done done和then的区别是，done不再返回promise，它一般用于success部分。
 firstly { login() }.then { creds in fetch(avatar: creds.user) }.done { image in self.imageView = image }  if the chain is successful means done block runs without any error or chain is failed means catch block is called ensure block will always execute. It’s like final block in do/catch.
  catch 每个promise都是一个表示单个异步任务的对象。如果任务失败，它的promise将成为rejected。产生rejected promises将跳过所有的then，执行后续的所有catch处理。
@@ -58,7 +64,7 @@ firstly { login() }.then { creds in fetch(avatar: creds.user) }.done { image in 
 firstly { UIApplication.shared.isNetworkActivityIndicatorVisible = true return login() }.then { fetch(avatar: $0.user) }.done { self.imageView = $0 }.ensure { UIApplication.shared.isNetworkActivityIndicatorVisible = false }.catch { // ... } spinner(visible: true) firstly { foo() }.done { // ... }.catch { // ... }.finally { self.spinner(visible: false) } when when用于多个异步操作，使得多个多个异步操作变得更简单：
 // 并行操作 var result1: ...! var result2: ...! let group = DispatchGroup() group.enter() group.enter() operation1 { result1 = $0 group.leave() } operation2 { result2 = $0 group.leave() } group.notify(queue: .main) { finish(result1, result2) } 使用when之后：
 firstly { when(fulfilled: operation1(), operation2()) }.done { result1, result2 in // ... } 线程 所有的then的blocks默认都是在主线程执行。
-参考资料 github 入门 medium 
+参考资料 源码 入门 使用 使用
 </content>
     </entry>
     
