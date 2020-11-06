@@ -241,38 +241,60 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1304</span>
+<span class="leancloud-visitors-count">1803</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">3 分钟</span>
+<span class="leancloud-visitors-count">4 分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
     <blockquote>
-<p><code>PromiseKit</code>是简化异步编程的一种非必要方式，使用它可以提高代码的可读性和维护性，让代码更加优雅。<code>PromiseKit</code>主要用于解决「回调地狱」问题。</p>
+<p><code>PromiseKit</code>是简化异步编程的一种非必要方式，使用它可以提高代码的可读性和维护性，让代码更加优雅，主要用于解决「回调地狱」问题。</p>
 </blockquote>
 <h2 id="回调地狱">回调地狱</h2>
-<blockquote>
-<p>为了保证异步代码的执行顺序，将异步代码嵌套在回调函数中，当异步的方法多了，就会产生回调地狱<code>callback hell</code>，使得代码不清晰，难以维护。</p>
-</blockquote>
-<p><img src="https://i.loli.net/2020/11/04/2uh6ZGDMwmQKzgy.jpg" alt=""></p>
-<h2 id="promise设计模式">Promise设计模式</h2>
-<p>所谓<code>Promise</code>设计模式，是借用生活中的「承诺」一词来描述异步编程中的回调模型。「承诺」是一种对未来的期许，它有两个特点：</p>
+<p>为了保证异步代码的按顺序执行，我们通常将异步代码嵌套在回调函数中。如果异步的方法多过多，就会产生过多的回调，使得代码不清晰，难以维护。即产生所说的回调地狱<code>callback hell</code>问题。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">fetchJSON(fromURL: <span style="color:#e6db74">&#34;someURL&#34;</span>) { response, results, error <span style="color:#66d9ef">in</span>
+    <span style="color:#66d9ef">switch</span> response {
+    <span style="color:#66d9ef">case</span> .success:
+        fetchUserData(<span style="color:#66d9ef">for</span>: results) { response, results, error <span style="color:#66d9ef">in</span>
+            <span style="color:#66d9ef">switch</span> response {
+            <span style="color:#66d9ef">case</span> .success:
+                loginUser(user: results) { response, <span style="color:#66d9ef">_</span>, error <span style="color:#66d9ef">in</span>
+                    <span style="color:#66d9ef">switch</span> response {
+                    <span style="color:#66d9ef">case</span> .success:
+                        <span style="color:#75715e">// finialy all of the callbacks are finished</span>
+                        print(<span style="color:#e6db74">&#34;Handle logic here&#34;</span>)
+                    <span style="color:#66d9ef">case</span> .fail:
+                        print(error)
+                    }
+                }
+            <span style="color:#66d9ef">case</span> .fail:
+                print(error)
+            }
+        }
+    <span style="color:#66d9ef">case</span> .fail:
+        print(error)
+    }
+}
+</code></pre></div><p><img src="https://i.loli.net/2020/11/04/2uh6ZGDMwmQKzgy.jpg" alt=""></p>
+<h2 id="promise设计模式">promise设计模式</h2>
+<p><code>promise</code>设计模式，借用生活中的「承诺」一词来描述异步编程中的回调模型。「承诺」是一种对未来的期许，它有以下两个特点：</p>
 <ul>
 <li>
 <p>描述未来的一种状态或动作。</p>
 </li>
 <li>
-<p>承诺具有不确定性，可以兑现<code>fullfill</code>，也可能被<code>rejected</code>。</p>
+<p>承诺具有不确定性，可以被兑现<code>fullfill</code>，也可能被拒绝<code>rejected</code>。</p>
 </li>
 </ul>
-<p>例如，编写一个方法从网络获取图片，网络操作一般都是异步的，所以完全适用于承诺模式。所以这个方法就是一个承诺。它不用直接返回一个 <code>Image</code>，而是返回一个承诺对象，只有当网络请求到需要的数据时，这个承诺才会兑现（返回一个<code>Image</code>对象给调用者），否则承诺被拒绝（网络错误或者图片不存在），无论兑现还是拒绝，这个承诺对象都会标记为已解决（<code>resolve</code>)，已解决的承诺会被销毁。如果既不兑现，也不拒绝，则这个承诺会一直有效（即未解决）。</p>
+<p>如果需要编写一个方法从网络获取图片，因为网络操作一般都是异步的，所以可以使用承诺模式实现这个方法。可以将这个方法定义成一个承诺。它不用直接返回一个 <code>Image</code>，而是返回一个承诺对象，只有当网络请求到需要的数据时，这个承诺才会兑现（返回一个<code>Image</code>对象给调用者），否则承诺被拒绝（网络错误或者图片不存在）。</p>
+<p>无论兑现还是拒绝，这个承诺对象都会标记为已解决（<code>resolve</code>)，已解决的承诺会被销毁。如果既不兑现，也不拒绝，则这个承诺会一直有效，即「未解决」。</p>
 <h2 id="promisekit">PromiseKit</h2>
-<p>一个典型的<code>promise</code>链如下所示：</p>
+<p>在<code>PromiseKit</code>中，一个典型的<code>promise</code>链如下所示：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">firstly {
     promise1()
 }.then {
@@ -280,12 +302,12 @@ code.has-jax {
 }.then {
     promise3()
 }.ensure {
-    <span style="color:#75715e">// something that should happen whatever the outcome</span>
+    <span style="color:#75715e">// something that should happen whatever the outcome 无论承诺是否兑现，都会执行</span>
 }.done {
     <span style="color:#75715e">// all promises are resolved</span>
     <span style="color:#75715e">// handle final logic here</span>
 }.<span style="color:#66d9ef">catch</span> {
-    <span style="color:#75715e">// handle error here</span>
+    <span style="color:#75715e">// handle error here 所有的then返回的promise被rejected都会在这里处理</span>
 }
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">UIApplication.shared.isNetworkActivityIndicatorVisible = <span style="color:#66d9ef">true</span>
 
@@ -302,8 +324,8 @@ firstly {
 }.<span style="color:#66d9ef">catch</span> { error <span style="color:#66d9ef">in</span>
     <span style="color:#66d9ef">self</span>.show(UIAlertController(<span style="color:#66d9ef">for</span>: error), sender: <span style="color:#66d9ef">self</span>)
 }
-</code></pre></div><h2 id="对象状态">对象状态</h2>
-<p>在<code>PromiseKit</code>中<code>Promise</code>是一个对象。它保存异步数据操作，同时提供统一的异步数据操作事件处理的接口。</p>
+</code></pre></div><h2 id="promise对象状态">promise对象状态</h2>
+<p>在<code>PromiseKit</code>中<code>promise</code>是一个对象。它保存异步数据操作，同时提供统一的异步数据操作事件处理的接口。</p>
 <ul>
 <li>
 <p><code>pending</code>表示<code>promise</code>对象当前正在等待异步事件处理中；</p>
@@ -317,8 +339,84 @@ firstly {
 </ul>
 <p><img src="https://i.loli.net/2020/11/05/F5xbjRlevtufmaX.jpg" alt="-c"></p>
 <p><code>promise</code>对象每次执行完<code>then</code>和<code>catch</code>方法后，这两个方法会返回先前的<code>promise</code>对象，同时根据异步操作结果改变<code>promise</code>对象的状态。</p>
-<p>北京的日誌</p>
-<h2 id="then-and-done">then and done</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">fetchJSON(fromURL: <span style="color:#e6db74">&#34;someURL&#34;</span>) { response, results, error <span style="color:#66d9ef">in</span>
+    <span style="color:#66d9ef">switch</span> response {
+    <span style="color:#66d9ef">case</span> .success:
+        fetchUserData(<span style="color:#66d9ef">for</span>: results) { response, results, error <span style="color:#66d9ef">in</span>
+            <span style="color:#66d9ef">switch</span> response {
+            <span style="color:#66d9ef">case</span> .success:
+                loginUser(user: results) { response, <span style="color:#66d9ef">_</span>, error <span style="color:#66d9ef">in</span>
+                    <span style="color:#66d9ef">switch</span> response {
+                    <span style="color:#66d9ef">case</span> .success:
+                        <span style="color:#75715e">// finialy all of the callbacks are finished</span>
+                        print(<span style="color:#e6db74">&#34;Handle logic here&#34;</span>)
+                    <span style="color:#66d9ef">case</span> .fail:
+                        print(error)
+                    }
+                }
+            <span style="color:#66d9ef">case</span> .fail:
+                print(error)
+            }
+        }
+    <span style="color:#66d9ef">case</span> .fail:
+        print(error)
+    }
+}
+</code></pre></div><p>对于上面的<code>fetchJSON</code>，可以改造为一个返回<code>promise</code>对象的方法，如下所示：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">promiseFetchJSON</span>() -&gt; Promise&lt;String: Any]<span style="color:#f92672">&gt;</span> {
+    <span style="color:#66d9ef">return</span> Promise&lt;String: Any]<span style="color:#f92672">&gt;</span> { seal <span style="color:#66d9ef">in</span>
+        fetchJSON(fromURL: <span style="color:#e6db74">&#34;someURL&#34;</span>, completion: { response, results, error <span style="color:#66d9ef">in</span>
+            <span style="color:#66d9ef">switch</span> response {
+            <span style="color:#66d9ef">case</span> .success:
+                seal.fulfill(results)
+            <span style="color:#66d9ef">case</span> .fail:
+                seal.reject(error)
+            }
+        })
+    }
+}
+</code></pre></div><p>在<code>promise</code>对象初始化的时候提供了<code>seal</code>对象，这个对象定义了许多回调完成的方法。接着可以定义其他两个方法，如下所示：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">promiseFetchUserData</span>(user: <span style="color:#960050;background-color:#1e0010">「</span> <span style="color:#960050;background-color:#1e0010">」</span>String: Any]) -&gt; Promise&lt;User&gt; {
+    <span style="color:#66d9ef">return</span> Promise&lt;User&gt; { seal <span style="color:#66d9ef">in</span>
+        fetchUserData(<span style="color:#66d9ef">for</span>: user, completion: { response, results, error <span style="color:#66d9ef">in</span>
+            <span style="color:#66d9ef">switch</span> response {
+            <span style="color:#66d9ef">case</span> .success:
+                seal.fulfill(results)
+            <span style="color:#66d9ef">case</span> .fail:
+                seal.reject(error)
+            }
+        })
+    }
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">promiseLoginUser</span>(user: User) -&gt; Promise&lt;Bool&gt; {
+    <span style="color:#66d9ef">return</span> Promise&lt;Bool&gt; { seal <span style="color:#66d9ef">in</span>
+        loginUser(user: user, completion: { response, <span style="color:#66d9ef">_</span>, error <span style="color:#66d9ef">in</span>
+            <span style="color:#66d9ef">switch</span> response {
+            <span style="color:#66d9ef">case</span> .success:
+                seal.fulfill(<span style="color:#66d9ef">true</span>)
+            <span style="color:#66d9ef">case</span> .fail:
+                seal.reject(error)
+            }
+        })
+    }
+}
+</code></pre></div><p>接着套用基本调用链格式，将各个<code>promise</code>串起来，如下所示：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">firstly {
+    promiseFetchJSON()
+}.then { json <span style="color:#66d9ef">in</span>
+    promiseFetchUserData(user: json)
+}.then { user <span style="color:#66d9ef">in</span>
+    promiseLoginUser(user: user)
+}.ensure {
+    <span style="color:#75715e">// something that should happen whatever the outcome</span>
+}.done { <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span>
+    <span style="color:#75715e">// all promises are resolved</span>
+    <span style="color:#75715e">// handle final logic here</span>
+}.<span style="color:#66d9ef">catch</span> { <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span>
+    <span style="color:#75715e">// handle error here</span>
+}
+</code></pre></div><h2 id="then-and-done">then and done</h2>
 <p><code>done</code>和<code>then</code>的区别是，<code>done</code>不再返回<code>promise</code>，它一般用于<code>success</code>部分。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">firstly {
     login()
@@ -397,7 +495,8 @@ group.notify(queue: .main) {
 <p><a href="https://github.com/mxcl/PromiseKit">源码</a>
 <a href="https://juejin.im/post/6844903785458827271">入门</a>
 <a href="https://medium.com/@aliakhtar_16369/asynchronous-programming-with-promisekit-a00cd551b2ea">使用</a>
-<a href="https://www.raywenderlich.com/9208-getting-started-with-promisekit#toc-anchor-010">使用</a></p>
+<a href="https://www.raywenderlich.com/9208-getting-started-with-promisekit#toc-anchor-010">使用</a>
+<a href="https://medium.com/@dimitarstefanovski/how-to-use-promisekit-for-swift-4bbb9e40f7cc">使用</a></p>
 
     </div>
     <footer class="post-footer">
@@ -414,8 +513,8 @@ group.notify(queue: .main) {
         <div class="post-nav">
     <div class="post-nav-next post-nav-item">
     
-        <a href="https://iihui.github.io/post/hugo-next/" rel="next" title="Hugo Next 主题">
-        <i class="fa fa-chevron-left"></i> Hugo Next 主题
+        <a href="https://iihui.github.io/post/ios-moya/" rel="next" title="Moya使用">
+        <i class="fa fa-chevron-left"></i> Moya使用
         </a>
     
     </div>
@@ -491,7 +590,7 @@ group.notify(queue: .main) {
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="https://iihui.github.io/post/">
-        <span class="site-state-item-count">132</span>
+        <span class="site-state-item-count">133</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -564,9 +663,9 @@ group.notify(queue: .main) {
     <li>
       <ul>
         <li><a href="#回调地狱">回调地狱</a></li>
-        <li><a href="#promise设计模式">Promise设计模式</a></li>
+        <li><a href="#promise设计模式">promise设计模式</a></li>
         <li><a href="#promisekit">PromiseKit</a></li>
-        <li><a href="#对象状态">对象状态</a></li>
+        <li><a href="#promise对象状态">promise对象状态</a></li>
         <li><a href="#then-and-done">then and done</a></li>
         <li><a href="#catch">catch</a></li>
         <li><a href="#ensure">ensure</a></li>

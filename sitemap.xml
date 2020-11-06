@@ -36,6 +36,18 @@ katex.html文件的内容如下所示：
     </entry>
     
      <entry>
+        <title>Moya使用</title>
+        <url>https://iihui.github.io/post/ios-moya/</url>
+        <categories>
+          <category>iOS</category>
+        </categories>
+        <tags>
+          <tag>iOS</tag>
+        </tags>
+        <content type="html"> </content>
+    </entry>
+    
+     <entry>
         <title>PromiseKit使用</title>
         <url>https://iihui.github.io/post/ios-promisekit/</url>
         <categories>
@@ -44,27 +56,30 @@ katex.html文件的内容如下所示：
         <tags>
           <tag>iOS</tag>
         </tags>
-        <content type="html">  PromiseKit是简化异步编程的一种非必要方式，使用它可以提高代码的可读性和维护性，让代码更加优雅。PromiseKit主要用于解决「回调地狱」问题。
- 回调地狱  为了保证异步代码的执行顺序，将异步代码嵌套在回调函数中，当异步的方法多了，就会产生回调地狱callback hell，使得代码不清晰，难以维护。
- Promise设计模式 所谓Promise设计模式，是借用生活中的「承诺」一词来描述异步编程中的回调模型。「承诺」是一种对未来的期许，它有两个特点：
+        <content type="html">  PromiseKit是简化异步编程的一种非必要方式，使用它可以提高代码的可读性和维护性，让代码更加优雅，主要用于解决「回调地狱」问题。
+ 回调地狱 为了保证异步代码的按顺序执行，我们通常将异步代码嵌套在回调函数中。如果异步的方法多过多，就会产生过多的回调，使得代码不清晰，难以维护。即产生所说的回调地狱callback hell问题。
+fetchJSON(fromURL: &amp;#34;someURL&amp;#34;) { response, results, error in switch response { case .success: fetchUserData(for: results) { response, results, error in switch response { case .success: loginUser(user: results) { response, _, error in switch response { case .success: // finialy all of the callbacks are finished print(&amp;#34;Handle logic here&amp;#34;) case .fail: print(error) } } case .fail: print(error) } } case .fail: print(error) } } promise设计模式 promise设计模式，借用生活中的「承诺」一词来描述异步编程中的回调模型。「承诺」是一种对未来的期许，它有以下两个特点：
   描述未来的一种状态或动作。
-  承诺具有不确定性，可以兑现fullfill，也可能被rejected。
-  例如，编写一个方法从网络获取图片，网络操作一般都是异步的，所以完全适用于承诺模式。所以这个方法就是一个承诺。它不用直接返回一个 Image，而是返回一个承诺对象，只有当网络请求到需要的数据时，这个承诺才会兑现（返回一个Image对象给调用者），否则承诺被拒绝（网络错误或者图片不存在），无论兑现还是拒绝，这个承诺对象都会标记为已解决（resolve)，已解决的承诺会被销毁。如果既不兑现，也不拒绝，则这个承诺会一直有效（即未解决）。
-PromiseKit 一个典型的promise链如下所示：
-firstly { promise1() }.then { promise2() }.then { promise3() }.ensure { // something that should happen whatever the outcome }.done { // all promises are resolved // handle final logic here }.catch { // handle error here } UIApplication.shared.isNetworkActivityIndicatorVisible = true let fetchImage = URLSession.shared.dataTask(.promise, with: url).compactMap{ UIImage(data: $0.data) } let fetchLocation = CLLocationManager.requestLocation().lastValue firstly { when(fulfilled: fetchImage, fetchLocation) }.done { image, location in self.imageView.image = image self.label.text = &amp;#34;\(location)&amp;#34; }.ensure { UIApplication.shared.isNetworkActivityIndicatorVisible = false }.catch { error in self.show(UIAlertController(for: error), sender: self) } 对象状态 在PromiseKit中Promise是一个对象。它保存异步数据操作，同时提供统一的异步数据操作事件处理的接口。
+  承诺具有不确定性，可以被兑现fullfill，也可能被拒绝rejected。
+  如果需要编写一个方法从网络获取图片，因为网络操作一般都是异步的，所以可以使用承诺模式实现这个方法。可以将这个方法定义成一个承诺。它不用直接返回一个 Image，而是返回一个承诺对象，只有当网络请求到需要的数据时，这个承诺才会兑现（返回一个Image对象给调用者），否则承诺被拒绝（网络错误或者图片不存在）。
+无论兑现还是拒绝，这个承诺对象都会标记为已解决（resolve)，已解决的承诺会被销毁。如果既不兑现，也不拒绝，则这个承诺会一直有效，即「未解决」。
+PromiseKit 在PromiseKit中，一个典型的promise链如下所示：
+firstly { promise1() }.then { promise2() }.then { promise3() }.ensure { // something that should happen whatever the outcome 无论承诺是否兑现，都会执行 }.done { // all promises are resolved // handle final logic here }.catch { // handle error here 所有的then返回的promise被rejected都会在这里处理 } UIApplication.shared.isNetworkActivityIndicatorVisible = true let fetchImage = URLSession.shared.dataTask(.promise, with: url).compactMap{ UIImage(data: $0.data) } let fetchLocation = CLLocationManager.requestLocation().lastValue firstly { when(fulfilled: fetchImage, fetchLocation) }.done { image, location in self.imageView.image = image self.label.text = &amp;#34;\(location)&amp;#34; }.ensure { UIApplication.shared.isNetworkActivityIndicatorVisible = false }.catch { error in self.show(UIAlertController(for: error), sender: self) } promise对象状态 在PromiseKit中promise是一个对象。它保存异步数据操作，同时提供统一的异步数据操作事件处理的接口。
   pending表示promise对象当前正在等待异步事件处理中；
   fulfilled指的是promise对象当前处理的异步事件已经成功完成；
   rejected表示promise对象当前处理的异步事件没有成功。
   promise对象每次执行完then和catch方法后，这两个方法会返回先前的promise对象，同时根据异步操作结果改变promise对象的状态。
-北京的日誌
-then and done done和then的区别是，done不再返回promise，它一般用于success部分。
+fetchJSON(fromURL: &amp;#34;someURL&amp;#34;) { response, results, error in switch response { case .success: fetchUserData(for: results) { response, results, error in switch response { case .success: loginUser(user: results) { response, _, error in switch response { case .success: // finialy all of the callbacks are finished print(&amp;#34;Handle logic here&amp;#34;) case .fail: print(error) } } case .fail: print(error) } } case .fail: print(error) } } 对于上面的fetchJSON，可以改造为一个返回promise对象的方法，如下所示：
+func promiseFetchJSON() -&amp;gt; Promise&amp;lt;String: Any]&amp;gt; { return Promise&amp;lt;String: Any]&amp;gt; { seal in fetchJSON(fromURL: &amp;#34;someURL&amp;#34;, completion: { response, results, error in switch response { case .success: seal.fulfill(results) case .fail: seal.reject(error) } }) } } 在promise对象初始化的时候提供了seal对象，这个对象定义了许多回调完成的方法。接着可以定义其他两个方法，如下所示：
+func promiseFetchUserData(user: 「 」String: Any]) -&amp;gt; Promise&amp;lt;User&amp;gt; { return Promise&amp;lt;User&amp;gt; { seal in fetchUserData(for: user, completion: { response, results, error in switch response { case .success: seal.fulfill(results) case .fail: seal.reject(error) } }) } } func promiseLoginUser(user: User) -&amp;gt; Promise&amp;lt;Bool&amp;gt; { return Promise&amp;lt;Bool&amp;gt; { seal in loginUser(user: user, completion: { response, _, error in switch response { case .success: seal.fulfill(true) case .fail: seal.reject(error) } }) } } 接着套用基本调用链格式，将各个promise串起来，如下所示：
+firstly { promiseFetchJSON() }.then { json in promiseFetchUserData(user: json) }.then { user in promiseLoginUser(user: user) }.ensure { // something that should happen whatever the outcome }.done { _ in // all promises are resolved // handle final logic here }.catch { _ in // handle error here } then and done done和then的区别是，done不再返回promise，它一般用于success部分。
 firstly { login() }.then { creds in fetch(avatar: creds.user) }.done { image in self.imageView = image }  if the chain is successful means done block runs without any error or chain is failed means catch block is called ensure block will always execute. It’s like final block in do/catch.
  catch 每个promise都是一个表示单个异步任务的对象。如果任务失败，它的promise将成为rejected。产生rejected promises将跳过所有的then，执行后续的所有catch处理。
 firstly { login() }.then { creds in fetch(avatar: creds.user) }.done { image in self.imageView = image }.catch { // 整个 chain 上的错误都到了这里 } ensure 无论chain在哪里结束，成功或者失败。ensure终将被执行，也可以使用finally来完成相同的功能，区别是finally没有返回值。
 firstly { UIApplication.shared.isNetworkActivityIndicatorVisible = true return login() }.then { fetch(avatar: $0.user) }.done { self.imageView = $0 }.ensure { UIApplication.shared.isNetworkActivityIndicatorVisible = false }.catch { // ... } spinner(visible: true) firstly { foo() }.done { // ... }.catch { // ... }.finally { self.spinner(visible: false) } when when用于多个异步操作，使得多个多个异步操作变得更简单：
 // 并行操作 var result1: ...! var result2: ...! let group = DispatchGroup() group.enter() group.enter() operation1 { result1 = $0 group.leave() } operation2 { result2 = $0 group.leave() } group.notify(queue: .main) { finish(result1, result2) } 使用when之后：
 firstly { when(fulfilled: operation1(), operation2()) }.done { result1, result2 in // ... } 线程 所有的then的blocks默认都是在主线程执行。
-参考资料 源码 入门 使用 使用
+参考资料 源码 入门 使用 使用 使用
 </content>
     </entry>
     
