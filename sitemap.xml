@@ -58,7 +58,7 @@ katex.html文件的内容如下所示：
           <tag>iOS</tag>
         </tags>
         <content type="html">  PromiseKit是简化异步编程的一种非必要方式，使用它可以提高代码的可读性和维护性，让代码更加优雅，主要用于解决「回调地狱」问题。
- 回调地狱 为了保证异步代码按顺序执行，通常将异步代码嵌套在回调函数中。如果异步方法过多，就会产生过多的回调，使得代码不清晰，难以维护。即产生所谓的回调地狱callback hell问题。
+ 回调地狱 为了保证异步代码按顺序执行，通常将异步代码嵌套在回调函数中。如果异步方法过多，就会产生过多的回调，使得代码不清晰，难以维护。即产生所谓的回调地狱callback hell问题。下面的fetchJSON中，产生了3次回调，导致代码看起来比较费劲，可读性行比较差：
 fetchJSON(fromURL: &amp;#34;someURL&amp;#34;) { response, results, error in switch response { case .success: fetchUserData(for: results) { response, results, error in switch response { case .success: loginUser(user: results) { response, _, error in switch response { case .success: // finally all of the callbacks are finished print(&amp;#34;Handle logic here&amp;#34;) case .fail: print(error) } } case .fail: print(error) } } case .fail: print(error) } } promise设计模式 promise设计模式，借用生活中的「承诺」一词来描述异步编程中的回调模型。「承诺」是一种对未来的期许，它有以下两个特点：
   描述未来的一种状态或动作。
   承诺具有不确定性，可以被兑现fullfill，也可能被拒绝rejected。
