@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1783</span>
+<span class="leancloud-visitors-count">1862</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -290,7 +290,7 @@ code.has-jax {
 <p>承诺具有不确定性，可以被兑现<code>fullfill</code>，也可能被拒绝<code>rejected</code>。</p>
 </li>
 </ul>
-<p>如果需要编写一个方法从网络获取图片，因为网络操作一般都是异步的，所以可以使用承诺模式实现这个方法。可以定义一个返回承诺对象的方法，它不用直接返回一个 <code>Image</code>，只有当网络请求到需要的图片时，这个承诺才会兑现，否则承诺被拒绝（网络错误或者图片不存在）。</p>
+<p>如果需要编写一个方法从网络获取图片，因为网络操作一般都是异步的，所以可以使用承诺模式实现这个方法。可以定义一个返回承诺对象的方法，它不用直接返回一个 <code>Image</code>，只有当网络请求到需要的图片时，这个承诺才会兑现，然后将图片信息传递到承诺对象中，否则承诺被拒绝（网络错误或者图片不存在）。</p>
 <p>无论兑现还是拒绝，这个承诺对象都会标记为已解决（<code>resolve</code>)，已解决的承诺会被销毁。如果既不兑现，也不拒绝，则这个承诺会一直有效，即「未解决」。</p>
 <h2 id="promisekit链">PromiseKit链</h2>
 <p>在<code>PromiseKit</code>中，是通过<code>promise</code>对象将异步任务串接起来的，一个典型的<code>promise</code>链如下所示：</p>
@@ -344,7 +344,7 @@ code.has-jax {
         print(error)
     }
 }
-</code></pre></div><p>对于上面的<code>fetchJSON</code>，可以改造为一个返回<code>promise</code>对象的方法，如下代码所示：</p>
+</code></pre></div><p>对于上面的<code>fetchJSON</code>方法，可以改造为一个返回<code>promise</code>对象的方法，如下代码所示：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">promiseFetchJSON</span>() -&gt; Promise&lt;String: Any]<span style="color:#f92672">&gt;</span> {
     <span style="color:#66d9ef">return</span> Promise&lt;String: Any]<span style="color:#f92672">&gt;</span> { seal <span style="color:#66d9ef">in</span>
         fetchJSON(fromURL: <span style="color:#e6db74">&#34;someURL&#34;</span>, completion: { response, results, error <span style="color:#66d9ef">in</span>
@@ -447,7 +447,7 @@ firstly {
 }
 
 </code></pre></div><h2 id="when">when</h2>
-<p><code>when</code>用于多个异步操作，使得多个多个异步操作变得更简单：</p>
+<p>多个异步操作需要同步的时候，经常会使用<code>group.enter()</code>和<code>group.leave()</code>。在<code>PromoiseKit</code>中使用<code>when</code>来进行多个异步同步，使得多个异步操作变得更简单。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">// 并行操作</span>
 <span style="color:#66d9ef">var</span> result1: ...<span style="color:#f92672">!</span>
 <span style="color:#66d9ef">var</span> result2: ...<span style="color:#f92672">!</span>
