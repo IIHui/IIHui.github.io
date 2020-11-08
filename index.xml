@@ -35,7 +35,7 @@
       <pubDate>Tue, 03 Nov 2020 10:33:04 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/ios-promisekit/</guid>
-      <description>PromiseKit是简化异步编程的一种非必要方式，使用它可以提高代码的可读性和维护性，让代码更加优雅，主要用于解决「回调地狱」问题。 回调地狱 为了保证异步代码按顺序执行，我们通常将异步代码嵌套在回调函数中。如果异步的方法多过多，就会产生过多</description>
+      <description>PromiseKit是简化异步编程的一种非必要方式，使用它可以提高代码的可读性和维护性，让代码更加优雅，主要用于解决「回调地狱」问题。 回调地狱 为了保证异步代码按顺序执行，通常将异步代码嵌套在回调函数中。如果异步方法过多，就会产生过多的回调，</description>
     </item>
     
     <item>
