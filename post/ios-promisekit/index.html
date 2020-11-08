@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1759</span>
+<span class="leancloud-visitors-count">1741</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -309,11 +309,8 @@ code.has-jax {
     <span style="color:#75715e">// handle error here 所有的then中的promise被rejected都会在这里处理</span>
 }
 </code></pre></div><h2 id="promise对象状态">promise对象状态</h2>
-<p>在<code>PromiseKit</code>中<code>promise</code>是一个对象。它保存异步数据操作，同时提供统一的异步数据操作事件处理的接口。</p>
+<p>在<code>PromiseKit</code>中<code>promise</code>是一个对象。它保存异步数据操作，同时提供统一的异步数据操作事件处理的接口，<code>PromiseKit</code>对象</p>
 <ul>
-<li>
-<p><code>pending</code>表示<code>promise</code>对象当前正在等待异步事件处理中；</p>
-</li>
 <li>
 <p><code>fulfilled</code>指的是<code>promise</code>对象当前处理的异步事件已经成功完成；</p>
 </li>
@@ -347,7 +344,7 @@ code.has-jax {
         print(error)
     }
 }
-</code></pre></div><p>对于上面的<code>fetchJSON</code>，可以改造为一个返回<code>promise</code>对象的方法，如下所示：</p>
+</code></pre></div><p>对于上面的<code>fetchJSON</code>，可以改造为一个返回<code>promise</code>对象的方法，如下代码所示：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">promiseFetchJSON</span>() -&gt; Promise&lt;String: Any]<span style="color:#f92672">&gt;</span> {
     <span style="color:#66d9ef">return</span> Promise&lt;String: Any]<span style="color:#f92672">&gt;</span> { seal <span style="color:#66d9ef">in</span>
         fetchJSON(fromURL: <span style="color:#e6db74">&#34;someURL&#34;</span>, completion: { response, results, error <span style="color:#66d9ef">in</span>
