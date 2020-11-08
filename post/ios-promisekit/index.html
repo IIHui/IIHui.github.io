@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1771</span>
+<span class="leancloud-visitors-count">1735</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -292,7 +292,7 @@ code.has-jax {
 </ul>
 <p>如果需要编写一个方法从网络获取图片，因为网络操作一般都是异步的，所以可以使用承诺模式实现这个方法。可以定义一个返回承诺对象的方法，它不用直接返回一个 <code>Image</code>，只有当网络请求到需要的图片时，这个承诺才会兑现，否则承诺被拒绝（网络错误或者图片不存在）。</p>
 <p>无论兑现还是拒绝，这个承诺对象都会标记为已解决（<code>resolve</code>)，已解决的承诺会被销毁。如果既不兑现，也不拒绝，则这个承诺会一直有效，即「未解决」。</p>
-<h2 id="promisekit">PromiseKit</h2>
+<h2 id="promisekit链">PromiseKit链</h2>
 <p>在<code>PromiseKit</code>中，一个典型的<code>promise</code>链如下所示：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">firstly {
     promise1()
@@ -307,21 +307,6 @@ code.has-jax {
     <span style="color:#75715e">// handle final logic here</span>
 }.<span style="color:#66d9ef">catch</span> {
     <span style="color:#75715e">// handle error here 所有的then返回的promise被rejected都会在这里处理</span>
-}
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">UIApplication.shared.isNetworkActivityIndicatorVisible = <span style="color:#66d9ef">true</span>
-
-<span style="color:#66d9ef">let</span> fetchImage = URLSession.shared.dataTask(.promise, with: url).compactMap{ UIImage(data: $0.data) }
-<span style="color:#66d9ef">let</span> fetchLocation = CLLocationManager.requestLocation().lastValue
-
-firstly {
-    when(fulfilled: fetchImage, fetchLocation)
-}.done { image, location <span style="color:#66d9ef">in</span>
-    <span style="color:#66d9ef">self</span>.imageView.image = image
-    <span style="color:#66d9ef">self</span>.label.text = <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">\(</span>location<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>
-}.ensure {
-    UIApplication.shared.isNetworkActivityIndicatorVisible = <span style="color:#66d9ef">false</span>
-}.<span style="color:#66d9ef">catch</span> { error <span style="color:#66d9ef">in</span>
-    <span style="color:#66d9ef">self</span>.show(UIAlertController(<span style="color:#66d9ef">for</span>: error), sender: <span style="color:#66d9ef">self</span>)
 }
 </code></pre></div><h2 id="promise对象状态">promise对象状态</h2>
 <p>在<code>PromiseKit</code>中<code>promise</code>是一个对象。它保存异步数据操作，同时提供统一的异步数据操作事件处理的接口。</p>
@@ -663,7 +648,7 @@ group.notify(queue: .main) {
       <ul>
         <li><a href="#回调地狱">回调地狱</a></li>
         <li><a href="#promise设计模式">promise设计模式</a></li>
-        <li><a href="#promisekit">PromiseKit</a></li>
+        <li><a href="#promisekit链">PromiseKit链</a></li>
         <li><a href="#promise对象状态">promise对象状态</a></li>
         <li><a href="#then-and-done">then and done</a></li>
         <li><a href="#catch">catch</a></li>

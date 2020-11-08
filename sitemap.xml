@@ -64,8 +64,8 @@ fetchJSON(fromURL: &amp;#34;someURL&amp;#34;) { response, results, error in swit
   承诺具有不确定性，可以被兑现fullfill，也可能被拒绝rejected。
   如果需要编写一个方法从网络获取图片，因为网络操作一般都是异步的，所以可以使用承诺模式实现这个方法。可以定义一个返回承诺对象的方法，它不用直接返回一个 Image，只有当网络请求到需要的图片时，这个承诺才会兑现，否则承诺被拒绝（网络错误或者图片不存在）。
 无论兑现还是拒绝，这个承诺对象都会标记为已解决（resolve)，已解决的承诺会被销毁。如果既不兑现，也不拒绝，则这个承诺会一直有效，即「未解决」。
-PromiseKit 在PromiseKit中，一个典型的promise链如下所示：
-firstly { promise1() }.then { promise2() }.then { promise3() }.ensure { // something that should happen whatever the outcome 无论承诺是否兑现，都会执行 }.done { // all promises are resolved // handle final logic here }.catch { // handle error here 所有的then返回的promise被rejected都会在这里处理 } UIApplication.shared.isNetworkActivityIndicatorVisible = true let fetchImage = URLSession.shared.dataTask(.promise, with: url).compactMap{ UIImage(data: $0.data) } let fetchLocation = CLLocationManager.requestLocation().lastValue firstly { when(fulfilled: fetchImage, fetchLocation) }.done { image, location in self.imageView.image = image self.label.text = &amp;#34;\(location)&amp;#34; }.ensure { UIApplication.shared.isNetworkActivityIndicatorVisible = false }.catch { error in self.show(UIAlertController(for: error), sender: self) } promise对象状态 在PromiseKit中promise是一个对象。它保存异步数据操作，同时提供统一的异步数据操作事件处理的接口。
+PromiseKit链 在PromiseKit中，一个典型的promise链如下所示：
+firstly { promise1() }.then { promise2() }.then { promise3() }.ensure { // something that should happen whatever the outcome 无论承诺是否兑现，都会执行 }.done { // all promises are resolved // handle final logic here }.catch { // handle error here 所有的then返回的promise被rejected都会在这里处理 } promise对象状态 在PromiseKit中promise是一个对象。它保存异步数据操作，同时提供统一的异步数据操作事件处理的接口。
   pending表示promise对象当前正在等待异步事件处理中；
   fulfilled指的是promise对象当前处理的异步事件已经成功完成；
   rejected表示promise对象当前处理的异步事件没有成功。
