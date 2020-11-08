@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1862</span>
+<span class="leancloud-visitors-count">1854</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -358,7 +358,7 @@ code.has-jax {
     }
 }
 </code></pre></div><p>在<code>promise</code>对象初始化的时候提供了<code>seal</code>对象，这个对象定义了许多回调完成的方法。接着可以定义其他两个方法，如下所示：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">promiseFetchUserData</span>(user: <span style="color:#960050;background-color:#1e0010">「</span> <span style="color:#960050;background-color:#1e0010">」</span>String: Any]) -&gt; Promise&lt;User&gt; {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">promiseFetchUserData</span>(user: String: Any]) -&gt; Promise&lt;User&gt; {
     <span style="color:#66d9ef">return</span> Promise&lt;User&gt; { seal <span style="color:#66d9ef">in</span>
         fetchUserData(<span style="color:#66d9ef">for</span>: user, completion: { response, results, error <span style="color:#66d9ef">in</span>
             <span style="color:#66d9ef">switch</span> response {
