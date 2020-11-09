@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">20</span>
+<span class="leancloud-visitors-count">151</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -253,9 +253,51 @@ code.has-jax {
     </header>
     <div class="post-body" itemprop="articleBody">
     <blockquote>
-<p><code>Moya</code>是对<code>Alamofire</code>的再次封装</p>
+<p><code>Moya</code>是对<code>Alamofire</code>的再次封装，通过抽象的<code>URL</code>和<code>Parameter</code>更好的管理<code>API</code>。</p>
 </blockquote>
+<h2 id="基本模板">基本模板</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">GitHub</span> {
+    <span style="color:#66d9ef">case</span> zen
+    <span style="color:#66d9ef">case</span> userProfile(String)
+}
 
+<span style="color:#66d9ef">extension</span> <span style="color:#a6e22e">GitHub</span>: TargetType {
+    <span style="color:#66d9ef">var</span> baseURL: URL { <span style="color:#66d9ef">return</span> URL(string: <span style="color:#e6db74">&#34;https://api.github.com&#34;</span>)<span style="color:#f92672">!</span> }
+    <span style="color:#66d9ef">var</span> path: String {
+        <span style="color:#66d9ef">switch</span> <span style="color:#66d9ef">self</span> {
+        <span style="color:#66d9ef">case</span> .zen:
+            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;/zen&#34;</span>
+        <span style="color:#66d9ef">case</span> <span style="color:#66d9ef">let</span> .userProfile(name):
+            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;/users/</span><span style="color:#e6db74">\(</span>name<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>
+        }
+    }
+
+    <span style="color:#66d9ef">var</span> method: Moya.Method {
+        <span style="color:#66d9ef">return</span> .<span style="color:#66d9ef">get</span>
+    }
+
+    <span style="color:#66d9ef">var</span> task: Task {
+        <span style="color:#66d9ef">return</span> .requestPlain
+    }
+
+    <span style="color:#66d9ef">var</span> sampleData: Data {
+        <span style="color:#66d9ef">switch</span> <span style="color:#66d9ef">self</span> {
+        <span style="color:#66d9ef">case</span> .zen:
+            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Half measures are as bad as nothing at all.&#34;</span>.data(using: String.Encoding.utf8)<span style="color:#f92672">!</span>
+        <span style="color:#66d9ef">case</span> <span style="color:#66d9ef">let</span> .userProfile(name):
+            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;{</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">login</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">: </span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">\(</span>name<span style="color:#e6db74">)</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">, </span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">id</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">: 100}&#34;</span>.data(using: String.Encoding.utf8)<span style="color:#f92672">!</span>
+        }
+    }
+
+    <span style="color:#66d9ef">var</span> validationType: ValidationType {
+        <span style="color:#66d9ef">return</span> .successAndRedirectCodes
+    }
+
+    <span style="color:#66d9ef">var</span> headers: [String: String]? {
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>
+    }
+}
+</code></pre></div>
     </div>
     <footer class="post-footer">
         
@@ -416,7 +458,15 @@ code.has-jax {
     
 <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
     <div class="post-toc">
-        <div class="post-toc-content"><nav id="TableOfContents"></nav></div>
+        <div class="post-toc-content"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#基本模板">基本模板</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
     </div>
 </section>
 

@@ -305,7 +305,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">20</span>
+<span class="leancloud-visitors-count">151</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -316,7 +316,13 @@ code.has-jax {
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    Moya是对Alamofire的再次封装
+    Moya是对Alamofire的再次封装，通过抽象的URL和Parameter更好的管理API。 基本模板 enum GitHub { case zen case userProfile(String) } extension GitHub: TargetType { var baseURL: URL { return URL(string: &#34;https://api.github.com&#34;)! } var path: String { switch self { case .zen: return &#34;/zen&#34; case let .userProfile(name): return &#34;/users/\(name)&#34; } } var method: Moya.Method { return .get } var task: Task { return .requestPlain } var sampleData: Data { switch self { case .zen: return &#34;Half measures are as bad as
+    </div>
+    
+    <div class="post-more-link text-center">
+    <a class="btn" href="https://iihui.github.io/post/ios-moya/" rel="contents">
+      阅读全文 &raquo;
+    </a>
     </div>
     
     <footer class="post-footer"><div class="post-eof"></div></footer>
@@ -345,8 +351,8 @@ code.has-jax {
     <i class="fa fa-calendar-check-o"></i>
 </span>
 <span class="post-meta-item-text">更新: </span>
-<time itemprop="dateUpdated" content="2020-11-03">
-    2020-11-03
+<time itemprop="dateUpdated" content="2020-11-09">
+    2020-11-09
 </time>
 </span> 
       
@@ -374,7 +380,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1903</span>
+<span class="leancloud-visitors-count">1960</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>

@@ -17,7 +17,7 @@
       <pubDate>Fri, 06 Nov 2020 10:49:11 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/ios-moya/</guid>
-      <description>Moya是对Alamofire的再次封装</description>
+      <description>Moya是对Alamofire的再次封装，通过抽象的URL和Parameter更好的管理API。 基本模板 enum GitHub { case zen case userProfile(String) } extension GitHub: TargetType { var baseURL: URL { return URL(string: &amp;#34;https://api.github.com&amp;#34;)! } var path: String { switch self { case .zen: return &amp;#34;/zen&amp;#34; case let .userProfile(name): return &amp;#34;/users/\(name)&amp;#34; } } var method: Moya.Method { return .get } var task: Task { return .requestPlain } var sampleData: Data { switch self { case .zen: return &amp;#34;Half measures are as bad as</description>
     </item>
     
     <item>
@@ -305,7 +305,7 @@
       <pubDate>Sat, 22 Feb 2020 20:49:20 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/ios-where/</guid>
-      <description>Swift中的where关键字主要用于限定条件，既可在switch语句中使用，也可以在for in中使用，还可以用在扩展中用于限定应该遵循某种协议。 switch中使用 在switch语句中使用，where一般是配合if let来用于限定某些条件，</description>
+      <description>Swift中的where关键字主要用于限定条件，既可在switch语句中使用，也可以在for中使用，还可以用在扩展中用于限定应该遵循某种协议。 switch中 在switch语句中使用，where一般是配合if let来用于限定某些条件，例如： let</description>
     </item>
     
     <item>
