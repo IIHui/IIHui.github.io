@@ -6,10 +6,19 @@
     <description>Recent content in iOS on Keep It Simple</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 06 Nov 2020 10:49:11 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 10 Nov 2020 08:07:17 +0000</lastBuildDate>
     
 	<atom:link href="https://iihui.github.io/tags/ios/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Kotlin</title>
+      <link>https://iihui.github.io/post/kotlin-study/</link>
+      <pubDate>Tue, 10 Nov 2020 08:07:17 +0000</pubDate>
+      
+      <guid>https://iihui.github.io/post/kotlin-study/</guid>
+      <description>常量 Kotlin中使用val来声明常量「val是value的缩写」，val声明的常量不可以再重新赋值，否则会报错。 val str = &amp;#34;Hello world&amp;#34; 变量 Kotlin中使用var来声明变量「var是variable的缩写」，var声明的变量可以重新赋值。 var test = &amp;#34;ch&amp;#34; println(test) test</description>
+    </item>
     
     <item>
       <title>Moya使用</title>

@@ -36,6 +36,21 @@ katex.html文件的内容如下所示：
     </entry>
     
      <entry>
+        <title>Kotlin</title>
+        <url>https://iihui.github.io/post/kotlin-study/</url>
+        <categories>
+          <category>iOS</category>
+        </categories>
+        <tags>
+          <tag>iOS</tag>
+        </tags>
+        <content type="html"> 常量 Kotlin中使用val来声明常量「val是value的缩写」，val声明的常量不可以再重新赋值，否则会报错。
+val str = &amp;#34;Hello world&amp;#34; 变量 Kotlin中使用var来声明变量「var是variable的缩写」，var声明的变量可以重新赋值。
+var test = &amp;#34;ch&amp;#34; println(test) test = &amp;#34;ccc&amp;#34; println(test) 条件语句  Kotlin不包含三元运算符，更加倾向于使用条件表达式，随着if-else的复杂性增加，可以使用when表达式。
+ when when { count == 43 -&amp;gt; println(&amp;#34;43&amp;#34;) tt == &amp;#34;name&amp;#34; -&amp;gt; println(&amp;#34;name&amp;#34;) str1 == &amp;#34;test&amp;#34; -&amp;gt; println(str1) } val count = 43 var str1 = when (count) { 42 -&amp;gt; &amp;#34;chen&amp;#34; 56 -&amp;gt; &amp;#34;cchen&amp;#34; else -&amp;gt; &amp;#34;test&amp;#34; } </content>
+    </entry>
+    
+     <entry>
         <title>Moya使用</title>
         <url>https://iihui.github.io/post/ios-moya/</url>
         <categories>
