@@ -47,7 +47,9 @@ katex.html文件的内容如下所示：
         <content type="html"> 常量 Kotlin中使用val来声明常量「val是value的缩写」，val声明的常量不可以再重新赋值，否则会报错。
 val str = &amp;#34;Hello world&amp;#34; 变量 Kotlin中使用var来声明变量「var是variable的缩写」，var声明的变量可以重新赋值。
 var test = &amp;#34;ch&amp;#34; println(test) test = &amp;#34;ccc&amp;#34; println(test) 条件语句  Kotlin不包含三元运算符，更加倾向于使用条件表达式，随着if-else的复杂性增加，可以使用when表达式。
- when when { count == 43 -&amp;gt; println(&amp;#34;43&amp;#34;) tt == &amp;#34;name&amp;#34; -&amp;gt; println(&amp;#34;name&amp;#34;) str1 == &amp;#34;test&amp;#34; -&amp;gt; println(str1) } val count = 43 var str1 = when (count) { 42 -&amp;gt; &amp;#34;chen&amp;#34; 56 -&amp;gt; &amp;#34;cchen&amp;#34; else -&amp;gt; &amp;#34;test&amp;#34; } </content>
+ when Kotlin中的when表达式中每个分支由一个条件，一个箭头和一个结果表示，如果箭头左侧的条件求值为true，则会返回右侧表达式的值。
+val count = 43 var str1 = when (count) { 42 -&amp;gt; &amp;#34;chen&amp;#34; 56 -&amp;gt; &amp;#34;cchen&amp;#34; else -&amp;gt; &amp;#34;test&amp;#34; } when { count == 43 -&amp;gt; println(&amp;#34;43&amp;#34;) tt == &amp;#34;name&amp;#34; -&amp;gt; println(&amp;#34;name&amp;#34;) str1 == &amp;#34;test&amp;#34; -&amp;gt; println(str1) } fun getValue(colorEnum: ColorEnum) = when(colorEnum){ ColorEnum.RED -&amp;gt; 1; ColorEnum.BLUE -&amp;gt; 2; ColorEnum.GREEN -&amp;gt; 3; } 参考
+</content>
     </entry>
     
      <entry>
@@ -59,8 +61,11 @@ var test = &amp;#34;ch&amp;#34; println(test) test = &amp;#34;ccc&amp;#34; print
         <tags>
           <tag>iOS</tag>
         </tags>
-        <content type="html">  Moya是对Alamofire的再次封装，通过抽象的URL和Parameter更好的管理API。
- 基本模板 enum GitHub { case zen case userProfile(String) } extension GitHub: TargetType { var baseURL: URL { return URL(string: &amp;#34;https://api.github.com&amp;#34;)! } var path: String { switch self { case .zen: return &amp;#34;/zen&amp;#34; case let .userProfile(name): return &amp;#34;/users/\(name)&amp;#34; } } var method: Moya.Method { return .get } var task: Task { return .requestPlain } var sampleData: Data { switch self { case .zen: return &amp;#34;Half measures are as bad as nothing at all.&amp;#34;.data(using: String.Encoding.utf8)! case let .userProfile(name): return &amp;#34;{\&amp;#34;login\&amp;#34;: \&amp;#34;\(name)\&amp;#34;, \&amp;#34;id\&amp;#34;: 100}&amp;#34;.data(using: String.Encoding.utf8)! } } var validationType: ValidationType { return .successAndRedirectCodes } var headers: [String: String]? { return nil } } </content>
+        <content type="html">  Moya是对Alamofire的再次封装，用于管理网络请求。
+ 基本步骤 声明enum对请求进行分类 enum LCYApi { case login(name: String, password: String) } 实现TargetType协议 TargetType协议定义了各个请求的url，参数和header等信息，如下所示：
+extension LCYApi: TargetType { var baseURL: URL { return NSURL.init(string: &amp;#34;http://test.com&amp;#34;)! as URL } var path: String { switch self { case .login: return &amp;#34;/login&amp;#34; } } var method: Method { return .post } //这个是做单元测试模拟的数据，必须要实现，只在单元测试文件中有作用 var sampleData: Data { return &amp;#34;&amp;#34;.data(using: String.Encoding.utf8)! } var task: Task { var parmeters: [String : Any] = [:] switch self { case .login(let name, let password): parmeters[&amp;#34;name&amp;#34;] = name parameters[&amp;#34;password&amp;#34;] = password } return .requestParameters(parameters: parmeters, encoding: URLEncoding.default) } //在请求头内添加公共请求参数，也可以通过自定义closure返回endpoint，在provider中添加 var headers: [String : String]? { return [&amp;#34;Content-type&amp;#34;: &amp;#34;application/json&amp;#34;] } } 定义Provider对象 在Moya中，是使用Provider对象发起网络请求的，因此在网络请求之前需要将Provider对象先创建好。Moya中Provider对象在销毁的时候会取消网络请求，为了得到正确的结果，必须保证在网络请求时Provider对象不会被释放。为了避免这种情况，可以将Provider实例设置为类成员变量，或者shared实例。
+let ApiProvider = MoyaProvider&amp;lt;LCYApi&amp;gt;() 发起网络请求 ApiProvider.request(LCYApi.login(name: &amp;#34;name&amp;#34;, password: &amp;#34;password&amp;#34;)) { result in switch result { case let .success(response): let data = response.data let statusCode = response.statusCode break case let .failure(error): break } } 参考资料
+</content>
     </entry>
     
      <entry>

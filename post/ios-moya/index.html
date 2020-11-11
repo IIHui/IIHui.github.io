@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">151</span>
+<span class="leancloud-visitors-count">501</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -253,51 +253,70 @@ code.has-jax {
     </header>
     <div class="post-body" itemprop="articleBody">
     <blockquote>
-<p><code>Moya</code>是对<code>Alamofire</code>的再次封装，通过抽象的<code>URL</code>和<code>Parameter</code>更好的管理<code>API</code>。</p>
+<p><code>Moya</code>是对<code>Alamofire</code>的再次封装，用于管理网络请求。</p>
 </blockquote>
-<h2 id="基本模板">基本模板</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">GitHub</span> {
-    <span style="color:#66d9ef">case</span> zen
-    <span style="color:#66d9ef">case</span> userProfile(String)
+<p><img src="https://i.loli.net/2020/11/11/pMNPe5OGJm9fYqF.jpg" alt="-c"></p>
+<h2 id="基本步骤">基本步骤</h2>
+<h3 id="声明enum对请求进行分类">声明enum对请求进行分类</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">LCYApi</span> {
+    <span style="color:#66d9ef">case</span> login(name: String, password: String)
 }
-
-<span style="color:#66d9ef">extension</span> <span style="color:#a6e22e">GitHub</span>: TargetType {
-    <span style="color:#66d9ef">var</span> baseURL: URL { <span style="color:#66d9ef">return</span> URL(string: <span style="color:#e6db74">&#34;https://api.github.com&#34;</span>)<span style="color:#f92672">!</span> }
+</code></pre></div><h3 id="实现targettype协议">实现TargetType协议</h3>
+<p><code>TargetType</code>协议定义了各个请求的<code>url</code>，参数和<code>header</code>等信息，如下所示：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">extension</span> <span style="color:#a6e22e">LCYApi</span>: TargetType {
+    <span style="color:#66d9ef">var</span> baseURL: URL {
+        <span style="color:#66d9ef">return</span> NSURL.<span style="color:#66d9ef">init</span>(string: <span style="color:#e6db74">&#34;http://test.com&#34;</span>)<span style="color:#f92672">!</span> <span style="color:#66d9ef">as</span> URL
+    }
+    
     <span style="color:#66d9ef">var</span> path: String {
         <span style="color:#66d9ef">switch</span> <span style="color:#66d9ef">self</span> {
-        <span style="color:#66d9ef">case</span> .zen:
-            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;/zen&#34;</span>
-        <span style="color:#66d9ef">case</span> <span style="color:#66d9ef">let</span> .userProfile(name):
-            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;/users/</span><span style="color:#e6db74">\(</span>name<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>
+        <span style="color:#66d9ef">case</span> .login:
+            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;/login&#34;</span>
         }
     }
-
-    <span style="color:#66d9ef">var</span> method: Moya.Method {
-        <span style="color:#66d9ef">return</span> .<span style="color:#66d9ef">get</span>
+    
+    <span style="color:#66d9ef">var</span> method: Method {
+        <span style="color:#66d9ef">return</span> .post
     }
-
-    <span style="color:#66d9ef">var</span> task: Task {
-        <span style="color:#66d9ef">return</span> .requestPlain
-    }
-
+    
+    <span style="color:#75715e">//这个是做单元测试模拟的数据，必须要实现，只在单元测试文件中有作用</span>
     <span style="color:#66d9ef">var</span> sampleData: Data {
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;&#34;</span>.data(using: String.Encoding.utf8)<span style="color:#f92672">!</span>
+    }
+    
+    <span style="color:#66d9ef">var</span> task: Task {
+        <span style="color:#66d9ef">var</span> parmeters: [String : Any] = [:]
+
         <span style="color:#66d9ef">switch</span> <span style="color:#66d9ef">self</span> {
-        <span style="color:#66d9ef">case</span> .zen:
-            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Half measures are as bad as nothing at all.&#34;</span>.data(using: String.Encoding.utf8)<span style="color:#f92672">!</span>
-        <span style="color:#66d9ef">case</span> <span style="color:#66d9ef">let</span> .userProfile(name):
-            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;{</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">login</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">: </span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">\(</span>name<span style="color:#e6db74">)</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">, </span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">id</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">: 100}&#34;</span>.data(using: String.Encoding.utf8)<span style="color:#f92672">!</span>
+        <span style="color:#66d9ef">case</span> .login(<span style="color:#66d9ef">let</span> name, <span style="color:#66d9ef">let</span> password):
+            parmeters[<span style="color:#e6db74">&#34;name&#34;</span>] = name
+            parameters[<span style="color:#e6db74">&#34;password&#34;</span>] = password
         }
+        
+        <span style="color:#66d9ef">return</span> .requestParameters(parameters: parmeters, encoding: URLEncoding.<span style="color:#66d9ef">default</span>)
     }
-
-    <span style="color:#66d9ef">var</span> validationType: ValidationType {
-        <span style="color:#66d9ef">return</span> .successAndRedirectCodes
-    }
-
-    <span style="color:#66d9ef">var</span> headers: [String: String]? {
-        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>
+    
+    <span style="color:#75715e">//在请求头内添加公共请求参数，也可以通过自定义closure返回endpoint，在provider中添加</span>
+    <span style="color:#66d9ef">var</span> headers: [String : String]? {
+        <span style="color:#66d9ef">return</span> [<span style="color:#e6db74">&#34;Content-type&#34;</span>: <span style="color:#e6db74">&#34;application/json&#34;</span>]
     }
 }
-</code></pre></div>
+</code></pre></div><h3 id="定义provider对象">定义Provider对象</h3>
+<p>在<code>Moya</code>中，是使用<code>Provider</code>对象发起网络请求的，因此在网络请求之前需要将<code>Provider</code>对象先创建好。<code>Moya</code>中<code>Provider</code>对象在销毁的时候会取消网络请求，为了得到正确的结果，必须保证在网络请求时<code>Provider</code>对象不会被释放。为了避免这种情况，可以将<code>Provider</code>实例设置为类成员变量，或者<code>shared</code>实例。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">let</span> ApiProvider = MoyaProvider&lt;LCYApi&gt;()
+</code></pre></div><h3 id="发起网络请求">发起网络请求</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">ApiProvider.request(LCYApi.login(name: <span style="color:#e6db74">&#34;name&#34;</span>, password: <span style="color:#e6db74">&#34;password&#34;</span>)) { result <span style="color:#66d9ef">in</span>
+    <span style="color:#66d9ef">switch</span> result {
+    <span style="color:#66d9ef">case</span> <span style="color:#66d9ef">let</span> .success(response):
+        <span style="color:#66d9ef">let</span> data = response.data
+        <span style="color:#66d9ef">let</span> statusCode = response.statusCode
+        <span style="color:#66d9ef">break</span>
+    <span style="color:#66d9ef">case</span> <span style="color:#66d9ef">let</span> .failure(error):
+           <span style="color:#66d9ef">break</span>
+    }
+}
+</code></pre></div><p><a href="https://www.jianshu.com/p/d79242590404">参考资料</a></p>
+
     </div>
     <footer class="post-footer">
         
@@ -462,7 +481,14 @@ code.has-jax {
   <ul>
     <li>
       <ul>
-        <li><a href="#基本模板">基本模板</a></li>
+        <li><a href="#基本步骤">基本步骤</a>
+          <ul>
+            <li><a href="#声明enum对请求进行分类">声明enum对请求进行分类</a></li>
+            <li><a href="#实现targettype协议">实现TargetType协议</a></li>
+            <li><a href="#定义provider对象">定义Provider对象</a></li>
+            <li><a href="#发起网络请求">发起网络请求</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
