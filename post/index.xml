@@ -6,7 +6,7 @@
     <description>Recent content in Posts on Keep It Simple</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 10 Nov 2020 08:07:17 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 12 Nov 2020 08:27:33 +0000</lastBuildDate>
     
 	<atom:link href="https://iihui.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
@@ -18,6 +18,15 @@
       
       <guid>https://iihui.github.io/post/hugo-next/</guid>
       <description>从兰陵子处下载了Next主题，修改了主题下面的config.toml配置文件(配置文件的路径如下图所示)。但发现有很多地方还是需要修改才能满足自己的需求，因为对前端了解较少，故以此为记。 代码高亮支持 插入Golang、Swift和OC代码段时</description>
+    </item>
+    
+    <item>
+      <title>Tips</title>
+      <link>https://iihui.github.io/post/swift-tips/</link>
+      <pubDate>Thu, 12 Nov 2020 08:27:33 +0000</pubDate>
+      
+      <guid>https://iihui.github.io/post/swift-tips/</guid>
+      <description>Selector @selector是OC时代的一个关键词，可以将一个方法转换并赋值给一个SEL类型，它的表现类似一个动态的函数指针。 -(void) callMe { //... } -(void) callMeWithParam:(id)obj { //... } SEL someMethod = @selector(callMe); SEL anotherMethod = @selector(callMeWithParam:); // 或者也可以使⽤ NSSelectorFromString // SEL someMethod = NSSelectorFromString(@&amp;#34;callMe&amp;#34;); // SEL anotherMethod = NSSelectorFromString(@&amp;#34;callMeWithParam:&amp;#34;);</description>
     </item>
     
     <item>
