@@ -2691,7 +2691,7 @@ void moreThanHalf(int A[],int n) { int pivot=A[0]; int count=1; int count2=0; fo
   带else if的if语句；
   包含初始化的if语句
    不带else的if 测试条件是布尔型的语句，如果该条件成立，则执行大括号中的内容。
-if condition { //{ 与condition 须在同一行  //do something }  带else的if if condition { //do something }else{ //do something }  带else if的if if condition1 { // do something  } else if condition2 { // do something else } else { // catch-all or default }  带初始化的if if initialization; condition { // do something }   在if条件中声明的变量的作用域只存在于if结构中，即在if结构的大括号之间，如果使用if-else结构则在else代码块中变量也会存在。  如果变量在if结构之前就已经存在，那么在if结构中，该变量原来的值会被隐藏。
+if condition { //{ 与condition 须在同一行  //do something } 带else的if if condition { //do something }else{ //do something }  带else if的if if condition1 { // do something  } else if condition2 { // do something else } else { // catch-all or default }  带初始化的if if initialization; condition { // do something }   在if条件中声明的变量的作用域只存在于if结构中，即在if结构的大括号之间，如果使用if-else结构则在else代码块中变量也会存在。  如果变量在if结构之前就已经存在，那么在if结构中，该变量原来的值会被隐藏。
    注意事项   需要注意的是，即使代码块之间只有一条语句，大括号也不能被省略。
   关键字if和else之后的左大括号{必须和关键字在同一行，这是编译器强制规定的。
   如果使用了else-if结构，则前段代码块的右大括号}必须和else-if关键字在同一行，这是编译器强制规定的。
