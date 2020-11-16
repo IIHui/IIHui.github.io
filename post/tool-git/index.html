@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
-    <title>pcm No such file or directory - Keep It Simple</title>
+    <title>git 使用 - Keep It Simple</title>
     <meta name="keywords" content="博客,思考,读书,笔记,技术,分享">
     
-    <meta property="og:title" content="pcm No such file or directory">
+    <meta property="og:title" content="git 使用">
     <meta property="og:site_name" content="Keep It Simple">
     <meta property="og:image" content="/img/author.jpg"> 
-    <meta name="title" content="pcm No such file or directory - Keep It Simple" />
+    <meta name="title" content="git 使用 - Keep It Simple" />
     <meta name="description" content="Swift | Go | C&#43;&#43; "> 
     <link rel="shortcut icon" href="https://iihui.github.io/img/favicon.ico" />
     <link rel="apple-touch-icon" href="https://iihui.github.io/img/apple-touch-icon.png" />
@@ -164,7 +164,21 @@ code.has-jax {
 }
 </style>
 
+<!DOCTYPE html>
+<html lang="en">
 
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css" integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv" crossorigin="anonymous">
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js" integrity="sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O" crossorigin="anonymous"></script>
+</head>
+<body>
+
+</body>
+</html>
 
  </div>
     </header>
@@ -178,8 +192,8 @@ code.has-jax {
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="https://iihui.github.io/post/ios-pcm-warnning/" itemprop="url">
-        pcm No such file or directory
+        <a class="post-title-link" href="https://iihui.github.io/post/tool-git/" itemprop="url">
+        git 使用
         </a>
       </h1>
       <div class="post-meta">
@@ -188,8 +202,8 @@ code.has-jax {
     <i class="fa fa-calendar-o"></i>
 </span>
 <span class="post-meta-item-text">创建: </span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2020-03-23">
-    2020-03-23
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2020-03-24">
+    2020-03-24
 </time>
 </span>
 &nbsp; | &nbsp;
@@ -198,8 +212,8 @@ code.has-jax {
     <i class="fa fa-calendar-check-o"></i>
 </span>
 <span class="post-meta-item-text">更新: </span>
-<time itemprop="dateUpdated" content="2020-03-23">
-    2020-03-23
+<time itemprop="dateUpdated" content="2020-03-24">
+    2020-03-24
 </time>
 </span> 
       
@@ -212,8 +226,8 @@ code.has-jax {
   <span class="post-meta-item-text">分类: </span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="https://iihui.github.io/categories/ios" itemprop="url" rel="index">
-        <span itemprop="name">iOS</span>
+      <a href="https://iihui.github.io/categories/code" itemprop="url" rel="index">
+        <span itemprop="name">code</span>
       </a>
       &nbsp; 
     </span>
@@ -227,33 +241,39 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">258</span>
+<span class="leancloud-visitors-count">569</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">1 分钟</span>
+<span class="leancloud-visitors-count">2 分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    <blockquote>
-<p>在封装静态framework时，在本机上没有报任何警告，在其他机器上却报<code>warning: ***/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/2MSIKR0H4Y5WQ/Foundation-A3SOD99KJ0S9.pcm: No such file or directory</code>警告。这篇文章就是解决这个警告问题，主要是改变工程的<code>build setting</code>有三个地方需要修改，暂且归为三步。</p>
-</blockquote>
-<h2 id="第一步">第一步</h2>
-<p>首先在<code>Build Settings</code>中将<code>Enable Bitcode</code>设置为<code>No</code>，如下图所示：</p>
-<p><img src="https://i.loli.net/2020/03/24/m3eqrJMRvfWputz.jpg" alt="-c"></p>
-<h2 id="第二步">第二步</h2>
-<p>然后在<code>Build Settings</code>中将<code>Debug Information Format</code>下的<code>Debug</code>设置为<code>DWARF</code>，如下图所示：
-<img src="https://i.loli.net/2020/03/24/2ZNBx3JUR7mK1ud.jpg" alt="-c"></p>
-<h2 id="第三步">第三步</h2>
-<p>最后将<code>Precompile Prefix Header</code>设置为<code>NO</code>，如下图所示：
-<img src="https://i.loli.net/2020/03/24/bARHQBWPhFoMkgI.jpg" alt="-c"></p>
-<hr>
-<p>下面是国密封装设置</p>
-<p><img src="https://i.loli.net/2020/03/24/KYxZo863BqPC9JN.jpg" alt="-c">
-<img src="https://i.loli.net/2020/03/24/HEIau9JR1gcACih.jpg" alt=""></p>
+    <h2 id="清理文件">清理文件</h2>
+<p>本地<code>.git</code>文件太大，可以使用<code>git gc</code>命令清理不必要的文件并优化本地存储库，其中<code>gc</code>是<code>garbage collection</code>的缩写:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git gc <span style="color:#f92672">[</span>--aggressive<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--auto<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--quiet<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--prune<span style="color:#f92672">=</span>&lt;date&gt; | --no-prune<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--force<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--keep-largest-pack<span style="color:#f92672">]</span>
+</code></pre></div><p><a href="https://www.bookstack.cn/read/git-doc-zh/docs-56.md">更多参数讲解</a></p>
+<h2 id="大小写敏感">大小写敏感</h2>
+<p>默认情况下<code>git</code>追踪的项目对文件名大小写是不敏感的，但是<code>git</code>提供了命令可以使得当前项目或者所有项目都能区分文件名的大小写。</p>
+<h3 id="当前项目">当前项目</h3>
+<p>打开终端，利用<code>cd</code>命令，将目录切换到<code>git</code>仓库下，输入如下命令使其对文件名大小写敏感：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git config core.ignorecase false
+</code></pre></div><h3 id="所有项目">所有项目</h3>
+<p>如果想要所有项目都对文件名大小写敏感，就需要进行全局设置。执行如下命令，改变<code>git</code>的全局设置即可：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git config --global core.ignorecase false
+</code></pre></div><h2 id="errno54">errno54</h2>
+<p>在使用<code>pod install</code>时报了<code>error: RPC failed; curl 56 LibreSSL SSL_read: SSL_ERROR_SYSCALL, errno 54</code>错误，如下图所示：</p>
+<p><img src="https://i.loli.net/2020/04/08/FMwsVBSGXYdHKlt.jpg" alt="-c"></p>
+<p>原因是在拉取大文件时，缓存方面存在问题，因此需要加大缓存，如下所示：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git config --global http.postBuffer <span style="color:#ae81ff">1048576000</span> 
+git config --global https.postBuffer <span style="color:#ae81ff">1048576000</span>
+</code></pre></div><h2 id="rebase">rebase</h2>
+<p>整合来自不同分支的修改主要有两种方法，一种是<code>Merge</code>，一种是<code>rebase</code>。<code>Merge</code>会把两个分支的最新快照（C3和C4），以及二者最近的共同祖先（C2）进行三方合并，合并的结果是生成一个新的快照（并提交）:</p>
+<p>还有一种方法：你可以提取在<code>C4</code>中引入的补丁和修改，然后在<code>C3</code>的基础上应用一次。 在 <code>Git</code>中，这种操作就叫做「变基」（<code>rebase</code>）。 你可以使用<code>rebase</code>命令将提交到某一分支上的所有修改都移至另一分支上，就好像「重新播放」一样。</p>
+<p><a href="https://blog.csdn.net/qq_42347755/article/details/90347988">参考资料</a></p>
 
     </div>
     <footer class="post-footer">
@@ -261,7 +281,7 @@ code.has-jax {
  
 <div class="post-tags">     
      
-    <a href="https://iihui.github.io/tags/ios" rel="tag" title="iOS">#iOS#</a>
+    <a href="https://iihui.github.io/tags/git" rel="tag" title="git">#git#</a>
     
 </div>
 
@@ -270,16 +290,16 @@ code.has-jax {
         <div class="post-nav">
     <div class="post-nav-next post-nav-item">
     
-        <a href="https://iihui.github.io/post/tool-git/" rel="next" title="git 使用">
-        <i class="fa fa-chevron-left"></i> git 使用
+        <a href="https://iihui.github.io/post/tool-keyboard-maestro/" rel="next" title="Keyboard Maestro 使用">
+        <i class="fa fa-chevron-left"></i> Keyboard Maestro 使用
         </a>
     
     </div>
 
     <div class="post-nav-prev post-nav-item">
     
-        <a href="https://iihui.github.io/post/ios-light-style/" rel="prev" title="强制浅色模式">
-        强制浅色模式 <i class="fa fa-chevron-right"></i>
+        <a href="https://iihui.github.io/post/ios-pcm-warnning/" rel="prev" title="pcm No such file or directory">
+        pcm No such file or directory <i class="fa fa-chevron-right"></i>
         </a>
     
     </div>
@@ -293,10 +313,10 @@ code.has-jax {
         </div>
         <div>
             <p style="margin-top:10px;">
-                标题：pcm No such file or directory
+                标题：git 使用
                 <br />作者：阿呆<a target="_blank" href="https://iihui.github.io/"></a>
                 
-                <br />地址：https://iihui.github.io/post/ios-pcm-warnning/
+                <br />地址：https://iihui.github.io/post/tool-git/
                 <br />声明：自由转载-非商用-保持署名（创作共享4.0许可证）
             </p>
         </div>
@@ -419,9 +439,15 @@ code.has-jax {
   <ul>
     <li>
       <ul>
-        <li><a href="#第一步">第一步</a></li>
-        <li><a href="#第二步">第二步</a></li>
-        <li><a href="#第三步">第三步</a></li>
+        <li><a href="#清理文件">清理文件</a></li>
+        <li><a href="#大小写敏感">大小写敏感</a>
+          <ul>
+            <li><a href="#当前项目">当前项目</a></li>
+            <li><a href="#所有项目">所有项目</a></li>
+          </ul>
+        </li>
+        <li><a href="#errno54">errno54</a></li>
+        <li><a href="#rebase">rebase</a></li>
       </ul>
     </li>
   </ul>

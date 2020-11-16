@@ -695,7 +695,7 @@ extension UIColor { convenience init(hex: String) { var cString: String = hex.tr
     
      <entry>
         <title>git 使用</title>
-        <url>https://iihui.github.io/post/tool-git-usage/</url>
+        <url>https://iihui.github.io/post/tool-git/</url>
         <categories>
           <category>code</category>
         </categories>
@@ -709,7 +709,9 @@ git gc [--aggressive] [--auto] [--quiet] [--prune=&amp;lt;date&amp;gt; | --no-pr
 git config core.ignorecase false 所有项目 如果想要所有项目都对文件名大小写敏感，就需要进行全局设置。执行如下命令，改变git的全局设置即可：
 git config --global core.ignorecase false errno54 在使用pod install时报了error: RPC failed; curl 56 LibreSSL SSL_read: SSL_ERROR_SYSCALL, errno 54错误，如下图所示：
 原因是在拉取大文件时，缓存方面存在问题，因此需要加大缓存，如下所示：
-git config --global http.postBuffer 1048576000 git config --global https.postBuffer 1048576000 参考资料
+git config --global http.postBuffer 1048576000 git config --global https.postBuffer 1048576000 rebase 整合来自不同分支的修改主要有两种方法，一种是Merge，一种是rebase。Merge会把两个分支的最新快照（C3和C4），以及二者最近的共同祖先（C2）进行三方合并，合并的结果是生成一个新的快照（并提交）:
+还有一种方法：你可以提取在C4中引入的补丁和修改，然后在C3的基础上应用一次。 在 Git中，这种操作就叫做「变基」（rebase）。 你可以使用rebase命令将提交到某一分支上的所有修改都移至另一分支上，就好像「重新播放」一样。
+参考资料
 </content>
     </entry>
     
