@@ -346,10 +346,10 @@
     
     <item>
       <title>Keyboard Maestro 使用</title>
-      <link>https://iihui.github.io/post/tool-keyboard-maestro/</link>
+      <link>https://iihui.github.io/post/tool-maestro/</link>
       <pubDate>Tue, 24 Mar 2020 11:28:02 +0000</pubDate>
       
-      <guid>https://iihui.github.io/post/tool-keyboard-maestro/</guid>
+      <guid>https://iihui.github.io/post/tool-maestro/</guid>
       <description>Keyboard Maestro是一款神奇的软件，在我心里它和Alfred同样重要，是装机必备软件。使用它可以省去安装很多软件，这篇文章记录在平常工作中使用它的一些特性或技巧，以供后续查阅。 快捷输入 粘贴 键盘 打开应用 开启和关闭wifi 窗口 左半屏 右半屏 最大化 全</description>
     </item>
     
@@ -1224,6 +1224,15 @@
       
       <guid>https://iihui.github.io/post/arith-sort/</guid>
       <description>基本概念 排序算法的稳定性：如果待排序的数据中，存在多个关键字相同的元素，经过排序后这些具有相同关键字的元素之间的相对次序保持不变，则称这种排序算法是稳定的，反之则为不稳定。 内排序：排序过程中，整个表都是放在内存中处理，排序时不涉及数据的内、</description>
+    </item>
+    
+    <item>
+      <title>流水线自动发布组件</title>
+      <link>https://iihui.github.io/post/ios-release/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://iihui.github.io/post/ios-release/</guid>
+      <description></description>
     </item>
     
   </channel>

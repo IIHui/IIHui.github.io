@@ -380,5 +380,14 @@
       <description>在iOS开发中，UITableView的使用频率较高，这篇文章主要用于记录一些常用的使用方法和问题解决方案。 点击cell不变色 func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -&amp;gt; UITableViewCell { let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! NoteDetailInfoCell cell.selectionStyle = .none //点击该cell不变色 return cell } Cell异步更新 在UITableView</description>
     </item>
     
+    <item>
+      <title>流水线自动发布组件</title>
+      <link>https://iihui.github.io/post/ios-release/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://iihui.github.io/post/ios-release/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

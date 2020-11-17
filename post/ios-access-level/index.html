@@ -282,20 +282,20 @@ code.has-jax {
 <p>其他模块继承覆盖父类的成员时，也需要把成员声明为<code>open</code>。</p>
 </li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">open <span style="color:#66d9ef">class</span> SubclassableParentClass {
-    public func foo() {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">open <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SubclassableParentClass</span> {
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">foo</span>() {
     }
 
-    open func bar() {
+    open <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">bar</span>() {
     }
 
-    public final func baz() {
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">baz</span>() {
     }
 }
 
-open <span style="color:#66d9ef">class</span> SubclassC: SubclassableParentClass {
-    <span style="color:#75715e">//非法，成员没有被声明为open
-</span><span style="color:#75715e"></span>    override func bar() {
+open <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SubclassC</span>: SubclassableParentClass {
+    <span style="color:#75715e">//非法，成员没有被声明为open</span>
+    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">bar</span>() {
     }
 }
 </code></pre></div><h2 id="internal">internal</h2>
@@ -398,7 +398,7 @@ open <span style="color:#66d9ef">class</span> SubclassC: SubclassableParentClass
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="https://iihui.github.io/post/">
-        <span class="site-state-item-count">135</span>
+        <span class="site-state-item-count">136</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
