@@ -3189,7 +3189,7 @@ import &amp;#34;study/test&amp;#34; //默认方式： test.A import X &amp;#34;s
   切片slice可实现类似动态数组的功能y := make([]int, 0, 5); append(y,7)。
   将字典map类型内置，可以直接从运行层面获得性能优化。
   所谓ok-idiom模式，就是在返回值中用一个名为ok的布尔值来标识操作是否成功，因为很多操作默认返回零值，所以需要额外说明。
-m := make(map[string]int) m[&amp;#34;a&amp;#34;]=1 z,ok:=m[&amp;#34;b&amp;#34;] fmt.Println(z,ok)   可以为任意类型定义方法
+m := make(map[string]int) m[&amp;#34;a&amp;#34;]=1 z,ok:=m[&amp;#34;b&amp;#34;] fmt.Println(z,ok)   可以为任意类型定义方法:
 type X int func (x * X) inc() { *x&#43;&#43; }    字符串 字符串是用一对双引号&amp;quot;&amp;quot;或者反引号括起来定义的，均采用UTF-8编码，并且是不可变的。
   字符串是一个不可变(byte）字节序列，本身是一个复合序列。头部指针指向字节数组，但没有nullptr结尾，默认以UTF-8存储字符，字面量里允许16进制，8进制以及UTF编码。
 type stringStruct struct{ //字符串的底层结构  str unsafe.Pointer len int }   字符串的默认值是&amp;quot;&amp;quot;而不是 nil。
