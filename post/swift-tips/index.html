@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">96</span>
+<span class="leancloud-visitors-count">207</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -268,6 +268,17 @@ SEL anotherMethod = @selector(callMeWithParam:);
 <span style="color:#75715e">// 或者也可以使⽤ NSSelectorFromString </span>
 <span style="color:#75715e">// SEL someMethod = NSSelectorFromString(@&#34;callMe&#34;); </span>
 <span style="color:#75715e">// SEL anotherMethod = NSSelectorFromString(@&#34;callMeWithParam:&#34;);</span>
+</code></pre></div><h2 id="typealias">typealias</h2>
+<p><code>typealias</code>是用来为已经存在的类型重新定义名字的，通过重命名，可以使代码变得更清晰。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">UIKit</span>
+
+<span style="color:#66d9ef">typealias</span> Location = CGPoint <span style="color:#66d9ef">typealias</span> Distance = Double
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">distance</span>(from location: Location, to anotherLocation: Location) -&gt; Distance { <span style="color:#66d9ef">let</span> dx = Distance(location.x <span style="color:#f92672">-</span> anotherLocation.x) <span style="color:#66d9ef">let</span> dy = Distance(location.y <span style="color:#f92672">-</span> anotherLocation.y) <span style="color:#66d9ef">return</span> sqrt(dx <span style="color:#f92672">*</span> dx <span style="color:#f92672">+</span> dy <span style="color:#f92672">*</span> dy) }
+
+<span style="color:#66d9ef">let</span> origin: Location = Location(x: <span style="color:#ae81ff">0</span>, y: <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">let</span> point: Location = Location(x: <span style="color:#ae81ff">1</span>, y: <span style="color:#ae81ff">1</span>)
+
+<span style="color:#66d9ef">let</span> d: Distance = distance(from: origin, to: point)
 </code></pre></div>
     </div>
     <footer class="post-footer">
@@ -434,6 +445,7 @@ SEL anotherMethod = @selector(callMeWithParam:);
     <li>
       <ul>
         <li><a href="#selector">Selector</a></li>
+        <li><a href="#typealias">typealias</a></li>
       </ul>
     </li>
   </ul>
