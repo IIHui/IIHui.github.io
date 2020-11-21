@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">207</span>
+<span class="leancloud-visitors-count">525</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">1 分钟</span>
+<span class="leancloud-visitors-count">2 分钟</span>
 </span>
       </div>
     </header>
@@ -279,6 +279,55 @@ SEL anotherMethod = @selector(callMeWithParam:);
 <span style="color:#66d9ef">let</span> origin: Location = Location(x: <span style="color:#ae81ff">0</span>, y: <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">let</span> point: Location = Location(x: <span style="color:#ae81ff">1</span>, y: <span style="color:#ae81ff">1</span>)
 
 <span style="color:#66d9ef">let</span> d: Distance = distance(from: origin, to: point)
+</code></pre></div><h2 id="初始化方法顺序">初始化方法顺序</h2>
+<blockquote>
+<p><code>Swift</code>的初始化方法需要保证类型的所有属性都被初始化，因此在子类中，需要保证当前子类实例的成员初始化完成后才能调用父类的初始化方法。</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Cat</span> {
+    <span style="color:#66d9ef">var</span> name: String
+
+    <span style="color:#66d9ef">init</span>() {
+        name = <span style="color:#e6db74">&#34;cat&#34;</span>
+    }
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Tiger</span>: Cat {
+    <span style="color:#66d9ef">let</span> power: Int
+
+    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">init</span>() {
+
+        power = <span style="color:#ae81ff">10</span>
+
+        <span style="color:#66d9ef">super</span>.<span style="color:#66d9ef">init</span>()
+
+        name = <span style="color:#e6db74">&#34;tiger&#34;</span>
+    }
+
+}
+</code></pre></div><p>一般来说，子类的初始化顺序为：</p>
+<ul>
+<li>设置子类自己需要初始化的参数<code>power=10</code></li>
+<li>调用父类相应的初始化方法<code>super.init</code></li>
+<li>对父类中需要改变的成员进行设定<code>name=tiger</code></li>
+</ul>
+<p>其中第三步是根据具体情况决定的，如果子类中不需要对父类的成员做出改变的话，就不存在第三步。在这种情况下，<code>Swift</code>会自动对父类的<code>init</code>方法进行调用，也就是说第二步的<code>super.init</code>也是可以不写。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Cat</span> {
+    <span style="color:#66d9ef">var</span> name: String
+
+    <span style="color:#66d9ef">init</span>() {
+        name = <span style="color:#e6db74">&#34;cat&#34;</span>
+    }
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Tiger</span>: Cat {
+    <span style="color:#66d9ef">let</span> power: Int
+
+    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">init</span>() {
+
+        power = <span style="color:#ae81ff">10</span>
+    }
+
+}
 </code></pre></div>
     </div>
     <footer class="post-footer">
@@ -446,6 +495,7 @@ SEL anotherMethod = @selector(callMeWithParam:);
       <ul>
         <li><a href="#selector">Selector</a></li>
         <li><a href="#typealias">typealias</a></li>
+        <li><a href="#初始化方法顺序">初始化方法顺序</a></li>
       </ul>
     </li>
   </ul>
