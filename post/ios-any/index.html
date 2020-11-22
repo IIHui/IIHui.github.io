@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1000</span>
+<span class="leancloud-visitors-count">1040</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">2 分钟</span>
+<span class="leancloud-visitors-count">3 分钟</span>
 </span>
       </div>
     </header>
@@ -261,10 +261,12 @@ code.has-jax {
 <h1 id="any">Any</h1>
 <p><code>Any</code>也是一个协议，根据其注释<code>The protocol to which all types implicitly conform.</code>表明所有的类型都遵守该协议，包括基本数据类型，<code>enum, struct, func</code>等等。因此<code>Any</code>可以表示任何类型的实例，包括函数类型</p>
 <h1 id="anyclass">AnyClass</h1>
-<p><code>AnyClass</code>表示任意类的元类型。<code>AnyClass</code>的定义如下所示:</p>
+<p><code>AnyClass</code>表示任意类的元类型，其定义如下所示:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">typealias</span> AnyClass = AnyObject.<span style="color:#66d9ef">Type</span>
-</code></pre></div><p>根据定义可知它为<code>AnyObject.Type</code>的别名。<code>AnyObject.Type</code>中的<code>.Type</code>就是获取元类型。例如。对于<code>Student</code>类，<code>Student.Type</code>就是获取<code>Student</code>的元类型。</p>
+</code></pre></div><p>根据定义可知它为<code>AnyObject.Type</code>的别名。<code>AnyObject.Type</code>中的<code>.Type</code>就是获取元类型。例如，对于<code>Student</code>类，<code>Student.Type</code>就是获取<code>Student</code>的元类型。</p>
 <p>再根据注释<code>The protocol to which all class types implicitly conform</code>，可知道所有的<!-- raw HTML omitted -->类的类型<!-- raw HTML omitted -->都隐式遵守这个协议。</p>
+<h2 id="self">self</h2>
+<p>在<code>Swift</code>中，<code>.self</code>可以用在类型后面取得类型本身，也可以在某个实例后面取得这个实例本身。</p>
 <h1 id="重要区别">重要区别</h1>
 <p><code>AnyObject</code>代表任意<code>class</code>类型的对象实例，<code>Any</code>代表任意类型，甚至包括方法类型，所以<code>AnyObject</code>是<code>Any</code>的子集。</p>
 <hr>
@@ -473,7 +475,11 @@ code.has-jax {
   <ul>
     <li><a href="#anyobject">AnyObject</a></li>
     <li><a href="#any">Any</a></li>
-    <li><a href="#anyclass">AnyClass</a></li>
+    <li><a href="#anyclass">AnyClass</a>
+      <ul>
+        <li><a href="#self">self</a></li>
+      </ul>
+    </li>
     <li><a href="#重要区别">重要区别</a></li>
     <li><a href="#类型转换">类型转换</a></li>
     <li><a href="#向下转换">向下转换</a></li>

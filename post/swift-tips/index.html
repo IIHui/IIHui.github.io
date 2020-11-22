@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">987</span>
+<span class="leancloud-visitors-count">1172</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">2 分钟</span>
+<span class="leancloud-visitors-count">3 分钟</span>
 </span>
       </div>
     </header>
@@ -387,6 +387,14 @@ SEL anotherMethod = @selector(callMeWithParam:);
 }
 </code></pre></div><h2 id="模式匹配">模式匹配</h2>
 <p><code>Swift</code>中没有内置正则表达式，但是有一个和正则表达式类似的特性——模式匹配。从概念上来说，正则匹配只是模式匹配的一个子集。</p>
+<h2 id="协议和类方法中的self">协议和类方法中的Self</h2>
+<p>在定义一些协议时，首字母大写的<code>Self</code>出现在类型的位置上。在下面<code>IntervalType</code>协议中，定义了一个方法，接受实现该协议的自身类型，并返回一个同样的类型：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">IntervalType</span> {
+    <span style="color:#75715e">/// Return `rhs` clamped to `self`. The bounds of the result, even </span>
+    <span style="color:#75715e">/// if it is empty, are always within the bounds of `self`</span>
+    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">clamp</span>(intervalToClamp: <span style="color:#66d9ef">Self</span>) -&gt; <span style="color:#66d9ef">Self</span>
+}
+</code></pre></div><p>这么定义是因为协议本身没有自己的上下文类型的信息，在声明协议的时候，我们并不知道最后究竟会是什么样的类型来实现这个协议。</p>
 
     </div>
     <footer class="post-footer">
@@ -558,6 +566,7 @@ SEL anotherMethod = @selector(callMeWithParam:);
         <li><a href="#default参数">default参数</a></li>
         <li><a href="#正则表达式">正则表达式</a></li>
         <li><a href="#模式匹配">模式匹配</a></li>
+        <li><a href="#协议和类方法中的self">协议和类方法中的Self</a></li>
       </ul>
     </li>
   </ul>
