@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1508</span>
+<span class="leancloud-visitors-count">1630</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -282,6 +282,29 @@ code.has-jax {
             currentIndex <span style="color:#f92672">-=</span> <span style="color:#ae81ff">1</span>
             <span style="color:#66d9ef">return</span> element
         }
+    }
+}
+</code></pre></div><p>接着利用<code>ReverseIterator</code>迭代器来创建一个实现了<code>Sequence</code>的自定义的<code>ReverseSequence</code>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">ReverseSequence</span>&lt;T&gt;: Sequence {
+    <span style="color:#66d9ef">var</span> array: [T]
+
+    <span style="color:#66d9ef">init</span>(array: [T]) {
+        <span style="color:#66d9ef">self</span>.array = array
+    }
+
+    <span style="color:#66d9ef">typealias</span> Iterator = ReverseIterator&lt;T&gt;
+
+    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">makeIterator</span>() -&gt; ReverseIterator&lt;T&gt; {
+        <span style="color:#66d9ef">return</span> ReverseIterator(array: <span style="color:#66d9ef">self</span>.array)
+    }
+
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">test</span>() {
+    <span style="color:#66d9ef">let</span> arr = [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>]
+    <span style="color:#75715e">// 对 Sequence 可以使⽤ for...in 来循环访问</span>
+    <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> ReverseSequence(array: arr) {
+        print(<span style="color:#e6db74">&#34;Index </span><span style="color:#e6db74">\(</span>i<span style="color:#e6db74">)</span><span style="color:#e6db74"> is </span><span style="color:#e6db74">\(</span>arr[i]<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
     }
 }
 </code></pre></div><h2 id="selector">Selector</h2>
