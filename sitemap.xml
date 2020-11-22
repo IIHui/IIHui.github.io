@@ -952,7 +952,8 @@ class MethodSwizzlingTools { static func exchangeSelector(object: AnyClass, orig
  AnyObject AnyObject类似于OC中的id类型，表示任意的class类型。但在Swift中由于String、Array等都变成结构体了，AnyObject的适用范围就变窄了。
 实际上AnyObject是一个成员为空的协议@objc public protocol AnyObject {}。它注释的第一行:The protocol to which all classes implicitly conform表明所有的类都隐式遵守了这个协议。
 Any Any也是一个协议，根据其注释The protocol to which all types implicitly conform.表明所有的类型都遵守该协议，包括基本数据类型，enum, struct, func等等。因此Any可以表示任何类型的实例，包括函数类型
-AnyClass AnyClass表示任意类的元类型。根据AnyClass的定义typealias AnyClass = AnyObject .Type可知它为AnyObject.Type的别名。AnyObject.Type中的.Type就是获取元类型。例如。对于Student类，Student.Type就是获取Student的元类型。
+AnyClass AnyClass表示任意类的元类型。AnyClass的定义如下所示:
+typealias AnyClass = AnyObject.Type 根据定义可知它为AnyObject.Type的别名。AnyObject.Type中的.Type就是获取元类型。例如。对于Student类，Student.Type就是获取Student的元类型。
 再根据注释The protocol to which all class types implicitly conform，可知道所有的类的类型都隐式遵守这个协议。
 重要区别 AnyObject代表任意class类型的对象实例，Any代表任意类型，甚至包括方法类型，所以AnyObject是Any的子集。
  类型转换 操作符is检查一个实例是否某个确定的类或者其子类类型，如果是则返回true，否则返回false。
