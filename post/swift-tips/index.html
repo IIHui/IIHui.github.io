@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">578</span>
+<span class="leancloud-visitors-count">829</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -329,7 +329,44 @@ SEL anotherMethod = @selector(callMeWithParam:);
 
 }
 </code></pre></div><p>在<code>Swift</code>中默认情况下初始化方法是不能写<code>return</code>来返回值，即没有机会初始化一个<code>Optional</code>的值。</p>
+<h2 id="default参数">default参数</h2>
+<p>在<code>Swift</code>中默认参数限制较少，可以不放在最后，如下所示，两种写法都是可以的：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">sayHello1</span>(str1: String = <span style="color:#e6db74">&#34;Hello&#34;</span>, str2: String, str3: String) {
+    print(str1 <span style="color:#f92672">+</span> str2 <span style="color:#f92672">+</span> str3)
+}
 
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">sayHello2</span>(str1: String, str2: String, str3: String = <span style="color:#e6db74">&#34;World&#34;</span>) {
+    print(str1 <span style="color:#f92672">+</span> str2 <span style="color:#f92672">+</span> str3)
+}
+</code></pre></div><hr>
+<h2 id="正则表达式">正则表达式</h2>
+<p><code>Swift</code>还没有在语言层面上支持正则表达式，在<code>Cocoa</code>中使用<code>NSRegularExpression</code>来做正则表达，所以在<code>Swift</code>中可以对其进行封装：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">RegexHelper</span> {
+    <span style="color:#66d9ef">let</span> regex: NSRegularExpression
+
+    <span style="color:#66d9ef">init</span>(<span style="color:#66d9ef">_</span> pattern: String) <span style="color:#66d9ef">throws</span> {
+        <span style="color:#66d9ef">try</span> regex = NSRegularExpression(pattern: pattern, options: .caseInsensitive)
+    }
+
+    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">match</span>(<span style="color:#66d9ef">_</span> input: String) -&gt; Bool {
+        <span style="color:#66d9ef">let</span> matches = regex.matches(<span style="color:#66d9ef">in</span>: input, options: [], range: NSMakeRange(<span style="color:#ae81ff">0</span>, input.utf16.count))
+
+        <span style="color:#66d9ef">return</span> matches.count <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>
+    }
+
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">let</span> mailPattern = <span style="color:#e6db74">&#34;^([a-z0-9_</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">.-]+)@([</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">da-z</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">.-]+)</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">.([a-z</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">.]{2,6})$&#34;</span>
+<span style="color:#66d9ef">let</span> matcher: RegexHelper
+<span style="color:#66d9ef">do</span> {
+    matcher = <span style="color:#66d9ef">try</span> RegexHelper(mailPattern)
+    <span style="color:#66d9ef">let</span> maybeMailAddress = <span style="color:#e6db74">&#34;onev@onevcat.com&#34;</span>
+    <span style="color:#66d9ef">if</span> matcher.match(maybeMailAddress) {
+        print(<span style="color:#e6db74">&#34;有效的邮箱地址&#34;</span>)
+    }
+}<span style="color:#66d9ef">catch</span> {
+    print(error.localizedDescription)
+}
+</code></pre></div>
     </div>
     <footer class="post-footer">
         
@@ -497,6 +534,8 @@ SEL anotherMethod = @selector(callMeWithParam:);
         <li><a href="#selector">Selector</a></li>
         <li><a href="#typealias">typealias</a></li>
         <li><a href="#初始化方法顺序">初始化方法顺序</a></li>
+        <li><a href="#default参数">default参数</a></li>
+        <li><a href="#正则表达式">正则表达式</a></li>
       </ul>
     </li>
   </ul>
