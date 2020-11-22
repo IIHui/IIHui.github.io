@@ -44,7 +44,9 @@ katex.html文件的内容如下所示：
         <tags>
           <tag>iOS</tag>
         </tags>
-        <content type="html"> Selector @selector是OC时代的一个关键词，可以将一个方法转换并赋值给一个SEL类型，它的表现类似一个动态的函数指针。
+        <content type="html">  这篇文章用于记录学习《Swift 开发者必备 Tips》这本书过程中的一些摘抄，方便后续查阅。
+ curry curry:只传递给函数一部分参数来调用它，让它返回一个函数去处理一个剩下的参数。柯⾥化是⼀种量产相似⽅法的好办法，可以通过柯⾥化⼀个⽅法模板来避免写出很多重复代码， 也⽅便了今后维护。
+func addTo(_ adder: Int) -&amp;gt; (Int) -&amp;gt; Int { return { num in return num &#43; adder } } Selector @selector是OC时代的一个关键词，可以将一个方法转换并赋值给一个SEL类型，它的表现类似一个动态的函数指针。
 -(void) callMe { //... } -(void) callMeWithParam:(id)obj { //... } SEL someMethod = @selector(callMe); SEL anotherMethod = @selector(callMeWithParam:); // 或者也可以使⽤ NSSelectorFromString  // SEL someMethod = NSSelectorFromString(@&amp;#34;callMe&amp;#34;);  // SEL anotherMethod = NSSelectorFromString(@&amp;#34;callMeWithParam:&amp;#34;); typealias typealias是用来为已经存在的类型重新定义名字的，通过重命名，可以使代码变得更清晰。
 import UIKit typealias Location = CGPoint typealias Distance = Double func distance(from location: Location, to anotherLocation: Location) -&amp;gt; Distance { let dx = Distance(location.x - anotherLocation.x) let dy = Distance(location.y - anotherLocation.y) return sqrt(dx * dx &#43; dy * dy) } let origin: Location = Location(x: 0, y: 0) let point: Location = Location(x: 1, y: 1) let d: Distance = distance(from: origin, to: point) 初始化方法顺序  Swift的初始化方法需要保证类型的所有属性都被初始化，因此在子类中，需要保证当前子类实例的成员初始化完成后才能调用父类的初始化方法。
  class Cat { var name: String init() { name = &amp;#34;cat&amp;#34; } } class Tiger: Cat { let power: Int override init() { power = 10 super.init() name = &amp;#34;tiger&amp;#34; } } 一般来说，子类的初始化顺序为：
@@ -56,7 +58,8 @@ struct RegexHelper { let regex: NSRegularExpression init(_ pattern: String) thro
 precedencegroup MatchPrecedence { associativity: none higherThan: DefaultPrecedence } infix operator =~: MatchPrecedence func =~(lhs: String, rhs: String) -&amp;gt; Bool { do { return try RegexHelper(rhs).match(lhs) } catch { print(error.localizedDescription) return false } } if &amp;#34;xxx@test.com&amp;#34; =~ &amp;#34;^([a-z0-9_\\.-]&#43;)@([\\da-z\\.-]&#43;)\\.([a-z\\.]{2,6})$&amp;#34; { print(&amp;#34;有效的邮箱地址&amp;#34;) } 模式匹配 Swift中没有内置正则表达式，但是有一个和正则表达式类似的特性——模式匹配。从概念上来说，正则匹配只是模式匹配的一个子集。
 协议和类方法中的Self 在定义一些协议时，首字母大写的Self出现在类型的位置上。在下面IntervalType协议中，定义了一个方法，接受实现该协议的自身类型，并返回一个同样的类型：
 protocol IntervalType { /// Return `rhs` clamped to `self`. The bounds of the result, even  /// if it is empty, are always within the bounds of `self` func clamp(intervalToClamp: Self) -&amp;gt; Self } 这么定义是因为协议本身没有自己的上下文类型的信息，在声明协议的时候，我们并不知道最后究竟会是什么样的类型来实现这个协议。
-</content>
+Reflection 和 Mirror  反射是一种在运行时检测、访问或者修改类型的行为特性。一般的静态语言类型的结构和方法的调用等都需要在编译时决定。
+ </content>
     </entry>
     
      <entry>

@@ -26,7 +26,7 @@
       <pubDate>Thu, 12 Nov 2020 08:27:33 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/swift-tips/</guid>
-      <description>Selector @selector是OC时代的一个关键词，可以将一个方法转换并赋值给一个SEL类型，它的表现类似一个动态的函数指针。 -(void) callMe { //... } -(void) callMeWithParam:(id)obj { //... } SEL someMethod = @selector(callMe); SEL anotherMethod = @selector(callMeWithParam:); // 或者也可以使⽤ NSSelectorFromString // SEL someMethod = NSSelectorFromString(@&amp;#34;callMe&amp;#34;); // SEL anotherMethod = NSSelectorFromString(@&amp;#34;callMeWithParam:&amp;#34;); typealias typealias是用来为已经存在的类型重新定</description>
+      <description>这篇文章用于记录学习《Swift 开发者必备 Tips》这本书过程中的一些摘抄，方便后续查阅。 curry curry:只传递给函数一部分参数来调用它，让它返回一个函数去处理一个剩下的参数。柯⾥化是⼀种量产相似⽅法的好办法，可以通过柯⾥化⼀个⽅法模板来避免</description>
     </item>
     
     <item>

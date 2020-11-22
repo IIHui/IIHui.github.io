@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1172</span>
+<span class="leancloud-visitors-count">1387</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -252,7 +252,17 @@ code.has-jax {
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    <h2 id="selector">Selector</h2>
+    <blockquote>
+<p>这篇文章用于记录学习《Swift 开发者必备 Tips》这本书过程中的一些摘抄，方便后续查阅。</p>
+</blockquote>
+<h2 id="curry">curry</h2>
+<p><code>curry</code>:只传递给函数一部分参数来调用它，让它返回一个函数去处理一个剩下的参数。柯⾥化是⼀种量产相似⽅法的好办法，可以通过柯⾥化⼀个⽅法模板来避免写出很多重复代码， 也⽅便了今后维护。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">addTo</span>(<span style="color:#66d9ef">_</span> adder: Int) -&gt; (Int) -&gt; Int {
+    <span style="color:#66d9ef">return</span> { num <span style="color:#66d9ef">in</span>
+        <span style="color:#66d9ef">return</span> num <span style="color:#f92672">+</span> adder
+    }
+}
+</code></pre></div><h2 id="selector">Selector</h2>
 <p><code>@selector</code>是<code>OC</code>时代的一个关键词，可以将一个方法转换并赋值给一个<code>SEL</code>类型，它的表现类似一个动态的函数指针。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#f92672">-</span>(void) callMe { <span style="color:#75715e">//...</span>
 
@@ -395,6 +405,10 @@ SEL anotherMethod = @selector(callMeWithParam:);
     <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">clamp</span>(intervalToClamp: <span style="color:#66d9ef">Self</span>) -&gt; <span style="color:#66d9ef">Self</span>
 }
 </code></pre></div><p>这么定义是因为协议本身没有自己的上下文类型的信息，在声明协议的时候，我们并不知道最后究竟会是什么样的类型来实现这个协议。</p>
+<h2 id="reflection-和-mirror">Reflection 和 Mirror</h2>
+<blockquote>
+<p>反射是一种在运行时检测、访问或者修改类型的行为特性。一般的静态语言类型的结构和方法的调用等都需要在编译时决定。</p>
+</blockquote>
 
     </div>
     <footer class="post-footer">
@@ -560,6 +574,7 @@ SEL anotherMethod = @selector(callMeWithParam:);
   <ul>
     <li>
       <ul>
+        <li><a href="#curry">curry</a></li>
         <li><a href="#selector">Selector</a></li>
         <li><a href="#typealias">typealias</a></li>
         <li><a href="#初始化方法顺序">初始化方法顺序</a></li>
@@ -567,6 +582,7 @@ SEL anotherMethod = @selector(callMeWithParam:);
         <li><a href="#正则表达式">正则表达式</a></li>
         <li><a href="#模式匹配">模式匹配</a></li>
         <li><a href="#协议和类方法中的self">协议和类方法中的Self</a></li>
+        <li><a href="#reflection-和-mirror">Reflection 和 Mirror</a></li>
       </ul>
     </li>
   </ul>
