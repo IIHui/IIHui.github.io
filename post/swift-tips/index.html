@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1862</span>
+<span class="leancloud-visitors-count">2158</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">4 分钟</span>
+<span class="leancloud-visitors-count">5 分钟</span>
 </span>
       </div>
     </header>
@@ -311,24 +311,8 @@ code.has-jax {
 <p><code>@autoclosure</code>把一句表达式自动地封装成一个闭包<code>closure</code>，但是<code>@autoclosure</code>并不支持带有输入参数的写法，也就是说只有形如<code>()-&gt;T</code>的参数才能使用这个特性进行简化。</p>
 <h2 id="escaping">@escaping</h2>
 <p>如果在协议或者父类中定义了一个接受<code>@escaping</code>为参数方法，那么在实现协议和类型或者是这个父类的子类中，对应的方法也必须声明为<code>@escaping</code>，否则两个方法会被认为拥有不同的函数签名。</p>
-<h2 id="selector">Selector</h2>
-<p><code>@selector</code>是<code>OC</code>时代的一个关键词，可以将一个方法转换并赋值给一个<code>SEL</code>类型，它的表现类似一个动态的函数指针。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#f92672">-</span>(void) callMe { <span style="color:#75715e">//...</span>
-
-}
-
-<span style="color:#f92672">-</span>(void) callMeWithParam:(id)obj { <span style="color:#75715e">//...</span>
-
-}
-
-SEL someMethod = @selector(callMe); 
-SEL anotherMethod = @selector(callMeWithParam:);
-
-<span style="color:#75715e">// 或者也可以使⽤ NSSelectorFromString </span>
-<span style="color:#75715e">// SEL someMethod = NSSelectorFromString(@&#34;callMe&#34;); </span>
-<span style="color:#75715e">// SEL anotherMethod = NSSelectorFromString(@&#34;callMeWithParam:&#34;);</span>
-</code></pre></div><h2 id="typealias">typealias</h2>
-<p><code>typealias</code>是用来为已经存在的类型重新定义名字的，通过重命名，可以使代码变得更清晰:</p>
+<h2 id="typealias">typealias</h2>
+<p><code>typealias</code>是用来为已经存在的类型重新定义名字的，通过重命名，可以使代码变得更清晰。使用<code>typealias</code>关键字就像使用普通的赋值语句一样，可以将某个已经存在的类型赋值为新的名字。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">typealias</span> Location = CGPoint
 <span style="color:#66d9ef">typealias</span> Distance = Double
 
@@ -342,6 +326,21 @@ SEL anotherMethod = @selector(callMeWithParam:);
 <span style="color:#66d9ef">let</span> point: Location = Location(x: <span style="color:#ae81ff">1</span>, y: <span style="color:#ae81ff">1</span>)
 
 <span style="color:#66d9ef">let</span> d: Distance = distance(from: origin, to: point)
+</code></pre></div><p>在涉及到泛型时，情况就稍微不太⼀样。⾸先，<code>typealias</code>是单⼀的，也就是说你必须指定将某个特定的类型通过<code>typealias</code>赋值为新名字，⽽不能将整个泛型类型进⾏重命名。下⾯这样的命名都是⽆法通过编译的。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Person</span>&lt;T&gt; {} 
+<span style="color:#66d9ef">typealias</span> Worker = Person
+<span style="color:#66d9ef">typealias</span> Worker = Person&lt;T&gt;
+</code></pre></div><p>在别名中也引入泛型，是可以的：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">// This is OK</span>
+<span style="color:#66d9ef">typealias</span> Worker&lt;T&gt; = Person&lt;T&gt;
+</code></pre></div><p>当泛型类型确定性得到保证后，显然别名也是可以使用的：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Person</span>&lt;T&gt; {}
+<span style="color:#66d9ef">typealias</span> WorkId = String
+<span style="color:#66d9ef">typealias</span> Worker = Person&lt;WorkId&gt;
+</code></pre></div><p>另⼀个使⽤场景是某个类型同时实现多个协议的组合时。我们可以使⽤ 后给它们⼀个新的更符合上下⽂的名字，来增强代码可读性：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">Cat</span> { ... } 
+<span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">Dog</span> { ... } 
+<span style="color:#66d9ef">typealias</span> Pat = Cat <span style="color:#f92672">&amp;</span> Dog
 </code></pre></div><h2 id="初始化方法顺序">初始化方法顺序</h2>
 <p><code>Swift</code>的初始化方法需要保证类型的所有属性都被初始化，因此在子类中，需要保证当前子类实例的成员初始化完成后才能调用父类的初始化方法。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Cat</span> {
@@ -450,7 +449,23 @@ SEL anotherMethod = @selector(callMeWithParam:);
 <blockquote>
 <p>反射是一种在运行时检测、访问或者修改类型的行为特性。一般的静态语言类型的结构和方法的调用等都需要在编译时决定。</p>
 </blockquote>
+<h2 id="selector">Selector</h2>
+<p><code>@selector</code>是<code>OC</code>时代的一个关键词，可以将一个方法转换并赋值给一个<code>SEL</code>类型，它的表现类似一个动态的函数指针。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#f92672">-</span>(void) callMe { <span style="color:#75715e">//...</span>
 
+}
+
+<span style="color:#f92672">-</span>(void) callMeWithParam:(id)obj { <span style="color:#75715e">//...</span>
+
+}
+
+SEL someMethod = @selector(callMe); 
+SEL anotherMethod = @selector(callMeWithParam:);
+
+<span style="color:#75715e">// 或者也可以使⽤ NSSelectorFromString </span>
+<span style="color:#75715e">// SEL someMethod = NSSelectorFromString(@&#34;callMe&#34;); </span>
+<span style="color:#75715e">// SEL anotherMethod = NSSelectorFromString(@&#34;callMeWithParam:&#34;);</span>
+</code></pre></div>
     </div>
     <footer class="post-footer">
         
@@ -619,7 +634,6 @@ SEL anotherMethod = @selector(callMeWithParam:);
         <li><a href="#sequence">Sequence</a></li>
         <li><a href="#autoclosure">autoclosure</a></li>
         <li><a href="#escaping">@escaping</a></li>
-        <li><a href="#selector">Selector</a></li>
         <li><a href="#typealias">typealias</a></li>
         <li><a href="#初始化方法顺序">初始化方法顺序</a></li>
         <li><a href="#default参数">default参数</a></li>
@@ -627,6 +641,7 @@ SEL anotherMethod = @selector(callMeWithParam:);
         <li><a href="#模式匹配">模式匹配</a></li>
         <li><a href="#协议和类方法中的self">协议和类方法中的Self</a></li>
         <li><a href="#reflection-和-mirror">Reflection 和 Mirror</a></li>
+        <li><a href="#selector">Selector</a></li>
       </ul>
     </li>
   </ul>

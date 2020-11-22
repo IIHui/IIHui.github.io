@@ -50,9 +50,12 @@ func addTo(_ adder: Int) -&amp;gt; (Int) -&amp;gt; Int { return { num in return 
 class ReverseIterator&amp;lt;T&amp;gt;:IteratorProtocol { typealias Element = T var array:[Element] var currentIndex = 0 init(array:[Element]) { self.array = array self.currentIndex = array.count - 1 } func next() -&amp;gt; Element? { if currentIndex &amp;lt; 0 { return nil }else{ let element = array[currentIndex] currentIndex -= 1 return element } } } 接着利用ReverseIterator迭代器来创建一个实现Sequence协议的反向ReverseSequence，代码如下：
 struct ReverseSequence&amp;lt;T&amp;gt;: Sequence { var array: [T] init(array: [T]) { self.array = array } typealias Iterator = ReverseIterator&amp;lt;T&amp;gt; func makeIterator() -&amp;gt; ReverseIterator&amp;lt;T&amp;gt; { return ReverseIterator(array: self.array) } } func test() { let arr = [0, 1, 2, 3, 4] // 对 Sequence 可以使⽤ for...in 来循环访问 for i in ReverseSequence(array: arr) { print(&amp;#34;Index \(i)is \(arr[i])&amp;#34;) } } autoclosure @autoclosure把一句表达式自动地封装成一个闭包closure，但是@autoclosure并不支持带有输入参数的写法，也就是说只有形如()-&amp;gt;T的参数才能使用这个特性进行简化。
 @escaping 如果在协议或者父类中定义了一个接受@escaping为参数方法，那么在实现协议和类型或者是这个父类的子类中，对应的方法也必须声明为@escaping，否则两个方法会被认为拥有不同的函数签名。
-Selector @selector是OC时代的一个关键词，可以将一个方法转换并赋值给一个SEL类型，它的表现类似一个动态的函数指针。
--(void) callMe { //... } -(void) callMeWithParam:(id)obj { //... } SEL someMethod = @selector(callMe); SEL anotherMethod = @selector(callMeWithParam:); // 或者也可以使⽤ NSSelectorFromString  // SEL someMethod = NSSelectorFromString(@&amp;#34;callMe&amp;#34;);  // SEL anotherMethod = NSSelectorFromString(@&amp;#34;callMeWithParam:&amp;#34;); typealias typealias是用来为已经存在的类型重新定义名字的，通过重命名，可以使代码变得更清晰:
-typealias Location = CGPoint typealias Distance = Double func distance(from location: Location, to anotherLocation: Location) -&amp;gt; Distance { let dx = Distance(location.x - anotherLocation.x) let dy = Distance(location.y - anotherLocation.y) return sqrt(dx * dx &#43; dy * dy) } let origin: Location = Location(x: 0, y: 0) let point: Location = Location(x: 1, y: 1) let d: Distance = distance(from: origin, to: point) 初始化方法顺序 Swift的初始化方法需要保证类型的所有属性都被初始化，因此在子类中，需要保证当前子类实例的成员初始化完成后才能调用父类的初始化方法。
+typealias typealias是用来为已经存在的类型重新定义名字的，通过重命名，可以使代码变得更清晰。使用typealias关键字就像使用普通的赋值语句一样，可以将某个已经存在的类型赋值为新的名字。
+typealias Location = CGPoint typealias Distance = Double func distance(from location: Location, to anotherLocation: Location) -&amp;gt; Distance { let dx = Distance(location.x - anotherLocation.x) let dy = Distance(location.y - anotherLocation.y) return sqrt(dx * dx &#43; dy * dy) } let origin: Location = Location(x: 0, y: 0) let point: Location = Location(x: 1, y: 1) let d: Distance = distance(from: origin, to: point) 在涉及到泛型时，情况就稍微不太⼀样。⾸先，typealias是单⼀的，也就是说你必须指定将某个特定的类型通过typealias赋值为新名字，⽽不能将整个泛型类型进⾏重命名。下⾯这样的命名都是⽆法通过编译的。
+class Person&amp;lt;T&amp;gt; {} typealias Worker = Person typealias Worker = Person&amp;lt;T&amp;gt; 在别名中也引入泛型，是可以的：
+// This is OK typealias Worker&amp;lt;T&amp;gt; = Person&amp;lt;T&amp;gt; 当泛型类型确定性得到保证后，显然别名也是可以使用的：
+class Person&amp;lt;T&amp;gt; {} typealias WorkId = String typealias Worker = Person&amp;lt;WorkId&amp;gt; 另⼀个使⽤场景是某个类型同时实现多个协议的组合时。我们可以使⽤ 后给它们⼀个新的更符合上下⽂的名字，来增强代码可读性：
+protocol Cat { ... } protocol Dog { ... } typealias Pat = Cat &amp;amp; Dog 初始化方法顺序 Swift的初始化方法需要保证类型的所有属性都被初始化，因此在子类中，需要保证当前子类实例的成员初始化完成后才能调用父类的初始化方法。
 class Cat { var name: String init() { name = &amp;#34;cat&amp;#34; } } class Tiger: Cat { let power: Int override init() { power = 10. //先初始化子类的成员变量 super.init() //再初始化父类的成员 name = &amp;#34;tiger&amp;#34; //最后修改父类的成员变量 } } 一般来说，子类的初始化顺序分为以下三步：
  设置子类自己需要初始化的参数power=10 调用父类相应的初始化方法super.init 对父类中需要改变的成员进行设定name=tiger  其中第三步是根据具体情况决定的，如果子类中不需要对父类的成员做出改变的话，就不存在第三步。在这种情况下，Swift会自动对父类的init方法进行调用，也就是说第二步的super.init也是可以不写：
 class Cat { var name: String init() { name = &amp;#34;cat&amp;#34; } } class Tiger: Cat { let power: Int override init() { power = 10 } } default参数 在Swift中默认参数限制较少，可以不放在最后，如下所示，两种写法都是可以的：
@@ -62,7 +65,8 @@ precedencegroup MatchPrecedence { associativity: none higherThan: DefaultPrecede
 协议和类方法中的Self 在定义一些协议时，首字母大写的Self出现在类型的位置上。在下面IntervalType协议中，定义了一个方法，接受实现该协议的自身类型，并返回一个同样的类型：
 protocol IntervalType { /// Return `rhs` clamped to `self`. The bounds of the result, even  /// if it is empty, are always within the bounds of `self` func clamp(intervalToClamp: Self) -&amp;gt; Self } 这么定义是因为协议本身没有自己的上下文类型的信息，在声明协议的时候，我们并不知道最后究竟会是什么样的类型来实现这个协议。
 Reflection 和 Mirror  反射是一种在运行时检测、访问或者修改类型的行为特性。一般的静态语言类型的结构和方法的调用等都需要在编译时决定。
- </content>
+ Selector @selector是OC时代的一个关键词，可以将一个方法转换并赋值给一个SEL类型，它的表现类似一个动态的函数指针。
+-(void) callMe { //... } -(void) callMeWithParam:(id)obj { //... } SEL someMethod = @selector(callMe); SEL anotherMethod = @selector(callMeWithParam:); // 或者也可以使⽤ NSSelectorFromString  // SEL someMethod = NSSelectorFromString(@&amp;#34;callMe&amp;#34;);  // SEL anotherMethod = NSSelectorFromString(@&amp;#34;callMeWithParam:&amp;#34;); </content>
     </entry>
     
      <entry>
