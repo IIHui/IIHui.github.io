@@ -26,7 +26,7 @@
       <pubDate>Thu, 12 Nov 2020 08:27:33 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/swift-tips/</guid>
-      <description>这篇文章用于记录学习《Swift 开发者必备 Tips》这本书过程中的一些摘抄，方便后续查阅。 curry curry:只传递给函数一部分参数来调用它，让它返回一个函数去处理一个剩下的参数。柯⾥化是⼀种量产相似⽅法的好办法，可以通过柯⾥化⼀个⽅法模板来避免</description>
+      <description>这篇文章用于记录学习《Swift 开发者必备 Tips》这本书过程中的一些摘抄，方便后续查阅。 curry curry：是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数。柯⾥化是⼀种量产</description>
     </item>
     
     <item>
