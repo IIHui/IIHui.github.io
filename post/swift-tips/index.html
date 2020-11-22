@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1657</span>
+<span class="leancloud-visitors-count">1682</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -256,14 +256,14 @@ code.has-jax {
 <p>这篇文章用于记录学习《Swift 开发者必备 Tips》这本书过程中的一些摘抄，方便后续查阅。</p>
 </blockquote>
 <h2 id="curry">curry</h2>
-<p><code>curry</code>：是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数。柯⾥化是⼀种量产相似⽅法的好办法，可以通过柯⾥化⼀个⽅法模板来避免写出很多重复代码，也⽅便后续维护。</p>
+<p><code>curry</code>：是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数。柯⾥化是⼀种量产相似⽅法的好办法，可以通过柯⾥化⼀个⽅法模板来避免写出很多重复代码，同时也⽅便后续维护。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">addTo</span>(<span style="color:#66d9ef">_</span> adder: Int) -&gt; (Int) -&gt; Int {
     <span style="color:#66d9ef">return</span> { num <span style="color:#66d9ef">in</span>
         <span style="color:#66d9ef">return</span> num <span style="color:#f92672">+</span> adder
     }
 }
 </code></pre></div><h2 id="sequence">Sequence</h2>
-<p><code>Swift</code>中的<code>for ... in</code>可以用在所有实现了<code>Sequence</code>的类型上，而为了实现<code>Sequence</code>，首先需要实现一个<code>IteratorProtocol</code>：</p>
+<p><code>Swift</code>中的<code>for ... in</code>可以用在所有实现了<code>Sequence</code>协议的类型上，而为了实现<code>Sequence</code>协议，首先需要实现<code>IteratorProtocol</code>协议。下面的例子是一个反向的迭代器：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ReverseIterator</span>&lt;T&gt;:IteratorProtocol {
     
     <span style="color:#66d9ef">typealias</span> Element = T
@@ -284,7 +284,7 @@ code.has-jax {
         }
     }
 }
-</code></pre></div><p>接着利用<code>ReverseIterator</code>迭代器来创建一个实现了<code>Sequence</code>的自定义的<code>ReverseSequence</code>：</p>
+</code></pre></div><p>接着利用<code>ReverseIterator</code>迭代器来创建一个实现<code>Sequence</code>协议的反向<code>ReverseSequence</code>，代码如下：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">ReverseSequence</span>&lt;T&gt;: Sequence {
     <span style="color:#66d9ef">var</span> array: [T]
 
