@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">2158</span>
+<span class="leancloud-visitors-count">2274</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -308,7 +308,7 @@ code.has-jax {
     }
 }
 </code></pre></div><h2 id="autoclosure">autoclosure</h2>
-<p><code>@autoclosure</code>把一句表达式自动地封装成一个闭包<code>closure</code>，但是<code>@autoclosure</code>并不支持带有输入参数的写法，也就是说只有形如<code>()-&gt;T</code>的参数才能使用这个特性进行简化。</p>
+<p><code>@autoclosure</code>把一句表达式自动地封装成一个闭包<code>closure</code>。但是，<code>@autoclosure</code>并不支持带有输入参数的写法，也就是说只有形如<code>()-&gt;T</code>的参数才能使用这个特性进行简化。</p>
 <h2 id="escaping">@escaping</h2>
 <p>如果在协议或者父类中定义了一个接受<code>@escaping</code>为参数方法，那么在实现协议和类型或者是这个父类的子类中，对应的方法也必须声明为<code>@escaping</code>，否则两个方法会被认为拥有不同的函数签名。</p>
 <h2 id="typealias">typealias</h2>
@@ -389,7 +389,12 @@ code.has-jax {
     print(str1 <span style="color:#f92672">+</span> str2 <span style="color:#f92672">+</span> str3)
 }
 </code></pre></div><hr>
-<h2 id="正则表达式">正则表达式</h2>
+<h2 id="可变参数">可变参数</h2>
+<p>在<code>Swift</code>中写一个可变参数只需要在声明参数时在类型后面加上<code>...</code>就可以了。其他语言因为编译器和语言自身语法限制，在使用可变参数时，往往可变参数只能作为方法中最后一个参数来使用。而不能先声明一个可变参数。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">fun sum(input:Int ...) -&gt; Int {
+    <span style="color:#66d9ef">return</span> input.reduce(<span style="color:#ae81ff">0</span>,<span style="color:#f92672">+</span>)
+}
+</code></pre></div><h2 id="正则表达式">正则表达式</h2>
 <p><code>Swift</code>还没有在语言层面上支持正则表达式，在<code>Cocoa</code>中使用<code>NSRegularExpression</code>来做正则表达，所以在<code>Swift</code>中可以对其进行封装：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">RegexHelper</span> {
     <span style="color:#66d9ef">let</span> regex: NSRegularExpression
@@ -637,6 +642,7 @@ SEL anotherMethod = @selector(callMeWithParam:);
         <li><a href="#typealias">typealias</a></li>
         <li><a href="#初始化方法顺序">初始化方法顺序</a></li>
         <li><a href="#default参数">default参数</a></li>
+        <li><a href="#可变参数">可变参数</a></li>
         <li><a href="#正则表达式">正则表达式</a></li>
         <li><a href="#模式匹配">模式匹配</a></li>
         <li><a href="#协议和类方法中的self">协议和类方法中的Self</a></li>
