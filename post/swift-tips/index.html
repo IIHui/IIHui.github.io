@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">2263</span>
+<span class="leancloud-visitors-count">2268</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -264,20 +264,21 @@ code.has-jax {
 }
 </code></pre></div><h2 id="sequence">Sequence</h2>
 <p><code>Swift</code>中的<code>for ... in</code>可以用在所有实现了<code>Sequence</code>协议的类型上，而为了实现<code>Sequence</code>协议，首先需要实现<code>IteratorProtocol</code>协议。下面的例子是一个反向的迭代器：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ReverseIterator</span>&lt;T&gt;:IteratorProtocol {
-    
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ReverseIterator</span>&lt;T&gt;: IteratorProtocol {
+
     <span style="color:#66d9ef">typealias</span> Element = T
-    <span style="color:#66d9ef">var</span> array:[Element]
+    <span style="color:#66d9ef">var</span> array: [Element]
     <span style="color:#66d9ef">var</span> currentIndex = <span style="color:#ae81ff">0</span>
-    
-    <span style="color:#66d9ef">init</span>(array:[Element]) {
+
+    <span style="color:#66d9ef">init</span>(array: [Element]) {
         <span style="color:#66d9ef">self</span>.array = array
         <span style="color:#66d9ef">self</span>.currentIndex = array.count <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
     }
+
     <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">next</span>() -&gt; Element? {
         <span style="color:#66d9ef">if</span> currentIndex <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span> {
             <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>
-        }<span style="color:#66d9ef">else</span>{
+        } <span style="color:#66d9ef">else</span> {
             <span style="color:#66d9ef">let</span> element = array[currentIndex]
             currentIndex <span style="color:#f92672">-=</span> <span style="color:#ae81ff">1</span>
             <span style="color:#66d9ef">return</span> element
