@@ -6,7 +6,7 @@
     <description>Recent content in iOS on Keep It Simple</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 24 Nov 2020 23:36:18 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 23 Nov 2020 23:36:18 +0000</lastBuildDate>
     
 	<atom:link href="https://iihui.github.io/tags/ios/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>python 入门</title>
       <link>https://iihui.github.io/post/python-base/</link>
-      <pubDate>Tue, 24 Nov 2020 23:36:18 +0000</pubDate>
+      <pubDate>Mon, 23 Nov 2020 23:36:18 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/python-base/</guid>
       <description>切片 要创建切片，就需要指定使用的第一个元素和最后一个元素的索引。索引表示的区间也是半闭半开区间。</description>
