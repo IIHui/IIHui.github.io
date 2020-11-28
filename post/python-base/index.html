@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">879</span>
+<span class="leancloud-visitors-count">943</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -304,14 +304,25 @@ test_dict[<span style="color:#e6db74">&#34;key2&#34;</span>] <span style="color:
 <span style="color:#66d9ef">print</span> test_dict  <span style="color:#f92672">//</span>{<span style="color:#e6db74">&#39;key2&#39;</span>: <span style="color:#ae81ff">23</span>, <span style="color:#e6db74">&#39;key1&#39;</span>: <span style="color:#e6db74">&#39;test&#39;</span>}
 </code></pre></div><h2 id="遍历字典">遍历字典</h2>
 <p>对于字典，既可以只遍历键，也可以只遍历值，或者同时遍历键值对，如下所示：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">for</span> key, value <span style="color:#66d9ef">in</span> test_dict.items():
-    print key, value
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> key <span style="color:#f92672">in</span> test_dict<span style="color:#f92672">.</span>keys():
+    <span style="color:#66d9ef">print</span> key
 
-<span style="color:#66d9ef">for</span> key <span style="color:#66d9ef">in</span> test_dict.keys():
-    print key
+<span style="color:#66d9ef">for</span> value <span style="color:#f92672">in</span> test_dict<span style="color:#f92672">.</span>values():
+    <span style="color:#66d9ef">print</span> value
+    
+<span style="color:#66d9ef">for</span> key, value <span style="color:#f92672">in</span> test_dict<span style="color:#f92672">.</span>items():
+    <span style="color:#66d9ef">print</span> key, value
 
-<span style="color:#66d9ef">for</span> value <span style="color:#66d9ef">in</span> test_dict.values():
-    print value
+<span style="color:#66d9ef">for</span> key <span style="color:#f92672">in</span> sorted(test_dict<span style="color:#f92672">.</span>keys()):
+    <span style="color:#66d9ef">print</span> key
+</code></pre></div><h1 id="函数">函数</h1>
+<p>在<code>Python</code>中，函数是使用<code>def</code>关键字定义的。调用函数时，可以使用位置实参，也可以使用关键字实参：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">print_message</span>(msg):
+    <span style="color:#66d9ef">print</span> msg
+
+
+print_message(<span style="color:#e6db74">&#34;test&#34;</span>)
+print_message(msg<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;hello&#34;</span>)
 </code></pre></div>
     </div>
     <footer class="post-footer">
@@ -493,6 +504,7 @@ test_dict[<span style="color:#e6db74">&#34;key2&#34;</span>] <span style="color:
         <li><a href="#遍历字典">遍历字典</a></li>
       </ul>
     </li>
+    <li><a href="#函数">函数</a></li>
   </ul>
 </nav></div>
     </div>
