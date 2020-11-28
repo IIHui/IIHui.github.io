@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">55</span>
+<span class="leancloud-visitors-count">64</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -253,8 +253,11 @@ code.has-jax {
     </header>
     <div class="post-body" itemprop="articleBody">
     <h2 id="切片">切片</h2>
-<p>如果要创建切片，就需要指定使用的第一个元素和最后一个元素的索引。在切片中索引表示的区间也是半闭半开区间的。</p>
-
+<p>如果要创建切片，就需要指定第一个元素和最后一个元素的索引区间。在切片中索引区间也是半闭半开的。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">players = [<span style="color:#960050;background-color:#1e0010">&#39;</span>charles<span style="color:#960050;background-color:#1e0010">&#39;</span>, <span style="color:#960050;background-color:#1e0010">&#39;</span>martina<span style="color:#960050;background-color:#1e0010">&#39;</span>, <span style="color:#960050;background-color:#1e0010">&#39;</span>michael<span style="color:#960050;background-color:#1e0010">&#39;</span>, <span style="color:#960050;background-color:#1e0010">&#39;</span>florence<span style="color:#960050;background-color:#1e0010">&#39;</span>, <span style="color:#960050;background-color:#1e0010">&#39;</span>eli<span style="color:#960050;background-color:#1e0010">&#39;</span>]
+print(players[<span style="color:#ae81ff">0</span>:<span style="color:#ae81ff">3</span>]) <span style="color:#75715e">//[&#39;charles&#39;, &#39;martina&#39;, &#39;michael&#39;]</span>
+print(players[<span style="color:#ae81ff">1</span>:<span style="color:#ae81ff">4</span>]) <span style="color:#75715e">//[&#39;martina&#39;, &#39;michael&#39;, &#39;florence&#39;]</span>
+</code></pre></div>
     </div>
     <footer class="post-footer">
         

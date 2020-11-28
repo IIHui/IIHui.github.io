@@ -17,7 +17,7 @@
       <pubDate>Mon, 23 Nov 2020 23:36:18 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/python-base/</guid>
-      <description>切片 如果要创建切片，就需要指定使用的第一个元素和最后一个元素的索引。在切片中索引表示的区间也是半闭半开区间的。</description>
+      <description>切片 如果要创建切片，就需要指定第一个元素和最后一个元素的索引区间。在切片中索引区间也是半闭半开的。 players = [&amp;#39;charles&amp;#39;, &amp;#39;martina&amp;#39;, &amp;#39;michael&amp;#39;, &amp;#39;florence&amp;#39;, &amp;#39;eli&amp;#39;] print(players[0:3]) //[&amp;#39;charles&amp;#39;, &amp;#39;martina&amp;#39;, &amp;#39;michael&amp;#39;] print(players[1:4]) //[&amp;#39;martina&amp;#39;, &amp;#39;michael&amp;#39;, &amp;#39;florence&amp;#39;]</description>
     </item>
     
     <item>
