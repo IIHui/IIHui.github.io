@@ -49,7 +49,10 @@ players = [&amp;#39;charles&amp;#39;, &amp;#39;martina&amp;#39;, &amp;#39;michae
 print players[-3:] //[&amp;#39;michael&amp;#39;, &amp;#39;florence&amp;#39;, &amp;#39;eli&amp;#39;] 遍历切片 若要遍历列表的部分元素，可以借助切片和for in，如下所示：
 for player in players[-3:]: print player 复制列表 如果要复制列表，可创建一个包含整个列表的切片，方法是同时省略开始索引和终止索引([:])。这让Python创建一个始于第一个元素，终止于最后一个元素的切片，即复制整个列表：
 players = [&amp;#39;charles&amp;#39;, &amp;#39;martina&amp;#39;, &amp;#39;michael&amp;#39;, &amp;#39;florence&amp;#39;, &amp;#39;eli&amp;#39;] test_players = players[:] test_players.append(&amp;#34;test&amp;#34;) print players //[&amp;#39;charles&amp;#39;, &amp;#39;martina&amp;#39;, &amp;#39;michael&amp;#39;, &amp;#39;florence&amp;#39;, &amp;#39;eli&amp;#39;] print test_players //[&amp;#39;charles&amp;#39;, &amp;#39;martina&amp;#39;, &amp;#39;michael&amp;#39;, &amp;#39;florence&amp;#39;, &amp;#39;eli&amp;#39;, &amp;#39;test&amp;#39;] 如果直接使用列表赋值，不能得到两个列表，而是两个变量指向同一个列表，如下所示：
-players = [&amp;#39;charles&amp;#39;, &amp;#39;martina&amp;#39;, &amp;#39;michael&amp;#39;, &amp;#39;florence&amp;#39;, &amp;#39;eli&amp;#39;] mo_players = players mo_players.append(&amp;#34;name&amp;#34;) print players //[&amp;#39;charles&amp;#39;, &amp;#39;martina&amp;#39;, &amp;#39;michael&amp;#39;, &amp;#39;florence&amp;#39;, &amp;#39;eli&amp;#39;, &amp;#39;name&amp;#39;] print mo_players //[&amp;#39;charles&amp;#39;, &amp;#39;martina&amp;#39;, &amp;#39;michael&amp;#39;, &amp;#39;florence&amp;#39;, &amp;#39;eli&amp;#39;, &amp;#39;name&amp;#39;] </content>
+players = [&amp;#39;charles&amp;#39;, &amp;#39;martina&amp;#39;, &amp;#39;michael&amp;#39;, &amp;#39;florence&amp;#39;, &amp;#39;eli&amp;#39;] mo_players = players mo_players.append(&amp;#34;name&amp;#34;) print players //[&amp;#39;charles&amp;#39;, &amp;#39;martina&amp;#39;, &amp;#39;michael&amp;#39;, &amp;#39;florence&amp;#39;, &amp;#39;eli&amp;#39;, &amp;#39;name&amp;#39;] print mo_players //[&amp;#39;charles&amp;#39;, &amp;#39;martina&amp;#39;, &amp;#39;michael&amp;#39;, &amp;#39;florence&amp;#39;, &amp;#39;eli&amp;#39;, &amp;#39;name&amp;#39;] 元组 列表适合用于存储在程序运行期间可能变化的数据集，对于不可变的数据集合，Python中成为元组，使用圆括号而不是方括号来标识。
+dimensions = (200, 50) 元组变量 虽然不能修改元组的元素，但可以给储存元组的变量赋值。因此，如果要修改元组的尺寸，可重新定义整个元组。
+if 在Python中，if语句包括单独的if语句，if else、还有if elif else，但并不要求if-elif结构后面必须有else代码块。
+</content>
     </entry>
     
      <entry>
