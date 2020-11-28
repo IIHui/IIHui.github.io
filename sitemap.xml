@@ -44,8 +44,9 @@ katex.html文件的内容如下所示：
         <tags>
           <tag>iOS</tag>
         </tags>
-        <content type="html"> 切片 如果要创建切片，就需要指定第一个元素和最后一个元素的索引区间。在切片中索引区间也是半闭半开的。
-players = [&amp;#39;charles&amp;#39;, &amp;#39;martina&amp;#39;, &amp;#39;michael&amp;#39;, &amp;#39;florence&amp;#39;, &amp;#39;eli&amp;#39;] print(players[0:3]) //[&amp;#39;charles&amp;#39;, &amp;#39;martina&amp;#39;, &amp;#39;michael&amp;#39;] print(players[1:4]) //[&amp;#39;martina&amp;#39;, &amp;#39;michael&amp;#39;, &amp;#39;florence&amp;#39;] </content>
+        <content type="html"> 切片 如果要创建切片，就需要指定第一个元素和最后一个元素的索引区间。在切片中索引区间也是半闭半开的。如果切片区间没有指定第一个索引，则默认从列表开头开始提取；类似的，如果切片区间没有指定最后一个元素的索引，则切片终止于列表末尾:
+players = [&amp;#39;charles&amp;#39;, &amp;#39;martina&amp;#39;, &amp;#39;michael&amp;#39;, &amp;#39;florence&amp;#39;, &amp;#39;eli&amp;#39;] print(players[0:3]) //[&amp;#39;charles&amp;#39;, &amp;#39;martina&amp;#39;, &amp;#39;michael&amp;#39;] print(players[1:4]) //[&amp;#39;martina&amp;#39;, &amp;#39;michael&amp;#39;, &amp;#39;florence&amp;#39;] print players[:3] //[&amp;#39;charles&amp;#39;, &amp;#39;martina&amp;#39;, &amp;#39;michael&amp;#39;] print players[2:] //[&amp;#39;michael&amp;#39;, &amp;#39;florence&amp;#39;, &amp;#39;eli&amp;#39;] 如果
+</content>
     </entry>
     
      <entry>
