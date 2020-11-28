@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">389</span>
+<span class="leancloud-visitors-count">428</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -273,7 +273,8 @@ test_players.append(<span style="color:#e6db74">&#34;test&#34;</span>)
 
 print players <span style="color:#75715e">//[&#39;charles&#39;, &#39;martina&#39;, &#39;michael&#39;, &#39;florence&#39;, &#39;eli&#39;]</span>
 print test_players <span style="color:#75715e">//[&#39;charles&#39;, &#39;martina&#39;, &#39;michael&#39;, &#39;florence&#39;, &#39;eli&#39;, &#39;test&#39;]</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">players = [<span style="color:#960050;background-color:#1e0010">&#39;</span>charles<span style="color:#960050;background-color:#1e0010">&#39;</span>, <span style="color:#960050;background-color:#1e0010">&#39;</span>martina<span style="color:#960050;background-color:#1e0010">&#39;</span>, <span style="color:#960050;background-color:#1e0010">&#39;</span>michael<span style="color:#960050;background-color:#1e0010">&#39;</span>, <span style="color:#960050;background-color:#1e0010">&#39;</span>florence<span style="color:#960050;background-color:#1e0010">&#39;</span>, <span style="color:#960050;background-color:#1e0010">&#39;</span>eli<span style="color:#960050;background-color:#1e0010">&#39;</span>]
+</code></pre></div><p>如果直接使用列表赋值，不能得到两个列表，而是两个变量指向同一个列表，如下所示：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">players = [<span style="color:#960050;background-color:#1e0010">&#39;</span>charles<span style="color:#960050;background-color:#1e0010">&#39;</span>, <span style="color:#960050;background-color:#1e0010">&#39;</span>martina<span style="color:#960050;background-color:#1e0010">&#39;</span>, <span style="color:#960050;background-color:#1e0010">&#39;</span>michael<span style="color:#960050;background-color:#1e0010">&#39;</span>, <span style="color:#960050;background-color:#1e0010">&#39;</span>florence<span style="color:#960050;background-color:#1e0010">&#39;</span>, <span style="color:#960050;background-color:#1e0010">&#39;</span>eli<span style="color:#960050;background-color:#1e0010">&#39;</span>]
 mo_players = players
 mo_players.append(<span style="color:#e6db74">&#34;name&#34;</span>) 
 print players  <span style="color:#75715e">//[&#39;charles&#39;, &#39;martina&#39;, &#39;michael&#39;, &#39;florence&#39;, &#39;eli&#39;, &#39;name&#39;]</span>
