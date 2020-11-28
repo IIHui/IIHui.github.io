@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1163</span>
+<span class="leancloud-visitors-count">1492</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -340,13 +340,19 @@ print_test()  <span style="color:#f92672">//</span>ty
 </code></pre></div><h2 id="列表参数">列表参数</h2>
 <p>将列表传递给函数后，函数就可以对其进行修改。在函数中对这个列表所做的任何修改都是永久性的「与C++的指针参数相似」。</p>
 <h2 id="任意数量的实参">任意数量的实参</h2>
-<p>在下面定义的函数中，行参名</p>
+<p>在下面定义的函数中，形参名中的<code>*</code>让<code>Python</code>创建一个名为<code>toppings</code>的空元组，并将收到的所有值都封装到这个元组中：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">make_pizza</span>(<span style="color:#f92672">*</span>toppings):
     <span style="color:#66d9ef">print</span> toppings
 
 
-make_pizza(<span style="color:#e6db74">&#39;test&#39;</span>, <span style="color:#e6db74">&#39;name&#39;</span>)  <span style="color:#75715e"># (&#39;test&#39;, &#39;name&#39;)</span>
-</code></pre></div>
+make_pizza(<span style="color:#e6db74">&#39;test&#39;</span>, <span style="color:#ae81ff">12</span>)  <span style="color:#75715e"># (&#39;test&#39;, 12)</span>
+</code></pre></div><p>有时候，需要接受任意数量</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"></code></pre></div><h2 id="导入函数">导入函数</h2>
+<p>要让函数是可导入的，先得创建模块。模块是扩展名为<code>.py</code>的文件，包含要导入到程序中的代码。例如，现在有一个名为<code>test.py</code>的文件，如果要使用其中的函数，则在需要使用的文件中<code>import test </code>，然后使用类似<code>test.test()</code>调用函数即可。</p>
+<p>如果只需要导入特定的函数，则使用<code>from module_name import func_name_0, function_1, function_2</code>这种方式导入，这种方式导入函数之后则不需要加<code>module</code>前缀来调用了。</p>
+<p>如果要导入的函数的名称可能和当前文件中函数冲突，则可以将函数指定别名<code>from module_name import func_name as other_name</code>。</p>
+<p>如果要导入模块中的所有函数，则可以使用<code>from module_name  import *</code></p>
+
     </div>
     <footer class="post-footer">
         
@@ -533,6 +539,7 @@ make_pizza(<span style="color:#e6db74">&#39;test&#39;</span>, <span style="color
         <li><a href="#返回值">返回值</a></li>
         <li><a href="#列表参数">列表参数</a></li>
         <li><a href="#任意数量的实参">任意数量的实参</a></li>
+        <li><a href="#导入函数">导入函数</a></li>
       </ul>
     </li>
   </ul>
