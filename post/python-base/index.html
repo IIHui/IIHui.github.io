@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">140</span>
+<span class="leancloud-visitors-count">389</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -259,8 +259,26 @@ print(players[<span style="color:#ae81ff">0</span>:<span style="color:#ae81ff">3
 print(players[<span style="color:#ae81ff">1</span>:<span style="color:#ae81ff">4</span>]) <span style="color:#75715e">//[&#39;martina&#39;, &#39;michael&#39;, &#39;florence&#39;]</span>
 print players[:<span style="color:#ae81ff">3</span>]   <span style="color:#75715e">//[&#39;charles&#39;, &#39;martina&#39;, &#39;michael&#39;]</span>
 print players[<span style="color:#ae81ff">2</span>:]   <span style="color:#75715e">//[&#39;michael&#39;, &#39;florence&#39;, &#39;eli&#39;]</span>
-</code></pre></div><p>如果</p>
+</code></pre></div><p>负数索引返回离列表末尾相应距离的元素，因此可以输出列表末尾的任何切片，例如要输出名单上的最后的三名队员，可以使用负数索引切片：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">print players[<span style="color:#f92672">-</span><span style="color:#ae81ff">3</span>:] <span style="color:#75715e">//[&#39;michael&#39;, &#39;florence&#39;, &#39;eli&#39;]</span>
+</code></pre></div><h3 id="遍历切片">遍历切片</h3>
+<p>若要遍历列表的部分元素，可以借助切片和<code>for in</code>，如下所示：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">for</span> player <span style="color:#66d9ef">in</span> players[<span style="color:#f92672">-</span><span style="color:#ae81ff">3</span>:]:
+    print player
+</code></pre></div><h2 id="复制列表">复制列表</h2>
+<p>如果要复制列表，可创建一个包含整个列表的切片，方法是同时省略开始索引和终止索引<code>([:])</code>。这让<code>Python</code>创建一个始于第一个元素，终止于最后一个元素的切片，即复制整个列表：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">players = [<span style="color:#960050;background-color:#1e0010">&#39;</span>charles<span style="color:#960050;background-color:#1e0010">&#39;</span>, <span style="color:#960050;background-color:#1e0010">&#39;</span>martina<span style="color:#960050;background-color:#1e0010">&#39;</span>, <span style="color:#960050;background-color:#1e0010">&#39;</span>michael<span style="color:#960050;background-color:#1e0010">&#39;</span>, <span style="color:#960050;background-color:#1e0010">&#39;</span>florence<span style="color:#960050;background-color:#1e0010">&#39;</span>, <span style="color:#960050;background-color:#1e0010">&#39;</span>eli<span style="color:#960050;background-color:#1e0010">&#39;</span>]
+test_players = players[:]
+test_players.append(<span style="color:#e6db74">&#34;test&#34;</span>)
 
+print players <span style="color:#75715e">//[&#39;charles&#39;, &#39;martina&#39;, &#39;michael&#39;, &#39;florence&#39;, &#39;eli&#39;]</span>
+print test_players <span style="color:#75715e">//[&#39;charles&#39;, &#39;martina&#39;, &#39;michael&#39;, &#39;florence&#39;, &#39;eli&#39;, &#39;test&#39;]</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">players = [<span style="color:#960050;background-color:#1e0010">&#39;</span>charles<span style="color:#960050;background-color:#1e0010">&#39;</span>, <span style="color:#960050;background-color:#1e0010">&#39;</span>martina<span style="color:#960050;background-color:#1e0010">&#39;</span>, <span style="color:#960050;background-color:#1e0010">&#39;</span>michael<span style="color:#960050;background-color:#1e0010">&#39;</span>, <span style="color:#960050;background-color:#1e0010">&#39;</span>florence<span style="color:#960050;background-color:#1e0010">&#39;</span>, <span style="color:#960050;background-color:#1e0010">&#39;</span>eli<span style="color:#960050;background-color:#1e0010">&#39;</span>]
+mo_players = players
+mo_players.append(<span style="color:#e6db74">&#34;name&#34;</span>) 
+print players  <span style="color:#75715e">//[&#39;charles&#39;, &#39;martina&#39;, &#39;michael&#39;, &#39;florence&#39;, &#39;eli&#39;, &#39;name&#39;]</span>
+print mo_players <span style="color:#75715e">//[&#39;charles&#39;, &#39;martina&#39;, &#39;michael&#39;, &#39;florence&#39;, &#39;eli&#39;, &#39;name&#39;]</span>
+</code></pre></div>
     </div>
     <footer class="post-footer">
         
@@ -425,7 +443,12 @@ print players[<span style="color:#ae81ff">2</span>:]   <span style="color:#75715
   <ul>
     <li>
       <ul>
-        <li><a href="#切片">切片</a></li>
+        <li><a href="#切片">切片</a>
+          <ul>
+            <li><a href="#遍历切片">遍历切片</a></li>
+          </ul>
+        </li>
+        <li><a href="#复制列表">复制列表</a></li>
       </ul>
     </li>
   </ul>
