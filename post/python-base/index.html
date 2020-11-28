@@ -265,7 +265,7 @@ print players[<span style="color:#ae81ff">2</span>:]   <span style="color:#75715
 <p>若要遍历列表的部分元素，可以借助切片和<code>for in</code>，如下所示：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">for</span> player <span style="color:#66d9ef">in</span> players[<span style="color:#f92672">-</span><span style="color:#ae81ff">3</span>:]:
     print player
-</code></pre></div><h2 id="复制列表">复制列表</h2>
+</code></pre></div><h3 id="复制列表">复制列表</h3>
 <p>如果要复制列表，可创建一个包含整个列表的切片，方法是同时省略开始索引和终止索引<code>([:])</code>。这让<code>Python</code>创建一个始于第一个元素，终止于最后一个元素的切片，即复制整个列表：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">players = [<span style="color:#960050;background-color:#1e0010">&#39;</span>charles<span style="color:#960050;background-color:#1e0010">&#39;</span>, <span style="color:#960050;background-color:#1e0010">&#39;</span>martina<span style="color:#960050;background-color:#1e0010">&#39;</span>, <span style="color:#960050;background-color:#1e0010">&#39;</span>michael<span style="color:#960050;background-color:#1e0010">&#39;</span>, <span style="color:#960050;background-color:#1e0010">&#39;</span>florence<span style="color:#960050;background-color:#1e0010">&#39;</span>, <span style="color:#960050;background-color:#1e0010">&#39;</span>eli<span style="color:#960050;background-color:#1e0010">&#39;</span>]
 test_players = players[:]
@@ -446,9 +446,9 @@ print mo_players <span style="color:#75715e">//[&#39;charles&#39;, &#39;martina&
         <li><a href="#切片">切片</a>
           <ul>
             <li><a href="#遍历切片">遍历切片</a></li>
+            <li><a href="#复制列表">复制列表</a></li>
           </ul>
         </li>
-        <li><a href="#复制列表">复制列表</a></li>
       </ul>
     </li>
   </ul>
