@@ -192,7 +192,7 @@ code.has-jax {
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="https://iihui.github.io/post/python-base/" itemprop="url">
+        <a class="post-title-link" href="https://iihui.github.io/post/python-base-nsconflict-halo-mac10.16/" itemprop="url">
         python 入门
         </a>
       </h1>
@@ -274,11 +274,11 @@ test_players<span style="color:#f92672">.</span>append(<span style="color:#e6db7
 <span style="color:#66d9ef">print</span> players <span style="color:#f92672">//</span>[<span style="color:#e6db74">&#39;charles&#39;</span>, <span style="color:#e6db74">&#39;martina&#39;</span>, <span style="color:#e6db74">&#39;michael&#39;</span>, <span style="color:#e6db74">&#39;florence&#39;</span>, <span style="color:#e6db74">&#39;eli&#39;</span>]
 <span style="color:#66d9ef">print</span> test_players <span style="color:#f92672">//</span>[<span style="color:#e6db74">&#39;charles&#39;</span>, <span style="color:#e6db74">&#39;martina&#39;</span>, <span style="color:#e6db74">&#39;michael&#39;</span>, <span style="color:#e6db74">&#39;florence&#39;</span>, <span style="color:#e6db74">&#39;eli&#39;</span>, <span style="color:#e6db74">&#39;test&#39;</span>]
 </code></pre></div><p>如果直接使用列表赋值，不能得到两个列表，而是两个变量指向同一个列表，如下所示：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">players <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;charles&#39;</span>, <span style="color:#e6db74">&#39;martina&#39;</span>, <span style="color:#e6db74">&#39;michael&#39;</span>, <span style="color:#e6db74">&#39;florence&#39;</span>, <span style="color:#e6db74">&#39;eli&#39;</span>]
-mo_players <span style="color:#f92672">=</span> players
-mo_players<span style="color:#f92672">.</span>append(<span style="color:#e6db74">&#34;name&#34;</span>) 
-<span style="color:#66d9ef">print</span> players  <span style="color:#f92672">//</span>[<span style="color:#e6db74">&#39;charles&#39;</span>, <span style="color:#e6db74">&#39;martina&#39;</span>, <span style="color:#e6db74">&#39;michael&#39;</span>, <span style="color:#e6db74">&#39;florence&#39;</span>, <span style="color:#e6db74">&#39;eli&#39;</span>, <span style="color:#e6db74">&#39;name&#39;</span>]
-<span style="color:#66d9ef">print</span> mo_players <span style="color:#f92672">//</span>[<span style="color:#e6db74">&#39;charles&#39;</span>, <span style="color:#e6db74">&#39;martina&#39;</span>, <span style="color:#e6db74">&#39;michael&#39;</span>, <span style="color:#e6db74">&#39;florence&#39;</span>, <span style="color:#e6db74">&#39;eli&#39;</span>, <span style="color:#e6db74">&#39;name&#39;</span>]
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">players = [<span style="color:#960050;background-color:#1e0010">&#39;</span>charles<span style="color:#960050;background-color:#1e0010">&#39;</span>, <span style="color:#960050;background-color:#1e0010">&#39;</span>martina<span style="color:#960050;background-color:#1e0010">&#39;</span>, <span style="color:#960050;background-color:#1e0010">&#39;</span>michael<span style="color:#960050;background-color:#1e0010">&#39;</span>, <span style="color:#960050;background-color:#1e0010">&#39;</span>florence<span style="color:#960050;background-color:#1e0010">&#39;</span>, <span style="color:#960050;background-color:#1e0010">&#39;</span>eli<span style="color:#960050;background-color:#1e0010">&#39;</span>]
+mo_players = players
+mo_players.append(<span style="color:#e6db74">&#34;name&#34;</span>) 
+print players  <span style="color:#75715e">//[&#39;charles&#39;, &#39;martina&#39;, &#39;michael&#39;, &#39;florence&#39;, &#39;eli&#39;, &#39;name&#39;]</span>
+print mo_players <span style="color:#75715e">//[&#39;charles&#39;, &#39;martina&#39;, &#39;michael&#39;, &#39;florence&#39;, &#39;eli&#39;, &#39;name&#39;]</span>
 </code></pre></div><h1 id="元组">元组</h1>
 <p>列表适合用于存储在程序运行期间可能变化的数据集，对于不可变的数据集合，<code>Python</code>中成为元组，使用圆括号而不是方括号来标识。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">dimensions <span style="color:#f92672">=</span> (<span style="color:#ae81ff">200</span>, <span style="color:#ae81ff">50</span>)
@@ -370,16 +370,16 @@ make_pizza(<span style="color:#e6db74">&#39;test&#39;</span>, <span style="color
         <div class="post-nav">
     <div class="post-nav-next post-nav-item">
     
-        <a href="https://iihui.github.io/post/python-base-nsconflict-halo-mac10.16/" rel="next" title="python 入门">
-        <i class="fa fa-chevron-left"></i> python 入门
+        <a href="https://iihui.github.io/post/shell-study/" rel="next" title="shell命令">
+        <i class="fa fa-chevron-left"></i> shell命令
         </a>
     
     </div>
 
     <div class="post-nav-prev post-nav-item">
     
-        <a href="https://iihui.github.io/post/swift-tips/" rel="prev" title="Tips">
-        Tips <i class="fa fa-chevron-right"></i>
+        <a href="https://iihui.github.io/post/python-base/" rel="prev" title="python 入门">
+        python 入门 <i class="fa fa-chevron-right"></i>
         </a>
     
     </div>
@@ -396,7 +396,7 @@ make_pizza(<span style="color:#e6db74">&#39;test&#39;</span>, <span style="color
                 标题：python 入门
                 <br />作者：阿呆<a target="_blank" href="https://iihui.github.io/"></a>
                 
-                <br />地址：https://iihui.github.io/post/python-base/
+                <br />地址：https://iihui.github.io/post/python-base-nsconflict-halo-mac10.16/
                 <br />声明：自由转载-非商用-保持署名（创作共享4.0许可证）
             </p>
         </div>
