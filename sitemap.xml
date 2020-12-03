@@ -72,22 +72,30 @@ katex.html文件的内容如下所示：
         <content type="html"> 字符串 在python中，用引号括起来的都是字符串，其中的引号可以是单引号，也可以是双引号。
 title()函数以首字母大写的方式显示每个单词；upper()函数将字符串全部转为大写；lower()函数将字符串全部转为小写。
 lstrip()函数删除字符串前面的空白符；rstrip()函数删除字符串最后的空白符；strip()函数删除字符串开头和结尾的空白符。
-print语句 在python 3中print是一个函数，因此括号必不可少。在python2 print语句也包含括号，但其行为与python3中稍有不同。
+print语句 在python2中print不是一个函数，而在python 3中print是一个函数，因此括号必不可少。而在python2中可以把变量用括号括起来，但是和python3的函数调用带括号完全不一样。
+在Python3中能使用help(print)来查看文档。但是在Python2中不行。此外在Python3中使用print能更方便的重定向，而Python2中要使用类似C&#43;&#43;风格的重定向：
+with open(&amp;#39;print.txt&amp;#39;, &amp;#39;w&amp;#39;) as f: print(&amp;#39;hello, python!&amp;#39;, file = f) with open(&amp;#39;print.txt&amp;#39;, &amp;#39;w&amp;#39;) as f: print &amp;gt;&amp;gt; f, &amp;#39;hello, python!&amp;#39; 参考资料。
+列表 列表由一系列按特定顺序排列的元素组成，在Python中，用方括号[]来表示列表，并用逗号来分隔其中的元素。
+负数索引 Python为访问最后一个列表元素提供了一种特殊语法。通过将索引指定为-1，可让Python返回最后一个列表元素。这种约定也适用于其他负数索引，例如，索引-2返回倒数第二个列表元素， 索引-3返回倒数第三个列表元素，以此类推。
+增删改 在列表末尾添加元素使用append函数，在指定位置插入元素使用insert函数。例如motorcycles.insert(0, &#39;ducati&#39;)是在索引0处添加元素。
+删除元素使用delete函数，例如del motorcycles[0]。如果想要删除元素并获取它的值使用pop函数。使用remove函数从列表中删除元素时，只会删除第一个指定的值。
+如果要改变列表的值，可以直接使用赋值的方法，如motorcycles[0] = &#39;test&#39;。方法sort永久性的修改了列表元素的顺序。如果想要临时排序可以使用sorted函数。方法reverse也是永久地修改列表元素的顺序。
+方法len可以获取列表的长度。使用函数range可以生成半开半闭区间的数字。例如range(1,5)等同于数学上的[1,5)。使用range函数时，可以指定步长
 切片 如果要创建切片，就需要指定第一个元素和最后一个元素的索引区间。在切片中索引区间也是半闭半开的。如果切片区间没有指定第一个索引，则默认从列表开头开始提取；类似的，如果切片区间没有指定最后一个元素的索引，则切片终止于列表末尾:
 players = [&amp;#39;charles&amp;#39;, &amp;#39;martina&amp;#39;, &amp;#39;michael&amp;#39;, &amp;#39;florence&amp;#39;, &amp;#39;eli&amp;#39;] print(players[0:3]) //[&amp;#39;charles&amp;#39;, &amp;#39;martina&amp;#39;, &amp;#39;michael&amp;#39;] print(players[1:4]) //[&amp;#39;martina&amp;#39;, &amp;#39;michael&amp;#39;, &amp;#39;florence&amp;#39;] print players[:3] //[&amp;#39;charles&amp;#39;, &amp;#39;martina&amp;#39;, &amp;#39;michael&amp;#39;] print players[2:] //[&amp;#39;michael&amp;#39;, &amp;#39;florence&amp;#39;, &amp;#39;eli&amp;#39;] 负数索引返回离列表末尾相应距离的元素，因此可以输出列表末尾的任何切片，例如要输出名单上的最后的三名队员，可以使用负数索引切片：
 print players[-3:] //[&amp;#39;michael&amp;#39;, &amp;#39;florence&amp;#39;, &amp;#39;eli&amp;#39;] 遍历切片 若要遍历列表的部分元素，可以借助切片和for in，如下所示：
 for player in players[-3:]: print player 复制列表 如果要复制列表，可创建一个包含整个列表的切片，方法是同时省略开始索引和终止索引([:])。这让Python创建一个始于第一个元素，终止于最后一个元素的切片，即复制整个列表：
 players = [&amp;#39;charles&amp;#39;, &amp;#39;martina&amp;#39;, &amp;#39;michael&amp;#39;, &amp;#39;florence&amp;#39;, &amp;#39;eli&amp;#39;] test_players = players[:] test_players.append(&amp;#34;test&amp;#34;) print players //[&amp;#39;charles&amp;#39;, &amp;#39;martina&amp;#39;, &amp;#39;michael&amp;#39;, &amp;#39;florence&amp;#39;, &amp;#39;eli&amp;#39;] print test_players //[&amp;#39;charles&amp;#39;, &amp;#39;martina&amp;#39;, &amp;#39;michael&amp;#39;, &amp;#39;florence&amp;#39;, &amp;#39;eli&amp;#39;, &amp;#39;test&amp;#39;] 如果直接使用列表赋值，不能得到两个列表，而是两个变量指向同一个列表，如下所示：
 players = [&amp;#39;charles&amp;#39;, &amp;#39;martina&amp;#39;, &amp;#39;michael&amp;#39;, &amp;#39;florence&amp;#39;, &amp;#39;eli&amp;#39;] mo_players = players mo_players.append(&amp;#34;name&amp;#34;) print players //[&amp;#39;charles&amp;#39;, &amp;#39;martina&amp;#39;, &amp;#39;michael&amp;#39;, &amp;#39;florence&amp;#39;, &amp;#39;eli&amp;#39;, &amp;#39;name&amp;#39;] print mo_players //[&amp;#39;charles&amp;#39;, &amp;#39;martina&amp;#39;, &amp;#39;michael&amp;#39;, &amp;#39;florence&amp;#39;, &amp;#39;eli&amp;#39;, &amp;#39;name&amp;#39;] 元组 列表适合用于存储在程序运行期间可能变化的数据集，对于不可变的数据集合，Python中成为元组，使用圆括号而不是方括号来标识。
-dimensions = (200, 50) 元组变量 虽然不能修改元组的元素，但可以给储存元组的变量赋值。因此，如果要修改元组的尺寸，可重新定义整个元组。
-if 在Python中，if语句包括单独的if语句，if-else语句、还有if-elif-else语句，但并不要求if-elif结构后面必须有else代码块。
+dimensions = (200, 50) //dimensions[0] = 34 //编译报错 元组变量 虽然不能修改元组中元素的值，但可以给储存元组的变量赋值。因此，如果要修改元组的尺寸，可重新定义整个元组。
+dimensions = (200, 50) dimensions = (300，400, 100) //可以整体改变元组 if 在Python中，if语句包括单独的if语句，if-else语句、还有if-elif-else语句，但并不要求if-elif结构后面必须有else代码块。
 字典 在Python中字典用花括号{}中的键值对表示。字典是一种动态结构，可随时在其中添加键值对，如果要添加键值对，可依次指定字典名，用方括号括起来的键值关联的值。
 test_dict = {&amp;#34;key&amp;#34;: 12, &amp;#34;key1&amp;#34;: &amp;#34;test&amp;#34;} print test_dict[&amp;#34;key&amp;#34;] print test_dict[&amp;#34;key1&amp;#34;] test_dict[&amp;#34;key2&amp;#34;] = 23 print test_dict //{&amp;#39;key2&amp;#39;: 23, &amp;#39;key1&amp;#39;: &amp;#39;test&amp;#39;, &amp;#39;key&amp;#39;: 12} 删除键值对 对于字典中不需要的信息，可使用del语句将相应的键值对彻底删除。使用del语句时，必须指定字典名和要删除的键。
 test_dict = {&amp;#34;key&amp;#34;: 12, &amp;#34;key1&amp;#34;: &amp;#34;test&amp;#34;} print test_dict[&amp;#34;key&amp;#34;] print test_dict[&amp;#34;key1&amp;#34;] test_dict[&amp;#34;key2&amp;#34;] = 23 print test_dict del test_dict[&amp;#34;key&amp;#34;] //{&amp;#39;key2&amp;#39;: 23, &amp;#39;key1&amp;#39;: &amp;#39;test&amp;#39;, &amp;#39;key&amp;#39;: 12} print test_dict //{&amp;#39;key2&amp;#39;: 23, &amp;#39;key1&amp;#39;: &amp;#39;test&amp;#39;} 遍历字典 对于字典，既可以只遍历键，也可以只遍历值，或者同时遍历键值对，如下所示：
 for key in test_dict.keys(): print key for value in test_dict.values(): print value for key, value in test_dict.items(): print key, value for key in sorted(test_dict.keys()): print key 函数 在Python中，函数是使用def关键字定义的。调用函数时，可以使用位置实参，也可以使用关键字实参。一个函数全部使用关键字实参调用时，关键字的位置可以不按顺序来指定。
 def print_message(msg): print msg print_message(&amp;#34;test&amp;#34;) print_message(msg=&amp;#34;hello&amp;#34;) 默认值 编写函数时，可以给每个形参指定默认值。在调用函数时如果没有给形参指定实参，则将使用默认参数。
 def print_test(name=&amp;#39;ty&amp;#39;): print name print_test() //ty 返回值 在函数中，可以使用return语句将值返回到调用函数的代码行：
-def return_test(name): return name print return_test(&amp;#34;Hello&amp;#34;) //hello 列表参数 将列表传递给函数后，函数就可以对其进行修改。在函数中对这个列表所做的任何修改都是永久性的「与C&#43;&#43;的指针参数相似」。
+def return_test(name): return name print(return_test(&amp;#34;Hello&amp;#34;)) //hello 列表参数 将列表传递给函数后，函数就可以对其进行修改。在函数中对这个列表所做的任何修改都是永久性的「与C&#43;&#43;的指针参数相似」。
 任意数量的实参 在下面定义的函数中，形参名中的*让Python创建一个名为toppings的空元组，并将收到的所有值都封装到这个元组中：
 def make_pizza(*toppings): print toppings make_pizza(&amp;#39;test&amp;#39;, 12) # (&amp;#39;test&amp;#39;, 12) 有时候，需要接受任意数量
 导入函数 要让函数是可导入的，先得创建模块。模块是扩展名为.py的文件，包含要导入到程序中的代码。例如，现在有一个名为test.py的文件，如果要使用其中的函数，则在需要使用的文件中import test ，然后使用类似test.test()调用函数即可。

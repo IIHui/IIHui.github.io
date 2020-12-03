@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1770</span>
+<span class="leancloud-visitors-count">2491</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">4 分钟</span>
+<span class="leancloud-visitors-count">5 分钟</span>
 </span>
       </div>
     </header>
@@ -257,7 +257,22 @@ code.has-jax {
 <p><code>title()</code>函数以首字母大写的方式显示每个单词；<code>upper()</code>函数将字符串全部转为大写；<code>lower()</code>函数将字符串全部转为小写。</p>
 <p><code>lstrip()</code>函数删除字符串前面的空白符；<code>rstrip()</code>函数删除字符串最后的空白符；<code>strip()</code>函数删除字符串开头和结尾的空白符。</p>
 <h1 id="print语句">print语句</h1>
-<p>在<code>python 3</code>中<code>print</code>是一个函数，因此括号必不可少。在<code>python2 print</code>语句也包含括号，但其行为与<code>python3</code>中稍有不同。</p>
+<p>在<code>python2</code>中<code>print</code>不是一个函数，而在<code>python 3</code>中<code>print</code>是一个函数，因此括号必不可少。而在<code>python2</code>中可以把变量用括号括起来，但是和<code>python3</code>的函数调用带括号完全不一样。</p>
+<p>在<code>Python3</code>中能使用<code>help(print)</code>来查看文档。但是在<code>Python2</code>中不行。此外在<code>Python3</code>中使用<code>print</code>能更方便的重定向，而<code>Python2</code>中要使用类似<code>C++</code>风格的重定向：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#39;print.txt&#39;</span>, <span style="color:#e6db74">&#39;w&#39;</span>) <span style="color:#66d9ef">as</span> f:
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;hello, python!&#39;</span>, file <span style="color:#f92672">=</span> f)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#39;print.txt&#39;</span>, <span style="color:#e6db74">&#39;w&#39;</span>) <span style="color:#66d9ef">as</span> f:
+    <span style="color:#66d9ef">print</span> <span style="color:#f92672">&gt;&gt;</span> f, <span style="color:#e6db74">&#39;hello, python!&#39;</span>
+</code></pre></div><p><a href="https://blog.csdn.net/weixin_35653315/article/details/71642154">参考资料</a>。</p>
+<h1 id="列表">列表</h1>
+<p>列表由一系列按特定顺序排列的元素组成，在<code>Python</code>中，用方括号[]来表示列表，并用逗号来分隔其中的元素。</p>
+<h2 id="负数索引">负数索引</h2>
+<p><code>Python</code>为访问最后一个列表元素提供了一种特殊语法。通过将索引指定为<code>-1</code>，可让<code>Python</code>返回最后一个列表元素。这种约定也适用于其他负数索引，例如，索引<code>-2</code>返回倒数第二个列表元素， 索引<code>-3</code>返回倒数第三个列表元素，以此类推。</p>
+<h2 id="增删改">增删改</h2>
+<p>在列表末尾添加元素使用<code>append</code>函数，在指定位置插入元素使用<code>insert</code>函数。例如<code>motorcycles.insert(0, 'ducati')</code>是在索引<code>0</code>处添加元素。</p>
+<p>删除元素使用<code>delete</code>函数，例如<code>del motorcycles[0]</code>。如果想要删除元素并获取它的值使用<code>pop</code>函数。使用<code>remove</code>函数从列表中删除元素时，只会删除<!-- raw HTML omitted -->第一个<!-- raw HTML omitted -->指定的值。</p>
+<p>如果要改变列表的值，可以直接使用赋值的方法，如<code>motorcycles[0] = 'test'</code>。方法<code>sort</code>永久性的修改了列表元素的顺序。如果想要临时排序可以使用<code>sorted</code>函数。方法<code>reverse</code>也是永久地修改列表元素的顺序。</p>
+<p>方法<code>len</code>可以获取列表的长度。使用函数<code>range</code>可以生成半开半闭区间的数字。例如<code>range(1,5)</code>等同于数学上的<code>[1,5)</code>。使用<code>range</code>函数时，可以指定步长</p>
 <h1 id="切片">切片</h1>
 <p>如果要创建切片，就需要指定第一个元素和最后一个元素的索引区间。在切片中索引区间也是半闭半开的。如果切片区间没有指定第一个索引，则默认从列表开头开始提取；类似的，如果切片区间没有指定最后一个元素的索引，则切片终止于列表末尾:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">players <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;charles&#39;</span>, <span style="color:#e6db74">&#39;martina&#39;</span>, <span style="color:#e6db74">&#39;michael&#39;</span>, <span style="color:#e6db74">&#39;florence&#39;</span>, <span style="color:#e6db74">&#39;eli&#39;</span>]
@@ -288,9 +303,12 @@ mo_players<span style="color:#f92672">.</span>append(<span style="color:#e6db74"
 </code></pre></div><h1 id="元组">元组</h1>
 <p>列表适合用于存储在程序运行期间可能变化的数据集，对于不可变的数据集合，<code>Python</code>中成为元组，使用圆括号而不是方括号来标识。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">dimensions <span style="color:#f92672">=</span> (<span style="color:#ae81ff">200</span>, <span style="color:#ae81ff">50</span>)
+<span style="color:#f92672">//</span>dimensions[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">34</span>  <span style="color:#f92672">//</span><span style="color:#960050;background-color:#1e0010">编译报错</span>
 </code></pre></div><h2 id="元组变量">元组变量</h2>
-<p>虽然不能修改元组的元素，但可以给储存元组的变量赋值。因此，如果要修改元组的尺寸，可重新定义整个元组。</p>
-<h1 id="if">if</h1>
+<p>虽然不能修改元组中元素的值，但可以给储存元组的变量赋值。因此，如果要修改元组的尺寸，可重新定义整个元组。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">dimensions <span style="color:#f92672">=</span> (<span style="color:#ae81ff">200</span>, <span style="color:#ae81ff">50</span>)
+dimensions <span style="color:#f92672">=</span> (<span style="color:#ae81ff">300</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#ae81ff">400</span>, <span style="color:#ae81ff">100</span>)  <span style="color:#f92672">//</span><span style="color:#960050;background-color:#1e0010">可以整体改变元组</span>
+</code></pre></div><h1 id="if">if</h1>
 <p>在<code>Python</code>中，<code>if</code>语句包括单独的<code>if</code>语句，<code>if-else</code>语句、还有<code>if-elif-else</code>语句，但并不要求<code>if-elif</code>结构后面必须有<code>else</code>代码块。</p>
 <h1 id="字典">字典</h1>
 <p>在<code>Python</code>中字典用花括号<code>{}</code>中的键值对表示。字典是一种动态结构，可随时在其中添加键值对，如果要添加键值对，可依次指定字典名，用方括号括起来的键值关联的值。</p>
@@ -342,7 +360,7 @@ print_test()  <span style="color:#f92672">//</span>ty
     <span style="color:#66d9ef">return</span> name
 
 
-<span style="color:#66d9ef">print</span> return_test(<span style="color:#e6db74">&#34;Hello&#34;</span>) <span style="color:#f92672">//</span>hello
+<span style="color:#66d9ef">print</span>(return_test(<span style="color:#e6db74">&#34;Hello&#34;</span>)) <span style="color:#f92672">//</span>hello
 </code></pre></div><h2 id="列表参数">列表参数</h2>
 <p>将列表传递给函数后，函数就可以对其进行修改。在函数中对这个列表所做的任何修改都是永久性的「与C++的指针参数相似」。</p>
 <h2 id="任意数量的实参">任意数量的实参</h2>
@@ -525,6 +543,12 @@ make_pizza(<span style="color:#e6db74">&#39;test&#39;</span>, <span style="color
   <ul>
     <li><a href="#字符串">字符串</a></li>
     <li><a href="#print语句">print语句</a></li>
+    <li><a href="#列表">列表</a>
+      <ul>
+        <li><a href="#负数索引">负数索引</a></li>
+        <li><a href="#增删改">增删改</a></li>
+      </ul>
+    </li>
     <li><a href="#切片">切片</a>
       <ul>
         <li><a href="#遍历切片">遍历切片</a></li>
