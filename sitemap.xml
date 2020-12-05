@@ -71,11 +71,10 @@ katex.html文件的内容如下所示：
         </tags>
         <content type="html"> 字符串 在python中，用引号括起来的都是字符串，其中的引号可以是单引号，也可以是双引号。对于字符串title()函数以首字母大写的方式显示每个单词；upper()函数将字符串全部转为大写；lower()函数将字符串全部转为小写。
 lstrip()函数删除字符串前面的空白符；rstrip()函数删除字符串最后的空白符；strip()函数删除字符串开头和结尾的空白符。
-print语句 在python2中print不是一个函数，而在python 3中print是一个函数，因此括号必不可少。而在python2中可以把变量用括号括起来，但是和python3的函数调用带括号完全不一样。
-在Python3中能使用help(print)来查看文档。但是在Python2中不行。此外在Python3中使用print能更方便的重定向，而Python2中要使用类似C&#43;&#43;风格的重定向：
+print语句 在python2中print不是一个函数，而在python 3中它是一个函数，因此括号必不可少。而在python2中可以把变量用括号括起来，但与python3的函数调用完全不一样。在Python3中能使用help(print)来查看文档，但在Python2中不行这样查看文档。此外，在Python3中使用print能更方便的重定向，而Python2中要使用类似C&#43;&#43;风格的重定向：
 with open(&amp;#39;print.txt&amp;#39;, &amp;#39;w&amp;#39;) as f: print(&amp;#39;hello, python!&amp;#39;, file = f) with open(&amp;#39;print.txt&amp;#39;, &amp;#39;w&amp;#39;) as f: print &amp;gt;&amp;gt; f, &amp;#39;hello, python!&amp;#39; 参考资料。
 列表 列表由一系列按特定顺序排列的元素组成，在Python中，用方括号[]来表示列表，并用逗号来分隔其中的元素。
-负数索引 Python为访问最后一个列表元素提供了一种特殊语法。通过将索引指定为-1，可让Python返回最后一个列表元素。这种约定也适用于其他负数索引，例如，索引-2返回倒数第二个列表元素， 索引-3返回倒数第三个列表元素，以此类推。
+负数索引 Python中通过将索引指定为-1，可让Python返回最后一个列表元素，这种方式也适用于其他负数索引。例如，索引-2返回倒数第二个列表元素， 索引-3返回倒数第三个列表元素，以此类推。
 增删改 在列表末尾添加元素使用append函数，在指定位置插入元素使用insert函数。例如motorcycles.insert(0, &#39;ducati&#39;)是在索引0处添加元素。
 删除元素使用delete函数，例如del motorcycles[0]。如果想要删除元素并获取它的值使用pop函数。使用remove函数从列表中删除元素时，只会删除第一个指定的值。
 如果要改变列表的值，可以直接使用赋值的方法，如motorcycles[0] = &#39;test&#39;。方法sort永久性的修改了列表元素的顺序。如果想要临时排序可以使用sorted函数。方法reverse也是永久地修改列表元素的顺序。
