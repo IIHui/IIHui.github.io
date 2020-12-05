@@ -69,8 +69,7 @@ katex.html文件的内容如下所示：
         <tags>
           <tag>iOS</tag>
         </tags>
-        <content type="html"> 字符串 在python中，用引号括起来的都是字符串，其中的引号可以是单引号，也可以是双引号。
-title()函数以首字母大写的方式显示每个单词；upper()函数将字符串全部转为大写；lower()函数将字符串全部转为小写。
+        <content type="html"> 字符串 在python中，用引号括起来的都是字符串，其中的引号可以是单引号，也可以是双引号。对于字符串title()函数以首字母大写的方式显示每个单词；upper()函数将字符串全部转为大写；lower()函数将字符串全部转为小写。
 lstrip()函数删除字符串前面的空白符；rstrip()函数删除字符串最后的空白符；strip()函数删除字符串开头和结尾的空白符。
 print语句 在python2中print不是一个函数，而在python 3中print是一个函数，因此括号必不可少。而在python2中可以把变量用括号括起来，但是和python3的函数调用带括号完全不一样。
 在Python3中能使用help(print)来查看文档。但是在Python2中不行。此外在Python3中使用print能更方便的重定向，而Python2中要使用类似C&#43;&#43;风格的重定向：
