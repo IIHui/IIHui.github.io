@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">2474</span>
+<span class="leancloud-visitors-count">2471</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -271,20 +271,20 @@ code.has-jax {
 <p>删除元素使用<code>delete</code>函数，例如<code>del motorcycles[0]</code>。如果想要删除元素并获取它的值使用<code>pop</code>函数。使用<code>remove</code>函数从列表中删除元素时，只会删除<!-- raw HTML omitted -->第一个<!-- raw HTML omitted -->指定的值。</p>
 <p>如果要改变列表的值，可以直接使用赋值的方法，如<code>motorcycles[0] = 'test'</code>。方法<code>sort</code>永久性的修改了列表元素的顺序。如果想要临时排序可以使用<code>sorted</code>函数。方法<code>reverse</code>也是永久地修改列表元素的顺序。</p>
 <p>方法<code>len</code>可以获取列表的长度。使用函数<code>range</code>可以生成半开半闭区间的数字。例如<code>range(1,5)</code>等同于数学上的<code>[1,5)</code>。使用<code>range</code>函数时，可以指定步长</p>
-<h1 id="切片">切片</h1>
-<p>如果要创建切片，就需要指定第一个元素和最后一个元素的索引区间。在切片中索引区间也是半闭半开的。如果切片区间没有指定第一个索引，则默认从列表开头开始提取；类似的，如果切片区间没有指定最后一个元素的索引，则切片终止于列表末尾:</p>
+<h2 id="切片">切片</h2>
+<p>如果要创建切片，就需要指定第一个元素和最后一个元素的索引区间。在切片中，索引区间也是半闭半开的。如果切片区间没有指定第一个索引，则默认从列表开头开始；类似的，如果切片区间没有指定最后一个元素的索引，则切片终止于列表末尾:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">players <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;charles&#39;</span>, <span style="color:#e6db74">&#39;martina&#39;</span>, <span style="color:#e6db74">&#39;michael&#39;</span>, <span style="color:#e6db74">&#39;florence&#39;</span>, <span style="color:#e6db74">&#39;eli&#39;</span>]
 <span style="color:#66d9ef">print</span>(players[<span style="color:#ae81ff">0</span>:<span style="color:#ae81ff">3</span>]) <span style="color:#f92672">//</span>[<span style="color:#e6db74">&#39;charles&#39;</span>, <span style="color:#e6db74">&#39;martina&#39;</span>, <span style="color:#e6db74">&#39;michael&#39;</span>]
 <span style="color:#66d9ef">print</span>(players[<span style="color:#ae81ff">1</span>:<span style="color:#ae81ff">4</span>]) <span style="color:#f92672">//</span>[<span style="color:#e6db74">&#39;martina&#39;</span>, <span style="color:#e6db74">&#39;michael&#39;</span>, <span style="color:#e6db74">&#39;florence&#39;</span>]
-<span style="color:#66d9ef">print</span> players[:<span style="color:#ae81ff">3</span>]   <span style="color:#f92672">//</span>[<span style="color:#e6db74">&#39;charles&#39;</span>, <span style="color:#e6db74">&#39;martina&#39;</span>, <span style="color:#e6db74">&#39;michael&#39;</span>]
-<span style="color:#66d9ef">print</span> players[<span style="color:#ae81ff">2</span>:]   <span style="color:#f92672">//</span>[<span style="color:#e6db74">&#39;michael&#39;</span>, <span style="color:#e6db74">&#39;florence&#39;</span>, <span style="color:#e6db74">&#39;eli&#39;</span>]
-</code></pre></div><p>负数索引返回离列表末尾相应距离的元素，因此可以输出列表末尾的任何切片，例如要输出名单上的最后的三名队员，可以使用负数索引切片：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">print</span> players[<span style="color:#f92672">-</span><span style="color:#ae81ff">3</span>:] <span style="color:#f92672">//</span>[<span style="color:#e6db74">&#39;michael&#39;</span>, <span style="color:#e6db74">&#39;florence&#39;</span>, <span style="color:#e6db74">&#39;eli&#39;</span>]
-</code></pre></div><h2 id="遍历切片">遍历切片</h2>
+<span style="color:#66d9ef">print</span>(players[:<span style="color:#ae81ff">3</span>])   <span style="color:#f92672">//</span>[<span style="color:#e6db74">&#39;charles&#39;</span>, <span style="color:#e6db74">&#39;martina&#39;</span>, <span style="color:#e6db74">&#39;michael&#39;</span>]
+<span style="color:#66d9ef">print</span>(players[<span style="color:#ae81ff">2</span>:])   <span style="color:#f92672">//</span>[<span style="color:#e6db74">&#39;michael&#39;</span>, <span style="color:#e6db74">&#39;florence&#39;</span>, <span style="color:#e6db74">&#39;eli&#39;</span>]
+</code></pre></div><p>负数索引返回离列表末尾相应距离的元素，因此可以输出列表末尾的任何切片。例如，要输出名单上的最后的三名队员，可以使用负数索引切片：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">print</span>(players[<span style="color:#f92672">-</span><span style="color:#ae81ff">3</span>:]) <span style="color:#f92672">//</span>[<span style="color:#e6db74">&#39;michael&#39;</span>, <span style="color:#e6db74">&#39;florence&#39;</span>, <span style="color:#e6db74">&#39;eli&#39;</span>]
+</code></pre></div><h3 id="遍历切片">遍历切片</h3>
 <p>若要遍历列表的部分元素，可以借助切片和<code>for in</code>，如下所示：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> player <span style="color:#f92672">in</span> players[<span style="color:#f92672">-</span><span style="color:#ae81ff">3</span>:]:
     <span style="color:#66d9ef">print</span> player
-</code></pre></div><h2 id="复制列表">复制列表</h2>
+</code></pre></div><h3 id="复制列表">复制列表</h3>
 <p>如果要复制列表，可创建一个包含整个列表的切片，方法是同时省略开始索引和终止索引<code>([:])</code>。这让<code>Python</code>创建一个始于第一个元素，终止于最后一个元素的切片，即复制整个列表：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">players <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;charles&#39;</span>, <span style="color:#e6db74">&#39;martina&#39;</span>, <span style="color:#e6db74">&#39;michael&#39;</span>, <span style="color:#e6db74">&#39;florence&#39;</span>, <span style="color:#e6db74">&#39;eli&#39;</span>]
 test_players <span style="color:#f92672">=</span> players[:]
@@ -545,12 +545,12 @@ make_pizza(<span style="color:#e6db74">&#39;test&#39;</span>, <span style="color
       <ul>
         <li><a href="#负数索引">负数索引</a></li>
         <li><a href="#增删改">增删改</a></li>
-      </ul>
-    </li>
-    <li><a href="#切片">切片</a>
-      <ul>
-        <li><a href="#遍历切片">遍历切片</a></li>
-        <li><a href="#复制列表">复制列表</a></li>
+        <li><a href="#切片">切片</a>
+          <ul>
+            <li><a href="#遍历切片">遍历切片</a></li>
+            <li><a href="#复制列表">复制列表</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
     <li><a href="#元组">元组</a>
