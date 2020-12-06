@@ -35,7 +35,7 @@
       <pubDate>Sun, 29 Nov 2020 10:50:55 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/shell-study/</guid>
-      <description>软链接 创建 ln ~/.cocoapods/repos-art/CocoaPods-cmb ~/.cocoapods/repos 删除 unlink cocoaPods-github</description>
+      <description>本文记录工作中用的shell命令，以便下次 软链接 创建 ln ~/.cocoapods/repos-art/CocoaPods-cmb ~/.cocoapods/repos 删除 unlink cocoaPods-github</description>
     </item>
     
     <item>

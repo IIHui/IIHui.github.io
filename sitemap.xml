@@ -57,7 +57,8 @@ katex.html文件的内容如下所示：
         <tags>
           <tag>iOS</tag>
         </tags>
-        <content type="html"> 软链接 创建 ln ~/.cocoapods/repos-art/CocoaPods-cmb ~/.cocoapods/repos 删除 unlink cocoaPods-github </content>
+        <content type="html">  本文记录工作中用的shell命令，以便下次
+ 软链接 创建 ln ~/.cocoapods/repos-art/CocoaPods-cmb ~/.cocoapods/repos 删除 unlink cocoaPods-github </content>
     </entry>
     
      <entry>
