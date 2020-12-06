@@ -36,19 +36,6 @@ katex.html文件的内容如下所示：
     </entry>
     
      <entry>
-        <title></title>
-        <url>https://iihui.github.io/post/ruby-base/</url>
-        <categories>
-          <category>iOS</category>
-        </categories>
-        <tags>
-          <tag>iOS</tag>
-        </tags>
-        <content type="html"> 所有的ruby文件扩展名都是.rb。在ruby代码中，空白字符一般都会被忽略，除非当他们出现在字符串中时才不会被忽略。
-</content>
-    </entry>
-    
-     <entry>
         <title>shell命令</title>
         <url>https://iihui.github.io/post/shell-study/</url>
         <categories>
@@ -57,7 +44,7 @@ katex.html文件的内容如下所示：
         <tags>
           <tag>iOS</tag>
         </tags>
-        <content type="html">  本文记录工作中用的shell命令，以便下次
+        <content type="html">  本文记录工作中用的shell命令，以便下次使用的时候查阅。
  软链接 创建 ln ~/.cocoapods/repos-art/CocoaPods-cmb ~/.cocoapods/repos 删除 unlink cocoaPods-github </content>
     </entry>
     

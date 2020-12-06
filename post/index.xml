@@ -6,7 +6,7 @@
     <description>Recent content in Posts on Keep It Simple</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 01 Dec 2020 08:28:26 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 29 Nov 2020 10:50:55 +0000</lastBuildDate>
     
 	<atom:link href="https://iihui.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
@@ -21,21 +21,12 @@
     </item>
     
     <item>
-      <title></title>
-      <link>https://iihui.github.io/post/ruby-base/</link>
-      <pubDate>Tue, 01 Dec 2020 08:28:26 +0000</pubDate>
-      
-      <guid>https://iihui.github.io/post/ruby-base/</guid>
-      <description>所有的ruby文件扩展名都是.rb。在ruby代码中，空白字符一般都会被忽略，除非当他们出现在字符串中时才不会被忽略。</description>
-    </item>
-    
-    <item>
       <title>shell命令</title>
       <link>https://iihui.github.io/post/shell-study/</link>
       <pubDate>Sun, 29 Nov 2020 10:50:55 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/shell-study/</guid>
-      <description>本文记录工作中用的shell命令，以便下次 软链接 创建 ln ~/.cocoapods/repos-art/CocoaPods-cmb ~/.cocoapods/repos 删除 unlink cocoaPods-github</description>
+      <description>本文记录工作中用的shell命令，以便下次使用的时候查阅。 软链接 创建 ln ~/.cocoapods/repos-art/CocoaPods-cmb ~/.cocoapods/repos 删除 unlink cocoaPods-github</description>
     </item>
     
     <item>
