@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">2466</span>
+<span class="leancloud-visitors-count">2552</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">5 分钟</span>
+<span class="leancloud-visitors-count">6 分钟</span>
 </span>
       </div>
     </header>
@@ -303,7 +303,9 @@ code.has-jax {
     }
 
 }
-</code></pre></div><h2 id="sequence">Sequence</h2>
+</code></pre></div><h2 id="protocol">protocol</h2>
+<p><code>Swift</code>中的<code>protocol</code>不仅可以被<code>class</code>类型实现，也适用于<code>struct</code>和<code>enum</code>。因为这个原因在写给别人用的协议时需要多考虑是否适用<code>mutating</code>来修饰方法。</p>
+<h2 id="sequence">Sequence</h2>
 <p><code>Swift</code>中的<code>for ... in</code>可以用在所有实现了<code>Sequence</code>协议的类型上，而为了实现<code>Sequence</code>协议，首先需要实现<code>IteratorProtocol</code>协议。下面的例子是一个反向的迭代器：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ReverseIterator</span>&lt;T&gt;: IteratorProtocol {
 
@@ -678,6 +680,7 @@ SEL anotherMethod = @selector(callMeWithParam:);
     <li>
       <ul>
         <li><a href="#curry">curry</a></li>
+        <li><a href="#protocol">protocol</a></li>
         <li><a href="#sequence">Sequence</a></li>
         <li><a href="#autoclosure">autoclosure</a></li>
         <li><a href="#escaping">@escaping</a></li>
