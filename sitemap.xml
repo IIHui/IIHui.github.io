@@ -96,10 +96,11 @@ test_dict = {&amp;#34;key&amp;#34;: 12, &amp;#34;key1&amp;#34;: &amp;#34;test&am
 test_dict = {&amp;#34;key&amp;#34;: 12, &amp;#34;key1&amp;#34;: &amp;#34;test&amp;#34;} print test_dict[&amp;#34;key&amp;#34;] print test_dict[&amp;#34;key1&amp;#34;] test_dict[&amp;#34;key2&amp;#34;] = 23 print test_dict del test_dict[&amp;#34;key&amp;#34;] //{&amp;#39;key2&amp;#39;: 23, &amp;#39;key1&amp;#39;: &amp;#39;test&amp;#39;, &amp;#39;key&amp;#39;: 12} print test_dict //{&amp;#39;key2&amp;#39;: 23, &amp;#39;key1&amp;#39;: &amp;#39;test&amp;#39;} 遍历字典 对于字典，既可以只遍历键，也可以只遍历值，或者同时遍历键值对，如下所示：
 for key in test_dict.keys(): print key for value in test_dict.values(): print value for key, value in test_dict.items(): print key, value for key in sorted(test_dict.keys()): print key 函数 在Python中，函数是使用def关键字定义的。调用函数时，可以使用位置实参，也可以使用关键字实参。一个函数全部使用关键字实参调用时，关键字的位置可以不按顺序来指定。
 def print_message(msg): print msg print_message(&amp;#34;test&amp;#34;) print_message(msg=&amp;#34;hello&amp;#34;) 默认值 编写函数时，可以给每个形参指定默认值。在调用函数时如果没有给形参指定实参，则将使用默认参数。
-def print_test(name=&amp;#39;ty&amp;#39;): print name print_test() //ty 返回值 在函数中，可以使用return语句将值返回到调用函数的代码行，既可以可以返回一个也可以返回一组值。函数可以返回任何类型的值，包括列表和字典等较复杂的数据结构：
-def return_test(name): return name print(return_test(&amp;#34;Hello&amp;#34;)) //hello 列表参数 将列表传递给函数后，函数就可以对其进行修改。在函数中对这个列表所做的任何修改都是永久性的「与C&#43;&#43;的指针参数相似」。
-任意数量的实参 在下面定义的函数中，形参名中的*让Python创建一个名为toppings的空元组，并将收到的所有值都封装到这个元组中：
-def make_pizza(*toppings): print toppings make_pizza(&amp;#39;test&amp;#39;, 12) # (&amp;#39;test&amp;#39;, 12) 有时候，需要接受任意数量
+def print_test(name=&amp;#39;ty&amp;#39;): print name print_test() //ty 返回值 在函数中，可以使用return语句将值返回到调用函数的代码行，既可以返回一个也可以返回一组值。函数可以返回任何类型的值，包括列表和字典等较复杂的数据结构：
+def return_test(name): return name print(return_test(&amp;#34;Hello&amp;#34;)) //hello 列表参数 将列表传递给函数后，函数就可以对这个列表进行修改。在函数中对这个列表所做的任何修改都是永久性的「与C&#43;&#43;的指针参数相似」。如果需要禁止函数修改列表，则可向函数传递列表的副本，即切片[:]。
+任意数量的实参 在下面定义的函数中，形参名中的*让Python创建一个名为toppings的空元组，并将收到的所有值都封装到这个元组（元素类型相同）中：
+def make_pizza(*toppings): print toppings make_pizza(&amp;#39;test&amp;#39;, 12) # (&amp;#39;test&amp;#39;, 12) 如果要让函数接受不同类型的实参，必须在函数定义中将接受任意数量实参放在最后。python先匹配位置实参和关键字实参，再将余下的实参都收集到最后一个形参中。
+def make_pizza(size, *toppings): &amp;#34;&amp;#34;&amp;#34;概述要制作的比萨&amp;#34;&amp;#34;&amp;#34; print(&amp;#34;\nMaking a &amp;#34; &#43; str(size) &#43; &amp;#34;-inch pizza with the following toppings:&amp;#34;) for topping in toppings: print(&amp;#34;- &amp;#34; &#43; topping) make_pizza(16, &amp;#39;pepperoni&amp;#39;) make_pizza(12, &amp;#39;mushrooms&amp;#39;, &amp;#39;green peppers&amp;#39;, &amp;#39;extra cheese&amp;#39;) 有时候，需要接受任意数量不同类型实参，但预先不知道传递给函数的会是什么样的信息。在这种情况下，可将函数编写成能够接受任意数量的键值对——调用语句提供多少就接受多少。
 导入函数 要让函数是可导入的，先得创建模块。模块是扩展名为.py的文件，包含要导入到程序中的代码。例如，现在有一个名为test.py的文件，如果要使用其中的函数，则在需要使用的文件中import test ，然后使用类似test.test()调用函数即可。
 如果只需要导入特定的函数，则使用from module_name import func_name_0, function_1, function_2这种方式导入，这种方式导入函数之后则不需要加module前缀来调用了。
 如果要导入的函数的名称可能和当前文件中函数冲突，则可以将函数指定别名from module_name import func_name as other_name。
