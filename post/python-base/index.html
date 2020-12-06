@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">2501</span>
+<span class="leancloud-visitors-count">2636</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">5 分钟</span>
+<span class="leancloud-visitors-count">6 分钟</span>
 </span>
       </div>
     </header>
@@ -267,8 +267,16 @@ code.has-jax {
 <h2 id="负数索引">负数索引</h2>
 <p><code>Python</code>中通过将索引指定为<code>-1</code>，可让<code>Python</code>返回最后一个列表元素，这种方式也适用于其他负数索引。例如，索引<code>-2</code>返回倒数第二个列表元素， 索引<code>-3</code>返回倒数第三个列表元素，以此类推。</p>
 <h2 id="增删改">增删改</h2>
-<p>在列表末尾添加元素使用<code>append</code>函数，在指定位置插入元素使用<code>insert</code>函数。例如<code>motorcycles.insert(0, 'ducati')</code>是在索引<code>0</code>处添加元素。</p>
-<p>删除元素使用<code>delete</code>函数，例如<code>del motorcycles[0]</code>。如果想要删除元素并获取它的值使用<code>pop</code>函数。使用<code>remove</code>函数从列表中删除元素时，只会删除<!-- raw HTML omitted -->第一个<!-- raw HTML omitted -->指定的值，如果要删除全部元素，需要借助<code>for</code>循环。</p>
+<p>在列表末尾添加元素使用<code>append</code>函数，如果要在指定位置插入元素可以使用<code>insert</code>函数。例如<code>motorcycles.insert(0, 'ducati')</code>是在索引<code>0</code>处添加元素。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">motorcycles<span style="color:#f92672">.</span>append(<span style="color:#e6db74">&#39;test&#39;</span>)
+motorcycles<span style="color:#f92672">.</span>insert(<span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#39;ducati&#39;</span>)
+</code></pre></div><p>如果知道要删除元素在列表中的位置，可以使用<code>delete</code>函数，例如<code>del motorcycles[0]</code>可以删除第一个元素。</p>
+<p>如果想要删除元素并获取它的值可以使用<code>pop</code>函数。不带参数的<code>pop()</code>函数可删除列表末尾的元素，并能返回最后一个元素的值。如果要删除列表中国呢任何位置的元素，可以在括号中指定要删除元素的索引。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">last_owned <span style="color:#f92672">=</span> motorcycles<span style="color:#f92672">.</span>pop() 
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;The last motorcycle I owned was a &#34;</span> <span style="color:#f92672">+</span> last_owned<span style="color:#f92672">.</span>title() <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;.&#34;</span>)
+first_owned <span style="color:#f92672">=</span> motorcycles<span style="color:#f92672">.</span>pop(<span style="color:#ae81ff">0</span>) 
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;The first motorcycle I owned was a &#39;</span> <span style="color:#f92672">+</span> first_owned<span style="color:#f92672">.</span>title() <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;.&#39;</span>)
+</code></pre></div><p>使用<code>remove</code>函数从列表中删除元素时，只会删除<!-- raw HTML omitted -->第一个<!-- raw HTML omitted -->指定的值，如果要删除全部元素，需要借助<code>for</code>循环。</p>
 <p>如果要改变列表的值，可以直接使用赋值的方法，如<code>motorcycles[0] = 'test'</code>。方法<code>sort</code>永久性的修改了列表元素的顺序。如果想要临时排序可以使用<code>sorted</code>函数。方法<code>reverse</code>也是永久地修改列表元素的顺序。</p>
 <p>方法<code>len</code>可以获取列表的长度。使用函数<code>range</code>可以生成半开半闭区间的数字。例如<code>range(1,5)</code>等同于数学上的<code>[1,5)</code>。使用<code>range</code>函数时，可以指定步长</p>
 <h2 id="切片">切片</h2>

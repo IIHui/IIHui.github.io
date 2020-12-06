@@ -75,8 +75,10 @@ print语句 在python2中print不是一个函数，而在python 3中它是一个
 with open(&amp;#39;print.txt&amp;#39;, &amp;#39;w&amp;#39;) as f: print(&amp;#39;hello, python!&amp;#39;, file = f) with open(&amp;#39;print.txt&amp;#39;, &amp;#39;w&amp;#39;) as f: print &amp;gt;&amp;gt; f, &amp;#39;hello, python!&amp;#39; 参考资料。
 列表 列表由一系列按特定顺序排列的元素组成，在Python中，用方括号[]来表示列表，并用逗号来分隔其中的元素。
 负数索引 Python中通过将索引指定为-1，可让Python返回最后一个列表元素，这种方式也适用于其他负数索引。例如，索引-2返回倒数第二个列表元素， 索引-3返回倒数第三个列表元素，以此类推。
-增删改 在列表末尾添加元素使用append函数，在指定位置插入元素使用insert函数。例如motorcycles.insert(0, &#39;ducati&#39;)是在索引0处添加元素。
-删除元素使用delete函数，例如del motorcycles[0]。如果想要删除元素并获取它的值使用pop函数。使用remove函数从列表中删除元素时，只会删除第一个指定的值，如果要删除全部元素，需要借助for循环。
+增删改 在列表末尾添加元素使用append函数，如果要在指定位置插入元素可以使用insert函数。例如motorcycles.insert(0, &#39;ducati&#39;)是在索引0处添加元素。
+motorcycles.append(&amp;#39;test&amp;#39;) motorcycles.insert(0, &amp;#39;ducati&amp;#39;) 如果知道要删除元素在列表中的位置，可以使用delete函数，例如del motorcycles[0]可以删除第一个元素。
+如果想要删除元素并获取它的值可以使用pop函数。不带参数的pop()函数可删除列表末尾的元素，并能返回最后一个元素的值。如果要删除列表中国呢任何位置的元素，可以在括号中指定要删除元素的索引。
+last_owned = motorcycles.pop() print(&amp;#34;The last motorcycle I owned was a &amp;#34; &#43; last_owned.title() &#43; &amp;#34;.&amp;#34;) first_owned = motorcycles.pop(0) print(&amp;#39;The first motorcycle I owned was a &amp;#39; &#43; first_owned.title() &#43; &amp;#39;.&amp;#39;) 使用remove函数从列表中删除元素时，只会删除第一个指定的值，如果要删除全部元素，需要借助for循环。
 如果要改变列表的值，可以直接使用赋值的方法，如motorcycles[0] = &#39;test&#39;。方法sort永久性的修改了列表元素的顺序。如果想要临时排序可以使用sorted函数。方法reverse也是永久地修改列表元素的顺序。
 方法len可以获取列表的长度。使用函数range可以生成半开半闭区间的数字。例如range(1,5)等同于数学上的[1,5)。使用range函数时，可以指定步长
 切片 如果要创建切片，就需要指定第一个元素和最后一个元素的索引区间。在切片中，索引区间也是半闭半开的。如果切片区间没有指定第一个索引，则默认从列表开头开始；类似的，如果切片区间没有指定最后一个元素的索引，则切片终止于列表末尾:
