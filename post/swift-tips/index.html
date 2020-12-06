@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">2239</span>
+<span class="leancloud-visitors-count">2354</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -262,6 +262,47 @@ code.has-jax {
 
 <span style="color:#66d9ef">let</span> addTwo = addTo(<span style="color:#ae81ff">2</span>)  <span style="color:#75715e">// addTwo: Int -&gt; Int</span>
 <span style="color:#66d9ef">let</span> result = addTwo(<span style="color:#ae81ff">6</span>) <span style="color:#75715e">// result = 8</span>
+</code></pre></div><p>在<code>swift</code>中<code>selector</code>只能使用字符串生成</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">TargetAction</span> {
+    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">performAction</span>()
+}
+
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">TargetActionWrapper</span>&lt;T: AnyObject&gt;: TargetAction {
+    
+    <span style="color:#66d9ef">weak</span> <span style="color:#66d9ef">var</span> target: T?
+    <span style="color:#66d9ef">let</span> action: (T) -&gt; () -&gt; ()
+
+    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">performAction</span>() -&gt; () {
+        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> t = target {
+            action(t)()
+        }
+    }
+
+}
+
+<span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">ControlEvent</span> {
+    <span style="color:#66d9ef">case</span> TouchUpInside
+    <span style="color:#66d9ef">case</span> ValueChanged <span style="color:#75715e">// ...</span>
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Control</span> {
+    <span style="color:#66d9ef">var</span> actions = [ControlEvent: TargetAction]()
+
+    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">setTarget</span>&lt;T: AnyObject&gt;(target: T, action: @escaping (T) -&gt; () -&gt; (), controlEvent: ControlEvent) {
+
+        actions[controlEvent] = TargetActionWrapper(target: target, action: action)
+    }
+
+    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">removeTargetForControlEvent</span>(controlEvent: ControlEvent) {
+        actions[controlEvent] = <span style="color:#66d9ef">nil</span>
+
+    }
+
+    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">performActionForControlEvent</span>(controlEvent: ControlEvent) {
+        actions[controlEvent]?.performAction()
+    }
+
+}
 </code></pre></div><h2 id="sequence">Sequence</h2>
 <p><code>Swift</code>中的<code>for ... in</code>可以用在所有实现了<code>Sequence</code>协议的类型上，而为了实现<code>Sequence</code>协议，首先需要实现<code>IteratorProtocol</code>协议。下面的例子是一个反向的迭代器：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ReverseIterator</span>&lt;T&gt;: IteratorProtocol {
