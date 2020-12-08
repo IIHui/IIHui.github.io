@@ -2939,7 +2939,7 @@ class SmartPtr { public: SmartPtr(Point *ptr) :rp(new U_Ptr(ptr)) { } SmartPtr(c
           <tag>Go</tag>
         </tags>
         <content type="html">  映射(或称为字典)是一种数据结构，用于存储一系列无序的键值对，它是基于键来存储值。映射的键可以是任何值，只要这个值可以使用==运算符做比较即可。切片、函数以及包含切片的结构类型这些类型由于具有引用语义， 不能作为映射的键。
-  创建和初始化 使用make函数 //创建一个映射，键的类型是 string，值的类型是 int dict1 := make(map[string]int) dict2 := make(map[string]int,5) //长度为5  使用字面量 // 创建一个映射，键和值的类型都是 string，使用两个键值对初始化映射 dict2 := map[string]string{&amp;#34;Red&amp;#34;: &amp;#34;#da1337&amp;#34;, &amp;#34;Orange&amp;#34;: &amp;#34;#e95a22&amp;#34;} 需要注意的是，直接使用var m map[string][int]这种方式定义的map变量的初始值为nil,并且这个变量是只能读不能写的，也就是说可以按照键来读值，读出来是类型的默认零值，但是不可以往里面添加键值对，否则会产生一个运行时错误。
+ 创建和初始化 使用make函数 //创建一个映射，键的类型是 string，值的类型是 int dict1 := make(map[string]int) dict2 := make(map[string]int,5) //长度为5  使用字面量 // 创建一个映射，键和值的类型都是 string，使用两个键值对初始化映射 dict2 := map[string]string{&amp;#34;Red&amp;#34;: &amp;#34;#da1337&amp;#34;, &amp;#34;Orange&amp;#34;: &amp;#34;#e95a22&amp;#34;} 需要注意的是，直接使用var m map[string][int]这种方式定义的map变量的初始值为nil,并且这个变量是只能读不能写的，也就是说可以按照键来读值，读出来是类型的默认零值，但是不可以往里面添加键值对，否则会产生一个运行时错误。
 // 通过声明映射创建一个 nil 映射 var colors map[string]string // 将 Red 的代码加入到映射 colors[&amp;#34;Red&amp;#34;] = &amp;#34;#da1337&amp;#34; //产生运行时错误  //Runtime Error: //panic: runtime error: assignment to entry in nil map 相比于值为nil的映射，空映射有初始化过程，但是映射此时的容量为0，此时的映射是可以用来存储键值对的：
 // 创建一个空映射，用来存储颜色以及颜色对应的十六进制代码 colors := map[string]string{} //空映射 // 将 Red 的代码加入到映射 colors[&amp;#34;Red&amp;#34;] = &amp;#34;#da1337&amp;#34; 内容为空的映射与nil是不同的，空映射可以添加键值，nil字典不可以添加键值：
 var m1 map[string]int //nil映射 m2 := map[string]int{} //空映射  println(m1==nil,m2==nil)//true false  使用映射 映射的使用包括：①根据键来取值——通常要通过ok-idiom模式来判断给定的键是否有值； ②作为函数参数——因为是引用类型，因此函数中做的更改可以影响被调函数中原引用的值。
