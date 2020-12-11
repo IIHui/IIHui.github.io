@@ -496,8 +496,8 @@ func operateOnFile(descriptor: Int32) { let fileHandle = FileHandle(fileDescript
 defer闭包不持有值 虽然defer后面跟了一个闭包，但是它更多地像是一个语法糖，和我们所熟知的闭包特性不一样，并不会持有里面的值：
 func foo() { var number = 1 defer { print(&amp;#34;Statement 2: \(number)&amp;#34;) } number = 100 print(&amp;#34;Statement 1: \(number)&amp;#34;) } 上面代码将会输出：
 Statement 1: 100 Statement 2: 100 执行时机 defer的执行时机紧接在离开作用域之后，但在其他语句之前。这个特性为defer带来了一些很“微妙”的使用方式，例如下面的代码是先执行返回语句，然后执行自增，所以输出为0，1，2而不是1，2，3：
-class Foo { var num = 0 func foo() -&amp;gt; Int { defer { num &#43;= 1 } return num } } let f = Foo() f.foo() // 0 f.foo() // 1 f.num // 2  as  as是在编译期间执行的，as?和as!是在运行时执行的。
- print(4 as Double) // print 4.0 print(4 as! Double) // crash 上面第二行代码会崩溃是因为as?和as!是在运行时执行，运行时4已经赋值为Int类型。
+class Foo { var num = 0 func foo() -&amp;gt; Int { defer { num &#43;= 1 } return num } } let f = Foo() f.foo() // 0 f.foo() // 1 f.num // 2  as as是在编译期间执行的，as?和as!是在运行时执行的。
+print(4 as Double) // print 4.0 print(4 as! Double) // crash 上面第二行代码会崩溃是因为as?和as!是在运行时执行，运行时4已经赋值为Int类型。
 参考资料
 </content>
     </entry>
