@@ -36,6 +36,18 @@ katex.html文件的内容如下所示：
     </entry>
     
      <entry>
+        <title>PandoraxBox 设置</title>
+        <url>https://iihui.github.io/post/tool-pandora/</url>
+        <categories>
+          <category>iOS</category>
+        </categories>
+        <tags>
+          <tag>iOS</tag>
+        </tags>
+        <content type="html"> 30 1 * * 1-7 /sbin/wifi down 00 20 * * 1-5 /sbin/wifi up 00 06 * * 6 /sbin/wifi up 00 06 * * 0 /sbin/wifi up 00 3 * * 5 sleep 5 &amp;amp;&amp;amp; touch /etc/banner &amp;amp;&amp;amp; reboot </content>
+    </entry>
+    
+     <entry>
         <title>shell命令</title>
         <url>https://iihui.github.io/post/shell-study/</url>
         <categories>
