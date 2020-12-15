@@ -35,7 +35,7 @@
       <pubDate>Thu, 12 Nov 2020 08:27:33 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/swift-tips/</guid>
-      <description>curry curry（柯里化）：把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下参数而且返回结果的新函数。柯⾥化是⼀种量产相似⽅法的好办法，可以通过柯⾥化⼀个⽅法模板来避免写出很多重复代码。 func addTo(_ adder: Int) -&amp;gt; (Int) -&amp;gt; Int</description>
+      <description>柯里化 柯里化(curry)：把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下参数而且返回结果的新函数。柯⾥化是⼀种量产相似⽅法的好办法，可以通过柯⾥化⼀个⽅法模板来避免写出很多重复代码。 func addTo(_ adder: Int) -&amp;gt; (Int)</description>
     </item>
     
     <item>
