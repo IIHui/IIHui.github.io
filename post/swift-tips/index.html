@@ -373,7 +373,7 @@ code.has-jax {
 <span style="color:#66d9ef">let</span> point: Location = Location(x: <span style="color:#ae81ff">1</span>, y: <span style="color:#ae81ff">1</span>)
 
 <span style="color:#66d9ef">let</span> d: Distance = distance(from: origin, to: point)
-</code></pre></div><p>在涉及到泛型时，情况就稍微不太⼀样。⾸先，<code>typealias</code>是单⼀的，也就是说你必须指定将某个特定的类型通过<code>typealias</code>赋值为新名字，⽽不能将整个泛型类型进⾏重命名。下⾯这样的命名都是⽆法通过编译的。</p>
+</code></pre></div><p>在涉及到泛型时，情况就稍微不太⼀样。⾸先，<code>typealias</code>是单⼀的，也就是说你必须指定将某个特定的类型通过<code>typealias</code>赋值为新名字，⽽<!-- raw HTML omitted -->不能将整个泛型类型进⾏重命名<!-- raw HTML omitted -->。下⾯这样的命名都是⽆法通过编译的。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Person</span>&lt;T&gt; {} 
 <span style="color:#66d9ef">typealias</span> Worker = Person
 <span style="color:#66d9ef">typealias</span> Worker = Person&lt;T&gt;
