@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">2562</span>
+<span class="leancloud-visitors-count">2641</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -308,7 +308,7 @@ code.has-jax {
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">Vehicle</span> {
     <span style="color:#66d9ef">mutating</span>  <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">changeColor</span>()
 }
-</code></pre></div><h2 id="sequence">Sequence</h2>
+</code></pre></div><h1 id="sequence">Sequence</h1>
 <p><code>Swift</code>中的<code>for ... in</code>可以用在所有实现了<code>Sequence</code>协议的类型上，而为了实现<code>Sequence</code>协议，首先需要实现<code>IteratorProtocol</code>协议。下面是一个反向迭代器的例子：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ReverseIterator</span>&lt;T&gt;: IteratorProtocol {
 
@@ -354,11 +354,11 @@ code.has-jax {
         print(<span style="color:#e6db74">&#34;Index </span><span style="color:#e6db74">\(</span>i<span style="color:#e6db74">)</span><span style="color:#e6db74"> is </span><span style="color:#e6db74">\(</span>arr[i]<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
     }
 }
-</code></pre></div><h2 id="autoclosure">autoclosure</h2>
+</code></pre></div><h1 id="autoclosure">autoclosure</h1>
 <p><code>@autoclosure</code>把一句表达式自动地封装成一个闭包<code>closure</code>。但是，<code>@autoclosure</code>并不支持带有输入参数的写法，也就是说只有形如<code>()-&gt;T</code>的参数才能使用此特性进行简化。</p>
-<h2 id="escaping">@escaping</h2>
+<h1 id="escaping">@escaping</h1>
 <p>如果在协议或者父类中定义了一个接受<code>@escaping</code>为参数的方法，那么在实现协议和类型或者是这个父类的子类中，对应的方法也必须声明为<code>@escaping</code>，否则两个方法会被认为拥有不同的函数签名。</p>
-<h2 id="typealias">typealias</h2>
+<h1 id="typealias">typealias</h1>
 <p><code>typealias</code>是用来为已经存在的类型重新定义名字的，通过重命名，可以使代码变得更清晰。使用<code>typealias</code>关键字就像使用普通的赋值语句一样，可以将某个已经存在的类型赋值为新的名字。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">typealias</span> Location = CGPoint
 <span style="color:#66d9ef">typealias</span> Distance = Double
@@ -388,7 +388,7 @@ code.has-jax {
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">Cat</span> { ... } 
 <span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">Dog</span> { ... } 
 <span style="color:#66d9ef">typealias</span> Pat = Cat <span style="color:#f92672">&amp;</span> Dog
-</code></pre></div><h2 id="初始化方法顺序">初始化方法顺序</h2>
+</code></pre></div><h1 id="初始化方法顺序">初始化方法顺序</h1>
 <p><code>Swift</code>的初始化方法需要保证类型的所有属性都被初始化，因此在子类中，需要保证当前子类实例的成员初始化完成后才能调用父类的初始化方法。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Cat</span> {
     <span style="color:#66d9ef">var</span> name: String
@@ -426,7 +426,7 @@ code.has-jax {
     }
 
 }
-</code></pre></div><h2 id="default参数">default参数</h2>
+</code></pre></div><h1 id="default参数">default参数</h1>
 <p>在<code>Swift</code>中默认参数限制较少，可以不放在最后，如下所示，两种写法都是可以的：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">sayHello1</span>(str1: String = <span style="color:#e6db74">&#34;Hello&#34;</span>, str2: String, str3: String) {
     print(str1 <span style="color:#f92672">+</span> str2 <span style="color:#f92672">+</span> str3)
@@ -436,12 +436,12 @@ code.has-jax {
     print(str1 <span style="color:#f92672">+</span> str2 <span style="color:#f92672">+</span> str3)
 }
 </code></pre></div><hr>
-<h2 id="可变参数">可变参数</h2>
+<h1 id="可变参数">可变参数</h1>
 <p>在<code>Swift</code>中写一个可变参数只需要在声明参数时在类型后面加上<code>...</code>就可以了。其他语言因为编译器和语言自身语法限制，在使用可变参数时，往往可变参数只能作为方法中最后一个参数来使用。而不能先声明一个可变参数。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">fun sum(input:Int ...) -&gt; Int {
     <span style="color:#66d9ef">return</span> input.reduce(<span style="color:#ae81ff">0</span>,<span style="color:#f92672">+</span>)
 }
-</code></pre></div><h2 id="正则表达式">正则表达式</h2>
+</code></pre></div><h1 id="正则表达式">正则表达式</h1>
 <p><code>Swift</code>还没有在语言层面上支持正则表达式，在<code>Cocoa</code>中使用<code>NSRegularExpression</code>来做正则表达，所以在<code>Swift</code>中可以对其进行封装：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">RegexHelper</span> {
     <span style="color:#66d9ef">let</span> regex: NSRegularExpression
@@ -487,9 +487,9 @@ code.has-jax {
 <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;xxx@test.com&#34;</span> =<span style="color:#f92672">~</span> <span style="color:#e6db74">&#34;^([a-z0-9_</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">.-]+)@([</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">da-z</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">.-]+)</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">.([a-z</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">.]{2,6})$&#34;</span> {
     print(<span style="color:#e6db74">&#34;有效的邮箱地址&#34;</span>)
 }
-</code></pre></div><h2 id="模式匹配">模式匹配</h2>
+</code></pre></div><h1 id="模式匹配">模式匹配</h1>
 <p><code>Swift</code>中没有内置正则表达式，但是有一个和正则表达式类似的特性——模式匹配。从概念上来说，正则匹配只是模式匹配的一个子集。</p>
-<h2 id="协议和类方法中的self">协议和类方法中的Self</h2>
+<h1 id="协议和类方法中的self">协议和类方法中的Self</h1>
 <p>在定义一些协议时，首字母大写的<code>Self</code>出现在类型的位置上。在下面<code>IntervalType</code>协议中，定义了一个方法，接受实现该协议的自身类型，并返回一个同样的类型：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">IntervalType</span> {
     <span style="color:#75715e">/// Return `rhs` clamped to `self`. The bounds of the result, even </span>
@@ -497,11 +497,11 @@ code.has-jax {
     <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">clamp</span>(intervalToClamp: <span style="color:#66d9ef">Self</span>) -&gt; <span style="color:#66d9ef">Self</span>
 }
 </code></pre></div><p>这么定义是因为协议本身没有自己的上下文类型的信息，在声明协议的时候，我们并不知道最后究竟会是什么样的类型来实现这个协议。</p>
-<h2 id="reflection-和-mirror">Reflection 和 Mirror</h2>
+<h1 id="reflection-和-mirror">Reflection 和 Mirror</h1>
 <blockquote>
 <p>反射是一种在运行时检测、访问或者修改类型的行为特性。一般的静态语言类型的结构和方法的调用等都需要在编译时决定。</p>
 </blockquote>
-<h2 id="selector">Selector</h2>
+<h1 id="selector">Selector</h1>
 <p><code>@selector</code>是<code>OC</code>时代的一个关键词，可以将一个方法转换并赋值给一个<code>SEL</code>类型，它的表现类似一个动态的函数指针。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#f92672">-</span>(void) callMe { <span style="color:#75715e">//...</span>
 
@@ -517,6 +517,17 @@ SEL anotherMethod = @selector(callMeWithParam:);
 <span style="color:#75715e">// 或者也可以使⽤ NSSelectorFromString </span>
 <span style="color:#75715e">// SEL someMethod = NSSelectorFromString(@&#34;callMe&#34;); </span>
 <span style="color:#75715e">// SEL anotherMethod = NSSelectorFromString(@&#34;callMeWithParam:&#34;);</span>
+</code></pre></div><p>在<code>Swift</code>中没有<code>@selector</code>了，取而代之是从<code>#selector</code>来暴露给<code>OC</code>的代码中获取一个<code>selector</code>。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">@objc</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">callMe</span>() { 
+<span style="color:#75715e">//...</span>
+}
+
+<span style="color:#66d9ef">@objc</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">callMeWithParam</span>(obj: AnyObject!) { 
+<span style="color:#75715e">//...</span>
+}
+
+<span style="color:#66d9ef">let</span> someMethod = <span style="color:#66d9ef">#selector</span>(callMe) 
+<span style="color:#66d9ef">let</span> anotherMethod = <span style="color:#66d9ef">#selector</span>(callMeWithParam(obj:))
 </code></pre></div>
     </div>
     <footer class="post-footer">
@@ -681,22 +692,19 @@ SEL anotherMethod = @selector(callMeWithParam:);
         <div class="post-toc-content"><nav id="TableOfContents">
   <ul>
     <li><a href="#柯里化">柯里化</a></li>
-    <li><a href="#protocol">protocol</a>
-      <ul>
-        <li><a href="#sequence">Sequence</a></li>
-        <li><a href="#autoclosure">autoclosure</a></li>
-        <li><a href="#escaping">@escaping</a></li>
-        <li><a href="#typealias">typealias</a></li>
-        <li><a href="#初始化方法顺序">初始化方法顺序</a></li>
-        <li><a href="#default参数">default参数</a></li>
-        <li><a href="#可变参数">可变参数</a></li>
-        <li><a href="#正则表达式">正则表达式</a></li>
-        <li><a href="#模式匹配">模式匹配</a></li>
-        <li><a href="#协议和类方法中的self">协议和类方法中的Self</a></li>
-        <li><a href="#reflection-和-mirror">Reflection 和 Mirror</a></li>
-        <li><a href="#selector">Selector</a></li>
-      </ul>
-    </li>
+    <li><a href="#protocol">protocol</a></li>
+    <li><a href="#sequence">Sequence</a></li>
+    <li><a href="#autoclosure">autoclosure</a></li>
+    <li><a href="#escaping">@escaping</a></li>
+    <li><a href="#typealias">typealias</a></li>
+    <li><a href="#初始化方法顺序">初始化方法顺序</a></li>
+    <li><a href="#default参数">default参数</a></li>
+    <li><a href="#可变参数">可变参数</a></li>
+    <li><a href="#正则表达式">正则表达式</a></li>
+    <li><a href="#模式匹配">模式匹配</a></li>
+    <li><a href="#协议和类方法中的self">协议和类方法中的Self</a></li>
+    <li><a href="#reflection-和-mirror">Reflection 和 Mirror</a></li>
+    <li><a href="#selector">Selector</a></li>
   </ul>
 </nav></div>
     </div>

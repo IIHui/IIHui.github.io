@@ -129,7 +129,8 @@ precedencegroup MatchPrecedence { associativity: none higherThan: DefaultPrecede
 protocol IntervalType { /// Return `rhs` clamped to `self`. The bounds of the result, even  /// if it is empty, are always within the bounds of `self` func clamp(intervalToClamp: Self) -&amp;gt; Self } 这么定义是因为协议本身没有自己的上下文类型的信息，在声明协议的时候，我们并不知道最后究竟会是什么样的类型来实现这个协议。
 Reflection 和 Mirror  反射是一种在运行时检测、访问或者修改类型的行为特性。一般的静态语言类型的结构和方法的调用等都需要在编译时决定。
  Selector @selector是OC时代的一个关键词，可以将一个方法转换并赋值给一个SEL类型，它的表现类似一个动态的函数指针。
--(void) callMe { //... } -(void) callMeWithParam:(id)obj { //... } SEL someMethod = @selector(callMe); SEL anotherMethod = @selector(callMeWithParam:); // 或者也可以使⽤ NSSelectorFromString  // SEL someMethod = NSSelectorFromString(@&amp;#34;callMe&amp;#34;);  // SEL anotherMethod = NSSelectorFromString(@&amp;#34;callMeWithParam:&amp;#34;); </content>
+-(void) callMe { //... } -(void) callMeWithParam:(id)obj { //... } SEL someMethod = @selector(callMe); SEL anotherMethod = @selector(callMeWithParam:); // 或者也可以使⽤ NSSelectorFromString  // SEL someMethod = NSSelectorFromString(@&amp;#34;callMe&amp;#34;);  // SEL anotherMethod = NSSelectorFromString(@&amp;#34;callMeWithParam:&amp;#34;); 在Swift中没有@selector了，取而代之是从#selector来暴露给OC的代码中获取一个selector。
+@objc func callMe() { //... } @objc func callMeWithParam(obj: AnyObject!) { //... } let someMethod = #selector(callMe) let anotherMethod = #selector(callMeWithParam(obj:)) </content>
     </entry>
     
      <entry>
