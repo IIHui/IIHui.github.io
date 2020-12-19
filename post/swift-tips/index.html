@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">2732</span>
+<span class="leancloud-visitors-count">2818</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -529,6 +529,9 @@ SEL anotherMethod = @selector(callMeWithParam:);
 <span style="color:#66d9ef">let</span> someMethod = <span style="color:#66d9ef">#selector</span>(callMe) 
 <span style="color:#66d9ef">let</span> anotherMethod = <span style="color:#66d9ef">#selector</span>(callMeWithParam(obj:))
 </code></pre></div><p><code>selector</code>其实是<code>OC</code>运行的概念，在<code>Swift 4</code>中，默认情况下所有的<code>Swift</code>方法在<code>OC</code>中是不可见的，所以需要在这类方法加上<code>@objc</code>关键字，将这个方法暴露给<code>OC</code>，才能进行使用。</p>
+<h1 id="编译标记">编译标记</h1>
+<p>可以使用<code>Mark:</code>这样的标记，<code>Xcode</code>将在代码中寻找这样的标记，然后以粗体标签的形式将名称显示在导航栏中。还可以在冒号的后⾯加⼀个横杠 开各个部分，会显得更加清晰：</p>
+<p><img src="https://i.loli.net/2020/12/19/XMP6m2ljRtAwr3N.jpg" alt="-c"></p>
 
     </div>
     <footer class="post-footer">
@@ -706,6 +709,7 @@ SEL anotherMethod = @selector(callMeWithParam:);
     <li><a href="#协议和类方法中的self">协议和类方法中的Self</a></li>
     <li><a href="#reflection-和-mirror">Reflection 和 Mirror</a></li>
     <li><a href="#selector">Selector</a></li>
+    <li><a href="#编译标记">编译标记</a></li>
   </ul>
 </nav></div>
     </div>
