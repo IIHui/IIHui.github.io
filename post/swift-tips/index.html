@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">2962</span>
+<span class="leancloud-visitors-count">3081</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">6 分钟</span>
+<span class="leancloud-visitors-count">7 分钟</span>
 </span>
       </div>
     </header>
@@ -317,7 +317,8 @@ greaterThan10(<span style="color:#ae81ff">9</span>)  <span style="color:#75715e"
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">Vehicle</span> {
     <span style="color:#66d9ef">mutating</span>  <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">changeColor</span>()
 }
-</code></pre></div><h1 id="sequence">Sequence</h1>
+</code></pre></div><p>在使用<code>class</code>来实现带有<code>mutating</code>的方法的协议时，具体实现的前面是不需要加<code>mutating</code>修饰的，因为<code>class</code>可以随意修改自己的成员变量。所以说在协议里<code>mutating</code>修饰方法，对于<code>class</code>的实现是完全透明，可以当作不存在的。</p>
+<h1 id="sequence">Sequence</h1>
 <p><code>Swift</code>中的<code>for ... in</code>可以用在所有实现了<code>Sequence</code>协议的类型上，而为了实现<code>Sequence</code>协议，首先需要实现<code>IteratorProtocol</code>协议。下面是一个反向迭代器的例子：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ReverseIterator</span>&lt;T&gt;: IteratorProtocol {
 
