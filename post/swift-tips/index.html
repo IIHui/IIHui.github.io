@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">2856</span>
+<span class="leancloud-visitors-count">2854</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -272,13 +272,12 @@ code.has-jax {
 greaterThan10(<span style="color:#ae81ff">13</span>) <span style="color:#75715e">// =&gt; true</span>
 greaterThan10(<span style="color:#ae81ff">9</span>)  <span style="color:#75715e">// =&gt; false </span>
 </code></pre></div><h2 id="selector">selector</h2>
-<p>在<code>swift</code>中<code>selector</code>只能使用字符串生成，这面临一个很严重的问题，就是难以重构，并且无法编译期间进行检查。但是，<code>target-action</code>⼜是 <code>Cocoa</code>中如此重要的⼀种设计模式，⽆论如何我们都想 安全地使⽤的话，应该怎么办呢？⼀种可能的解决⽅式就是利⽤⽅法的柯⾥化。</p>
+<p>在<code>swift</code>中<code>selector</code>只能使用字符串生成，这面临一个很严重的问题，就是难以重构，并且无法编译期间进行检查。但<code>target-action</code>⼜是 <code>Cocoa</code>中如此重要的⼀种设计模式，⽆论如何我们都想安全地使⽤的话，应该怎么办呢？⼀种可能的解决⽅式就是利⽤⽅法的柯⾥化。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">TargetAction</span> {
     <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">performAction</span>()
 }
 
 <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">TargetActionWrapper</span>&lt;T: AnyObject&gt;: TargetAction {
-    
     <span style="color:#66d9ef">weak</span> <span style="color:#66d9ef">var</span> target: T?
     <span style="color:#66d9ef">let</span> action: (T) -&gt; () -&gt; ()
 
@@ -287,12 +286,12 @@ greaterThan10(<span style="color:#ae81ff">9</span>)  <span style="color:#75715e"
             action(t)()
         }
     }
-
 }
 
 <span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">ControlEvent</span> {
     <span style="color:#66d9ef">case</span> TouchUpInside
-    <span style="color:#66d9ef">case</span> ValueChanged <span style="color:#75715e">// ...</span>
+    <span style="color:#66d9ef">case</span> ValueChanged 
+    <span style="color:#75715e">// ...</span>
 }
 
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Control</span> {
