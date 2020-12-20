@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">2818</span>
+<span class="leancloud-visitors-count">2846</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -262,6 +262,14 @@ code.has-jax {
 
 <span style="color:#66d9ef">let</span> addTwo = addTo(<span style="color:#ae81ff">2</span>)  <span style="color:#75715e">// addTwo: Int -&gt; Int</span>
 <span style="color:#66d9ef">let</span> result = addTwo(<span style="color:#ae81ff">6</span>) <span style="color:#75715e">// result = 8</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">greaterThan</span>(<span style="color:#66d9ef">_</span> comparer: Int) -&gt; (Int) -&gt; Bool { 
+     <span style="color:#66d9ef">return</span> { $0 <span style="color:#f92672">&gt;</span> comparer } 
+}
+
+<span style="color:#66d9ef">let</span> greaterThan10 = greaterThan(<span style="color:#ae81ff">10</span>);
+
+greaterThan10(<span style="color:#ae81ff">13</span>) <span style="color:#75715e">// =&gt; true</span>
+greaterThan10(<span style="color:#ae81ff">9</span>)  <span style="color:#75715e">// =&gt; false </span>
 </code></pre></div><p>在<code>swift</code>中<code>selector</code>只能使用字符串生成，这面临一个很严重的问题，就是难以重构，并且无法编译期间进行检查。但是，<code>target-action</code>⼜是 <code>Cocoa</code>中如此重要的⼀种设计模式，⽆论如何我们都想 安全地使⽤的话，应该怎么办呢？⼀种可能的解决⽅式就是利⽤⽅法的柯⾥化。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">TargetAction</span> {
     <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">performAction</span>()
