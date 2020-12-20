@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">3081</span>
+<span class="leancloud-visitors-count">3132</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -363,6 +363,11 @@ greaterThan10(<span style="color:#ae81ff">9</span>)  <span style="color:#75715e"
     <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> ReverseSequence(array: arr) {
         print(<span style="color:#e6db74">&#34;Index </span><span style="color:#e6db74">\(</span>i<span style="color:#e6db74">)</span><span style="color:#e6db74"> is </span><span style="color:#e6db74">\(</span>arr[i]<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
     }
+}
+</code></pre></div><h1 id="多元组">多元组</h1>
+<p>在<code>Swift</code>中使用多元组可以轻松的交换两个值，而不需要额外的交换空间：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">swap</span>&lt;T&gt;(a : <span style="color:#66d9ef">inout</span> T, b <span style="color:#66d9ef">inout</span> T) {
+   (a,b) = (b,a)
 }
 </code></pre></div><h1 id="autoclosure">autoclosure</h1>
 <p><code>@autoclosure</code>把一句表达式自动地封装成一个闭包<code>closure</code>。但是，<code>@autoclosure</code>并不支持带有输入参数的写法，也就是说只有形如<code>()-&gt;T</code>的参数才能使用此特性进行简化。</p>
@@ -712,6 +717,7 @@ SEL anotherMethod = @selector(callMeWithParam:);
     </li>
     <li><a href="#protocol">protocol</a></li>
     <li><a href="#sequence">Sequence</a></li>
+    <li><a href="#多元组">多元组</a></li>
     <li><a href="#autoclosure">autoclosure</a></li>
     <li><a href="#escaping">@escaping</a></li>
     <li><a href="#typealias">typealias</a></li>
