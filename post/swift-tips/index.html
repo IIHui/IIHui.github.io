@@ -271,7 +271,7 @@ code.has-jax {
 
 greaterThan10(<span style="color:#ae81ff">13</span>) <span style="color:#75715e">// =&gt; true</span>
 greaterThan10(<span style="color:#ae81ff">9</span>)  <span style="color:#75715e">// =&gt; false </span>
-</code></pre></div><h2 id="selector">selector</h2>
+</code></pre></div><h2 id="target-action">target-action</h2>
 <p>在<code>swift</code>中<code>selector</code>只能使用字符串生成，这面临一个很严重的问题，就是难以重构，并且无法编译期间进行检查。但<code>target-action</code>⼜是 <code>Cocoa</code>中如此重要的⼀种设计模式，⽆论如何我们都想安全地使⽤的话，应该怎么办呢？⼀种可能的解决⽅式就是利⽤⽅法的柯⾥化。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">TargetAction</span> {
     <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">performAction</span>()
@@ -510,7 +510,7 @@ greaterThan10(<span style="color:#ae81ff">9</span>)  <span style="color:#75715e"
 <blockquote>
 <p>反射是一种在运行时检测、访问或者修改类型的行为特性。一般的静态语言类型的结构和方法的调用等都需要在编译时决定。</p>
 </blockquote>
-<h1 id="selector-1">Selector</h1>
+<h1 id="selector">Selector</h1>
 <p><code>@selector</code>是<code>OC</code>时代的一个关键词，可以将一个方法转换并赋值给一个<code>SEL</code>类型，它的表现类似一个动态的函数指针。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#f92672">-</span>(void) callMe { <span style="color:#75715e">//...</span>
 
@@ -706,7 +706,7 @@ SEL anotherMethod = @selector(callMeWithParam:);
   <ul>
     <li><a href="#柯里化">柯里化</a>
       <ul>
-        <li><a href="#selector">selector</a></li>
+        <li><a href="#target-action">target-action</a></li>
       </ul>
     </li>
     <li><a href="#protocol">protocol</a></li>
@@ -721,7 +721,7 @@ SEL anotherMethod = @selector(callMeWithParam:);
     <li><a href="#模式匹配">模式匹配</a></li>
     <li><a href="#协议和类方法中的self">协议和类方法中的Self</a></li>
     <li><a href="#reflection-和-mirror">Reflection 和 Mirror</a></li>
-    <li><a href="#selector-1">Selector</a></li>
+    <li><a href="#selector">Selector</a></li>
     <li><a href="#编译标记">编译标记</a></li>
   </ul>
 </nav></div>
