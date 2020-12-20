@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">3214</span>
+<span class="leancloud-visitors-count">3308</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -379,8 +379,15 @@ greaterThan10(<span style="color:#ae81ff">9</span>)  <span style="color:#75715e"
     }
 }
 testAutoClosure(predicate: <span style="color:#ae81ff">2</span>&gt;<span style="color:#ae81ff">1</span>) <span style="color:#75715e">// true</span>
-</code></pre></div><p>在<code>testAutoClosure(predicate: 2&gt;1)</code>中，<code>Swift</code>会把<code>2&gt;1</code>这个表达式自动转换为<code>() -&gt; Bool</code>。</p>
-<h1 id="escaping">@escaping</h1>
+</code></pre></div><p>在<code>testAutoClosure(predicate: 2&gt;1)</code>中，<code>Swift</code>会把<code>2&gt;1</code>这个表达式自动转换为<code>() -&gt; Bool</code>。操作符<code>??、&amp;&amp;、||</code>也中用到了<code>autoclosure</code>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">func</span> ?? &lt;T&gt;(<span style="color:#66d9ef">optional</span>: T?, defaultValue: <span style="color:#66d9ef">@autoclosure</span> () <span style="color:#66d9ef">throws</span> -&gt; T) <span style="color:#66d9ef">rethrows</span> -&gt; T
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">func</span> ?? &lt;T&gt;(<span style="color:#66d9ef">optional</span>: T?, defaultValue: <span style="color:#66d9ef">@autoclosure</span> () <span style="color:#66d9ef">throws</span> -&gt; T?) <span style="color:#66d9ef">rethrows</span> -&gt; T?
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">func</span> <span style="color:#f92672">&amp;&amp;</span> (lhs: Bool, rhs: <span style="color:#66d9ef">@autoclosure</span> () <span style="color:#66d9ef">throws</span> -&gt; Bool) <span style="color:#66d9ef">rethrows</span> -&gt; Bool
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">func</span> <span style="color:#f92672">||</span> (lhs: Bool, rhs: <span style="color:#66d9ef">@autoclosure</span> () <span style="color:#66d9ef">throws</span> -&gt; Bool) <span style="color:#66d9ef">rethrows</span> -&gt; Bool
+</code></pre></div><h1 id="escaping">@escaping</h1>
 <p>如果在协议或者父类中定义了一个接受<code>@escaping</code>为参数的方法，那么在实现协议和类型或者是这个父类的子类中，对应的方法也必须声明为<code>@escaping</code>，否则两个方法会被认为拥有不同的函数签名。</p>
 <h1 id="typealias">typealias</h1>
 <p><code>typealias</code>是用来为已经存在的类型重新定义名字的，通过重命名，可以使代码变得更清晰。使用<code>typealias</code>关键字就像使用普通的赋值语句一样，可以将某个已经存在的类型赋值为新的名字。</p>
