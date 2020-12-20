@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">3131</span>
+<span class="leancloud-visitors-count">3214</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -371,6 +371,15 @@ greaterThan10(<span style="color:#ae81ff">9</span>)  <span style="color:#75715e"
 }
 </code></pre></div><h1 id="autoclosure">autoclosure</h1>
 <p><code>@autoclosure</code>把一句表达式自动地封装成一个闭包<code>closure</code>。但是，<code>@autoclosure</code>并不支持带有输入参数的写法，也就是说只有形如<code>()-&gt;T</code>的参数才能使用此特性进行简化。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">testAutoClosure</span>(predicate:<span style="color:#66d9ef">@autoclosure</span> ()-&gt;Bool) {
+    <span style="color:#66d9ef">if</span> predicate() {
+        print(<span style="color:#e6db74">&#34;true&#34;</span>)
+    }<span style="color:#66d9ef">else</span>{
+        print(<span style="color:#e6db74">&#34;false&#34;</span>)
+    }
+}
+testAutoClosure(predicate: <span style="color:#ae81ff">2</span>&gt;<span style="color:#ae81ff">1</span>) <span style="color:#75715e">// true</span>
+</code></pre></div><p>在<code>testAutoClosure(predicate: 2&gt;1)</code>中，<code>Swift</code>会把<code>2&gt;1</code>这个表达式自动转换为<code>（) -&gt; Bool</code>。</p>
 <h1 id="escaping">@escaping</h1>
 <p>如果在协议或者父类中定义了一个接受<code>@escaping</code>为参数的方法，那么在实现协议和类型或者是这个父类的子类中，对应的方法也必须声明为<code>@escaping</code>，否则两个方法会被认为拥有不同的函数签名。</p>
 <h1 id="typealias">typealias</h1>
