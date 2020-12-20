@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">2854</span>
+<span class="leancloud-visitors-count">2962</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -313,7 +313,7 @@ greaterThan10(<span style="color:#ae81ff">9</span>)  <span style="color:#75715e"
 
 }
 </code></pre></div><h1 id="protocol">protocol</h1>
-<p><code>Swift</code>中的<code>protocol</code>不仅可以被<code>class</code>类型实现，也可以被<code>struct</code>和<code>enum</code>是实现。因此，在定义协议时需要多考虑是否适用<code>mutating</code>来修饰方法。</p>
+<p><code>Swift</code>中的<code>protocol</code>不仅可以被<code>class</code>类型实现，也可以被<code>struct</code>和<code>enum</code>是实现。<code>mutating</code>关键字修饰方法是为了能在该方法中修改<code>struct</code>或是<code>enum</code>的变量，如果如果没在协议⽅法⾥写<code>mutating</code>的话，别⼈如果⽤<code>struct</code>或者<code>enum</code>来实现这个协议的话，就不能在⽅法⾥改变⾃⼰的变量了。因此，在定义协议时需要多考虑是否适用<code>mutating</code>来修饰方法。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">Vehicle</span> {
     <span style="color:#66d9ef">mutating</span>  <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">changeColor</span>()
 }
