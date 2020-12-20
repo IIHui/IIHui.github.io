@@ -379,7 +379,7 @@ greaterThan10(<span style="color:#ae81ff">9</span>)  <span style="color:#75715e"
     }
 }
 testAutoClosure(predicate: <span style="color:#ae81ff">2</span>&gt;<span style="color:#ae81ff">1</span>) <span style="color:#75715e">// true</span>
-</code></pre></div><p>在<code>testAutoClosure(predicate: 2&gt;1)</code>中，<code>Swift</code>会把<code>2&gt;1</code>这个表达式自动转换为<code>（) -&gt; Bool</code>。</p>
+</code></pre></div><p>在<code>testAutoClosure(predicate: 2&gt;1)</code>中，<code>Swift</code>会把<code>2&gt;1</code>这个表达式自动转换为<code>() -&gt; Bool</code>。</p>
 <h1 id="escaping">@escaping</h1>
 <p>如果在协议或者父类中定义了一个接受<code>@escaping</code>为参数的方法，那么在实现协议和类型或者是这个父类的子类中，对应的方法也必须声明为<code>@escaping</code>，否则两个方法会被认为拥有不同的函数签名。</p>
 <h1 id="typealias">typealias</h1>
