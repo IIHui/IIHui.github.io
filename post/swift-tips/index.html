@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">3376</span>
+<span class="leancloud-visitors-count">3438</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -390,6 +390,8 @@ testAutoClosure(predicate: <span style="color:#ae81ff">2</span>&gt;<span style="
 </code></pre></div><h1 id="escaping">@escaping</h1>
 <p>接受<code>@escaping</code>的闭包，因为要确保闭包内的成员依然有效，如果闭包内引出了<code>sele</code>及其成员的话，<code>Swift</code>将强制明确的写出<code>self</code>。</p>
 <p>如果在协议或者父类中定义了一个接受<code>@escaping</code>为参数的方法，那么在实现协议和类型或者是这个父类的子类中，对应的方法也必须声明为<code>@escaping</code>，否则两个方法会被认为拥有不同的函数签名。</p>
+<h1 id="optional-chaining">Optional Chaining</h1>
+<p><code>Optional Chaining</code>随时都可能返回<code>nil</code>的，所以使用<code>Optional Chaining</code>所得到的东西其实都是<code>Optional</code>。</p>
 <h1 id="typealias">typealias</h1>
 <p><code>typealias</code>是用来为已经存在的类型重新定义名字的，通过重命名，可以使代码变得更清晰。使用<code>typealias</code>关键字就像使用普通的赋值语句一样，可以将某个已经存在的类型赋值为新的名字。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">typealias</span> Location = CGPoint
@@ -737,6 +739,7 @@ SEL anotherMethod = @selector(callMeWithParam:);
     <li><a href="#多元组">多元组</a></li>
     <li><a href="#autoclosure">autoclosure</a></li>
     <li><a href="#escaping">@escaping</a></li>
+    <li><a href="#optional-chaining">Optional Chaining</a></li>
     <li><a href="#typealias">typealias</a></li>
     <li><a href="#初始化方法顺序">初始化方法顺序</a></li>
     <li><a href="#default参数">default参数</a></li>
