@@ -6,7 +6,7 @@
     <description>Recent content on Keep It Simple</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 29 Nov 2020 10:50:55 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 25 Dec 2020 15:44:48 +0000</lastBuildDate>
     
 	<atom:link href="https://iihui.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -18,6 +18,15 @@
       
       <guid>https://iihui.github.io/post/hugo-next/</guid>
       <description>从兰陵子处下载了Next主题，修改了主题下面的config.toml配置文件(配置文件的路径如下图所示)。但发现有很多地方还是需要修改才能满足自己的需求，因为对前端了解较少，故以此为记。 代码高亮支持 插入Golang、Swift和OC代码段时</description>
+    </item>
+    
+    <item>
+      <title>UIScene不能使用UIAlertView</title>
+      <link>https://iihui.github.io/post/ios-uiscene/</link>
+      <pubDate>Fri, 25 Dec 2020 15:44:48 +0000</pubDate>
+      
+      <guid>https://iihui.github.io/post/ios-uiscene/</guid>
+      <description>第一步 首先删除SceneDelegate，如下图所示： 第二步 然后在AppDelegate中删除UIScene中相关的信息，即删除下面两个函数，如下所示： func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -&amp;gt; UISceneConfiguration { // Called when a new scene session is being created. // Use this method to select a configuration to create the new scene with. return UISceneConfiguration(name: &amp;#34;Default Configuration&amp;#34;, sessionRole: connectingSceneSession.role) } func</description>
     </item>
     
     <item>
