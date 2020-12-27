@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">407</span>
+<span class="leancloud-visitors-count">437</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -256,7 +256,7 @@ code.has-jax {
 <p>今天测试<a href="https://github.com/kstenerud/KSCrash">KSCrash</a>组件时使用<code>XCode 12.3</code>新建了一个工程，写了相关测试代码之后报错<code>UIAlertView is deprecated and unavailable for UIScene based applications, please use UIAlertController</code>，然后参照<a href="https://stackoverflow.com/questions/58188069/uialertview-is-deprecated-and-unavailable-for-uiscene-based-applications-please">stackover</a>上的回答，解决了报错问题。</p>
 </blockquote>
 <h1 id="第一步">第一步</h1>
-<p>首先删除工程中的<code>SceneDelegate.swift</code>文件，如下图所示：</p>
+<p>解决这个问题就要删除<code>UIScene</code>相关的信息，主要分为四步。首先删除工程中的<code>SceneDelegate.swift</code>文件，如下图所示：</p>
 <p><img src="https://i.loli.net/2020/12/26/i2yRd81MkAP5347.jpg" alt="-c"></p>
 <h1 id="第二步">第二步</h1>
 <p>然后在<code>AppDelegate.swift</code>中删除<code>UIScene</code>中相关的代码，即删除下面两个函数，如下所示：</p>
