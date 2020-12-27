@@ -44,7 +44,7 @@ katex.html文件的内容如下所示：
         <tags>
           <tag>iOS</tag>
         </tags>
-        <content type="html"> 欧陆词典免费版是有使用次数限制的，而这个使用次数是写在~/Library/Preferences目录下的com.eusoft.eudic.plist文件中的MAINTimesLeft中的。因此，可以通过修改这个值，再次试用欧陆词典免费版。
+        <content type="html"> 欧陆词典免费版是有使用次数限制的，而这个使用次数是写在~/Library/Preferences目录下的com.eusoft.eudic.plist文件中的MAINTimesLeft中的。因此，通过修改这个值，可以再次试用欧陆词典免费版。
 </content>
     </entry>
     
