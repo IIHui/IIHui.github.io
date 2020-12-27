@@ -6,10 +6,19 @@
     <description>Recent content in iOS on Keep It Simple</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 25 Dec 2020 15:44:48 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 26 Dec 2020 17:01:20 +0000</lastBuildDate>
     
 	<atom:link href="https://iihui.github.io/categories/ios/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>欧陆词典破解</title>
+      <link>https://iihui.github.io/post/tool-eudic/</link>
+      <pubDate>Sat, 26 Dec 2020 17:01:20 +0000</pubDate>
+      
+      <guid>https://iihui.github.io/post/tool-eudic/</guid>
+      <description>欧陆词典免费版是有使用次数限制的，而这个使用次数是写在~/Library/Preferences目录下的com.eusoft.eudic.plist文件中的MAINTimesLeft中的。因此，可以通过修改这个值，再次试用欧陆词典免费版。</description>
+    </item>
     
     <item>
       <title>UIScene不能使用UIAlertView</title>
