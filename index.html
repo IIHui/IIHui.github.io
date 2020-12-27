@@ -305,7 +305,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">90</span>
+<span class="leancloud-visitors-count">91</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -316,7 +316,7 @@ code.has-jax {
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    func startReporter() { let installation = KSCrashInstallationEmail.sharedInstance() installation?.recipients = [emailAddress] installation?.subject = &#34;Crash Report&#34; installation?.message = &#34;This is a crash report&#34; installation?.filenameFmt = &#34;crash-report-%d.crash.gz&#34; installation?.reportStyle = KSCrashEmailReportStyleApple // KSCrash.sharedInstance()?.deleteBehaviorAfterSendAll = KSCDeleteOnSucess installation?.addConditionalAlert(withTitle: &#34;Crash Detected&#34;, message: &#34;The app crashed last time it was launched. Send a crash report?&#34;, yesAnswer: &#34;Sure!&#34;, noAnswer: &#34;No thanks&#34;) installation?.install() installation?.sendAllReports { (reports, completed, error) -&gt; Void in if completed { if let count = reports?.count { print(&#34;Sent \(count)reports&#34;) } } else { if let msg = error?.localizedDescription { print(&#34;Failed to send reports: \(msg)&#34;) } } } 
+    func startReporter() { let installation = KSCrashInstallationEmail.sharedInstance() installation?.recipients = [emailAddress] installation?.subject = &#34;Crash Report&#34; installation?.message = &#34;This is a crash report&#34; installation?.filenameFmt = &#34;crash-report-%d.crash.gz&#34; installation?.reportStyle = KSCrashEmailReportStyleApple // KSCrash.sharedInstance()?.deleteBehaviorAfterSendAll = KSCDeleteOnSucess installation?.addConditionalAlert(withTitle: &#34;Crash Detected&#34;, message: &#34;The app crashed last time it was launched. Send a crash report?&#34;, yesAnswer: &#34;Sure!&#34;, noAnswer: &#34;No thanks&#34;) installation?.install() installation?.sendAllReports { (reports, completed, error) -&gt; Void in if completed { if let count = reports?.count { print(&#34;Sent \(count)reports&#34;) } } else { if let msg = error?.localizedDescription { print(&#34;Failed to send reports: \(msg)&#34;) } } } } 
     </div>
     
     <footer class="post-footer"><div class="post-eof"></div></footer>
