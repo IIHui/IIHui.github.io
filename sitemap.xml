@@ -45,10 +45,10 @@ katex.html文件的内容如下所示：
           <tag>iOS</tag>
         </tags>
         <content type="html"> 第一步 首先删除工程中的SceneDelegate.swift文件，如下图所示：
-第二步 然后在AppDelegate中删除UIScene中相关的信息，即删除下面两个函数，如下所示：
-func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -&amp;gt; UISceneConfiguration { // Called when a new scene session is being created. // Use this method to select a configuration to create the new scene with. return UISceneConfiguration(name: &amp;#34;Default Configuration&amp;#34;, sessionRole: connectingSceneSession.role) } func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set&amp;lt;UISceneSession&amp;gt;) { // Called when the user discards a scene session. // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions. // Use this method to release any resources that were specific to the discarded scenes, as they will not return. } 第三步 然后在中AppDelegate中添加var window: UIWindow?，如下图所示：
-第四步 然后在Info.plist文件中删除Application Scene Manifest，如下图所示：
-</content>
+第二步 然后在AppDelegate.swift中删除UIScene中相关的代码，即删除下面两个函数，如下所示：
+func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -&amp;gt; UISceneConfiguration { // Called when a new scene session is being created. // Use this method to select a configuration to create the new scene with. return UISceneConfiguration(name: &amp;#34;Default Configuration&amp;#34;, sessionRole: connectingSceneSession.role) } func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set&amp;lt;UISceneSession&amp;gt;) { // Called when the user discards a scene session. // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions. // Use this method to release any resources that were specific to the discarded scenes, as they will not return. } 第三步 接着在AppDelegate.swift中添加var window: UIWindow?，如下图所示：
+第四步 最后在Info.plist文件中删除Application Scene Manifest，然后清除工程的缓存，如下所示：
+ </content>
     </entry>
     
      <entry>
