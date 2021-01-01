@@ -128,7 +128,7 @@ def build_profile(first, last, **user_info): &amp;#34;&amp;#34;&amp;#34;创建�
     </entry>
     
      <entry>
-        <title>Tips</title>
+        <title>Swift Tips</title>
         <url>https://iihui.github.io/post/swift-tips/</url>
         <categories>
           <category>iOS</category>
