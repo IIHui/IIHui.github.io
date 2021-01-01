@@ -67,8 +67,8 @@ func application(_ application: UIApplication, configurationForConnecting connec
     </entry>
     
      <entry>
-        <title>shell命令</title>
-        <url>https://iihui.github.io/post/shell-study/</url>
+        <title>Shell 常用命令</title>
+        <url>https://iihui.github.io/post/shell-base/</url>
         <categories>
           <category>iOS</category>
         </categories>

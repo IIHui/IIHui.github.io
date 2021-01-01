@@ -39,11 +39,11 @@
     </item>
     
     <item>
-      <title>shell命令</title>
-      <link>https://iihui.github.io/post/shell-study/</link>
+      <title>Shell 常用命令</title>
+      <link>https://iihui.github.io/post/shell-base/</link>
       <pubDate>Sun, 29 Nov 2020 10:50:55 +0000</pubDate>
       
-      <guid>https://iihui.github.io/post/shell-study/</guid>
+      <guid>https://iihui.github.io/post/shell-base/</guid>
       <description>本文记录工作中用的shell命令，以便下次使用的时候查阅。 软链接 创建 ln ~/.cocoapods/repos-art/CocoaPods-cmb ~/.cocoapods/repos 删除 unlink cocoaPods-github</description>
     </item>
     
