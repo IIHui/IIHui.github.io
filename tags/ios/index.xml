@@ -6,10 +6,19 @@
     <description>Recent content in iOS on Keep It Simple</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 26 Dec 2020 17:33:11 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 01 Jan 2021 16:50:19 +0000</lastBuildDate>
     
 	<atom:link href="https://iihui.github.io/tags/ios/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Swift 函数式编程</title>
+      <link>https://iihui.github.io/post/swift-function/</link>
+      <pubDate>Fri, 01 Jan 2021 16:50:19 +0000</pubDate>
+      
+      <guid>https://iihui.github.io/post/swift-function/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>KSCrash</title>
