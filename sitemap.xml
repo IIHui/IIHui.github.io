@@ -185,8 +185,9 @@ Reflection 和 Mirror  反射是一种在运行时检测、访问或者修改类
         <content type="html"> 变量和函数 常量 Kotlin中使用val来声明常量「val是value的缩写」，val声明的常量不可以再重新赋值，否则会报错。val对应Java中的final。
 val str = &amp;#34;Hello world&amp;#34; 变量 Kotlin中使用var来声明变量「var是variable的缩写」，var声明的变量可以重新赋值。var声明的变量对应Java中的final变量。
 var test = &amp;#34;ch&amp;#34; println(test) test = &amp;#34;ccc&amp;#34; println(test) 函数 在Kotlin中fun用于定义函数，例如fun methodName(param1:Int, param2:Int):Int定义一个名为methodName，接受两个Int类型的参数，返回Int的函数。
-fun largeNumber1(param1:Int,param2:Int):Int { return max(param1,param2) } fun largeNumber2(param1:Int,param2:Int):Int = max(param1,param2) fun largeNumber3(param1:Int,param2:Int) = max(param1,param2) 条件语句  Kotlin不包含三元运算符，更加倾向于使用条件表达式，随着if-else的复杂性增加，可以使用when表达式。
- when Kotlin中的when表达式中每个分支由一个条件，一个箭头和一个结果表示，如果箭头左侧的条件求值为true，则会返回右侧表达式的值。
+fun largeNumber1(param1:Int,param2:Int):Int { return max(param1,param2) } fun largeNumber2(param1:Int,param2:Int):Int = max(param1,param2) fun largeNumber3(param1:Int,param2:Int) = max(param1,param2) 条件语句 if语句 Kotlin中的if相比于Java中有一个额外功能，它是可以有返回值的，返回值是if语句每一个条件中最后一行代码的返回值。
+fun largeNumber4(num1:Int,num2:Int):Int { val value = if (num1 &amp;gt; num2) { num1 }else{ num2 } return value } Kotlin不包含三元运算符，更加倾向于使用条件表达式，随着if-else的复杂性增加，可以使用when表达式。
+when Kotlin中的when表达式中每个分支由一个条件，一个箭头和一个结果表示，如果箭头左侧的条件求值为true，则会返回右侧表达式的值。
 val count = 43 var str1 = when (count) { 42 -&amp;gt; &amp;#34;chen&amp;#34; 56 -&amp;gt; &amp;#34;cchen&amp;#34; else -&amp;gt; &amp;#34;test&amp;#34; } when { count == 43 -&amp;gt; println(&amp;#34;43&amp;#34;) tt == &amp;#34;name&amp;#34; -&amp;gt; println(&amp;#34;name&amp;#34;) str1 == &amp;#34;test&amp;#34; -&amp;gt; println(str1) } fun getValue(colorEnum: ColorEnum) = when(colorEnum){ ColorEnum.RED -&amp;gt; 1; ColorEnum.BLUE -&amp;gt; 2; ColorEnum.GREEN -&amp;gt; 3; } 参考
 </content>
     </entry>

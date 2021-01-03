@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">446</span>
+<span class="leancloud-visitors-count">529</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">1 分钟</span>
+<span class="leancloud-visitors-count">2 分钟</span>
 </span>
       </div>
     </header>
@@ -271,10 +271,18 @@ println(test)
 <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">largeNumber2</span>(param1:Int,param2:Int):Int = max(param1,param2)
 
 <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">largeNumber3</span>(param1:Int,param2:Int) = max(param1,param2)
-</code></pre></div><h2 id="条件语句">条件语句</h2>
-<blockquote>
-<p><code>Kotlin</code><!-- raw HTML omitted -->不包含三元运算符<!-- raw HTML omitted -->，更加倾向于使用条件表达式，随着<code>if-else</code>的复杂性增加，可以使用<code>when</code>表达式。</p>
-</blockquote>
+</code></pre></div><h1 id="条件语句">条件语句</h1>
+<h2 id="if语句">if语句</h2>
+<p><code>Kotlin</code>中的<code>if</code>相比于<code>Java</code>中有一个额外功能，它是可以有返回值的，返回值是<code>if</code>语句每一个条件中最后一行代码的返回值。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">largeNumber4</span>(num1:Int,num2:Int):Int {
+    <span style="color:#66d9ef">val</span> value = <span style="color:#66d9ef">if</span> (num1 &gt; num2) {
+        num1
+    }<span style="color:#66d9ef">else</span>{
+        num2
+    }
+    <span style="color:#66d9ef">return</span> value
+}
+</code></pre></div><p><code>Kotlin</code><!-- raw HTML omitted -->不包含三元运算符<!-- raw HTML omitted -->，更加倾向于使用条件表达式，随着<code>if-else</code>的复杂性增加，可以使用<code>when</code>表达式。</p>
 <h2 id="when">when</h2>
 <p><code>Kotlin</code>中的<code>when</code>表达式中每个分支由一个条件，一个箭头和一个结果表示，如果箭头左侧的条件求值为<code>true</code>，则会返回右侧表达式的值。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#66d9ef">val</span> count = <span style="color:#ae81ff">43</span>
@@ -463,7 +471,11 @@ println(test)
         <li><a href="#常量">常量</a></li>
         <li><a href="#变量">变量</a></li>
         <li><a href="#函数">函数</a></li>
-        <li><a href="#条件语句">条件语句</a></li>
+      </ul>
+    </li>
+    <li><a href="#条件语句">条件语句</a>
+      <ul>
+        <li><a href="#if语句">if语句</a></li>
         <li><a href="#when">when</a></li>
       </ul>
     </li>
