@@ -242,7 +242,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">631</span>
+<span class="leancloud-visitors-count">657</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -302,7 +302,14 @@ println(test)
 }
 </code></pre></div><h2 id="when">when</h2>
 <p><code>Kotlin</code><!-- raw HTML omitted -->不包含三元运算符<!-- raw HTML omitted -->，更加倾向于使用条件表达式，随着<code>if-else</code>的复杂性增加，可以使用<code>when</code>表达式。<code>Kotlin</code>中的<code>when</code>表达式中每个分支由一个条件，一个箭头和一个结果表示，如果箭头左侧的条件求值为<code>true</code>，则会返回右侧表达式的值。<code>when</code>语句和<code>if</code>语句一样，也是可以有返回值，因此依然<!-- raw HTML omitted -->可以使用单行代码函数语法糖<!-- raw HTML omitted -->。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#66d9ef">when</span> {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">checkNumber</span>(num: Number) {
+    <span style="color:#66d9ef">when</span> (num) {
+        <span style="color:#66d9ef">is</span> Int -&gt; println(<span style="color:#e6db74">&#34;number is Int&#34;</span>)
+        <span style="color:#66d9ef">is</span> Double -&gt; println(<span style="color:#e6db74">&#34;number is Double&#34;</span>)
+        <span style="color:#66d9ef">else</span> -&gt; println(<span style="color:#e6db74">&#34;number not support&#34;</span>)
+    }
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#66d9ef">when</span> {
     count == <span style="color:#ae81ff">43</span> -&gt; println(<span style="color:#e6db74">&#34;43&#34;</span>)
     tt == <span style="color:#e6db74">&#34;name&#34;</span> -&gt; println(<span style="color:#e6db74">&#34;name&#34;</span>)
     str1 == <span style="color:#e6db74">&#34;test&#34;</span> -&gt; println(str1)
