@@ -26,7 +26,7 @@
       <pubDate>Fri, 01 Jan 2021 16:50:19 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/swift-function/</guid>
-      <description>函数在Swift中是一等值，即函数可以作为参数被传递其它函数，也可以作为其它函数的返回值，而方法是定义在类型里的函数。函数式编程的核心理念就是函数是值，它和结构体、整型或是布尔型没有什么区别。</description>
+      <description>函数在Swift中是一等值，即函数可以作为参数被传递其它函数，也可以作为其它函数的返回值，而方法是定义在类型里的函数。函数式编程的核心理念就是函数是值，它和结构体、整型或是布尔型没有什么区别。函数式编程可以用规范的方式将函数作为参数装配为规</description>
     </item>
     
     <item>
