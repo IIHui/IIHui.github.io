@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">555</span>
+<span class="leancloud-visitors-count">590</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -274,7 +274,7 @@ println(test)
 </code></pre></div><h1 id="条件语句">条件语句</h1>
 <h2 id="if语句">if语句</h2>
 <p><code>Kotlin</code>中的<code>if</code>相比于<code>Java</code>中有一个额外功能，它是可以有返回值的，返回值是<code>if</code>语句每一个条件中最后一行代码的返回值。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">largeNumber4</span>(num1: Int, num2: Int): Int {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">largeNumber4</span>(num1: Int, num2: Int): Int {
     <span style="color:#66d9ef">val</span> value = <span style="color:#66d9ef">if</span> (num1 &gt; num2) {
         num1
     } <span style="color:#66d9ef">else</span> {
@@ -288,6 +288,16 @@ println(test)
     } <span style="color:#66d9ef">else</span> {
         num2
     }
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">largeNumber6</span>(num1: Int, num2: Int): Int = <span style="color:#66d9ef">if</span> (num1 &gt; num2) {
+    num1
+} <span style="color:#66d9ef">else</span> {
+    num2
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">largerNumber7</span>(num1: Int, num2: Int) = <span style="color:#66d9ef">if</span> (num1 &gt; num2) {
+    num1
+} <span style="color:#66d9ef">else</span> {
+    num2
 }
 </code></pre></div><h2 id="when">when</h2>
 <p><code>Kotlin</code><!-- raw HTML omitted -->不包含三元运算符<!-- raw HTML omitted -->，更加倾向于使用条件表达式，随着<code>if-else</code>的复杂性增加，可以使用<code>when</code>表达式。</p>
