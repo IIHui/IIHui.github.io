@@ -177,10 +177,10 @@ Reflection 和 Mirror  反射是一种在运行时检测、访问或者修改类
         <title>Kotlin</title>
         <url>https://iihui.github.io/post/kotlin-base/</url>
         <categories>
-          <category>iOS</category>
+          <category>kotlin</category>
         </categories>
         <tags>
-          <tag>iOS</tag>
+          <tag>kotlin</tag>
         </tags>
         <content type="html"> 变量和函数 常量 Kotlin中使用val来声明常量「val是value的缩写」，val声明的常量不可以再重新赋值，否则会报错。
 val str = &amp;#34;Hello world&amp;#34; 变量 Kotlin中使用var来声明变量「var是variable的缩写」，var声明的变量可以重新赋值。

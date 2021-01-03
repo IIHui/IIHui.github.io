@@ -57,15 +57,6 @@
     </item>
     
     <item>
-      <title>Kotlin</title>
-      <link>https://iihui.github.io/post/kotlin-base/</link>
-      <pubDate>Tue, 10 Nov 2020 08:07:17 +0000</pubDate>
-      
-      <guid>https://iihui.github.io/post/kotlin-base/</guid>
-      <description>变量和函数 常量 Kotlin中使用val来声明常量「val是value的缩写」，val声明的常量不可以再重新赋值，否则会报错。 val str = &amp;#34;Hello world&amp;#34; 变量 Kotlin中使用var来声明变量「var是variable的缩写」，var声明的变量可以重新赋值。 var</description>
-    </item>
-    
-    <item>
       <title>Moya使用</title>
       <link>https://iihui.github.io/post/ios-moya/</link>
       <pubDate>Fri, 06 Nov 2020 10:49:11 +0000</pubDate>
