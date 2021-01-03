@@ -182,7 +182,7 @@ Reflection 和 Mirror  反射是一种在运行时检测、访问或者修改类
         <tags>
           <tag>kotlin</tag>
         </tags>
-        <content type="html"> 变量和函数 常量 Kotlin中使用val来声明常量「val是value的缩写」，val声明的常量不可以再重新赋值，否则会报错。
+        <content type="html"> 变量和函数 常量 Kotlin中使用val来声明常量「val是value的缩写」，val声明的常量不可以再重新赋值，否则会报错。val对应Java中的final。
 val str = &amp;#34;Hello world&amp;#34; 变量 Kotlin中使用var来声明变量「var是variable的缩写」，var声明的变量可以重新赋值。
 var test = &amp;#34;ch&amp;#34; println(test) test = &amp;#34;ccc&amp;#34; println(test) 条件语句  Kotlin不包含三元运算符，更加倾向于使用条件表达式，随着if-else的复杂性增加，可以使用when表达式。
  when Kotlin中的when表达式中每个分支由一个条件，一个箭头和一个结果表示，如果箭头左侧的条件求值为true，则会返回右侧表达式的值。
