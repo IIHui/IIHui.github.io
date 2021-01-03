@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1786</span>
+<span class="leancloud-visitors-count">1835</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -257,13 +257,14 @@ code.has-jax {
 </blockquote>
 <p><img src="https://i.loli.net/2020/02/07/z4ijTtkEwpmg5CQ.jpg" alt="-c"></p>
 <h1 id="代码高亮支持">代码高亮支持</h1>
-<p>插入<code>Golang、Swift</code>和<code>OC</code>代码段时发现并不能正常高亮，查资料发现是<code>Next</code>主题默认不支持这几种语言的语法高亮，因此需要在<code>head.html</code>的<code>&lt;/head&gt;</code>前添加如下代码：</p>
+<p>插入<code>Golang、Swift</code>和<code>OC</code>代码段时发现并不能正常高亮，查资料发现是<code>Next</code>主题默认不支持这几种语言的语法高亮，因此需要在<code>~/Desktop/mweb/themes/next/layouts/partials</code>目录下<code>head.html</code>中的<code>&lt;/head&gt;</code>前添加如下代码：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">    <span style="color:#75715e">&lt;!-- add by cxh --&gt;</span>
     &lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai-sublime.min.css&#34;</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span>&gt;
     &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
     &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
     &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/swift.min.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
     &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+    &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/kotlin.min.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
    &lt;<span style="color:#f92672">script</span>&gt;<span style="color:#a6e22e">hljs</span>.<span style="color:#a6e22e">initHighlightingOnLoad</span>();&lt;/<span style="color:#f92672">script</span>&gt;
 </code></pre></div><h1 id="添加底部声明">添加底部声明</h1>
 <p>默认情况下底部的创作共享以及微信打赏码是没有的，为了显示，首先必须修改<code>widget</code>下的<code>weixin.html</code>：</p>
