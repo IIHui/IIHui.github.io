@@ -197,7 +197,9 @@ fun forTest5() { for (i in 10 downTo 1) { println(i) } } fun forTest6() { for (i
 构造函数 主构造函数 构造函数分为了两种，一种是主构造函数，另一种是次构造函数。每个类默认都会有一个不带参数的主构造函数。主构造函数的特点是没有函数体，直接定义在类名的后面即可：
 open class Person { var name = &amp;#34;&amp;#34; var age = 0 fun eat() { println(name &#43; &amp;#34; is eating. He is &amp;#34; &#43; age &#43; &amp;#34;years old.&amp;#34;) } } class Student : Person() { var sno = &amp;#34;&amp;#34; var grade = 0 init { println(sno) println(grade) } } 主构造函数没有函数体，如果想要在主构造函数中编写一些逻辑，则可以写在init结构体中。主构造函数声明为val或者var的参数将自动成为该类的字段。
 open class Person(val name: String, val age: Int) { // } class Student(val sno: String, val grade: Int, name: String, age: Int) : Person(name, age) { // } 次构造函数 任何一个类只能(至多)有一个主构造函数，但是可以有多个次构造函数。次构造函数也可以用于实例化一个类。次构造函数是通过constructor关键字来定义，次构造函数是有函数体的，可以通过this关键字来调用主构造函数。
-class Student(val sno: String, val grade: Int, name: String, age: Int) : Person(name, age) { constructor(name: String, age: Int) : this(&amp;#34;&amp;#34;, 0, name, age) { //  } constructor() : this(&amp;#34;&amp;#34;, 0) { //  } } 参考
+class Student(val sno: String, val grade: Int, name: String, age: Int) : Person(name, age) { constructor(name: String, age: Int) : this(&amp;#34;&amp;#34;, 0, name, age) { //  } constructor() : this(&amp;#34;&amp;#34;, 0) { //  } } 当一个类没有显式地定义主构造函数且定义了次构造函数时，它就是没有主构造函数的。因为没有主构造函数，次构造函数只能直接调用父类的构造函数：
+class Student : Person { constructor(name: String, age: Int) : super(name, age) } 接口 在Java中，任何一个类最多只能继承一个父类，但可以实现任意多接口，Kotlin也是。Java中继承使用的关键字为extends，实现接口使用的关键字为implements，而Kotlin中统一使用冒号，中间用逗号进行分隔。Kotlin中使用override关键字来重写父类或者实现接口中的函数。
+interface Study { fun readBooks() fun doHomework() } class Student(val sno: String, val grade: Int, name: String, age: Int) : Person(name, age), Study { constructor(name: String, age: Int) : this(&amp;#34;&amp;#34;, 0, name, age) { //  } constructor() : this(&amp;#34;&amp;#34;, 0) { //  } override fun readBooks() { println(&amp;#34;$name is reading&amp;#34;) } override fun doHomework() { println(&amp;#34;$name is doing homework.&amp;#34;) } } 参考
 </content>
     </entry>
     
