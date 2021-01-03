@@ -242,7 +242,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">657</span>
+<span class="leancloud-visitors-count">861</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -326,7 +326,23 @@ println(test)
         ColorEnum.BLUE -&gt; <span style="color:#ae81ff">2</span>;
         ColorEnum.GREEN -&gt; <span style="color:#ae81ff">3</span>;
     }
-</code></pre></div><p><a href="https://www.baeldung.com/kotlin-when">参考</a></p>
+</code></pre></div><h3 id="不带参数">不带参数</h3>
+<p>可以不在<code>when</code>语句中传入参数。这种用法是将判断的表达式完整地写在<code>when</code>的结构体中，对于其他的一些情况很有用，如下所示：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">getScore1</span>(name: String) = <span style="color:#66d9ef">when</span> {
+    name == <span style="color:#e6db74">&#34;Tom&#34;</span> -&gt; <span style="color:#ae81ff">86</span>
+    name == <span style="color:#e6db74">&#34;Jim&#34;</span> -&gt; <span style="color:#ae81ff">77</span>
+    name == <span style="color:#e6db74">&#34;Jack&#34;</span> -&gt; <span style="color:#ae81ff">90</span>
+    <span style="color:#66d9ef">else</span> -&gt; <span style="color:#ae81ff">0</span>
+}
+
+<span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">getScore2</span>(name: String) = <span style="color:#66d9ef">when</span> {
+    name.startsWith(<span style="color:#e6db74">&#34;test&#34;</span>) -&gt; <span style="color:#ae81ff">89</span>
+    name == <span style="color:#e6db74">&#34;Jack&#34;</span> -&gt; <span style="color:#ae81ff">90</span>
+    <span style="color:#66d9ef">else</span> -&gt; <span style="color:#ae81ff">4589</span>
+}
+</code></pre></div><h1 id="循环语句">循环语句</h1>
+<p><code>Kotlin</code>在<code>for</code>在循环方面做了很大幅度的修改，直接舍弃了<code>Java</code>中的<code>for-i</code>，而在<code>Java</code>中的另一种<code>for-each</code>循环则被<code>Kotlin</code>进行大幅度的加强，变成了<code>for-in</code>循环。</p>
+<p><a href="https://www.baeldung.com/kotlin-when">参考</a></p>
 
     </div>
     <footer class="post-footer">
@@ -500,9 +516,14 @@ println(test)
     <li><a href="#条件语句">条件语句</a>
       <ul>
         <li><a href="#if语句">if语句</a></li>
-        <li><a href="#when">when</a></li>
+        <li><a href="#when">when</a>
+          <ul>
+            <li><a href="#不带参数">不带参数</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
+    <li><a href="#循环语句">循环语句</a></li>
   </ul>
 </nav></div>
     </div>
