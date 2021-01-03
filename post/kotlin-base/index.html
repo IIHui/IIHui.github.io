@@ -242,7 +242,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1178</span>
+<span class="leancloud-visitors-count">1394</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -381,6 +381,27 @@ println(test)
 <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">forTest6</span>() {
     <span style="color:#66d9ef">for</span> (i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">10</span> downTo <span style="color:#ae81ff">1</span> step <span style="color:#ae81ff">4</span>) {
         println(i)
+    }
+}
+</code></pre></div><h1 id="类与对象">类与对象</h1>
+<p>在<code>Kotlin</code>中任何一个非抽象类默认都是不可以被继承的，相当于<code>Java</code>中给类声明了<code>final</code>关键字。如果要想一个非抽象类可以被继承，就要在其前添加<code>open</code>关键字。</p>
+<h2 id="构造函数">构造函数</h2>
+<p>构造函数分为了两种，一种是主构造函数，另一种是次构造函数。每个类默认都会有一个不带参数的主构造函数。主构造函数的特点是<!-- raw HTML omitted -->没有函数体，直接定义在类名的后面<!-- raw HTML omitted -->即可：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#66d9ef">open</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Person</span> {
+    <span style="color:#66d9ef">var</span> name = <span style="color:#e6db74">&#34;&#34;</span>
+    <span style="color:#66d9ef">var</span> age = <span style="color:#ae81ff">0</span>
+    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">eat</span>() {
+        println(name + <span style="color:#e6db74">&#34; is eating. He is &#34;</span> + age + <span style="color:#e6db74">&#34;years old.&#34;</span>)
+    }
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Student</span> : Person() {
+    <span style="color:#66d9ef">var</span> sno = <span style="color:#e6db74">&#34;&#34;</span>
+    <span style="color:#66d9ef">var</span> grade = <span style="color:#ae81ff">0</span>
+
+    init {
+        println(sno)
+        println(grade)
     }
 }
 </code></pre></div><p><a href="https://www.baeldung.com/kotlin-when">参考</a></p>
@@ -573,6 +594,11 @@ println(test)
             <li><a href="#降序区间">降序区间</a></li>
           </ul>
         </li>
+      </ul>
+    </li>
+    <li><a href="#类与对象">类与对象</a>
+      <ul>
+        <li><a href="#构造函数">构造函数</a></li>
       </ul>
     </li>
   </ul>
