@@ -184,7 +184,8 @@ Reflection 和 Mirror  反射是一种在运行时检测、访问或者修改类
         </tags>
         <content type="html"> 变量和函数 常量 Kotlin中使用val来声明常量「val是value的缩写」，val声明的常量不可以再重新赋值，否则会报错。val对应Java中的final。
 val str = &amp;#34;Hello world&amp;#34; 变量 Kotlin中使用var来声明变量「var是variable的缩写」，var声明的变量可以重新赋值。var声明的变量对应Java中的final变量。
-var test = &amp;#34;ch&amp;#34; println(test) test = &amp;#34;ccc&amp;#34; println(test) 条件语句  Kotlin不包含三元运算符，更加倾向于使用条件表达式，随着if-else的复杂性增加，可以使用when表达式。
+var test = &amp;#34;ch&amp;#34; println(test) test = &amp;#34;ccc&amp;#34; println(test) 函数 在Kotlin中fun用于定义函数，例如fun methodName(param1:Int, param2:Int):Int
+条件语句  Kotlin不包含三元运算符，更加倾向于使用条件表达式，随着if-else的复杂性增加，可以使用when表达式。
  when Kotlin中的when表达式中每个分支由一个条件，一个箭头和一个结果表示，如果箭头左侧的条件求值为true，则会返回右侧表达式的值。
 val count = 43 var str1 = when (count) { 42 -&amp;gt; &amp;#34;chen&amp;#34; 56 -&amp;gt; &amp;#34;cchen&amp;#34; else -&amp;gt; &amp;#34;test&amp;#34; } when { count == 43 -&amp;gt; println(&amp;#34;43&amp;#34;) tt == &amp;#34;name&amp;#34; -&amp;gt; println(&amp;#34;name&amp;#34;) str1 == &amp;#34;test&amp;#34; -&amp;gt; println(str1) } fun getValue(colorEnum: ColorEnum) = when(colorEnum){ ColorEnum.RED -&amp;gt; 1; ColorEnum.BLUE -&amp;gt; 2; ColorEnum.GREEN -&amp;gt; 3; } 参考
 </content>
