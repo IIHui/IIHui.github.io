@@ -194,8 +194,10 @@ fun getScore1(name: String) = when { name == &amp;#34;Tom&amp;#34; -&amp;gt; 86 
 升序区间 fun forTest1() { for (i in 0..100) { println(i) } } fun forTest2() { for (i in 0 until 100) { println(i) } } 由..和until定义的升序区间，默认步长都是1，如果想要更改步长就需要使用step关键字，如下所示：
 fun forTest3() { for (i in 0..100 step 6) { println(i) } } fun forTest4() { for (i in 0 until 100 step 6) { println(i) } } 降序区间 如果要使用降序区间，需要使用downTo关键字，由downTo定义的区间是也是左闭右闭的，也可以使用step关键字设置步长。
 fun forTest5() { for (i in 10 downTo 1) { println(i) } } fun forTest6() { for (i in 10 downTo 1 step 4) { println(i) } } 类与对象 在Kotlin中任何一个非抽象类默认都是不可以被继承的，相当于Java中给类声明了final关键字。如果要想一个非抽象类可以被继承，就要在其前添加open关键字。
-构造函数 构造函数分为了两种，一种是主构造函数，另一种是次构造函数。每个类默认都会有一个不带参数的主构造函数。主构造函数的特点是没有函数体，直接定义在类名的后面即可：
-open class Person { var name = &amp;#34;&amp;#34; var age = 0 fun eat() { println(name &#43; &amp;#34; is eating. He is &amp;#34; &#43; age &#43; &amp;#34;years old.&amp;#34;) } } class Student : Person() { var sno = &amp;#34;&amp;#34; var grade = 0 init { println(sno) println(grade) } } 参考
+构造函数 主构造函数 构造函数分为了两种，一种是主构造函数，另一种是次构造函数。每个类默认都会有一个不带参数的主构造函数。主构造函数的特点是没有函数体，直接定义在类名的后面即可：
+open class Person { var name = &amp;#34;&amp;#34; var age = 0 fun eat() { println(name &#43; &amp;#34; is eating. He is &amp;#34; &#43; age &#43; &amp;#34;years old.&amp;#34;) } } class Student : Person() { var sno = &amp;#34;&amp;#34; var grade = 0 init { println(sno) println(grade) } } 主构造函数没有函数体，如果想要在主构造函数中编写一些逻辑，则可以写在init结构体中。主构造函数声明为val或者var的参数将自动成为该类的字段。
+open class Person(val name: String, val age: Int) { // } class Student(val sno: String, val grade: Int, name: String, age: Int) : Person(name, age) { // } 次构造函数 任何一个类只能(至多)有一个主构造函数，但是可以有多个次构造函数。次构造函数也可以用于实例化一个类。次构造函数是通过constructor关键字来定义，次构造函数是有函数体的，可以通过this关键字来调用主构造函数。
+class Student(val sno: String, val grade: Int, name: String, age: Int) : Person(name, age) { constructor(name: String, age: Int) : this(&amp;#34;&amp;#34;, 0, name, age) { //  } constructor() : this(&amp;#34;&amp;#34;, 0) { //  } } 参考
 </content>
     </entry>
     
