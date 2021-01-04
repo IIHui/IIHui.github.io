@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
-    <title>Any,AnyObject,AnyClass - Keep It Simple</title>
+    <title>UITableView自动调整高度 - Keep It Simple</title>
     <meta name="keywords" content="博客,思考,读书,笔记,技术,分享">
     
-    <meta property="og:title" content="Any,AnyObject,AnyClass">
+    <meta property="og:title" content="UITableView自动调整高度">
     <meta property="og:site_name" content="Keep It Simple">
     <meta property="og:image" content="/img/author.jpg"> 
-    <meta name="title" content="Any,AnyObject,AnyClass - Keep It Simple" />
+    <meta name="title" content="UITableView自动调整高度 - Keep It Simple" />
     <meta name="description" content="Swift | Go | C&#43;&#43; "> 
     <link rel="shortcut icon" href="https://iihui.github.io/img/favicon.ico" />
     <link rel="apple-touch-icon" href="https://iihui.github.io/img/apple-touch-icon.png" />
@@ -193,8 +193,8 @@ code.has-jax {
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="https://iihui.github.io/post/ios-any/" itemprop="url">
-        Any,AnyObject,AnyClass
+        <a class="post-title-link" href="https://iihui.github.io/post/ios-footer/" itemprop="url">
+        UITableView自动调整高度
         </a>
       </h1>
       <div class="post-meta">
@@ -203,8 +203,8 @@ code.has-jax {
     <i class="fa fa-calendar-o"></i>
 </span>
 <span class="post-meta-item-text">创建: </span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2020-02-18">
-    2020-02-18
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2021-01-04">
+    2021-01-04
 </time>
 </span>
 &nbsp; | &nbsp;
@@ -213,8 +213,8 @@ code.has-jax {
     <i class="fa fa-calendar-check-o"></i>
 </span>
 <span class="post-meta-item-text">更新: </span>
-<time itemprop="dateUpdated" content="2020-02-18">
-    2020-02-18
+<time itemprop="dateUpdated" content="2021-01-04">
+    2021-01-04
 </time>
 </span> 
       
@@ -227,8 +227,8 @@ code.has-jax {
   <span class="post-meta-item-text">分类: </span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="https://iihui.github.io/categories/code" itemprop="url" rel="index">
-        <span itemprop="name">code</span>
+      <a href="https://iihui.github.io/categories/ios" itemprop="url" rel="index">
+        <span itemprop="name">iOS</span>
       </a>
       &nbsp; 
     </span>
@@ -242,73 +242,67 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1040</span>
+<span class="leancloud-visitors-count">117</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">3 分钟</span>
+<span class="leancloud-visitors-count">1 分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    <blockquote>
-<p>最近在看<code>Swift</code>中的方法交换，遇到<code>Any</code>、<code>AnyObject</code>与<code>AnyClass</code>次数挺多的，所以在网上找了一些文章看了一下，以此为记。</p>
-</blockquote>
-<h1 id="anyobject">AnyObject</h1>
-<p><code>AnyObject</code>类似于<code>OC</code>中的<code>id</code>类型，表示<!-- raw HTML omitted -->任意的<code>class</code>类型<!-- raw HTML omitted -->。但在<code>Swift</code>中由于<code>String、Array</code>等都变成结构体了，<code>AnyObject</code>的适用范围就变窄了。</p>
-<p>实际上<code>AnyObject</code>是一个成员为空的协议<code>@objc public protocol AnyObject {}</code>。它注释的第一行:<code>The protocol to which all classes implicitly conform</code>表明<!-- raw HTML omitted -->所有的类都隐式遵守了这个协议<!-- raw HTML omitted -->。</p>
-<h1 id="any">Any</h1>
-<p><code>Any</code>也是一个协议，根据其注释<code>The protocol to which all types implicitly conform.</code>表明所有的类型都遵守该协议，包括基本数据类型，<code>enum, struct, func</code>等等。因此<code>Any</code>可以表示任何类型的实例，包括函数类型</p>
-<h1 id="anyclass">AnyClass</h1>
-<p><code>AnyClass</code>表示任意类的元类型，其定义如下所示:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">typealias</span> AnyClass = AnyObject.<span style="color:#66d9ef">Type</span>
-</code></pre></div><p>根据定义可知它为<code>AnyObject.Type</code>的别名。<code>AnyObject.Type</code>中的<code>.Type</code>就是获取元类型。例如，对于<code>Student</code>类，<code>Student.Type</code>就是获取<code>Student</code>的元类型。</p>
-<p>再根据注释<code>The protocol to which all class types implicitly conform</code>，可知道所有的<!-- raw HTML omitted -->类的类型<!-- raw HTML omitted -->都隐式遵守这个协议。</p>
-<h2 id="self">self</h2>
-<p>在<code>Swift</code>中，<code>.self</code>可以用在类型后面取得类型本身，也可以在某个实例后面取得这个实例本身。</p>
-<h1 id="重要区别">重要区别</h1>
-<p><code>AnyObject</code>代表任意<code>class</code>类型的对象实例，<code>Any</code>代表任意类型，甚至包括方法类型，所以<code>AnyObject</code>是<code>Any</code>的子集。</p>
-<hr>
-<h1 id="类型转换">类型转换</h1>
-<p>操作符<code>is</code>检查一个实例是否某个确定的类或者其子类类型，如果是则返回<code>true</code>，否则返回<code>false</code>。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Cat</span> {
-    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">hairColor</span>() -&gt; String {
-        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;五颜六色&#34;</span>
+    <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">viewDidLayoutSubviews</span>() {
+  <span style="color:#66d9ef">super</span>.viewDidLayoutSubviews()
+  <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> footerView = <span style="color:#66d9ef">self</span>.tableView.tableFooterView <span style="color:#66d9ef">else</span> {
+    <span style="color:#66d9ef">return</span>
+  }
+  <span style="color:#66d9ef">let</span> width = <span style="color:#66d9ef">self</span>.tableView.bounds.size.width
+  <span style="color:#66d9ef">let</span> size = footerView.systemLayoutSizeFitting(CGSize(width: width, height: UIView.layoutFittingCompressedSize.height))
+  <span style="color:#66d9ef">if</span> footerView.frame.size.height <span style="color:#f92672">!=</span> size.height {
+    footerView.frame.size.height = size.height
+    <span style="color:#66d9ef">self</span>.tableView.tableFooterView = footerView
+  }
+}
+</code></pre></div><p><a href="https://medium.com/better-programming/dynamic-height-uitableview-footer-e99e8c04484a">参考资料</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">@propertyWrapper
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Atomic</span>&lt;Value&gt; {
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">var</span> value: Value
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">var</span> lock: os_unfair_lock
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">init</span>(wrappedValue value: Value) {
+        <span style="color:#66d9ef">self</span>.value = value
+        lock = os_unfair_lock.<span style="color:#66d9ef">init</span>()
+    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">var</span> wrappedValue: Value {
+        <span style="color:#66d9ef">mutating</span> <span style="color:#66d9ef">get</span> {
+            <span style="color:#66d9ef">return</span> read()
+        }
+        <span style="color:#66d9ef">set</span> {
+            write(newValue: newValue)
+        }
+    }
+
+    <span style="color:#66d9ef">mutating</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">read</span>() -&gt; Value {
+        os_unfair_lock_lock(&amp;<span style="color:#66d9ef">self</span>.lock)
+        <span style="color:#66d9ef">defer</span> {
+            os_unfair_lock_unlock(&amp;<span style="color:#66d9ef">self</span>.lock)
+        }
+        <span style="color:#66d9ef">return</span> value
+    }
+
+    <span style="color:#66d9ef">mutating</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">write</span>(newValue: Value) {
+        os_unfair_lock_lock(&amp;<span style="color:#66d9ef">self</span>.lock)
+        <span style="color:#66d9ef">defer</span> {
+            os_unfair_lock_unlock(&amp;<span style="color:#66d9ef">self</span>.lock)
+        }
+        value = newValue
     }
 }
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">WhiteCat</span>: Cat {
-    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">hairColor</span>() -&gt; String {
-        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;白色&#34;</span>
-    }
-}
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BlackCat</span>: Cat {
-    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">hairColor</span>() -&gt; String {
-        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;黑色&#34;</span>
-    }
-}
-<span style="color:#75715e">//必须符合`Cat`类以及其子类，类型推断需要</span>
-<span style="color:#66d9ef">let</span> kinds = [WhiteCat(),BlackCat(),WhiteCat(),WhiteCat()]
-<span style="color:#66d9ef">for</span> item <span style="color:#66d9ef">in</span> kinds {
-    <span style="color:#66d9ef">if</span> item <span style="color:#66d9ef">is</span> WhiteCat {
-        print(<span style="color:#e6db74">&#34;白猫&#34;</span>)<span style="color:#75715e">// 3次</span>
-    }
-    <span style="color:#66d9ef">if</span> item <span style="color:#66d9ef">is</span> BlackCat {
-        print(<span style="color:#e6db74">&#34;黑猫&#34;</span>)<span style="color:#75715e">// 1次</span>
-    }
-    <span style="color:#66d9ef">if</span> item <span style="color:#66d9ef">is</span> Cat {
-        print(<span style="color:#e6db74">&#34;猫&#34;</span>)<span style="color:#75715e">// 4次</span>
-    }
-}
-</code></pre></div><h1 id="向下转换">向下转换</h1>
-<p>某个类型的常量或变量可能是其子类的实例，此时需要用到类型转换操作<code>as？</code>或<code>as!</code>向下转换为子类类型</p>
-<p><code>as?</code>：类型转换的条件形式，向下转换为某个类型时，返回该类型的可选值，即转换失败时返回<code>nil</code>。</p>
-<p><code>as!</code>：类型转换的强制形式，向下转换为某个类型时，会进行强制解包，即：转换失败时触发运行时错误。除非十分确定类型转换会成功，否则不建议使用该模式。</p>
-<p>let statusHeight = UIApplication.shared.statusBarFrame.height</p>
-<p><a href="https://juejin.im/post/5a3e801ef265da430a50c97a">参考资料</a>
-<a href="https://blog.csdn.net/shihuboke/article/details/86488031">参考资料</a>
-<a href="https://www.jianshu.com/p/b30063598555">参考资料</a></p>
+</code></pre></div><p><a href="https://davidlinnn.medium.com/thread-safety-in-ios-ca24049b2724">参考资料</a></p>
 
     </div>
     <footer class="post-footer">
@@ -316,8 +310,6 @@ code.has-jax {
  
 <div class="post-tags">     
      
-    <a href="https://iihui.github.io/tags/swift" rel="tag" title="swift">#swift#</a>
-    
     <a href="https://iihui.github.io/tags/ios" rel="tag" title="iOS">#iOS#</a>
     
 </div>
@@ -327,16 +319,16 @@ code.has-jax {
         <div class="post-nav">
     <div class="post-nav-next post-nav-item">
     
-        <a href="https://iihui.github.io/post/ios-addmethod/" rel="next" title="Swift 方法交换中的addMethod">
-        <i class="fa fa-chevron-left"></i> Swift 方法交换中的addMethod
+        <a href="https://iihui.github.io/post/hugo-next/" rel="next" title="Hugo Next 主题">
+        <i class="fa fa-chevron-left"></i> Hugo Next 主题
         </a>
     
     </div>
 
     <div class="post-nav-prev post-nav-item">
     
-        <a href="https://iihui.github.io/post/ios-uicontrol/" rel="prev" title="UIControl">
-        UIControl <i class="fa fa-chevron-right"></i>
+        <a href="https://iihui.github.io/post/ios-kscrash/" rel="prev" title="KSCrash">
+        KSCrash <i class="fa fa-chevron-right"></i>
         </a>
     
     </div>
@@ -350,10 +342,10 @@ code.has-jax {
         </div>
         <div>
             <p style="margin-top:10px;">
-                标题：Any,AnyObject,AnyClass
+                标题：UITableView自动调整高度
                 <br />作者：阿呆<a target="_blank" href="https://iihui.github.io/"></a>
                 
-                <br />地址：https://iihui.github.io/post/ios-any/
+                <br />地址：https://iihui.github.io/post/ios-footer/
                 <br />声明：自由转载-非商用-保持署名（创作共享4.0许可证）
             </p>
         </div>
@@ -472,20 +464,7 @@ code.has-jax {
     
 <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
     <div class="post-toc">
-        <div class="post-toc-content"><nav id="TableOfContents">
-  <ul>
-    <li><a href="#anyobject">AnyObject</a></li>
-    <li><a href="#any">Any</a></li>
-    <li><a href="#anyclass">AnyClass</a>
-      <ul>
-        <li><a href="#self">self</a></li>
-      </ul>
-    </li>
-    <li><a href="#重要区别">重要区别</a></li>
-    <li><a href="#类型转换">类型转换</a></li>
-    <li><a href="#向下转换">向下转换</a></li>
-  </ul>
-</nav></div>
+        <div class="post-toc-content"><nav id="TableOfContents"></nav></div>
     </div>
 </section>
 

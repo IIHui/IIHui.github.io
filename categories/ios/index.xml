@@ -6,10 +6,19 @@
     <description>Recent content in iOS on Keep It Simple</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 26 Dec 2020 17:33:11 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 04 Jan 2021 08:03:49 +0000</lastBuildDate>
     
 	<atom:link href="https://iihui.github.io/categories/ios/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>UITableView自动调整高度</title>
+      <link>https://iihui.github.io/post/ios-footer/</link>
+      <pubDate>Mon, 04 Jan 2021 08:03:49 +0000</pubDate>
+      
+      <guid>https://iihui.github.io/post/ios-footer/</guid>
+      <description>override func viewDidLayoutSubviews() { super.viewDidLayoutSubviews() guard let footerView = self.tableView.tableFooterView else { return } let width = self.tableView.bounds.size.width let size = footerView.systemLayoutSizeFitting(CGSize(width: width, height: UIView.layoutFittingCompressedSize.height)) if footerView.frame.size.height != size.height { footerView.frame.size.height = size.height self.tableView.tableFooterView = footerView } } 参考资料 @propertyWrapper public struct Atomic&amp;lt;Value&amp;gt; { private var value: Value private var lock: os_unfair_lock public init(wrappedValue value: Value) { self.value = value lock = os_unfair_lock.init() } public var wrappedValue: Value { mutating get { return read() } set { write(newValue: newValue) } } mutating func read() -&amp;gt; Value { os_unfair_lock_lock(&amp;amp;self.lock) defer { os_unfair_lock_unlock(&amp;amp;self.lock) } return value } mutating func write(newValue: Value) { os_unfair_lock_lock(&amp;amp;self.lock) defer { os_unfair_lock_unlock(&amp;amp;self.lock) } value = newValue } } 参考资料</description>
+    </item>
     
     <item>
       <title>KSCrash</title>
