@@ -306,7 +306,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">117</span>
+<span class="leancloud-visitors-count">132</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -317,7 +317,13 @@ code.has-jax {
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    override func viewDidLayoutSubviews() { super.viewDidLayoutSubviews() guard let footerView = self.tableView.tableFooterView else { return } let width = self.tableView.bounds.size.width let size = footerView.systemLayoutSizeFitting(CGSize(width: width, height: UIView.layoutFittingCompressedSize.height)) if footerView.frame.size.height != size.height { footerView.frame.size.height = size.height self.tableView.tableFooterView = footerView } } 参考资料 @propertyWrapper public struct Atomic&lt;Value&gt; { private var value: Value private var lock: os_unfair_lock public init(wrappedValue value: Value) { self.value = value lock = os_unfair_lock.init() } public var wrappedValue: Value { mutating get { return read() } set { write(newValue: newValue) } } mutating func read() -&gt; Value { os_unfair_lock_lock(&amp;self.lock) defer { os_unfair_lock_unlock(&amp;self.lock) } return value } mutating func write(newValue: Value) { os_unfair_lock_lock(&amp;self.lock) defer { os_unfair_lock_unlock(&amp;self.lock) } value = newValue } } 参考资料
+    动态调整foote高度 override func viewDidLayoutSubviews() { super.viewDidLayoutSubviews() guard let footerView = self.tableView.tableFooterView else { return } let width = self.tableView.bounds.size.width let size = footerView.systemLayoutSizeFitting(CGSize(width: width, height: UIView.layoutFittingCompressedSize.height)) if footerView.frame.size.height != size.height { footerView.frame.size.height = size.height self.tableView.tableFooterView = footerView } } 参考资料 原子属性 @propertyWrapper public struct Atomic&lt;Value&gt; { private var value: Value private var lock: os_unfair_lock public init(wrappedValue value: Value) { self.value = value lock = os_unfair_lock.init() } public var wrappedValue: Value { mutating get { return read() } set { write(newValue: newValue) } } mutating func read() -&gt; Value { os_unfair_lock_lock(&amp;self.lock) defer { os_unfair_lock_unlock(&amp;self.lock) } return value } mutating func write(newValue: Value) { os_unfair_lock_lock(&amp;self.lock) defer
+    </div>
+    
+    <div class="post-more-link text-center">
+    <a class="btn" href="https://iihui.github.io/post/ios-footer/" rel="contents">
+      阅读全文 &raquo;
+    </a>
     </div>
     
     <footer class="post-footer"><div class="post-eof"></div></footer>
