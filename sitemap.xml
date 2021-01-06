@@ -45,7 +45,8 @@ katex.html文件的内容如下所示：
           <tag>iOS</tag>
         </tags>
         <content type="html"> 动态调整foote高度 override func viewDidLayoutSubviews() { super.viewDidLayoutSubviews() guard let footerView = self.tableView.tableFooterView else { return } let width = self.tableView.bounds.size.width let size = footerView.systemLayoutSizeFitting(CGSize(width: width, height: UIView.layoutFittingCompressedSize.height)) if footerView.frame.size.height != size.height { footerView.frame.size.height = size.height self.tableView.tableFooterView = footerView } } 参考资料
- 原子属性 @propertyWrapper public struct Atomic&amp;lt;Value&amp;gt; { private var value: Value private var lock: os_unfair_lock public init(wrappedValue value: Value) { self.value = value lock = os_unfair_lock.init() } public var wrappedValue: Value { mutating get { return read() } set { write(newValue: newValue) } } mutating func read() -&amp;gt; Value { os_unfair_lock_lock(&amp;amp;self.lock) defer { os_unfair_lock_unlock(&amp;amp;self.lock) } return value } mutating func write(newValue: Value) { os_unfair_lock_lock(&amp;amp;self.lock) defer { os_unfair_lock_unlock(&amp;amp;self.lock) } value = newValue } } 参考资料
+ 原子属性 静态缓存变量（类相关），数组，字典均是多线程不安全的，为了解决线程安全问题，Swift提供了propertyWrapper，如下所示定义原子propertyWrapper：
+@propertyWrapper public struct Atomic&amp;lt;Value&amp;gt; { private var value: Value private var lock: os_unfair_lock public init(wrappedValue value: Value) { self.value = value lock = os_unfair_lock.init() } public var wrappedValue: Value { mutating get { return read() } set { write(newValue: newValue) } } mutating func read() -&amp;gt; Value { os_unfair_lock_lock(&amp;amp;self.lock) defer { os_unfair_lock_unlock(&amp;amp;self.lock) } return value } mutating func write(newValue: Value) { os_unfair_lock_lock(&amp;amp;self.lock) defer { os_unfair_lock_unlock(&amp;amp;self.lock) } value = newValue } } 参考资料
  </content>
     </entry>
     
