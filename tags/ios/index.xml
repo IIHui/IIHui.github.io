@@ -6,10 +6,19 @@
     <description>Recent content in iOS on Keep It Simple</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 04 Jan 2021 08:03:49 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 08 Jan 2021 18:19:29 +0000</lastBuildDate>
     
 	<atom:link href="https://iihui.github.io/tags/ios/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title></title>
+      <link>https://iihui.github.io/post/ios-propertywrapper/</link>
+      <pubDate>Fri, 08 Jan 2021 18:19:29 +0000</pubDate>
+      
+      <guid>https://iihui.github.io/post/ios-propertywrapper/</guid>
+      <description>原子属性 静态缓存变量（类相关），数组，字典均是多线程不安全的，为了解决线程安全问题，Swift提供了propertyWrapper，如下所示定义原子propertyWrapper： @propertyWrapper public struct Atomic&amp;lt;Value&amp;gt; { private var value: Value private var lock: os_unfair_lock public init(wrappedValue value: Value) { self.value = value lock = os_unfair_lock.init() } public var wrappedValue: Value {</description>
+    </item>
     
     <item>
       <title>UITableView自动调整高度</title>
