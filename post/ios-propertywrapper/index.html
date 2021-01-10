@@ -242,7 +242,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">517</span>
+<span class="leancloud-visitors-count">519</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -257,7 +257,7 @@ code.has-jax {
 <p>属性包装器<code>@propertyWrapper</code>的作用对象是属性。它的思想是只可以通过<code>wrappedValue</code>的<code>get set</code>方法来访问属性，这样就可以通过<code>get set</code>来对属性进行包装。</p>
 </blockquote>
 <h1 id="重复代码">重复代码</h1>
-<p>使用<code>@propertyWrapper</code>可以减少重复代码。我们经常使用<code>UserDefaults</code>保存是否显示新手引导，如果没有<code>propertyWrapper</code>时，要使用下面的代码：</p>
+<p>使用<code>@propertyWrapper</code>可以减少重复代码。我们通常使用<code>UserDefaults</code>保存是否显示新手引导，如果没有<code>@propertyWrapper</code>时，要使用下面的代码：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">extension</span> <span style="color:#a6e22e">UserDefaults</span> {
     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Keys</span> {
         <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">let</span> showGuideView = <span style="color:#e6db74">&#34;show_guide_view&#34;</span>
@@ -281,7 +281,7 @@ code.has-jax {
         UserDefaults.standard.isShowGuideView = <span style="color:#66d9ef">false</span>
     }
 }
-</code></pre></div><p>如果要再定义另一个指引，则要重复上面的代码，如果使用<code>@propertyWrapper</code>，可以减少重上面的重复代码：</p>
+</code></pre></div><p>如果要再定义另一个指引项，则需要重复上面的代码，如果使用<code>@propertyWrapper</code>，可以减少上面的重复代码：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">@propertyWrapper
 <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">UserDefault</span>&lt;T&gt; {
     <span style="color:#66d9ef">let</span> key: String
