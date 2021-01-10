@@ -53,18 +53,6 @@ extension UserDefaults { public enum Keys { static let showGuideView = &amp;#34;
     </entry>
     
      <entry>
-        <title>UITableView自动调整高度</title>
-        <url>https://iihui.github.io/post/ios-footer/</url>
-        <categories>
-          <category>iOS</category>
-        </categories>
-        <tags>
-          <tag>iOS</tag>
-        </tags>
-        <content type="html">  </content>
-    </entry>
-    
-     <entry>
         <title>KSCrash</title>
         <url>https://iihui.github.io/post/ios-kscrash/</url>
         <categories>
