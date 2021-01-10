@@ -242,7 +242,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">163</span>
+<span class="leancloud-visitors-count">207</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -253,8 +253,11 @@ code.has-jax {
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    <h1 id="原子属性">原子属性</h1>
-<p>静态缓存变量（类相关），数组，字典均是多线程不安全的，为了解决线程安全问题，<code>Swift</code>提供了<code>propertyWrapper</code>，如下所示定义原子<code>propertyWrapper</code>：</p>
+    <blockquote>
+<p>属性包装器<code>propertyWrapper</code>的思想是，只可以通过<code>wrappedValue</code>的<code>get set</code>方法来访问属性。</p>
+</blockquote>
+<h1 id="原子属性">原子属性</h1>
+<p>静态缓存变量（类相关），数组，字典均是多线程不安全的，为了解决线程安全问题，可以利用<code>Swift</code>提供的<code>propertyWrapper</code>来定义原子属性：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">@propertyWrapper
 <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Atomic</span>&lt;Value&gt; {
 

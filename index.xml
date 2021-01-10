@@ -26,7 +26,7 @@
       <pubDate>Fri, 08 Jan 2021 18:19:29 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/ios-propertywrapper/</guid>
-      <description>原子属性 静态缓存变量（类相关），数组，字典均是多线程不安全的，为了解决线程安全问题，Swift提供了propertyWrapper，如下所示定义原子propertyWrapper： @propertyWrapper public struct Atomic&amp;lt;Value&amp;gt; { private var value: Value private var lock: os_unfair_lock public init(wrappedValue value: Value) { self.value = value lock = os_unfair_lock.init() } public var wrappedValue: Value {</description>
+      <description>属性包装器propertyWrapper的思想是，只可以通过wrappedValue的get set方法来访问属性。 原子属性 静态缓存变量（类相关），数组，字典均是多线程不安全的，为了解决线程安全问题，可以利用Swift提供的propertyW</description>
     </item>
     
     <item>
