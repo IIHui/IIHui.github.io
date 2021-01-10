@@ -242,7 +242,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">519</span>
+<span class="leancloud-visitors-count">543</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -281,7 +281,7 @@ code.has-jax {
         UserDefaults.standard.isShowGuideView = <span style="color:#66d9ef">false</span>
     }
 }
-</code></pre></div><p>如果要再定义另一个指引项，则需要重复上面的代码，如果使用<code>@propertyWrapper</code>，可以减少上面的重复代码：</p>
+</code></pre></div><p>如果要再定义另一个指引项，则需要重复上面的代码，如果使用<code>@propertyWrapper</code>，可以减少上面的重复代码，如下所示：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">@propertyWrapper
 <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">UserDefault</span>&lt;T&gt; {
     <span style="color:#66d9ef">let</span> key: String
@@ -312,12 +312,12 @@ code.has-jax {
     UserDefaultConfig.showTestGuide = <span style="color:#66d9ef">true</span>
 }
 </code></pre></div><h1 id="原子属性">原子属性</h1>
-<p>静态缓存变量（类相关），数组，字典均是多线程不安全的，为了解决线程安全问题，可以利用<code>Swift</code>提供的<code>propertyWrapper</code>来包裹代码，定义原子属性：</p>
+<p>静态缓存类相关变量（类变量或者结构体中含有类变量），数组，字典均是多线程不安全的，为了解决线程安全问题，可以利用<code>Swift</code>提供的<code>propertyWrapper</code>来包裹代码，定义原子属性：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">@propertyWrapper
 <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Atomic</span>&lt;Value&gt; {
 
     <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">var</span> value: Value
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">var</span> lock: os_unfair_lock
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">var</span> lock: os_unfair_lock <span style="color:#75715e">//自旋锁</span>
 
     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">init</span>(wrappedValue value: Value) {
         <span style="color:#66d9ef">self</span>.value = value
