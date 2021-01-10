@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
-    <title>propertyWrapper - Keep It Simple</title>
+    <title>属性包装 - Keep It Simple</title>
     <meta name="keywords" content="博客,思考,读书,笔记,技术,分享">
     
-    <meta property="og:title" content="propertyWrapper">
+    <meta property="og:title" content="属性包装">
     <meta property="og:site_name" content="Keep It Simple">
     <meta property="og:image" content="/img/author.jpg"> 
-    <meta name="title" content="propertyWrapper - Keep It Simple" />
+    <meta name="title" content="属性包装 - Keep It Simple" />
     <meta name="description" content="Swift | Go | C&#43;&#43; "> 
     <link rel="shortcut icon" href="https://iihui.github.io/img/favicon.ico" />
     <link rel="apple-touch-icon" href="https://iihui.github.io/img/apple-touch-icon.png" />
@@ -194,7 +194,7 @@ code.has-jax {
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
         <a class="post-title-link" href="https://iihui.github.io/post/ios-propertywrapper/" itemprop="url">
-        propertyWrapper
+        属性包装
         </a>
       </h1>
       <div class="post-meta">
@@ -242,7 +242,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">207</span>
+<span class="leancloud-visitors-count">235</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -254,7 +254,7 @@ code.has-jax {
     </header>
     <div class="post-body" itemprop="articleBody">
     <blockquote>
-<p>属性包装器<code>propertyWrapper</code>的思想是，只可以通过<code>wrappedValue</code>的<code>get set</code>方法来访问属性。</p>
+<p>属性包装器<code>propertyWrapper</code>的作用对象是属性。它的思想是只可以通过<code>wrappedValue</code>的<code>get set</code>方法来访问属性，对一些类似的属性的实现代码做一同封装。</p>
 </blockquote>
 <h1 id="原子属性">原子属性</h1>
 <p>静态缓存变量（类相关），数组，字典均是多线程不安全的，为了解决线程安全问题，可以利用<code>Swift</code>提供的<code>propertyWrapper</code>来定义原子属性：</p>
@@ -335,7 +335,7 @@ code.has-jax {
         </div>
         <div>
             <p style="margin-top:10px;">
-                标题：propertyWrapper
+                标题：属性包装
                 <br />作者：阿呆<a target="_blank" href="https://iihui.github.io/"></a>
                 
                 <br />地址：https://iihui.github.io/post/ios-propertywrapper/

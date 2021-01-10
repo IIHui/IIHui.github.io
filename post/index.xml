@@ -21,12 +21,12 @@
     </item>
     
     <item>
-      <title>propertyWrapper</title>
+      <title>属性包装</title>
       <link>https://iihui.github.io/post/ios-propertywrapper/</link>
       <pubDate>Fri, 08 Jan 2021 18:19:29 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/ios-propertywrapper/</guid>
-      <description>属性包装器propertyWrapper的思想是，只可以通过wrappedValue的get set方法来访问属性。 原子属性 静态缓存变量（类相关），数组，字典均是多线程不安全的，为了解决线程安全问题，可以利用Swift提供的propertyW</description>
+      <description>属性包装器propertyWrapper的作用对象是属性。它的思想是只可以通过wrappedValue的get set方法来访问属性，对一些类似的属性的实现代码做一同封装。 原子属性 静态缓存变量（类相关），数组，字典均是多线程不安全的，为了解决</description>
     </item>
     
     <item>
