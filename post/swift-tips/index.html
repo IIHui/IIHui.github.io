@@ -242,13 +242,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">3436</span>
+<span class="leancloud-visitors-count">3519</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">7 分钟</span>
+<span class="leancloud-visitors-count">8 分钟</span>
 </span>
       </div>
     </header>
@@ -567,6 +567,11 @@ SEL anotherMethod = @selector(callMeWithParam:);
 <h1 id="编译标记">编译标记</h1>
 <p>可以使用<code>Mark:</code>这样的标记，<code>Xcode</code>将在代码中寻找这样的标记，然后以粗体标签的形式将名称显示在导航栏中。还可以在冒号的后⾯加⼀个横杠 开各个部分，会显得更加清晰：</p>
 <p><img src="https://i.loli.net/2020/12/19/XMP6m2ljRtAwr3N.jpg" alt="-c"></p>
+<h1 id="as">as</h1>
+<p><code>as</code>是在编译期间执行的，<code>as?</code>和<code>as!</code>是在运行时执行的。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">print(<span style="color:#ae81ff">4</span> <span style="color:#66d9ef">as</span> Double) <span style="color:#75715e">// print 4.0</span>
+print(<span style="color:#ae81ff">4</span> <span style="color:#66d9ef">as</span>! Double) <span style="color:#75715e">// crash</span>
+</code></pre></div><p>上面第二行代码会崩溃是因为<code>as?</code>和<code>as!</code>是在运行时执行，运行时<code>4</code>已经赋值为<code>Int</code>类型。</p>
 
     </div>
     <footer class="post-footer">
@@ -751,6 +756,7 @@ SEL anotherMethod = @selector(callMeWithParam:);
     <li><a href="#reflection-和-mirror">Reflection 和 Mirror</a></li>
     <li><a href="#selector">Selector</a></li>
     <li><a href="#编译标记">编译标记</a></li>
+    <li><a href="#as">as</a></li>
   </ul>
 </nav></div>
     </div>
