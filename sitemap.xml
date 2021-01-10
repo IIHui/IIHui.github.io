@@ -61,8 +61,7 @@ extension UserDefaults { public enum Keys { static let showGuideView = &amp;#34;
         <tags>
           <tag>iOS</tag>
         </tags>
-        <content type="html"> 动态调整footer高度 override func viewDidLayoutSubviews() { super.viewDidLayoutSubviews() guard let footerView = self.tableView.tableFooterView else { return } let width = self.tableView.bounds.size.width let size = footerView.systemLayoutSizeFitting(CGSize(width: width, height: UIView.layoutFittingCompressedSize.height)) if footerView.frame.size.height != size.height { footerView.frame.size.height = size.height self.tableView.tableFooterView = footerView } } 参考
- </content>
+        <content type="html">  </content>
     </entry>
     
      <entry>
@@ -1470,6 +1469,7 @@ override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexP
 /// 因为使用kingfisher进行图片下载为异步的，所以要解决复用问题 override func prepareForReuse() { super.prepareForReuse() self.headerImageView.kf.cancelDownloadTask() self.dkImageView.kf.cancelDownloadTask() } 设置对应cell 首先异步请求时多加一个indexPath参数，异步返回时把返回的数据和indexPath作为回调参数，然后根据indexPath找到对应的cell，最后更新cell的外观。
 override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -&amp;gt; UITableViewCell { let cell = tableView.dequeueReusableCell(withIdentifier: self.zhGroupCellIdentifier, for: indexPath) let model = self.presenter.dataSource[indexPath.row] if let groupCell: ZHGroupCell = cell as? ZHGroupCell { groupCell.nameLbl.text = model.sessionName if let image = self.presenter.headCache[model.sessionID] { groupCell.imgView.image = image } else { self.presenter.requestImage(id: model.sessionID,indexPath: indexPath) { [weak self] index in DispatchQueue.main.async { [weak self] in if let cell = tableView.cellForRow(at: index) as? ZHGroupCell,let model = self?.presenter.dataSource[index.row] { cell.imgView?.image = self?.presenter.headCache[model.sessionID] } } } } } return cell } 分组显示 链接
 range
+动态调整footer高度 override func viewDidLayoutSubviews() { super.viewDidLayoutSubviews() guard let footerView = self.tableView.tableFooterView else { return } let width = self.tableView.bounds.size.width let size = footerView.systemLayoutSizeFitting(CGSize(width: width, height: UIView.layoutFittingCompressedSize.height)) if footerView.frame.size.height != size.height { footerView.frame.size.height = size.height self.tableView.tableFooterView = footerView } } 参考
  </content>
     </entry>
     

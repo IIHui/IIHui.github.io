@@ -242,32 +242,18 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">52</span>
+<span class="leancloud-visitors-count">0</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">1 分钟</span>
+<span class="leancloud-visitors-count">0 分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    <h1 id="动态调整footer高度">动态调整footer高度</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">viewDidLayoutSubviews</span>() {
-  <span style="color:#66d9ef">super</span>.viewDidLayoutSubviews()
-  <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> footerView = <span style="color:#66d9ef">self</span>.tableView.tableFooterView <span style="color:#66d9ef">else</span> {
-    <span style="color:#66d9ef">return</span>
-  }
-  <span style="color:#66d9ef">let</span> width = <span style="color:#66d9ef">self</span>.tableView.bounds.size.width
-  <span style="color:#66d9ef">let</span> size = footerView.systemLayoutSizeFitting(CGSize(width: width, height: UIView.layoutFittingCompressedSize.height))
-  <span style="color:#66d9ef">if</span> footerView.frame.size.height <span style="color:#f92672">!=</span> size.height {
-    footerView.frame.size.height = size.height
-    <span style="color:#66d9ef">self</span>.tableView.tableFooterView = footerView
-  }
-}
-</code></pre></div><p><a href="https://medium.com/better-programming/dynamic-height-uitableview-footer-e99e8c04484a">参考</a></p>
-<hr>
+    <hr>
 
     </div>
     <footer class="post-footer">
@@ -429,11 +415,7 @@ code.has-jax {
     
 <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
     <div class="post-toc">
-        <div class="post-toc-content"><nav id="TableOfContents">
-  <ul>
-    <li><a href="#动态调整footer高度">动态调整footer高度</a></li>
-  </ul>
-</nav></div>
+        <div class="post-toc-content"><nav id="TableOfContents"></nav></div>
     </div>
 </section>
 

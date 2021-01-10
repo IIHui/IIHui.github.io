@@ -26,7 +26,7 @@
       <pubDate>Mon, 04 Jan 2021 08:03:49 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/ios-footer/</guid>
-      <description>动态调整footer高度 override func viewDidLayoutSubviews() { super.viewDidLayoutSubviews() guard let footerView = self.tableView.tableFooterView else { return } let width = self.tableView.bounds.size.width let size = footerView.systemLayoutSizeFitting(CGSize(width: width, height: UIView.layoutFittingCompressedSize.height)) if footerView.frame.size.height != size.height { footerView.frame.size.height = size.height self.tableView.tableFooterView = footerView } } 参考</description>
+      <description></description>
     </item>
     
     <item>
