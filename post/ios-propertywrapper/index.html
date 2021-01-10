@@ -242,7 +242,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">235</span>
+<span class="leancloud-visitors-count">377</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -254,10 +254,36 @@ code.has-jax {
     </header>
     <div class="post-body" itemprop="articleBody">
     <blockquote>
-<p>属性包装器<code>propertyWrapper</code>的作用对象是属性。它的思想是只可以通过<code>wrappedValue</code>的<code>get set</code>方法来访问属性，对一些类似的属性的实现代码做一同封装。</p>
+<p>属性包装器<code>propertyWrapper</code>的作用对象是属性。它的思想是只可以通过<code>wrappedValue</code>的<code>get set</code>方法来访问属性，这样可以对属性进行包裹。</p>
 </blockquote>
-<h1 id="原子属性">原子属性</h1>
-<p>静态缓存变量（类相关），数组，字典均是多线程不安全的，为了解决线程安全问题，可以利用<code>Swift</code>提供的<code>propertyWrapper</code>来定义原子属性：</p>
+<h1 id="重复代码">重复代码</h1>
+<p>使用<code>propertyWrapper</code>可以减少重复代码。我们经常使用<code>UserDefaults</code>保存是否显示新手引导，如果没有<code>propertyWrapper</code>时，经常要使用下面的代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">extension</span> <span style="color:#a6e22e">UserDefaults</span> {
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Keys</span> {
+        <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">let</span> showGuideView = <span style="color:#e6db74">&#34;show_guide_view&#34;</span>
+    }
+
+    <span style="color:#66d9ef">var</span> isShowGuideView: Bool {
+        <span style="color:#66d9ef">get</span> {
+            <span style="color:#66d9ef">return</span> bool(forKey: Keys.showGuideView)
+        }
+        <span style="color:#66d9ef">set</span> {
+            <span style="color:#66d9ef">set</span>(newValue, forKey: Keys.showGuideView)
+        }
+    }
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">showGuide</span>() {
+    <span style="color:#66d9ef">let</span> isShowGuide = UserDefaults.standard.isShowGuideView
+
+    <span style="color:#66d9ef">if</span> isShowGuide {
+        <span style="color:#75715e">// 显示新手指引</span>
+        UserDefaults.standard.isShowGuideView = <span style="color:#66d9ef">false</span>
+    }
+}
+
+</code></pre></div><h1 id="原子属性">原子属性</h1>
+<p>静态缓存变量（类相关），数组，字典均是多线程不安全的，为了解决线程安全问题，可以利用<code>Swift</code>提供的<code>propertyWrapper</code>来包裹代码，定义原子属性：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">@propertyWrapper
 <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Atomic</span>&lt;Value&gt; {
 
@@ -459,6 +485,7 @@ code.has-jax {
     <div class="post-toc">
         <div class="post-toc-content"><nav id="TableOfContents">
   <ul>
+    <li><a href="#重复代码">重复代码</a></li>
     <li><a href="#原子属性">原子属性</a></li>
   </ul>
 </nav></div>

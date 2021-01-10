@@ -17,7 +17,7 @@
       <pubDate>Fri, 08 Jan 2021 18:19:29 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/ios-propertywrapper/</guid>
-      <description>属性包装器propertyWrapper的作用对象是属性。它的思想是只可以通过wrappedValue的get set方法来访问属性，对一些类似的属性的实现代码做一同封装。 原子属性 静态缓存变量（类相关），数组，字典均是多线程不安全的，为了解决</description>
+      <description>属性包装器propertyWrapper的作用对象是属性。它的思想是只可以通过wrappedValue的get set方法来访问属性，这样可以对属性进行包裹。 重复代码 使用propertyWrapper可以减少重复代码。我们经常使用UserDe</description>
     </item>
     
     <item>
