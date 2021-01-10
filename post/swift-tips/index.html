@@ -242,7 +242,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">3627</span>
+<span class="leancloud-visitors-count">3538</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -571,38 +571,6 @@ SEL anotherMethod = @selector(callMeWithParam:);
 <p><code>as</code>是在编译期间执行的，<code>as?</code>和<code>as!</code>是在运行时执行的。执行下面的代码会崩溃，是因为<code>as?</code>和<code>as!</code>是在运行时执行，运行时<code>4</code>已经先赋值为<code>Int</code>类型，然后强制转换为<code>Double</code>时失败。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">print(<span style="color:#ae81ff">4</span> <span style="color:#66d9ef">as</span> Double) <span style="color:#75715e">// print 4.0</span>
 print(<span style="color:#ae81ff">4</span> <span style="color:#66d9ef">as</span>! Double) <span style="color:#75715e">// crash</span>
-</code></pre></div><h1 id="多线程测试">多线程测试</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">testDemo</span>(){
-        <span style="color:#66d9ef">let</span> group = DispatchGroup()
-        <span style="color:#66d9ef">let</span> models:[MoConfigItemModel] = [MoConfigItemModel(),MoConfigItemModel()]
-        <span style="color:#66d9ef">for</span> <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">0.</span>.&lt;<span style="color:#ae81ff">2000</span> {
-            <span style="color:#66d9ef">let</span> delaySet = TimeInterval(arc4random() <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span>);
-            group.enter()
-            DispatchQueue.global().asyncAfter(deadline: .now() <span style="color:#f92672">+</span> delaySet) {
-                <span style="color:#66d9ef">self</span>.desktopConfigItems = models
-                group.leave()
-            }
-
-            <span style="color:#66d9ef">let</span> delaySetNil = TimeInterval(arc4random() <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span>);
-            group.enter()
-            DispatchQueue.global().asyncAfter(deadline: .now() <span style="color:#f92672">+</span> delaySetNil) {
-                <span style="color:#66d9ef">self</span>.desktopConfigItems = []
-                group.leave()
-            }
-
-            <span style="color:#66d9ef">let</span> delayGet = TimeInterval(arc4random() <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span>)
-            group.enter()
-            DispatchQueue.global().asyncAfter(deadline: .now() <span style="color:#f92672">+</span> delayGet) {
-                <span style="color:#66d9ef">let</span> _ = <span style="color:#66d9ef">self</span>.allConfigItems
-                group.leave()
-            }
-        }
-
-        <span style="color:#66d9ef">let</span> success = group.wait(timeout: .now() <span style="color:#f92672">+</span> <span style="color:#ae81ff">12</span>)
-        <span style="color:#66d9ef">if</span> success == .success {
-            print(<span style="color:#e6db74">&#34;test&#34;</span>)
-        }
-    }
 </code></pre></div><hr>
 
     </div>
@@ -789,7 +757,6 @@ print(<span style="color:#ae81ff">4</span> <span style="color:#66d9ef">as</span>
     <li><a href="#selector">Selector</a></li>
     <li><a href="#编译标记">编译标记</a></li>
     <li><a href="#as">as</a></li>
-    <li><a href="#多线程测试">多线程测试</a></li>
   </ul>
 </nav></div>
     </div>
