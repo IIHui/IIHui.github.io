@@ -242,7 +242,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">545</span>
+<span class="leancloud-visitors-count">649</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -310,6 +310,41 @@ code.has-jax {
 <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">testGuide</span>() {
     UserDefaultConfig.showADGuide = <span style="color:#66d9ef">false</span>
     UserDefaultConfig.showTestGuide = <span style="color:#66d9ef">true</span>
+}
+</code></pre></div><h1 id="codeable">Codeable</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">/// for codable</span>
+@available(swift <span style="color:#ae81ff">5.1</span>)
+@propertyWrapper
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">UserDefaultJsonWrapper</span>&lt;T: Codable&gt; {
+    <span style="color:#66d9ef">var</span> key: String
+    <span style="color:#66d9ef">var</span> defaultValue: T!
+    <span style="color:#66d9ef">var</span> wrappedValue: T {
+        <span style="color:#66d9ef">get</span> {
+            <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> jsonString = UserDefaults.standard.string(forKey: key) <span style="color:#66d9ef">else</span> {
+                <span style="color:#66d9ef">return</span> defaultValue
+            }
+            <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> jsonData = jsonString.data(using: .utf8) <span style="color:#66d9ef">else</span> {
+                <span style="color:#66d9ef">return</span> defaultValue
+            }
+            <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> value = <span style="color:#66d9ef">try</span>? JSONDecoder().decode(T.<span style="color:#66d9ef">self</span>, from: jsonData) <span style="color:#66d9ef">else</span> {
+                <span style="color:#66d9ef">return</span> defaultValue
+            }
+            <span style="color:#66d9ef">return</span> value
+        }
+        <span style="color:#66d9ef">set</span> {
+            <span style="color:#66d9ef">let</span> encoder = JSONEncoder()
+            <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> jsonData = <span style="color:#66d9ef">try</span>? encoder.encode(newValue) <span style="color:#66d9ef">else</span> {
+                <span style="color:#66d9ef">return</span>
+            }
+            <span style="color:#66d9ef">let</span> jsonString = String(bytes: jsonData, encoding: .utf8)
+            UserDefaults.standard.<span style="color:#66d9ef">set</span>(jsonString, forKey: key)
+        }
+    }
+
+    <span style="color:#66d9ef">init</span>(key: String, defaultValue: T! = <span style="color:#66d9ef">nil</span>) {
+        <span style="color:#66d9ef">self</span>.key = key
+        <span style="color:#66d9ef">self</span>.defaultValue = defaultValue
+    }
 }
 </code></pre></div><h1 id="原子属性">原子属性</h1>
 <p>静态缓存类相关变量（类变量或者结构体中含有类变量），数组，字典均是多线程不安全的，为了解决线程安全问题，可以利用<code>Swift</code>提供的<code>propertyWrapper</code>来包裹代码，定义原子属性：</p>
@@ -515,6 +550,7 @@ code.has-jax {
         <div class="post-toc-content"><nav id="TableOfContents">
   <ul>
     <li><a href="#重复代码">重复代码</a></li>
+    <li><a href="#codeable">Codeable</a></li>
     <li><a href="#原子属性">原子属性</a></li>
   </ul>
 </nav></div>
