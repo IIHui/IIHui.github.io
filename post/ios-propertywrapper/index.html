@@ -242,7 +242,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">735</span>
+<span class="leancloud-visitors-count">733</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -400,7 +400,7 @@ code.has-jax {
             <span style="color:#66d9ef">let</span> delaySetNil = TimeInterval(arc4random() <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span>);
             group.enter()
             DispatchQueue.global().asyncAfter(deadline: .now() <span style="color:#f92672">+</span> delaySetNil) {
-                <span style="color:#66d9ef">self</span>.desktopConfigItems = []
+                <span style="color:#66d9ef">self</span>.desktopConfigItems.append(MoConfigItemModel())
                 group.leave()
             }
 
