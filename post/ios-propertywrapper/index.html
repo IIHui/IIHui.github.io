@@ -242,22 +242,22 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">377</span>
+<span class="leancloud-visitors-count">507</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">1 分钟</span>
+<span class="leancloud-visitors-count">2 分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
     <blockquote>
-<p>属性包装器<code>propertyWrapper</code>的作用对象是属性。它的思想是只可以通过<code>wrappedValue</code>的<code>get set</code>方法来访问属性，这样可以对属性进行包裹。</p>
+<p>属性包装器<code>@propertyWrapper</code>的作用对象是属性。它的思想是只可以通过<code>wrappedValue</code>的<code>get set</code>方法来访问属性，这样可以对属性进行包裹。</p>
 </blockquote>
 <h1 id="重复代码">重复代码</h1>
-<p>使用<code>propertyWrapper</code>可以减少重复代码。我们经常使用<code>UserDefaults</code>保存是否显示新手引导，如果没有<code>propertyWrapper</code>时，经常要使用下面的代码：</p>
+<p>使用<code>@propertyWrapper</code>可以减少重复代码。我们经常使用<code>UserDefaults</code>保存是否显示新手引导，如果没有<code>propertyWrapper</code>时，要使用下面的代码：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">extension</span> <span style="color:#a6e22e">UserDefaults</span> {
     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Keys</span> {
         <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">let</span> showGuideView = <span style="color:#e6db74">&#34;show_guide_view&#34;</span>
@@ -281,7 +281,36 @@ code.has-jax {
         UserDefaults.standard.isShowGuideView = <span style="color:#66d9ef">false</span>
     }
 }
+</code></pre></div><p>如果要再定义另一个指引，则要重复上面的代码，如果使用<code>@propertyWrapper</code>，可以减少重上面的重复代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">@propertyWrapper
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">UserDefault</span>&lt;T&gt; {
+    <span style="color:#66d9ef">let</span> key: String
+    <span style="color:#66d9ef">let</span> defaultValue: T
 
+    <span style="color:#66d9ef">init</span>(key: String, defaultValue: T) {
+        <span style="color:#66d9ef">self</span>.key = key
+        <span style="color:#66d9ef">self</span>.defaultValue = defaultValue
+    }
+
+    <span style="color:#66d9ef">var</span> wrappedValue: T {
+        <span style="color:#66d9ef">get</span> {
+            <span style="color:#66d9ef">return</span> UserDefaults.standard.object(forKey: key) <span style="color:#66d9ef">as</span>? T ?? defaultValue
+        }
+        <span style="color:#66d9ef">set</span> {
+            UserDefaults.standard.<span style="color:#66d9ef">set</span>(newValue, forKey: key)
+        }
+    }
+}
+
+<span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">UserDefaultConfig</span> {
+    @UserDefault(key: <span style="color:#e6db74">&#34;ad_guide&#34;</span>, defaultValue: <span style="color:#66d9ef">false</span>) <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">var</span> showADGuide: Bool
+    @UserDefault(key: <span style="color:#e6db74">&#34;test_guide&#34;</span>, defaultValue: <span style="color:#66d9ef">false</span>) <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">var</span> showTestGuide: Bool
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">testGuide</span>() {
+    UserDefaultConfig.showADGuide = <span style="color:#66d9ef">false</span>
+    UserDefaultConfig.showTestGuide = <span style="color:#66d9ef">true</span>
+}
 </code></pre></div><h1 id="原子属性">原子属性</h1>
 <p>静态缓存变量（类相关），数组，字典均是多线程不安全的，为了解决线程安全问题，可以利用<code>Swift</code>提供的<code>propertyWrapper</code>来包裹代码，定义原子属性：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">@propertyWrapper
