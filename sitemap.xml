@@ -755,7 +755,6 @@ pod lib create HY_WCDBOptimizedSQLCipher 然后将所有代码源文件Classes�
  报错信息 解决方案 解决方案是在Podfile中指定source，如下所示：
 platform :ios, &amp;#39;8.0&amp;#39; source &amp;#39;https://github.com/CocoaPods/Specs.git&amp;#39; use_frameworks! target &amp;#39;NewWCDB&amp;#39; do pod &amp;#39;WCDB.swift&amp;#39; end 如上图所示，此时，执行pod install是正常的，但是执行pod search依然会报错，此时就需要将trunk移除：
 pod repo remove trunk  参考资料
-报错 &amp;lsquo;@objc&amp;rsquo; instance method in extension of subclass of &amp;lsquo;ModalViewController&amp;rsquo; requires iOS 13.0.0
 </content>
     </entry>
     
@@ -1473,7 +1472,7 @@ range
     </entry>
     
      <entry>
-        <title>第三方库放到Cocoapods中</title>
+        <title>Cocoapods 使用</title>
         <url>https://iihui.github.io/post/ios-cocoapods-storage/</url>
         <categories>
           <category>code</category>
@@ -1481,23 +1480,27 @@ range
         <tags>
           <tag>iOS</tag>
         </tags>
-        <content type="html">  项目需要引入百度语音合成SDK，但这个第三方库的.a文件过于庞大，按规定不能直接放到项目中，需要放到Cocoapods仓库中，然后在项目中依赖一下即可。用已有的模板，只要按照要求修改对应文件，然后执行相应命令即可，这一过程可以总结为5步。
+        <content type="html"> 放入制品库  项目需要引入百度语音合成SDK，但这个第三方库中包含的.a文件过于庞大，按规定不能直接放到代码仓库中，需要放到Cocoapods制品库中，然后再在项目中依赖一下。用已有的模板，只要按照要求修改对应文件，然后执行相应上传命令即可，这一过程可以总结为5步。
  第一步 首先修改.podspec文件。为了修改.podspec文件，首先必须创建第三方库目录。下图为第三方库存放的目录结构，如需新建一个第三方库目录，则选中任意一个拷贝一份:
 拷贝完了之后修改下图中长方形内文件或者文件夹(共3处)的名字，然后删除下图椭圆内的文件：
-这里我将上图的那个副本重命名为BaiduTest，修改上面的3个地方和和删除文件后如下图所示:
+为了测试，将上图的副本重命名为BaiduTest，修改上面的3个地方的文件名，再删除文件后如下图所示:
 然后修改.podspec文件，这个文件的修改必须使用终端文本编辑器（我使用vim编辑器），否则可能出错，这个文件也有三个地方需要修改。
 第一个地方 首先修改s.name,s.version,s.summary,s.description这四个地方，其中s.name保持为上面修改的名字，版本号为0.0.1：
 第二个地方 接下来修改s.homepage,只要将最后的名字修改为BaiduTest:
 第三个地方 最后修改s.source,将后面两项修改即可，这两项的名字要和s.name和s.version保持一致:
  第二步 第二步修改push.py,目的是将LC10_01_BaiduTest这个目录打包并上传到仓库中，这个文件要修改两处:
 第一个地方 将zipCommands后面的名字改为LC10_01_BaiduTest：
-第二个地方 将uploadCommand命令后打包的目录和打包后的文件的名字改成LC10_01_BaiduTest：
+第二个地方 将uploadCommand命令后打包目录和打包后的文件的名字改成LC10_01_BaiduTest，如下图所示：
  第三步 第三步执行push.py，即转到push.py脚本所在目录执行./push.py即可。
-第四步 修改工程所使用的podfile，添加LC10_01_BaiduTest：
- 第五步 第五步是在工程目录下依次执行下面2条命令:
+第四步 修改工程所使用的podfile，在其中添加LC10_01_BaiduTest这一条目，如下图所示：
+ 第五步 第五步，在终端里首先执行pod repo-art update CocoaPods-cmb命令（可在任何目录），然后转到工程目录下执行pod update命令:
   pod repo-art update CocoaPods-cmb
   pod update
-   </content>
+   incompatible target 发布MoUser组件时，使用pod lib lint进行本地检查，发现报错信息为not found for architecture ...
+通过可以修改podspce文件，增加s.pod_target_xcconfig = { &#39;VALID_ARCHS&#39; =&amp;gt; &#39;arm64 armv7&#39;, &#39;EXCLUDED_ARCHS[sdk=iphonesimulator*]&#39; =&amp;gt; &#39;arm64&#39; }可以规避这个问题。
+参考资料
+@objc requires iOS 13.0.0 组件的二进制发布时，遇到了&#39;@objc&#39; instance method in extension of subclass of &#39;ModalViewController&#39; requires iOS 13.0.0 这样的报错信息。这是因为组件设置BUILD_LIBRARY_FOR_DISTRIBUTION = YES，这是因为Swift的ABI不稳定导致的，具体参考
+</content>
     </entry>
     
      <entry>

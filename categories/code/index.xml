@@ -93,12 +93,12 @@
     </item>
     
     <item>
-      <title>第三方库放到Cocoapods中</title>
+      <title>Cocoapods 使用</title>
       <link>https://iihui.github.io/post/ios-cocoapods-storage/</link>
       <pubDate>Fri, 01 Mar 2019 09:34:41 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/ios-cocoapods-storage/</guid>
-      <description>项目需要引入百度语音合成SDK，但这个第三方库的.a文件过于庞大，按规定不能直接放到项目中，需要放到Cocoapods仓库中，然后在项目中依赖一下即可。用已有的模板，只要按照要求修改对应文件，然后执行相应命令即可，这一过程可以总结为5步。 第</description>
+      <description>放入制品库 项目需要引入百度语音合成SDK，但这个第三方库中包含的.a文件过于庞大，按规定不能直接放到代码仓库中，需要放到Cocoapods制品库中，然后再在项目中依赖一下。用已有的模板，只要按照要求修改对应文件，然后执行相应上传命令即可，这</description>
     </item>
     
     <item>
