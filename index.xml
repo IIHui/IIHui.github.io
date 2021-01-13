@@ -6,7 +6,7 @@
     <description>Recent content on Keep It Simple</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 08 Jan 2021 18:19:29 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 12 Jan 2021 08:28:26 +0000</lastBuildDate>
     
 	<atom:link href="https://iihui.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -18,6 +18,15 @@
       
       <guid>https://iihui.github.io/post/hugo-next/</guid>
       <description>从兰陵子处下载了Next主题，修改了主题下面的config.toml配置文件(配置文件的路径如下图所示)。但发现有很多地方还是需要修改才能满足自己的需求，因为对前端了解较少，故以此为记。 代码高亮支持 插入Golang、Swift和OC代码段时</description>
+    </item>
+    
+    <item>
+      <title>ruby 基础</title>
+      <link>https://iihui.github.io/post/ruby-base/</link>
+      <pubDate>Tue, 12 Jan 2021 08:28:26 +0000</pubDate>
+      
+      <guid>https://iihui.github.io/post/ruby-base/</guid>
+      <description>环境 在Mac上使用RubyMine进行调试时，需要先安装ruby-debug-ide,而在安装的时候一直报下面的错误： Failed to Install Gems. Following gems were not installed: /Applications/RubyMine.app/Contents/plugins/ruby/rb/gems/debase-2.3.2.gem: Error installing debase-2.3.2.gem: ERROR: Failed to build gem native extension. current directory: /Users/hui/.gem/ruby/2.6.0/gems/debase-2.3.2/exto /System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/bin/ruby -I /System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0 -r ./siteconf20210112-89760-1n9rd4n.rb extconf.rb checking for vm_core.h... no checking for vm_core.h... no ************************************************************************** No source for ruby-2.6.3-p62 (revision 67580) provided with debase-ruby_core_source gem. Falling back to ruby-2.6.0-p0. ************************************************************************** checking for vm_core.h... yes checking for iseq.h... no</description>
     </item>
     
     <item>
