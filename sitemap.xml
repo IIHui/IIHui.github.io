@@ -46,8 +46,8 @@ katex.html文件的内容如下所示：
         </tags>
         <content type="html"> 环境 在Mac上使用RubyMine进行调试时，需要先安装ruby-debug-ide,而在安装的时候一直报下面的错误：
 Failed to Install Gems. Following gems were not installed: /Applications/RubyMine.app/Contents/plugins/ruby/rb/gems/debase-2.3.2.gem: Error installing debase-2.3.2.gem: ERROR: Failed to build gem native extension. 遇到这种错误可以使用Homebrew安装ruby，使用命令brew install ruby，如果安装的过程中有如下报错：
-Error: Could not find an SDK that supports macOS 11.0. You may have have an outdated or incompatible CLT. Homebrew found the following SDKs in the CLT install: 10.14 10.15 Please update CLT or uninstall it if no updates are available. 此时，需要先更新homebrew，使用brew update命令成功更新homebrew后，再brew install ruby到ruby 3.0,然后在RubyMine中设置SDK，如下图所示：
-选择New local，然后把ruby 3.0加进来「目录为/usr/local/Cellar/ruby/3.0.0_1/bin」，然后在项目配置的时候，选择ruby 3.0，如下所示：
+Error: Could not find an SDK that supports macOS 11.0. You may have have an outdated or incompatible CLT. Homebrew found the following SDKs in the CLT install: 10.14 10.15 Please update CLT or uninstall it if no updates are available. 这时，需要先更新homebrew，即使用brew update命令更新homebrew后，然后再使用brew install ruby或者brew upgrade ruby更新ruby到3.0，然后在RubyMine中添加ruby 3.0 SDK，如下图所示：
+选择New local，然后把ruby 3.0「目录为/usr/local/Cellar/ruby/3.0.0_1/bin」加进来，然后在项目配置的时候，选择ruby 3.0，如下图所示：
 参考资料
 基础 文件扩展名 所有的Ruby文件扩展名都是.rb。在ruby代码中，空白字符一般都会被忽略，而字符串中的空白字符不会被忽略。
 变量 在Ruby中，变量不需要提前声明，为变量赋值时会自动创建。例如，a = 300 会创建一个名为a的变量，并将300存储在该变量中。
