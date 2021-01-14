@@ -21,12 +21,12 @@
     </item>
     
     <item>
-      <title>ruby 基础</title>
+      <title>Ruby 基础</title>
       <link>https://iihui.github.io/post/ruby-base/</link>
       <pubDate>Tue, 12 Jan 2021 08:28:26 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/ruby-base/</guid>
-      <description>环境 在Mac上使用RubyMine进行调试时，需要先安装ruby-debug-ide,而在安装的时候一直报下面的错误： Failed to Install Gems. Following gems were not installed: /Applications/RubyMine.app/Contents/plugins/ruby/rb/gems/debase-2.3.2.gem: Error installing debase-2.3.2.gem: ERROR: Failed to build gem native extension. 遇到这种错误可以使用Homebrew安装ruby，使用命令brew install ruby，如果</description>
+      <description>环境 在Mac上使用RubyMine进行调试前需要先安装ruby-debug-ide。按照提示安装时一直失败，显示如下报错信息： Failed to Install Gems. Following gems were not installed: /Applications/RubyMine.app/Contents/plugins/ruby/rb/gems/debase-2.3.2.gem: Error installing debase-2.3.2.gem: ERROR: Failed to build gem native extension. 遇到这种错误可以使用Homebrew安装ruby——使用命令brew install ru</description>
     </item>
     
     <item>

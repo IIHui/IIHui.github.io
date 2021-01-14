@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
-    <title>ruby 基础 - Keep It Simple</title>
+    <title>Ruby 基础 - Keep It Simple</title>
     <meta name="keywords" content="博客,思考,读书,笔记,技术,分享">
     
-    <meta property="og:title" content="ruby 基础">
+    <meta property="og:title" content="Ruby 基础">
     <meta property="og:site_name" content="Keep It Simple">
     <meta property="og:image" content="/img/author.jpg"> 
-    <meta name="title" content="ruby 基础 - Keep It Simple" />
+    <meta name="title" content="Ruby 基础 - Keep It Simple" />
     <meta name="description" content="Swift | Go | C&#43;&#43; "> 
     <link rel="shortcut icon" href="https://iihui.github.io/img/favicon.ico" />
     <link rel="apple-touch-icon" href="https://iihui.github.io/img/apple-touch-icon.png" />
@@ -194,7 +194,7 @@ code.has-jax {
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
         <a class="post-title-link" href="https://iihui.github.io/post/ruby-base/" itemprop="url">
-        ruby 基础
+        Ruby 基础
         </a>
       </h1>
       <div class="post-meta">
@@ -227,8 +227,8 @@ code.has-jax {
   <span class="post-meta-item-text">分类: </span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="https://iihui.github.io/categories/ios" itemprop="url" rel="index">
-        <span itemprop="name">iOS</span>
+      <a href="https://iihui.github.io/categories/ruby" itemprop="url" rel="index">
+        <span itemprop="name">ruby</span>
       </a>
       &nbsp; 
     </span>
@@ -242,23 +242,23 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">710</span>
+<span class="leancloud-visitors-count">1799</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">2 分钟</span>
+<span class="leancloud-visitors-count">4 分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
     <h1 id="环境">环境</h1>
-<p>在<code>Mac</code>上使用<code>RubyMine</code>进行调试时，需要先安装<code>ruby-debug-ide</code>,而在安装的时候一直报下面的错误：</p>
+<p>在<code>Mac</code>上使用<code>RubyMine</code>进行调试前需要先安装<code>ruby-debug-ide</code>。按照提示安装时一直失败，显示如下报错信息：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#66d9ef">Failed</span> to <span style="color:#66d9ef">Install</span> <span style="color:#66d9ef">Gems</span><span style="color:#f92672">.</span> <span style="color:#66d9ef">Following</span> gems were <span style="color:#f92672">not</span> <span style="color:#e6db74">installed</span>:
 				<span style="color:#e6db74">/Applications/</span><span style="color:#66d9ef">RubyMine</span><span style="color:#f92672">.</span>app<span style="color:#f92672">/</span><span style="color:#66d9ef">Contents</span><span style="color:#f92672">/</span>plugins<span style="color:#f92672">/</span>ruby<span style="color:#f92672">/</span>rb<span style="color:#f92672">/</span>gems<span style="color:#f92672">/</span>debase<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span><span style="color:#f92672">.</span><span style="color:#ae81ff">3</span><span style="color:#f92672">.</span><span style="color:#ae81ff">2</span><span style="color:#f92672">.</span>gem:  <span style="color:#66d9ef">Error</span> installing debase<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span><span style="color:#f92672">.</span><span style="color:#ae81ff">3</span><span style="color:#f92672">.</span><span style="color:#ae81ff">2</span><span style="color:#f92672">.</span>gem:
 				<span style="color:#e6db74">ERROR</span>: <span style="color:#66d9ef">Failed</span> to build gem native extension<span style="color:#f92672">.</span>      
-</code></pre></div><p>遇到这种错误可以使用<code>Homebrew</code>安装<code>ruby</code>，使用命令<code>brew install ruby</code>，如果安装的过程中有如下报错：</p>
+</code></pre></div><p>遇到这种错误可以使用<code>Homebrew</code>安装<code>ruby</code>——使用命令<code>brew install ruby</code>进行安装。如果安装过程中有如下报错信息：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#e6db74">Error</span>: <span style="color:#66d9ef">Could</span> <span style="color:#f92672">not</span> find an <span style="color:#66d9ef">SDK</span> that supports macOS <span style="color:#ae81ff">11</span><span style="color:#f92672">.</span><span style="color:#ae81ff">0</span><span style="color:#f92672">.</span>
 <span style="color:#66d9ef">You</span> may have have an outdated <span style="color:#f92672">or</span> incompatible <span style="color:#66d9ef">CLT</span><span style="color:#f92672">.</span>
 <span style="color:#66d9ef">Homebrew</span> found the following <span style="color:#66d9ef">SDKs</span> <span style="color:#66d9ef">in</span> the <span style="color:#66d9ef">CLT</span> <span style="color:#e6db74">install</span>:
@@ -266,28 +266,116 @@ code.has-jax {
   <span style="color:#ae81ff">10</span><span style="color:#f92672">.</span><span style="color:#ae81ff">15</span>
 
 <span style="color:#66d9ef">Please</span> update <span style="color:#66d9ef">CLT</span> <span style="color:#f92672">or</span> uninstall it <span style="color:#66d9ef">if</span> no updates are available<span style="color:#f92672">.</span>
-</code></pre></div><p>这时，需要先更新<code>homebrew</code>，即使用<code>brew update</code>命令更新<code>homebrew</code>后，然后再使用<code>brew install ruby</code>或者<code>brew upgrade ruby</code>更新<code>ruby</code>到3.0，然后在<code>RubyMine</code>中添加<code>ruby 3.0 SDK</code>，如下图所示：</p>
+</code></pre></div><p>这时，需要先更新<code>homebrew</code>——使用<code>brew update</code>命令。然后再使用<code>brew install ruby</code>或者<code>brew upgrade ruby</code>命令更新<code>ruby</code>到<code>3.0</code>，接着在<code>RubyMine</code>设置中添加<code>ruby 3.0 SDK</code>，如下图所示：</p>
 <p><img src="https://i.loli.net/2021/01/13/NLlZ9ATko1WBVYI.jpg" alt="-c"></p>
-<p>选择<code>New local</code>，然后把<code>ruby 3.0</code>「目录为<code>/usr/local/Cellar/ruby/3.0.0_1/bin</code>」加进来，然后在项目配置的时候，选择<code>ruby 3.0</code>，如下图所示：</p>
+<p>选择<code>New local</code>，把<code>ruby 3.0</code>「目录为<code>/usr/local/Cellar/ruby/3.0.0_1/bin/ruby</code>」加进来，最后在调试前更改配置，选择<code>ruby 3.0</code>，如下图所示：</p>
 <p><img src="https://i.loli.net/2021/01/13/ZpG4SrFt68klcgC.jpg" alt=""></p>
-<p><a href="https://juejin.cn/post/6904204635309883405">参考资料</a></p>
+<p><a href="https://blog.csdn.net/u010816580/article/details/100728453">参考资料</a>
+<a href="https://juejin.cn/post/6904204635309883405">参考资料</a></p>
 <h1 id="基础">基础</h1>
-<h2 id="文件扩展名">文件扩展名</h2>
+<h2 id="简介">简介</h2>
 <p>所有的<code>Ruby</code>文件扩展名都是<code>.rb</code>。在<code>ruby</code>代码中，空白字符一般都会被忽略，而字符串中的空白字符不会被忽略。</p>
-<h2 id="变量">变量</h2>
-<p>在<code>Ruby</code>中，变量不需要提前声明，为变量赋值时会自动创建。例如，<code>a = 300</code> 会创建一个名为<code>a</code>的变量，并将300存储在该变量中。</p>
-<p><code>Ruby</code>变量可以容纳任何类型的数据，甚至可以对一个已经定义的变量，更改其持有的数据类型，如下所示：</p>
+<p><code>Ruby</code>默认使用<code>ASCII</code>来读源码，如果在代码中直接使用中文会报错，需要在文件开头加入<code># -*- coding: UTF-8 -*-</code>。</p>
+<p>在<code>Ruby</code>中单行注释以<code>#</code>开头，直到该行结束。多行注释以<code>=begin</code>开头，以<code>=end</code>结束：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#75715e">=begin
+</span><span style="color:#75715e">这是一个多行注释。
+</span><span style="color:#75715e">可扩展至任意数量的行。
+</span><span style="color:#75715e">但 =begin 和 =end 只能出现在第一行和最后一行。 
+</span><span style="color:#75715e">=end</span>
+
+<span style="color:#75715e"># 单行注释</span>
+</code></pre></div><h2 id="变量">变量</h2>
+<p>在<code>Ruby</code>中，变量<!-- raw HTML omitted -->不需要提前声明，为变量赋初值时会自动创建<!-- raw HTML omitted -->。例如，<code>a = 300</code> 会创建一个名为<code>a</code>的变量，并将300存储在该变量中。</p>
+<p><code>Ruby</code>变量可以<!-- raw HTML omitted -->容纳任何类型的数据，甚至可以对一个已经定义的变量，更改其数据类型<!-- raw HTML omitted -->，如下所示：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">test <span style="color:#f92672">=</span> <span style="color:#ae81ff">45</span>
 puts test
 test <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;test&#34;</span>
 puts test
 </code></pre></div><p><code>Ruby</code>中变量名的风格偏好：使用<!-- raw HTML omitted -->小写字母，以下划线连接，不使用缩写，不以数字开头，以内容的含义命名<!-- raw HTML omitted -->。</p>
 <h2 id="字符串">字符串</h2>
-<p><code>Ruby</code>中字符串分为单引号和双引号字符串，区别在于<!-- raw HTML omitted -->双引号字符串能够支持更多的转义字符<!-- raw HTML omitted -->。</p>
+<p><code>Ruby</code>中字符串分为单引号和双引号字符串，区别在于<!-- raw HTML omitted -->双引号字符串能够支持更多的转义字符<!-- raw HTML omitted -->。即在双引号括起来的字符串中，转义字符会被解析。而在单引号括起来的字符串中，转义字符不会被解析，基本按照原样输出。</p>
 <h3 id="单引号">单引号</h3>
 <p>如果需要在单引号字符串中使用单引号，必须使用转义字符，例如<code>'Won\'t you read O\'Reilly\'s book?'</code></p>
-<h3 id="双引号">双引号</h3>
-<p><a href="https://www.jianshu.com/p/99b4552b512f">参考资料</a>
+<p><code>Ruby</code>中还支持一种采用<code>%q</code>来引导的字符串（单引号引用规则），后面紧跟 <code>!,{,[,|,&lt;</code>的开始定界符，最后以<code>!,},],|,&gt;</code>结尾的定界符，如下所示：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">puts <span style="color:#e6db74">%q! test !</span>
+puts <span style="color:#e6db74">%q{ test }</span>
+puts <span style="color:#e6db74">%q[ test ]</span>
+puts <span style="color:#e6db74">%q| test |</span>
+</code></pre></div><h3 id="双引号">双引号</h3>
+<p>在双引号括起来的字符串中，转义字符会被解析。而在单引号括起来的字符串中，转义字符不会被解析，基本按照原样输出。</p>
+<p><code>Ruby</code>中还支持一种采用<code>%Q</code>来引导的字符串（双引号引用规则），后面紧跟 <code>!,{,[,|</code>的开始定界符，最后以<code>!,},],|</code>结尾的定界符，如下所示：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;hello&#34;</span>
+puts <span style="color:#e6db74">%Q! test #{name} !</span>
+puts <span style="color:#e6db74">%Q{ test </span><span style="color:#e6db74">#{</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74"> }</span>
+puts <span style="color:#e6db74">%Q[ test </span><span style="color:#e6db74">#{</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74"> ]</span>
+puts <span style="color:#e6db74">%Q| test #{name} |</span>
+</code></pre></div><h2 id="运算符">运算符</h2>
+<ul>
+<li><code>&lt;=</code> 判断左操作数的值是否小于或者等于右操作数的值，如果是则条件为真。</li>
+<li><code>&gt;=</code> 判断左操作数的值是否大于或者等于右操作数的值，如果是则条件为真。</li>
+<li><code>&lt;=&gt;</code> 联合比较符，如果左边操作数等于后边操做数，则返回<code>0</code>，如果左边操作数大于右边操作数，则返回1，否则返回-1.</li>
+<li><code>and</code> 与 <code>&amp;&amp;</code> 均为和，区别是<code>and</code>优先级比<code>&amp;&amp;</code>低；</li>
+<li><code>or</code> 与 <code>||</code>均为或，区别是前者的优先级低于后者</li>
+<li><code>not</code> 与 <code>!</code>均为非，区别是前者的优先级低于后者</li>
+<li><code>&amp;&amp;</code>的运算法则是左边为<code>false</code>或者<code>nil</code>时，直接返回<code>false</code>或<code>nil</code>，右边将不会被运算，否则返回右边的对象。</li>
+<li><code>||</code>的运算法则是左边为<code>false</code>或者<code>nil</code>时，返回右边的对象，否则返回左边的对象，右边将不会被运算。</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">current_user</span>
+    @current_user <span style="color:#f92672">||=</span> session<span style="color:#f92672">[</span><span style="color:#e6db74">:user_id</span><span style="color:#f92672">]</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">User</span><span style="color:#f92672">.</span>find(session<span style="color:#f92672">[</span><span style="color:#e6db74">:user_id</span><span style="color:#f92672">]</span>)
+<span style="color:#66d9ef">end</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">current_user</span>
+    <span style="color:#66d9ef">if</span> @current_user
+       <span style="color:#66d9ef">return</span> @current_user
+    <span style="color:#66d9ef">else</span>
+       <span style="color:#66d9ef">if</span> session<span style="color:#f92672">[</span><span style="color:#e6db74">:user_id</span><span style="color:#f92672">]</span>
+          @current_user <span style="color:#f92672">=</span> <span style="color:#66d9ef">User</span><span style="color:#f92672">.</span>find(session<span style="color:#f92672">[</span><span style="color:#e6db74">:user_id</span><span style="color:#f92672">]</span>)
+       <span style="color:#66d9ef">else</span>
+          @current_user <span style="color:#f92672">=</span> <span style="color:#66d9ef">nil</span>
+       <span style="color:#66d9ef">end</span>
+       <span style="color:#66d9ef">return</span> @current_user
+    <span style="color:#66d9ef">end</span>
+<span style="color:#66d9ef">end</span>
+</code></pre></div><p><a href="http://rubyer.me/blog/568/">参考资料</a>
+<a href="https://ruby-china.org/topics/5173">参考资料</a></p>
+<h2 id="数组">数组</h2>
+<p>在<code>Ruby</code>中，索引为<code>-1</code>表示数组的最后一个元素，<code>-2</code>表示倒数第二个元素，依次类推。数组不需要指定大小，当向数组添加元素时，<code>Ruby</code>数组会自动增长。可以<code>size</code>或者<code>length</code>返回数组长度。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">names <span style="color:#f92672">=</span> Array<span style="color:#f92672">.</span>new(<span style="color:#ae81ff">20</span>)
+
+puts names<span style="color:#f92672">.</span>count, names<span style="color:#f92672">.</span>length
+
+names <span style="color:#f92672">=</span> Array<span style="color:#f92672">.</span>new(<span style="color:#ae81ff">4</span>,<span style="color:#e6db74">&#34;test&#34;</span>)
+
+puts <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#{</span>names<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+
+nums <span style="color:#f92672">=</span> Array<span style="color:#f92672">.</span>new(<span style="color:#ae81ff">10</span>) { <span style="color:#f92672">|</span>e<span style="color:#f92672">|</span> e <span style="color:#f92672">=</span> e <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> }
+puts <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#{</span>nums<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+
+nums <span style="color:#f92672">=</span> Array(<span style="color:#ae81ff">0</span><span style="color:#f92672">..</span><span style="color:#ae81ff">9</span>)
+puts <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#{</span>nums<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+
+nums <span style="color:#f92672">=</span> Array<span style="color:#f92672">[</span><span style="color:#ae81ff">11</span>,<span style="color:#ae81ff">23</span>,<span style="color:#ae81ff">45</span><span style="color:#f92672">]</span>
+puts <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#{</span>nums<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+
+nums <span style="color:#f92672">=</span> Array<span style="color:#f92672">.</span>[](<span style="color:#ae81ff">88</span>,<span style="color:#ae81ff">99</span>,<span style="color:#ae81ff">1120</span>,<span style="color:#ae81ff">89</span>,<span style="color:#ae81ff">457</span>,<span style="color:#ae81ff">783</span>)
+puts <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#{</span>nums<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+
+nums <span style="color:#f92672">=</span> Array<span style="color:#f92672">.</span>new
+nums<span style="color:#f92672">.</span>append(<span style="color:#ae81ff">56</span>)
+puts <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#{</span>nums<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</code></pre></div><h2 id="哈希">哈希</h2>
+<p><code>Ruby</code>中的哈希类似于其他语言中的字典。可以使用<code>new</code>来创建带默认值的哈希，当访问有默认值的哈希中的键时，如果键或值不存在时，将返回默认值。没有默认值的哈希，访问的键或值不存在时，将返回<code>nil</code>。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">months <span style="color:#f92672">=</span> <span style="color:#66d9ef">Hash</span><span style="color:#f92672">.</span>new(<span style="color:#e6db74">&#34;month&#34;</span>)
+puts months<span style="color:#f92672">[</span><span style="color:#e6db74">&#34;test&#34;</span><span style="color:#f92672">]</span>
+
+months <span style="color:#f92672">=</span> <span style="color:#66d9ef">Hash</span><span style="color:#f92672">.</span>new <span style="color:#e6db74">&#34;Test&#34;</span>
+puts months<span style="color:#f92672">[</span><span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">]</span>
+</code></pre></div><p>在<code>Ruby</code>中可以<!-- raw HTML omitted -->任何对象作为键或者值<!-- raw HTML omitted -->，甚至可以使用数组：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">hash <span style="color:#f92672">=</span> <span style="color:#66d9ef">Hash</span><span style="color:#f92672">[</span><span style="color:#e6db74">&#34;a&#34;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#ae81ff">12</span>, <span style="color:#e6db74">&#34;b&#34;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;test&#34;</span><span style="color:#f92672">]</span>
+puts <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#{</span>hash<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;a&#39;</span><span style="color:#f92672">]</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">#{</span>hash<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;b&#39;</span><span style="color:#f92672">]</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>  <span style="color:#75715e">#12 test</span>
+
+hash<span style="color:#f92672">[[</span><span style="color:#ae81ff">1</span>,<span style="color:#e6db74">&#34;josn&#34;</span><span style="color:#f92672">]]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;json&#34;</span>
+puts hash <span style="color:#75715e">#{&#34;a&#34;=&gt;12, &#34;b&#34;=&gt;&#34;test&#34;, [1, &#34;josn&#34;]=&gt;&#34;json&#34;}</span>
+</code></pre></div><p><a href="https://www.jianshu.com/p/99b4552b512f">参考资料</a>
 <a href="https://www.runoob.com/ruby/ruby-syntax.html">参考资料</a></p>
 
     </div>
@@ -296,7 +384,7 @@ puts test
  
 <div class="post-tags">     
      
-    <a href="https://iihui.github.io/tags/ios" rel="tag" title="iOS">#iOS#</a>
+    <a href="https://iihui.github.io/tags/ruby" rel="tag" title="ruby">#ruby#</a>
     
 </div>
 
@@ -328,7 +416,7 @@ puts test
         </div>
         <div>
             <p style="margin-top:10px;">
-                标题：ruby 基础
+                标题：Ruby 基础
                 <br />作者：阿呆<a target="_blank" href="https://iihui.github.io/"></a>
                 
                 <br />地址：https://iihui.github.io/post/ruby-base/
@@ -389,7 +477,7 @@ puts test
     <div class="site-state-item site-state-categories">    
         <a href="https://iihui.github.io/categories/">      
          
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">17</span>
         
         <span class="site-state-item-name">分类</span>
         
@@ -399,7 +487,7 @@ puts test
     <div class="site-state-item site-state-tags">
         <a href="https://iihui.github.io/tags/">
          
-        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-count">31</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -455,7 +543,7 @@ puts test
     <li><a href="#环境">环境</a></li>
     <li><a href="#基础">基础</a>
       <ul>
-        <li><a href="#文件扩展名">文件扩展名</a></li>
+        <li><a href="#简介">简介</a></li>
         <li><a href="#变量">变量</a></li>
         <li><a href="#字符串">字符串</a>
           <ul>
@@ -463,6 +551,9 @@ puts test
             <li><a href="#双引号">双引号</a></li>
           </ul>
         </li>
+        <li><a href="#运算符">运算符</a></li>
+        <li><a href="#数组">数组</a></li>
+        <li><a href="#哈希">哈希</a></li>
       </ul>
     </li>
   </ul>

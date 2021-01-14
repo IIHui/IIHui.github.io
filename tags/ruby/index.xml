@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ruby on Keep It Simple</title>
+    <link>https://iihui.github.io/tags/ruby/</link>
+    <description>Recent content in ruby on Keep It Simple</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 12 Jan 2021 08:28:26 +0000</lastBuildDate>
+    
+	<atom:link href="https://iihui.github.io/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ruby 基础</title>
+      <link>https://iihui.github.io/post/ruby-base/</link>
+      <pubDate>Tue, 12 Jan 2021 08:28:26 +0000</pubDate>
+      
+      <guid>https://iihui.github.io/post/ruby-base/</guid>
+      <description>环境 在Mac上使用RubyMine进行调试前需要先安装ruby-debug-ide。按照提示安装时一直失败，显示如下报错信息： Failed to Install Gems. Following gems were not installed: /Applications/RubyMine.app/Contents/plugins/ruby/rb/gems/debase-2.3.2.gem: Error installing debase-2.3.2.gem: ERROR: Failed to build gem native extension. 遇到这种错误可以使用Homebrew安装ruby——使用命令brew install ru</description>
+    </item>
+    
+  </channel>
+</rss>
