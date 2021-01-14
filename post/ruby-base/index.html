@@ -242,7 +242,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1799</span>
+<span class="leancloud-visitors-count">1802</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -266,7 +266,7 @@ code.has-jax {
   <span style="color:#ae81ff">10</span><span style="color:#f92672">.</span><span style="color:#ae81ff">15</span>
 
 <span style="color:#66d9ef">Please</span> update <span style="color:#66d9ef">CLT</span> <span style="color:#f92672">or</span> uninstall it <span style="color:#66d9ef">if</span> no updates are available<span style="color:#f92672">.</span>
-</code></pre></div><p>这时，需要先更新<code>homebrew</code>——使用<code>brew update</code>命令。然后再使用<code>brew install ruby</code>或者<code>brew upgrade ruby</code>命令更新<code>ruby</code>到<code>3.0</code>，接着在<code>RubyMine</code>设置中添加<code>ruby 3.0 SDK</code>，如下图所示：</p>
+</code></pre></div><p>这时，需要先更新<code>homebrew</code>——使用<code>brew update</code>命令。然后再使用<code>brew install ruby</code>或者<code>brew upgrade ruby</code>命令更新<code>ruby</code>到<code>3.0</code>，接着在<code>RubyMine</code>设置中添加<code>ruby 3.0</code>，如下图所示：</p>
 <p><img src="https://i.loli.net/2021/01/13/NLlZ9ATko1WBVYI.jpg" alt="-c"></p>
 <p>选择<code>New local</code>，把<code>ruby 3.0</code>「目录为<code>/usr/local/Cellar/ruby/3.0.0_1/bin/ruby</code>」加进来，最后在调试前更改配置，选择<code>ruby 3.0</code>，如下图所示：</p>
 <p><img src="https://i.loli.net/2021/01/13/ZpG4SrFt68klcgC.jpg" alt=""></p>
@@ -293,7 +293,7 @@ test <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;test&
 puts test
 </code></pre></div><p><code>Ruby</code>中变量名的风格偏好：使用<!-- raw HTML omitted -->小写字母，以下划线连接，不使用缩写，不以数字开头，以内容的含义命名<!-- raw HTML omitted -->。</p>
 <h2 id="字符串">字符串</h2>
-<p><code>Ruby</code>中字符串分为单引号和双引号字符串，区别在于<!-- raw HTML omitted -->双引号字符串能够支持更多的转义字符<!-- raw HTML omitted -->。即在双引号括起来的字符串中，转义字符会被解析。而在单引号括起来的字符串中，转义字符不会被解析，基本按照原样输出。</p>
+<p><code>Ruby</code>中字符串分为单引号和双引号字符串，区别在于<!-- raw HTML omitted -->双引号字符串能够支持更多的转义字符<!-- raw HTML omitted -->。即在双引号括起来的字符串中，转义字符会被解析。而在单引号括起来的字符串中，转义字符多数不会被解析，基本按照原样输出。</p>
 <h3 id="单引号">单引号</h3>
 <p>如果需要在单引号字符串中使用单引号，必须使用转义字符，例如<code>'Won\'t you read O\'Reilly\'s book?'</code></p>
 <p><code>Ruby</code>中还支持一种采用<code>%q</code>来引导的字符串（单引号引用规则），后面紧跟 <code>!,{,[,|,&lt;</code>的开始定界符，最后以<code>!,},],|,&gt;</code>结尾的定界符，如下所示：</p>
@@ -302,7 +302,7 @@ puts <span style="color:#e6db74">%q{ test }</span>
 puts <span style="color:#e6db74">%q[ test ]</span>
 puts <span style="color:#e6db74">%q| test |</span>
 </code></pre></div><h3 id="双引号">双引号</h3>
-<p>在双引号括起来的字符串中，转义字符会被解析。而在单引号括起来的字符串中，转义字符不会被解析，基本按照原样输出。</p>
+<p>在双引号括起来的字符串中，转义字符会被解析。而在单引号括起来的字符串中，转义字符多数不会被解析，基本按照原样输出。</p>
 <p><code>Ruby</code>中还支持一种采用<code>%Q</code>来引导的字符串（双引号引用规则），后面紧跟 <code>!,{,[,|</code>的开始定界符，最后以<code>!,},],|</code>结尾的定界符，如下所示：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;hello&#34;</span>
 puts <span style="color:#e6db74">%Q! test #{name} !</span>
