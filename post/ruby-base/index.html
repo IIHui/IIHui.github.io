@@ -242,13 +242,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1802</span>
+<span class="leancloud-visitors-count">2115</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">4 分钟</span>
+<span class="leancloud-visitors-count">5 分钟</span>
 </span>
       </div>
     </header>
@@ -270,8 +270,19 @@ code.has-jax {
 <p><img src="https://i.loli.net/2021/01/13/NLlZ9ATko1WBVYI.jpg" alt="-c"></p>
 <p>选择<code>New local</code>，把<code>ruby 3.0</code>「目录为<code>/usr/local/Cellar/ruby/3.0.0_1/bin/ruby</code>」加进来，最后在调试前更改配置，选择<code>ruby 3.0</code>，如下图所示：</p>
 <p><img src="https://i.loli.net/2021/01/13/ZpG4SrFt68klcgC.jpg" alt=""></p>
-<p><a href="https://blog.csdn.net/u010816580/article/details/100728453">参考资料</a>
+<p><a href="https://blog.csdn.net/u010816580/article/details/100728453">参考资料</a></p>
+<h1 id="版本">版本</h1>
+<p>调试<code>cocopods</code>插件时，使用系统版本的<code>ruby</code>「ruby 2.6.3p62」会报错，另一种方案是利用<code>rvm</code>工具安装<code>ruby</code>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">curl -sSL https://get.rvm.io | bash -s stable
+rvm install <span style="color:#e6db74">&#34;ruby-2.7.2&#34;</span>
+rvm 2.7.2 -- current <span style="color:#f92672">&amp;&amp;</span> default
+</code></pre></div><p>然后</p>
+<p><a href="http://www.codermario.me/2016/06/17/Mac%E4%B8%8B%E5%A4%9ARuby%E7%8E%AF%E5%A2%83%E7%9A%84%E5%9D%91/">切换版本</a></p>
+<h1 id="调试">调试</h1>
+<p><a href="https://blog.csdn.net/Deft_MKJing/article/details/107737962">参考资料</a>
+<a href="https://www.jianshu.com/p/185b1eb5687b">参考资料</a>
 <a href="https://juejin.cn/post/6904204635309883405">参考资料</a></p>
+<p>Uncaught exception: can&rsquo;t find gem cocoapods (&gt;= 0.a) with executable pod</p>
 <h1 id="基础">基础</h1>
 <h2 id="简介">简介</h2>
 <p>所有的<code>Ruby</code>文件扩展名都是<code>.rb</code>。在<code>ruby</code>代码中，空白字符一般都会被忽略，而字符串中的空白字符不会被忽略。</p>
@@ -287,10 +298,11 @@ code.has-jax {
 </code></pre></div><h2 id="变量">变量</h2>
 <p>在<code>Ruby</code>中，变量<!-- raw HTML omitted -->不需要提前声明，为变量赋初值时会自动创建<!-- raw HTML omitted -->。例如，<code>a = 300</code> 会创建一个名为<code>a</code>的变量，并将300存储在该变量中。</p>
 <p><code>Ruby</code>变量可以<!-- raw HTML omitted -->容纳任何类型的数据，甚至可以对一个已经定义的变量，更改其数据类型<!-- raw HTML omitted -->，如下所示：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">test <span style="color:#f92672">=</span> <span style="color:#ae81ff">45</span>
-puts test
-test <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;test&#34;</span>
-puts test
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">puts <span style="color:#e6db74">%q! test !</span>
+puts <span style="color:#e6db74">%q{ test }</span>
+puts <span style="color:#e6db74">%q[ test ]</span>
+puts <span style="color:#e6db74">%q| test |</span>
+puts <span style="color:#e6db74">%q&lt; test &gt;</span>
 </code></pre></div><p><code>Ruby</code>中变量名的风格偏好：使用<!-- raw HTML omitted -->小写字母，以下划线连接，不使用缩写，不以数字开头，以内容的含义命名<!-- raw HTML omitted -->。</p>
 <h2 id="字符串">字符串</h2>
 <p><code>Ruby</code>中字符串分为单引号和双引号字符串，区别在于<!-- raw HTML omitted -->双引号字符串能够支持更多的转义字符<!-- raw HTML omitted -->。即在双引号括起来的字符串中，转义字符会被解析。而在单引号括起来的字符串中，转义字符多数不会被解析，基本按照原样输出。</p>
@@ -309,16 +321,17 @@ puts <span style="color:#e6db74">%Q! test #{name} !</span>
 puts <span style="color:#e6db74">%Q{ test </span><span style="color:#e6db74">#{</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74"> }</span>
 puts <span style="color:#e6db74">%Q[ test </span><span style="color:#e6db74">#{</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74"> ]</span>
 puts <span style="color:#e6db74">%Q| test #{name} |</span>
+puts <span style="color:#e6db74">%Q&lt; test </span><span style="color:#e6db74">#{</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74"> &gt;</span>
 </code></pre></div><h2 id="运算符">运算符</h2>
 <ul>
 <li><code>&lt;=</code> 判断左操作数的值是否小于或者等于右操作数的值，如果是则条件为真。</li>
 <li><code>&gt;=</code> 判断左操作数的值是否大于或者等于右操作数的值，如果是则条件为真。</li>
-<li><code>&lt;=&gt;</code> 联合比较符，如果左边操作数等于后边操做数，则返回<code>0</code>，如果左边操作数大于右边操作数，则返回1，否则返回-1.</li>
-<li><code>and</code> 与 <code>&amp;&amp;</code> 均为和，区别是<code>and</code>优先级比<code>&amp;&amp;</code>低；</li>
-<li><code>or</code> 与 <code>||</code>均为或，区别是前者的优先级低于后者</li>
-<li><code>not</code> 与 <code>!</code>均为非，区别是前者的优先级低于后者</li>
-<li><code>&amp;&amp;</code>的运算法则是左边为<code>false</code>或者<code>nil</code>时，直接返回<code>false</code>或<code>nil</code>，右边将不会被运算，否则返回右边的对象。</li>
-<li><code>||</code>的运算法则是左边为<code>false</code>或者<code>nil</code>时，返回右边的对象，否则返回左边的对象，右边将不会被运算。</li>
+<li><code>&lt;=&gt;</code> 联合比较符，如果左边操作数等于右边操做数，则返回<code>0</code>，如果左边操作数大于右边操作数，则返回1，否则返回-1。</li>
+<li><code>and</code> 与 <code>&amp;&amp;</code> 均为和，区别是<code>and</code>优先级比<code>&amp;&amp;</code>低。</li>
+<li><code>or</code> 与 <code>||</code>均为或，区别是前者的优先级低于后者。</li>
+<li><code>not</code> 与 <code>!</code>均为非，区别是前者的优先级低于后者。</li>
+<li><code>&amp;&amp;</code>的运算法则是左边为<!-- raw HTML omitted --><code>false</code>或者<code>nil</code><!-- raw HTML omitted -->时，直接返回<code>false</code>或<code>nil</code>，右边将不会被运算；否则返回右边的对象。</li>
+<li><code>||</code>的运算法则是左边为<!-- raw HTML omitted --><code>false</code>或者<code>nil</code><!-- raw HTML omitted -->时，返回右边的对象；否则返回左边的对象，右边将不会被运算。</li>
 </ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">current_user</span>
     @current_user <span style="color:#f92672">||=</span> session<span style="color:#f92672">[</span><span style="color:#e6db74">:user_id</span><span style="color:#f92672">]</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">User</span><span style="color:#f92672">.</span>find(session<span style="color:#f92672">[</span><span style="color:#e6db74">:user_id</span><span style="color:#f92672">]</span>)
@@ -337,8 +350,15 @@ puts <span style="color:#e6db74">%Q| test #{name} |</span>
 <span style="color:#66d9ef">end</span>
 </code></pre></div><p><a href="http://rubyer.me/blog/568/">参考资料</a>
 <a href="https://ruby-china.org/topics/5173">参考资料</a></p>
+<h2 id="模块">模块</h2>
+<blockquote>
+<p>模块定义了一个命名空间，相当于一个沙盒，把方法、类和常量组合在一起，在里面的方法，常量，类都不会与其他地方的常量冲突。</p>
+</blockquote>
+<p>模块中常量的命名和类常量命名相似，以大写字母开头。可以使用模块名称和两个冒号来引用一个常量。</p>
+<h3 id="require">require</h3>
+<p><code>require</code>类似于<code>C++</code>中的<code>include</code>或者<code>Java</code>中的<code>import</code>语句。如果程序中想使用已经定义的模块，可以使用<code>require filename</code>来引用。</p>
 <h2 id="数组">数组</h2>
-<p>在<code>Ruby</code>中，索引为<code>-1</code>表示数组的最后一个元素，<code>-2</code>表示倒数第二个元素，依次类推。数组不需要指定大小，当向数组添加元素时，<code>Ruby</code>数组会自动增长。可以<code>size</code>或者<code>length</code>返回数组长度。</p>
+<p>在<code>Ruby</code>中，索引为<code>-1</code>表示数组的最后一个元素，<code>-2</code>表示倒数第二个元素，依次类推。数组不需要指定大小，当向数组添加元素时，<code>Ruby</code>数组会自动增长。<code>size</code>或者<code>length</code>返回数组长度。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">names <span style="color:#f92672">=</span> Array<span style="color:#f92672">.</span>new(<span style="color:#ae81ff">20</span>)
 
 puts names<span style="color:#f92672">.</span>count, names<span style="color:#f92672">.</span>length
@@ -375,7 +395,10 @@ puts <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#{</spa
 
 hash<span style="color:#f92672">[[</span><span style="color:#ae81ff">1</span>,<span style="color:#e6db74">&#34;josn&#34;</span><span style="color:#f92672">]]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;json&#34;</span>
 puts hash <span style="color:#75715e">#{&#34;a&#34;=&gt;12, &#34;b&#34;=&gt;&#34;test&#34;, [1, &#34;josn&#34;]=&gt;&#34;json&#34;}</span>
-</code></pre></div><p><a href="https://www.jianshu.com/p/99b4552b512f">参考资料</a>
+</code></pre></div><h2 id="类">类</h2>
+<p><a href="https://www.cnblogs.com/tardis/p/4004438.html">参考资料</a></p>
+<hr>
+<p><a href="https://www.jianshu.com/p/99b4552b512f">参考资料</a>
 <a href="https://www.runoob.com/ruby/ruby-syntax.html">参考资料</a></p>
 
     </div>
@@ -541,6 +564,8 @@ puts hash <span style="color:#75715e">#{&#34;a&#34;=&gt;12, &#34;b&#34;=&gt;&#34
         <div class="post-toc-content"><nav id="TableOfContents">
   <ul>
     <li><a href="#环境">环境</a></li>
+    <li><a href="#版本">版本</a></li>
+    <li><a href="#调试">调试</a></li>
     <li><a href="#基础">基础</a>
       <ul>
         <li><a href="#简介">简介</a></li>
@@ -552,8 +577,14 @@ puts hash <span style="color:#75715e">#{&#34;a&#34;=&gt;12, &#34;b&#34;=&gt;&#34
           </ul>
         </li>
         <li><a href="#运算符">运算符</a></li>
+        <li><a href="#模块">模块</a>
+          <ul>
+            <li><a href="#require">require</a></li>
+          </ul>
+        </li>
         <li><a href="#数组">数组</a></li>
         <li><a href="#哈希">哈希</a></li>
+        <li><a href="#类">类</a></li>
       </ul>
     </li>
   </ul>
