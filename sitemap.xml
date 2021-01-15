@@ -49,7 +49,7 @@ Failed to Install Gems. Following gems were not installed: /Applications/RubyMin
 Error: Could not find an SDK that supports macOS 11.0. You may have have an outdated or incompatible CLT. Homebrew found the following SDKs in the CLT install: 10.14 10.15 Please update CLT or uninstall it if no updates are available. 这时，需要先更新homebrew——使用brew update命令。然后再使用brew install ruby或者brew upgrade ruby命令更新ruby到3.0，接着在RubyMine设置中添加ruby 3.0，如下图所示：
 选择New local，把ruby 3.0「目录为/usr/local/Cellar/ruby/3.0.0_1/bin/ruby」加进来，最后在调试前更改配置，选择ruby 3.0，如下图所示：
 参考资料
-版本 调试cocopods插件时，使用系统版本的ruby「ruby 2.6.3p62」会报错，另一种方案是利用rvm工具安装ruby：
+版本 使用RubyMine调试cocopods插件时，使用系统的ruby「ruby 2.6.3p62」会报错，另一种方案是利用rvm工具安装ruby：
 curl -sSL https://get.rvm.io | bash -s stable rvm install &amp;#34;ruby-2.7.2&amp;#34; rvm 2.7.2 -- current &amp;amp;&amp;amp; default 然后
 切换版本
 调试 参考资料 参考资料 参考资料
