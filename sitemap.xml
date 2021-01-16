@@ -55,7 +55,7 @@ Adding rvm PATH line to /Users/hui/.profile /Users/hui/.mkshrc /Users/hui/.bashr
 这就需要先到ipaddress上查raw.githubusercontent.com的IP地址。然后借助SwitchHosts修改raw.githubusercontent.com的IP地址，具体操作看这里。
 接着根据提示，使用source /Users/hui/.rvm/scripts/rvm命令「具体路径根据提示」启用rvm。然后使用rvm install &amp;quot;ruby-2.7.2&amp;quot;命令安装高版本ruby。
 安装成功后，使用rvm use 2.7.2命令启用新的ruby。因为，使用gem安装的工具都处于gem的管理之下，而gem是ruby标准库的一部分，所以切换了ruby版本之后，对应的gem也就随之切换。那么使用gem安装的包，例如cocoapods,xcpretty等都会随之切换，所以之前安装的工具都需要重新安装。
-然后在RubyMine中添加ruby 2.7.2,路径为~/.rvm/rubies/ruby-2.7.2/bin/ruby
+然后在RubyMine中添加ruby 2.7.2,路径为~/.rvm/rubies/ruby-2.7.2/bin/ruby，如下所示：
 切换版本
 调试 参考资料 参考资料 参考资料
 Uncaught exception: can&amp;rsquo;t find gem cocoapods (&amp;gt;= 0.a) with executable pod
