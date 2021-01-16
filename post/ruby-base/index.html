@@ -242,7 +242,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">2506</span>
+<span class="leancloud-visitors-count">2597</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -289,6 +289,7 @@ Please consider donating to our open collective to help us maintain RVM.
 👉  Donate: https://opencollective.com/rvm/donate
 </code></pre></div><p>如果在安装过程中出现<code>curl: (7) Failed to connect to raw.githubusercontent.com port 443: Connection refused</code>这样的错误信息，则说明<code>github</code>上的一些域名的<code>DNS</code>解析被污染，导致<code>DNS</code>解析过程无法通过域名取得正确的<code>IP</code>地址。</p>
 <p>这就需要先到<a href="https://www.ipaddress.com/">ipaddress</a>上查<code>raw.githubusercontent.com</code>的<code>IP</code>地址。然后借助<a href="https://github.com/oldj/SwitchHosts">SwitchHosts</a>修改<code>raw.githubusercontent.com</code>的<code>IP</code>地址。详情查看<a href="https://github.com/hawtim/blog/issues/10">这里</a>。</p>
+<p>接着根据提示使用<code>source /Users/hui/.rvm/scripts/rvm</code>命令启用<code>rvm</code>。然后使用<code>rvm install &quot;ruby-2.7.2&quot;</code>命令安装高版本<code>ruby</code>。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">curl -sSL https://get.rvm.io | bash -s stable
 rvm install <span style="color:#e6db74">&#34;ruby-2.7.2&#34;</span>
 rvm 2.7.2 -- current <span style="color:#f92672">&amp;&amp;</span> default
