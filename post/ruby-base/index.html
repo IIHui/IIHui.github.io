@@ -291,7 +291,7 @@ Please consider donating to our open collective to help us maintain RVM.
 <p>这就需要先到<a href="https://www.ipaddress.com/">ipaddress</a>上查<code>raw.githubusercontent.com</code>的<code>IP</code>地址。然后借助<a href="https://github.com/oldj/SwitchHosts">SwitchHosts</a>修改<code>raw.githubusercontent.com</code>的<code>IP</code>地址，具体操作看<a href="https://github.com/hawtim/blog/issues/10">这里</a>。</p>
 <p>接着根据提示，使用<code>source ~/.rvm/scripts/rvm</code>命令「具体路径根据提示」启用<code>rvm</code>。然后使用<code>rvm install &quot;ruby-2.7.2&quot;</code>命令安装高版本<code>ruby</code>。</p>
 <p>安装成功后，使用<code>rvm use 2.7.2</code>命令启用新的<code>ruby</code>。因为，使用<code>gem</code>安装的工具都处于<code>gem</code>的管理之下，而<code>gem</code>是<code>ruby</code>标准库的一部分，所以切换了<code>ruby</code>版本之后，对应的<code>gem</code>也就随之切换。那么使用<code>gem</code>安装的包，例如<code>cocoapods,xcpretty</code>等都会随之切换，所以之前安装的工具都需要重新安装。</p>
-<p>然后在<code>RubyMine</code>中添加<code>ruby 2.7.2</code>,路径为<code>~/.rvm/rubies/ruby-2.7.2/bin/ruby</code>，如下图所示：</p>
+<p>然后在<code>RubyMine</code>中添加<code>ruby 2.7.2</code>，路径为<code>~/.rvm/rubies/ruby-2.7.2/bin/ruby</code>，如下图所示：</p>
 <p><img src="https://i.loli.net/2021/01/16/71QlpdfLaoyxWR5.jpg" alt="-c"></p>
 <p>接着，点击调试按钮，按照提示安装<code>debase</code>和<code>ruby-debug-ide</code>，如下所示：</p>
 <p><img src="https://i.loli.net/2021/01/16/Eqaz1scZ4xekhvn.jpg" alt="-c"></p>
