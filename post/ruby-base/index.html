@@ -242,7 +242,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">2597</span>
+<span class="leancloud-visitors-count">2717</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -290,10 +290,7 @@ Please consider donating to our open collective to help us maintain RVM.
 </code></pre></div><p>如果在安装过程中出现<code>curl: (7) Failed to connect to raw.githubusercontent.com port 443: Connection refused</code>这样的错误信息，则说明<code>github</code>上的一些域名的<code>DNS</code>解析被污染，导致<code>DNS</code>解析过程无法通过域名取得正确的<code>IP</code>地址。</p>
 <p>这就需要先到<a href="https://www.ipaddress.com/">ipaddress</a>上查<code>raw.githubusercontent.com</code>的<code>IP</code>地址。然后借助<a href="https://github.com/oldj/SwitchHosts">SwitchHosts</a>修改<code>raw.githubusercontent.com</code>的<code>IP</code>地址。详情查看<a href="https://github.com/hawtim/blog/issues/10">这里</a>。</p>
 <p>接着根据提示使用<code>source /Users/hui/.rvm/scripts/rvm</code>命令启用<code>rvm</code>。然后使用<code>rvm install &quot;ruby-2.7.2&quot;</code>命令安装高版本<code>ruby</code>。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">curl -sSL https://get.rvm.io | bash -s stable
-rvm install <span style="color:#e6db74">&#34;ruby-2.7.2&#34;</span>
-rvm 2.7.2 -- current <span style="color:#f92672">&amp;&amp;</span> default
-</code></pre></div><p>然后</p>
+<p>安装成功后，然后使用<code>rvm use system</code>命令启用新的<code>ruby</code>。使用<code>gem</code>安装的工具都处于<code>gem</code>的管理之下，而<code>gem</code>是<code>Ruby</code>标准库的一部分，所以在切换了<code>ruby</code>版本之后，对应的<code>gem</code>也就随之切换.那么使用gem安装的包,例如<code>cocoapods,xcpretty</code>等都会随之切换.</p>
 <p><a href="http://www.codermario.me/2016/06/17/Mac%E4%B8%8B%E5%A4%9ARuby%E7%8E%AF%E5%A2%83%E7%9A%84%E5%9D%91/">切换版本</a></p>
 <h1 id="调试">调试</h1>
 <p><a href="https://blog.csdn.net/Deft_MKJing/article/details/107737962">参考资料</a>
