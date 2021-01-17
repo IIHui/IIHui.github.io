@@ -44,7 +44,8 @@ katex.html文件的内容如下所示：
         <tags>
           <tag>ruby</tag>
         </tags>
-        <content type="html"> 调试环境 在Mac上使用RubyMine进行调试ruby程序前需要先安装debase和ruby-debug-ide。按照提示安装时一直失败，显示如下报错信息：
+        <content type="html">  最近在做组件源码和二进制切换遇到一些问题，在查找资料的是否发现了cocoapods-imy-bin这个插件，打算以这个插件为基础进行改造。
+ 调试环境 在Mac上使用RubyMine进行调试ruby程序前需要先安装debase和ruby-debug-ide。按照提示安装时一直失败，显示如下报错信息：
 Failed to Install Gems. Following gems were not installed: /Applications/RubyMine.app/Contents/plugins/ruby/rb/gems/debase-2.3.2.gem: Error installing debase-2.3.2.gem: ERROR: Failed to build gem native extension. current directory: /Users/hui/.gem/ruby/2.6.0/gems/debase-2.3.2/exto /System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/bin/ruby -I /System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0 -r ./siteconf20210116-5397-1jtpnju.rb extconf.rb /System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0/universal-darwin20/rbconfig.rb:229: warning: Insecure world writable dir /usr/local/opt in PATH, mode 040777 checking for vm_core.h... no checking for vm_core.h... no ************************************************************************** No source for ruby-2.6.3-p62 (revision 67580) provided with debase-ruby_core_source gem. Falling back to ruby-2.6.0-p0. ************************************************************************** chec... (show balloon) 查阅相关资料，发现解决上面报错问题有两种方案，但本质上都是安装高版本的ruby，然后再在RubyMine中安装debase以及ruby-debug-ide。
 第一种 第一种方式是使用Homebrew安装高版本ruby，即使用命令brew install ruby进行安装。如果安装过程中有如下报错信息：
 Error: Could not find an SDK that supports macOS 11.0. You may have have an outdated or incompatible CLT. Homebrew found the following SDKs in the CLT install: 10.14 10.15 Please update CLT or uninstall it if no updates are available. 这时，需要先更新homebrew——使用brew update命令。然后再使用brew install ruby或者brew upgrade ruby命令更新ruby到3.0，接着在RubyMine设置中添加ruby 3.0，如下图所示：
