@@ -58,7 +58,7 @@ Adding rvm PATH line to /Users/hui/.profile /Users/hui/.mkshrc /Users/hui/.bashr
 然后在RubyMine中添加ruby 2.7.2，路径为~/.rvm/rubies/ruby-2.7.2/bin/ruby，如下图所示：
 接着，点击调试按钮，按照提示安装debase和ruby-debug-ide，如下所示，等待安装完毕即可：
 参考资料
-插件源码调试 为了调试cocopods和相关cocoapods-imy-bin插件源码，首先需要下载相应的源码。先创建一个目录bundle「名字随意」，然后在该目录下使用下面命令获取tag为1.10.1版本的源码：
+调试插件 为了调试cocopods和相关cocoapods-imy-bin插件源码，首先需要下载相应的源码。先创建一个目录bundle「名字随意」，然后在该目录下使用下面命令获取tag为1.10.1版本的源码：
 git clone -b 1.10.1 https://github.com/CocoaPods/CocoaPods.git 然后在相同目录下，使用下面的命令获取cocoapods-imy-bin的tag为0.3.1.3的源码：
 git clone -b 0.3.1.3 https://github.com/MeetYouDevs/cocoapods-imy-bin.git 然后在同级目下创建Gemfile文件，内容如下。在Gemfile文件中，source是下载的源，gem xxx默认是从源仓库下载，当指定path表示指向本地源码：
 source &amp;#39;https://rubygems.org&amp;#39; gem &amp;#39;cocoapods&amp;#39; , :path =&amp;gt; &amp;#34;./CocoaPods&amp;#34; gem &amp;#39;cocoapods-imy-bin&amp;#39; , :path =&amp;gt; &amp;#34;./cocoapods-imy-bin&amp;#34; group :debug do gem &amp;#39;ruby-debug-ide&amp;#39; gem &amp;#39;debase&amp;#39; end 在调试某个gem库的时候，为了不影响已经安装的依赖，在安装依赖的时候，最好是安装到当前文件夹下的执行目录。然后在同级下创建.bundle目录，再在.bundle目录下创建文件config，内容如下：
