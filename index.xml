@@ -26,7 +26,7 @@
       <pubDate>Tue, 12 Jan 2021 08:28:26 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/ruby-base/</guid>
-      <description>最近在做组件源码和二进制切换遇到一些问题，在查找资料的是否发现了cocoapods-imy-bin这个插件，打算以这个插件为基础进行改造。 调试环境 在Mac上使用RubyMine进行调试ruby程序前需要先安装debase和ruby-debu</description>
+      <description>最近在做组件源码和二进制切换遇到一些问题，在查找资料时发现了cocoapods-imy-bin这个插件，打算以这个插件为基础进行改造。但之前未接触ruby和cocopods插件开发，这篇文章是一点学习笔记，方便后续查阅。 调试环境 在Mac上使</description>
     </item>
     
     <item>
