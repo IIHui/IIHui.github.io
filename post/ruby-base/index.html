@@ -242,7 +242,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">3247</span>
+<span class="leancloud-visitors-count">3245</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -309,7 +309,7 @@ group <span style="color:#e6db74">:debug</span> <span style="color:#66d9ef">do</
     gem <span style="color:#e6db74">&#39;ruby-debug-ide&#39;</span>
     gem <span style="color:#e6db74">&#39;debase&#39;</span>
 <span style="color:#66d9ef">end</span>
-</code></pre></div><p>在调试某个<code>gem</code>库的时候，为了不影响已经安装的依赖，在安装依赖的时候，最好是安装到当前文件夹下的执行目录中取。然后在同级下创建<code>.bundle</code>目录，再在<code>.bundle</code>目录下创建文件<code>config</code>，内容如下：</p>
+</code></pre></div><p>在调试某个<code>gem</code>库的时候，为了不影响已经安装的依赖，在安装依赖的时候，最好是安装到当前文件夹下的执行目录。然后在同级下创建<code>.bundle</code>目录，再在<code>.bundle</code>目录下创建文件<code>config</code>，内容如下：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#e6db74">BUNDLE_PATH</span>: <span style="color:#e6db74">&#34;vendor/bundle&#34;</span>
 </code></pre></div><p><img src="https://i.loli.net/2021/01/17/Z8K7iwg2QN4sbMm.jpg" alt="-c"></p>
 <p>最后回到<code>Gemfile</code>所在目录，执行<code>bundle install</code></p>
