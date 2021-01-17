@@ -242,7 +242,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">3559</span>
+<span class="leancloud-visitors-count">3604</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -317,12 +317,13 @@ group <span style="color:#e6db74">:debug</span> <span style="color:#66d9ef">do</
 <p>最后回到<code>Gemfile</code>所在目录，执行<code>bundle install</code>，将会把<code>Gemfile</code>文件中所声明的依赖安装到<code>vendor/bundle</code>目录下。</p>
 <p><img src="https://i.loli.net/2021/01/17/6gASId3PhMrXfvQ.jpg" alt="-c"></p>
 <h3 id="开始调试">开始调试</h3>
-<p>使用<code>RubyMine</code>打开<code>Gemfile</code>所在的上层<code>bundle</code>目录，点击配置，<code>Gem name</code>输入<code>cocoapods-imy-bin</code>，然后<code>Executable name</code>中输入<code>pod</code>，<code>Arguments</code>中输入<code>bin init</code>。然后再在<code>bundle</code>下创建<code>demo</code>目录，然后在<code>demo</code>创建<code>Podfile</code>，接着在<code>Working directory</code>中<code>选择</code>demo`目录，如下所示：</p>
+<p>使用<code>RubyMine</code>打开<code>Gemfile</code>所在的上层<code>bundle</code>目录，点击配置，<code>Gem name</code>输入<code>cocoapods-imy-bin</code>，然后<code>Executable name</code>中输入<code>pod</code>，<code>Arguments</code>中输入<code>bin init</code>。然后再在<code>bundle</code>下创建<code>demo</code>目录，然后在<code>demo</code>创建<code>Podfile</code>，接着在<code>Working directory</code>中选择<code>demo</code>目录，如下所示：</p>
 <p><img src="https://i.loli.net/2021/01/17/9Fien32ouYgBwPA.jpg" alt="-c"></p>
-<p><a href="https://blog.csdn.net/Deft_MKJing/article/details/107737962">参考资料</a>
+<p>如果在调试的时候，遇到如下类似的报错信息，则需要重新安装对应的依赖，使用<code>gem install xxx</code>即可。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#66d9ef">Uncaught</span> <span style="color:#e6db74">exception</span>: can<span style="color:#960050;background-color:#1e0010">&#39;</span>t find gem cocoapods (<span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">.</span>a) with executable pod
+</code></pre></div><p><a href="https://blog.csdn.net/Deft_MKJing/article/details/107737962">参考资料</a>
 <a href="https://www.jianshu.com/p/185b1eb5687b">参考资料</a>
 <a href="https://juejin.cn/post/6904204635309883405">参考资料</a></p>
-<p>Uncaught exception: can&rsquo;t find gem cocoapods (&gt;= 0.a) with executable pod</p>
 <h1 id="基础">基础</h1>
 <h2 id="简介">简介</h2>
 <p>所有的<code>Ruby</code>文件扩展名都是<code>.rb</code>。在<code>ruby</code>代码中，空白字符一般都会被忽略，而字符串中的空白字符不会被忽略。</p>
