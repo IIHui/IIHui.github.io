@@ -1140,7 +1140,7 @@ class MethodSwizzlingTools { static func exchangeSelector(object: AnyClass, orig
         <tags>
           <tag>swift</tag><tag>iOS</tag>
         </tags>
-        <content type="html">  最近在看Swift中的方法交换，遇到Any、AnyObject与AnyClass次数挺多的，所以在网上找了一些文章看了一下，以此为记。
+        <content type="html">  最近在看Swift中的方法交换，遇到Any、AnyObject与AnyClass次数较多，所以在网上找了一些文章看了一下，以此篇为记。
  AnyObject AnyObject类似于OC中的id类型，表示任意的class类型。但在Swift中由于String、Array等都变成结构体了，AnyObject的适用范围就变窄了。
 实际上AnyObject是一个成员为空的协议@objc public protocol AnyObject {}。它注释的第一行:The protocol to which all classes implicitly conform表明所有的类都隐式遵守了这个协议。
 Any Any也是一个协议，根据其注释The protocol to which all types implicitly conform.表明所有的类型都遵守该协议，包括基本数据类型，enum, struct, func等等。因此Any可以表示任何类型的实例，包括函数类型
