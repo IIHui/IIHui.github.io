@@ -303,13 +303,13 @@ code.has-jax {
 }
 
 <span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">UserDefaultConfig</span> {
-    @UserDefault(key: <span style="color:#e6db74">&#34;ad_guide&#34;</span>, defaultValue: <span style="color:#66d9ef">false</span>) <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">var</span> showADGuide: Bool
-    @UserDefault(key: <span style="color:#e6db74">&#34;test_guide&#34;</span>, defaultValue: <span style="color:#66d9ef">false</span>) <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">var</span> showTestGuide: Bool
+    @UserDefault(key: <span style="color:#e6db74">&#34;speech_guide&#34;</span>, defaultValue: <span style="color:#66d9ef">false</span>) <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">var</span> speechGuide: Bool
+    @UserDefault(key: <span style="color:#e6db74">&#34;note_guide&#34;</span>, defaultValue: <span style="color:#66d9ef">false</span>) <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">var</span> noteGuide: Bool
 }
 
 <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">testGuide</span>() {
-    UserDefaultConfig.showADGuide = <span style="color:#66d9ef">false</span>
-    UserDefaultConfig.showTestGuide = <span style="color:#66d9ef">true</span>
+    UserDefaultConfig.speechGuide = <span style="color:#66d9ef">false</span>
+    UserDefaultConfig.noteGuide = <span style="color:#66d9ef">true</span>
 }
 </code></pre></div><h1 id="codeable">Codeable</h1>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">/// for codable</span>
