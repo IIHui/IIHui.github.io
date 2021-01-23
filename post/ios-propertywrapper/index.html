@@ -242,7 +242,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">875</span>
+<span class="leancloud-visitors-count">886</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -272,6 +272,9 @@ code.has-jax {
 <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">test</span>() {
     <span style="color:#66d9ef">let</span> hash = HashWrapper(x: <span style="color:#ae81ff">100</span>)
     print(hash.x, hash.y, hash.z)
+    
+    <span style="color:#66d9ef">let</span> hash1 = HashWrapper(x: <span style="color:#ae81ff">34</span>, y: <span style="color:#ae81ff">45</span>, z: Wrapper(wrappedValue: <span style="color:#ae81ff">89</span>))
+    print(hash1.x,hash1.y,hash1.z)
 }
 </code></pre></div><h1 id="重复代码">重复代码</h1>
 <p>使用<code>@propertyWrapper</code>可以减少重复代码。我们通常使用<code>UserDefaults</code>来保存引导页是否已经显示过，如果没有<code>@propertyWrapper</code>时，一般使用如下所示代码：</p>
