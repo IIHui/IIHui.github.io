@@ -242,13 +242,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">884</span>
+<span class="leancloud-visitors-count">1163</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">2 分钟</span>
+<span class="leancloud-visitors-count">3 分钟</span>
 </span>
       </div>
     </header>
@@ -276,7 +276,73 @@ code.has-jax {
     <span style="color:#66d9ef">let</span> test2 = TestWrapper(x: <span style="color:#ae81ff">34</span>, y: <span style="color:#ae81ff">45</span>, z: Wrapper(wrappedValue: <span style="color:#ae81ff">89</span>))
     print(test2.x,test2.y,test2.z)
 }
+</code></pre></div><p>在属性包装器中，可以提供额外的功能，此时可以通过在变量名前加下划线来访问包装器类型：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">@propertyWrapper
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Wrapper</span>&lt;T&gt; {
+    <span style="color:#66d9ef">var</span> wrappedValue: T
+    
+    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">foo</span>(){
+        print(<span style="color:#e6db74">&#34;foo&#34;</span>)
+    }
+}
 
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">TestWrapper</span> {
+    @Wrapper <span style="color:#66d9ef">var</span> x: Int
+    @Wrapper <span style="color:#66d9ef">var</span> y = <span style="color:#ae81ff">12</span>
+    @Wrapper(wrappedValue: <span style="color:#ae81ff">34</span>) <span style="color:#66d9ef">var</span> z
+    
+    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">foo</span>(){
+        _x.foo()
+    }
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">test</span>() {
+    <span style="color:#66d9ef">let</span> test1 = TestWrapper(x: <span style="color:#ae81ff">100</span>)
+    print(test1.x, test1.y, test1.z)
+    
+    <span style="color:#66d9ef">let</span> test2 = TestWrapper(x: <span style="color:#ae81ff">34</span>, y: <span style="color:#ae81ff">45</span>, z: Wrapper(wrappedValue: <span style="color:#ae81ff">89</span>))
+    print(test2.x,test2.y,test2.z)
+    
+    test1.foo()
+    test2.foo()
+}
+</code></pre></div><p>上面的<code>_x</code>是包装器的实例，从外部使用它会产生编译错误，因为它默认是<code>private</code>访问级别。可以定义<code>projection</code>属性，因为使用<code>projectedValue</code>时没有限制：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">@propertyWrapper
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Wrapper</span>&lt;T&gt; {
+    <span style="color:#66d9ef">var</span> wrappedValue: T
+    <span style="color:#66d9ef">var</span> projectedValue: Wrapper&lt;T&gt; { <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">self</span> }
+    
+    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">foo</span>(){
+        print(<span style="color:#e6db74">&#34;foo&#34;</span>)
+    }
+}
+
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">TestWrapper</span> {
+    @Wrapper <span style="color:#66d9ef">var</span> x: Int
+    @Wrapper <span style="color:#66d9ef">var</span> y = <span style="color:#ae81ff">12</span>
+    @Wrapper(wrappedValue: <span style="color:#ae81ff">34</span>) <span style="color:#66d9ef">var</span> z
+    
+    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">foo</span>(){
+        _x.foo()
+        <span style="color:#960050;background-color:#1e0010">$</span>x.foo()
+        <span style="color:#75715e">//不能使用x.foo()</span>
+        print(x,_x,<span style="color:#960050;background-color:#1e0010">$</span>x) <span style="color:#75715e">//三种方式访问包装器</span>
+    }
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">test</span>() {
+    <span style="color:#66d9ef">let</span> test1 = TestWrapper(x: <span style="color:#ae81ff">100</span>)
+    print(test1.x, test1.y, test1.z)
+    
+    <span style="color:#66d9ef">let</span> test2 = TestWrapper(x: <span style="color:#ae81ff">34</span>, y: <span style="color:#ae81ff">45</span>, z: Wrapper(wrappedValue: <span style="color:#ae81ff">89</span>))
+    print(test2.x,test2.y,test2.z)
+    
+    test1.foo()
+    test2.foo()
+    
+    test1.<span style="color:#960050;background-color:#1e0010">$</span>x.foo()
+    test2.<span style="color:#960050;background-color:#1e0010">$</span>x.foo()
+}
 </code></pre></div><h1 id="重复">重复</h1>
 <p>使用<code>@propertyWrapper</code>可以减少重复代码。我们通常使用<code>UserDefaults</code>来保存引导页是否已经显示过，如果没有<code>@propertyWrapper</code>时，一般使用如下所示代码：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">extension</span> <span style="color:#a6e22e">UserDefaults</span> {
