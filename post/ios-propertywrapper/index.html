@@ -242,7 +242,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">886</span>
+<span class="leancloud-visitors-count">884</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -263,20 +263,21 @@ code.has-jax {
     <span style="color:#66d9ef">var</span> wrappedValue: T
 }
 
-<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">HashWrapper</span> {
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">TestWrapper</span> {
     @Wrapper <span style="color:#66d9ef">var</span> x: Int
     @Wrapper <span style="color:#66d9ef">var</span> y = <span style="color:#ae81ff">12</span>
     @Wrapper(wrappedValue: <span style="color:#ae81ff">34</span>) <span style="color:#66d9ef">var</span> z
 }
 
 <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">test</span>() {
-    <span style="color:#66d9ef">let</span> hash = HashWrapper(x: <span style="color:#ae81ff">100</span>)
-    print(hash.x, hash.y, hash.z)
+    <span style="color:#66d9ef">let</span> test1 = TestWrapper(x: <span style="color:#ae81ff">100</span>)
+    print(test1.x, test1.y, test1.z)
     
-    <span style="color:#66d9ef">let</span> hash1 = HashWrapper(x: <span style="color:#ae81ff">34</span>, y: <span style="color:#ae81ff">45</span>, z: Wrapper(wrappedValue: <span style="color:#ae81ff">89</span>))
-    print(hash1.x,hash1.y,hash1.z)
+    <span style="color:#66d9ef">let</span> test2 = TestWrapper(x: <span style="color:#ae81ff">34</span>, y: <span style="color:#ae81ff">45</span>, z: Wrapper(wrappedValue: <span style="color:#ae81ff">89</span>))
+    print(test2.x,test2.y,test2.z)
 }
-</code></pre></div><h1 id="重复代码">重复代码</h1>
+
+</code></pre></div><h1 id="重复">重复</h1>
 <p>使用<code>@propertyWrapper</code>可以减少重复代码。我们通常使用<code>UserDefaults</code>来保存引导页是否已经显示过，如果没有<code>@propertyWrapper</code>时，一般使用如下所示代码：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">extension</span> <span style="color:#a6e22e">UserDefaults</span> {
     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Keys</span> {
@@ -602,7 +603,7 @@ code.has-jax {
         <div class="post-toc-content"><nav id="TableOfContents">
   <ul>
     <li><a href="#使用">使用</a></li>
-    <li><a href="#重复代码">重复代码</a></li>
+    <li><a href="#重复">重复</a></li>
     <li><a href="#codeable">Codeable</a></li>
     <li><a href="#原子属性">原子属性</a>
       <ul>
