@@ -242,7 +242,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1313</span>
+<span class="leancloud-visitors-count">1454</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -277,6 +277,35 @@ code.has-jax {
     <span style="color:#66d9ef">let</span> test2 = TestWrapper(x: <span style="color:#ae81ff">34</span>, y: <span style="color:#ae81ff">45</span>, z: Wrapper(wrappedValue: <span style="color:#ae81ff">89</span>))
     print(test2.x,test2.y,test2.z)
 }
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">@propertyWrapper
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">SomeWrapper</span> {
+    <span style="color:#66d9ef">var</span> wrappedValue: Int
+    <span style="color:#66d9ef">var</span> someValue: Double
+    <span style="color:#66d9ef">init</span>() {
+        <span style="color:#66d9ef">self</span>.wrappedValue = <span style="color:#ae81ff">100</span>
+        <span style="color:#66d9ef">self</span>.someValue = <span style="color:#ae81ff">12.3</span>
+    }
+    <span style="color:#66d9ef">init</span>(wrappedValue: Int) {
+        <span style="color:#66d9ef">self</span>.wrappedValue = wrappedValue
+        <span style="color:#66d9ef">self</span>.someValue = <span style="color:#ae81ff">45.6</span>
+    }
+    <span style="color:#66d9ef">init</span>(wrappedValue value: Int, custom: Double) {
+        <span style="color:#66d9ef">self</span>.wrappedValue = value
+        <span style="color:#66d9ef">self</span>.someValue = custom
+    }
+}
+
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">SomeStruct</span> {
+    <span style="color:#75715e">// 使用 init()</span>
+    @SomeWrapper <span style="color:#66d9ef">var</span> a: Int
+
+    <span style="color:#75715e">// 使用 init(wrappedValue:)</span>
+    @SomeWrapper <span style="color:#66d9ef">var</span> b = <span style="color:#ae81ff">10</span>
+
+    <span style="color:#75715e">// 两个都是使用 init(wrappedValue:custom:)</span>
+    @SomeWrapper(custom: <span style="color:#ae81ff">98.7</span>) <span style="color:#66d9ef">var</span> c = <span style="color:#ae81ff">30</span>
+    @SomeWrapper(wrappedValue: <span style="color:#ae81ff">30</span>, custom: <span style="color:#ae81ff">98.7</span>) <span style="color:#66d9ef">var</span> d
+}
 </code></pre></div><p>如果需要访问包装器本身（而不是包装的值），则需要在属性名称之前添加下划线。在属性包装器中，也可以提供额外的功能，但是为了使用这些额外的功能，需要访问包装器本身：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">@propertyWrapper
 <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Wrapper</span>&lt;T&gt; {
@@ -307,7 +336,7 @@ code.has-jax {
     test1.foo()
     test2.foo()
 }
-</code></pre></div><p>上面的<code>_x</code>是属性包装器本身，从外部使用它会产生编译错误，因为它默认是<code>private</code>访问级别。可以定义<code>projection</code>属性，因为使用<code>projectedValue</code>时没有限制：</p>
+</code></pre></div><p>上面的<code>_x</code>是属性包装器本身，它是<code>private</code>访问级别的。因此，从外部使用它会产生编译错误。属性包装器还可以通过定义投影值来暴露其他功能。，投影值的名称与包装值相同，只是它以<code>$</code>开头。投影值使用<code>projectedValue</code>定义，投影值的使用没有任何限制：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">@propertyWrapper
 <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Wrapper</span>&lt;T&gt; {
     <span style="color:#66d9ef">var</span> wrappedValue: T
@@ -326,7 +355,7 @@ code.has-jax {
     <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">foo</span>(){
         _x.foo()
         <span style="color:#960050;background-color:#1e0010">$</span>x.foo()
-        <span style="color:#75715e">//不能使用x.foo()</span>
+        <span style="color:#75715e">//不能使用x.foo()，因为x代表wrappedValue</span>
         print(x,_x,<span style="color:#960050;background-color:#1e0010">$</span>x) <span style="color:#75715e">//三种方式访问包装器</span>
     }
 }
