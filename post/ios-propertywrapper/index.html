@@ -242,7 +242,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">739</span>
+<span class="leancloud-visitors-count">838</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -256,7 +256,10 @@ code.has-jax {
     <blockquote>
 <p>属性包装器<code>@propertyWrapper</code>的作用对象是属性。它的思想是只可以通过<code>wrappedValue</code>的<code>get set</code>方法来访问属性，这样就可以通过<code>get set</code>来对属性进行包装。</p>
 </blockquote>
-<h1 id="重复代码">重复代码</h1>
+<h1 id="使用">使用</h1>
+<p>使用属性包装器<code>propertyWrapper</code>类型，必须满足两个条件。第一，必须使用属性<code>@propertyWrapper</code>。第二，必须具有<code>wrapppedValue</code>属性。下面是一个最简单的属性包装器：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">
+</code></pre></div><h1 id="重复代码">重复代码</h1>
 <p>使用<code>@propertyWrapper</code>可以减少重复代码。我们通常使用<code>UserDefaults</code>来保存引导页是否已经显示过，如果没有<code>@propertyWrapper</code>时，一般使用如下所示代码：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">extension</span> <span style="color:#a6e22e">UserDefaults</span> {
     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Keys</span> {
@@ -277,7 +280,7 @@ code.has-jax {
     <span style="color:#66d9ef">let</span> hasDisplayed = UserDefaults.standard.hasDisplayedGuideView
 
     <span style="color:#66d9ef">if</span> hasDisplayed {
-        <span style="color:#75715e">// 显示新手指引</span>
+        <span style="color:#75715e">// 显示引导页</span>
         UserDefaults.standard.hasDisplayedGuideView = <span style="color:#66d9ef">false</span>
     }
 }
@@ -581,6 +584,7 @@ code.has-jax {
     <div class="post-toc">
         <div class="post-toc-content"><nav id="TableOfContents">
   <ul>
+    <li><a href="#使用">使用</a></li>
     <li><a href="#重复代码">重复代码</a></li>
     <li><a href="#codeable">Codeable</a></li>
     <li><a href="#原子属性">原子属性</a>
