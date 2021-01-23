@@ -104,7 +104,7 @@ hash = Hash[&amp;#34;a&amp;#34; =&amp;gt; 12, &amp;#34;b&amp;#34; =&amp;gt; &amp
         <tags>
           <tag>iOS</tag>
         </tags>
-        <content type="html">  属性包装器@propertyWrapper的作用对象是属性。它的思想是只可以通过wrappedValue的get set方法来访问属性，这样就可以通过get set来对属性进行包装。
+        <content type="html">  属性包装器@propertyWrapper的作用对象是属性。它的思想是只可以通过wrappedValue的get set方法来访问属性，这样就可以通过get set来对属性进行包装。属性包装器是一种通用结构，它封装了对该属性的读写访问，并为其添加了其他行为。如果需要限制可用的属性值，向读/写访问添加额外的逻辑或添加一些其他方法，则可以使用它。
  使用 属性包装器propertyWrapper是Swift 5.1引入，使用时必须满足两个条件。第一，必须使用属性@propertyWrapper。第二，必须具有wrapppedValue属性。下面是一个最简单的属性包装器：
 @propertyWrapper struct Wrapper&amp;lt;T&amp;gt; { var wrappedValue: T } struct TestWrapper { @Wrapper var x: Int @Wrapper var y = 12 @Wrapper(wrappedValue: 34) var z } func test() { let test1 = TestWrapper(x: 100) print(test1.x, test1.y, test1.z) let test2 = TestWrapper(x: 34, y: 45, z: Wrapper(wrappedValue: 89)) print(test2.x,test2.y,test2.z) } 在属性包装器中，可以提供额外的功能，此时可以通过在变量名前加下划线来访问包装器类型：
 @propertyWrapper struct Wrapper&amp;lt;T&amp;gt; { var wrappedValue: T func foo(){ print(&amp;#34;foo&amp;#34;) } } struct TestWrapper { @Wrapper var x: Int @Wrapper var y = 12 @Wrapper(wrappedValue: 34) var z func foo(){ _x.foo() } } func test() { let test1 = TestWrapper(x: 100) print(test1.x, test1.y, test1.z) let test2 = TestWrapper(x: 34, y: 45, z: Wrapper(wrappedValue: 89)) print(test2.x,test2.y,test2.z) test1.foo() test2.foo() } 上面的_x是包装器的实例，从外部使用它会产生编译错误，因为它默认是private访问级别。可以定义projection属性，因为使用projectedValue时没有限制：
