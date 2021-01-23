@@ -254,7 +254,7 @@ code.has-jax {
     </header>
     <div class="post-body" itemprop="articleBody">
     <blockquote>
-<p>属性包装器<code>@propertyWrapper</code>的作用对象是属性。它的思想是只可以通过<code>wrappedValue</code>的<code>get set</code>方法来访问属性，这样就可以通过<code>get set</code>来对属性进行包装。属性包装器是一种通用结构，它封装了对该属性的读写访问，并为其添加了其他行为。如果需要限制可用的属性值，向读或写访问添加额外的逻辑或添加一些其他方法，则可以使用它。</p>
+<p>属性包装器<code>@propertyWrapper</code>的作用对象是属性，它的思想是只可以通过<code>wrappedValue</code>的<code>get set</code>方法来访问属性，这样就可以通过<code>get set</code>来对属性进行包装。属性包装器是一种通用结构，它封装了对该属性的读写访问，并为其添加了其他行为。如果需要限制可用的属性值，向读或写访问添加额外的逻辑或添加一些其他方法，则可以使用它。</p>
 </blockquote>
 <h1 id="基本使用">基本使用</h1>
 <p>属性包装器<code>propertyWrapper</code>是<code>Swift 5.1</code>引入，使用时必须满足两个条件。第一，必须使用属性<code>@propertyWrapper</code>。第二，必须具有非静态的<code>wrapppedValue</code>属性。下面是一个最简单的属性包装器：</p>
@@ -435,7 +435,7 @@ code.has-jax {
         UserDefaults.standard.hasDisplayedGuideView = <span style="color:#66d9ef">false</span>
     }
 }
-</code></pre></div><p>如果需要再添加另一个引导页，则需要重复上面的代码。如果使用<code>@propertyWrapper</code>，可以减少上面的重复代码，如下所示：</p>
+</code></pre></div><p>如果需要再添加另一个引导项，则需要重复上面的代码。如果使用<code>@propertyWrapper</code>，可以减少上面的重复代码，如下所示：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">@propertyWrapper
 <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">UserDefault</span>&lt;T&gt; {
     <span style="color:#66d9ef">let</span> key: String
