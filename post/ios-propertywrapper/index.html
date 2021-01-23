@@ -242,7 +242,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">838</span>
+<span class="leancloud-visitors-count">875</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -258,7 +258,21 @@ code.has-jax {
 </blockquote>
 <h1 id="使用">使用</h1>
 <p>使用属性包装器<code>propertyWrapper</code>类型，必须满足两个条件。第一，必须使用属性<code>@propertyWrapper</code>。第二，必须具有<code>wrapppedValue</code>属性。下面是一个最简单的属性包装器：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">@propertyWrapper
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Wrapper</span>&lt;T&gt; {
+    <span style="color:#66d9ef">var</span> wrappedValue: T
+}
+
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">HashWrapper</span> {
+    @Wrapper <span style="color:#66d9ef">var</span> x: Int
+    @Wrapper <span style="color:#66d9ef">var</span> y = <span style="color:#ae81ff">12</span>
+    @Wrapper(wrappedValue: <span style="color:#ae81ff">34</span>) <span style="color:#66d9ef">var</span> z
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">test</span>() {
+    <span style="color:#66d9ef">let</span> hash = HashWrapper(x: <span style="color:#ae81ff">100</span>)
+    print(hash.x, hash.y, hash.z)
+}
 </code></pre></div><h1 id="重复代码">重复代码</h1>
 <p>使用<code>@propertyWrapper</code>可以减少重复代码。我们通常使用<code>UserDefaults</code>来保存引导页是否已经显示过，如果没有<code>@propertyWrapper</code>时，一般使用如下所示代码：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">extension</span> <span style="color:#a6e22e">UserDefaults</span> {
