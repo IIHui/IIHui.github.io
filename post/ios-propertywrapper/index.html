@@ -242,7 +242,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1586</span>
+<span class="leancloud-visitors-count">1638</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -465,12 +465,13 @@ code.has-jax {
     UserDefaultConfig.speechGuide = <span style="color:#66d9ef">false</span>
     UserDefaultConfig.noteGuide = <span style="color:#66d9ef">true</span>
 }
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">/// for codable</span>
+</code></pre></div><p>上面的属性包装器，对于基本类型都可以保存。但是对于非基本类型，如果要保存，就要借助于<code>Codable</code>才能保存：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">/// for codable</span>
 @available(swift <span style="color:#ae81ff">5.1</span>)
 @propertyWrapper
 <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">UserDefaultJsonWrapper</span>&lt;T: Codable&gt; {
     <span style="color:#66d9ef">var</span> key: String
-    <span style="color:#66d9ef">var</span> defaultValue: T!
+    <span style="color:#66d9ef">var</span> defaultValue: T
     <span style="color:#66d9ef">var</span> wrappedValue: T {
         <span style="color:#66d9ef">get</span> {
             <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> jsonString = UserDefaults.standard.string(forKey: key) <span style="color:#66d9ef">else</span> {
@@ -494,7 +495,7 @@ code.has-jax {
         }
     }
 
-    <span style="color:#66d9ef">init</span>(key: String, defaultValue: T! = <span style="color:#66d9ef">nil</span>) {
+    <span style="color:#66d9ef">init</span>(key: String, defaultValue: T) {
         <span style="color:#66d9ef">self</span>.key = key
         <span style="color:#66d9ef">self</span>.defaultValue = defaultValue
     }
