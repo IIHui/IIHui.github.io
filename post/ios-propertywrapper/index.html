@@ -242,7 +242,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1528</span>
+<span class="leancloud-visitors-count">1536</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -305,7 +305,7 @@ code.has-jax {
     <span style="color:#66d9ef">let</span> test2 = TestWrapper(x: <span style="color:#ae81ff">34</span>, y: <span style="color:#ae81ff">45</span>, z: Wrapper(wrappedValue: <span style="color:#ae81ff">89</span>))
     print(test2.x,test2.y,test2.z)
 }
-</code></pre></div><p>如果需要访问包装器本身（而不是包装的值），则需要在属性名称之前添加下划线。在属性包装器中，也可以提供额外的功能，但是为了使用这些额外的功能，需要访问包装器本身：</p>
+</code></pre></div><p>如果需要访问包装器本身（而不是包装的属性值），则需要在属性名称之前添加下划线。在属性包装器中，也可以提供额外的功能，但如果要使用这些额外的功能，则需要访问包装器本身：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">@propertyWrapper
 <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Wrapper</span>&lt;T&gt; {
     <span style="color:#66d9ef">var</span> wrappedValue: T
@@ -321,7 +321,7 @@ code.has-jax {
     @Wrapper(wrappedValue: <span style="color:#ae81ff">34</span>) <span style="color:#66d9ef">var</span> z
     
     <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">foo</span>(){
-        _x.foo() <span style="color:#75715e">//_x是属性包装器本身</span>
+        _x.foo() <span style="color:#75715e">//_x是属性包装器本身，不能通过x.foo()来访问foo</span>
     }
 }
 
@@ -335,7 +335,7 @@ code.has-jax {
     test1.foo()
     test2.foo()
 }
-</code></pre></div><p>上面的<code>_x</code>是属性包装器本身，它是<code>private</code>访问级别的。因此，从外部使用它会产生编译错误。属性包装器还可以通过定义投影值来暴露其他功能。投影值的名称与包装值相同，只是它以<code>$</code>开头。投影值使用<code>projectedValue</code>定义，可以返回任何类型的值作为其投影值：</p>
+</code></pre></div><p>上面的<code>_x</code>是属性包装器本身，它是<code>private</code>级别的。因此，从外部使用它会产生编译错误。属性包装器还可以通过定义投影值来暴露其他功能。投影值的名称与包装值相同，只是它以<code>$</code>开头。投影值使用<code>projectedValue</code>定义，可以返回任何类型的值作为其投影值：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">@propertyWrapper
 <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Wrapper</span>&lt;T&gt; {
     <span style="color:#66d9ef">var</span> wrappedValue: T
@@ -411,7 +411,7 @@ code.has-jax {
 }
 </code></pre></div><p><a href="http://www.srcmini.com/23534.html">参考资料</a> <a href="https://docs.swift.org/swift-book/LanguageGuide/Properties.html">参考资料</a></p>
 <h1 id="减少重复">减少重复</h1>
-<p>使用<code>@propertyWrapper</code>可以减少重复代码。我们通常使用<code>UserDefaults</code>来保存引导页是否已经显示过，如果没有<code>@propertyWrapper</code>时，一般使用如下所示代码：</p>
+<p>使用属性包装器可以减少重复代码。我们通常使用<code>UserDefaults</code>来保存引导页是否已经显示过，如果没有<code>@propertyWrapper</code>时，一般使用如下所示代码：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">extension</span> <span style="color:#a6e22e">UserDefaults</span> {
     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Keys</span> {
         <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">let</span> hasDisplayedGuideView = <span style="color:#e6db74">&#34;has_Displayed_guide_view&#34;</span>
