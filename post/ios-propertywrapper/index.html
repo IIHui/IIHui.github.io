@@ -242,7 +242,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1543</span>
+<span class="leancloud-visitors-count">1528</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -257,26 +257,8 @@ code.has-jax {
 <p>属性包装器<code>@propertyWrapper</code>的作用对象是属性，它的思想是只可以通过<code>wrappedValue</code>的<code>get set</code>方法来访问属性，这样就可以通过<code>get set</code>来对属性进行包装。属性包装器是一种通用结构，它封装了对该属性的读写访问，并可以为其添加其他行为。如果需要限制属性值，向读或写访问添加额外的逻辑或添加一些其他方法。</p>
 </blockquote>
 <h1 id="基本使用">基本使用</h1>
-<p>属性包装器<code>propertyWrapper</code>是<code>Swift 5.1</code>引入，使用时必须满足两个条件。第一，必须使用属性<code>@propertyWrapper</code>。第二，必须具有非静态的<code>wrapppedValue</code>属性。下面是一个最简单的属性包装器：</p>
+<p>属性包装器<code>propertyWrapper</code>是<code>Swift 5.1</code>引入，使用时必须满足两个条件。第一，必须使用<code>@propertyWrapper</code>声明。第二，必须具有非静态的<code>wrapppedValue</code>属性：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">@propertyWrapper
-<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Wrapper</span>&lt;T&gt; {
-    <span style="color:#66d9ef">var</span> wrappedValue: T
-}
-
-<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">TestWrapper</span> {
-    @Wrapper <span style="color:#66d9ef">var</span> x: Int
-    @Wrapper <span style="color:#66d9ef">var</span> y = <span style="color:#ae81ff">12</span>
-    @Wrapper(wrappedValue: <span style="color:#ae81ff">34</span>) <span style="color:#66d9ef">var</span> z
-}
-
-<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">test</span>() {
-    <span style="color:#66d9ef">let</span> test1 = TestWrapper(x: <span style="color:#ae81ff">100</span>)
-    print(test1.x, test1.y, test1.z)
-    
-    <span style="color:#66d9ef">let</span> test2 = TestWrapper(x: <span style="color:#ae81ff">34</span>, y: <span style="color:#ae81ff">45</span>, z: Wrapper(wrappedValue: <span style="color:#ae81ff">89</span>))
-    print(test2.x,test2.y,test2.z)
-}
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">@propertyWrapper
 <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">SomeWrapper</span> {
     <span style="color:#66d9ef">var</span> wrappedValue: Int
     <span style="color:#66d9ef">var</span> someValue: Double
@@ -304,6 +286,24 @@ code.has-jax {
     <span style="color:#75715e">// 两个都是使用 init(wrappedValue:custom:)</span>
     @SomeWrapper(custom: <span style="color:#ae81ff">98.7</span>) <span style="color:#66d9ef">var</span> c = <span style="color:#ae81ff">30</span>
     @SomeWrapper(wrappedValue: <span style="color:#ae81ff">30</span>, custom: <span style="color:#ae81ff">98.7</span>) <span style="color:#66d9ef">var</span> d
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">@propertyWrapper
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Wrapper</span>&lt;T&gt; {
+    <span style="color:#66d9ef">var</span> wrappedValue: T
+}
+
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">TestWrapper</span> {
+    @Wrapper <span style="color:#66d9ef">var</span> x: Int
+    @Wrapper <span style="color:#66d9ef">var</span> y = <span style="color:#ae81ff">12</span>
+    @Wrapper(wrappedValue: <span style="color:#ae81ff">34</span>) <span style="color:#66d9ef">var</span> z
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">test</span>() {
+    <span style="color:#66d9ef">let</span> test1 = TestWrapper(x: <span style="color:#ae81ff">100</span>)
+    print(test1.x, test1.y, test1.z)
+    
+    <span style="color:#66d9ef">let</span> test2 = TestWrapper(x: <span style="color:#ae81ff">34</span>, y: <span style="color:#ae81ff">45</span>, z: Wrapper(wrappedValue: <span style="color:#ae81ff">89</span>))
+    print(test2.x,test2.y,test2.z)
 }
 </code></pre></div><p>如果需要访问包装器本身（而不是包装的值），则需要在属性名称之前添加下划线。在属性包装器中，也可以提供额外的功能，但是为了使用这些额外的功能，需要访问包装器本身：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">@propertyWrapper
