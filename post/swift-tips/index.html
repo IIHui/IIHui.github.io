@@ -242,7 +242,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">3538</span>
+<span class="leancloud-visitors-count">3546</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -565,7 +565,7 @@ SEL anotherMethod = @selector(callMeWithParam:);
 <span style="color:#66d9ef">let</span> anotherMethod = <span style="color:#66d9ef">#selector</span>(callMeWithParam(obj:))
 </code></pre></div><p><code>selector</code>其实是<code>OC</code>运行的概念，在<code>Swift 4</code>中，默认情况下所有的<code>Swift</code>方法在<code>OC</code>中是不可见的，所以需要在这类方法加上<code>@objc</code>关键字，将这个方法暴露给<code>OC</code>，才能进行使用。</p>
 <h1 id="编译标记">编译标记</h1>
-<p>可以使用<code>Mark:</code>这样的标记，<code>Xcode</code>将在代码中寻找这样的标记，然后以粗体标签的形式将名称显示在导航栏中。还可以在冒号的后⾯加⼀个横杠 开各个部分，会显得更加清晰：</p>
+<p>可以使用<code>Mark:</code>这样的标记，<code>Xcode</code>将在代码中寻找这样的标记，然后以粗体标签的形式将名称显示在导航栏中。还可以在冒号的后⾯加⼀个横杠<code>Mark:-</code>分隔开各个部分，会显得更加清晰：</p>
 <p><img src="https://i.loli.net/2020/12/19/XMP6m2ljRtAwr3N.jpg" alt="-c"></p>
 <h1 id="as">as</h1>
 <p><code>as</code>是在编译期间执行的，<code>as?</code>和<code>as!</code>是在运行时执行的。执行下面的代码会崩溃，是因为<code>as?</code>和<code>as!</code>是在运行时执行，运行时<code>4</code>已经先赋值为<code>Int</code>类型，然后强制转换为<code>Double</code>时失败。</p>
