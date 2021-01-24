@@ -53,7 +53,7 @@
       <pubDate>Fri, 25 Dec 2020 15:44:48 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/ios-uiscene/</guid>
-      <description>今天测试KSCrash时使用XCode 12.3新建了一个工程，写了测试代码之后报UIAlertView is deprecated and unavailable for UIScene based applications, please use UIAlertController错误，然后参照stackover上的回答，解决了报错问题。 第一步 解决这个问题的核心就</description>
+      <description>测试KSCrash时使用XCode 12.3新建了一个工程，写了相关测试代码之后报UIAlertView is deprecated and unavailable for UIScene based applications, please use UIAlertController错误，然后参照stackover上的回答，解决了报错问题。 第一步 解决这个问题的核心是</description>
     </item>
     
     <item>
