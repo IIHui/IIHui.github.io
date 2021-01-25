@@ -69,7 +69,8 @@ BUNDLE_PATH: &amp;#34;vendor/bundle&amp;#34; 最后回到Gemfile所在目录，�
 如果在调试的时候，遇到如下类似的报错信息，则说明需要重新安装对应的依赖，使用gem install xxx安装即可。
 Uncaught exception: can&amp;#39;t find gem cocoapods (&amp;gt;= 0.a) with executable pod 参考资料 参考资料 参考资料
 创建新插件 参考资料 参考资料
-基础知识 简介 所有的Ruby文件扩展名都是.rb。在ruby代码中，空白字符一般都会被忽略，而字符串中的空白字符不会被忽略。
+匹配规则 在执行pod install后，关于podspec的匹配规则可以简单的描述为：
+ 取出podfile配置的pod库 取出该pod在源内的所有版本 找到podfile.lock对应库的版本 根据podfile.lock中对应的版本，取出对应的podspec  基础知识 简介 所有的Ruby文件扩展名都是.rb。在ruby代码中，空白字符一般都会被忽略，而字符串中的空白字符不会被忽略。
 Ruby默认使用ASCII来读源码，如果在代码中直接使用中文会报错，需要在文件开头加入# -*- coding: UTF-8 -*-。
 在Ruby中单行注释以#开头，直到该行结束。多行注释以=begin开头，以=end结束：
 =begin 这是一个多行注释。 可扩展至任意数量的行。 但 =begin 和 =end 只能出现在第一行和最后一行。 =end # 单行注释 变量 在Ruby中，变量不需要提前声明，为变量赋初值时会自动创建。例如，a = 300 会创建一个名为a的变量，并将300存储在该变量中。
