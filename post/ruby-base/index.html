@@ -242,7 +242,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">4026</span>
+<span class="leancloud-visitors-count">4083</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -339,6 +339,8 @@ group <span style="color:#e6db74">:debug</span> <span style="color:#66d9ef">do</
 <li>找到<code>podfile.lock</code>对应库的版本</li>
 <li>根据<code>podfile.lock</code>中对应的版本，取出对应的<code>podspec</code></li>
 </ul>
+<h2 id="双私有源">双私有源</h2>
+<p>双私有源的方案是将二进制的包上传到服务器中，同时产生一份二进制的podspec，将其发布到二进制私有源中。</p>
 <h1 id="基础知识">基础知识</h1>
 <h2 id="简介">简介</h2>
 <p>所有的<code>Ruby</code>文件扩展名都是<code>.rb</code>。在<code>ruby</code>代码中，空白字符一般都会被忽略，而字符串中的空白字符不会被忽略。</p>
@@ -640,6 +642,7 @@ puts hash <span style="color:#75715e">#{&#34;a&#34;=&gt;12, &#34;b&#34;=&gt;&#34
             <li><a href="#匹配规则">匹配规则</a></li>
           </ul>
         </li>
+        <li><a href="#双私有源">双私有源</a></li>
       </ul>
     </li>
     <li><a href="#基础知识">基础知识</a>
