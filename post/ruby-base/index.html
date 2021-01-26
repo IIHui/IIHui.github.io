@@ -242,7 +242,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">4187</span>
+<span class="leancloud-visitors-count">4434</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -342,7 +342,29 @@ group <span style="color:#e6db74">:debug</span> <span style="color:#66d9ef">do</
 <li>找到<code>podfile.lock</code>对应库的版本</li>
 <li>根据<code>podfile.lock</code>中对应的版本，取出对应的<code>podspec</code></li>
 </ul>
-<h1 id="基础知识">基础知识</h1>
+<p>在<code>pod install</code>命令执行过程中，会有一个解析依赖的阶段。当控制台打印Analyzing dependencies的时候就是在解析内部依赖关系的过程。在解析依赖的过程中有个很重要的方法<code>resolver_specs_by_target</code>,所有的<code>pod</code>库的最终信息都会在这个方法中返回，可以通过<code>hook</code>这个方法，拿到所有<code>pod</code>库的<code>podspec</code>信息，然后将其替换为想要的，即可晚餐切换。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">cocoapods<span style="color:#f92672">/</span>installer<span style="color:#f92672">.</span>rb
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">install!</span>
+  <span style="color:#75715e"># 准备环境</span>
+  prepare
+  <span style="color:#75715e"># 解析依赖</span>
+  resolve_dependencies
+  <span style="color:#75715e"># 下载依赖</span>
+  download_dependencies
+  <span style="color:#75715e"># 验证target</span>
+  validate_targets
+  <span style="color:#75715e"># 生成工程文件</span>
+  <span style="color:#66d9ef">if</span> installation_options<span style="color:#f92672">.</span>skip_pods_project_generation?
+    show_skip_pods_project_generation_message
+  <span style="color:#66d9ef">else</span>
+    integrate
+  <span style="color:#66d9ef">end</span>
+  <span style="color:#75715e"># 写入依赖</span>
+  write_lockfiles
+  <span style="color:#75715e"># 结束回调</span>
+  perfo
+</code></pre></div><h1 id="基础知识">基础知识</h1>
 <h2 id="简介">简介</h2>
 <p>所有的<code>Ruby</code>文件扩展名都是<code>.rb</code>。在<code>ruby</code>代码中，空白字符一般都会被忽略，而字符串中的空白字符不会被忽略。</p>
 <p><code>Ruby</code>默认使用<code>ASCII</code>来读源码，如果在代码中直接使用中文会报错，需要在文件开头加入<code># -*- coding: UTF-8 -*-</code>。</p>
