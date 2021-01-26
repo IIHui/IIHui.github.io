@@ -71,6 +71,7 @@ Uncaught exception: can&amp;#39;t find gem cocoapods (&amp;gt;= 0.a) with execut
 创建新插件 参考资料 参考资料
 匹配规则 在执行pod install后，关于podspec的匹配规则可以简单的描述为：
  首先取出podfile配置的pod库 取出该pod在源内的所有版本 找到podfile.lock对应库的版本 根据podfile.lock中对应的版本，取出对应的podspec  双私有源 双私有源的方案是将二进制的包上传到服务器中，同时产生一份二进制的podspec，将其发布到二进制私有源中。
+在执行pod install后，Cocoapods在解析依赖的过程中，根据podfile.lock指定的版本，构建Specification对象「定义在cocoapod-core中用来描述podspec对象」。
 基础知识 简介 所有的Ruby文件扩展名都是.rb。在ruby代码中，空白字符一般都会被忽略，而字符串中的空白字符不会被忽略。
 Ruby默认使用ASCII来读源码，如果在代码中直接使用中文会报错，需要在文件开头加入# -*- coding: UTF-8 -*-。
 在Ruby中单行注释以#开头，直到该行结束。多行注释以=begin开头，以=end结束：
