@@ -242,13 +242,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">4435</span>
+<span class="leancloud-visitors-count">5625</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">9 分钟</span>
+<span class="leancloud-visitors-count">12 分钟</span>
 </span>
       </div>
     </header>
@@ -334,6 +334,126 @@ group <span style="color:#e6db74">:debug</span> <span style="color:#66d9ef">do</
 <h2 id="双私有源">双私有源</h2>
 <p>双私有源的方案是将二进制的包上传到服务器中，同时产生一份二进制的podspec，将其发布到二进制私有源中。</p>
 <p>在执行<code>pod install</code>后，<code>Cocoapods</code>在解析依赖的过程中，根据<code>podfile.lock</code>指定的版本，构建<code>Specification</code>对象「定义在<code>cocoapod-core</code>中用来描述<code>podspec</code>对象」。</p>
+<p>在分析依赖的过程中，会生成一个叫<code>resolver_specs_by_target</code>的<code>hash</code>，包含<code>podfile</code>中配置的所有<code>target</code>以及对应<code>target</code>下所有的<code>pod</code>库信息。整个过程比较复杂，流程结束之后整个依赖关系就确定了。内部会根据前面生成的<code>Milinilo</code>图遍历，将所有的<code>target</code>依赖的<code>pod</code>库构建为<code>ResolverSpecification</code>对象。</p>
+<p>通过<code>hook resolver_specs_by_target</code>，遍历所有的<code>podspec</code>，<!-- raw HTML omitted -->找到做了二进制标记的<code>pod</code>库，对其进行重组，来进行二进制的切换<!-- raw HTML omitted -->。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#75715e"># &gt;= 1.4.0 才有 resolver_specs_by_target 以及 ResolverSpecification</span>
+    <span style="color:#75715e"># &gt;= 1.5.0 ResolverSpecification 才有 source，供 install 或者其他操作时，输入 source 变更</span>
+    <span style="color:#75715e">#</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">Pod</span><span style="color:#f92672">.</span>match_version?(<span style="color:#e6db74">&#39;~&gt; 1.4&#39;</span>)
+      old_resolver_specs_by_target <span style="color:#f92672">=</span> instance_method(<span style="color:#e6db74">:resolver_specs_by_target</span>)
+      define_method(<span style="color:#e6db74">:resolver_specs_by_target</span>) <span style="color:#66d9ef">do</span>
+        specs_by_target <span style="color:#f92672">=</span> old_resolver_specs_by_target<span style="color:#f92672">.</span>bind(self)<span style="color:#f92672">.</span>call
+
+        sources_manager <span style="color:#f92672">=</span> <span style="color:#66d9ef">Config</span><span style="color:#f92672">.</span>instance<span style="color:#f92672">.</span>sources_manager
+        use_source_pods <span style="color:#f92672">=</span> podfile<span style="color:#f92672">.</span>use_source_pods
+
+        missing_binary_specs <span style="color:#f92672">=</span> <span style="color:#f92672">[]</span>
+        specs_by_target<span style="color:#f92672">.</span>each <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>target, rspecs<span style="color:#f92672">|</span>
+          <span style="color:#75715e"># use_binaries 并且 use_source_pods 不包含  本地可过滤</span>
+          use_binary_rspecs <span style="color:#f92672">=</span> <span style="color:#66d9ef">if</span> podfile<span style="color:#f92672">.</span>use_binaries? <span style="color:#f92672">||</span> podfile<span style="color:#f92672">.</span>use_binaries_selector
+                                rspecs<span style="color:#f92672">.</span>select <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>rspec<span style="color:#f92672">|</span>
+                                  (<span style="color:#f92672">[</span>rspec<span style="color:#f92672">.</span>name, rspec<span style="color:#f92672">.</span>root<span style="color:#f92672">.</span>name<span style="color:#f92672">]</span> <span style="color:#f92672">&amp;</span> use_source_pods)<span style="color:#f92672">.</span>empty? <span style="color:#f92672">&amp;&amp;</span>
+                                    (podfile<span style="color:#f92672">.</span>use_binaries_selector<span style="color:#f92672">.</span>nil? <span style="color:#f92672">||</span> podfile<span style="color:#f92672">.</span>use_binaries_selector<span style="color:#f92672">.</span>call(rspec<span style="color:#f92672">.</span>spec))
+                                <span style="color:#66d9ef">end</span>
+                              <span style="color:#66d9ef">else</span>
+                                <span style="color:#f92672">[]</span>
+                              <span style="color:#66d9ef">end</span>
+
+          <span style="color:#75715e"># Parallel.map(rspecs, in_threads: 8) do |rspec|</span>
+          specs_by_target<span style="color:#f92672">[</span>target<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> rspecs<span style="color:#f92672">.</span>map <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>rspec<span style="color:#f92672">|</span>
+            <span style="color:#75715e"># 含有 subspecs 的组件暂不处理</span>
+            <span style="color:#75715e"># next rspec if rspec.spec.subspec? || rspec.spec.subspecs.any?</span>
+
+            <span style="color:#75715e"># developments 组件采用默认输入的 spec (development pods 的 source 为 nil)</span>
+            <span style="color:#75715e"># 可以使 :podspec =&gt; &#34;htts://IMYFoundation.podspec&#34;可以走下去，by slj</span>
+            <span style="color:#75715e"># unless rspec.spec.respond_to?(:spec_source) &amp;&amp; rspec.spec.spec_source</span>
+            <span style="color:#75715e">#   next rspec</span>
+            <span style="color:#75715e"># end</span>
+
+            <span style="color:#75715e"># 采用二进制依赖并且不为开发组件</span>
+            use_binary <span style="color:#f92672">=</span> use_binary_rspecs<span style="color:#f92672">.</span>include?(rspec)
+            source <span style="color:#f92672">=</span> use_binary ? sources_manager<span style="color:#f92672">.</span>binary_source : sources_manager<span style="color:#f92672">.</span>code_source
+
+            spec_version <span style="color:#f92672">=</span> rspec<span style="color:#f92672">.</span>spec<span style="color:#f92672">.</span>version
+            <span style="color:#66d9ef">UI</span><span style="color:#f92672">.</span>message <span style="color:#e6db74">&#39;cocoapods-imy-bin 插件&#39;</span>
+            <span style="color:#66d9ef">UI</span><span style="color:#f92672">.</span>message <span style="color:#e6db74">&#34;- 开始处理 </span><span style="color:#e6db74">#{</span>rspec<span style="color:#f92672">.</span>spec<span style="color:#f92672">.</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">#{</span>spec_version<span style="color:#e6db74">}</span><span style="color:#e6db74"> 组件.&#34;</span>
+
+            <span style="color:#66d9ef">begin</span>
+              <span style="color:#75715e"># 从新 source 中获取 spec,在bin archive中会异常，因为找不到</span>
+              specification <span style="color:#f92672">=</span> source<span style="color:#f92672">.</span>specification(rspec<span style="color:#f92672">.</span>root<span style="color:#f92672">.</span>name, spec_version)
+              <span style="color:#66d9ef">UI</span><span style="color:#f92672">.</span>message <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#{</span>rspec<span style="color:#f92672">.</span>root<span style="color:#f92672">.</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">#{</span>spec_version<span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#ae81ff">\r\n</span><span style="color:#e6db74"> specification =</span><span style="color:#e6db74">#{</span>specification<span style="color:#e6db74">}</span><span style="color:#e6db74"> &#34;</span>
+              <span style="color:#75715e"># 组件是 subspec</span>
+              <span style="color:#66d9ef">if</span> rspec<span style="color:#f92672">.</span>spec<span style="color:#f92672">.</span>subspec?
+                specification <span style="color:#f92672">=</span> specification<span style="color:#f92672">.</span>subspec_by_name(rspec<span style="color:#f92672">.</span>name, <span style="color:#66d9ef">false</span>, <span style="color:#66d9ef">true</span>)
+              <span style="color:#66d9ef">end</span>
+              <span style="color:#75715e"># 这里可能出现分析依赖的 source 和切换后的 source 对应 specification 的 subspec 对应不上</span>
+              <span style="color:#75715e"># 造成 subspec_by_name 返回 nil，这个是正常现象</span>
+              <span style="color:#66d9ef">next</span> <span style="color:#66d9ef">unless</span> specification
+
+              used_by_only <span style="color:#f92672">=</span> <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">Pod</span><span style="color:#f92672">.</span>match_version?(<span style="color:#e6db74">&#39;~&gt; 1.7&#39;</span>)
+                               rspec<span style="color:#f92672">.</span>used_by_non_library_targets_only
+                             <span style="color:#66d9ef">else</span>
+                               rspec<span style="color:#f92672">.</span>used_by_tests_only
+                             <span style="color:#66d9ef">end</span>
+              <span style="color:#75715e"># used_by_only = rspec.respond_to?(:used_by_tests_only) ? rspec.used_by_tests_only : rspec.used_by_non_library_targets_only</span>
+              <span style="color:#75715e"># 组装新的 rspec ，替换原 rspec</span>
+              <span style="color:#66d9ef">if</span> use_binary
+                rspec <span style="color:#f92672">=</span> <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">Pod</span><span style="color:#f92672">.</span>match_version?(<span style="color:#e6db74">&#39;~&gt; 1.4.0&#39;</span>)
+                          <span style="color:#66d9ef">ResolverSpecification</span><span style="color:#f92672">.</span>new(specification, used_by_only)
+                        <span style="color:#66d9ef">else</span>
+                          <span style="color:#66d9ef">ResolverSpecification</span><span style="color:#f92672">.</span>new(specification, used_by_only, source)
+                        <span style="color:#66d9ef">end</span>
+                <span style="color:#66d9ef">UI</span><span style="color:#f92672">.</span>message <span style="color:#e6db74">&#34;组装新的 rspec ，替换原 rspec </span><span style="color:#e6db74">#{</span>rspec<span style="color:#f92672">.</span>root<span style="color:#f92672">.</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">#{</span>spec_version<span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#ae81ff">\r\n</span><span style="color:#e6db74"> specification =</span><span style="color:#e6db74">#{</span>specification<span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#ae81ff">\r\n</span><span style="color:#e6db74"> </span><span style="color:#e6db74">#{</span>rspec<span style="color:#e6db74">}</span><span style="color:#e6db74"> &#34;</span>
+
+              <span style="color:#66d9ef">end</span>
+
+            <span style="color:#66d9ef">rescue</span> <span style="color:#66d9ef">Pod</span><span style="color:#f92672">::</span><span style="color:#66d9ef">StandardError</span> <span style="color:#f92672">=&gt;</span> e
+              <span style="color:#75715e"># 没有从新的 source 找到对应版本组件，直接返回原 rspec</span>
+
+              <span style="color:#75715e"># missing_binary_specs &lt;&lt; rspec.spec if use_binary</span>
+              missing_binary_specs <span style="color:#f92672">&lt;&lt;</span> rspec<span style="color:#f92672">.</span>spec
+              rspec
+            <span style="color:#66d9ef">end</span>
+
+            rspec
+          <span style="color:#66d9ef">end</span><span style="color:#f92672">.</span>compact
+        <span style="color:#66d9ef">end</span>
+
+        <span style="color:#66d9ef">if</span> missing_binary_specs<span style="color:#f92672">.</span>any?
+          missing_binary_specs<span style="color:#f92672">.</span>uniq<span style="color:#f92672">.</span>each <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>spec<span style="color:#f92672">|</span>
+            <span style="color:#66d9ef">UI</span><span style="color:#f92672">.</span>message <span style="color:#e6db74">&#34;【</span><span style="color:#e6db74">#{</span>spec<span style="color:#f92672">.</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74"> | </span><span style="color:#e6db74">#{</span>spec<span style="color:#f92672">.</span>version<span style="color:#e6db74">}</span><span style="color:#e6db74">】组件无对应二进制版本 , 将采用源码依赖.&#34;</span>
+          <span style="color:#66d9ef">end</span>
+          <span style="color:#66d9ef">Pod</span><span style="color:#f92672">::</span><span style="color:#66d9ef">Command</span><span style="color:#f92672">::</span><span style="color:#66d9ef">Bin</span><span style="color:#f92672">::</span><span style="color:#66d9ef">Archive</span><span style="color:#f92672">.</span>missing_binary_specs(missing_binary_specs)
+
+          <span style="color:#75715e">#缓存没有二进制组件到spec文件，local_psec_dir 目录</span>
+          sources_sepc <span style="color:#f92672">=</span> <span style="color:#f92672">[]</span>
+          des_dir <span style="color:#f92672">=</span> <span style="color:#66d9ef">CBin</span><span style="color:#f92672">::</span><span style="color:#66d9ef">Config</span><span style="color:#f92672">::</span><span style="color:#66d9ef">Builder</span><span style="color:#f92672">.</span>instance<span style="color:#f92672">.</span>local_psec_dir
+          <span style="color:#66d9ef">FileUtils</span><span style="color:#f92672">.</span>rm_f(des_dir) <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">File</span><span style="color:#f92672">.</span>exist?des_dir
+          <span style="color:#66d9ef">Dir</span><span style="color:#f92672">.</span>mkdir des_dir <span style="color:#66d9ef">unless</span> <span style="color:#66d9ef">File</span><span style="color:#f92672">.</span>exist?des_dir
+          missing_binary_specs<span style="color:#f92672">.</span>uniq<span style="color:#f92672">.</span>each <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>spec<span style="color:#f92672">|</span>
+            <span style="color:#66d9ef">next</span> <span style="color:#66d9ef">if</span> spec<span style="color:#f92672">.</span>name<span style="color:#f92672">.</span>include?(<span style="color:#e6db74">&#39;/&#39;</span>)
+
+            spec_git_res <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>
+            <span style="color:#66d9ef">CBin</span><span style="color:#f92672">::</span><span style="color:#66d9ef">Config</span><span style="color:#f92672">::</span><span style="color:#66d9ef">Builder</span><span style="color:#f92672">.</span>instance<span style="color:#f92672">.</span>ignore_git_list<span style="color:#f92672">.</span>each <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>ignore_git<span style="color:#f92672">|</span>
+              spec_git_res <span style="color:#f92672">=</span> spec<span style="color:#f92672">.</span>source<span style="color:#f92672">[</span><span style="color:#e6db74">:git</span><span style="color:#f92672">]</span> <span style="color:#f92672">&amp;&amp;</span> spec<span style="color:#f92672">.</span>source<span style="color:#f92672">[</span><span style="color:#e6db74">:git</span><span style="color:#f92672">].</span>include?(ignore_git)
+              <span style="color:#66d9ef">break</span> <span style="color:#66d9ef">if</span> spec_git_res
+            <span style="color:#66d9ef">end</span>
+            <span style="color:#66d9ef">next</span> <span style="color:#66d9ef">if</span> spec_git_res
+
+            <span style="color:#75715e">#获取没有制作二进制版本的spec集合</span>
+            sources_sepc <span style="color:#f92672">&lt;&lt;</span> spec
+            <span style="color:#66d9ef">unless</span> spec<span style="color:#f92672">.</span>defined_in_file<span style="color:#f92672">.</span>nil?
+              <span style="color:#66d9ef">FileUtils</span><span style="color:#f92672">.</span>cp(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#{</span>spec<span style="color:#f92672">.</span>defined_in_file<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#{</span>des_dir<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+            <span style="color:#66d9ef">end</span>
+          <span style="color:#66d9ef">end</span>
+        <span style="color:#66d9ef">end</span>
+
+        specs_by_target
+      <span style="color:#66d9ef">end</span>
+    <span style="color:#66d9ef">end</span>
+  <span style="color:#66d9ef">end</span>
+</code></pre></div><p>上面是一种类似于<code>OC</code>的<code>Method Swizzling</code>。上面的<code>instance_method</code>临时存储<code>resolver_specs_by_target</code>方法，<code>define_method</code>类似于关键字<code>def</code>，<code>def</code>是定义一个方法，<code>define_method</code>是产生一个新的方法，类似于<code>class_addMethod</code>可以根据参数动态生成方法。</p>
+<p>获取到<code>specs_by_target</code>后，取出需要切换的<code>Specification</code>对象的<code>rspec</code>和二进制源<code>source</code>，通过<code>source</code>的<code>specification</code>方法构建二进制<code>Specification</code>对象。</p>
 <h3 id="匹配规则">匹配规则</h3>
 <p>在执行<code>pod install</code>后，关于<code>podspec</code>的匹配规则可以简单的描述为：</p>
 <ul>
