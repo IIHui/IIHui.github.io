@@ -242,7 +242,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">732</span>
+<span class="leancloud-visitors-count">762</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -283,7 +283,23 @@ code.has-jax {
 <p>性能数据包括白屏时间，白屏时间无论安卓还是iOS在加载网页的时候都会存在的问题，也是目前无法解决的。</p>
 <p>页面耗时，页面耗时指的是开始加载这个网页到整个页面load完成即渲染完成的时间；</p>
 <p><img src="https://i.loli.net/2020/02/07/dVFzrvZkHRNq2lL.jpg" alt="IMG_5536"></p>
-
+<h2 id="cookie">Cookie</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">URLCache.shared.removeAllCachedResponses()
+        HTTPCookieStorage.shared.cookies?.forEach(HTTPCookieStorage.shared.deleteCookie)
+        <span style="color:#66d9ef">let</span> types = Set([WKWebsiteDataTypeDiskCache,
+                     WKWebsiteDataTypeMemoryCache,
+                     WKWebsiteDataTypeOfflineWebApplicationCache,
+                     WKWebsiteDataTypeCookies,
+                     WKWebsiteDataTypeSessionStorage,
+                     WKWebsiteDataTypeLocalStorage,
+                     WKWebsiteDataTypeWebSQLDatabases,
+                     WKWebsiteDataTypeIndexedDBDatabases])
+        WKWebsiteDataStore.<span style="color:#66d9ef">default</span>().fetchDataRecords(ofTypes: types) { (records) <span style="color:#66d9ef">in</span>
+            WKWebsiteDataStore.<span style="color:#66d9ef">default</span>().removeData(ofTypes: types, <span style="color:#66d9ef">for</span>: records) {
+                debugPrint(<span style="color:#e6db74">&#34;WK domain cleaned cache&#34;</span>)
+            }
+        }
+</code></pre></div>
     </div>
     <footer class="post-footer">
         
@@ -452,6 +468,7 @@ code.has-jax {
         <li><a href="#h5-加载过程">H5 加载过程</a></li>
         <li><a href="#初始化">初始化</a></li>
         <li><a href="#性能数据">性能数据</a></li>
+        <li><a href="#cookie">Cookie</a></li>
       </ul>
     </li>
   </ul>
