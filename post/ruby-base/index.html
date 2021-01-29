@@ -242,7 +242,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">5625</span>
+<span class="leancloud-visitors-count">5627</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -331,7 +331,7 @@ group <span style="color:#e6db74">:debug</span> <span style="color:#66d9ef">do</
 <h3 id="创建新插件">创建新插件</h3>
 <p><a href="https://juejin.cn/post/6844903950357889032">参考资料</a>
 <a href="https://ddrccw.github.io/2018/03/30/2018-03-30-develop-cocoapods-plugin/">参考资料</a></p>
-<h2 id="双私有源">双私有源</h2>
+<h2 id="双私有源方案">双私有源方案</h2>
 <p>双私有源的方案是将二进制的包上传到服务器中，同时产生一份二进制的podspec，将其发布到二进制私有源中。</p>
 <p>在执行<code>pod install</code>后，<code>Cocoapods</code>在解析依赖的过程中，根据<code>podfile.lock</code>指定的版本，构建<code>Specification</code>对象「定义在<code>cocoapod-core</code>中用来描述<code>podspec</code>对象」。</p>
 <p>在分析依赖的过程中，会生成一个叫<code>resolver_specs_by_target</code>的<code>hash</code>，包含<code>podfile</code>中配置的所有<code>target</code>以及对应<code>target</code>下所有的<code>pod</code>库信息。整个过程比较复杂，流程结束之后整个依赖关系就确定了。内部会根据前面生成的<code>Milinilo</code>图遍历，将所有的<code>target</code>依赖的<code>pod</code>库构建为<code>ResolverSpecification</code>对象。</p>
@@ -785,7 +785,7 @@ puts hash <span style="color:#75715e">#{&#34;a&#34;=&gt;12, &#34;b&#34;=&gt;&#34
             <li><a href="#创建新插件">创建新插件</a></li>
           </ul>
         </li>
-        <li><a href="#双私有源">双私有源</a>
+        <li><a href="#双私有源方案">双私有源方案</a>
           <ul>
             <li><a href="#匹配规则">匹配规则</a></li>
           </ul>

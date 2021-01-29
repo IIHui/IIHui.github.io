@@ -69,7 +69,7 @@ BUNDLE_PATH: &amp;#34;vendor/bundle&amp;#34; 最后回到Gemfile所在目录，�
 如果在调试的时候，遇到如下类似的报错信息，则说明需要重新安装对应的依赖，使用gem install xxx安装即可。
 Uncaught exception: can&amp;#39;t find gem cocoapods (&amp;gt;= 0.a) with executable pod 参考资料 参考资料 参考资料
 创建新插件 参考资料 参考资料
-双私有源 双私有源的方案是将二进制的包上传到服务器中，同时产生一份二进制的podspec，将其发布到二进制私有源中。
+双私有源方案 双私有源的方案是将二进制的包上传到服务器中，同时产生一份二进制的podspec，将其发布到二进制私有源中。
 在执行pod install后，Cocoapods在解析依赖的过程中，根据podfile.lock指定的版本，构建Specification对象「定义在cocoapod-core中用来描述podspec对象」。
 在分析依赖的过程中，会生成一个叫resolver_specs_by_target的hash，包含podfile中配置的所有target以及对应target下所有的pod库信息。整个过程比较复杂，流程结束之后整个依赖关系就确定了。内部会根据前面生成的Milinilo图遍历，将所有的target依赖的pod库构建为ResolverSpecification对象。
 通过hook resolver_specs_by_target，遍历所有的podspec，找到做了二进制标记的pod库，对其进行重组，来进行二进制的切换。
