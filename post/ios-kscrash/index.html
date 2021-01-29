@@ -242,7 +242,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">513</span>
+<span class="leancloud-visitors-count">617</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -284,7 +284,9 @@ code.has-jax {
         }
     }
 }
-</code></pre></div><p><a href="https://zhang759740844.github.io/2019/10/25/kscrash/">参考资料</a>
+</code></pre></div><h2 id="行号">行号</h2>
+<p>如果源文件的行号为0，则表示回溯堆栈不会映射到原始代码中的特定代码行。 这是因为编译器通过内联函数等方式对代码进行了优化，而崩溃时执行的代码与原始代码中的确切行并不对应。 在这种情况下，函数名仍然是一个线索。</p>
+<p><a href="https://zhang759740844.github.io/2019/10/25/kscrash/">参考资料</a>
 <a href="https://cloud.tencent.com/developer/article/1627563">参考资料</a>
 <a href="https://www.dazhuanlan.com/2020/02/03/5e37df1809016/">参考资料</a></p>
 
@@ -450,7 +452,11 @@ code.has-jax {
     <div class="post-toc">
         <div class="post-toc-content"><nav id="TableOfContents">
   <ul>
-    <li><a href="#邮件发送崩溃日志">邮件发送崩溃日志</a></li>
+    <li><a href="#邮件发送崩溃日志">邮件发送崩溃日志</a>
+      <ul>
+        <li><a href="#行号">行号</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
     </div>
