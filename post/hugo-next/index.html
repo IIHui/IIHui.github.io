@@ -242,7 +242,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1908</span>
+<span class="leancloud-visitors-count">1959</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -307,7 +307,7 @@ code.has-jax {
 <img src="https://i.loli.net/2020/02/08/dOmhZkBzW7RJjPo.jpg" alt="-c"></p>
 <p>但是我想改成下面这样：</p>
 <p><img src="https://i.loli.net/2020/02/08/RGfoqHSwlUkLaNc.jpg" alt="-c"></p>
-<p>首先在<code>zh.yaml</code>中做如下修改：</p>
+<p>首先在<code>themes/next/i18n/zh.yaml</code>中做如下修改：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#66d9ef">id</span>: Time
   <span style="color:#66d9ef">translation</span>: 创建
 - <span style="color:#66d9ef">id</span>: TimeUpdated
@@ -322,7 +322,7 @@ code.has-jax {
   <span style="color:#66d9ef">translation</span>: <span style="color:#e6db74">&#34;{{ .ReadingTime }} 分钟&#34;</span>
 - <span style="color:#66d9ef">id</span>: NumberOfText
   <span style="color:#66d9ef">translation</span>: <span style="color:#e6db74">&#34;{{ .WordCount }}字&#34;</span>
-</code></pre></div><p>然后在<code>readtime.html</code>中做如下修改：</p>
+</code></pre></div><p>然后在<code>themes/next/layouts/partials/post/readtime.html</code>中做如下修改：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">span</span>&gt;
 &amp;nbsp; | &amp;nbsp;
 &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;post-meta-item-icon&#34;</span>&gt;
