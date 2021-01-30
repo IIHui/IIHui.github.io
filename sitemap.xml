@@ -31,7 +31,8 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 文章置�
 然后在katex.html中添加如下内容：
 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;!-- CSS File --&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css&amp;#34; integrity=&amp;#34;sha384-D&#43;9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv&amp;#34; crossorigin=&amp;#34;anonymous&amp;#34;&amp;gt; &amp;lt;!-- JS Fle --&amp;gt; &amp;lt;script defer src=&amp;#34;https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js&amp;#34; integrity=&amp;#34;sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk&#43;0O&amp;#34; crossorigin=&amp;#34;anonymous&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; 然后在themes/next/layouts/partials/header.html文件中添加如下代码：
 {{ if .Params.katex}}{{ partial &amp;#34;katex.html&amp;#34; . }}{{ end }} 最后在需要渲染公式的markdown文章头部，添加katex: true：
---- title: 线性表 date: 2018-04-25T20:52:42&#43;08:00 tags: [算法] categories: [算法] toc: true katex: true --- 参考资料
+--- title: 线性表 date: 2018-04-25T20:52:42&#43;08:00 tags: [算法] categories: [算法] toc: true katex: true --- 就可以达到如下的效果：
+参考资料
  </content>
     </entry>
     
