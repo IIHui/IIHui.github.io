@@ -38,6 +38,7 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 文章置�
 为了修复这个问题，有两种不同的解决方案。第一种是把Markdown渲染引擎改为Blackfriday。即在全局设置文件config.toml中添加：
 [markup] defaultMarkdownHandler = &amp;#34;blackfriday&amp;#34; 第二种是保持Goldmark来渲染，但是修改他的默认行为，即在全局设置文件config.toml中添加：
 [markup] defaultMarkdownHandler = &amp;#34;goldmark&amp;#34; [markup.goldmark] [markup.goldmark.renderer] unsafe = true 参考资料
+ 代码粘贴 参考资料
 </content>
     </entry>
     
