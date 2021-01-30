@@ -17,7 +17,7 @@
       <pubDate>Fri, 08 Jan 2021 18:19:29 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/ios-propertywrapper/</guid>
-      <description>属性包装器@propertyWrapper的作用对象是属性，它的思想是只可以通过wrappedValue的get set方法来访问属性，这样就可以通过get set来对属性进行包装。属性包装器是一种通用结构，它封装了对该属性的读写访问，并可以为</description>
+      <description>属性包装器propertyWrapper的作用对象是属性，它的思想是只可以通过wrappedValue的get set方法来访问属性，这样就可以通过get和set方法来对属性进行包装。属性包装器是一种通用结构，它封装了对该属性的读写访问，并可</description>
     </item>
     
     <item>
