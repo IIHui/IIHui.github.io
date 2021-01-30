@@ -34,7 +34,11 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 文章置�
 {{ if .Params.katex}}{{ partial &amp;#34;katex.html&amp;#34; . }}{{ end }} 最后在需要渲染公式的markdown文章头部，添加katex: true：
 --- title: 线性表 date: 2018-04-25T20:52:42&#43;08:00 tags: [算法] categories: [算法] toc: true katex: true --- 就可以达到如下的效果：
 参考资料
- </content>
+ 字体颜色生效 升级了Hugo版本之后，发现之前为了之前在笔记中插入的字体颜色tag都已经失效。这是因为之前Hugo使用Blackfriday来渲染Markdown文件。从0.60版本开始，默认的 Markdown渲染器已经改成了Goldmark。而Goldmark渲染器默认不会渲染HTML tags。
+为了修复这个问题，有两种不同的解决方案。第一种是把Markdown渲染引擎改为Blackfriday。即在全局设置文件config.toml中添加：
+[markup] defaultMarkdownHandler = &amp;#34;blackfriday&amp;#34; 第二种是保持Goldmark来渲染，但是修改他的默认行为，即在全局设置文件config.toml中添加：
+[markup] defaultMarkdownHandler = &amp;#34;goldmark&amp;#34; [markup.goldmark] [markup.goldmark.renderer] unsafe = true 参考资料
+</content>
     </entry>
     
      <entry>
