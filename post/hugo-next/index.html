@@ -242,13 +242,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1990</span>
+<span class="leancloud-visitors-count">2019</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">4 分钟</span>
+<span class="leancloud-visitors-count">5 分钟</span>
 </span>
       </div>
     </header>
@@ -382,7 +382,7 @@ code.has-jax {
   <span style="color:#a6e22e">Weight</span> = <span style="color:#ae81ff">7</span>
 
 </code></pre></div><h1 id="文章展示目录">文章展示目录</h1>
-<p><code>Hugo</code>展示目录需要在文章开头添加<code>toc = true</code>：</p>
+<p>如果需要展示目录，需要在<code>markdown</code>文章开头添加<code>toc = true</code>：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">---
 title:  Hugo next 主题问题
 date: 2020-02-07  11:27:41
@@ -392,13 +392,13 @@ toc: true
 ---
 
 </code></pre></div><h1 id="首页展示文章数目设置">首页展示文章数目设置</h1>
-<p>首页展示的文章数目可以在<code>themes/next/config.toml</code>中设置<code>Paginate</code>字段：</p>
+<p>修改首页展示的文章数目可以在<code>themes/next/config.toml</code>中设置<code>Paginate</code>字段值：</p>
 <p><img src="https://i.loli.net/2020/02/08/Gz3wUjqPQr8yBeL.jpg" alt="-c"></p>
 <h1 id="首页摘要字数设置">首页摘要字数设置</h1>
-<p>首页摘要的字数设置必须在同<code>themes</code>同级的<code>config.toml</code>中设置：</p>
+<p>首页摘要的字数设置必须在与<code>themes</code>同级的<code>config.toml</code>文件中设置才会生效：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">summaryLength = 100  #放在同themes同级的config.toml上才有效
 </code></pre></div><h1 id="文章置顶设置">文章置顶设置</h1>
-<p>想要把文章置顶，需要在文章头部设置<code>weight</code>,如下所示：</p>
+<p>想要把文章置顶，需要在<code>markdown</code>文章头部设置权重<code>weight</code>的值，如下所示：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">---
 title:  陈小厨作品集
 date: 2020-02-03  13:28:05
@@ -408,7 +408,7 @@ weight: 1
 toc: true
 ---
 
-</code></pre></div><p>效果如下图：</p>
+</code></pre></div><p>效果如下：</p>
 <p><img src="https://i.loli.net/2020/02/08/VeL8h6BauYnSJRz.jpg" alt="-c"></p>
 <h1 id="设置从h1开始显示文章目录">设置从H1开始显示文章目录</h1>
 <p>不知道从什么时候开始<code>Hugo</code>从<code>h2</code>生成<code>toc</code>，为了设置从<code>h1</code>开始生成<code>toc</code>，需要设置全局的<code>config.toml</code>(即跟themes同级的<code>config.toml</code>)，如下所示：</p>
