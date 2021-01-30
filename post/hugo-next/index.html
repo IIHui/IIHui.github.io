@@ -242,7 +242,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1897</span>
+<span class="leancloud-visitors-count">1908</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -258,7 +258,7 @@ code.has-jax {
 </blockquote>
 <p><img src="https://i.loli.net/2020/02/07/z4ijTtkEwpmg5CQ.jpg" alt="-c"></p>
 <h1 id="代码高亮支持">代码高亮支持</h1>
-<p>插入<code>Golang、Swift</code>和<code>OC</code>代码段时发现并不能正常高亮，查资料发现是<code>Next</code>主题默认不支持这几种语言的语法高亮，因此需要在<code>themes/next/layouts/partials</code>目录下<code>head.html</code>中的<code>&lt;/head&gt;</code>前添加如下代码：</p>
+<p>插入<code>Golang、Swift</code>和<code>OC</code>代码段时发现并不能正常高亮，查资料发现是<code>Next</code>主题默认不支持这几种语言的语法高亮，因此需要在<code>themes/next/layouts/partials/head.html</code>文件中的<code>&lt;/head&gt;</code>前添加如下代码：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">    <span style="color:#75715e">&lt;!-- add by cxh --&gt;</span>
     &lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai-sublime.min.css&#34;</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span>&gt;
     &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
@@ -268,7 +268,7 @@ code.has-jax {
     &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/kotlin.min.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
    &lt;<span style="color:#f92672">script</span>&gt;<span style="color:#a6e22e">hljs</span>.<span style="color:#a6e22e">initHighlightingOnLoad</span>();&lt;/<span style="color:#f92672">script</span>&gt;
 </code></pre></div><h1 id="添加底部声明">添加底部声明</h1>
-<p>默认情况下底部的创作共享以及微信打赏码是没有的。为了显示，首先必须修改<code>themes/next/layouts/partials/widgets</code>目录下的<code>weixin.html</code>文件，添加创作共享声明和微信打赏：</p>
+<p>默认情况下底部的创作共享以及微信打赏码是没有的。为了显示，首先必须修改<code>themes/next/layouts/partials/widgets/weixin.html</code>文件，添加创作共享声明和微信打赏：</p>
 <p><img src="https://i.loli.net/2020/02/08/YE6kX7ncjSy4etf.jpg" alt="-c"></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;post-nav&#34;</span>&gt;
     &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;border: 1px dashed #e0e0e0; padding: 10px 10px 10px 10px; background-color: #fffeee; background-repeat: no-repeat; background-attachment: scroll; background-position: 1% 50%; -moz-background-size: auto auto; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;&#34;</span>&gt;
@@ -290,10 +290,10 @@ code.has-jax {
 &lt;/<span style="color:#f92672">div</span>&gt;
 </code></pre></div><p>然后在<code>themes/next/layouts/_default/single.html</code>中添加<code> {{ partial &quot;widgets/weixin.html&quot; .}}</code>，如下图所示：</p>
 <p><img src="https://i.loli.net/2020/02/08/VS5ifNspEdcwYHF.jpg" alt=""></p>
-<p>经过上面的两步骤，就可以得到如下效果：</p>
+<p>经过上面的两个步骤，就可以添加创作共享和微信打赏，效果如下：</p>
 <p><img src="https://i.loli.net/2020/02/08/6icSaUuD2bKQJvg.jpg" alt=""></p>
 <h1 id="删除文章列表之间的横线">删除文章列表之间的横线</h1>
-<p><code>Next</code>主题默认首页文章列表之间有条横线，看着觉得挺别扭的，找了一下资料，发现可以在<code>/static/css/main.css</code>文件中将<code>.posts-expand .post-eof</code>中的<code>height</code>设为0，就可以将其隐藏：</p>
+<p><code>Next</code>主题默认首页文章列表之间有条横线，看着觉得挺别扭的，找了一下资料，发现可以在<code>themes/next/static/css/main.css</code>文件中将<code>.posts-expand .post-eof</code>中的<code>height</code>设为<code>0</code>：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css">.<span style="color:#a6e22e">posts-expand</span> .<span style="color:#a6e22e">post-eof</span> {
   <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">block</span>;
   <span style="color:#66d9ef">margin</span>: <span style="color:#ae81ff">50</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">auto</span> <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>;
