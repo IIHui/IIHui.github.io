@@ -254,8 +254,8 @@ code.has-jax {
     </header>
     <div class="post-body" itemprop="articleBody">
     <h1 id="视频实质">视频实质</h1>
-<p>纯粹的视频（不包括音频）实质上就是<!-- raw HTML omitted -->一组帧图片<!-- raw HTML omitted -->，经过视频编码成为视频(<code>video</code>)文件再把音频（<code>audio</code>）文件以及字幕文件组装在一起成为视频（<code>movie</code>）文件。</p>
-<p><code>1</code>秒内出现的图片数就是帧率，<!-- raw HTML omitted -->图片间隔越小画面就越流畅<!-- raw HTML omitted -->，所以帧率越高效果就越好，需要的存储空间也就越多。</p>
+<p>纯粹的视频（不包括音频）实质上就是<font color=red>一组帧图片</font>，经过视频编码成为视频(<code>video</code>)文件再把音频（<code>audio</code>）文件以及字幕文件组装在一起成为视频（<code>movie</code>）文件。</p>
+<p><code>1</code>秒内出现的图片数就是帧率，<font color=Blue>图片间隔越小画面就越流畅</font>，所以帧率越高效果就越好，需要的存储空间也就越多。</p>
 <hr>
 <h1 id="录制视频的3种实现方式">录制视频的3种实现方式</h1>
 <ul>
@@ -333,7 +333,7 @@ code.has-jax {
 <li>设置音频输入设备<code> AVCaptureDeviceInput</code>，用于音频采集，然后将设备绑定到<code>AVCaptureSession</code>的输入口<code>input</code>中。</li>
 <li>设置输出源<code>AVCaptureMovieFileOutput</code>。此时音频和视频会合并在一起，在代理方法中也可以单独拿到视频或者音频数据，给<code>AVCaptureMovieFileOutput</code>指定路径，开始录制之后就会向这个路径写入数据。</li>
 <li>添加视频预览层。</li>
-<li>开始采集数据，<!-- raw HTML omitted -->这个时候还没有写入数据<!-- raw HTML omitted -->，用户点击录制后就可以开始写入数据。</li>
+<li>开始采集数据，<font color=red>这个时候还没有写入数据</font>，用户点击录制后就可以开始写入数据。</li>
 </ol>
 <p>如果需要对视频进行实时处理，则需要对相机缓冲区中的视频流进行处理：</p>
 <ol>

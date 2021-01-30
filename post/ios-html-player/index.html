@@ -268,7 +268,7 @@ code.has-jax {
 }
 </code></pre></div><hr>
 <h1 id="改变编码">改变编码</h1>
-<p>因此需要显式指定视频的输出编码格式，而<!-- raw HTML omitted -->不是使用之前的默认编码格式<!-- raw HTML omitted -->，代码片段如下：</p>
+<p>因此需要显式指定视频的输出编码格式，而<font color=red>不是使用之前的默认编码格式</font>，代码片段如下：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">if</span> <span style="color:#66d9ef">self</span>.captureSession.canAddOutput(<span style="color:#66d9ef">self</span>.captureMovieFileOutput) {
     <span style="color:#66d9ef">self</span>.captureSession.addOutput(<span style="color:#66d9ef">self</span>.captureMovieFileOutput)
     <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> outPutConnection = <span style="color:#66d9ef">self</span>.captureMovieFileOutput.connection(withMediaType:AVMediaTypeVideo){

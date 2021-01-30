@@ -257,7 +257,7 @@ code.has-jax {
 <p>项目中需要用百度语音合成<code>SDK</code>，因此自己先建了一个工程作为引入测试一下，总结下来为<code>准备</code>&ndash;&gt;<code>导入</code>&ndash;&gt;<code>创建应用</code>&ndash;&gt;<code>测试</code>。</p>
 </blockquote>
 <h1 id="准备">准备</h1>
-<p>首先从<a href="http://ai.baidu.com/sdk">百度官网</a>下载百度语音合成的<code>SDK</code>,如下图所示首先在左边选择<!-- raw HTML omitted -->语音合成<!-- raw HTML omitted -->，然后在右边选择<code>iOS</code>版的离在线融合<code>SDK</code>:</p>
+<p>首先从<a href="http://ai.baidu.com/sdk">百度官网</a>下载百度语音合成的<code>SDK</code>,如下图所示首先在左边选择<font color=red>语音合成</font>，然后在右边选择<code>iOS</code>版的离在线融合<code>SDK</code>:</p>
 <p><img src="https://i.loli.net/2019/03/02/5c79f8c37d767.jpg" alt=""></p>
 <h1 id="导入">导入</h1>
 <p>有两部分需要导入，第一部分是导入百度语音合成所需的文件，第二部分是导入百度语音合成依赖的框架，下面分别讲解：</p>
@@ -271,11 +271,11 @@ code.has-jax {
 <p><img src="https://i.loli.net/2019/03/02/5c79fa93daf6a.jpg" alt=""></p>
 <p><img src="https://i.loli.net/2019/03/02/5c79fc124def8.jpg" alt=""></p>
 <h1 id="创建应用">创建应用</h1>
-<p>要使用百度语音合成，<!-- raw HTML omitted -->首先需要创建相关的应用<!-- raw HTML omitted -->，而创建应用的<!-- raw HTML omitted -->前提是有百度云帐号<!-- raw HTML omitted -->。注册好百度云帐号之后登录，在控制台选择百度语音：</p>
+<p>要使用百度语音合成，<font color=red>首先需要创建相关的应用</font>，而创建应用的<font color=Blue>前提是有百度云帐号</font>。注册好百度云帐号之后登录，在控制台选择百度语音：</p>
 <p><img src="https://i.loli.net/2019/03/02/5c79fcdb21ce6.jpg" alt=""></p>
 <p>然后选择创建百度语音应用：</p>
 <p><img src="https://i.loli.net/2019/03/02/5c79fd0519511.jpg" alt=""></p>
-<p>接着填写相关信息，要注意的是语音包名要与<!-- raw HTML omitted -->测试工程的<code>Bundle Identifier</code>一致（称为绑定），才可以使用百度语音合成的离在线模式<!-- raw HTML omitted -->:</p>
+<p>接着填写相关信息，要注意的是语音包名要与<font color=red>测试工程的<code>Bundle Identifier</code>一致（称为绑定），才可以使用百度语音合成的离在线模式</font>:</p>
 <p><img src="https://i.loli.net/2019/03/02/5c79fdf4665af.jpg" alt=""></p>
 <hr>
 <h1 id="测试代码">测试代码</h1>

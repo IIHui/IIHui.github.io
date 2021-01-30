@@ -254,10 +254,10 @@ code.has-jax {
     </header>
     <div class="post-body" itemprop="articleBody">
     <blockquote>
-<p><code>KVC(Key Value Coding)</code>键值编码，指允许通过<code>Key</code>名字来直接访问对象的属性，而<!-- raw HTML omitted -->不需要调用明确的存取方法<!-- raw HTML omitted -->。这样，便能在运行时动态地访问和修改对象的属性值。在<code>iOS</code>中，无论是<code>Swift</code>还是<code>OC</code>，<code>KVC</code>都是通过对<code>NSObject</code>的扩展来实现的。所以，继承了<code>NSObject</code>的类型的对象都能使用<code>KVC</code>。</p>
+<p><code>KVC(Key Value Coding)</code>键值编码，指允许通过<code>Key</code>名字来直接访问对象的属性，而<font color=red>不需要调用明确的存取方法</font>。这样，便能在运行时动态地访问和修改对象的属性值。在<code>iOS</code>中，无论是<code>Swift</code>还是<code>OC</code>，<code>KVC</code>都是通过对<code>NSObject</code>的扩展来实现的。所以，继承了<code>NSObject</code>的类型的对象都能使用<code>KVC</code>。</p>
 </blockquote>
 <h1 id="kvc">KVC</h1>
-<p><code>KVC</code>是一种通过<!-- raw HTML omitted -->字符串间接访问对象的属性的方法<!-- raw HTML omitted -->，而不是通过调用存取方法<code>（setter/getter）</code>来获取属性，下面是<code>KVC</code>最为重要的四个方法：</p>
+<p><code>KVC</code>是一种通过<font color=red>字符串间接访问对象的属性的方法</font>，而不是通过调用存取方法<code>（setter/getter）</code>来获取属性，下面是<code>KVC</code>最为重要的四个方法：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">- (nullable <span style="color:#66d9ef">id</span>)<span style="color:#a6e22e">valueForKey:</span>(NSString <span style="color:#f92672">*</span>)key; <span style="color:#75715e">//直接通过Key(NSString属性的名字)来取值
 </span><span style="color:#75715e"></span>- (<span style="color:#66d9ef">void</span>)<span style="color:#a6e22e">setValue:</span>(nullable <span style="color:#66d9ef">id</span>)value <span style="color:#a6e22e">forKey:</span>(NSString <span style="color:#f92672">*</span>)key;  <span style="color:#75715e">//通过Key(NSString属性的名字)来设值
 </span><span style="color:#75715e"></span>- (nullable <span style="color:#66d9ef">id</span>)<span style="color:#a6e22e">valueForKeyPath:</span>(NSString <span style="color:#f92672">*</span>)keyPath; <span style="color:#75715e">//通过KeyPath(xx.xx)来取值
@@ -387,7 +387,7 @@ code.has-jax {
 <p>首先按<code>get&lt;Key&gt;,&lt;key&gt;,is&lt;Key&gt;</code>的顺序方法查找<code>getter</code>方法，找到的话会直接调用。如果是<code>BOOL</code>或者<code>Int</code>等值类型， 会将其包装成一个<code>NSNumber</code>对象。</p>
 </li>
 <li>
-<p>如果上面的<code>getter</code>没有找到，<code>KVC</code>则会查找<code>countOf&lt;Key&gt;,objectIn&lt;Key&gt;AtIndex</code>或<code>&lt;Key&gt;AtIndexes</code>格式的方法。如果<code>countOf&lt;Key&gt;</code>方法和另外两个方法中的一个被找到，那么就会返回一个可以响应<code>NSArray</code>所有方法的代理集合(它是<code>NSKeyValueArray</code>，为<code>NSArray</code>的子类)，调用这个代理集合的方法，或者说给这个代理集合发送属于<code>NSArray</code>的方法，就会以<code>countOf&lt;Key&gt;,objectIn&lt;Key&gt;AtIndex</code>或<code>&lt;Key&gt;AtIndexes</code>这几个方法组合的形式调用。还有一个可选的<code>get&lt;Key&gt;:range:</code>方法。所以你想重新定义<code>KVC</code>的一些功能，你可以添加这些方法，<!-- raw HTML omitted -->需要注意的是你的方法名要符合<code>KVC</code>的标准命名方法，包括方法签名。<!-- raw HTML omitted --></p>
+<p>如果上面的<code>getter</code>没有找到，<code>KVC</code>则会查找<code>countOf&lt;Key&gt;,objectIn&lt;Key&gt;AtIndex</code>或<code>&lt;Key&gt;AtIndexes</code>格式的方法。如果<code>countOf&lt;Key&gt;</code>方法和另外两个方法中的一个被找到，那么就会返回一个可以响应<code>NSArray</code>所有方法的代理集合(它是<code>NSKeyValueArray</code>，为<code>NSArray</code>的子类)，调用这个代理集合的方法，或者说给这个代理集合发送属于<code>NSArray</code>的方法，就会以<code>countOf&lt;Key&gt;,objectIn&lt;Key&gt;AtIndex</code>或<code>&lt;Key&gt;AtIndexes</code>这几个方法组合的形式调用。还有一个可选的<code>get&lt;Key&gt;:range:</code>方法。所以你想重新定义<code>KVC</code>的一些功能，你可以添加这些方法，<font color=red>需要注意的是你的方法名要符合<code>KVC</code>的标准命名方法，包括方法签名。</font></p>
 </li>
 <li>
 <p>如果上面的方法没有找到，那么会同时查找<code>countOf&lt;Key&gt;，enumeratorOf&lt;Key&gt;,memberOf&lt;Key&gt;</code>格式的方法。如果这三个方法都找到，那么就返回一个可以响应<code>NSSet</code>所的方法的代理集合，和上面一样，给这个代理集合发<code>NSSet</code>的消息，就会以<code>countOf&lt;Key&gt;，enumeratorOf&lt;Key&gt;,memberOf&lt;Key&gt;</code>组合的形式调用。</p>
@@ -401,8 +401,8 @@ code.has-jax {
 </ul>
 <h2 id="keypath">KeyPath</h2>
 <p>一个类的成员变量有可能是自定义类或其他的复杂数据类型，可以先用<code>KVC</code>获取该属性，然后再次用<code>KVC</code>来获取这个自定义类的属性，但这样是比较繁琐的。因此，<code>KVC</code>提供了一个解决方案，那就是键路径<code>keyPath</code>。</p>
-<p><code>KeyPath</code>，表示键路径，是一个由<!-- raw HTML omitted -->点作分隔符的键组成的字符串（点语法<!-- raw HTML omitted -->），用于表示一个连接在一起的对象序列。其中，<!-- raw HTML omitted -->后一个键的性质是由前一个键的性质决定的<!-- raw HTML omitted -->（如同现代面向对象语言取成员）。所以，<code>KVC</code>对于<code>keyPath</code>是搜索机制第一步就是分离<code>ke</code>y，用小数点<code>.</code>来分割<code>key</code>，然后再像普通<code>key</code>一样按照先前介绍的顺序搜索下去。</p>
-<p>有了键路径，就可以不通过相应的方法来直接取相关的性质（<!-- raw HTML omitted -->属性/方法<!-- raw HTML omitted -->）。通过键路径，可以指定对象中的一个任意深度的路径，使其指向相关对象的特定属性。</p>
+<p><code>KeyPath</code>，表示键路径，是一个由<font color=red>点作分隔符的键组成的字符串（点语法</font>），用于表示一个连接在一起的对象序列。其中，<font color=Blue>后一个键的性质是由前一个键的性质决定的</font>（如同现代面向对象语言取成员）。所以，<code>KVC</code>对于<code>keyPath</code>是搜索机制第一步就是分离<code>ke</code>y，用小数点<code>.</code>来分割<code>key</code>，然后再像普通<code>key</code>一样按照先前介绍的顺序搜索下去。</p>
+<p>有了键路径，就可以不通过相应的方法来直接取相关的性质（<font color=red>属性/方法</font>）。通过键路径，可以指定对象中的一个任意深度的路径，使其指向相关对象的特定属性。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">- (nullable <span style="color:#66d9ef">id</span>)<span style="color:#a6e22e">valueForKeyPath:</span>(NSString <span style="color:#f92672">*</span>)keyPath;  <span style="color:#75715e">//通过KeyPath来取值
 </span><span style="color:#75715e"></span>- (<span style="color:#66d9ef">void</span>)<span style="color:#a6e22e">setValue:</span>(nullable <span style="color:#66d9ef">id</span>)value <span style="color:#a6e22e">forKeyPath:</span>(NSString <span style="color:#f92672">*</span>)keyPath;  <span style="color:#75715e">//通过KeyPath来设值
 </span></code></pre></div><p>下面是一个例子：</p>
@@ -461,10 +461,10 @@ NSLog(<span style="color:#e6db74">@&#34;country1:%@   country2:%@&#34;</span>,co
 </code></pre></div><h2 id="缺点">缺点</h2>
 <ul>
 <li>
-<p>一旦使用<code>KVC</code>，<!-- raw HTML omitted -->编译器将无法检查出错误<!-- raw HTML omitted -->，即不会对设置的键、键路径进行错误检查。</p>
+<p>一旦使用<code>KVC</code>，<font color=red>编译器将无法检查出错误</font>，即不会对设置的键、键路径进行错误检查。</p>
 </li>
 <li>
-<p>执行效率要低于合成存取器方法和自定义的<code>setter</code>和<code>getter</code>方法。效率低的原因是使用<code>KVC</code>键值编码，<!-- raw HTML omitted -->它必须先解析字符串，然后在设置或者访问对象的实例变量<!-- raw HTML omitted -->。</p>
+<p>执行效率要低于合成存取器方法和自定义的<code>setter</code>和<code>getter</code>方法。效率低的原因是使用<code>KVC</code>键值编码，<font color=Blue>它必须先解析字符串，然后在设置或者访问对象的实例变量</font>。</p>
 </li>
 </ul>
 <h2 id="kvc的使用">KVC的使用</h2>
@@ -476,7 +476,7 @@ NSLog(<span style="color:#e6db74">@&#34;country1:%@   country2:%@&#34;</span>,co
 <h3 id="model和字典的相互转换">Model和字典的相互转换</h3>
 <p><code>Model</code>和字典的相互转换，具体<a href="https://www.jianshu.com/p/53b1e5785b24">参考</a>。充分地运用了<code>KVC</code>和<code>Runtime</code>组合的技巧，只用了短短数行代码就是完成了很多功能。</p>
 <h3 id="修改一些控件的内部属性">修改一些控件的内部属性</h3>
-<p>众所周知很多<code>UI</code>控件都由<!-- raw HTML omitted -->很多内部<code>UI</code>控件组合而成<!-- raw HTML omitted -->的，但是<code>Apple</code>没有提供这访问这些控件的<code>API</code>，这样我们就无法正常地访问和修改这些控件的样式。而<code>KVC</code>在大多数情况可下可以解决这个问题，最常用的就是个性化<code>UITextField</code>中的<code>placeHolderText</code>了。下面演示如果修改<code>placeHolder</code>的文字样式。这里的关键点是如何获取要修改的样式的属性名，也就是<code>key</code>或者<code>keyPath</code>：</p>
+<p>众所周知很多<code>UI</code>控件都由<font color=Blue>很多内部<code>UI</code>控件组合而成</font>的，但是<code>Apple</code>没有提供这访问这些控件的<code>API</code>，这样我们就无法正常地访问和修改这些控件的样式。而<code>KVC</code>在大多数情况可下可以解决这个问题，最常用的就是个性化<code>UITextField</code>中的<code>placeHolderText</code>了。下面演示如果修改<code>placeHolder</code>的文字样式。这里的关键点是如何获取要修改的样式的属性名，也就是<code>key</code>或者<code>keyPath</code>：</p>
 <p><img src="https://i.loli.net/2020/02/15/USyvOpWMc9TweXt.jpg" alt="-c"></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">let count:UnsafeMutablePointer<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">UInt32</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span>  UnsafeMutablePointer<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">UInt32</span><span style="color:#f92672">&gt;</span>()
 var properties <span style="color:#f92672">=</span> class_copyIvarList(UITextField.self, count)

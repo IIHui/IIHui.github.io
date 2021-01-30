@@ -275,7 +275,7 @@ code.has-jax {
     }
 }
 </code></pre></div><h2 id="存在的问题">存在的问题</h2>
-<p>假设父类名为<code>method</code>的方法，<!-- raw HTML omitted -->子类未重写<!-- raw HTML omitted -->这个<code>method</code>方法，子类的中想要用来交换的方法为<code>swizzledMethod</code>。如果按照上面的方法交换时，因为父类有该方法，而子类未重写该方法，<!-- raw HTML omitted -->所以调用<code>class_getInstanceMethod</code>得到的是父类的<code>method</code>方法<!-- raw HTML omitted -->，所以它与子类的<code>swizzledMethod</code>方法进行交换需要分两种情形来讨论：</p>
+<p>假设父类名为<code>method</code>的方法，<font color=red>子类未重写</font>这个<code>method</code>方法，子类的中想要用来交换的方法为<code>swizzledMethod</code>。如果按照上面的方法交换时，因为父类有该方法，而子类未重写该方法，<font color=red>所以调用<code>class_getInstanceMethod</code>得到的是父类的<code>method</code>方法</font>，所以它与子类的<code>swizzledMethod</code>方法进行交换需要分两种情形来讨论：</p>
 <ul>
 <li>
 <p>如果在子类实例中调用<code>method</code>方法时，因为已经与自己的<code>swizzledMethod</code>方法交换，所以实际上调用的自己<code>swizzledMethod</code>，所以能够正常运行。</p>

@@ -357,7 +357,7 @@ code.has-jax {
         })
     }
 }
-</code></pre></div><p><code>promise</code>对象初始化的时候提供了<code>seal</code>对象，这个对象定义了<!-- raw HTML omitted -->回调完成的方法<!-- raw HTML omitted -->。接着依次改造<code>promiseFetchUserData</code>和<code>promiseLoginUser</code>，如下所示：</p>
+</code></pre></div><p><code>promise</code>对象初始化的时候提供了<code>seal</code>对象，这个对象定义了<font color=red>回调完成的方法</font>。接着依次改造<code>promiseFetchUserData</code>和<code>promiseLoginUser</code>，如下所示：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">promiseFetchUserData</span>(user: String: Any]) -&gt; Promise&lt;User&gt; {
     <span style="color:#66d9ef">return</span> Promise&lt;User&gt; { seal <span style="color:#66d9ef">in</span>
         fetchUserData(<span style="color:#66d9ef">for</span>: user, completion: { response, results, error <span style="color:#66d9ef">in</span>
@@ -408,7 +408,7 @@ code.has-jax {
     <span style="color:#66d9ef">self</span>.imageView = image
 }
 </code></pre></div><h2 id="catch处理">catch处理</h2>
-<p>每个<code>promise</code>都是一个表示单个异步任务的对象。如果任务失败，它的<code>promise</code>将成为<code>rejected</code>。产生<code>rejected promises</code>将跳过所有的<code>then</code>，执行后续<!-- raw HTML omitted -->所有<code>catch</code><!-- raw HTML omitted -->。</p>
+<p>每个<code>promise</code>都是一个表示单个异步任务的对象。如果任务失败，它的<code>promise</code>将成为<code>rejected</code>。产生<code>rejected promises</code>将跳过所有的<code>then</code>，执行后续<font color=red>所有<code>catch</code></font>。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">firstly {
     login()
 }.then { creds <span style="color:#66d9ef">in</span>

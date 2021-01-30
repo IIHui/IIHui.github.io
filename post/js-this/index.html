@@ -254,11 +254,11 @@ code.has-jax {
     </header>
     <div class="post-body" itemprop="articleBody">
     <blockquote>
-<p>在<code>JavaScript</code>中，<code>this</code>是<!-- raw HTML omitted -->动态绑定<!-- raw HTML omitted -->，或称为<!-- raw HTML omitted -->运行期绑定<!-- raw HTML omitted -->的，这导致<code>JavaScript</code>中的<code>this</code>关键字具有多重含义。它可以是<!-- raw HTML omitted -->全局对象、当前对象或者任意对象<!-- raw HTML omitted -->，这完全取决于函数的调用方式。</p>
+<p>在<code>JavaScript</code>中，<code>this</code>是<font color=red>动态绑定</font>，或称为<font color=Blue>运行期绑定</font>的，这导致<code>JavaScript</code>中的<code>this</code>关键字具有多重含义。它可以是<font color=Blue>全局对象、当前对象或者任意对象</font>，这完全取决于函数的调用方式。</p>
 </blockquote>
 <hr>
 <h1 id="作为对象方法调用">作为对象方法调用</h1>
-<p>在<code>JS</code>中，函数也是对象，因此<!-- raw HTML omitted -->函数可以作为一个对象的属性<!-- raw HTML omitted -->，此时该函数被称为该对象的方法，在使用这种调用方式时，<code>this</code>被自然地绑定到该对象。</p>
+<p>在<code>JS</code>中，函数也是对象，因此<font color=red>函数可以作为一个对象的属性</font>，此时该函数被称为该对象的方法，在使用这种调用方式时，<code>this</code>被自然地绑定到该对象。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">point</span> <span style="color:#f92672">=</span> { 
 <span style="color:#a6e22e">x</span> <span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>, 
 <span style="color:#a6e22e">y</span> <span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>, 
@@ -302,7 +302,7 @@ code.has-jax {
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">x</span>; <span style="color:#75715e">//==&gt;1
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">y</span>; <span style="color:#75715e">//==&gt;1
 </span><span style="color:#75715e"></span>
-</code></pre></div><p>这属于<code>JavaScript</code>的<!-- raw HTML omitted -->设计缺陷<!-- raw HTML omitted -->，正确的设计方式是内部函数的<code>this</code>应该绑定到其外层函数对应的对象上，为了规避这一缺陷，使用<!-- raw HTML omitted -->变量替换<!-- raw HTML omitted -->的方式：</p>
+</code></pre></div><p>这属于<code>JavaScript</code>的<font color=Blue>设计缺陷</font>，正确的设计方式是内部函数的<code>this</code>应该绑定到其外层函数对应的对象上，为了规避这一缺陷，使用<font color=red>变量替换</font>的方式：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">point</span> <span style="color:#f92672">=</span> {
   <span style="color:#a6e22e">x</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
   <span style="color:#a6e22e">y</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
@@ -326,15 +326,15 @@ code.has-jax {
 </span><span style="color:#75715e"></span>
 </code></pre></div><hr>
 <h1 id="作为构造函数调用">作为构造函数调用</h1>
-<p><code>JavaScript</code>支持面向对象编程，但它<!-- raw HTML omitted -->没有类<!-- raw HTML omitted -->的概念，而是使用基于原型<code>prototype</code>的继承方式。</p>
-<p>相应的<code>JavaScript</code>中的构造函数也很特殊，如果不使用<code>new</code>调用，则和普通函数一样。约定俗成，<!-- raw HTML omitted -->构造函数以大写字母开头<!-- raw HTML omitted -->，以提醒调用者使用正确的方式调用。</p>
+<p><code>JavaScript</code>支持面向对象编程，但它<font color=red>没有类</font>的概念，而是使用基于原型<code>prototype</code>的继承方式。</p>
+<p>相应的<code>JavaScript</code>中的构造函数也很特殊，如果不使用<code>new</code>调用，则和普通函数一样。约定俗成，<font color=Blue>构造函数以大写字母开头</font>，以提醒调用者使用正确的方式调用。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Point</span>(<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>){ 
    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">x</span>; 
    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">y</span>; 
 }
 </code></pre></div><hr>
 <h1 id="使用apply或call调用">使用apply或call调用</h1>
-<p>在<code>JS</code>中<!-- raw HTML omitted -->函数也是对象<!-- raw HTML omitted -->，对象则有方法，<code>apply</code>和<code>call</code>就是<!-- raw HTML omitted -->函数对象的方法<!-- raw HTML omitted -->。他们允许切换函数执行的上下文环境<code>context</code>,即<code>this</code>绑定的对象。</p>
+<p>在<code>JS</code>中<font color=red>函数也是对象</font>，对象则有方法，<code>apply</code>和<code>call</code>就是<font color=Blue>函数对象的方法</font>。他们允许切换函数执行的上下文环境<code>context</code>,即<code>this</code>绑定的对象。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Point</span>(<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>) {
   <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">x</span>;
   <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">y</span>;

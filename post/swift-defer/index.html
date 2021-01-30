@@ -257,7 +257,7 @@ code.has-jax {
 <p>从语言设计上来说，<code>defer</code>是为了进行资源清理和返回前避免重复执行相关的代码，而不是用来取巧的实现某些功能，这样做只会让代码的可读性降低。</p>
 </blockquote>
 <h1 id="典型用法">典型用法</h1>
-<p><code>Swift</code>中<code>defer</code>声明的<code>block</code>会在<!-- raw HTML omitted -->当前代码执行退出后<!-- raw HTML omitted -->调用，这种延迟调用特性，一般用来进行资源释放或者销毁。</p>
+<p><code>Swift</code>中<code>defer</code>声明的<code>block</code>会在<font color=red>当前代码执行退出后</font>调用，这种延迟调用特性，一般用来进行资源释放或者销毁。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">operateOnFile</span>(descriptor: Int32) {
     <span style="color:#66d9ef">let</span> fileHandle = FileHandle(fileDescriptor: descriptor)
     
@@ -278,7 +278,7 @@ code.has-jax {
     fileHandle.write(someData)
     fileHandle.closeFile()
 }
-</code></pre></div><p>上面代码在不同的地方调用<code>fileHandle.closeFile()</code>来关闭文件，更好的方法是使用<code>defer</code>来统一处理。这不仅可以<!-- raw HTML omitted -->就近在资源申请的地方就声明释放<!-- raw HTML omitted -->，也减少了未来添加代码时忘记释放资源的可能性，如下所示：</p>
+</code></pre></div><p>上面代码在不同的地方调用<code>fileHandle.closeFile()</code>来关闭文件，更好的方法是使用<code>defer</code>来统一处理。这不仅可以<font color=red>就近在资源申请的地方就声明释放</font>，也减少了未来添加代码时忘记释放资源的可能性，如下所示：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">operateOnFile</span>(descriptor: Int32) {
     <span style="color:#66d9ef">let</span> fileHandle = FileHandle(fileDescriptor: descriptor)
     <span style="color:#66d9ef">defer</span> { fileHandle.closeFile() }
@@ -293,9 +293,9 @@ code.has-jax {
     fileHandle.write(someData)
 }
 </code></pre></div><h1 id="作用域">作用域</h1>
-<p>一般都人<code>defer</code>是在函数退出的时候调用，其实它是在<!-- raw HTML omitted -->是当前<code>scope</code>退出的时候调用<!-- raw HTML omitted -->。在 <code>if，guard，for，try</code>这些语句中使用<code>defer</code>时，应该要特别注意。</p>
+<p>一般都人<code>defer</code>是在函数退出的时候调用，其实它是在<font color=red>是当前<code>scope</code>退出的时候调用</font>。在 <code>if，guard，for，try</code>这些语句中使用<code>defer</code>时，应该要特别注意。</p>
 <h1 id="defer闭包不持有值">defer闭包不持有值</h1>
-<p>虽然<code>defer</code>后面跟了一个闭包，但是它更多地像是一个语法糖，和我们所熟知的闭包特性不一样，<!-- raw HTML omitted -->并不会持有里面的值<!-- raw HTML omitted -->：</p>
+<p>虽然<code>defer</code>后面跟了一个闭包，但是它更多地像是一个语法糖，和我们所熟知的闭包特性不一样，<font color=red>并不会持有里面的值</font>：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">foo</span>() {
     <span style="color:#66d9ef">var</span> number = <span style="color:#ae81ff">1</span>
     <span style="color:#66d9ef">defer</span> { print(<span style="color:#e6db74">&#34;Statement 2: </span><span style="color:#e6db74">\(</span>number<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>) }

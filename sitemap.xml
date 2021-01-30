@@ -117,6 +117,7 @@ hash = Hash[&amp;#34;a&amp;#34; =&amp;gt; 12, &amp;#34;b&amp;#34; =&amp;gt; &amp
         <content type="html">  属性包装器propertyWrapper的作用对象是属性，它的思想是只可以通过wrappedValue的get set方法来访问属性，这样就可以通过get和set方法来对属性进行包装。属性包装器是一种通用结构，它封装了对该属性的读写访问，并可以为其添加其他行为。如果需要限制属性值，向读或写访问添加额外的逻辑或添加一些其他方法。
  基本使用 属性包装器propertyWrapper是Swift 5.1引入，使用时必须满足两个条件。第一，必须使用@propertyWrapper声明。第二，必须具有非静态的wrapppedValue属性。
 @propertyWrapper struct SomeWrapper { var wrappedValue: Int var someValue: Double init() { self.wrappedValue = 100 self.someValue = 12.3 } init(wrappedValue: Int) { self.wrappedValue = wrappedValue self.someValue = 45.6 } init(wrappedValue value: Int, custom: Double) { self.wrappedValue = value self.someValue = custom } } struct SomeStruct { // 使用 init() @SomeWrapper var a: Int // 使用 init(wrappedValue:) @SomeWrapper var b = 10 // 两个都是使用 init(wrappedValue:custom:) @SomeWrapper(custom: 98.7) var c = 30 @SomeWrapper(wrappedValue: 30, custom: 98.7) var d } @propertyWrapper struct Wrapper&amp;lt;T&amp;gt; { var wrappedValue: T } struct TestWrapper { @Wrapper var x: Int @Wrapper var y = 12 @Wrapper(wrappedValue: 34) var z } func test() { let test1 = TestWrapper(x: 100) print(test1.x, test1.y, test1.z) let test2 = TestWrapper(x: 34, y: 45, z: Wrapper(wrappedValue: 89)) print(test2.x,test2.y,test2.z) } 如果需要访问包装器本身（而不是包装的属性值），则需要在属性名称之前添加下划线。在属性包装器中，也可以提供额外的功能，但如果要使用这些额外的功能，则需要访问包装器本身，而不是其封装的属性：
+This is an example
 @propertyWrapper struct Wrapper&amp;lt;T&amp;gt; { var wrappedValue: T func foo(){ print(&amp;#34;foo&amp;#34;) } } struct TestWrapper { @Wrapper var x: Int @Wrapper var y = 12 @Wrapper(wrappedValue: 34) var z func foo(){ _x.foo() //_x是属性包装器本身，不能通过x.foo()来访问foo } } func test() { let test1 = TestWrapper(x: 100) print(test1.x, test1.y, test1.z) let test2 = TestWrapper(x: 34, y: 45, z: Wrapper(wrappedValue: 89)) print(test2.x,test2.y,test2.z) test1.foo() test2.foo() } 上面的_x是属性包装器本身，它是private级别的。因此，从外部使用它会产生编译错误。属性包装器还可以通过定义投影值来暴露其他功能。投影值的名称与包装值相同，只是它以$开头。投影值使用projectedValue定义，可以返回任何类型的值作为其投影值：
 @propertyWrapper struct Wrapper&amp;lt;T&amp;gt; { var wrappedValue: T var projectedValue: Wrapper&amp;lt;T&amp;gt; { return self } func foo(){ print(&amp;#34;foo&amp;#34;) } } struct TestWrapper { @Wrapper var x: Int @Wrapper var y = 12 @Wrapper(wrappedValue: 34) var z func foo(){ _x.foo() $x.foo() //不能使用x.foo()，因为x代表wrappedValue print(x,_x,$x) //三种方式访问包装器 } } func test() { let test1 = TestWrapper(x: 100) print(test1.x, test1.y, test1.z) let test2 = TestWrapper(x: 34, y: 45, z: Wrapper(wrappedValue: 89)) print(test2.x,test2.y,test2.z) test1.foo() test2.foo() test1.$x.foo() test2.$x.foo() } @propertyWrapper struct SmallNumber { private var number: Int var projectedValue: Bool init() { self.number = 0 self.projectedValue = false } var wrappedValue: Int { get { return number } set { if newValue &amp;gt; 12 { number = 12 projectedValue = true } else { number = newValue projectedValue = false } } } } struct SomeStruct { @SmallNumber var someNum: Int } func testSmall() { var small = SomeStruct() small.someNum = 3 print(small.$someNum) // false small.someNum = 70 print(small.$someNum) // true } 参考资料 参考资料
 减少重复 使用属性包装器可以减少重复代码。我们通常使用UserDefaults来保存引导页是否已经显示过，如果没有@propertyWrapper时，一般使用如下所示代码：
@@ -1237,7 +1238,8 @@ TranGroup(trunks: [test.Trunk], country: Optional(&amp;#34;天朝&amp;#34;), tur
 #import &amp;#34;Dog.h&amp;#34;  @implementation Dog { NSString* toSetName; NSString* isName; //NSString* name;  NSString* _name; NSString* _isName; } // -(void)setName:(NSString*)name{ // toSetName = name; // } //-(NSString*)getName{ // return toSetName; //} &#43;(BOOL)accessInstanceVariablesDirectly{ return YES; } -(id)valueForUndefinedKey:(NSString *)key{ NSLog(@&amp;#34;出现异常，该key不存在%@&amp;#34;,key); return nil; } -(void)setValue:(id)value forUndefinedKey:(NSString *)key{ NSLog(@&amp;#34;出现异常，该key不存在%@&amp;#34;,key); } @end #import &amp;lt;Foundation/Foundation.h&amp;gt; #import &amp;#34;Dog.h&amp;#34;  int main(int argc, const char * argv[]) { @autoreleasepool { // insert code here...  Dog * dog = [Dog new]; [dog setValue:@&amp;#34;newName&amp;#34; forKey:@&amp;#34;name&amp;#34;]; NSString* name = [dog valueForKey:@&amp;#34;name&amp;#34;]; NSLog(@&amp;#34;%@&amp;#34;,name); } return 0; } 打印的结果如下所示：
 2020-02-15 10:09:25.756648&#43;0800 test[52930:3077204] newName 取值 当调用valueForKey：@”name“的代码时，KVC对key的搜索方式不同于setValue：属性值 forKey：@”name“，其搜索方式如下：
   首先按get&amp;lt;Key&amp;gt;,&amp;lt;key&amp;gt;,is&amp;lt;Key&amp;gt;的顺序方法查找getter方法，找到的话会直接调用。如果是BOOL或者Int等值类型， 会将其包装成一个NSNumber对象。
-  如果上面的getter没有找到，KVC则会查找countOf&amp;lt;Key&amp;gt;,objectIn&amp;lt;Key&amp;gt;AtIndex或&amp;lt;Key&amp;gt;AtIndexes格式的方法。如果countOf&amp;lt;Key&amp;gt;方法和另外两个方法中的一个被找到，那么就会返回一个可以响应NSArray所有方法的代理集合(它是NSKeyValueArray，为NSArray的子类)，调用这个代理集合的方法，或者说给这个代理集合发送属于NSArray的方法，就会以countOf&amp;lt;Key&amp;gt;,objectIn&amp;lt;Key&amp;gt;AtIndex或&amp;lt;Key&amp;gt;AtIndexes这几个方法组合的形式调用。还有一个可选的get&amp;lt;Key&amp;gt;:range:方法。所以你想重新定义KVC的一些功能，你可以添加这些方法，需要注意的是你的方法名要符合KVC的标准命名方法，包括方法签名。  如果上面的方法没有找到，那么会同时查找countOf&amp;lt;Key&amp;gt;，enumeratorOf&amp;lt;Key&amp;gt;,memberOf&amp;lt;Key&amp;gt;格式的方法。如果这三个方法都找到，那么就返回一个可以响应NSSet所的方法的代理集合，和上面一样，给这个代理集合发NSSet的消息，就会以countOf&amp;lt;Key&amp;gt;，enumeratorOf&amp;lt;Key&amp;gt;,memberOf&amp;lt;Key&amp;gt;组合的形式调用。
+  如果上面的getter没有找到，KVC则会查找countOf&amp;lt;Key&amp;gt;,objectIn&amp;lt;Key&amp;gt;AtIndex或&amp;lt;Key&amp;gt;AtIndexes格式的方法。如果countOf&amp;lt;Key&amp;gt;方法和另外两个方法中的一个被找到，那么就会返回一个可以响应NSArray所有方法的代理集合(它是NSKeyValueArray，为NSArray的子类)，调用这个代理集合的方法，或者说给这个代理集合发送属于NSArray的方法，就会以countOf&amp;lt;Key&amp;gt;,objectIn&amp;lt;Key&amp;gt;AtIndex或&amp;lt;Key&amp;gt;AtIndexes这几个方法组合的形式调用。还有一个可选的get&amp;lt;Key&amp;gt;:range:方法。所以你想重新定义KVC的一些功能，你可以添加这些方法，需要注意的是你的方法名要符合KVC的标准命名方法，包括方法签名。
+  如果上面的方法没有找到，那么会同时查找countOf&amp;lt;Key&amp;gt;，enumeratorOf&amp;lt;Key&amp;gt;,memberOf&amp;lt;Key&amp;gt;格式的方法。如果这三个方法都找到，那么就返回一个可以响应NSSet所的方法的代理集合，和上面一样，给这个代理集合发NSSet的消息，就会以countOf&amp;lt;Key&amp;gt;，enumeratorOf&amp;lt;Key&amp;gt;,memberOf&amp;lt;Key&amp;gt;组合的形式调用。
   如果还没有找到，再检查类方法&#43;(BOOL)accessInstanceVariablesDirectly,如果返回YES(默认行为)，那么和先前的设值一样，会按_&amp;lt;key&amp;gt;,_is&amp;lt;Key&amp;gt;,&amp;lt;key&amp;gt;,is&amp;lt;Key&amp;gt;的顺序搜索成员变量名，这里不推荐这么做，因为这样直接访问实例变量破坏了封装性，使代码更脆弱。如果重写了类方法&#43; (BOOL)accessInstanceVariablesDirectly返回NO的话，那么会直接调用valueForUndefinedKey:
   还没有找到的话，调用valueForUndefinedKey:
   KeyPath 一个类的成员变量有可能是自定义类或其他的复杂数据类型，可以先用KVC获取该属性，然后再次用KVC来获取这个自定义类的属性，但这样是比较繁琐的。因此，KVC提供了一个解决方案，那就是键路径keyPath。
@@ -1296,7 +1298,8 @@ ideviceinstaller -l 卸载应用 ideviceinstaller -u [udid] -U [bundleId]  word�
         <tags>
           <tag>iOS</tag>
         </tags>
-        <content type="html">  飞书把更多的需求优化倾向于团队成员，而不是管理者。所以它以「即时沟通」为中心，将在线文档、云盘、日历等功能全部整合在一起。 例如，可以在IM（即时通讯）界面直接创建文档，共同编辑，也可以在文档中进一步讨论细节问题；或是发起一个日程，在日程中直接创建一个执行群组等等。这是一套围绕工作本身而展开的流动系统，更加符合扁平化管理模式。
+        <content type="html">  飞书把更多的需求优化倾向于团队成员，而不是管理者。所以它以「即时沟通」为中心，将在线文档、云盘、日历等功能全部整合在一起。
+ 例如，可以在IM（即时通讯）界面直接创建文档，共同编辑，也可以在文档中进一步讨论细节问题；或是发起一个日程，在日程中直接创建一个执行群组等等。这是一套围绕工作本身而展开的流动系统，更加符合扁平化管理模式。
 @符号 在传统的IM工具里，@一直是个标志性符号，你可以用它来提及某个人，或者让自己的发言指向某个具体对象。但在飞书的文档功能里，@ 符号变成了能够快速插入各种文档元素的启动器，让你可以在输入文字时以最少的操作步骤将文件、表格、视频等元素植入文档。
 在飞书文档里，输入@符号就能瞬间调起模块插入功能，无论是提及IM里的同事、插入群名片甚至提及外部合作伙伴，还是插入云空间的文件、表格、投票、视频、地图等网页元素，都能立刻完成，不必在工具栏里寻找和点按。
 IM即时消息 群中发消息可以看所有成员查看状态 往群里发消息之后，发送消息的人可以查看群里其他成员查看这条消息的阅读状态，如下图所示：
@@ -1304,7 +1307,8 @@ IM即时消息 群中发消息可以看所有成员查看状态 往群里发消�
 快捷回复不刷屏 对于某条消息是在征求意见的时候，收到消息的人长按这条消息可以回复，没有问题的人可以直接以快捷键「OK」或者 「点赞」回复，有问题的人则可以针对这条消息进行回复，所有的话题都可以串联在一起追溯，避免刷屏。
 聚焦消息串 IM在群聊时最大的问题就是无法精准回复，当群里不同成员在讲不同主题的内容时，直接回复常常容易聊串，导致群讨论越聊越乱。在飞书中，「消息串」可以很好地解决这个问题。当你需要回复某个群成员的发言时，只需要直接在其发言上使用回复功能，双方的讨论就会自然形成一个「消息串」，聚焦要点。点击消息，右侧还能自动显示整个消息串中的内容，方便回溯上下文：
 回到最后看最新消息 消息列表较长时，下拉时会悬浮显示回到最后按钮： 在线文档 飞书的在线文档可以作为文档中转站，将其第三方的文件导入到云空间。也可以将云文档分发给第三方应用。邀请邀请伙伴进入文档协作之后，各个伙伴可以修改、批注、评论等。
-文档中转站 当收到任何需要备份的文件时，都可以将其导入飞书的个人空间随时查看，不用再担心把文件搞丢。同时，文件还可以方便地分享给飞书里的同事开启协作，让外部文件无缝融入工作流。例如在使用微信时，点击「用其它应用打开」- 选择「飞书」- 「发送给自己」，最后点击「保存到云空间」即可。
+文档中转站 当收到任何需要备份的文件时，都可以将其导入飞书的个人空间随时查看，不用再担心把文件搞丢。同时，文件还可以方便地分享给飞书里的同事开启协作，让外部文件无缝融入工作流。
+例如在使用微信时，点击「用其它应用打开」- 选择「飞书」- 「发送给自己」，最后点击「保存到云空间」即可。
 外部协作 所有文档都可以分享给第三方，用于协作和消息互通。这个功能更新充分释放了飞书文档作为互联网工具的连接属性，即使对方不是飞书用户，依然可以接收和查看文档信息。
 文档协作 飞书在线文档和IM进行了深度打通，创作者和评论者可以在文档中随时@参与人，邀请对方加入编辑或评论，甚至直接通过@分配参与者的角色和工作，被@的人会在IM中实时收到文档消息并互动，可以建立沟通闭环。
   可以在文档中@相关人员，请他参与某一细节讨论，或提供协助，或对文档给予关注，他就会在消息中收到提醒，完全不用打开该文档，就可直接在消息提醒页进行沟通/编辑。
@@ -1375,7 +1379,7 @@ Cookie URLCache.shared.removeAllCachedResponses() HTTPCookieStorage.shared.cooki
         <content type="html">  Objective-C扩展了C语言，并加入了面向对象特性和Smalltalk式的消息传递机制。而这个扩展的核心是一个用C写的Runtime库，它是OC面向对象和动态机制的基石。OC的Runtime用于创建类对象、进行消息传递和转发。理解OC的Runtime机制可以更好地了解这个语言，适当的时候还能对语言进行扩展，从系统层面解决项目中的一些设计或技术问题。理解Runtime，首先应该了解它的核心——消息传递（Messaging）机制。
  Runtime版本 Runtime有两个版本: modern和legacy版。现用的Objective-C 2.*是Modern 版，只能运行在iOS和macOS 10.5之后的64位程序中。而macOS较老的32位程序仍采用Objective-C 1.*中的Legacy版本。两个版本最大的区别在于：当更改一个类的实例变量布局时，在早期版本中需要重新编译它的子类，而Modern版不需要重新编译子类。
 高级编程语言想要成为可执行文件需要先编译为汇编语言，再将汇编语言转换为机器语言（机器语言是计算机能够识别的唯一语言）。但是，OC并不能直接编译为汇编语言，而是要先转写为纯C语言再进行编译和汇编操作，从OC到C的过渡是由runtime库来实现的。因为OC主要进行面向对象开发，而C语言是面向过程开发，这就需要将面向对象的类转变为面向过程的结构体。
-消息传递 所有的OC方法调用[receiver selector]在编译时都会转化为对应的C函数objc_msgSend(receiver，selector)的调用。例如一个对象方法调用[obj,foo]，Runtime执行方法调用的过程如下：
+消息传递 所有的OC方法调用[receiver selector]在编译时都会转化为对应的C函数objc_msgSend(receiver，selector)的调用。 例如一个对象方法调用[obj,foo]，Runtime执行方法调用的过程如下：
   首先，通过obj的isa指针找到它的class
   然后，在obj的class的objc_method_list找foo
   如果class的objc_method_list中没到foo，继续往它的super_class中寻找foo
@@ -1413,7 +1417,9 @@ Objective-C在编译时，会依据每一个方法的名字、参数序列，生
 Category(objc_catory) 当Catrgory表示一个指向分类的结构体的指针，它的定义如下：
 struct category_t { const char *name; classref_t cls; struct method_list_t *instanceMethods; struct method_list_t *classMethods; struct protocol_list_t *protocols; struct property_list_t *instanceProperties; };   name是class_name而不是category_name。
   cls表示要扩展的类对象，编译期间是不会定义的，而是在Runtime阶段通过name对应到相应的类对象。
-  instanceMethods表示category中所有给类添加的实例方法的列表。  classMethods表示category中所有添加的类方法的列表。  protocols 表示category实现的所有协议的列表。
+  instanceMethods表示category中所有给类添加的实例方法的列表。
+  classMethods表示category中所有添加的类方法的列表。
+  protocols 表示category实现的所有协议的列表。
   instanceProperties 表示category里所有的Properties，这就是我们可以通过objc_setAssociatedObject和objc_getAssociatedObject增加实例变量的原因，不过这个和一般的实例变量是不一样的。
   从上面的category_t结构体中可以看出，分类中可以添加实例方法，类方法，甚至可以实现协议，添加属性，不可以添加成员变量。
 Runtime消息转发 OC在发送消息时会在相关的类对象中搜索方法列表，如果找不到则会沿着继承树向上一直搜索直到树根部（NSObject），如果还是找不到，那么消息转发就是失败了。此时，会执行doesNotRecognizeSelector:方法，报unrecognized selector错。
@@ -2173,7 +2179,7 @@ func recordingButtonAnimation(){ let animation = CABasicAnimation(keyPath: &amp;
  duration动画时长，默认为0,不设置的话会快速执行完动画 speed 执行速度，默认为1倍速度，如果设置了该属性，则执行时长为$\frac{duration}{speed}$ repeatCount重复次数，默认为0，如果需要设置为永久的话可以设置为HUGE_VALE autoreverses 动画执行完是否执行逆动画，默认不执行 fromValue 开始值 toValue 结束值  当CABasicAnimation执行完动画后会回归动画开始的状态，如果想要让它变成动画执行最后的状态，设置一下两个属性：
 animation.removedOnCompletion = false animation.fillMode = kCAFillModeForwards 如果要设置永久重复，则需要将repeatCount的值置为HUGE或者.greatestFiniteMagnitude。
 let animation = CABasicAnimation(keyPath: &amp;#34;opacity&amp;#34;) animation.duration = 1.0 animation.repeatCount = .greatestFiniteMagnitude//HUGE animation.autoreverses = true animation.fromValue = 1.0 animation.toValue = 0.0 testButton.layer.add(animation, forKey: nil) 当给一个CALayer添加动画时，动画其实并没有改变这个Layer的实质属性，取而代之，系统会创建一个原始Layer的拷贝。苹果称这个原始Layer为Model Layer，而这个复制的Layer被称为Presentation Layer。
-Presentation Layer的属性会随着动画的进度实时改变，而Model Layer中对应的属性不会发生变化。默认情况下，系统会在duration时间后自动移除CAKeyframeAnimation。当移除某个动画后，系统会自动销毁这个Layer的Presentation Layer，只留下Model Layer。因为Model Layer的属性没有发生变化，所以视图一瞬间就回到了动画的初始状态。要解决这种状态需要先把removeOnCompletion设置为false,然后设置fillMode为kCAFillModeForwards。
+Presentation Layer的属性会随着动画的进度实时改变，而Model Layer中对应的属性不会发生变化。 默认情况下，系统会在duration时间后自动移除CAKeyframeAnimation。当移除某个动画后，系统会自动销毁这个Layer的Presentation Layer，只留下Model Layer。因为Model Layer的属性没有发生变化，所以视图一瞬间就回到了动画的初始状态。要解决这种状态需要先把removeOnCompletion设置为false,然后设置fillMode为kCAFillModeForwards。
 animation.removedOnCompletion = false animation.fillMode = kCAFillModeForwards 关于fillMode它有四个值：
  KCAFillModelRemoved 这个是默认值，表示动画开始前和结束后对Model Layer没有影响，动画结束会回到视图的初始状态。 kCAFillModeForwards 当动画结束后，Model Layer会保持动画的最后状态。 kCAFillModeBackwards 在动画开始前，只要将动画加入到一个Layer,则Layer立即进入动画的初始状态并等待动画开始。 kCAFillModeBoth 动画加入Layer后，Layer便处于初始状态，动画结束后Layer保持最后的状态。   添加引导动画 fileprivate var guideImageView:UIImageView? private let guideKey = &amp;#34;GUIDE_NOTE_SPEECH_KEY&amp;#34; //应用级别的引导，如果增加用户的id，则是用户级别的引导 func showGuide(){ let isShowed = UserDefaults.standard.value(forKey: self.guideKey) if isShowed == nil { let guideImage = UIImage(named: &amp;#34;guide_note_speech&amp;#34;) if self.guideImageView == nil{ self.guideImageView = UIImageView(image: guideImage) let width:CGFloat = 132 let height:CGFloat = 100 let x = bottomView.bounds.width/2 &#43; 15 let y = topView.bounds.size.height &#43; centerView.bounds.size.height &#43; soundWaveView.bounds.size.height - height &#43; 20 if let guideView = self.guideImageView{ self.guideImageView?.frame = CGRect(x: x, y: y, width: width, height: height) self.view.addSubview(guideView) let startPoint = CGPoint(x: 0, y: 1) setAnchorPoint(point: startPoint, view: guideView) UIView.animate(withDuration: 1.2, delay: 0, options: [.repeat, .autoreverse], animations: { guideView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8) }, completion:nil) } } } } 需要注意的是：因为上面的函数涉及到bounds的计算，因此guideShow函数应当放到viewDidLayoutSubviews()中，或者viewDidAppear(_ animated: Bool)中，经过试验，发现如果放到viewDidLayoutSubviews()中，图片会变黑很多。
 override func viewDidLayoutSubviews() { super.viewDidLayoutSubviews() showGuide() } override func viewDidAppear(_ animated: Bool) { super.viewDidAppear(animated) showGuide() } 取消引导动画时，首先应当移除引导的imageview，并将key记录到plist文件中。如果设置时用户点击某个按钮时移除引导，则将如下代码添加到相应UIButton的响应函数中：
@@ -2375,7 +2381,8 @@ var height = window.innerHeight || document.documentElement.clientHeight|| docum
         </tags>
         <content type="html">  Objective-C简称OC， 是C语言的严格超集——任何C语言程序不经过修改都可以直接通过OC的编译器，在OC中使用C语言代码也是完全合法的。OC被描述为覆盖在C语言上的一层，因为OC的原意就是在C语言的主体上加入面向对象的特性。
  文件扩展名    文件扩展名 类型和作用     .h 头文件，包含类，类型，函数和常数声明   .m 源代码文件，典型的源代码文件扩展名，可以包含OC和C代码   .mm 源代码文件，带这种扩展名的源代码文件，除了可以包含OC和C代码以外，还可以包含C&#43;&#43;代码    源代码中需要包含头文件的时候，可以使用标准的#include编译选项，也可以使用#import选项，但是OC中使用#import可以确保相同的文件只包含一次，因此一般使用#import来引入头文件。
- 语法 Objective-C最大的特色使用Smalltalk的消息传递模型。在OC中与其说是对象调用方法，不如说向对象传递消息更为精确。调用方法 在OC中，调用方法视为向对象发送消息，所有方法(类方法和实例方法)都被视为对消息的回应。
+ 语法 Objective-C最大的特色使用Smalltalk的消息传递模型。在OC中与其说是对象调用方法，不如说向对象传递消息更为精确。
+调用方法 在OC中，调用方法视为向对象发送消息，所有方法(类方法和实例方法)都被视为对消息的回应。
 所有消息的处理直到运行时（runtime）才会动态决定，并交由类自行决定如何处理收到的消息。也就是说，一个类不保证一定会回应收到的消息，如果类收到了一个无法处理的消息，程序只会抛出异常，不会出错或崩溃。
 在OC中发送消息的语法为：
 [obj method: argument]; //C&#43;&#43;对应的是obj.method(argument); 一个例子:
@@ -2386,7 +2393,8 @@ var height = window.innerHeight || document.documentElement.clientHeight|| docum
 NSString* myString = @&amp;#34;My String\n&amp;#34;; NSString* anotherString = [NSString stringWithFormat:@&amp;#34;%d %s&amp;#34;, 1, @&amp;#34;String&amp;#34;]; // 从一个C语言字符串创建Objective-C字符串 NSString* fromCString = [NSString stringWithCString:&amp;#34;A C string&amp;#34; encoding:NSASCIIStringEncoding];  类 OC类的说明包含两个部分：定义(interface)和实现(implementation)。类定义包含了类声明、实例变量的定义以及相关的方法（包括类方法和实例方法）；实现则包含了类方法的实际代码。
 类的声明总是以@interface编译选项开始，由@end编译选项结束。类名之后的（用冒号分隔）是父类的名字。类的变量声明在被大括号包含的代码块中。变量块后是类声明的方法的列表，每个变量和方法声明都以分号结尾。
  Interface 定义部分，以关键字@interface作为开始，@end作为结束，其中定义的实例变量的默认权限是protected：
-@interface MyObject : NSObject { int memberVar1; // 实例变量，在定义部分声明的实例变量的默认访问权限是protected  id memberVar2; //id 类型表示任意类型 } &#43;(return_type) class_method; // 类方法  -(return_type) instance_method1; // 实例方法 -(return_type) instance_method2: (int) p1; -(return_type) instance_method3: (int) p1 andPar: (int) p2; @end 方法前面的&#43;或者-号代表函数的类型：加号&#43;代表类方法（class method），不需要实例就可以调用，与C&#43;&#43;的静态函数（static member function）相似；减号-表示一般的实例方法（instance method）。下面是与OC对应的C&#43;&#43;的声明：
+@interface MyObject : NSObject { int memberVar1; // 实例变量，在定义部分声明的实例变量的默认访问权限是protected  id memberVar2; //id 类型表示任意类型 } &#43;(return_type) class_method; // 类方法  -(return_type) instance_method1; // 实例方法 -(return_type) instance_method2: (int) p1; -(return_type) instance_method3: (int) p1 andPar: (int) p2; @end 方法前面的&#43;或者-号代表函数的类型：加号&#43;代表类方法（class method），不需要实例就可以调用，与C&#43;&#43;的静态函数（static member function）相似；减号-表示一般的实例方法（instance method）。
+下面是与OC对应的C&#43;&#43;的声明：
 class MyObject : public NSObject { protected: int memberVar1; // 实体变量  void * memberVar2; public: static return_type class_method(); // 类方法  return_type instance_method1(); // 实例方法  return_type instance_method2( int p1 ); return_type instance_method3( int p1, int p2 ); } OC定义一个新方法时，名称内的冒号代表传递参数：
 - (void) setColorToRed: (float)red Green: (float)green Blue:(float)blue; /* 声明方法*/ [myColor setColorToRed: 1.0 Green: 0.8 Blue: 0.2]; /* 调用方法*/ 上面这个方法的签名是setColorToRed:Green:Blue。每个冒号后面都带着一个float类别的参数，分别代表红绿蓝三色。
  Implementation 实现块包含了公开的方法的实现，以及定义私有变量以及方法，以关键字@implementation作为区块的开始，@end结尾。
@@ -2504,7 +2512,8 @@ var a = false var b = &amp;#34;&amp;#34; if ( a == b){ alert(&amp;#34;a 等于 b
  皮肤控制 皮肤控制选项包括平滑，光泽，阴影，高光，色相，跑和度，下面一一说明：
 皮肤平滑：提高数值可以实现磨皮效果，让皮肤更加光滑细腻，降低数值可以增加皮肤质感。
 皮肤光泽：提高数值可以为面部补光，让面部看起来更加白皙明亮，降低数值可以降低面部的亮度。
-皮肤阴影：控制面部较暗区域的亮度，一般而言我们需要降低皮肤阴影的数值，提高皮肤高光的数值，让面部的立体感更加强烈。皮肤高光：控制面部较亮区域的亮度，一般而言我们需要降低皮肤阴影的数值，提高皮肤高光的数值，让面部的立体感更加强烈。
+皮肤阴影：控制面部较暗区域的亮度，一般而言我们需要降低皮肤阴影的数值，提高皮肤高光的数值，让面部的立体感更加强烈。
+皮肤高光：控制面部较亮区域的亮度，一般而言我们需要降低皮肤阴影的数值，提高皮肤高光的数值，让面部的立体感更加强烈。
 皮肤色相：改变皮肤的色彩，例如让皮肤由偏红色转变为偏黄色.
 皮肤饱和度：控制面部皮肤的色彩鲜艳程度，如果我们感觉面部过于泛红时可以降低该选项；如果感觉面部皮肤没有气色时，可以提高该选项。
  面部控制 面部控制选项包括面部宽度，下巴宽度，前额宽度。其中面部宽度用于调整面部的宽度，下巴高度用于控制下巴的高度，前额宽度用于控制额头的高低：
@@ -2739,7 +2748,8 @@ void testLocalStaticVar(){ static int x = 4; x&#43;&#43;; std::cout &amp;lt;&amp
    普通变量与const修饰符需注意的3点：
   声明const变量时必须进行初始化
   const对象的动态数组：必须提供数组的初始化
-  const全局变量：在全局作用域中声明的const变量是定义该对象的文件的局部变量，此变量只存在于那个文件中，不能被其他文件所访问。   指针变量和const修饰符：
+  const全局变量：在全局作用域中声明的const变量是定义该对象的文件的局部变量，此变量只存在于那个文件中，不能被其他文件所访问。
+   指针变量和const修饰符：
   const指针：一旦初始化便不能再指向别的对象，但是可以通过解引用来改变所绑定对象的值。
   指向const对象的指针：不能通过解引用来改变所指的对象的值，但是可以更改所指向的对象，即解除绑定，重新再绑定。
   指向const对象的const指针：一旦初始化便不能再指向别的对象，也不能通过解引用来改变所指的对象的值。
@@ -2750,9 +2760,12 @@ void testLocalStaticVar(){ static int x = 4; x&#43;&#43;; std::cout &amp;lt;&amp
   如果是传指针：对于指向非const变量的指针参数，只能传入一个指向非const变量的指针，不能传入一个const指针，因为指明不能通过解引用来改变值。因此，若是传地址，则无论什么时候传递一个地址给函数，应该尽可能用const修饰它（除非此实参在函数内需要修改），如果不这么做，就使得指向const的指针不能做实参。
      函数参数为const引用时可以接收临时对象。   成员变量和const修饰符：
   对于类来说const变量是可变的，但是对于对象实例来说是不可变的。
-  必须在构造函数的成初始化列表中初始化。   成员函数和const修饰符：
+  必须在构造函数的成初始化列表中初始化。
+   成员函数和const修饰符：
   this指针类型由obj * const 变为 const obj * const
-  const对象实例、指向const对象的指针、指向const对象的引都只能调用const成员函数。const实施于成员函数的目的，确保该成员函数可作用于const对象实例。如果不存在const成员函数，则const对象实例无法调用任何成员函数。  对于非const对象而言可以调用const成员函数和非const成员函数。   C&#43;&#43;构造函数 构造函数的特点 构造函数是一种特殊的成员函数， 它具有如下特点：
+  const对象实例、指向const对象的指针、指向const对象的引都只能调用const成员函数。const实施于成员函数的目的，确保该成员函数可作用于const对象实例。如果不存在const成员函数，则const对象实例无法调用任何成员函数。
+  对于非const对象而言可以调用const成员函数和非const成员函数。
+   C&#43;&#43;构造函数 构造函数的特点 构造函数是一种特殊的成员函数， 它具有如下特点：
   名字与类名相同。
   没有返回值。
   在对象创建时自动调用，但是不能被显式调用。
@@ -2763,7 +2776,8 @@ void testLocalStaticVar(){ static int x = 4; x&#43;&#43;; std::cout &amp;lt;&amp
    构造函数的分类 构造函数可以分为普通的构造函数和拷贝(复制)构造函数：
   普通的构造函数
   拷贝构造函数: 对于一个构造函数的第一个参数为如下的几种，而且其他参数都有默认值，称为拷贝构造函数：
- A &amp;amp; const A &amp;amp; volatile A &amp;amp; 其中volatile（不稳定的）编译器访问该变量的代码不再进行优化 const volatile A &amp;amp;     防止默认拷贝发生：声明一个私有的拷贝构造函数  因此一个类其实可以有多个拷贝构造函数，拷贝构造函数又分为：
+ A &amp;amp; const A &amp;amp; volatile A &amp;amp; 其中volatile（不稳定的）编译器访问该变量的代码不再进行优化 const volatile A &amp;amp;     防止默认拷贝发生：声明一个私有的拷贝构造函数
+  因此一个类其实可以有多个拷贝构造函数，拷贝构造函数又分为：
   浅拷贝：只对对象中的数据成员进行简单的赋值。
   深拷贝：对于对象中动态成员重新分配空间。
    malloc/free和new/delete的区别   malloc/free是标准库函数，而new/delete是C&#43;&#43;运算符。
@@ -2780,27 +2794,31 @@ int * p = new float[2]; //编译时指出错误 int *p = (int*)malloc(2*sizeof(d
   是否可以被重载 ![c600](http://oqe76o492.bkt.clouddn.com/屏幕快照 2017-05-02 上午8.29.22.png)
   new与malloc是否可以相互调用：operator new /operator delete的实现可以基于malloc，而malloc的实现不可以去调用new。
   能够直观地重新分配内存：使用malloc分配的内存后，如果在使用过程中发现内存不足，可以使用realloc函数进行内存重新分配实现内存的扩充。realloc先判断当前的指针所指内存是否有足够的连续空间，如果有，原地扩大可分配的内存地址，并且返回原来的地址指针。如果空间不够，先按照新指定的大小分配空间，将原有数据从头到尾拷贝到新分配的内存区域，而后释放原来的内存区域。
-  内存分配不足的处理：在operator new抛出异常以反映一个未获得满足的需求之前，它先调用一个用户指定的错误处理函数，这就是new-handler。![c600](http://oqe76o492.bkt.clouddn.com/屏幕快照 2017-05-02 上午8.32.56.png) ![c600](http://oqe76o492.bkt.clouddn.com/屏幕快照 2017-05-02 上午8.30.59.png)
-   堆和栈的区别 堆和栈的区别，总共分为6点：  C&#43;&#43;空类默认生成的成员函数   构造函数
+  内存分配不足的处理：在operator new抛出异常以反映一个未获得满足的需求之前，它先调用一个用户指定的错误处理函数，这就是new-handler。 ![c600](http://oqe76o492.bkt.clouddn.com/屏幕快照 2017-05-02 上午8.32.56.png) ![c600](http://oqe76o492.bkt.clouddn.com/屏幕快照 2017-05-02 上午8.30.59.png)
+   堆和栈的区别 堆和栈的区别，总共分为6点：   C&#43;&#43;空类默认生成的成员函数   构造函数
   拷贝构造函数
   赋值操作符
   析构函数
   取址运算符
   取址运算符const版本
-   delete和delete[]的区别   针对基本数据类型：使用new分配后的不管是数组还是非数组形式内存空间用两种方式均可，原因是：分配简单类型内存时，内存大小已经确定，系统可以记忆并且进行管理，在析构时，系统并不会调用析构函数。  针对类类型：
+   delete和delete[]的区别   针对基本数据类型：使用new分配后的不管是数组还是非数组形式内存空间用两种方式均可，原因是：分配简单类型内存时，内存大小已经确定，系统可以记忆并且进行管理，在析构时，系统并不会调用析构函数。
+  针对类类型：
   delete ptr;代表用来释放内存，且只用来释放ptr指向的内存。
-  delete[] ptr; 用来释放ptr指向的内存，还逐一调用数组中每个对象的destructor。![c600](http://oqe76o492.bkt.clouddn.com/屏幕快照 2017-05-01 下午2.51.46.png)
+  delete[] ptr; 用来释放ptr指向的内存，还逐一调用数组中每个对象的destructor。 ![c600](http://oqe76o492.bkt.clouddn.com/屏幕快照 2017-05-01 下午2.51.46.png)
   delete a;仅释放了a指针指向的内存空间 , 也就是只调用了 a[0]对象的析构函数， 剩下的从a[1]到a[9]这9个用户自行分配的m_cBuffer对应内存空间将不能释放从而造成内存泄漏。
   delete [] a;释放了a指针指向的全部内存空间，也就是调用a[0]到a[9]对象的析构函数释放分配的内存空间。
      虚函数表 ![c600](http://oqe76o492.bkt.clouddn.com/屏幕快照 2017-05-01 下午11.09.32.png)
 ![c600](http://oqe76o492.bkt.clouddn.com/屏幕快照 2017-05-01 下午11.10.04.png)
  一般继承 ![c600](http://oqe76o492.bkt.clouddn.com/屏幕快照 2017-05-01 下午11.10.31.png)
-多重继承-无虚函数覆盖 多重继承时，有几个基类就有几个vptr![c600](http://oqe76o492.bkt.clouddn.com/屏幕快照 2017-05-01 下午11.11.02.png)
+多重继承-无虚函数覆盖 多重继承时，有几个基类就有几个vptr
+![c600](http://oqe76o492.bkt.clouddn.com/屏幕快照 2017-05-01 下午11.11.02.png)
 这样做就是为了解决不同的父类类型的指针指向同一个子类实例，而能够调用到实际的函数。
  多重继承-有虚函数覆盖 ![c600](http://oqe76o492.bkt.clouddn.com/屏幕快照 2017-05-01 下午11.11.54.png)
- 哪些函数不能为虚函数   普通函数 ： 只能重载不能被重写,即不能被继承  静态成员函数: 不属于任何对象实例，因而没有动态绑定的
+ 哪些函数不能为虚函数   普通函数 ： 只能重载不能被重写,即不能被继承
+  静态成员函数: 不属于任何对象实例，因而没有动态绑定的
   构造函数
-![c600](http://oqe76o492.bkt.clouddn.com/屏幕快照 2017-05-01 下午11.07.52.png) 按照 动态绑定原理，此时B的构造函数会覆盖掉A的构造函数  友元函数： C&#43;&#43;不支持友元函数的继承
+![c600](http://oqe76o492.bkt.clouddn.com/屏幕快照 2017-05-01 下午11.07.52.png) 按照 动态绑定原理，此时B的构造函数会覆盖掉A的构造函数
+  友元函数： C&#43;&#43;不支持友元函数的继承
   内联函数：
   赋值操作符重载函数
 ![c600](http://oqe76o492.bkt.clouddn.com/屏幕快照 2017-05-01 下午11.08.16.png)
@@ -2813,27 +2831,36 @@ int * p = new float[2]; //编译时指出错误 int *p = (int*)malloc(2*sizeof(d
   常发性内存泄漏。发生内存泄漏的代码会被多次执行到，每次被执行的时候都会导致一块内存泄漏。
   偶发性内存泄漏。发生内存泄漏的代码只有在某些特定环境或操作过程下才会发生。常发性和偶发性是相对的。对于特定的环境，偶发性的也许就变成了常发性的。所以测试环境和测试方法对检测内存泄漏至关重要。
   一次性内存泄漏。发生内存泄漏的代码只会被执行一次，或者由于算法上的缺陷，导致总会有一块仅且一块内存发生泄漏。比如，在类的构造函数中分配内存，在析构函数中却没有释放该内存，所以内存泄漏只会发生一次。
-  隐式内存泄漏。程序在运行过程中不停的分配内存，但是直到结束的时候才释放内存。严格的说这里并没有发生内存泄漏，因为最终程序释放了所有申请的内存。但是对于一个服务器程序，需要运行几天，几周甚至几个月，不及时释放内存也可能导致最终耗尽系统的所有内存。所以，我们称这类内存泄漏为隐式内存泄漏。
+  隐式内存泄漏。程序在运行过程中不停的分配内存，但是直到结束的时候才释放内存。严格的说这里并没有发生内存泄漏，因为最终程序释放了所有申请的内存。 但是对于一个服务器程序，需要运行几天，几周甚至几个月，不及时释放内存也可能导致最终耗尽系统的所有内存。所以，我们称这类内存泄漏为隐式内存泄漏。
    C&#43;&#43;中哪些操作符是不能重载的   .  （成员访问运算符)
   .* (成员指针访问运算符）
   :: （域运算符）
   sizeof
   ?: (条件运算符）
-  typeid 域运算符和sizeof运算符的运算对象是类型而不是变量或者一般的表达式，不具备重载的特征   C&#43;&#43;强制类型转换 static_cast   static_cast也可以用在于基类与派生类指针或引用类型之间的转换。然而它不做运行时的检查，不如dynamic_cast安全。static_cast仅仅是依靠类型转换语句中提供的信息来进行转换，而dynamic_cast则会遍历整个类继承体系进行类型检查,因此dynamic_cast在执行效率上比static_cast要差一些。
+  typeid 域运算符和sizeof运算符的运算对象是类型而不是变量或者一般的表达式，不具备重载的特征
+   C&#43;&#43;强制类型转换 static_cast   static_cast也可以用在于基类与派生类指针或引用类型之间的转换。然而它不做运行时的检查，不如dynamic_cast安全。static_cast仅仅是依靠类型转换语句中提供的信息来进行转换，而dynamic_cast则会遍历整个类继承体系进行类型检查,因此dynamic_cast在执行效率上比static_cast要差一些。
   编译器隐式执行的任何类型转换都可以由static_cast来完成，比如int与float、double与char、enum与int之间的转换等。
 ![c600](http://oqe76o492.bkt.clouddn.com/屏幕快照 2017-05-02 上午9.45.33.png)
    const_cast  将转换掉表达式的const性质。 ![c600](http://oqe76o492.bkt.clouddn.com/屏幕快照 2017-05-02 上午9.39.34.png)  那既然const变量的值是肯定不会发生变化的，还需要这个const_cast类型转化有何用？这就引出了const_cast的最常用用法：
-如果 有一个函数，它的形参是non-const类型变量，而且函数不会对实参的值进行改动，这时我们可以使用类型为const的变量来调用函数，此时const_cast就派上用场了。![c600](http://oqe76o492.bkt.clouddn.com/屏幕快照 2017-05-02 上午9.41.33.png)
-const_cast绝对不是为了改变const变量的值而设计的！在函数参数的传递上const_cast的作用才显现出来。 只有使用const_cast才能将const性质性质转化掉。试图使用其他三种形式的强制转换都会导致编译时的错误。（添加const还可以用其他转换符，如static_const）
+如果 有一个函数，它的形参是non-const类型变量，而且函数不会对实参的值进行改动，这时我们可以使用类型为const的变量来调用函数，此时const_cast就派上用场了。
+![c600](http://oqe76o492.bkt.clouddn.com/屏幕快照 2017-05-02 上午9.41.33.png)
+const_cast绝对不是为了改变const变量的值而设计的！在函数参数的传递上const_cast的作用才显现出来。
+ 只有使用const_cast才能将const性质性质转化掉。试图使用其他三种形式的强制转换都会导致编译时的错误。（添加const还可以用其他转换符，如static_const）
   除了添加const或删除const特性，使用const_cast符来执行其他任何类型的转换都会引起编译错误。
-   dynamic_cast   类型必须为类的指针，引用、void*  需要检查运行时类型信息，而这个信息存储在虚函数表中，所以只有定义了虚函数的类才可以使用，否则会出现编译错误
-  如果绑定到引用或指针对象的类型不是目标类型，则dynamci_cast失败，指针会返回0，引用会抛出bad_cast异常。   reinterpret_cast 仅仅重新解释类型，但没有进行二进制的转换:
+   dynamic_cast   类型必须为类的指针，引用、void*
+  需要检查运行时类型信息，而这个信息存储在虚函数表中，所以只有定义了虚函数的类才可以使用，否则会出现编译错误
+  如果绑定到引用或指针对象的类型不是目标类型，则dynamci_cast失败，指针会返回0，引用会抛出bad_cast异常。
+   reinterpret_cast 仅仅重新解释类型，但没有进行二进制的转换:
   转换的类型必须是一个指针、引用、算术类型、函数指针或者成员指针
   在比特位级别上进行转换。它可以把一个指针转换成一个整数，也可以把一个整数转换成一个指针（先把一个指针转换成一个整数，在把该整数转换成原类型的指针，还可以得到原先的指针值）
   最普通的用途就是在函数指针类型之间进行转换
-   C&#43;&#43; 中的引用   引用是变量的别名，定义引用的时候必须先初始化  不能定义引用数组  不能定义引用的引用
+   C&#43;&#43; 中的引用   引用是变量的别名，定义引用的时候必须先初始化
+  不能定义引用数组
+  不能定义引用的引用
   引用可以减少构造开销
-  当函数返回引用类型时，没有复制返回值，返回的是对象本身，所以不要返回局部对象的引用  函数参数为const引用时可以接收临时对象   </content>
+  当函数返回引用类型时，没有复制返回值，返回的是对象本身，所以不要返回局部对象的引用
+  函数参数为const引用时可以接收临时对象
+   </content>
     </entry>
     
      <entry>
@@ -2845,7 +2872,8 @@ const_cast绝对不是为了改变const变量的值而设计的！在函数参�
         <tags>
           <tag>算法</tag>
         </tags>
-        <content type="html">  线性表是由 $n$个具有相同特性的元素$(n \ge 0)$ 组成的一个有限序列，是一种逻辑结构。它的特征在于：①表中所有数据元素类型相同。②表由有限个数据元素构成。③表中数据元素是位置相关的（这一点表明线性表不同于集合)，并且每个元素都有一个对应的序号，表中元素可以重复出现。 逻辑结构 线性表是一种逻辑结构，其一般表示为: ($a_1,a_2,&amp;hellip;,a_{i-1},a_i,a_{i&#43;1},&amp;hellip;,a_n$)
+        <content type="html">  线性表是由 $n$个具有相同特性的元素$(n \ge 0)$ 组成的一个有限序列，是一种逻辑结构。它的特征在于：①表中所有数据元素类型相同。②表由有限个数据元素构成。③表中数据元素是位置相关的（这一点表明线性表不同于集合)，并且每个元素都有一个对应的序号，表中元素可以重复出现。
+ 逻辑结构 线性表是一种逻辑结构，其一般表示为: ($a_1,a_2,&amp;hellip;,a_{i-1},a_i,a_{i&#43;1},&amp;hellip;,a_n$)
   除了起始元素$a_1$没有前驱元素之外，其他元素$a_i$有且仅有一个前驱元素$a_{i-1}$。
   除了终端元素$a_n$没有后继元素外，其他元素$a_i$有且仅有一个后继元素$a_{i&#43;1}$。
   根据上面的表示，在线性表中，每个元素至多只有一个前驱元素，并且至多只有一个后继元素。
@@ -2869,11 +2897,15 @@ template&amp;lt;typename T&amp;gt; int linerArith&amp;lt;T&amp;gt;::deleteSameEl
 单链表 单链表是任意一组存储单元存放线性表中的元素，每个节点通过一个指针指向其后继节点。这组存储单元可以是连续的也可以是不连续的。单链表具有如下的特点：
   通过首节点(带哨兵节点或不带哨兵节点)的指针来标识一个单链表。
   从一个已知节点出发，只能访问该节点和通过 $next$ 指针访问其后继节点，无法直接找到该节点之前的其他节点。
-  在单链表中插入一个节点或者删除一个节点必须找到其前驱节点，插入和删除操作不需要移动节点。「删除一个节点也可以不用知道其前驱节点，只要将其后继节点的元素内容往前移到当前节点，并将当前节点的后继修改为其后继节点的后继节点，然后删除后继节点即可。但是要考虑该节点是否为最后一个节点，或者第一个节点」  typedef struct LinkedNode { T data; //T表示数据类型  struct LinkedNode *next; } LinkedList;  建立单链表 建立单链表有两种方式，一种是从头部插入；另一种是从尾部插入。从头部插入节点生成的单链表，最后节点元素顺序与插入元素的顺序相反，即成逆序排列了。void creatLinkedList(LinkedList *&amp;amp;L, int *a, int n) { LinkedList *cur; L = (LinkedList *) malloc(sizeof(LinkedList)); L-&amp;gt;next = NULL; for (int i = 0; i &amp;lt; n; i&#43;&#43;) { cur = (LinkedList *)(malloc(sizeof(LinkedList))); cur-&amp;gt;data = a[i]; cur-&amp;gt;next = L-&amp;gt;next; L-&amp;gt;next = cur; //当前节点成为哨兵节点的下一个节点  } } 尾插法是在单链表的尾部插入节点元素，最后生成的单链表的节点元素顺序和插入元素的顺序是相同的。
+  在单链表中插入一个节点或者删除一个节点必须找到其前驱节点，插入和删除操作不需要移动节点。「删除一个节点也可以不用知道其前驱节点，只要将其后继节点的元素内容往前移到当前节点，并将当前节点的后继修改为其后继节点的后继节点，然后删除后继节点即可。但是要考虑该节点是否为最后一个节点，或者第一个节点」
+  typedef struct LinkedNode { T data; //T表示数据类型  struct LinkedNode *next; } LinkedList;  建立单链表 建立单链表有两种方式，一种是从头部插入；另一种是从尾部插入。从头部插入节点生成的单链表，最后节点元素顺序与插入元素的顺序相反，即成逆序排列了。
+void creatLinkedList(LinkedList *&amp;amp;L, int *a, int n) { LinkedList *cur; L = (LinkedList *) malloc(sizeof(LinkedList)); L-&amp;gt;next = NULL; for (int i = 0; i &amp;lt; n; i&#43;&#43;) { cur = (LinkedList *)(malloc(sizeof(LinkedList))); cur-&amp;gt;data = a[i]; cur-&amp;gt;next = L-&amp;gt;next; L-&amp;gt;next = cur; //当前节点成为哨兵节点的下一个节点  } } 尾插法是在单链表的尾部插入节点元素，最后生成的单链表的节点元素顺序和插入元素的顺序是相同的。
 void creatLinkedList(LinkedList *&amp;amp;L, int *a, int n) { LinkedList *cur, *tail; L = (LinkedList *) malloc(sizeof(LinkedList)); tail = L; //tail始终指向最后的节点，开始时指向链表的头结点  for (int i = 0; i &amp;lt; n; i&#43;&#43;) { cur = (LinkedList *) malloc(sizeof(LinkedList)); cur-&amp;gt;data = a[i]; tail-&amp;gt;next = cur; tail = cur; } tail-&amp;gt;next = NULL; } 基本操作  按序号查找节点值算法  bool findNode(LinkedList *L,int i,int &amp;amp;result) { int j=0; LinkedList *cur=L; while(cur!=NULL &amp;amp;&amp;amp; j&amp;lt;i) { j&#43;&#43;; cur=cur-&amp;gt;next; } if(NULL==cur) return false; result=cur-&amp;gt;data; return true; } 按元素值查找序号算法  int findNode(LinkedList *L,int key) { LinkedList *cur=L-&amp;gt;next; int index=0; while(cur!=NULL &amp;amp;&amp;amp; cur-&amp;gt;data!=key) { index&#43;&#43;; cur=cur-&amp;gt;next; } if(cur!=NULL) return index; else return -1; //返回-1，表示没有找到该元素 }   插入元素：将值为$x$的元素的新节点插入到第$i$个节点的位置上，即先在单链表中找到插入节点的前驱节点，即第$i-1$个节点，再在其后插入新节点。
 cur-&amp;gt;next=pre-&amp;gt;next; //cur表示将要插入到链表中的节点,插入的位置是节点pre之后  pre-&amp;gt;next=cur;   删除元素:将单链表中的第$i$个节点删除。
-cur=pre-&amp;gt;next; //pre-&amp;gt;next是待删除的节点，cur是待删除节点的上一个节点  pre-&amp;gt;next=cur-&amp;gt;next; free (cur);    就地逆置 有一个线性表$(a_1,a_2,&amp;hellip;,a_n)$ 采用带哨兵节点的单链表$L$存储，设计一个就地算法将其就地逆置，所谓“就地”是指算法的辅助空间为$O(1)$。void reverse(LinkedList * &amp;amp; L) //传入引用 { LinkedList *cur=L-&amp;gt;next; LinkedList *next; L-&amp;gt;next=NULL; while(cur!=NULL) { next=ptr-&amp;gt;next; //先保存下一个节点，然后使用头插法进行逆置  cur-&amp;gt;next=L-&amp;gt;next; L-&amp;gt;next=cur; cur=next; } }  拆分链表 设$C={a_1,b_1,a_2,b_2,&amp;hellip;,a_n,b_n}$ 为一线性表，采用带哨兵节点的$hc$单链表存放，设计一个就地算法，将其拆分为两个线性表（它们都是用单链表存放）使得$A={a_1,a_2,&amp;hellip;,a_n},B={b_n,b_{n-1},&amp;hellip;,b_2,b_1}$，即$A$是正序排列，$B$是逆序排列。
-//参数传入引用，ha存储是A，hb存储的是B void split(LinkedList *hc,LinkedList *&amp;amp;ha,LinkedList *&amp;amp; hb) { LinkedList *tail=ha; LinkedList *cur=hc-&amp;gt;next; LinkedList *next; hb-&amp;gt;next=NULL; while(cur != NULL) { tail-&amp;gt;next=cur; //尾插法  tail=cur; cur=cur-&amp;gt;next; next=cur-&amp;gt;next; cur-&amp;gt;next= hb-&amp;gt;next; //头插法  hb-&amp;gt;next= cur; cur=next; } tail-&amp;gt;next=NULL; //别忘了 } 递增排序 有一个带哨兵结点的单链表$L$,设计一个算法使其元素递增有序。最基本的想法是使用直接插入排序的思想，一个一个排，不同于数组排序，这里单链表只能从头开始查找。void sort（LinkedList * &amp;amp;L) { LinkedList *cur=L-&amp;gt;next; LinkedList *next=cur-&amp;gt;next; LinkedList *pre,*assist; //  cur-&amp;gt;next=NULL; //只含有一个元素的有序单链表  cur=next; while(cur!=NULL) { next=cur-&amp;gt;next; //首先保存下一个链表节点  pre=L; //单链表只能从头开始往后寻找节点  assist=pre-&amp;gt;next; //assist从头开始遍历  while(assist!=NULL &amp;amp;&amp;amp; assist-&amp;gt;data &amp;lt; cur-&amp;gt;data) { pre=assist; //pre记录插入位置的前一个节点  assist=assist-&amp;gt;next; } cur-&amp;gt;next=pre-&amp;gt;next; //pre的下一个节点就是要插入的位置  pre-&amp;gt;next=cur; //pre的下一个节点就是要插入的位置  cur=next; } }  公共节点 给定两个单链表，编写算法找出其公共的节点。第一种方法分析：从头到尾扫描单链表$A$，判断当前元素是否在单链表$B$中出现，若在则插入到单链表$C$中。
+cur=pre-&amp;gt;next; //pre-&amp;gt;next是待删除的节点，cur是待删除节点的上一个节点  pre-&amp;gt;next=cur-&amp;gt;next; free (cur);    就地逆置 有一个线性表$(a_1,a_2,&amp;hellip;,a_n)$ 采用带哨兵节点的单链表$L$存储，设计一个就地算法将其就地逆置，所谓“就地”是指算法的辅助空间为$O(1)$。
+void reverse(LinkedList * &amp;amp; L) //传入引用 { LinkedList *cur=L-&amp;gt;next; LinkedList *next; L-&amp;gt;next=NULL; while(cur!=NULL) { next=ptr-&amp;gt;next; //先保存下一个节点，然后使用头插法进行逆置  cur-&amp;gt;next=L-&amp;gt;next; L-&amp;gt;next=cur; cur=next; } }  拆分链表 设$C={a_1,b_1,a_2,b_2,&amp;hellip;,a_n,b_n}$ 为一线性表，采用带哨兵节点的$hc$单链表存放，设计一个就地算法，将其拆分为两个线性表（它们都是用单链表存放）使得$A={a_1,a_2,&amp;hellip;,a_n},B={b_n,b_{n-1},&amp;hellip;,b_2,b_1}$，即$A$是正序排列，$B$是逆序排列。
+//参数传入引用，ha存储是A，hb存储的是B void split(LinkedList *hc,LinkedList *&amp;amp;ha,LinkedList *&amp;amp; hb) { LinkedList *tail=ha; LinkedList *cur=hc-&amp;gt;next; LinkedList *next; hb-&amp;gt;next=NULL; while(cur != NULL) { tail-&amp;gt;next=cur; //尾插法  tail=cur; cur=cur-&amp;gt;next; next=cur-&amp;gt;next; cur-&amp;gt;next= hb-&amp;gt;next; //头插法  hb-&amp;gt;next= cur; cur=next; } tail-&amp;gt;next=NULL; //别忘了 } 递增排序 有一个带哨兵结点的单链表$L$,设计一个算法使其元素递增有序。最基本的想法是使用直接插入排序的思想，一个一个排，不同于数组排序，这里单链表只能从头开始查找。
+void sort（LinkedList * &amp;amp;L) { LinkedList *cur=L-&amp;gt;next; LinkedList *next=cur-&amp;gt;next; LinkedList *pre,*assist; //  cur-&amp;gt;next=NULL; //只含有一个元素的有序单链表  cur=next; while(cur!=NULL) { next=cur-&amp;gt;next; //首先保存下一个链表节点  pre=L; //单链表只能从头开始往后寻找节点  assist=pre-&amp;gt;next; //assist从头开始遍历  while(assist!=NULL &amp;amp;&amp;amp; assist-&amp;gt;data &amp;lt; cur-&amp;gt;data) { pre=assist; //pre记录插入位置的前一个节点  assist=assist-&amp;gt;next; } cur-&amp;gt;next=pre-&amp;gt;next; //pre的下一个节点就是要插入的位置  pre-&amp;gt;next=cur; //pre的下一个节点就是要插入的位置  cur=next; } }  公共节点 给定两个单链表，编写算法找出其公共的节点。第一种方法分析：从头到尾扫描单链表$A$，判断当前元素是否在单链表$B$中出现，若在则插入到单链表$C$中。
 void findSameNode(LinkedList *A,LinkedList *B,LinkedList *&amp;amp;C) { LinkedList *curA=A-&amp;gt;next; LinkedList *curB=B-&amp;gt;next; LinkedList *tail; //尾插法构建新的单链表  C=(LinkedList*)malloc(sizeof(LinkedList)); //静态存储区分配内存  C-&amp;gt;next=NULL; tail=C; while(curA!=NULL) { curB=B-&amp;gt;next; while(curB!=NULL &amp;amp;&amp;amp; curB-&amp;gt;data!= curA-&amp;gt;data) curB=curB-&amp;gt;next; if(curB!=NULL) { tail-&amp;gt;next=curA; tail=curA; } curA=curA-&amp;gt;next; } tail-&amp;gt;next=NULL; //尾插法最后应该将尾巴的next域置空 } 第二种方法分析：借用两个辅助栈，分别存储两个链表遍历时的序列，然后同时将两个辅助栈中元素弹出，直到弹出的元素不相等，弹出时采用头插法进行构造新的单链表。
 第三种方法分析：首先遍历两个链表，得到两个单链表的长度差$k$，然后长的单链表先走$k-1$步，然后短的和长的同时走，直到遇到相等的元素，即为新的单链表的首节点。
  精选习题 循环左移 将$n$个整数存放到一维数组$R$中。试设计一个在时间和空间尽可能高的算法。将$R$中保存的序列循环左移$p （0 \lt q\lt n)$个位置，即将$R$中的数据由$(X_0,X_1,...,X_{n-1})$变换为$(X_p,X_{p&#43;1},...,X_{n-1},X_0,X_1,....,X_{p-1})$
@@ -2881,7 +2913,8 @@ void reverse(int R[],int start,int end) { int i=start,j=end; int assist; while(i
 解法一 因为数组$A$和$B$均有序，因此将两个数组排序后，第$n$个数就是题目中所要找的中位数。
 int search(int A[], int B[], int n) { int i = 0, j = 0, k = 0; while (i &amp;lt; n &amp;amp;&amp;amp; j &amp;lt; n) { k&#43;&#43;; if (A[i] &amp;lt; B[j]) { if (k == n) return A[i]; i&#43;&#43;; } else { if (k == n) return B[j]; j&#43;&#43;; } } } 解法二 分别求出两个升序序列$A$，$B$的中位数，记为$a，b$。若$a=b$,则$a$或$b$即为所求，否则舍弃$a,b$中较小者所在序列的较小一半，同时舍弃较大者所在序列的较大一半，要求两次舍弃的元素个数相同（每次从左侧和右侧删除相同个数的元素后，新的两个数组，它们的中位数与原始数组的中位数是相同的）。重复上述过程，直到两个序列均只含一个元素为止，则较小的即为所求的中位数。
 int searchMid(int A[], int B[], int n) { int startA, midA, endA; startA = 0; endA = n - 1; startB = 0; endB = n - 1; while (startA != endA || startB != endB) { midA = (startA &#43; endA) / 2; midB = (startB &#43; endB) / 2; if (A[midA] == B[midB]) return A[midA]; if (A[midA] &amp;lt; B[midB]) { if ((startA &#43; endA) % 2 == 0)//若元素个数为奇数时  { startA = midA; //舍弃A中间点以前的部分且保留中间点  endB = midB; //舍弃B中间点以后的部分且保留中间点  } else //若元素个数为偶数时  { startA = midA &#43; 1; //舍弃A的前半部分,每次舍弃的长度相同，可以保证同时到达  endB = midB; //舍弃B的后半部分  } } else if (A[midA] &amp;gt; B[midB]) { if ((startA &#43; endA) % 2 == 0)//若元素个数为奇数时  { endA = midA; //舍弃A中间点以后的部分且保留中间点  startB = midB;//舍弃B中间点以前的部分且保留中间点  } else //若元素个数为偶数时  { endA = midA; //舍弃A的后半部分  startB = midB &#43; 1; //舍弃B的前半部分  } } } return A[startA] &amp;lt; B[startB] ? A[startA] : B[startB]; //较小者即为所求 }   若$A$和$B$数组的长度为$2k&#43;1$，取$A$数组的中位数为$A[k]$，$B$数组的中位数为$B[k]$，$A$和$B$组合起来的中位数应该是第$2k&#43;1$大的那个数。如果$A[k]==B[k]$，则$A[k]$必定为第$2k&#43;1$大的数，是所有数字的中位数。如果$A[k]\gt B[k]$，则$A[k]$至少为第$2k&#43;2$大的数，$B[k]$至多为第$2k&#43;1$大的数，中位数介于$B[k]$和$A[k]$之间。
-  若$A$和$B$数组的长度为$2k$，按照题目所述条件，则$A$的中位数为$A[k-1]$,则$B$的中位数为$B[k-1]$,$A$和$B$组合起来的中位数应该是第$2k$大的那个数，若$A[k-1]==B[k-1]$,则$B[k-1]$必为第$2k$大的那个数，即所有数字的中位数。如果$A[k-1]\gt B[k-1]$，则$A[k-1]$至少为第$2k$大的数，$B[k-1]$至多为第$2k-1$大的数，中位数介于$B[k-1]$和$A[k-1]$之间。   次数大于一半 已知一个整数序列$A=(a_0,a_1,...,a_{n-1})$，在这个序列中若存在「不要求连续的序列」$a_{p_1} = ... = a_{p_m} = x，0&amp;lt;= a_{i} &amp;lt; n, m &amp;gt; n/2 , (0 &amp;lt;= p_k &amp;lt; n, 1&amp;lt;=k&amp;lt;=m)$,则称 $x 为 A$ 的主元素，例如$A=(0,5,5,3,5,7,5,5)$,则$5$为主元素；又如$A=(0,5,5,3,5,1,5,7)$，则$A$中没有主元素。假设$A$中的 $n$ 个元素保存在一个一维数组中，请设一个尽可能高效的算法，找出$A$的主元素。若存在主元素，则输出该元素，否则输出$-1$。
+  若$A$和$B$数组的长度为$2k$，按照题目所述条件，则$A$的中位数为$A[k-1]$,则$B$的中位数为$B[k-1]$,$A$和$B$组合起来的中位数应该是第$2k$大的那个数，若$A[k-1]==B[k-1]$,则$B[k-1]$必为第$2k$大的那个数，即所有数字的中位数。如果$A[k-1]\gt B[k-1]$，则$A[k-1]$至少为第$2k$大的数，$B[k-1]$至多为第$2k-1$大的数，中位数介于$B[k-1]$和$A[k-1]$之间。
+   次数大于一半 已知一个整数序列$A=(a_0,a_1,...,a_{n-1})$，在这个序列中若存在「不要求连续的序列」$a_{p_1} = ... = a_{p_m} = x，0&amp;lt;= a_{i} &amp;lt; n, m &amp;gt; n/2 , (0 &amp;lt;= p_k &amp;lt; n, 1&amp;lt;=k&amp;lt;=m)$,则称 $x 为 A$ 的主元素，例如$A=(0,5,5,3,5,7,5,5)$,则$5$为主元素；又如$A=(0,5,5,3,5,1,5,7)$，则$A$中没有主元素。假设$A$中的 $n$ 个元素保存在一个一维数组中，请设一个尽可能高效的算法，找出$A$的主元素。若存在主元素，则输出该元素，否则输出$-1$。
 解法一 主元素问题方法一：对数组中元素进行计数，然后查看出现次数最多的元素，若次数大于一半，则为主元素。这种方式只需要对数组扫描一遍，时间复杂度为$O(n)$,空间复杂度为$O(n)$。
 int moreThanHalf(int A[],int n) { int *count=(int*)malloc(sizeof(int)*n); int index=0; for(int i=0;i&amp;lt;n;i&#43;&#43;) count[i]=0; for(int i=0;i&amp;lt;n;i&#43;&#43;) { count[A[i]]&#43;&#43;; if(count[A[i]) &amp;gt; count[A[index]]) index=A[i]; } if(count[index]&amp;gt;(n/2)) return index; else return -1; }  解法二 首先使用快速排序，将元素排好序，然后统计相同元素出现的最大次数。统计的时候可以使用求最长平台的算法。时间复杂度为$O(nlogn)$,空间复杂度为$O(n)$。
 void quickSort(int A[],int start,int end) { int i=start,j=end; if(i&amp;lt;j) { while(i&amp;lt;j) { while(i&amp;lt;j &amp;amp;&amp;amp; A[j]&amp;gt;tmp) j--; A[i]=A[j]; if(i&amp;lt;j) { A[i]=A[j]; i&#43;&#43;; } while(i&amp;lt;j &amp;amp;&amp;amp; A[i]&amp;lt;=tmp) i&#43;&#43;; if(i&amp;lt;j) { A[j]=A[i]; j--; } } quickSort(A,start,i-1); quickSort(A, i&#43;1, end); } } //然后使用平台算法  解法三 数组中存在主元素时，所有的非主元素个数和必少于一半。如让主元素与一个非主元素&amp;quot;配对“，则最后多出来的元素（没有元素与之配对）就是主元素。从前往后扫描数组元素，假定遇到的当前值选定为主元素，再次遇到它时计数加1，遇到不等的值时，计数减1。当计数减为0后，将遇到的下一个值重新选定为主元素。扫描完毕，当前选定的元素（计数值大于0）可能是主元素，但未必是主元素。还需要对数组再进行一次扫描，记录它出现的实际个数，以判定它是否是主元素。时间复杂度为$O(n)$,空间复杂度为 $O(1)$。
@@ -2921,11 +2954,13 @@ void moreThanHalf(int A[],int n) { int pivot=A[0]; int count=1; int count2=0; fo
   带else if的if语句；
   包含初始化的if语句
   不带else的if 测试条件是布尔型的语句，如果该条件成立，则执行大括号中的内容。
-if condition { //{ 与condition 须在同一行  //do something } 带else的if if condition { //do something }else{ //do something }  带else if的if if condition1 { // do something  } else if condition2 { // do something else } else { // catch-all or default }  带初始化的if if initialization; condition { // do something }   在if条件中声明的变量的作用域只存在于if结构中，即在if结构的大括号之间，如果使用if-else结构则在else代码块中变量也会存在。  如果变量在if结构之前就已经存在，那么在if结构中，该变量原来的值会被隐藏。
+if condition { //{ 与condition 须在同一行  //do something } 带else的if if condition { //do something }else{ //do something }  带else if的if if condition1 { // do something  } else if condition2 { // do something else } else { // catch-all or default }  带初始化的if if initialization; condition { // do something }   在if条件中声明的变量的作用域只存在于if结构中，即在if结构的大括号之间，如果使用if-else结构则在else代码块中变量也会存在。
+  如果变量在if结构之前就已经存在，那么在if结构中，该变量原来的值会被隐藏。
    注意事项   需要注意的是，即使代码块之间只有一条语句，大括号也不能被省略。
   关键字if和else之后的左大括号{必须和关键字在同一行，这是编译器强制规定的。
   如果使用了else-if结构，则前段代码块的右大括号}必须和else-if关键字在同一行，这是编译器强制规定的。
-  使用gofmt格式化代码之后，每个分支内的代码都会缩进4个或8个空格，或者是1个 tab，并且右大括号与对应的if关键字垂直对齐。  当if结构内有break、continue、goto或者return语句时，Go 代码的常见写法是省略else部分。
+  使用gofmt格式化代码之后，每个分支内的代码都会缩进4个或8个空格，或者是1个 tab，并且右大括号与对应的if关键字垂直对齐。
+  当if结构内有break、continue、goto或者return语句时，Go 代码的常见写法是省略else部分。
    </content>
     </entry>
     
@@ -3037,7 +3072,8 @@ bool isPopOrder(const int *pushOrder, const int *popOrder, int length) { bool re
 bool isPopOrder(const char *pushOrder, const char *popOrder) { bool result = false; auto length = strlen(pushOrder); if(popOrder != nullptr &amp;amp;&amp;amp; pushOrder != nullptr &amp;amp;&amp;amp; length == strlen(popOrder)) { stack&amp;lt;char&amp;gt; st; const char * nextPush = pushOrder; const char * nextPop = popOrder; while(*nextPop != &amp;#39;\0&amp;#39;) { while(st.empty() || *nextPop != st.top()) { if(*nextPush == &amp;#39;\0&amp;#39;) break; st.push(*nextPush); nextPush&#43;&#43;; } if(*nextPop != st.top()) break; nextPop&#43;&#43;; st.pop(); } if(st.empty() &amp;amp;&amp;amp; *nextPop == &amp;#39;\0&amp;#39;) result = true; } return result; }  二叉搜索树的后序遍历序列 输入一个整数数组，判断该数组是不是某二叉搜索树的后序遍历的结果，如果是则返回true，不是则返回false
 bool verifySquenceOfBST(int *input, int length) { bool result = false; if (input == nullptr || length &amp;lt;= 0) return result; int cur = input[length - 1]; //根节点  int index = 0; int mid = 0; while (index &amp;lt; length &amp;amp;&amp;amp; input[index] &amp;lt; cur) { index&#43;&#43;; } mid = index; while (index &amp;lt; length &amp;amp;&amp;amp; input[index] &amp;gt; cur) { index&#43;&#43;; } if (index == length - 1) //注意边界判断  { bool left = false, right = false; if (mid &amp;gt; 0) left = verifySquenceOfBST(input, mid); if (mid &amp;lt; length - 1) right = verifySquenceOfBST(input &#43; mid, length - mid - 1); result = left &amp;amp;&amp;amp; right; } return result; }  二叉树中从根开始和为某一值的路径 输入一棵二叉树和一个整数，打印二叉树中节点值的和为输入整数的所有路径。从树的根节点开始往下一直到某一节点所经过的节点形成一条路径。
 void findPath(BinTreeNode *root, int sum) { if (root == nullptr) return; vector&amp;lt;char&amp;gt; path; int currentSum = 0; findPath(root, path, sum, currentSum); } void findPath(BinTreeNode *root, vector&amp;lt;char&amp;gt; &amp;amp;path, int sum, int currentsum) { currentsum &#43;= root-&amp;gt;data; path.push_back(root-&amp;gt;data); if (sum == currentsum) { for (auto it = path.begin(); it != path.end(); it&#43;&#43;) { cout &amp;lt;&amp;lt; *it &amp;lt;&amp;lt; &amp;#39;\t&amp;#39;; } cout &amp;lt;&amp;lt; endl; } if (root-&amp;gt;leftChild != nullptr) { findPath(root-&amp;gt;leftChild, path, currentsum, sum); } if (root-&amp;gt;rightChild != nullptr) { findPath(root-&amp;gt;rightChild, path, currentsum, sum); } path.pop_back(); } 不用vector算法的写法：
-void printSumPath(BinTreeNode *root, char *path, int length, int sum) { if (root == nullptr) return; path[length] = root-&amp;gt;data; sum -= root-&amp;gt;data; length&#43;&#43;; if (0 == sum) { for (int i = 0; i &amp;lt;= length; &#43;&#43;i) { cout &amp;lt;&amp;lt; path[i]; } cout &amp;lt;&amp;lt; endl; } if (root-&amp;gt;leftChild != nullptr) { printSumPath(root-&amp;gt;leftChild, path, length, sum); } if (root-&amp;gt;rightChild != nullptr) { printSumPath(root-&amp;gt;rightChild, path, length, sum); } length--; //减不减其实无所谓 }  二叉树中和为某一值的路径 一棵二叉树每个节点包含一个整数，设计一个算法输出所有满足条件的路径：在此路径上所有给定的节点之和为给定值，不必从根节点开始void printSumPath(BinTreeNode *root, vector&amp;lt;char&amp;gt; &amp;amp;path, int sum, int level) { if(root != nullptr) { path.push_back(root-&amp;gt;data); int currentSum = sum; for (int i = level; i &amp;gt;=0; &#43;&#43;i) { currentSum-=path[i]; if(currentSum == 0) printSumPath(path,i,level); } level&#43;&#43;; if(root-&amp;gt;leftChild != nullptr) printSumPath(root-&amp;gt;leftChild,path,sum,level); if(root-&amp;gt;rightChild != nullptr) printSumPath(root-&amp;gt;rightChild,path,sum,level); path.pop_back(); } } void printSumPath(vector&amp;lt;char&amp;gt; path, int start, int end) { for (int i = start; i &amp;lt;= end; &#43;&#43;i) { cout&amp;lt;&amp;lt;path[i]&amp;lt;&amp;lt;&amp;#39;\t&amp;#39;; } cout&amp;lt;&amp;lt;endl; }  </content>
+void printSumPath(BinTreeNode *root, char *path, int length, int sum) { if (root == nullptr) return; path[length] = root-&amp;gt;data; sum -= root-&amp;gt;data; length&#43;&#43;; if (0 == sum) { for (int i = 0; i &amp;lt;= length; &#43;&#43;i) { cout &amp;lt;&amp;lt; path[i]; } cout &amp;lt;&amp;lt; endl; } if (root-&amp;gt;leftChild != nullptr) { printSumPath(root-&amp;gt;leftChild, path, length, sum); } if (root-&amp;gt;rightChild != nullptr) { printSumPath(root-&amp;gt;rightChild, path, length, sum); } length--; //减不减其实无所谓 }  二叉树中和为某一值的路径 一棵二叉树每个节点包含一个整数，设计一个算法输出所有满足条件的路径：在此路径上所有给定的节点之和为给定值，不必从根节点开始
+void printSumPath(BinTreeNode *root, vector&amp;lt;char&amp;gt; &amp;amp;path, int sum, int level) { if(root != nullptr) { path.push_back(root-&amp;gt;data); int currentSum = sum; for (int i = level; i &amp;gt;=0; &#43;&#43;i) { currentSum-=path[i]; if(currentSum == 0) printSumPath(path,i,level); } level&#43;&#43;; if(root-&amp;gt;leftChild != nullptr) printSumPath(root-&amp;gt;leftChild,path,sum,level); if(root-&amp;gt;rightChild != nullptr) printSumPath(root-&amp;gt;rightChild,path,sum,level); path.pop_back(); } } void printSumPath(vector&amp;lt;char&amp;gt; path, int start, int end) { for (int i = start; i &amp;lt;= end; &#43;&#43;i) { cout&amp;lt;&amp;lt;path[i]&amp;lt;&amp;lt;&amp;#39;\t&amp;#39;; } cout&amp;lt;&amp;lt;endl; }  </content>
     </entry>
     
      <entry>
@@ -3086,7 +3122,8 @@ class SmartPtr { public: SmartPtr(Point *ptr) :rp(new U_Ptr(ptr)) { } SmartPtr(c
 // 创建一个空映射，用来存储颜色以及颜色对应的十六进制代码 colors := map[string]string{} //空映射 // 将 Red 的代码加入到映射 colors[&amp;#34;Red&amp;#34;] = &amp;#34;#da1337&amp;#34; 内容为空的映射与nil是不同的，空映射可以添加键值，nil字典不可以添加键值：
 var m1 map[string]int //nil映射 m2 := map[string]int{} //空映射  println(m1==nil,m2==nil)//true false  使用映射 映射的使用包括：①根据键来取值——通常要通过ok-idiom模式来判断给定的键是否有值； ②作为函数参数——因为是引用类型，因此函数中做的更改可以影响被调函数中原引用的值。
 根据键取值 value, exists := colors[&amp;#34;Blue&amp;#34;] // 这个键存在吗？，这就是ok-idiom模式  if exists { fmt.Println(value) } // 创建一个映射，存储颜色以及颜色对应的十六进制代码 colors := map[string]string{ &amp;#34;AliceBlue&amp;#34;: &amp;#34;#f0f8ff&amp;#34;, &amp;#34;Coral&amp;#34;: &amp;#34;#ff7F50&amp;#34;, &amp;#34;DarkGray&amp;#34;: &amp;#34;#a9a9a9&amp;#34;, &amp;#34;ForestGreen&amp;#34;: &amp;#34;#228b22&amp;#34;, } // 显示映射里的所有颜色 for key, value := range colors { fmt.Printf(&amp;#34;Key: %s Value: %s\n&amp;#34;, key, value) } 作为函数参数 因为映射是引用类型，在函数间传递映射并不会制造出该映射的一个副本。实际上，当传递映射给一个函数，并对这个映射做了修改时，所有对这个映射的引用都会察觉到这个修改。
-colors := map[string]string{ &amp;#34;AliceBlue&amp;#34;:&amp;#34;#f0f8ff&amp;#34;, &amp;#34;Coral&amp;#34;:&amp;#34;#ff7F50&amp;#34;, &amp;#34;DarkGray&amp;#34;:&amp;#34;#a9a9a9&amp;#34;, &amp;#34;ForestGreen&amp;#34;: &amp;#34;#228b22&amp;#34;, } // 显示映射里的所有颜色 for key, value := range colors { fmt.Printf(&amp;#34;Key: %s Value: %s\n&amp;#34;, key, value) } // 调用函数来移除指定的键 removeColor(colors, &amp;#34;Coral&amp;#34;) // 显示映射里的所有颜色  for key, value := range colors { fmt.Printf(&amp;#34;Key: %s Value: %s\n&amp;#34;, key, value) } func removeColor(colors map[string]string, key string) { delete(colors, key) }  注意事项 字典map是无序的，每次打印出来的结果都会不一样，不能通过index获取（下标获取）只能通过key获取字典要求key必须支持相等运算符==,!=的数据类型，所以切片以及包含切片的结构体不能为key。键的值，可以是数字、字符串、指针、数组、结构体以及接口类型。
+colors := map[string]string{ &amp;#34;AliceBlue&amp;#34;:&amp;#34;#f0f8ff&amp;#34;, &amp;#34;Coral&amp;#34;:&amp;#34;#ff7F50&amp;#34;, &amp;#34;DarkGray&amp;#34;:&amp;#34;#a9a9a9&amp;#34;, &amp;#34;ForestGreen&amp;#34;: &amp;#34;#228b22&amp;#34;, } // 显示映射里的所有颜色 for key, value := range colors { fmt.Printf(&amp;#34;Key: %s Value: %s\n&amp;#34;, key, value) } // 调用函数来移除指定的键 removeColor(colors, &amp;#34;Coral&amp;#34;) // 显示映射里的所有颜色  for key, value := range colors { fmt.Printf(&amp;#34;Key: %s Value: %s\n&amp;#34;, key, value) } func removeColor(colors map[string]string, key string) { delete(colors, key) }  注意事项 字典map是无序的，每次打印出来的结果都会不一样，不能通过index获取（下标获取）只能通过key获取
+字典要求key必须支持相等运算符==,!=的数据类型，所以切片以及包含切片的结构体不能为key。键的值，可以是数字、字符串、指针、数组、结构体以及接口类型。
 内置的len函数返回key的数量，不可以使用cap（即cap不接受字典类型，因为它没有容量的概念）。
 map的初始化可以通过key:val的方式初始化：
 rating := map[string]float32{&amp;#34;C&amp;#34;: 5, &amp;#34;Go&amp;#34;: 1.83} fmt.Println(rating) //map[C:5 Go:1.83] map是一种引用类型，如果两个map同时指向同一个底层，那么一个改变，另一个也改变。
@@ -3120,7 +3157,8 @@ type slice struct{ array unsafe.Pointer // slice中指向底层数组指定位�
 slice1 := make([]string, 5) //只指定长度，切片的长度和容量相等，均为5 slice2 := make([]int, 3, 5) //分别指定长度和容量，长度为3，容量为5 make在创建切片的时候，可以指定两个长度信息，分别表示切片的当前长度和容量大小「概念参考C&#43;&#43;标准库中的vector。不允许创建容量小于长度的切片，否则会出现编译错误。
  利用字面量 另一种常用的创建切片的方法是使用切片字面量。这种方法和创建数组类似，只是不需要指定[]运算符里的值。初始的长度和容量会基于初始化时提供的元素的个数确定。
 // 创建字符串切片，其长度和容量都是 5 个元素 slice1 := []string{&amp;#34;Red&amp;#34;, &amp;#34;Blue&amp;#34;, &amp;#34;Green&amp;#34;, &amp;#34;Yellow&amp;#34;, &amp;#34;Pink&amp;#34;} // 创建一个整型切片，其长度和容量都是 3 个元素 slice2 := []int{10, 20, 30} 如果在 [] 运算符里指定了一个值，那么创建的就是数组而不是切片。
-// 创建有 3 个元素的整型数组 array := [3]int{10, 20, 30} // 创建长度和容量都是 3 的整型切片 slice := []int{10, 20, 30} 当使用切片字面量时， 可以设置初始长度和容量，即在就是在初始化时给出所需的长度和容量作为索引：// 创建字符串切片，使用空字符串初始化第 100 个元素 slice := []string{99: &amp;#34;&amp;#34;} //最大的索引是99，因此长度为99&#43;1 fmt.Println(len(slice1),cap(slice1)) //长度为100，容量也为100   从已知切片创建 切片可以从一个数组中获取，前提是这个数组必须是可寻址的。切片通过array[i:j]来获取，表示的区间是[i,j)即前闭后开区间，长度为j-i，对于底层数组容量为k的数组来说，切片slice[i:j]的容量为k-i。
+// 创建有 3 个元素的整型数组 array := [3]int{10, 20, 30} // 创建长度和容量都是 3 的整型切片 slice := []int{10, 20, 30} 当使用切片字面量时， 可以设置初始长度和容量，即在就是在初始化时给出所需的长度和容量作为索引：
+// 创建字符串切片，使用空字符串初始化第 100 个元素 slice := []string{99: &amp;#34;&amp;#34;} //最大的索引是99，因此长度为99&#43;1 fmt.Println(len(slice1),cap(slice1)) //长度为100，容量也为100   从已知切片创建 切片可以从一个数组中获取，前提是这个数组必须是可寻址的。切片通过array[i:j]来获取，表示的区间是[i,j)即前闭后开区间，长度为j-i，对于底层数组容量为k的数组来说，切片slice[i:j]的容量为k-i。
 var arr =[10]byte{&amp;#39;a&amp;#39;,&amp;#39;b&amp;#39;,&amp;#39;c&amp;#39;,&amp;#39;d&amp;#39;} //array 声明长度 var a,b []byte //slice，方括号里不声明长度 a = arr[1:3] //前闭后开,长度为2,容量为9 b = arr[2:4] //前闭后开，长度为2，容量为8 fmt.Println(a,b) //[98 99] [99 100] 或者从一个已经存在的的切片中再次声明，即将原切片看成是[cap]slice,据此创建的新切片对象不能超出cap。
 // 创建一个整型切片，其长度和容量都是 5 slice := []int{10, 20, 30, 40, 50} // 创建一个新切片，其长度为 2 个元素，容量为 4 newSlice := slice[1:3] ![c600](http://oqe76o492.bkt.clouddn.com/屏幕快照 2017-08-03 下午4.41.43.png)
  nil切片 在声明切片时不做任何初始化，就会创建一个nil切片，nil切片无底层数组，因此不可按下标访问。nil切片变为正常的切片有两种方式：①利用赋值。 ②使用append函数。
@@ -3136,7 +3174,8 @@ var arr =[10]byte{81,82,83,84,85,86} //array var a,b,c [] byte //nil slice  a = 
 如果切片的底层数组没有足够的可用容量——是指超出切片的cap限制，而非底层数组长度限制，因为数组长度len可小于数组容量cap。此时，append 函数会创建一个新的底层数组，将被引用的现有的值复制到新数组里，再追加新的值：
 // 创建一个整型切片其长度和容量都是 4 个元素 slice := []int{10, 20, 30, 40} // 向切片追加一个新元素 fmt.Println(slice) //[10 20 30 40] newSlice := append(slice, 50)// 将新元素赋值为 50 fmt.Println(slice,newSlice)//[10 20 30 40] [10 20 30 40 50] 当这个append操作完成后， 拥有一个全新的底层数组，这个数组的容量是原来的两倍「新分配的底层数组是原cap的2倍，而非原数组的2倍」，此外新分配时并非总是2倍，对于较大的切片，会尝试扩容1/4，以节约内存。
 ![c600](http://oqe76o492.bkt.clouddn.com/屏幕快照 2017-08-03 下午5.34.08.png)
-在切片的容量小于1000个元素时，总是会成倍地增加容量。一旦元素个数超过1000，容量的增长因子会设为1.25，也就是会每次增加25%的容量。随着语言的演化，这种增长算法可能会有所改变。因此在对切片使用append函数时，要特别注意是否超出了容量，如果超出了容量，则会创建一个新的底层数组
+在切片的容量小于1000个元素时，总是会成倍地增加容量。一旦元素个数超过1000，容量的增长因子会设为1.25，也就是会每次增加25%的容量。随着语言的演化，这种增长算法可能会有所改变。
+因此在对切片使用append函数时，要特别注意是否超出了容量，如果超出了容量，则会创建一个新的底层数组
  迭代切片 当迭代切片时，关键字range会返回两个值。第一个值是当前迭代到的索引位置(下标），第二个值是该位置对应元素值的一份副本。
 slice := []int{10, 20, 30, 40} // 迭代每一个元素，并显示其值 for index, value := range slice { fmt.Printf(&amp;#34;Index: %d Value: %d\n&amp;#34;, index, value) } ![c600](http://oqe76o492.bkt.clouddn.com/屏幕快照 2017-08-03 下午5.45.17.png)
 使用for-range迭代数组和切片有很重要的区别，如下所示：
@@ -3173,7 +3212,9 @@ var d1 [3] int var d2 [4] int d1 = d2 //错误， d1 和 d2 不属于同一类�
 var d1 [3] int //初始化为[0 0 0] var d2 [4] int //初始化为[0 0 0 0] d3 := [5]int{2,3,4} //初始化为 [2 3 4 0 0] fmt.Println(d1,d2,d3) //[0 0 0] [0 0 0 0] [2 3 4 0 0]   数组初始化时，可指定位置进行初始化，只要不超出数组的长度范围即可。
 d4 := [4]int{5,3:10} //[5 0 0 10]   编译器可以按照初始化值的数量确定数组长度，数组在声明的时候使用[...]即可
 d5 := [...]int{34,8,9} //长度为3 d6 := [...]int{5,3:10} //长度为4，内容为[5 0 0 10]   在定义多维数组时，仅第一维可以允许使用...，即省略第1维的长度。
-  内置函数len和cap可以返回第一维长度d7 :=[3][4]int {{2},{3}} fmt.Println(len(d7),cap(d7)) //3,3 返回的是第一维的长度   如果数组中的元素支持==，！= 等操作符，那么数组也支持该操作。var d1 [4] int //d1数组中元素全部为0 var d2 [4] int //d2数组中元素全部为0 d3 := [4]int{2,3,4} d4 := [4]int{5,3:10} fmt.Println(d1==d2,d3==d4) //true false   分清指针数组和数组指针：数组的地址为数组指针，而数组中的元素类型为指针则为数组指针。
+  内置函数len和cap可以返回第一维长度
+d7 :=[3][4]int {{2},{3}} fmt.Println(len(d7),cap(d7)) //3,3 返回的是第一维的长度   如果数组中的元素支持==，！= 等操作符，那么数组也支持该操作。
+var d1 [4] int //d1数组中元素全部为0 var d2 [4] int //d2数组中元素全部为0 d3 := [4]int{2,3,4} d4 := [4]int{5,3:10} fmt.Println(d1==d2,d3==d4) //true false   分清指针数组和数组指针：数组的地址为数组指针，而数组中的元素类型为指针则为数组指针。
 d11,d12:=20,10 d13:=[...]*int{&amp;amp;d11,&amp;amp;d12} //指针数组 d14:=&amp;amp;d13 //数组指针 fmt.Println(d13,d14) //[0xc420072250 0xc420072258] &amp;amp;[0xc420072250 0xc420072258]   可以获取数组中任意元素的地址，只要在数组元素前加&amp;amp;即可。
 d4 := [4]int{5,3:10} fmt.Println(&amp;amp;d4,&amp;amp;d4[0],&amp;amp;d4[3])//&amp;amp;[5 0 0 10] 0xc4200680e0 0xc4200680f8    </content>
     </entry>
@@ -3212,7 +3253,9 @@ type data [2]int //data是使用数组新定义的类型  var d data =[2]int{1,2
         <tags>
           <tag>Go</tag>
         </tags>
-        <content type="html"> 接口定义 接口代表一种调用契约，是多个方法声明的集合。在某些动态语言中接口(interface)也被称为协议(protocol)。准备交互的双方，共同遵守事先的约定规则，使得在无须知道对方身份的情况下进行协作。接口关心的是做什么，而不关心怎么做，谁来做。接口解除了类型依赖，有助于减少用户可视方法，屏蔽内部结构和实现细节。但这并不意味着可以滥用接口，因为实现接口会有运行时开销。接口最常见的使用场景是对包外提供访问，或预留扩展空间。接口定义了一组方法，但是这些方法不包括实现代码，接口中也不包含变量「我的理解是不包含普通变量，但可以有接口变量」。
+        <content type="html"> 接口定义 接口代表一种调用契约，是多个方法声明的集合。在某些动态语言中接口(interface)也被称为协议(protocol)。准备交互的双方，共同遵守事先的约定规则，使得在无须知道对方身份的情况下进行协作。接口关心的是做什么，而不关心怎么做，谁来做。
+接口解除了类型依赖，有助于减少用户可视方法，屏蔽内部结构和实现细节。但这并不意味着可以滥用接口，因为实现接口会有运行时开销。接口最常见的使用场景是对包外提供访问，或预留扩展空间。
+接口定义了一组方法，但是这些方法不包括实现代码，接口中也不包含变量「我的理解是不包含普通变量，但可以有接口变量」。
 在Go中只要目标类型方法集内包含接口声明的全部方法，就被当作实现了该接口，不需要做显式的声明。显然这是一种非侵入式的设计方法，这种设计方法的好处是，在前期开发时设计出合理的接口并不容易，等后期代码重构时，模块分拆时再分离出接口时比较容易。
  注意事项 按照约定，接口名字首选以er或者r结尾，其次为able为后缀，最次以I开头。在定义接口时需要注意的事项：
   接口的本质可以认为是一个指针，但和指针又不完全相同——指向接口变量的指针是非法的，如下是var ai namer在内存中的布局： ![c600](http://oqe76o492.bkt.clouddn.com/屏幕快照 2017-12-18 上午8.54.39.png)
@@ -3222,23 +3265,28 @@ type data [2]int //data是使用数组新定义的类型  var d data =[2]int{1,2
   接口定义中，不能定义接口自己的方法。
   编译器会根据目标类型的方法集来确定该类型是否实现了该接口，如果目标类型的方法集中没有完全实现接口中声明的方法，那么该目标类型就不可以赋值给该接口变量。
   即使接口在类型之后才定义，二者处于不同的包中，被单独编译。但是，只要类型实现了接口中的方法，它就实现了此接口。
-  一个接口可以包含一个或多个其他接口，这相当于直接将这些内嵌接口的方法列举在外层接口中一样。  可以像嵌入匿名字段那样，嵌入其他接口类型。此时目标类型方法集中必须包含嵌入的接口方法在内的全部方法，才能算实现了该接口。也就是说嵌入其他接口类型，相当于将嵌入的接口声明的全部方法导入。这就要求嵌入接口中的方法与本接口中不能有同名的方法，因为Go不支持重载。  在接口中嵌入接口时，超集接口变量可以隐式转换为嵌入的接口变量。反过来不行——因为信息不完整了。
+  一个接口可以包含一个或多个其他接口，这相当于直接将这些内嵌接口的方法列举在外层接口中一样。
+  可以像嵌入匿名字段那样，嵌入其他接口类型。此时目标类型方法集中必须包含嵌入的接口方法在内的全部方法，才能算实现了该接口。也就是说嵌入其他接口类型，相当于将嵌入的接口声明的全部方法导入。这就要求嵌入接口中的方法与本接口中不能有同名的方法，因为Go不支持重载。
+  在接口中嵌入接口时，超集接口变量可以隐式转换为嵌入的接口变量。反过来不行——因为信息不完整了。
   在嵌入接口类型时，不能嵌入自身或循环嵌入，那会导致递归错误。
   支持匿名接口类型：①可以直接用于变量定义 ②可用于结构体字段类型。
   多个类型可以实现同一个接口，实现某个接口的类型（除了实现接口方法外）可以有其他的方法，这就说明一个类型可以实现多个接口。
   接口变量的默认值是nil(因为接口也是一种引用类型)。
   对于两个接口变量对应的目标类型支持判等运算，那么这两个变量就可以做相等运算。
   如果接口没有任何方法声明，那么就是一个空接口，它的用途和Java中的Object一样，可以被赋值为任何类型的对象。
-   接口嵌套接口 一个接口可以包含一个或多个其他的接口，这相当于直接将这些内嵌接口的方法列举在外层接口中一样。type ReadWrite interface{ Read(b buffer) bool Write(b buffer) bool } type Lock interface{ Lock() Unlock() } type File interface{ ReadWrite //嵌入接口  Lock Close() //自己的方法 }  检测和转换接口变量 一个接口变量可以被任何实现了该接口的类型的变量赋值，即接口变量在运行时存在多态行为。因此需要一种方法来检测某个时刻一个接口变量是否是某个类型T。
+   接口嵌套接口 一个接口可以包含一个或多个其他的接口，这相当于直接将这些内嵌接口的方法列举在外层接口中一样。
+type ReadWrite interface{ Read(b buffer) bool Write(b buffer) bool } type Lock interface{ Lock() Unlock() } type File interface{ ReadWrite //嵌入接口  Lock Close() //自己的方法 }  检测和转换接口变量 一个接口变量可以被任何实现了该接口的类型的变量赋值，即接口变量在运行时存在多态行为。因此需要一种方法来检测某个时刻一个接口变量是否是某个类型T。
 v:=x.(T) //未检测类型断言  if v,ok := x.(T); ok{ //检测类型断言  do something return } 其中x表示接口类型的变量，且必须是接口类型变量，否则编译器会报错。而T表示需要被检测的目标类型。在检测类型断言中，如果转换合法，那么v是x转换到T类型的值，ok为true，否则v是T类型的零值，ok的值为false，此时不会有运行时错误发生。
-当需要检测的类型较多时，建议使用type-switch，但是在type-switch不允许有fallthrough。switch t := areaIntf.(type) { case *Square: fmt.Printf(&amp;#34;Type Square %T with value %v\n&amp;#34;, t, t) case *Circle: fmt.Printf(&amp;#34;Type Circle %T with value %v\n&amp;#34;, t, t) case nil: fmt.Printf(&amp;#34;nil value: nothing to check?\n&amp;#34;) default: fmt.Printf(&amp;#34;Unexpected type %T\n&amp;#34;, t) } 但是所有的case语句中列举的类型(nil除外)都必须实现对应的接口，如果被检测类型没有匹配case语句列举的类型，就会执行default语句。
+当需要检测的类型较多时，建议使用type-switch，但是在type-switch不允许有fallthrough。
+switch t := areaIntf.(type) { case *Square: fmt.Printf(&amp;#34;Type Square %T with value %v\n&amp;#34;, t, t) case *Circle: fmt.Printf(&amp;#34;Type Circle %T with value %v\n&amp;#34;, t, t) case nil: fmt.Printf(&amp;#34;nil value: nothing to check?\n&amp;#34;) default: fmt.Printf(&amp;#34;Unexpected type %T\n&amp;#34;, t) } 但是所有的case语句中列举的类型(nil除外)都必须实现对应的接口，如果被检测类型没有匹配case语句列举的类型，就会执行default语句。
  空接口 空接口是不包含任何方法，它对实现不做任何要求。任何类型都实现了空接口，any或Any是空接口一个很好的别名或者缩写。
 type any interface{} 可以给一个空接口类型的变量var val interface{} 赋任何类型的值。
 每个空接口变量在内存中占据两个字节，一个用来存储它包含的类型，另一个用来存储它包含的数据或者指向数据的指针。
  执行机制 接口是一种契约，实现类型必须满足它，它描述了类型的行为，规定类型可以做什么。接口将类型能做什么和如何做分离开来，使得相同接口变量在不同时刻表现出不同的行为，这就是多态的本质。
 从内部实现上来看，接口自身也是一种结构体，只是编译器会对其作出很多限制。接口使用一个名为itab的结构体存储运行期所需的相关类型信息。
 ![c600](http://oqe76o492.bkt.clouddn.com/屏幕快照 2017-12-18 上午8.54.39.png)
-type iface struct{ tab * itab //类型信息  data unsafe.Pointer //实际对象指针 } type itab struct{ inter *interfacetype //接口类型  _type *_type //实际对象类型  fun [1]uintptr //实际对象方法地址 } 接口有一个重要的特性：将对象赋值给接口变量时，会复制该对象。我们甚至无法修改接口存储的复制品，因为它是unaddreable，即使将其复制出来，使用本地变量修改后，依然无法对iface.data赋值。解决的方法是将对象指针赋值给接口，那么接口内存储的就是指针的复制品。只有当接口变量的内部的两个指针(itab,data)都为nil时，接口才等于nil。因此造成的错误并不少见，尤其是在函数返回error时，详见Go学习笔记P149。
+type iface struct{ tab * itab //类型信息  data unsafe.Pointer //实际对象指针 } type itab struct{ inter *interfacetype //接口类型  _type *_type //实际对象类型  fun [1]uintptr //实际对象方法地址 } 接口有一个重要的特性：将对象赋值给接口变量时，会复制该对象。我们甚至无法修改接口存储的复制品，因为它是unaddreable，即使将其复制出来，使用本地变量修改后，依然无法对iface.data赋值。解决的方法是将对象指针赋值给接口，那么接口内存储的就是指针的复制品。
+只有当接口变量的内部的两个指针(itab,data)都为nil时，接口才等于nil。因此造成的错误并不少见，尤其是在函数返回error时，详见Go学习笔记P149。
 var a interface{}=nil var b interface{}=(*int)(nil) println(a==nil,b==nil) //true false 类型推断可将接口变量还原为原始类型，或者用来判断是否实现了某个更具体的接口类型
 type data int func (d data) String() string{ return fmt.Sprintf(&amp;#34;data:&amp;#34;%d&amp;#34;,d) } var d data=16 if n,ok:=x.(fmt.Stringer); ok{ //转换为更具体的接口类型  fmt.Println(n) } if d2,ok:=x.(data); ok{ //转换为原始类型  fmt.Println(d2) } e:=x.(error) //错误，main.data is not error fmt.Println(e) 使用ok-idiom模式，即使转换失败也不会引发panic。还可以用switch语句在多种类型间作出推断匹配，这样接口就能有更多的发挥空间。
 var x interface{}=func(x int)string{ return fmt.Sprintf(&amp;#34;d:%d&amp;#34;,x) } switch v := x.type{ case nil: println(&amp;#34;nil&amp;#34;) case *int: println(*v) case func(int)string: println(v(100) case fmt.Stringer: fmt.println(v) default: fmt.println(&amp;#34;unknown&amp;#34;) } 如上所示的type switch中不支持fallthrought。
@@ -3268,13 +3316,15 @@ type user struct { name string age int } p := &amp;amp; user{ name : &amp;#34;To
 var a struct{} var b [100] struct{} println(unsafe.Sizeof(a),unsafe.Sizeof(b))//0 0 对于空结构体来说，尽管没有分配数组内存，但依然可以操作元素，对应切片len,cap属性也正常。
 var d[100] struct{} s := d[:] d[1] = struct{}{} d[2] = struct{}{} fmt.Println(s[3],len(s),cap(s)) //{} 100 100 实际上，这类长度为0的空结构体对象通常指向runtime.zerobase变量。 空结构体可作为通道元素类型，用于事件通知。
 a := [10]struct{}{} b := a[:] c := [0]int{} fmt.Println(&amp;amp;a,&amp;amp;b,&amp;amp;c)  结构体的匿名字段 所谓匿名字段，是指没有名字，仅有类型的字段，也称作嵌入字段或嵌入类型。
-type attr struct { perm int } type file struct { name string attr //匿名字段,但不是匿名结构体，注意区别 } 从编译器的角度看，这只是隐式的以类型作为字段名字。可直接引用匿名字段的成员，但初始化时须当作独立字段。f := file{ name : &amp;#34;test.data&amp;#34;, attr : attr{ //显式初始化匿名字段，注意于匿名结构体那一小结的区别  perm : 0755, }, //分号不能少 } f.perm = 0644 //直接设置匿名字段成员 println(f.perm) 如果嵌入其他包中的类型，则隐式字段名字「不是匿名字段，是匿名字段的名字」不包括包名：
+type attr struct { perm int } type file struct { name string attr //匿名字段,但不是匿名结构体，注意区别 } 从编译器的角度看，这只是隐式的以类型作为字段名字。可直接引用匿名字段的成员，但初始化时须当作独立字段。
+f := file{ name : &amp;#34;test.data&amp;#34;, attr : attr{ //显式初始化匿名字段，注意于匿名结构体那一小结的区别  perm : 0755, }, //分号不能少 } f.perm = 0644 //直接设置匿名字段成员 println(f.perm) 如果嵌入其他包中的类型，则隐式字段名字「不是匿名字段，是匿名字段的名字」不包括包名：
 type data stuct { os.File //匿名字段，包括包名 } func main{ d := data { File : os.File{} //匿名字段初始化时，字段名字不包括包名 } 不仅仅是结构体，除接口指针和多级指针以外任何命名类型都可以作为结构体的匿名字段：
 type data stuct { * int string } x := 100 d := data { int: &amp;amp;x, //指针作为匿名字段时，其隐式名字为基础类型的名字  string: &amp;#34;abc&amp;#34;, } 需要注意的是，不能将基础类型和其指针类型同时嵌入，因为两者隐式名字相同。
 type data stuct { * int //指针类型 int //基础类型 }  虽然可以像普通字段那样访问匿名字段成员，但会存在重名问题。默认情况下，编译器从当前显式名字字段开始，逐步向内查找匿名字段成员。如匿名字段成员被外层同名字段遮蔽，那么必须使用显式字段名。
 type file struct { name string } type data struct{ file name string } d := data { name : &amp;#34;data&amp;#34; file : file{&amp;#34;file&amp;#34;} //匿名字段初始化 } d.name = &amp;#34;data2&amp;#34; d.file.name = &amp;#34;file2&amp;#34; //同名字段，使用显式字段名访问 data.file.name 如果多个相同层级的匿名字段成员重名，就只能使用显式字段名，因为编译器无法确定目标：
 type file struct { name string } type log struct { name string } type data struct { file log } func main(){ d := data{} d.name = &amp;#34;name&amp;#34; //错误，必须使用显式字段名  d.file.name = &amp;#34;file&amp;#34; d.log.name = &amp;#34;log&amp;#34; }  字段标签 字段标签并不是注释，而是用来对字段进行描述的元数据。尽管它不属于数据成员，但却是类型的组成部分。在运行期，可用反射获取标签信息，它常被用作格式校验，数据库关系映射等。
-type user struct{ name string `昵称` sex type `性别` }  内存布局 在Go中不管结构体包含多少个字段，其内存总是一次性分配的，各字段在相邻的地址空间按定义顺序排列。当然，引用类型、字符串和指针，结构内存中只包含其基本(头部)数据。在分配内存时，字段须做对齐处理，通常以所有字段中最长的基础类型宽度为标准。
+type user struct{ name string `昵称` sex type `性别` }  内存布局 在Go中不管结构体包含多少个字段，其内存总是一次性分配的，各字段在相邻的地址空间按定义顺序排列。当然，引用类型、字符串和指针，结构内存中只包含其基本(头部)数据。
+在分配内存时，字段须做对齐处理，通常以所有字段中最长的基础类型宽度为标准。
 比较特殊的空结构体类型。如果它是最后一个字段，那么编译器将其当作长度为1的类型做对齐处理，以便其地址不会越界，避免引发垃圾回收错误。
 如果仅有一个空结构体字段，那么同样按1对齐，只不过长度为0，且指向runtime.zerobase变量。
  根据已有类型定义新类型 另一种声明用户定义的类型的方法是，基于一个已有的类型，将其作为新类型的类型说明。当需要一个可以用已有类型表示的新类型的时候，这种方法会非常有用。
@@ -3295,7 +3345,8 @@ package main type Duration int64 func main(){ var dur Duration dur = int64(1000)
  为什么要在返回之后才执行这些语句？因为return语句同样可以包含一些操作，而不是单纯地返回某个值，实际上此时return语句要做三件事：①如果有命名参数，将返回值赋给命名返回值;②执行defer语句或函数;③结束函数的执行。
 语句defer向当前函数注册稍后执行的函数调用，这些函数被称为延迟调用，因为它们直到当前函数执行结束之后才被执行，常用于资源释放，解除锁定，以及错误处理等操作。
 执行顺序 同一函数中注册多个defer语句时，执行时将会按照注册顺序先进后出的顺序执行即FILO的次序执行。
-如果遇到panic语句，那么和遇到return语句一样，会触发延迟调用，并且延迟调用会先于panic中的打印语句。func main() { defer_call() } func defer_call() { defer func() { fmt.Println(&amp;#34;打印前&amp;#34;) }() //最后调用 	defer func() { fmt.Println(&amp;#34;打印中&amp;#34;) }() //中间调用 	defer func() { fmt.Println(&amp;#34;打印后&amp;#34;) }() //最先调用  panic(&amp;#34;触发异常&amp;#34;) //在defer之后执行 } //打印后 //打印中 //打印前 //panic: 触发异常 编译器通过插入额外的指令来实现延迟调用执行，而return和panic语句都会终止当前函数流程，引发延迟调用。此外，return语句不是ret汇编指令，它会更新返回值，如下例所示：
+如果遇到panic语句，那么和遇到return语句一样，会触发延迟调用，并且延迟调用会先于panic中的打印语句。
+func main() { defer_call() } func defer_call() { defer func() { fmt.Println(&amp;#34;打印前&amp;#34;) }() //最后调用 	defer func() { fmt.Println(&amp;#34;打印中&amp;#34;) }() //中间调用 	defer func() { fmt.Println(&amp;#34;打印后&amp;#34;) }() //最先调用  panic(&amp;#34;触发异常&amp;#34;) //在defer之后执行 } //打印后 //打印中 //打印前 //panic: 触发异常 编译器通过插入额外的指令来实现延迟调用执行，而return和panic语句都会终止当前函数流程，引发延迟调用。此外，return语句不是ret汇编指令，它会更新返回值，如下例所示：
 func TestDefer() (z int) { defer func() { println(&amp;#34;defer&amp;#34;, z) //100 	z &#43;= 100 }() return 100 //最后z的值为200，实际执行次序为z=100， call defer，ret }  使用场景 延迟调用一般用于做一些收尾工作，例如：①关闭文件流；②关闭数据库连接；③解锁一个加锁的资源；④打印最终的报告。
 一个基础但十分实用的实现代码执行追踪的方案就是在进入和离开某个函数打印相关的消息，即可以提炼为下面两个函数
 func trace(s string) { fmt.Println(&amp;#34;entering:&amp;#34;, s) } func untrace(s string) { fmt.Println(&amp;#34;leaving:&amp;#34;, s) }  注意事项 延迟调用注册的是调用，必须提供执行所需要的参数（哪怕为空），参数在注册的时候被复制并缓存起来，如对状态敏感，可改用指针或闭包。
@@ -3376,7 +3427,8 @@ type N int func (n N) value(){} func (n *N) pointer(){} var ptr *N ptr.pointer()
   GOPATH中不要包含Go语言的根目录，以便将Go语言本身的工作空间同用户的工作区严格分开。
   通过go install命令获取的源码，将会下载到GOPATH中设定的第一个工作空间中，并在其中完成编译和安装。
   只有当环境变量GOPATH中只包含一个工作区的目录路径时，go install命令才会把命令的源码文件安装到当前工作区的bin目录下。否则执行go install就会出错，此时需要设置环境变量GOBIN，用于存放所有因安装Go命令源码文件而产生的可执行文件。
-  在工作空间里，包括子包在内的所有源码文件都保存在src目录下。至于bin、pkg两个目录，其主要影响go install/get 命令，它们将编译结果安装到两个目录下，以实现增量编译。使用标准库或第三方包前，须用import导入，参数是工作空间中以src为起始的绝对路径。
+  在工作空间里，包括子包在内的所有源码文件都保存在src目录下。至于bin、pkg两个目录，其主要影响go install/get 命令，它们将编译结果安装到两个目录下，以实现增量编译。
+使用标准库或第三方包前，须用import导入，参数是工作空间中以src为起始的绝对路径。
 对于一个导入的包，编译器首先从标准库开始搜索，如果未找到然后就依次搜索GOPATH列表中的各个工作空间。一旦找到了导入的包，即刻停止搜索。
 编译器等相关工具按GOPATH设置的路径搜索目标，导入目标库时，排在列表前面的路径比当前工作空间的优先级别更高。其中go get默认将下载的第三方包保存到列表中的第一个工作空间内。
 环境变量GOROOT用于指示工具链和标准库的存放路径。环境变量PATH中也应该添加一项GOROOT/bin，这样就可以在任意目录中使用Go的命令了。
@@ -3505,7 +3557,8 @@ func tt1(a ...int) { fmt.Println(a) } func main() { tt1() //可以不带参数�
    返回值 有返回值的函数，必须有明确的return终止语句。除非有panic或者无break的死循环，才可以没有return语句。
 func TestReturn(x int) int { for { break } } 命名返回值和参数一样，可当作函数局部变量使用，最后由return隐式返回。但是，这些特殊的“局部变量”可能会被不同层级的同名变量遮蔽，此时需要显式return返回。
 func Add(x, y int) (z int) { { z := x &#43; y //重新定义新的变量 	return z //因为有遮蔽作用，所有不可以直接使用隐式return，而需要显式的返回一个值，这相当于将新的z赋值给旧的z 	} return }  匿名函数 匿名函数如其名字一样，表示没有名字的函数。在定义匿名函数时，参数列表的第一对括号必须紧挨着关键字func，因为匿名函数没有名字，花括号{}涵盖着函数体，所以最后的一对圆括号()表示对该匿名函数的调用。
-可以在函数内部定义匿名函数，形成类似嵌套的效果，①匿名函数可以直接调用;②或者保存到变量，作为参数或返回值。func main() { func() { //匿名函数开始 	sum = 0.0 for i := 1; i &amp;lt;= 1e6; i&#43;&#43; { sum &#43;= i } }() //表示调用 } 将匿名函数赋值给变量，与为普通函数提供名字标识符有着本质区别，编译器会为匿名函数生成一个随机符号名。
+可以在函数内部定义匿名函数，形成类似嵌套的效果，①匿名函数可以直接调用;②或者保存到变量，作为参数或返回值。
+func main() { func() { //匿名函数开始 	sum = 0.0 for i := 1; i &amp;lt;= 1e6; i&#43;&#43; { sum &#43;= i } }() //表示调用 } 将匿名函数赋值给变量，与为普通函数提供名字标识符有着本质区别，编译器会为匿名函数生成一个随机符号名。
 add := func(x, y int) int { return x &#43; y } println(add(23, 34)) 匿名函数可以作为参数。如下所示，相当于给匿名函数取了一个名字。
 func add(f func()) { f() } func main() { add(func() { println(&amp;#34;hello,world!&amp;#34;) }) } 在Go中不使用的匿名函数会被编译器当作错误。
 在Go中普通函数和匿名函数都可作为结构体字段，或经通道传递，因为函数是一等公民。
@@ -3528,7 +3581,8 @@ var g int go func(i int) { s := 0 for j := 0; j &amp;lt; i; j&#43;&#43; { s &#43
 func TestDefer() (z int) { defer func() { fmt.Println(&amp;#34;defer&amp;#34;, z) //100 	z &#43;= 100 }() return 100 //先将100赋值给z，然后执行defer函数，最后返回200 } 相比于直接使用CALL指令调用函数，延迟调用则花费更大代价，包括注册、调用等操作，还有额外的缓存开销。
 var m sync.Mutex func call() { m.Lock() m.Unlock() } func deferCall() { m.Lock() defer m.Unlock() } func BenchmarkCall(b *testing.B) { for i := 0; i &amp;lt; b.N; i&#43;&#43; { call() } } func BenchmarkDefer(b *testing.B) { for i := 0; i &amp;lt; b.N; i&#43;&#43; { deferCall() } }  error 标准库将 error定义为接口类型，以便实现自定义错误类型。
 type error inferface{ Error() string //只要实现了该方法，就认为是自定义的接口类型  } 按照惯例error总是最后一个返回参数，标准库提供了相关创建函数，可方便地创建包含简单错误文本的error对象
-var errDivByZero = errors.New(&amp;#34;division by zero&amp;#34;) func div(x,y int)(int, error){ if y ==0{ return 0,errDivByZero } return x/y,nil } func TestDiv(){ z,err:= div(5,0) if err == errDivByZero{ log.Fatalln(err) } fmt.Println(z) } 如果要自定义错误类型，则只要实现Error方法就可以type DivError struct { x,y int } func(DivError) Error() string{ return &amp;#34;division by zero&amp;#34; } func div1(x,y int)(int,error){ if y==0 { return 0,DivError{x,y} } return x/y,nil } 通常建议应该通过错误变量，而非错误文本内容来判定错误类型。
+var errDivByZero = errors.New(&amp;#34;division by zero&amp;#34;) func div(x,y int)(int, error){ if y ==0{ return 0,errDivByZero } return x/y,nil } func TestDiv(){ z,err:= div(5,0) if err == errDivByZero{ log.Fatalln(err) } fmt.Println(z) } 如果要自定义错误类型，则只要实现Error方法就可以
+type DivError struct { x,y int } func(DivError) Error() string{ return &amp;#34;division by zero&amp;#34; } func div1(x,y int)(int,error){ if y==0 { return 0,DivError{x,y} } return x/y,nil } 通常建议应该通过错误变量，而非错误文本内容来判定错误类型。
  panic和recover 与error相比，panic/recover在使用上更接近try/catch。它们是内置函数而非语句。panic会立即中断当前函数流程，执行延迟调用。而在延迟调用函数中，recover可捕获并返回panic提交的错误对象。
 func panic(v interface{}) func recover() interface{} func TestPanic(){ defer func(){ if err:=recover();err !=nil{ log.Fatalln(err) } }() panic(&amp;#34;I am dead&amp;#34;) println(&amp;#34;exit&amp;#34;) //不会被执行 }   连续调用panic，仅最后一个panic会被recover捕获
   在延迟函数调用panic，不会影响后续延迟调用执行，而recover之后panic，可被再次捕获。
@@ -3565,13 +3619,15 @@ var a, b struct{} print(&amp;amp;a, &amp;amp;b) //xc420039f56 0xc420039f56 fmt.P
   多个成员初始值以逗号分隔。
   允许多行，但每行须以逗号或者右花括号结束。
    流控制 Go语言中仅支持三种控制语句，分别是if、switch、for。不同于其他语言，这3种控制语句中均可以有预处理语句「大多数情况下是变量定义」。
-if 语句 if条件表达式可以省略括号「推荐的做法」；并且条件表达式的值必须是布尔类型；其中左括号不能另起一行。x := 3 if x &amp;gt; 3 { fmt.Println(&amp;#34;A&amp;#34;) } else if x &amp;lt; 3 &amp;amp;&amp;amp; x &amp;gt; 0 { fmt.Println(&amp;#34;B&amp;#34;) } else { fmt.Println(&amp;#34;C&amp;#34;) } if中的条件判断语句之前：①允许声明一个变量；②执行函数调用。在预处理语句和条件语句间，它们使用分号分隔。如果是变量定义的话，这个变量的作用域只能在该条件逻辑块中，既包括if又包括else。
+if 语句 if条件表达式可以省略括号「推荐的做法」；并且条件表达式的值必须是布尔类型；其中左括号不能另起一行。
+x := 3 if x &amp;gt; 3 { fmt.Println(&amp;#34;A&amp;#34;) } else if x &amp;lt; 3 &amp;amp;&amp;amp; x &amp;gt; 0 { fmt.Println(&amp;#34;B&amp;#34;) } else { fmt.Println(&amp;#34;C&amp;#34;) } if中的条件判断语句之前：①允许声明一个变量；②执行函数调用。在预处理语句和条件语句间，它们使用分号分隔。如果是变量定义的话，这个变量的作用域只能在该条件逻辑块中，既包括if又包括else。
 if a,b := x&#43;1,x&#43;10; a&amp;lt;b{ fmt.Println(a,b) }else { fmt.Println(&amp;#34;Test&amp;#34;) } if InitIF(); x &amp;lt; 10{ fmt.Println(&amp;#34;initif&amp;#34;) } func InitIF(){ fmt.Println(&amp;#34;Init&amp;#34;) }  switch语句 一个case中可以有多个匹配条件，此时只要匹配其中一个就可以了。对于case是常量的情况，不能有重复的情况：
 a, b, c, x := 1, 2, 3, 2 switch x { case a, b: fmt.Println(&amp;#34;a|b&amp;#34;) case c: fmt.Println(&amp;#34;c&amp;#34;) case 4: fmt.Println(&amp;#34;d&amp;#34;) default: fmt.Println(&amp;#34;z&amp;#34;) } switch中的条件表达式支持非常量值，这比C和C&#43;&#43;更灵活
 switch支持初始化语句，按从上往下匹配，只有全部匹配失败时才执行default块,不会因为default语句在前面就先匹配default块。考虑到default的作用相当于else，所以建议将其放到末尾。
 switch y := 5; y { default: y &#43;= 100 fmt.Println(y) case 5: y &#43;= 50 fmt.Println(y) } //55 不能出现重复的case常量值；相邻的空case不构成多条件匹配「这个与C和C&#43;&#43;有明显的区别」
 无需显式执行break语句，case执行完毕后自动中断。
-如需贯通后续case （按照源码顺序) 必须执行fallthrough,但不再匹配后续条件表达式，而且fallthrough必须放在case块末尾，可使用break语句阻止。switch z := 20; z { default: fmt.Println(&amp;#34;default&amp;#34;) case 20: z &#43;= 10 fmt.Println(z) fallthrough //必须是case语句块的最后一条语句 case 21: z &#43;= 88 fmt.Println(z) } // 30 118  switch z := 20; z { case 20: z &#43;= 10 fmt.Println(z) fallthrough //必须是case语句块的最后一条语句 case 21: z &#43;= 88 fmt.Println(z) default: fmt.Println(&amp;#34;default&amp;#34;) } // 结果仍然是30 118 其中default语句不会执行 被省略条件表达式的switch，其表达式的默认值为true。这种情况，可以用来替换if语句
+如需贯通后续case （按照源码顺序) 必须执行fallthrough,但不再匹配后续条件表达式，而且fallthrough必须放在case块末尾，可使用break语句阻止。
+switch z := 20; z { default: fmt.Println(&amp;#34;default&amp;#34;) case 20: z &#43;= 10 fmt.Println(z) fallthrough //必须是case语句块的最后一条语句 case 21: z &#43;= 88 fmt.Println(z) } // 30 118  switch z := 20; z { case 20: z &#43;= 10 fmt.Println(z) fallthrough //必须是case语句块的最后一条语句 case 21: z &#43;= 88 fmt.Println(z) default: fmt.Println(&amp;#34;default&amp;#34;) } // 结果仍然是30 118 其中default语句不会执行 被省略条件表达式的switch，其表达式的默认值为true。这种情况，可以用来替换if语句
 switch z1 := 5; { case z1 &amp;gt; 5: fmt.Println(&amp;#34;z1&amp;gt;5&amp;#34;) case z1 &amp;gt; 0 &amp;amp;&amp;amp; z1 &amp;lt;= 5: fmt.Println(&amp;#34;z1&amp;gt;0 &amp;amp;&amp;amp; z1&amp;lt;=5&amp;#34;) case z1 &amp;lt;= 0: fmt.Println(&amp;#34;z1&amp;lt;=&amp;#34;) default: fmt.Println(&amp;#34;Test&amp;#34;) } //z1&amp;gt;0 &amp;amp;&amp;amp; z1&amp;lt;=5  for语句 for语句，包括一般的for语句和 for range 语句。一般的for语句包括3种情况：①有初始化语句和条件判断语句的；②只有条件判断语句的；③既没有初始化语句也没有条件判断语句的。
 for i := 1; i &amp;lt; 10; i&#43;&#43; { println(i) } x1 := []int{12, 34, 78, 9, 22, 7, 9} //切片  for i, n := range x1 { println(i, &amp;#34;:&amp;#34;, n) } for x &amp;lt; 5 { println(x) x&#43;&#43; } for { println(x) x-- if x == 0 { break } } 初始化表达式支持函数调用或定义局部变量，其中初始化语句仅被执行一次，条件表达式如果有函数调用，须确认是否会被重复执行，可能会被编译器优化掉，也可能动态结果须每次执行确认。
 func TestFor() { for i, c := 0, count(); i &amp;lt; c; i&#43;&#43; { println(&amp;#34;a&amp;#34;, i) } c := 0 for c &amp;lt; count() { println(&amp;#34;b&amp;#34;, c) c&#43;&#43; } } func count() int { print(&amp;#34;count.&amp;#34;) return 3 } 可用for ...range 完成数据迭代，支持字符串、数组、数组指针、切片、字典、通道类型，返回索引、键值数据。 range目标表达式是函数调用，也仅被执行一次。
@@ -3591,14 +3647,19 @@ outer: for x := 0; x &amp;lt; 10; x&#43;&#43; { for y := 0; y &amp;lt; 10; y&#43
           <tag>Go</tag>
         </tags>
         <content type="html">  常量是一种表达式，其可以保证在编译阶段计算出表达式的值，并不需要等到运行时，从而使编译器得以知晓其值。所有常量本质上都属于基本类型：布尔型，字符串或数字。
- 特别说明 Go中常量可以是任意基本类型，也包括具名的基本类型(例如time.Duration)。但是许多常量并不从属某一具体类型。编译器将这些从属类型待定的常量表示成某些值，这些值比基本类型的数字精度更高，且算术精度高于原生的机器精度，可以认为它们的精度至少达到256位。从属类型待定的常量共有6种，分别是：①无类型布尔；②无类型整数；③无类型文字符号(例如&#39;a&#39;)；④无类型浮点数；⑤无类型复数；⑥无类型字符串。
+ 特别说明 Go中常量可以是任意基本类型，也包括具名的基本类型(例如time.Duration)。但是许多常量并不从属某一具体类型。编译器将这些从属类型待定的常量表示成某些值，这些值比基本类型的数字精度更高，且算术精度高于原生的机器精度，可以认为它们的精度至少达到256位。
+从属类型待定的常量共有6种，分别是：①无类型布尔；②无类型整数；③无类型文字符号(例如&#39;a&#39;)；④无类型浮点数；⑤无类型复数；⑥无类型字符串。
 借助推迟确定从属类型，无类型常量不仅能够暂时维持更高的精度，与类型已确定的常量相比，还能写进更多的表达式无需类型转换。
 在Go中只有常量才可以是无类型的。如果将无类型的常量声明为变量或者在类型明确的变量赋值的右方出现无类型的常量，则常量会被隐式转换为该变量的类型：
 var f float64=3&#43;0i //无类型复数-&amp;gt;float64 f=2 //无类型整数-&amp;gt;float64 f=1e123 //无类型浮点数-&amp;gt;float64 f=&amp;#39;a&amp;#39; //无类型文字符号-&amp;gt;float64 不论隐式转换还是显式转换，常量从一种类型转换为另一种类型，都要求目标类型能够表示原值，实数和复数允许舍入取整。
 const ( x =0xdeadbeef //无类型整数，值为3735928559  a = uint32(x) //unit32,值为3735928559没有超出范围  b = float32(x)//float32,值为3735928559  c = int32(x) //编译错误，溢出  d = float64(1e309) //编译错误，溢出  f = uint(-1) //编译错误，溢出，unit无法容纳-1  ) 变量声明时（包括简短声明）中，假如没有显式指定类型，无类型常量会隐式转换为该变量的默认类型。对于bool型来说为false，对于整型、浮点、复数来说为0，字符串为“”，引用类型为nil，复合类型为其基础类型的零值。
 i:=0 //无类型整数，隐式int(0） r:=&amp;#39;\000&amp;#39; //无类型文字常量，隐式rune(&amp;#39;\000&amp;#39;)，这个要记住 f:=0.0 //无类型浮点数，隐式float64(0.0) c:=0i //无类型整数，隐式complex128(0i)  注意事项 常量必须是编译期可确定的字符、字符串、数字或布尔值。可指定常量类型，或由编译器通过初始化值推导，不支持C/C&#43;&#43;的数字类型后缀。
-定义常量的时候必须初始化，否则编译错误。不同于未使用的局部变量，不使用的常量不会引起编译错误。const x = 123 fmt.Println(x) const y = 1.23 { const x = &amp;#34;abc&amp;#34; fmt.Println(x) } 对于常量操作数，所有数学运算、逻辑运算和比较运算的结果依然是常量。常量的类型转换结果和某些内置函数的返回值，例如len,cap,real,imag,complex,unsafe.Sizeof同样是常量，因此可以将这些函数作用于常量用于常量的初始化。
-在常量组中，如果不指定类型和初始化值，则与上一行非空常量右值（表达式文本）相同const ( x uint16 = 120 y s = &amp;#34;abc&amp;#34; z ) fmt.Println(x, y, s, z) //120,120,abc,abc 数字常量在预处理阶段直接展开，作为指令数据使用，不分配内存，因此无法获取地址package main const y = 0x200 func main() { println(y) //println(&amp;amp;y) // 错误，不能获取地址，这与C&#43;&#43;有很大的区别 } const t = y //同样无法获取t的地址 const x = 100 //x没有明确指定类型，也就是前面说的待定类型 const y byte = x //直接展开x，相当于const y byte = 100 如果显式指定类型，必须确定常量左右值类型一致，需要时可做显式转换，右值不能超出常量类型取值范围，否则会引起溢出错误。const ( t1, t2 int = 99, -999 t3 byte = byte(t1) //t1 指定为int型，需显式转换为byte类型，注意于上一个例子的区别 	//t4 = uint8(t2) // 常量-999,超出了unit8的范围，会报溢出错误 ) 常量值可以是某些编译器能计算出结果的表达式，如 unsafe.Sizeof、len、cap，不能是运行时才能计算出结果的表达式。因此len，cap等内置函数用于定义常量时，不能作用于变量。
+定义常量的时候必须初始化，否则编译错误。不同于未使用的局部变量，不使用的常量不会引起编译错误。
+const x = 123 fmt.Println(x) const y = 1.23 { const x = &amp;#34;abc&amp;#34; fmt.Println(x) } 对于常量操作数，所有数学运算、逻辑运算和比较运算的结果依然是常量。常量的类型转换结果和某些内置函数的返回值，例如len,cap,real,imag,complex,unsafe.Sizeof同样是常量，因此可以将这些函数作用于常量用于常量的初始化。
+在常量组中，如果不指定类型和初始化值，则与上一行非空常量右值（表达式文本）相同
+const ( x uint16 = 120 y s = &amp;#34;abc&amp;#34; z ) fmt.Println(x, y, s, z) //120,120,abc,abc 数字常量在预处理阶段直接展开，作为指令数据使用，不分配内存，因此无法获取地址
+package main const y = 0x200 func main() { println(y) //println(&amp;amp;y) // 错误，不能获取地址，这与C&#43;&#43;有很大的区别 } const t = y //同样无法获取t的地址 const x = 100 //x没有明确指定类型，也就是前面说的待定类型 const y byte = x //直接展开x，相当于const y byte = 100 如果显式指定类型，必须确定常量左右值类型一致，需要时可做显式转换，右值不能超出常量类型取值范围，否则会引起溢出错误。
+const ( t1, t2 int = 99, -999 t3 byte = byte(t1) //t1 指定为int型，需显式转换为byte类型，注意于上一个例子的区别 	//t4 = uint8(t2) // 常量-999,超出了unit8的范围，会报溢出错误 ) 常量值可以是某些编译器能计算出结果的表达式，如 unsafe.Sizeof、len、cap，不能是运行时才能计算出结果的表达式。因此len，cap等内置函数用于定义常量时，不能作用于变量。
 const ( ptrSize = unsafe.Sizeof(uintptr(0)) //8 	strSize = len(&amp;#34;hello world!&amp;#34;) //12 	)  </content>
     </entry>
     
@@ -3626,7 +3687,8 @@ var a float32 = 1.1234567899 //保证小数点后7位有效数字 var b float32 
 m := make(map[string]int) m[&amp;#34;a&amp;#34;] = 1 fmt.Println(m) //map[a:1] s := make([]int, 0, 10) s = append(s, 100) fmt.Println(s) //[100] new函数也可以为引用类型分配内存，但是不完整创建。 以字典为例，它仅分配了字典本身所需的内存，并没有分配键值存储内存，也没有初始化散列桶等内部属性，因此无法正常工作
 p := new(map[string]int) t := *p //t[&amp;#34;a&amp;#34;] = 100 //fmt.Println(t) //panic: assignment to entry in nil map  别名 在官方文档中，专门提到了两个别名 byte alias for unit8以及rune alias for int32
   别名类型无需转换，可直接赋值。别名的作用是为了“见型知意”
-  拥有相同底层结构的就不一定是别名，就算在64位平台上int和int64结构完全一致，但是这两个也分属不同类型，这两个类型参与运算时须显式转换。   未命名类型（8种） 在Go中 数组、切片、字典、通道类型与具体元素类型或长度属性相关，故被称为未命名类型。具有相同声明的未命名类型被称为同一类型。
+  拥有相同底层结构的就不一定是别名，就算在64位平台上int和int64结构完全一致，但是这两个也分属不同类型，这两个类型参与运算时须显式转换。
+   未命名类型（8种） 在Go中 数组、切片、字典、通道类型与具体元素类型或长度属性相关，故被称为未命名类型。具有相同声明的未命名类型被称为同一类型。
   具有相同基类型的指针
   具有相同元素类型和长度的数组array
   具有相同元素类型的切片slice
@@ -3637,13 +3699,15 @@ p := new(map[string]int) t := *p //t[&amp;#34;a&amp;#34;] = 100 //fmt.Println(t)
   具有相同方法集（方法名，方法签名，不包括顺序）的接口
   容易被忽略的是结构体的标签struct tag 它属于类型组成的一部分，而不仅仅是元数据描述
 var a struct { x int `x` s string `s` } var b struct { x int s string } b = a //这是错误的，因为一个有标签，另一个没有标签 fmt.Println(b)  指针 指针的默认值是nil，不支持加减操作和类型转换，只支持相等判断,这一点与C和C&#43;&#43;有很大区别
-x := 100 p := &amp;amp;x //p&#43;&#43; //不能加 //p&#43;1 //不能加，只能比较是否相等 var p2 = p fmt.Println(p2 == p) //true 在指针的比较中，如果两个指针指向同一个地址，或都为nil则相等 接口 接口定义了一个函数集合，但是这些方法不包括实现——它们是抽象的，接口里也不能含变量。
+x := 100 p := &amp;amp;x //p&#43;&#43; //不能加 //p&#43;1 //不能加，只能比较是否相等 var p2 = p fmt.Println(p2 == p) //true 在指针的比较中，如果两个指针指向同一个地址，或都为nil则相等
+ 接口 接口定义了一个函数集合，但是这些方法不包括实现——它们是抽象的，接口里也不能含变量。
  自定义类型 使用关键字type 定义用户自定义类型，包括基于现有基础类型创建，或者是结构体、函数类型。与const和 var类似，多个type定义可以合并为组，可在函数或者代码块内定义局部类型
 type ( user struct { name string age uint8 } event func(string) bool ) 当自定义类型指定了基础类型时，也只表明他们具有相同的底层数据结构，两者间不存在任何关系，属于完全不同的两种类型，不能直接进行赋值操作。
 除了操作符外，自定义类型不会继承基础类型的其他信息（包括方法），不能视作别名，不能隐式转换，不能直接用于比较表达式。
 type X int var m X = 23 if m &amp;lt; 100 { //继承操作符 	fmt.Println(&amp;#34;Test&amp;#34;) }  类型转换 因为隐式转换带来的问题远大于它带来的好处，Go中严格按照类型进行操作。当两个变量的类型不一致的时候要做强制类型转换。
   除了常量、别名类型以及未命名类型外，Go强制要求使用显式类型转换
-  Go中不支持操作符重载  如果转换的目标类型是指针、单向通道或没有返回值的函数类型，那么必须用括号，以避免造成语法分解错误
+  Go中不支持操作符重载
+  如果转换的目标类型是指针、单向通道或没有返回值的函数类型，那么必须用括号，以避免造成语法分解错误
 x := 100 p := (*int)(&amp;amp;x)    </content>
     </entry>
     
@@ -3730,7 +3794,7 @@ struct Region { int start; int high; }; void noncurQuickSort(int *data, int leng
 template&amp;lt;typename T&amp;gt; void innerSort&amp;lt;T&amp;gt;::quickSort(T *data, int length) { quickSort(data, 0, length - 1); } template&amp;lt;typename T&amp;gt; void innerSort&amp;lt;T&amp;gt;::quickSort(T *data, int start, int end) { if (start &amp;gt;= 0 &amp;amp;&amp;amp; start &amp;lt; end) { int pivot = getPivot(data, start, end); if (pivot &amp;gt; start) { quickSort(data, start, pivot - 1); } if (end &amp;gt; pivot) { quickSort(data, pivot &#43; 1, end); } } } template&amp;lt;typename T&amp;gt; int innerSort&amp;lt;T&amp;gt;::getPivot(T *data, int start, int end) { assert(start &amp;gt;= 0 &amp;amp;&amp;amp; start &amp;lt; end); int index = random(start, end); int small = start - 1; swap(data[index], data[end]); for (int i = start; i &amp;lt; end; &#43;&#43;i) { if (data[i] &amp;lt; data[end]) { &#43;&#43;small; if (small != i) { swap(data[small], data[i]); } } } &#43;&#43;small; swap(data[small], data[end]); return small; } //http://notes.maxwi.com/2016/04/10/cpp-random/ //https://www.cnblogs.com/byhj/p/4149467.html template&amp;lt;typename T&amp;gt; int innerSort&amp;lt;T&amp;gt;::random(int start, int end) { // static std::default_random_engine e; // static std::uniform_int_distribution&amp;lt;unsigned&amp;gt; u(start, end); // int result = u(e);  srand(time(0)); int result = std::rand() % (end - start &#43; 1) &#43; start; return result; } 上面这种方法应该注意后面是small&#43;&#43;之后再交换，想象一下全部有序就能理解了😂。
   快速排序最好情况下的时间复杂度为$O(nlog_2n)$。
   最坏情况下的时间复杂度为$O(n^2)$。
-  平均时间复杂度为$O(nlog_2n)$,就平均而言快速排序是所有排序算法中效果最好的,这是快排的名字的由来。
+  平均时间复杂度为$O(nlog_2n)$,就平均而言快速排序是所有排序算法中效果最好的, 这是快排的名字的由来。
   待排序序列越接近无序，算法效率越高，个人理解应该是无序的时候基点两边平衡的比较好，所以效率比较高,这是针对于以第一个元素为pivot的情况。
   待排序序列越接近有序，算法效率越低（快速排序反而蜕化为冒泡排序？）。
   快速排序的趟数和初始序列相关。
@@ -3763,13 +3827,14 @@ template&amp;lt;typename T&amp;gt; void innerSort&amp;lt;T&amp;gt;::countSort(T 
   复杂度分析：
   假设数据是均匀分布的，则每个桶的元素平均个数为$\frac{n}{k}$。
   假设选择用快速排序对每个桶内的元素进行排序，那么每次排序的时间复杂度为$O(\frac{n}{k}log(\frac{n}{k}))$。
-  $O(n)&#43;O(m)O(\frac{n}{k}log(\frac{n}{k}))=O(n&#43;nlog(\frac{n}{k}))=O(n&#43;nlogn-nlogk)$为总的时间复杂度。当$k$接近于 $n$时，桶排序的时间复杂度就可以近似认为是$O(n)$, 此时近似为计数排序。即桶越多，时间效率就越高，而桶越多，空间就越大。
+  $O(n)&#43;O(m)O(\frac{n}{k}log(\frac{n}{k}))=O(n&#43;nlog(\frac{n}{k}))=O(n&#43;nlogn-nlogk)$为总的时间复杂度。当$k$接近于 $n$时，桶排序的时间复杂度就可以近似认为是$O(n)$ , 此时近似为计数排序。即桶越多，时间效率就越高，而桶越多，空间就越大。
    基数排序 将所有待比较数值（正整数）统一为同样的数位长度，数位较短的数前面补零。然后，从最低位开始，依次进行一次排序。这样从最低位排序一直到最高位排序完成以后, 数列就变成一个有序序列。
 基数排序法会使用到桶，先进先出的队列，通过将要比较的位（个位、十位、百位…），将要排序的元素分配至$0 \to 9$ 个桶中，借以达到排序的作用，在某些时候，基数排序法的效率高于其它的比较性排序算法。
 void radixSort(int *data, int length) { int max = getMax(data, length); //找出待排序数组中最大的那个数  int radix = 10; for (int exp = 1; exp &amp;lt;= max; exp *= 10) { bucketSort(data, length, exp, radix); } } void bucketSort(int *data, int length, int exp, int radix) { auto *count = new int[radix]{0}; auto *result = new int[length]; for (int i = 0; i &amp;lt; length; &#43;&#43;i) { count[(data[i] / exp) % radix]&#43;&#43;; //(data[i] / exp) 获取当前位的数值  } for (int j = 1; j &amp;lt; radix; &#43;&#43;j) { count[j] &#43;= count[j - 1]; } for (int i = length - 1; i &amp;gt;= 0; --i) { result[--count[(data[i] / exp) % radix]] = data[i]; } for (int i = 0; i &amp;lt; length; &#43;&#43;i) { data[i] = result[i]; } delete[] result; delete[] count; }   是稳定的排序方法。
   时间复杂度：设数组长度为$n$,基数为$r$,关键字位数为$d$,则每趟分配的时间为$O(n)$，每趟收集的时间复杂度为$O(n)$，工序$d$趟分配与收集，所以时间复杂度为$O(d(2n))$,即$O(d \times n)$。
   空间复杂度为$O(rn)$。
-   外排序算法 所谓外排序，顾名思义，即排序涉及到内存外面的排序。因为当要处理的数据量很大，而不能一次装入内存时，此时只能放在读写较慢的外存储器（通常是硬盘）上。外排序通常采用的是一种排序-归并的策略。  在排序阶段，先读入能放在内存中的数据量，将其排序输出到一个临时文件，依此进行，将待排序数据组织为多个有序的临时文件；
+   外排序算法 所谓外排序，顾名思义，即排序涉及到内存外面的排序。因为当要处理的数据量很大，而不能一次装入内存时，此时只能放在读写较慢的外存储器（通常是硬盘）上。外排序通常采用的是一种排序-归并的策略。
+  在排序阶段，先读入能放在内存中的数据量，将其排序输出到一个临时文件，依此进行，将待排序数据组织为多个有序的临时文件；
   在归并阶段将这些临时文件组合为一个大的有序文件，即排序结果。
   例子1 假定现在有20个数据的文件A：{5，11， 0， 18， 4， 14， 9， 7 6， 8， 12， 17 ，16 ，13 ，19 ，10， 2， 1， 3， 15}，但内存一次只能装4个数据，所以，可以每趟先选择4个数据进行排序，然后将排好序的5路数据进行归并，具体步骤如下：
   首先把大文件$A$，按顺序分割为$a_1，a_2，a_3，a_4，a_5$等5个小文件，每个小文件4个数据。

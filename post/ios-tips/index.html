@@ -315,7 +315,7 @@ code.has-jax {
 </li>
 </ul>
 <h2 id="元组">元组</h2>
-<p><code>Swift</code>支持把多个值组合成一个复合值，称为元组。元组内的值可以是任意类型，因此<!-- raw HTML omitted -->各个值的类型可以都不相同<!-- raw HTML omitted -->，例如：</p>
+<p><code>Swift</code>支持把多个值组合成一个复合值，称为元组。元组内的值可以是任意类型，因此<font color=red>各个值的类型可以都不相同</font>，例如：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">let</span> size = (width: <span style="color:#ae81ff">10</span>, height: <span style="color:#ae81ff">10</span>)
 print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">\(</span>size.<span style="color:#ae81ff">0</span><span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
 print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">\(</span>size.width<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
@@ -483,7 +483,7 @@ test() {
 }
 </code></pre></div><p>将一个闭包标记为<code>@escaping</code>意味着必须在闭包中显式地引用<code>self</code>，而非逃逸闭包则不需要。这个<code>self</code>提醒可能会一不小心就捕获了<code>self</code>，要注意循环引用。</p>
 <h3 id="自动闭包">自动闭包</h3>
-<p>自动闭包是一种自动创建的闭包，用于包装传递给函数作为参数的表达式。这种闭包不接受任何参数，让你能够省略闭包的花括号，用一个普通的表达式来替代显式的闭包。并且自动闭包<!-- raw HTML omitted -->可以能够延迟求值<!-- raw HTML omitted -->，因为直到调用到这个闭包，代码段才会被执行。</p>
+<p>自动闭包是一种自动创建的闭包，用于包装传递给函数作为参数的表达式。这种闭包不接受任何参数，让你能够省略闭包的花括号，用一个普通的表达式来替代显式的闭包。并且自动闭包<font color=red>可以能够延迟求值</font>，因为直到调用到这个闭包，代码段才会被执行。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">// 未使用自动闭包，需要显示用花括号说明这个参数是一个闭包</span>
 <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">test</span>(closure: () -&gt; Bool) {
 }
@@ -514,7 +514,7 @@ test(customer: <span style="color:#ae81ff">1</span> <span style="color:#f92672">
     <span style="color:#66d9ef">case</span> potato
     <span style="color:#66d9ef">indirect</span> <span style="color:#66d9ef">case</span> mix(Food, Food)
 }
-</code></pre></div><p>更推荐第二种写法，因为使用递归枚举时，编译器会<!-- raw HTML omitted -->插入一个间接层<!-- raw HTML omitted -->。仅标记枚举成员，能够减少不必要的消耗。</p>
+</code></pre></div><p>更推荐第二种写法，因为使用递归枚举时，编译器会<font color=red>插入一个间接层</font>。仅标记枚举成员，能够减少不必要的消耗。</p>
 <h2 id="属性">属性</h2>
 <h3 id="存储属性">存储属性</h3>
 <p>一个存储属性就是存储在特定类或结构体实例里的一个常量或变量。存储属性可以是变量存储属性（用关键字<code>var</code>定义），也可以是常量存储属性（用关键字 <code>let</code>定义）。</p>

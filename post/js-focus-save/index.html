@@ -256,9 +256,9 @@ code.has-jax {
     <blockquote>
 <p>在<code>iOS 11.3</code>以下的<code>UIWebview</code>中插入图片时，因图片选择器的弹出导致<code>UIWebview</code>失去焦点，故在插入图片前需先保存图片将要插入的位置。</p>
 </blockquote>
-<!-- raw HTML omitted -->
+<!-- more -->
 <h1 id="保存range区域">保存range区域</h1>
-<p>图片选择器打开前，利用一个<!-- raw HTML omitted -->全局的<!-- raw HTML omitted --><code>Range</code>对象保存插入前光标所在的位置的<code>Range</code>对象：</p>
+<p>图片选择器打开前，利用一个<font color=red>全局的</font><code>Range</code>对象保存插入前光标所在的位置的<code>Range</code>对象：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">//插入图片和超链接的时候因为webview会失去焦点，因此需要保存range区域
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">currentSelection</span>;
 <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">backupRange</span>() {

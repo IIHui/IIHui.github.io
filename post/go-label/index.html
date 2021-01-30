@@ -254,7 +254,7 @@ code.has-jax {
     </header>
     <div class="post-body" itemprop="articleBody">
     <blockquote>
-<p>在<code>for</code>,<code>switch</code>或者<code>select</code>中都可以配合标签形式的标识符使用——<!-- raw HTML omitted -->某一行第一个以冒号结尾的单词<!-- raw HTML omitted -->（因为<code>gofmt</code>会自动将后续代码移动至下一行）。</p>
+<p>在<code>for</code>,<code>switch</code>或者<code>select</code>中都可以配合标签形式的标识符使用——<font color=LightSeaGreen>某一行第一个以冒号结尾的单词</font>（因为<code>gofmt</code>会自动将后续代码移动至下一行）。</p>
 </blockquote>
 <h2 id="一个实例">一个实例</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
@@ -275,16 +275,16 @@ code.has-jax {
 </code></pre></div><h2 id="注意事项">注意事项</h2>
 <ul>
 <li>
-<p>标签的名称是<!-- raw HTML omitted -->大小写敏感<!-- raw HTML omitted -->的，为了提升可读性，一般<!-- raw HTML omitted -->建议标签全部使用大写<!-- raw HTML omitted -->。</p>
+<p>标签的名称是<font color=red>大小写敏感</font>的，为了提升可读性，一般<font color=Blue>建议标签全部使用大写</font>。</p>
 </li>
 <li>
-<p>使用逆向的<code>go to</code>语句容易产生意大利苗条似的代码，所以应该避免。<!-- raw HTML omitted -->逆向是指先使用<code>go to</code>语句，后定义标签<!-- raw HTML omitted -->。</p>
+<p>使用逆向的<code>go to</code>语句容易产生意大利苗条似的代码，所以应该避免。<font color=Blue>逆向是指先使用<code>go to</code>语句，后定义标签</font>。</p>
 </li>
 <li>
-<p>如果一定要使用标签，建议使用正向标签。但是，<!-- raw HTML omitted -->标签和<code>go to </code>语句之间不能有变量定义，否则会出现编译错误<!-- raw HTML omitted -->。</p>
+<p>如果一定要使用标签，建议使用正向标签。但是，<font color=red>标签和<code>go to </code>语句之间不能有变量定义，否则会出现编译错误</font>。</p>
 </li>
 <li>
-<p>定义了标签，如果<!-- raw HTML omitted -->不使用标签会产生编译错误<!-- raw HTML omitted -->。</p>
+<p>定义了标签，如果<font color=red>不使用标签会产生编译错误</font>。</p>
 </li>
 <li>
 <p>正确使用标签的情形：发生错误时，跳出无限循环，并关闭某些东西。</p>

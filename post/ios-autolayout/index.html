@@ -250,10 +250,10 @@ code.has-jax {
 <p><code>setNeedsLayout</code> 告知页面需要更新，但是不会立刻开始更新，也就是先做一个标记。</p>
 </li>
 <li>
-<p><code>layoutIfNeeded</code> 如果<!-- raw HTML omitted -->有需要刷新的标记<!-- raw HTML omitted -->，立即调用<code>layoutSubViews</code>进行布局；如果没有标记，不会调用<code>layoutSubbViews</code>。如果希望立即刷新<code>frame</code>，要先调用<code>setNeedsLayout</code>，把标记为需要布局，然后马上调用<code>layoutIfNeeded</code>实现布局。</p>
+<p><code>layoutIfNeeded</code> 如果<font color=red>有需要刷新的标记</font>，立即调用<code>layoutSubViews</code>进行布局；如果没有标记，不会调用<code>layoutSubbViews</code>。如果希望立即刷新<code>frame</code>，要先调用<code>setNeedsLayout</code>，把标记为需要布局，然后马上调用<code>layoutIfNeeded</code>实现布局。</p>
 </li>
 <li>
-<p><code>layoutSubviews</code> 对<code>subviews</code>进行布局，<!-- raw HTML omitted -->不能主动调用<!-- raw HTML omitted -->，需要的时候在子类中重写，系统会在合适的时候调用。</p>
+<p><code>layoutSubviews</code> 对<code>subviews</code>进行布局，<font color=red>不能主动调用</font>，需要的时候在子类中重写，系统会在合适的时候调用。</p>
 </li>
 <li>
 <p><code>setNeedsUpdateConstraints</code> 告知需要更新约束，但是不会立刻开始，也就是先做一个标记，调用<code>updateConstraintsIfNeeded</code>会查看该标记。</p>
