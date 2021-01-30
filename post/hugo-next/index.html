@@ -242,7 +242,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">2043</span>
+<span class="leancloud-visitors-count">2033</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -257,10 +257,9 @@ code.has-jax {
 <p>从<a href="https://github.com/xtfly/hugo-theme-next">兰陵子</a>处下载了<code>Next</code>主题，修改了主题下面的<code>config.toml</code>配置文件(配置文件的路径如下图所示)。但发现有很多地方还是需要修改才能满足自己的需求，因为对前端了解较少，故以此为记。</p>
 </blockquote>
 <p><img src="https://i.loli.net/2020/02/07/z4ijTtkEwpmg5CQ.jpg" alt="-c"></p>
-<h1 id="代码高亮支持">代码高亮支持</h1>
+<h1 id="添加代码高亮">添加代码高亮</h1>
 <p>插入<code>Golang、Swift</code>和<code>OC</code>代码段时发现并不能正常高亮，查资料发现是<code>Next</code>主题默认不支持这几种语言的语法高亮，因此需要在<code>themes/next/layouts/partials/head.html</code>文件中的<code>&lt;/head&gt;</code>前添加如下代码：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">    <span style="color:#75715e">&lt;!-- add by cxh --&gt;</span>
-    &lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai-sublime.min.css&#34;</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span>&gt;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">    &lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai-sublime.min.css&#34;</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span>&gt;
     &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
     &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
     &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/swift.min.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
@@ -280,7 +279,6 @@ code.has-jax {
             &lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;margin-top:10px;&#34;</span>&gt;
                 标题：{{ .Title }}
                 &lt;<span style="color:#f92672">br</span> /&gt;作者：阿呆&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">target</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;_blank&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/&#34;</span>&gt;{{ .Site.Author.name }}&lt;/<span style="color:#f92672">a</span>&gt;
-                <span style="color:#75715e">&lt;!-- &lt;br /&gt;关注：andy_SHui --&gt;</span>
                 &lt;<span style="color:#f92672">br</span> /&gt;地址：{{ .Permalink }}
                 &lt;<span style="color:#f92672">br</span> /&gt;声明：自由转载-非商用-保持署名（创作共享3.0许可证）
             &lt;/<span style="color:#f92672">p</span>&gt;
@@ -302,8 +300,8 @@ code.has-jax {
   <span style="color:#66d9ef">background</span>: <span style="color:#ae81ff">#ccc</span>;
   <span style="color:#66d9ef">text-align</span>: <span style="color:#66d9ef">center</span>;
 }
-</code></pre></div><h1 id="修改文章的信息">修改文章的信息</h1>
-<p>默认文章的信息展示如下图所示：
+</code></pre></div><h1 id="修改文章列表信息">修改文章列表信息</h1>
+<p>首页展示的文章列表中，每篇文章的信息展示如下图所示：
 <img src="https://i.loli.net/2020/02/08/dOmhZkBzW7RJjPo.jpg" alt="-c"></p>
 <p>但是我想改成下面这样：</p>
 <p><img src="https://i.loli.net/2020/02/08/RGfoqHSwlUkLaNc.jpg" alt="-c"></p>
@@ -381,8 +379,8 @@ code.has-jax {
   <span style="color:#a6e22e">URL</span> = <span style="color:#e6db74">&#34;/about/&#34;</span>
   <span style="color:#a6e22e">Weight</span> = <span style="color:#ae81ff">7</span>
 
-</code></pre></div><h1 id="文章展示目录">文章展示目录</h1>
-<p>如果需要展示目录，需要在<code>markdown</code>文章开头添加<code>toc = true</code>：</p>
+</code></pre></div><h1 id="文章左侧展示目录">文章左侧展示目录</h1>
+<p>如果需要在文章左侧展示目录，需要在<code>markdown</code>文章开头添加<code>toc = true</code>：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">---
 title:  Hugo next 主题问题
 date: 2020-02-07  11:27:41
@@ -391,13 +389,13 @@ categories: [code]
 toc: true
 ---
 
-</code></pre></div><h1 id="首页展示文章数目设置">首页展示文章数目设置</h1>
+</code></pre></div><h1 id="首页展示文章数目更改">首页展示文章数目更改</h1>
 <p>修改首页展示的文章数目可以在<code>themes/next/config.toml</code>中设置<code>Paginate</code>字段值：</p>
 <p><img src="https://i.loli.net/2020/02/08/Gz3wUjqPQr8yBeL.jpg" alt="-c"></p>
-<h1 id="首页摘要字数设置">首页摘要字数设置</h1>
+<h1 id="首页摘要字数更改">首页摘要字数更改</h1>
 <p>首页摘要的字数设置必须在与<code>themes</code>同级的<code>config.toml</code>文件中设置才会生效：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">summaryLength = 100  #放在同themes同级的config.toml上才有效
-</code></pre></div><h1 id="文章置顶设置">文章置顶设置</h1>
+</code></pre></div><h1 id="文章置顶">文章置顶</h1>
 <p>想要把文章置顶，需要在<code>markdown</code>文章头部设置权重<code>weight</code>的值，如下所示：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">---
 title:  陈小厨作品集
@@ -410,7 +408,7 @@ toc: true
 
 </code></pre></div><p>效果如下：</p>
 <p><img src="https://i.loli.net/2020/02/08/VeL8h6BauYnSJRz.jpg" alt="-c"></p>
-<h1 id="设置从h1开始显示文章目录">设置从H1开始显示文章目录</h1>
+<h1 id="从h1开始显示文章目录">从H1开始显示文章目录</h1>
 <p>不知道从什么时候开始<code>Hugo</code>从<code>h2</code>生成目录，为了设置从<code>h1</code>开始生成<code>目录</code>，需要设置全局的<code>config.toml</code>(即跟<code>themes</code>同级的<code>config.toml</code>)，如下所示：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[markup]
   [markup.tableOfContents]
@@ -616,16 +614,16 @@ katex: true
     <div class="post-toc">
         <div class="post-toc-content"><nav id="TableOfContents">
   <ul>
-    <li><a href="#代码高亮支持">代码高亮支持</a></li>
+    <li><a href="#添加代码高亮">添加代码高亮</a></li>
     <li><a href="#添加底部声明">添加底部声明</a></li>
     <li><a href="#删除文章列表之间的横线">删除文章列表之间的横线</a></li>
-    <li><a href="#修改文章的信息">修改文章的信息</a></li>
+    <li><a href="#修改文章列表信息">修改文章列表信息</a></li>
     <li><a href="#修改左侧菜单栏的顺序">修改左侧菜单栏的顺序</a></li>
-    <li><a href="#文章展示目录">文章展示目录</a></li>
-    <li><a href="#首页展示文章数目设置">首页展示文章数目设置</a></li>
-    <li><a href="#首页摘要字数设置">首页摘要字数设置</a></li>
-    <li><a href="#文章置顶设置">文章置顶设置</a></li>
-    <li><a href="#设置从h1开始显示文章目录">设置从H1开始显示文章目录</a></li>
+    <li><a href="#文章左侧展示目录">文章左侧展示目录</a></li>
+    <li><a href="#首页展示文章数目更改">首页展示文章数目更改</a></li>
+    <li><a href="#首页摘要字数更改">首页摘要字数更改</a></li>
+    <li><a href="#文章置顶">文章置顶</a></li>
+    <li><a href="#从h1开始显示文章目录">从H1开始显示文章目录</a></li>
     <li><a href="#使用katex渲染公式">使用KaTex渲染公式</a></li>
   </ul>
 </nav></div>
