@@ -41,7 +41,7 @@
     <script>hljs.initHighlightingOnLoad();</script>
 
     <link rel="stylesheet" href="https://iihui.github.io/css/custom.css">
-    
+
     <script type="text/javascript" src="https://iihui.github.io/js/custom.js"></script>
 </head>
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -243,7 +243,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1940</span>
+<span class="leancloud-visitors-count">1938</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -307,41 +307,41 @@ println(test)
 <p>标准的<code>when</code>语句使用是传入参数。<code>when</code>语句和<code>if</code>语句一样，也是可以有返回值，因此依然<font color=red>可以使用单行代码函数语法糖</font>。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">checkNumber</span>(num: Number) {
     <span style="color:#66d9ef">when</span> (num) {
-        <span style="color:#66d9ef">is</span> Int -&gt; println(<span style="color:#e6db74">&#34;number is Int&#34;</span>)
-        <span style="color:#66d9ef">is</span> Double -&gt; println(<span style="color:#e6db74">&#34;number is Double&#34;</span>)
-        <span style="color:#66d9ef">else</span> -&gt; println(<span style="color:#e6db74">&#34;number not support&#34;</span>)
+        <span style="color:#66d9ef">is</span> Int <span style="color:#f92672">-&gt;</span> println(<span style="color:#e6db74">&#34;number is Int&#34;</span>)
+        <span style="color:#66d9ef">is</span> Double <span style="color:#f92672">-&gt;</span> println(<span style="color:#e6db74">&#34;number is Double&#34;</span>)
+        <span style="color:#66d9ef">else</span> <span style="color:#f92672">-&gt;</span> println(<span style="color:#e6db74">&#34;number not support&#34;</span>)
     }
 }
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#66d9ef">when</span> {
-    count == <span style="color:#ae81ff">43</span> -&gt; println(<span style="color:#e6db74">&#34;43&#34;</span>)
-    tt == <span style="color:#e6db74">&#34;name&#34;</span> -&gt; println(<span style="color:#e6db74">&#34;name&#34;</span>)
-    str1 == <span style="color:#e6db74">&#34;test&#34;</span> -&gt; println(str1)
+    count <span style="color:#f92672">==</span> <span style="color:#ae81ff">43</span> <span style="color:#f92672">-&gt;</span> println(<span style="color:#e6db74">&#34;43&#34;</span>)
+    tt <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;name&#34;</span> <span style="color:#f92672">-&gt;</span> println(<span style="color:#e6db74">&#34;name&#34;</span>)
+    str1 <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;test&#34;</span> <span style="color:#f92672">-&gt;</span> println(str1)
 }
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#66d9ef">val</span> count = <span style="color:#ae81ff">43</span>
 <span style="color:#66d9ef">var</span> str1 = <span style="color:#66d9ef">when</span> (count) {
-    <span style="color:#ae81ff">42</span> -&gt; <span style="color:#e6db74">&#34;chen&#34;</span>
-    <span style="color:#ae81ff">56</span> -&gt; <span style="color:#e6db74">&#34;cchen&#34;</span>
-    <span style="color:#66d9ef">else</span> -&gt; <span style="color:#e6db74">&#34;test&#34;</span>
+    <span style="color:#ae81ff">42</span> <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;chen&#34;</span>
+    <span style="color:#ae81ff">56</span> <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;cchen&#34;</span>
+    <span style="color:#66d9ef">else</span> <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;test&#34;</span>
 }
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">getValue</span>(colorEnum: ColorEnum) = 
     <span style="color:#66d9ef">when</span>(colorEnum){
-        ColorEnum.RED -&gt; <span style="color:#ae81ff">1</span>;
-        ColorEnum.BLUE -&gt; <span style="color:#ae81ff">2</span>;
-        ColorEnum.GREEN -&gt; <span style="color:#ae81ff">3</span>;
+        ColorEnum.RED <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">1</span>;
+        ColorEnum.BLUE <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">2</span>;
+        ColorEnum.GREEN <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">3</span>;
     }
 </code></pre></div><h3 id="不传参数">不传参数</h3>
 <p>可以不在<code>when</code>语句中传入参数。这种用法是将判断的表达式完整地写在<code>when</code>的结构体中，对于其他的一些情况很有用，如下所示：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">getScore1</span>(name: String) = <span style="color:#66d9ef">when</span> {
-    name == <span style="color:#e6db74">&#34;Tom&#34;</span> -&gt; <span style="color:#ae81ff">86</span>
-    name == <span style="color:#e6db74">&#34;Jim&#34;</span> -&gt; <span style="color:#ae81ff">77</span>
-    name == <span style="color:#e6db74">&#34;Jack&#34;</span> -&gt; <span style="color:#ae81ff">90</span>
-    <span style="color:#66d9ef">else</span> -&gt; <span style="color:#ae81ff">0</span>
+    name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;Tom&#34;</span> <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">86</span>
+    name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;Jim&#34;</span> <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">77</span>
+    name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;Jack&#34;</span> <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">90</span>
+    <span style="color:#66d9ef">else</span> <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">0</span>
 }
 
 <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">getScore2</span>(name: String) = <span style="color:#66d9ef">when</span> {
-    name.startsWith(<span style="color:#e6db74">&#34;test&#34;</span>) -&gt; <span style="color:#ae81ff">89</span>
-    name == <span style="color:#e6db74">&#34;Jack&#34;</span> -&gt; <span style="color:#ae81ff">90</span>
-    <span style="color:#66d9ef">else</span> -&gt; <span style="color:#ae81ff">4589</span>
+    name.startsWith(<span style="color:#e6db74">&#34;test&#34;</span>) <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">89</span>
+    name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;Jack&#34;</span> <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">90</span>
+    <span style="color:#66d9ef">else</span> <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">4589</span>
 }
 </code></pre></div><h1 id="循环语句">循环语句</h1>
 <p><code>Kotlin</code>在<code>for</code>在循环方面做了很大幅度的修改，直接舍弃了<code>Java</code>中的<code>for-i</code>，而在<code>Java</code>中的另一种<code>for-each</code>循环则被<code>Kotlin</code>进行大幅度的加强，变成了<code>for-in</code>循环。</p>
@@ -401,7 +401,7 @@ println(test)
     <span style="color:#66d9ef">var</span> sno = <span style="color:#e6db74">&#34;&#34;</span>
     <span style="color:#66d9ef">var</span> grade = <span style="color:#ae81ff">0</span>
 
-    init {
+    <span style="color:#66d9ef">init</span> {
         println(sno)
         println(grade)
     }
@@ -446,11 +446,11 @@ println(test)
 </span><span style="color:#75715e"></span>    }
 
     <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">readBooks</span>() {
-        println(<span style="color:#e6db74">&#34;$name is reading&#34;</span>)
+        println(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">$name</span><span style="color:#e6db74"> is reading&#34;</span>)
     }
 
     <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">doHomework</span>() {
-        println(<span style="color:#e6db74">&#34;$name is doing homework.&#34;</span>)
+        println(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">$name</span><span style="color:#e6db74"> is doing homework.&#34;</span>)
     }
 }
 </code></pre></div><p><a href="https://www.baeldung.com/kotlin-when">参考</a></p>

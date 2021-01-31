@@ -6,11 +6,7 @@
     <description>Recent content in R on Keep It Simple</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 16 May 2018 15:46:49 +0000</lastBuildDate>
-    
-	<atom:link href="https://iihui.github.io/tags/r/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 16 May 2018 15:46:49 +0000</lastBuildDate><atom:link href="https://iihui.github.io/tags/r/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>R 绘图中使用中文</title>
       <link>https://iihui.github.io/post/r-chinese/</link>
