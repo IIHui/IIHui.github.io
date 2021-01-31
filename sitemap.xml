@@ -23,7 +23,7 @@ Theme = &amp;#34;next&amp;#34; 添加代码高亮 插入Golang、Swift和Objecti
 [[Menu.Main]] Name = &amp;#34;首页&amp;#34; Pre = &amp;#34;home&amp;#34; URL = &amp;#34;/&amp;#34; Weight = 1 [[Menu.Main]] Name = &amp;#34;标签&amp;#34; Pre = &amp;#34;tag&amp;#34; URL = &amp;#34;/tags/&amp;#34; Weight = 2 [[Menu.Main]] Name = &amp;#34;归档&amp;#34; Pre = &amp;#34;archive&amp;#34; URL = &amp;#34;/post/&amp;#34; Weight = 3 [[Menu.Main]] Name = &amp;#34;美食&amp;#34; Pre = &amp;#34;fire&amp;#34; #tint URL = &amp;#34;/categories/美食/&amp;#34; Weight = 4 [[Menu.Main]] Name = &amp;#34;后期&amp;#34; Pre = &amp;#34;edit&amp;#34; URL = &amp;#34;/categories/后期/&amp;#34; Weight = 5 [[Menu.Main]] Name = &amp;#34;旅行&amp;#34; Pre = &amp;#34;leaf&amp;#34; URL = &amp;#34;/categories/旅行/&amp;#34; Weight = 6 [[Menu.Main]] Name = &amp;#34;关于&amp;#34; Pre = &amp;#34;user&amp;#34; URL = &amp;#34;/about/&amp;#34; Weight = 7 文章左侧展示目录 如果需要在文章左侧展示目录，需要在markdown文章开头添加toc = true：
 --- title: Hugo next 主题问题 date: 2020-02-07 11:27:41 tags: [hugo,tool] categories: [code] toc: true --- 首页展示文章数目更改 修改首页展示的文章数目可以在themes/next/config.toml中设置Paginate字段值：
 首页摘要字数更改 首页摘要的字数设置必须在与themes同级的config.toml文件中设置才会生效：
-summaryLength = 100 #放在同themes同级的config.toml上才有效 文章置顶 想要把文章置顶，需要在markdown文章头部设置权重weight的值，如下所示：
+summaryLength = 100 #放在同themes同级的config.toml上才有效 设置文章置顶 想要把文章置顶，需要在markdown文章头部设置权重weight的值，如下所示：
 --- title: 陈小厨作品集 date: 2020-02-03 13:28:05 tags: [美食] categories: [美食] weight: 1 toc: true --- 修改了权重值，效果如下：
 从H1开始显示文章目录 不知道从什么时候开始Hugo从h2生成目录，为了设置从h1开始生成目录，需要设置全局的config.toml(即跟themes同级的config.toml)，如下所示：
 [markup] [markup.tableOfContents] endLevel = 4 startLevel = 1  使用KaTex渲染公式 因为Markdown中的下划线和latex公式里的下划线冲突，导致Hugo中latex公式里的下标总是渲染不出来，如下图所示，看着很不舒服：
@@ -38,7 +38,7 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 文章置�
 为了修复这个问题，有两种不同的解决方案。第一种是把Markdown渲染引擎改回为Blackfriday。即在全局设置文件config.toml中添加：
 [markup] defaultMarkdownHandler = &amp;#34;blackfriday&amp;#34; 第二种是依然使用Goldmark来渲染，但是修改它的默认行为，即在全局设置文件config.toml中添加：
 [markup] defaultMarkdownHandler = &amp;#34;goldmark&amp;#34; [markup.goldmark] [markup.goldmark.renderer] unsafe = true 参考资料
- 代码粘贴 参考资料
+ 添加代码粘贴按钮 参考资料
 </content>
     </entry>
     
