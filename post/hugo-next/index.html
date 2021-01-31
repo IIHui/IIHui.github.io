@@ -242,7 +242,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">2455</span>
+<span class="leancloud-visitors-count">2463</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -460,11 +460,11 @@ katex: true
 <p><a href="https://eankeen.github.io/blog/posts/render-latex-with-katex-in-hugo-blog/">参考资料</a></p>
 <hr>
 <h1 id="字体颜色生效">字体颜色生效</h1>
-<p>升级了<code>Hugo</code>版本之后，发现之前为了之前在笔记中插入的字体颜色<code>tag</code>都已经失效。这是因为之前<code>Hugo</code>使用<code>Blackfriday</code>来渲染<code>Markdown</code>文件。从<code>0.60</code>版本开始，默认的 <code>Markdown</code>渲染器已经改成了<code>Goldmark</code>。而<code>Goldmark</code>渲染器默认不会渲染<code>HTML tags</code>。</p>
-<p>为了修复这个问题，有两种不同的解决方案。第一种是把<code>Markdown</code>渲染引擎改为<code>Blackfriday</code>。即在全局设置文件<code>config.toml</code>中添加：</p>
+<p>升级了<code>Hugo</code>版本之后，发现之前在笔记中插入的字体颜色<code>tag</code>都已经失效。查了相关资料，发现这是因为之前<code>Hugo</code>使用<code>Blackfriday</code>来渲染<code>Markdown</code>文件。从<code>0.60</code>版本开始，默认的 <code>Markdown</code>渲染器已经改成了<code>Goldmark</code>，而<code>Goldmark</code>渲染器默认不会渲染<code>HTML tags</code>。</p>
+<p>为了修复这个问题，有两种不同的解决方案。第一种是把<code>Markdown</code>渲染引擎改回为<code>Blackfriday</code>。即在全局设置文件<code>config.toml</code>中添加：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">[<span style="color:#a6e22e">markup</span>]
   <span style="color:#a6e22e">defaultMarkdownHandler</span> = <span style="color:#e6db74">&#34;blackfriday&#34;</span>
-</code></pre></div><p>第二种是保持<code>Goldmark</code>来渲染，但是修改他的默认行为，即在全局设置文件<code>config.toml</code>中添加：</p>
+</code></pre></div><p>第二种是依然使用<code>Goldmark</code>来渲染，但是修改它的默认行为，即在全局设置文件<code>config.toml</code>中添加：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">[<span style="color:#a6e22e">markup</span>]
   <span style="color:#a6e22e">defaultMarkdownHandler</span> = <span style="color:#e6db74">&#34;goldmark&#34;</span>
   [<span style="color:#a6e22e">markup</span>.<span style="color:#a6e22e">goldmark</span>]
