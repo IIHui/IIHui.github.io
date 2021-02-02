@@ -9,7 +9,7 @@
         <tags>
           <tag>hugo</tag><tag>next</tag>
         </tags>
-        <content type="html">  从兰陵子处下载了Next主题，修改了主题下面的config.toml配置文件(配置文件路径为themes/next/config.toml)。但发现有很多地方还是需要修改才能满足自己的需求，因为对前端了解较少，故以此为记。
+        <content type="html">  从兰陵子处下载了Next主题，修改了主题目录下的config.toml配置文件(配置文件路径为themes/next/config.toml)。但发现有很多地方还是需要修改才能满足自己的需求，因为对前端了解较少，以此为记。
  修改主题 首先从这里下载Next主题,并将其放入themes目录下，然后在与themes同级的全局配置文件config.toml文件中添加：
 Theme = &amp;#34;next&amp;#34; 添加代码高亮 插入Golang、Swift和Objective-C代码段时发现并不能正常高亮，查资料发现是Next主题默认不支持这几种语言的语法高亮，因此需要在themes/next/layouts/partials/head.html文件中的&amp;lt;/head&amp;gt;前添加如下代码：
 &amp;lt;link href=&amp;#34;https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai-sublime.min.css&amp;#34; rel=&amp;#34;stylesheet&amp;#34;&amp;gt; &amp;lt;script src=&amp;#34;https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;#34;https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;#34;https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/swift.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;#34;https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;#34;https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/kotlin.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt;hljs.initHighlightingOnLoad();&amp;lt;/script&amp;gt; 添加底部声明 默认情况下底部声明以及微信打赏码是没有的。为了显示底部声明以及微信打赏码这些，首先必须修改themes/next/layouts/partials/widgets/weixin.html文件，添加创作共享声明和微信打赏：
