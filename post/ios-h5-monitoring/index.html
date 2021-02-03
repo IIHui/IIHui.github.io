@@ -250,7 +250,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">762</span>
+<span class="leancloud-visitors-count">899</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -307,6 +307,57 @@ code.has-jax {
                 debugPrint(<span style="color:#e6db74">&#34;WK domain cleaned cache&#34;</span>)
             }
         }
+</code></pre></div><h1 id="wk预览">WK预览</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">reload</span>(data: Data) {
+        <span style="color:#66d9ef">self</span>.reAddWKWebView(data: data, mimeType: <span style="color:#e6db74">&#34;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet&#34;</span>)
+        <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> url = URL(string: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">\(</span>customWKPreviewSchemeName<span style="color:#e6db74">)</span><span style="color:#e6db74">:/&#34;</span>) <span style="color:#66d9ef">else</span> {
+            <span style="color:#66d9ef">return</span>
+        }
+        <span style="color:#66d9ef">self</span>.webView.load(URLRequest(url: url))
+    }
+    
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">reAddWKWebView</span>(data: Data, mimeType: String) {
+        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">self</span>.webView <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+            <span style="color:#66d9ef">self</span>.webView.removeFromSuperview()
+        }
+        <span style="color:#66d9ef">let</span> configuration = WKWebViewConfiguration()
+        configuration.suppressesIncrementalRendering = <span style="color:#66d9ef">false</span>
+        <span style="color:#66d9ef">let</span> webViewSchemeHandler = CustomPreviewWKURLSchemeHandler(data: data, mimeType: mimeType)
+        <span style="color:#66d9ef">if</span> <span style="color:#75715e">#available</span>(<span style="color:#75715e">iOS</span> <span style="color:#ae81ff">11.0</span>, <span style="color:#f92672">*</span>) {
+            configuration.setURLSchemeHandler(webViewSchemeHandler, forURLScheme: customWKPreviewSchemeName)
+        } <span style="color:#66d9ef">else</span> {
+            <span style="color:#75715e">// Fallback on earlier versions</span>
+        }
+        <span style="color:#66d9ef">self</span>.webView = WKWebView(frame: .zero, configuration: configuration)
+        <span style="color:#66d9ef">self</span>.addWKWebView()
+    }
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">addWKWebView</span>() {
+        <span style="color:#66d9ef">self</span>.view.addSubview(<span style="color:#66d9ef">self</span>.webView)
+        <span style="color:#66d9ef">self</span>.webView.snp.makeConstraints { maker <span style="color:#66d9ef">in</span>
+            maker.<span style="color:#66d9ef">left</span>.equalToSuperview()
+            maker.<span style="color:#66d9ef">right</span>.equalToSuperview()
+            <span style="color:#75715e">// 适配安全区域</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#75715e">#available</span>(<span style="color:#75715e">iOS</span> <span style="color:#ae81ff">11.0</span>, <span style="color:#f92672">*</span>) {
+                maker.top.equalTo(<span style="color:#66d9ef">self</span>.view.safeAreaLayoutGuide.snp.top)
+                maker.bottom.equalTo(<span style="color:#66d9ef">self</span>.view.safeAreaLayoutGuide.snp.bottom)
+            } <span style="color:#66d9ef">else</span> {
+                maker.top.equalTo(<span style="color:#66d9ef">self</span>.topLayoutGuide.snp.bottom)
+                maker.bottom.equalTo(<span style="color:#66d9ef">self</span>.bottomLayoutGuide.snp.top)
+            }
+        }
+        <span style="color:#66d9ef">self</span>.webView.navigationDelegate = <span style="color:#66d9ef">self</span>
+        <span style="color:#66d9ef">self</span>.webView.scrollView.delegate = <span style="color:#66d9ef">self</span>
+        <span style="color:#66d9ef">self</span>.webView.addObserver(<span style="color:#66d9ef">self</span>, forKeyPath: <span style="color:#e6db74">&#34;estimatedProgress&#34;</span>, options: .new, context: <span style="color:#66d9ef">nil</span>)
+            
+        <span style="color:#66d9ef">self</span>.progressView = UIProgressView()
+        <span style="color:#66d9ef">self</span>.webView.addSubview(<span style="color:#66d9ef">self</span>.progressView)
+        <span style="color:#66d9ef">self</span>.progressView.snp.makeConstraints { maker <span style="color:#66d9ef">in</span>
+            maker.<span style="color:#66d9ef">left</span>.equalToSuperview()
+            maker.<span style="color:#66d9ef">right</span>.equalToSuperview()
+            maker.top.equalToSuperview()
+            maker.height.equalTo(<span style="color:#ae81ff">4</span>)
+        }
+    }
 </code></pre></div>
     </div>
     <footer class="post-footer">
@@ -479,6 +530,7 @@ code.has-jax {
         <li><a href="#cookie">Cookie</a></li>
       </ul>
     </li>
+    <li><a href="#wk预览">WK预览</a></li>
   </ul>
 </nav></div>
     </div>
