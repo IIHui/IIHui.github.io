@@ -250,7 +250,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1300</span>
+<span class="leancloud-visitors-count">1372</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -308,6 +308,7 @@ code.has-jax {
             }
         }
 </code></pre></div><h1 id="wk预览">WK预览</h1>
+<p>项目之前使用<code>UIWebView</code>来预览<code>docx,excel,ppt</code>文档，但目前官方不再推荐使用<code>UIWebView</code>，而是推荐使用<code>WKWebView</code>：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">reload</span>(data: Data) {
         <span style="color:#66d9ef">self</span>.reAddWKWebView(data: data, mimeType: <span style="color:#e6db74">&#34;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet&#34;</span>)
         <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> url = URL(string: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">\(</span>customWKPreviewSchemeName<span style="color:#e6db74">)</span><span style="color:#e6db74">:/&#34;</span>) <span style="color:#66d9ef">else</span> {
