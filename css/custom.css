@@ -61,7 +61,7 @@
     border-bottom-left-radius: 4px;
     white-space: nowrap;
     padding: 4px 4px 5px 4px;
-    margin: 0 0 0 1px;
+    margin: 0 0 0 10px;
     cursor: pointer;
     opacity: 0.6;
 }
