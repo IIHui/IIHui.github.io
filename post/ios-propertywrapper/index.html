@@ -295,7 +295,8 @@ code.has-jax {
     @SomeWrapper(custom: <span style="color:#ae81ff">98.7</span>) <span style="color:#66d9ef">var</span> c = <span style="color:#ae81ff">30</span>
     @SomeWrapper(wrappedValue: <span style="color:#ae81ff">30</span>, custom: <span style="color:#ae81ff">98.7</span>) <span style="color:#66d9ef">var</span> d
 }
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">@propertyWrapper
+
+@propertyWrapper
 <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Wrapper</span>&lt;T&gt; {
     <span style="color:#66d9ef">var</span> wrappedValue: T
 }
