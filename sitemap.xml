@@ -149,7 +149,8 @@ static func testDemo(){ let group = DispatchGroup() let models:[MoConfigItemMode
 import KSCrash class CrashReporterService { static var shared = CrashReporterService() private let emailAddress = &amp;#34;xiaohui.sysu@qq.com&amp;#34; func startCrashReport() { let installation = KSCrashInstallationEmail.sharedInstance() installation?.recipients = [emailAddress] installation?.subject = &amp;#34;Crash Report&amp;#34; installation?.message = &amp;#34;This is a crash report&amp;#34; installation?.filenameFmt = &amp;#34;crash-report-%d.crash.gz&amp;#34; installation?.reportStyle = KSCrashEmailReportStyleApple // KSCrash.sharedInstance()?.deleteBehaviorAfterSendAll = KSCDeleteOnSucess installation?.addConditionalAlert(withTitle: &amp;#34;Crash Detected&amp;#34;, message: &amp;#34;The app crashed last time it was launched. Send a crash report?&amp;#34;, yesAnswer: &amp;#34;Sure!&amp;#34;, noAnswer: &amp;#34;No thanks&amp;#34;) installation?.install() installation?.sendAllReports { (reports, completed, error) -&amp;gt; Void in if completed, let count = reports?.count { print(&amp;#34;Sent \(count)reports&amp;#34;) } else if let msg = error?.localizedDescription { print(&amp;#34;Failed to send reports: \(msg)&amp;#34;) } } } } 参考资料 参考资料 参考资料
 行号为0 如果源文件的行号为0，则表示回溯堆栈未能映射到原始代码中的特定代码行。这是因为编译器通过内联函数等方式对代码进行了优化，而崩溃时执行的代码与原始代码中的确切行并不对应，在这种情况下，只能利用函数名这个线索。
 修复崩溃 NSPlaceholderArray *** -[__NSPlaceholderArray initWithCapacity:]: capacity (18446744073709549746) is ridiculous 出现上面闪退，说明是在初始化的时候，容量太大，导致内存不够用。
-参考资料 参考资料 参考资料 </content>
+参考资料 参考资料 参考资料
+ </content>
     </entry>
     
      <entry>
