@@ -43,6 +43,18 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 设置文�
     </entry>
     
      <entry>
+        <title>UIView 使用</title>
+        <url>https://iihui.github.io/post/ios-uiview/</url>
+        <categories>
+          <category>iOS</category>
+        </categories>
+        <tags>
+          <tag>iOS</tag>
+        </tags>
+        <content type="html"> layoutIfNeeded与setNeedsLayout </content>
+    </entry>
+    
+     <entry>
         <title>Ruby 基础</title>
         <url>https://iihui.github.io/post/ruby-base/</url>
         <categories>
