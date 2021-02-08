@@ -51,7 +51,8 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 设置文�
         <tags>
           <tag>iOS</tag>
         </tags>
-        <content type="html"> layoutIfNeeded与setNeedsLayout </content>
+        <content type="html"> layoutIfNeeded与setNeedsLayout setNeedsLayout调整视图的子视图的布局时，在应用程序的主线程调用此方法。此方法记录请求并立即返回。因为此方法不强制立即更新，而是等待下一个更新周期，可以在更新任何视图之前使用它来使多个视图的布局无效。此行为允许您将所有的布局更新合并到一个更新周期，这通常更适合于性能。
+</content>
     </entry>
     
      <entry>

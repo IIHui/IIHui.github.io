@@ -13,7 +13,7 @@
       <pubDate>Sun, 07 Feb 2021 12:53:06 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/ios-uiview/</guid>
-      <description>layoutIfNeeded与setNeedsLayout</description>
+      <description>layoutIfNeeded与setNeedsLayout setNeedsLayout调整视图的子视图的布局时，在应用程序的主线程调用此方法。此方法记录请求并立即返回。因为此方法不强制立即更新，而是等待下一个更新周期，可以在更新任何视图之前</description>
     </item>
     
     <item>
