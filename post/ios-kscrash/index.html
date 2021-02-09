@@ -240,7 +240,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">765</span>
+<span class="leancloud-visitors-count">875</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -295,6 +295,9 @@ code.has-jax {
 </code></pre></div><p><a href="https://github.com/xiaozhuxiong121/PGDatePicker/issues/128">参考资料</a>
 <a href="https://stackoverflow.com/questions/9275371/heisenbug-nsinvalidargumentexception-capacity-is-ridiculous">参考资料</a>
 <a href="https://github.com/nicklockwood/SwipeView/issues/147">参考资料</a></p>
+<h2 id="nscamerausagedescription">NSCameraUsageDescription</h2>
+<p>如果在使用相机前没有给定权限，就会报<code>The app’s Info.plist must contain an NSCameraUsageDescription key with a string value explaining to the user how the app uses this data.</code>。此时，应该在工程的<code>info.plist</code>文件中添加<code>Privacy Camera Usage Description</code>，并给它一个值，如下图所示：</p>
+<p><img src="https://i.loli.net/2021/02/09/Ko4yXGAY7BbxHhi.jpg" alt="-c"></p>
 <hr>
 
     </div>
@@ -467,6 +470,7 @@ code.has-jax {
     <li><a href="#修复崩溃">修复崩溃</a>
       <ul>
         <li><a href="#nsplaceholderarray">NSPlaceholderArray</a></li>
+        <li><a href="#nscamerausagedescription">NSCameraUsageDescription</a></li>
       </ul>
     </li>
   </ul>

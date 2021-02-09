@@ -51,7 +51,7 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 设置文�
         <tags>
           <tag>iOS</tag>
         </tags>
-        <content type="html"> layoutIfNeeded与setNeedsLayout setNeedsLayout调整视图的子视图的布局时，在应用程序的主线程调用此方法。此方法记录请求并立即返回。因为此方法不强制立即更新，而是等待下一个更新周期，可以在更新任何视图之前使用它来使多个视图的布局无效。此行为允许您将所有的布局更新合并到一个更新周期，这通常更适合于性能。
+        <content type="html"> layoutIfNeeded与setNeedsLayout setNeedsLayout 调整视图的子视图的布局时，是在应用程序的主线程调用此方法的。此方法记录调整布局请求并立即返回。这个方法不会强制立即更新，而是等待下一个更新周期，才进行刷新页面。因此，此行为允许你将所有的布局更新合并到一个更新周期，这很适合用来优化性能。。
 </content>
     </entry>
     
@@ -163,6 +163,7 @@ import KSCrash class CrashReporterService { static var shared = CrashReporterSer
 行号为0 如果源文件的行号为0，则表示回溯堆栈未能映射到原始代码中的特定代码行。这是因为编译器通过内联函数等方式对代码进行了优化，而崩溃时执行的代码与原始代码中的确切行并不对应，在这种情况下，只能利用函数名这个线索。
 修复崩溃 NSPlaceholderArray *** -[__NSPlaceholderArray initWithCapacity:]: capacity (18446744073709549746) is ridiculous 出现上面闪退，说明是在初始化的时候，使用的预设值太大。可能是数组初始化时容量过大，也可能是数组初始化时容量为负数。而在这个项目中，是因为设置tableView的frame时用到了CGFloat.greatestFiniteMagnitude：
 参考资料 参考资料 参考资料
+NSCameraUsageDescription 如果在使用相机前没有给定权限，就会报The app’s Info.plist must contain an NSCameraUsageDescription key with a string value explaining to the user how the app uses this data.。此时，应该在工程的info.plist文件中添加Privacy Camera Usage Description，并给它一个值，如下图所示：
  </content>
     </entry>
     

@@ -240,7 +240,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">169</span>
+<span class="leancloud-visitors-count">149</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -252,7 +252,7 @@ code.has-jax {
     </header>
     <div class="post-body" itemprop="articleBody">
     <h2 id="layoutifneeded与setneedslayout">layoutIfNeeded与setNeedsLayout</h2>
-<p><code>setNeedsLayout</code>调整视图的子视图的布局时，在应用程序的主线程调用此方法。此方法记录请求并立即返回。因为此方法<font color=red>不强制立即更新，而是等待下一个更新周期</font>，可以在更新任何视图之前使用它来使多个视图的布局无效。此行为允许您将所有的布局更新合并到一个更新周期，这通常更适合于性能。</p>
+<p><code>setNeedsLayout</code> 调整视图的子视图的布局时，是在应用程序的主线程调用此方法的。此方法记录调整布局请求并立即返回。这个方法<font color=red>不会强制立即更新，而是等待下一个更新周期</font>，才进行刷新页面。因此，此行为允许你将所有的布局更新合并到一个更新周期，这很适合用来优化性能。。</p>
 
     </div>
     <footer class="post-footer">
