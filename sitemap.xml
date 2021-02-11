@@ -52,7 +52,7 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 设置文�
           <tag>iOS</tag>
         </tags>
         <content type="html"> layoutIfNeeded与setNeedsLayout setNeedsLayout setNeedsLayout 调整视图的子视图的布局时，是在应用程序的主线程调用此方法的。此方法记录调整布局请求并立即返回。这个方法不会强制立即更新，而是等待下一个更新周期，才进行刷新页面。因此，此行为允许你将所有的布局更新合并到一个更新周期，这很适合用来优化性能。
-layoutIfNeeded layoutIfNeeded方法一被调用，主线程会立即强制重新布局，它会从当前视图开始,一直到完成所有子视图的布局。
+layoutIfNeeded layoutIfNeeded方法一被调用，主线程会立即强制重新布局，它会从当前视图开始，一直到完成所有子视图的布局。
 </content>
     </entry>
     
