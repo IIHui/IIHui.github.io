@@ -251,10 +251,10 @@ code.has-jax {
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    <h2 id="layoutifneeded与setneedslayout">layoutIfNeeded与setNeedsLayout</h2>
-<h3 id="setneedslayout">setNeedsLayout</h3>
+    <h1 id="layoutifneeded与setneedslayout">layoutIfNeeded与setNeedsLayout</h1>
+<h2 id="setneedslayout">setNeedsLayout</h2>
 <p><code>setNeedsLayout</code> 调整视图的子视图的布局时，是在应用程序的主线程调用此方法的。此方法记录调整布局请求并立即返回。这个方法<font color=red>不会强制立即更新，而是等待下一个更新周期</font>，才进行刷新页面。因此，此行为允许你将所有的布局更新合并到一个更新周期，这很适合用来优化性能。</p>
-<h3 id="layoutifneeded">layoutIfNeeded</h3>
+<h2 id="layoutifneeded">layoutIfNeeded</h2>
 <p><code>layoutIfNeeded</code>方法一被调用，主线程会立即强制重新布局，它会从当前视图开始,一直到完成所有子视图的布局。</p>
 
     </div>
@@ -419,14 +419,10 @@ code.has-jax {
     <div class="post-toc">
         <div class="post-toc-content"><nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#layoutifneeded与setneedslayout">layoutIfNeeded与setNeedsLayout</a>
       <ul>
-        <li><a href="#layoutifneeded与setneedslayout">layoutIfNeeded与setNeedsLayout</a>
-          <ul>
-            <li><a href="#setneedslayout">setNeedsLayout</a></li>
-            <li><a href="#layoutifneeded">layoutIfNeeded</a></li>
-          </ul>
-        </li>
+        <li><a href="#setneedslayout">setNeedsLayout</a></li>
+        <li><a href="#layoutifneeded">layoutIfNeeded</a></li>
       </ul>
     </li>
   </ul>
