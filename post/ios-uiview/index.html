@@ -240,7 +240,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">208</span>
+<span class="leancloud-visitors-count">322</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -256,6 +256,7 @@ code.has-jax {
 <p><code>setNeedsLayout</code> 调整视图的子视图的布局时，是在应用程序的主线程调用此方法的。此方法记录调整布局请求并立即返回。这个方法<font color=red>不会强制立即更新，而是等待下一个更新周期</font>，才进行刷新页面。因此，此行为允许你将所有的布局更新合并到一个更新周期，这很适合用来优化性能。</p>
 <h2 id="layoutifneeded">layoutIfNeeded</h2>
 <p><code>layoutIfNeeded</code>方法一被调用，主线程会立即强制重新布局，它会从当前视图开始，一直到完成所有子视图的布局。</p>
+<p>如果要立即刷新，要先调用<code>setNeedsLayout</code>，把标记设为需要布局，然后马上调用<code>layoutIfNeeded</code>，实现布局。在视图第一次显示之前，标记肯定是需要刷新的，所以直接调用<code>layoutIfNeeded</code>就会进行立即更新。</p>
 
     </div>
     <footer class="post-footer">
