@@ -602,15 +602,6 @@
     </item>
     
     <item>
-      <title>Go 常量</title>
-      <link>https://iihui.github.io/post/go-const/</link>
-      <pubDate>Tue, 25 Jul 2017 09:45:49 +0000</pubDate>
-      
-      <guid>https://iihui.github.io/post/go-const/</guid>
-      <description>常量是一种表达式，其可以保证在编译阶段计算出表达式的值，并不需要等到运行时，从而使编译器得以知晓其值。所有常量本质上都属于基本类型：布尔型，字符串或数字。 特别说明 Go中常量可以是任意基本类型，也包括具名的基本类型(例如time.Durati</description>
-    </item>
-    
-    <item>
       <title>Go 基本类型</title>
       <link>https://iihui.github.io/post/go-type/</link>
       <pubDate>Mon, 24 Jul 2017 10:34:44 +0000</pubDate>

@@ -225,8 +225,8 @@ code.has-jax {
   <span class="post-meta-item-text">分类: </span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="https://iihui.github.io/categories/code" itemprop="url" rel="index">
-        <span itemprop="name">code</span>
+      <a href="https://iihui.github.io/categories/go" itemprop="url" rel="index">
+        <span itemprop="name">Go</span>
       </a>
       &nbsp; 
     </span>
@@ -240,7 +240,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1591</span>
+<span class="leancloud-visitors-count">1613</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -252,7 +252,7 @@ code.has-jax {
     </header>
     <div class="post-body" itemprop="articleBody">
     <blockquote>
-<p>常量是一种表达式，<font color=red>其可以保证在编译阶段计算出表达式的值</font>，并不需要等到运行时，从而使编译器得以知晓其值。所有常量<font color=red>本质上</font>都属于基本类型：布尔型，字符串或数字。</p>
+<p>常量是一种表达式，<font color=red>其可以保证在编译阶段计算出表达式的值</font>，并不需要等到运行时，从而使编译器得以知晓其值。常量值必须是编译期可确定的字符、字符串、数字或布尔值。可指定常量类型，或由编译器通过初始值推断。</p>
 </blockquote>
 <h2 id="特别说明">特别说明</h2>
 <p><code>Go</code>中<font color=red>常量可以是任意基本类型，也包括具名的基本类型</font>(例如<code>time.Duration</code>)。但是<font color=red>许多常量并不从属某一具体类型</font>。编译器将这些<font color=Orange>从属类型待定</font>的常量表示成某些值，<font color=Blue>这些值比基本类型的数字精度更高，且算术精度高于原生的机器精度，可以认为它们的精度至少达到<code>256</code>位。</font></p>
