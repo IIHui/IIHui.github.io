@@ -240,13 +240,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">462</span>
+<span class="leancloud-visitors-count">538</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">1 分钟</span>
+<span class="leancloud-visitors-count">2 分钟</span>
 </span>
       </div>
     </header>
@@ -254,9 +254,69 @@ code.has-jax {
     <h1 id="数据类型">数据类型</h1>
 <p>在<code>Java</code>中数据分为两大类，一类是基本数据类型<code>primitive type</code>，另一类是引用数据类型<code>reference types</code>，简称引用类型。基本数据类型的数据<font color=red>所占的内存大小是固定</font>的，在内存中存放的是数据值本身。引用数据类型在内存中存放的是<font color=red>指向该数据的地址</font>，不是数值本身，它往往由多个基本数据组成。</p>
 <h2 id="基本数据类型">基本数据类型</h2>
-<p><code>Java</code>中共定义了<code>4</code>类<code>8</code>种基本数据，其中<code>4</code>种整型：<code>byte,short,int,long</code>每种类型都是带符号的，<code>2</code>种浮点型：<code>float，double</code>，<code>1</code>种逻辑型:<code>boolean</code>，<code>1</code>种字符型:<code>char</code>。</p>
+<p><code>Java</code>中共定义了<code>4</code>类<code>8</code>种基本数据，其中<code>4</code>种整型：<code>byte,short,int,long</code>，每种类型都是带符号的；<code>2</code>种浮点型：<code>float，double</code>；<code>1</code>种逻辑型:<code>boolean</code>；<code>1</code>种字符型:<code>char</code>。</p>
 <p>整数有<code>3</code>种进制表示形式。八进制：以<code>0</code>开头，后跟多个<code>0～7</code>之间的数字。十六进制：以<code>0x</code>或<code>0X</code>开头，后跟多个<code>0～9</code>或者<code>a～f</code>之间的小写字母，或<code>A-F</code>之间的大写字母。十进制：用多个<code>0～9</code>之间的数字表示，如果有两位及两位以上其首位不能为<code>0</code>。</p>
 <p>一个整数<font color=red>隐含为<code>int</code>型</font>，当要将一个整数强制转换为长整数时，需要在后面添加字母<code>l</code>或<code>L</code>。一个浮点数隐含为<code>double</code>型，若在一个浮点数后面添加<code>f</code>或者<code>F</code>，可以将其强制转换为<code>float</code>型。</p>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>关键字</th>
+<th>占用字节数</th>
+<th>默认数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>布尔型</td>
+<td>boolean</td>
+<td>1</td>
+<td>False</td>
+</tr>
+<tr>
+<td>字节型</td>
+<td>byte</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>短整型</td>
+<td>short</td>
+<td>2</td>
+<td>0</td>
+</tr>
+<tr>
+<td>整型</td>
+<td>int</td>
+<td>4</td>
+<td>0</td>
+</tr>
+<tr>
+<td>长整型</td>
+<td>long</td>
+<td>8</td>
+<td>0</td>
+</tr>
+<tr>
+<td>单精度浮点型</td>
+<td>float</td>
+<td>4</td>
+<td>0.0F</td>
+</tr>
+<tr>
+<td>双精度浮点型</td>
+<td>double</td>
+<td>8</td>
+<td>0.0D</td>
+</tr>
+<tr>
+<td>字符型</td>
+<td>chart</td>
+<td>1</td>
+<td>‘\u000'</td>
+</tr>
+</tbody>
+</table>
 
     </div>
     <footer class="post-footer">
