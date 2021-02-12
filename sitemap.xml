@@ -52,6 +52,7 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 设置文�
           <tag>java</tag>
         </tags>
         <content type="html"> 数据类型 在Java中数据分为两大类，一类是基本数据类型primitive type，另一类是引用数据类型reference types,简称引用类型。基本数据类型的数据所占的内存大小是固定的，在内存中存放的是数据值本身。引用数据类型在内存中存放的是指向该数据的地址，不是数值本身，它往往由多个基本数据组成。
+基本数据类型 Java中共定义了4类8种基本数据，其中4种整型：byte,short,int,long，2种浮点型：float，double，1种逻辑型:boolean，1种字符型:char。
 </content>
     </entry>
     
