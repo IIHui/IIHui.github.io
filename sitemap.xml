@@ -52,11 +52,11 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 设置文�
           <tag>tool</tag>
         </tags>
         <content type="html">  鼠须管输入法是Mac OS上一款高度可定制的输入法软件，由于它没有图形界面，设置全靠修改yaml文件来实现。这篇文章用于记录折腾鼠须管时遇到的一些问题，防止下次再掉坑里。
- 中英文切换提示 在~/Library/Rime/build目录下的squirrel.yaml文件中加入:
+ 候选词数量 在~/Library/Rime/default.custom.yaml文件中修改menu/page_size的值，即可修改每页候选词的数量：
+patch: menu/page_size: 10 //每页候选词的数量 中英文切换提示 在~/Library/Rime/build目录下的squirrel.yaml文件中加入:
 good_old_caps_lock: false  候选词横排显示 在~/Library/Rime/build目录下的squirrel.yaml文件中加入：
 style: horizontal: true  候选词字体大小 在~/Library/Rime/build目录下的squirrel.yaml文件中加入：
-style: font_point: 19  候选词数量 在~/Library/Rime/default.custom.yaml文件中修改menu/page_size的值，即可修改每页候选词的数量：
-patch: menu/page_size: 10 //每页候选词的数量  预定义输入方案 在~/Library/Rime目录下的default.custom.yaml文件中加入：
+style: font_point: 19  预定义输入方案 在~/Library/Rime目录下的default.custom.yaml文件中加入：
 schema_list: #“输入选单”中激活的输入方案定义。 - schema: luna_pinyin_simp - schema: luna_pinyin - schema: luna_pinyin_fluency 候选词翻页 在~/Library/Rime目录下的default.custom.yaml文件中加入：
 key_binder: bindings: - { when: always, accept: Shift&#43;space, toggle: full_shape } # Shift&#43;space 切换全角/半角 - { when: has_menu, accept: bracketleft, send: Page_Up } //使用[向上翻页 - { when: has_menu, accept: bracketright, send: Page_Down } //使用]向下翻页  使用cap大小写切换 在~/Library/Rime目录下的default.custom.yaml文件中加入：
 patch: ascii_composer/good_old_caps_lock: false ascii_composer/switch_key: Caps_Lock: commit_code Shift_L: noop Shift_R: noop Control_L: noop Control_R: noop  生僻字规避 下载花园明朝字体
