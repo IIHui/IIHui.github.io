@@ -60,8 +60,8 @@ patch: menu/page_size: 10 #每页候选词的数量 输入方案 鼠须管提供
 schema_list: #“输入选单”中激活的输入方案定义。 - schema: luna_pinyin_simp - schema: luna_pinyin 翻页快捷键 鼠须管默认使用上下箭头来翻页候选词，这与默认输入法使用[和]翻页候选词不同。为了修改翻页快捷键，需要在~/Library/Rime/default.custom.yaml文件中添加如下快捷键：
 key_binder/bindings: - { when: has_menu, accept: bracketleft, send: Page_Up } #使用[向上翻页 - { when: has_menu, accept: bracketright, send: Page_Down } #使用]向下翻页 参考资料
 生僻字 默认情况下，很多生僻字都是显示为方框里面带一个问号，看着很难受。可以从这里或者这里下载花园明朝字体，安装即可解决生僻字显示。
-默认英文模式
-emoji 使用cap大小写切换 在~/Library/Rime目录下的default.custom.yaml文件中加入：
+默认英文模式 在鼠须管中，软件都可以设置默认英文模式，只要知道软件的Bundle identifier即可。默认英文模式的设置需要在~/Library/Rime/squirrel.custom.yaml文件中添加如下类似的代码：
+# 以下软件默认英文模式 app_options: com.apple.dt.Xcode: ascii_mode: true com.runningwithcrayons.Alfred: ascii_mode: true com.apple.Terminal: ascii_mode: true com.googlecode.iterm2: ascii_mode: true com.apple.finder: ascii_mode: true com.sublimetext.3: ascii_mode: true emoji 使用cap大小写切换 在~/Library/Rime目录下的default.custom.yaml文件中加入：
 patch: ascii_composer/good_old_caps_lock: false ascii_composer/switch_key: Caps_Lock: commit_code Shift_L: noop Shift_R: noop Control_L: noop Control_R: noop Java大写 在Intellij系列的软件中发现设置good_old_caps_lock: false后用CapsLock切换中英文输入法不生效，反而英文变成了大写，解决方案如下：
 cd /Library/Input Methods/Squirrel.app/Contents sudo /usr/libexec/PlistBuddy -c &amp;#39;Add :TICapsLockLanguageSwitchCapable bool true&amp;#39; Info.plist // 最后重新部署一下 参考资料
 视频压制
