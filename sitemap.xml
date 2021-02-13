@@ -58,9 +58,10 @@ preset_color_schemes: mojave_dark: name: &amp;#34;沙漠夜／Mojave Dark&amp;#3
 style: color_scheme: mojave_dark 候选词数量 首先在~/Library/Rime目录下创建全局配置文件default.custom.yaml，并在其中添加menu/page_size和对应的值，即可修改每页候选词的数量：
 patch: menu/page_size: 10 #每页候选词的数量 输入方案 鼠须管提供了一些常见的输入方案，可以在全局配置文件~/Library/Rime/default.custom.yaml文件中设置可以激活的预选输入方案，
 schema_list: #“输入选单”中激活的输入方案定义。 - schema: luna_pinyin_simp - schema: luna_pinyin 翻页快捷键 鼠须管默认使用上下箭头来翻页候选词，这与默认输入法使用[和]翻页候选词不同。为了修改翻页快捷键，需要在~/Library/Rime/default.custom.yaml文件中添加如下快捷键：
-key_binder/bindings: - { when: has_menu, accept: bracketleft, send: Page_Up } #使用[向上翻页 - { when: has_menu, accept: bracketright, send: Page_Down } #使用]向下翻页 使用cap大小写切换 在~/Library/Rime目录下的default.custom.yaml文件中加入：
-patch: ascii_composer/good_old_caps_lock: false ascii_composer/switch_key: Caps_Lock: commit_code Shift_L: noop Shift_R: noop Control_L: noop Control_R: noop  生僻字规避 下载花园明朝字体
-Java大写 在Intellij系列的软件中发现设置good_old_caps_lock: false后用CapsLock切换中英文输入法不生效，反而英文变成了大写，解决方案如下：
+key_binder/bindings: - { when: has_menu, accept: bracketleft, send: Page_Up } #使用[向上翻页 - { when: has_menu, accept: bracketright, send: Page_Down } #使用]向下翻页 参考资料
+生僻字 默认情况下，很多生僻字的显示都是方框，看着很难受。可以从这里或者这里下载并安装花园明朝字体，即可解决乱码问题。
+中英文混输 emoji 使用cap大小写切换 在~/Library/Rime目录下的default.custom.yaml文件中加入：
+patch: ascii_composer/good_old_caps_lock: false ascii_composer/switch_key: Caps_Lock: commit_code Shift_L: noop Shift_R: noop Control_L: noop Control_R: noop Java大写 在Intellij系列的软件中发现设置good_old_caps_lock: false后用CapsLock切换中英文输入法不生效，反而英文变成了大写，解决方案如下：
 cd /Library/Input Methods/Squirrel.app/Contents sudo /usr/libexec/PlistBuddy -c &amp;#39;Add :TICapsLockLanguageSwitchCapable bool true&amp;#39; Info.plist // 最后重新部署一下 参考资料
 视频压制
 </content>
