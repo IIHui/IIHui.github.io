@@ -6,7 +6,16 @@
     <description>Recent content in tool on Keep It Simple</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 10 Jun 2020 16:17:21 +0000</lastBuildDate><atom:link href="https://iihui.github.io/categories/tool/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 Feb 2021 08:25:42 +0000</lastBuildDate><atom:link href="https://iihui.github.io/categories/tool/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>鼠须管</title>
+      <link>https://iihui.github.io/post/tool-squirrel/</link>
+      <pubDate>Fri, 12 Feb 2021 08:25:42 +0000</pubDate>
+      
+      <guid>https://iihui.github.io/post/tool-squirrel/</guid>
+      <description>鼠须管输入法是Mac OS上一款高度可定制的输入法软件，由于它没有图形界面，设置全靠修改yaml文件来实现。这篇文章用于记录折腾鼠须管时遇到的一些问题，防止下次再掉坑里。 中英文切换提示 在~/Library/Rime/build目录下的squi</description>
+    </item>
+    
     <item>
       <title>Word 小技巧</title>
       <link>https://iihui.github.io/post/sofer-word/</link>

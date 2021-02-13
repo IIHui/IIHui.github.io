@@ -6,7 +6,7 @@
     <description>Recent content in Posts on Keep It Simple</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 11 Feb 2021 17:27:42 +0000</lastBuildDate><atom:link href="https://iihui.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 Feb 2021 08:25:42 +0000</lastBuildDate><atom:link href="https://iihui.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hugo Next 主题</title>
       <link>https://iihui.github.io/post/hugo-next/</link>
@@ -14,6 +14,15 @@
       
       <guid>https://iihui.github.io/post/hugo-next/</guid>
       <description>从兰陵子处下载了Next主题，修改了主题目录下的config.toml配置文件(配置文件路径为themes/next/config.toml)。但发现有很多地方还是需要修改才能满足自己的需求，因为对前端了解较少，以此为记。 修改主题 首先从这里</description>
+    </item>
+    
+    <item>
+      <title>鼠须管</title>
+      <link>https://iihui.github.io/post/tool-squirrel/</link>
+      <pubDate>Fri, 12 Feb 2021 08:25:42 +0000</pubDate>
+      
+      <guid>https://iihui.github.io/post/tool-squirrel/</guid>
+      <description>鼠须管输入法是Mac OS上一款高度可定制的输入法软件，由于它没有图形界面，设置全靠修改yaml文件来实现。这篇文章用于记录折腾鼠须管时遇到的一些问题，防止下次再掉坑里。 中英文切换提示 在~/Library/Rime/build目录下的squi</description>
     </item>
     
     <item>
