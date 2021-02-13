@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1072</span>
+<span class="leancloud-visitors-count">1080</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -319,12 +319,10 @@ code.has-jax {
    - <span style="color:#f92672">schema</span>: <span style="color:#ae81ff">luna_pinyin_simp</span>
    - <span style="color:#f92672">schema</span>: <span style="color:#ae81ff">luna_pinyin</span>
 </code></pre></div><h1 id="翻页快捷键">翻页快捷键</h1>
-<p>在<code>~/Library/Rime/default.custom.yaml</code>文件中的<code>key_binder/bindings</code>中添加如下快捷键：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">key_binder</span>:
-  <span style="color:#f92672">bindings</span>:
-    - { <span style="color:#f92672">when: always, accept: Shift+space, toggle</span>: <span style="color:#ae81ff">full_shape }</span> <span style="color:#75715e"># Shift+space 切换全角/半角</span>
-    - { <span style="color:#f92672">when: has_menu, accept: bracketleft, send</span>: <span style="color:#ae81ff">Page_Up }     //使用[向上翻页</span>
-    - { <span style="color:#f92672">when: has_menu, accept: bracketright, send</span>: <span style="color:#ae81ff">Page_Down }  //使用]向下翻页</span>
+<p>鼠须管默认使用上下箭头来翻页候选词，这与默认输入法使用<code>[</code>和<code>]</code>翻页候选词不同。为了修改翻页快捷键，需要在<code>~/Library/Rime/default.custom.yaml</code>文件中添加如下快捷键：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  <span style="color:#f92672">key_binder/bindings</span>:
+    - { <span style="color:#f92672">when: has_menu, accept: bracketleft, send</span>: <span style="color:#ae81ff">Page_Up }</span> <span style="color:#75715e">#使用[向上翻页</span>
+    - { <span style="color:#f92672">when: has_menu, accept: bracketright, send</span>: <span style="color:#ae81ff">Page_Down }</span> <span style="color:#75715e">#使用]向下翻页</span>
 </code></pre></div><h1 id="中英文切换提示">中英文切换提示</h1>
 <p>在<code>~/Library/Rime/build</code>目录下的<code>squirrel.yaml</code>文件中加入:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">good_old_caps_lock</span>: <span style="color:#66d9ef">false</span>
