@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">778</span>
+<span class="leancloud-visitors-count">1056</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">2 分钟</span>
+<span class="leancloud-visitors-count">3 分钟</span>
 </span>
       </div>
     </header>
@@ -256,9 +256,59 @@ code.has-jax {
 <p>鼠须管输入法是<code>Mac OS</code>上一款高度可定制的输入法软件，它没有图形界面，设置全靠修改<code>yaml</code>文件来实现。这篇文章用于记录折腾鼠须管<code>0.15.1</code>时遇到的一些问题。</p>
 </blockquote>
 <h1 id="横排显示">横排显示</h1>
-<p>首先在<code>~/Library/Rime</code>目录下创建发行版配置文件<code>squirrel.custom.yaml</code>文件，然后在其中添加：</p>
+<p>鼠须管默认是竖排显示候选词的，为了修改为横排显示，首先在<code>~/Library/Rime</code>目录下创建发行版配置文件<code>squirrel.custom.yaml</code>文件，然后在其中添加如下代码：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">patch</span>:
   <span style="color:#f92672">style/horizontal</span>: <span style="color:#66d9ef">true</span> <span style="color:#75715e">#注意style前是tab</span>
+</code></pre></div><h1 id="自定义配色">自定义配色</h1>
+<p>鼠须管默认的配色个人觉得很难看，可以在<code>~/Library/Rime/squirrel.custom.yaml</code>文件中添加一些自定义的主题：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  <span style="color:#f92672">preset_color_schemes</span>:
+    <span style="color:#f92672">mojave_dark</span>:
+      <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;沙漠夜／Mojave Dark&#34;</span>
+      <span style="color:#f92672">author</span>: <span style="color:#e6db74">&#34;xiehuc &lt;xiehuc@gmail.com&gt;&#34;</span>
+      <span style="color:#f92672">horizontal</span>: <span style="color:#66d9ef">true</span>
+      <span style="color:#f92672">inline_preedit</span>: <span style="color:#66d9ef">true</span>
+      <span style="color:#f92672">candidate_format</span>: <span style="color:#e6db74">&#34;%c %@&#34;</span>
+      <span style="color:#f92672">corner_radius</span>: <span style="color:#ae81ff">5</span>
+      <span style="color:#f92672">hilited_corner_radius</span>: <span style="color:#ae81ff">0</span>
+      <span style="color:#f92672">border_height</span>: <span style="color:#ae81ff">6</span>
+      <span style="color:#f92672">border_width</span>: <span style="color:#ae81ff">12</span>
+      <span style="color:#f92672">border_color_width</span>: <span style="color:#ae81ff">0</span>
+      <span style="color:#f92672">font_face</span>: <span style="color:#ae81ff">PingFangSC</span>
+      <span style="color:#f92672">font_point</span>: <span style="color:#ae81ff">16</span>
+      <span style="color:#f92672">label_font_point</span>: <span style="color:#ae81ff">13</span>
+      <span style="color:#f92672">text_color</span>: <span style="color:#ae81ff">0xdedddd</span>
+      <span style="color:#f92672">back_color</span>: <span style="color:#ae81ff">0x3c3c3c</span>
+      <span style="color:#f92672">label_color</span>: <span style="color:#ae81ff">0x888785</span>
+      <span style="color:#f92672">border_color</span>: <span style="color:#ae81ff">0x3c3c3c</span>
+      <span style="color:#f92672">candidate_text_color</span>: <span style="color:#ae81ff">0xdedddd</span>
+      <span style="color:#f92672">hilited_text_color</span>: <span style="color:#ae81ff">0xdedddd</span>
+      <span style="color:#f92672">hilited_back_color</span>: <span style="color:#ae81ff">0x3c3c3c</span>
+      <span style="color:#f92672">hilited_candidate_text_color</span>: <span style="color:#ae81ff">0xefefef</span>
+      <span style="color:#75715e"># hilited_candidate_back_color: 0xcb5d00</span>
+      <span style="color:#f92672">hilited_candidate_label_color</span>: <span style="color:#ae81ff">0xefefef</span>
+      <span style="color:#f92672">comment_text_color</span>: <span style="color:#ae81ff">0xdedddd</span>
+    <span style="color:#f92672">clean_white</span>:
+      <span style="color:#f92672">author</span>: <span style="color:#e6db74">&#34;Chongyu Zhu &lt;lembacon@gmail.com&gt;, based on 搜狗「简约白」&#34;</span>
+      <span style="color:#f92672">back_color</span>: <span style="color:#ae81ff">0xeeeeee</span>
+      <span style="color:#f92672">border_height</span>: <span style="color:#ae81ff">6</span>
+      <span style="color:#f92672">border_width</span>: <span style="color:#ae81ff">6</span>
+      <span style="color:#f92672">candidate_format</span>: <span style="color:#e6db74">&#34;%c %@&#34;</span>
+      <span style="color:#f92672">candidate_text_color</span>: <span style="color:#ae81ff">0x000000</span>
+      <span style="color:#f92672">comment_text_color</span>: <span style="color:#ae81ff">0x808080</span>
+      <span style="color:#f92672">corner_radius</span>: <span style="color:#ae81ff">6</span>
+      <span style="color:#f92672">font_point</span>: <span style="color:#ae81ff">16</span>
+      <span style="color:#f92672">hilited_candidate_back_color</span>: <span style="color:#ae81ff">0xeeeeee</span>
+      <span style="color:#f92672">hilited_candidate_label_color</span>: <span style="color:#ae81ff">0xa0c98915</span>
+      <span style="color:#f92672">hilited_candidate_text_color</span>: <span style="color:#ae81ff">0xc98915</span>
+      <span style="color:#f92672">hilited_text_color</span>: <span style="color:#ae81ff">0x000000</span>
+      <span style="color:#f92672">horizontal</span>: <span style="color:#66d9ef">true</span>
+      <span style="color:#f92672">label_color</span>: <span style="color:#ae81ff">0x888888</span>
+      <span style="color:#f92672">label_font_point</span>: <span style="color:#ae81ff">12</span>
+      <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;简约白／Clean White&#34;</span>
+      <span style="color:#f92672">text_color</span>: <span style="color:#ae81ff">0x808080</span>
+</code></pre></div><p>接着修改<code>style/color_scheme</code>的值，就可以完成颜色主题切换：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">style</span>:
+    <span style="color:#f92672">color_scheme</span>: <span style="color:#ae81ff">mojave_dark</span>
 </code></pre></div><h1 id="候选词数量">候选词数量</h1>
 <p>首先在<code>~/Library/Rime</code>目录下创建全局配置文件<code>default.custom.yaml</code>，并在其中添加<code>menu/page_size</code>和对应的值，即可修改每页候选词的数量：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">patch</span>:
@@ -471,6 +521,7 @@ sudo /usr/libexec/PlistBuddy -c <span style="color:#e6db74">&#39;Add :TICapsLock
         <div class="post-toc-content"><nav id="TableOfContents">
   <ul>
     <li><a href="#横排显示">横排显示</a></li>
+    <li><a href="#自定义配色">自定义配色</a></li>
     <li><a href="#候选词数量">候选词数量</a></li>
     <li><a href="#修改候选词翻页">修改候选词翻页</a></li>
     <li><a href="#中英文切换提示">中英文切换提示</a></li>
