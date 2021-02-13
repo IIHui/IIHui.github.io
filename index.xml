@@ -22,7 +22,7 @@
       <pubDate>Thu, 11 Feb 2021 17:27:42 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/java-base/</guid>
-      <description>数据类型 在Java中数据分为两大类，一类是基本数据类型primitive type，另一类是引用数据类型reference types，简称引用类型。基本数据类型的数据所占的内存大小是固定的，在内存中存放的是数据值本身。引用数据类型在内存中存放</description>
+      <description>数据类型 在Java中数据分为两大类，一类是基本数据类型primitive type，另一类是引用类型reference types。基本类型的数据所占的内存大小是固定的，在内存中存放的是数据值本身。引用类型在内存中存放的是指向该数据的地址，不是</description>
     </item>
     
     <item>
