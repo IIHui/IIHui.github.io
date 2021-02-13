@@ -52,8 +52,8 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 设置文�
           <tag>tool</tag>
         </tags>
         <content type="html">  鼠须管输入法是Mac OS上一款高度可定制的输入法软件，它没有图形界面，设置全靠修改yaml文件来实现。这篇文章用于记录折腾鼠须管0.15.1时遇到的一些问题。
- 横排显示 在~/Library/Rime/build目录下的squirrel.yaml文件中加入：
-style: horizontal: true 候选词数量 首先在~/Library/Rime目录下创建default.custom.yaml文件，并在其中添加menu/page_size和对应的值，即可修改每页候选词的数量：
+ 横排显示 首先在~/Library/Rime目录下创建发行版配置文件squirrel.custom.yaml文件，然后在其中添加：
+patch: style/horizontal: true #注意style前是tab 候选词数量 首先在~/Library/Rime目录下创建全局配置文件default.custom.yaml，并在其中添加menu/page_size和对应的值，即可修改每页候选词的数量：
 patch: menu/page_size: 10 #每页候选词的数量 修改候选词翻页 在~/Library/Rime/default.custom.yaml文件中的key_binder/bindings中添加如下快捷键：
 key_binder: bindings: - { when: always, accept: Shift&#43;space, toggle: full_shape } # Shift&#43;space 切换全角/半角 - { when: has_menu, accept: bracketleft, send: Page_Up } //使用[向上翻页 - { when: has_menu, accept: bracketright, send: Page_Down } //使用]向下翻页 中英文切换提示 在~/Library/Rime/build目录下的squirrel.yaml文件中加入:
 good_old_caps_lock: false  候选词字体大小 在~/Library/Rime/build目录下的squirrel.yaml文件中加入：
