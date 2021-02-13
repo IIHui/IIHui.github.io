@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1274</span>
+<span class="leancloud-visitors-count">1469</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -343,6 +343,23 @@ code.has-jax {
     <span style="color:#f92672">com.sublimetext.3</span>:
       <span style="color:#f92672">ascii_mode</span>: <span style="color:#66d9ef">true</span>
 </code></pre></div><h1 id="emoji">Emoji</h1>
+<p>首先切入输入法到朙月拼英文简化字，接着从<a href="https://github.com/rime/rime-emoji">这里</a>下载<code>opencc</code>文件夹，将其放入到<code>~/Library/Rime/</code>目录下。然后在<code>~/Library/Rime/</code>目录下创建<code>luna_pinyin_simp.custom.yaml</code>文件，复制如下代码到其中：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># encoding: utf-8</span>
+
+<span style="color:#f92672">patch</span>:
+  <span style="color:#f92672">switches/@next</span>:
+    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">emoji_suggestion</span>
+    <span style="color:#f92672">reset</span>: <span style="color:#ae81ff">1</span>
+    <span style="color:#f92672">states</span>: [ <span style="color:#e6db74">&#34;🈚️️\uFE0E&#34;</span>, <span style="color:#e6db74">&#34;🈶️️\uFE0F&#34;</span> ]
+  <span style="color:#f92672">&#39;engine/filters/@before 0&#39;</span>:
+    <span style="color:#ae81ff">simplifier@emoji_suggestion</span>
+  <span style="color:#f92672">emoji_suggestion</span>:
+    <span style="color:#f92672">opencc_config</span>: <span style="color:#ae81ff">emoji.json</span>
+    <span style="color:#f92672">option_name</span>: <span style="color:#ae81ff">emoji_suggestion</span>
+    <span style="color:#f92672">tips</span>: <span style="color:#ae81ff">all</span>
+</code></pre></div><p><a href="https://github.com/rime/rime-emoji">参考资料</a>
+<a href="https://github.com/rtransformation/rime-opencc_emoji_symbols">参考资料</a>
+<a href="https://jiz4oh.com/2020/10/how-to-use-rime/">参考资料</a></p>
 <h1 id="大写键中英文切换">大写键中英文切换</h1>
 <p>系统默认输入法，可以设置大写键进行中英文切换，鼠须管也可以设置大写键进行中英文切换。需要在<code>~/Library/Rime/default.custom.yaml</code>文件中加入如下代码：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">patch</span>:
