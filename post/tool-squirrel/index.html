@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1469</span>
+<span class="leancloud-visitors-count">3135</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">3 分钟</span>
+<span class="leancloud-visitors-count">7 分钟</span>
 </span>
       </div>
     </header>
@@ -375,7 +375,30 @@ code.has-jax {
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cd /Library/Input Methods/Squirrel.app/Contents
 sudo /usr/libexec/PlistBuddy -c <span style="color:#e6db74">&#39;Add :TICapsLockLanguageSwitchCapable bool true&#39;</span> Info.plist
 </code></pre></div><p><a href="https://github.com/rime/squirrel/issues/375">参考资料</a></p>
-
+<h1 id="快捷符号">快捷符号</h1>
+<p>快捷符号可以在中文状态下，通过直接输入<code>/dn</code>来调出特殊符号。需要在<code>~/Library/Rime/</code>目录下的<code>luna_pinyin_simp.custom.yaml</code>文件中，添加如下配置：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  <span style="color:#f92672">punctuator</span>:
+    <span style="color:#f92672">import_preset</span>: <span style="color:#ae81ff">symbols</span>
+    <span style="color:#f92672">symbols</span>:
+      <span style="color:#f92672">&#34;/fs&#34;: </span>[<span style="color:#ae81ff">½,‰,¼,⅓,⅔,¾,⅒,½,⅓,⅔,¼,¾,⅕,⅖,⅗,⅘,⅙,⅚,⅐,⅛,⅜,⅝,⅞,⅑,⅒,⅟,↉,℀,℁,℅,℆,⅍]</span>
+      <span style="color:#f92672">&#34;/dq&#34;: </span>[<span style="color:#ae81ff">🌍,🌎,🌏,🌐,🌑,🌒,🌓,🌔,🌕,🌖,🌗,🌘,🌙,🌚,🌛,🌜,🌝,🌞,⭐,🌟,🌠,⛅,⚡,❄,🔥,💧,🌊]</span>
+      <span style="color:#f92672">&#34;/jt&#34;: </span>[<span style="color:#ae81ff">⬆,↗,➡,↘,⬇,↙,⬅,↖,↕,↔,↩,↪,⤴,⤵,🔃,🔄,🔙,🔚,🔛,🔜,🔝]</span>
+      <span style="color:#f92672">&#34;/sg&#34;: </span>[<span style="color:#ae81ff">🍇,🍈,🍉,🍊,🍋,🍌,🍍,🍎,🍏,🍐,🍑,🍒,🍓,🍅,🍆,🌽,🍄,🌰,🍞,🍖,🍗,🍔,🍟,🍕,🍳,🍲,🍱,🍘,🍙,🍚,🍛,🍜,🍝,🍠,🍢,🍣,🍤,🍥,🍡,🍦,🍧,🍨,🍩,🍪,🎂,🍰,🍫,🍬,🍭,🍮,🍯,🍼,🍵,🍶,🍷,🍸,🍹,🍺,🍻,🍴]</span>
+      <span style="color:#f92672">&#34;/dw&#34;: </span>[<span style="color:#ae81ff">🙈,🙉,🙊,🐵,🐒,🐶,🐕,🐩,🐺,🐱,😺,😸,😹,😻,😼,😽,🙀,😿,😾,🐈,🐯,🐅,🐆,🐴,🐎,🐮,🐂,🐃,🐄,🐷,🐖,🐗,🐽,🐏,🐑,🐐,🐪,🐫,🐘,🐭,🐁,🐀,🐹,🐰,🐇,🐻,🐨,🐼,🐾,🐔,🐓,🐣,🐤,🐥,🐦,🐧,🐸,🐊,🐢,🐍,🐲,🐉,🐳,🐋,🐬,🐟,🐠,🐡,🐙,🐚,🐌,🐛,🐜,🐝,🐞,🦋]</span>
+      <span style="color:#f92672">&#34;/bq&#34;: </span>[<span style="color:#ae81ff">😀,😁,😂,😃,😄,😅,😆,😉,😊,😋,😎,😍,😘,😗,😙,😚,😇,😐,😑,😶,😏,😣,😥,😮,😯,😪,😫,😴,😌,😛,😜,😝,😒,😓,😔,😕,😲,😷,😖,😞,😟,😤,😢,😭,😦,😧,😨,😬,😰,😱,😳,😵,😡,😠]</span>
+      <span style="color:#f92672">&#34;/ss&#34;: </span>[<span style="color:#ae81ff">💪,👈,👉,👆,👇,✋,👌,👍,👎,✊,👊,👋,👏,👐]</span>
+      <span style="color:#f92672">&#34;/dn&#34;: </span>[<span style="color:#ae81ff">⌘, ⌥, ⇧, ⌃, ⎋, ⇪, , ⌫, ⌦, ↩︎, ⏎, ↑, ↓, ←, →, ↖, ↘, ⇟, ⇞]</span>
+      <span style="color:#f92672">&#34;/fh&#34;: </span>[<span style="color:#ae81ff">©,®,℗,ⓘ,℠,™,℡,␡,♂,♀,☉,☊,☋,☌,☍,☑︎,☒,☜,☝,☞,☟,✎,✄,♻,⚐,⚑,⚠]</span>
+      <span style="color:#f92672">&#34;/xh&#34;: </span>[<span style="color:#ae81ff">＊,×,✱,★,☆,✩,✧,❋,❊,❉,❈,❅,✿,✲]</span>
+      <span style="color:#f92672">&#34;/pk&#34;: </span>[<span style="color:#ae81ff">♠,♥,♦,♣,♤,♡,♧,♢,🂡,🂱,🃁,🃑,🂢,🂲,🃂,🃒,🂣,🂳,🃃,🃓,🂤,🂴,🃄,🃔,🂥,🂵,🃅,🃕,🂦,🂶,🃆,🃖,🂧,🂷,🃇,🃗,🂨,🂸,🃈,🃘,🂩,🂹,🃉,🃙,🂪,🂺,🃊,🃚,🂫,🂻,🃋,🃛,🂬,🂼,🃌,🃜,🂭,🂽,🃍,🃝,🂮,🂾,🃎,🃞,🂠,🂿,🃏,🃟]</span>
+      <span style="color:#f92672">&#34;/mj&#34;: </span>[<span style="color:#ae81ff">🀀,🀁,🀂,🀃,🀄,🀅,🀆,🀇,🀈,🀉,🀊,🀋,🀌,🀍,🀎,🀏,🀐,🀑,🀒,🀓,🀔,🀕,🀖,🀗,🀘,🀙,🀚,🀛,🀜,🀝,🀞,🀟,🀠,🀡,🀢,🀣,🀤,🀥,🀦,🀧,🀨,🀩,🀪,🀫]</span>
+      <span style="color:#f92672">&#34;/lm&#34;: </span>[<span style="color:#ae81ff">ⅰ,ⅱ,ⅲ,ⅳ,ⅴ,ⅵ,ⅶ,ⅷ,ⅸ,ⅹ,ⅺ,ⅻ,ⅼ,ⅽ,ⅾ,ⅿ,Ⅰ,Ⅱ,Ⅲ,Ⅳ,Ⅴ,Ⅵ,Ⅶ,Ⅷ,Ⅸ,Ⅹ,Ⅺ,Ⅻ,Ⅼ,Ⅽ,Ⅾ,Ⅿ]</span>
+      <span style="color:#f92672">&#34;/cf&#34;: </span>[<span style="color:#ae81ff">+,−,×,÷,±,∓,∔,⁺,⁻,⁼,⁽,⁾,ⁿ,₊,₋,₌,₍,₎,ª,º,℔,℥,ℨ,ℬ,ℊ,µ,ℌ,ℑ,℞,ℳ,℃,℉,℀,℁,℅,℆,ℾ,ℿ,⅀,ℽ,¬,∩,∪,∝,∞,ℵ,ℶ,ℷ,ℸ,ℏ,ℇ,∀,∁,∂,℮,∃,∄,∅,∆,∇,⊂,⊃,⊄,⊅,⊆,⊇,⊈,⊉,⊊,⊋,∈,∉]</span>
+      <span style="color:#f92672">&#34;/jh&#34;: </span>[<span style="color:#ae81ff">∊,∋,∌,∍,∧,∨,&lt;,≤,≥,≦,≧,≨,≩,≪,≫,≭,≮,≯,≰,≱,≲,≳,≴,≶,≷,≸,≹,≺,≻,≼,≽,≾,≿,⊀,⊁,∎,∏,∐,∑,∕,∖,∗,∘,∙]</span>
+      <span style="color:#f92672">&#34;/gh&#34;: </span>[<span style="color:#ae81ff">√,∛,∜,∟,∠,∡,∢,∣,∤,∥,∦,∫,∬,∭,∮,∯,∰,∱,∲,∳,⌠,⎮,⌡,∴,∵,∶,∷,∸,∹,∺,∻,∼,∽,∾,∿,≀,≁,≂,≃,≄,≅,≆,≇,≈,≉,≊,≋,≌,≍,≎,≏,≐,≑,≒,≓,≔,≕,≖,≗,≘,≙,≚,≛,≜,≝,≞,≟,≠,≡,≢,≣,≬,⊌,⊍,⊎,⊏,⊐,⊑,⊒,⊓,⊔]</span>
+      <span style="color:#f92672">&#34;/bh&#34;: </span>[<span style="color:#ae81ff">㇀,㇁,㇂,㇃,㇄,㇅,㇆,㇇,㇈,㇉,㇊,㇋,㇌,㇍,㇎,㇏,㇐,㇑,㇒,㇓,㇔,㇕,㇖,㇗,㇘,㇙,㇚,㇛,㇜,㇝,㇞,㇟,㇠,㇡,㇢,㇣]</span>
+      <span style="color:#f92672">&#34;/bm&#34;: </span>[<span style="color:#ae81ff">⓪,①,②,③,④,⑤,⑥,⑦,⑧,⑨,⑩,⑪,⑫,⑬,⑭,⑮,⑯,⑰,⑱,⑲,⑳,⓿,❶,❷,❸,❹,❺,❻,❼,❽,❾,❿,⓫,⓬,⓭,⓮,⓯,⓰,⓱,⓲,⓳,⓴]</span>
+</code></pre></div>
     </div>
     <footer class="post-footer">
         
@@ -551,6 +574,7 @@ sudo /usr/libexec/PlistBuddy -c <span style="color:#e6db74">&#39;Add :TICapsLock
         <li><a href="#切换无效">切换无效</a></li>
       </ul>
     </li>
+    <li><a href="#快捷符号">快捷符号</a></li>
   </ul>
 </nav></div>
     </div>
