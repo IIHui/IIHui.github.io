@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">4010</span>
+<span class="leancloud-visitors-count">4121</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -431,7 +431,16 @@ sudo /usr/libexec/PlistBuddy -c <span style="color:#e6db74">&#39;Add :TICapsLock
   - <span style="color:#ae81ff">luna_pinyin.idiom</span>
   - <span style="color:#ae81ff">luna_pinyin.sougou</span>
 ...
-</code></pre></div><p><a href="http://pythonic.zoomquiet.top/data/20160628220349/index.html">参考资料</a></p>
+</code></pre></div><h1 id="中英切换直接上屏">中英切换直接上屏</h1>
+<p>在中文输入状态的时候输入英文，按<code>shift</code>键后字符上屏，然后还得回车一下，可以将<code>shift</code>设置为直接上屏，不需要再按回车：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  <span style="color:#f92672">ascii_composer/switch_key</span>:
+    <span style="color:#f92672">Caps_Lock</span>: <span style="color:#ae81ff">commit_code</span>
+    <span style="color:#f92672">Control_L</span>: <span style="color:#ae81ff">noop</span>
+    <span style="color:#f92672">Control_R</span>: <span style="color:#ae81ff">noop</span>
+    <span style="color:#75715e"># 按下左 shift 英文字符直接上屏，不需要再次回车，输入法保持英文状态</span>
+    <span style="color:#f92672">Shift_L</span>: <span style="color:#ae81ff">commit_code</span>
+    <span style="color:#f92672">Shift_R</span>: <span style="color:#ae81ff">noop</span>
+</code></pre></div><p><a href="https://mritd.com/2019/03/23/oh-my-rime/">参考资料</a></p>
 
     </div>
     <footer class="post-footer">
@@ -610,6 +619,7 @@ sudo /usr/libexec/PlistBuddy -c <span style="color:#e6db74">&#39;Add :TICapsLock
     </li>
     <li><a href="#快捷符号">快捷符号</a></li>
     <li><a href="#增加词库">增加词库</a></li>
+    <li><a href="#中英切换直接上屏">中英切换直接上屏</a></li>
   </ul>
 </nav></div>
     </div>
