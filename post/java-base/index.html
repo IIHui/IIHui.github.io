@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">774</span>
+<span class="leancloud-visitors-count">1235</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">2 分钟</span>
+<span class="leancloud-visitors-count">3 分钟</span>
 </span>
       </div>
     </header>
@@ -329,16 +329,44 @@ code.has-jax {
 </li>
 </ul>
 <h3 id="自动类型转换">自动类型转换</h3>
-<p>已经定义好的数值型变量，若是想以另一种数值类型表示，在以下条件同时成立时，自动进行数据类型的转换：</p>
+<p>已经定义好的数值型变量，若是想以另一种数值类型表示，在以下条件同时成立时，将自动进行数据类型的转换：</p>
 <ul>
 <li>
 <p>转换前的数据类型与转换后的类型兼容。</p>
 </li>
 <li>
-<p>转换后的数据类型的表示范围比转换前的类型大。</p>
+<p>转换后的数据类型的表示范围<font color=red>比转换前的类型大</font>。转换从短到长的优先关系为<code>byte→short→char→int→long→float→double</code>。</p>
 </li>
 </ul>
-
+<p>在一个表达式中若有整数类型为<code>short</code>或<code>byte</code>的数据参加运算，为了避免溢出，Java会将表达式中的<code>short</code>或<code>byte</code>类型自动转换为<code>int</code>。</p>
+<h3 id="强制类型转换">强制类型转换</h3>
+<p>如果要将较长的数据转换为较短的数据时，就要进行强制类型转换。强制类型转换的格式为：<code>(预转换的数据类型) 变量名</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Convert</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> 155<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">int</span> b <span style="color:#f92672">=</span> 9<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">float</span> g<span style="color:#f92672">,</span>h<span style="color:#f92672">;</span>
+        g <span style="color:#f92672">=</span> a<span style="color:#f92672">/</span>b<span style="color:#f92672">;</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>g<span style="color:#f92672">);</span> <span style="color:#75715e">//17.0
+</span><span style="color:#75715e"></span>        h <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">float</span><span style="color:#f92672">)</span> a<span style="color:#f92672">/</span>b<span style="color:#f92672">;</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>h<span style="color:#f92672">);</span> <span style="color:#75715e">//17.222221
+</span><span style="color:#75715e"></span>    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h2 id="字符串数字转换">字符串数字转换</h2>
+<p>数字字符串转为<code>byte，short，int，long，float，double</code>等数据类型，或将字符串<code>ture,false</code>转换为相应的逻辑类型，可以使用<code>XXX.parseXXX()</code>，其中<code>XXX</code>代表<code>Byte,Short,Integer,Long,Float,Double,Boolean</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">int</span> c <span style="color:#f92672">=</span> Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">parseInt</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;123&#34;</span><span style="color:#f92672">);</span>
+<span style="color:#66d9ef">short</span> d <span style="color:#f92672">=</span> Short<span style="color:#f92672">.</span><span style="color:#a6e22e">parseShort</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;34&#34;</span><span style="color:#f92672">);</span>
+<span style="color:#66d9ef">long</span> e <span style="color:#f92672">=</span> Long<span style="color:#f92672">.</span><span style="color:#a6e22e">parseLong</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;345&#34;</span><span style="color:#f92672">);</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>c<span style="color:#f92672">);</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>d<span style="color:#f92672">);</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>e<span style="color:#f92672">);</span>
+<span style="color:#66d9ef">boolean</span> f <span style="color:#f92672">=</span> Boolean<span style="color:#f92672">.</span><span style="color:#a6e22e">parseBoolean</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">);</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>f<span style="color:#f92672">);</span>
+</code></pre></div><p>字符串可用加号来操作连接操作，所以若其中某个操作数不是字符串，该操作在连接之前会自动将其转换为字符串，所以可用<code>+</code>来实现自动的转换：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">int</span> myInt <span style="color:#f92672">=</span> 234<span style="color:#f92672">;</span>
+String myStr <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">+</span> myInt<span style="color:#f92672">;</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>myStr<span style="color:#f92672">);</span>
+</code></pre></div>
     </div>
     <footer class="post-footer">
         
@@ -507,8 +535,10 @@ code.has-jax {
         <li><a href="#数据类型转换">数据类型转换</a>
           <ul>
             <li><a href="#自动类型转换">自动类型转换</a></li>
+            <li><a href="#强制类型转换">强制类型转换</a></li>
           </ul>
         </li>
+        <li><a href="#字符串数字转换">字符串数字转换</a></li>
       </ul>
     </li>
   </ul>
