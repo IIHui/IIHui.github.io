@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">3978</span>
+<span class="leancloud-visitors-count">4010</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">8 分钟</span>
+<span class="leancloud-visitors-count">9 分钟</span>
 </span>
       </div>
     </header>
@@ -413,8 +413,24 @@ sudo /usr/libexec/PlistBuddy -c <span style="color:#e6db74">&#39;Add :TICapsLock
   - <span style="color:#ae81ff">luna_pinyin.poetry</span>
   - <span style="color:#ae81ff">luna_pinyin.cn_en</span>
 ...
-</code></pre></div><p>所以，如果要添加新的词典，只要将待加入的词典放入到<code>~/Library/Rime/</code>目录下，然后在<code>luna_pinyin.extended.dict.yaml</code>的<code>import_tables</code>词库中添加新的词库即可：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+</code></pre></div><p>所以，如果要添加<a href="https://github.com/Iorest/rime-dict">新的词典</a>，只要将待加入的词典放入到<code>~/Library/Rime/</code>目录下，然后在<code>luna_pinyin.extended.dict.yaml</code>的<code>import_tables</code>词库中添加新的词库即可：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">import_tables</span>:
+  - <span style="color:#ae81ff">luna_pinyin</span>
+  - <span style="color:#ae81ff">luna_pinyin.hanyu</span>
+  - <span style="color:#ae81ff">luna_pinyin.poetry</span>
+  - <span style="color:#ae81ff">luna_pinyin.cn_en</span>
+  - <span style="color:#ae81ff">luna_pinyin.name</span>
+  - <span style="color:#ae81ff">luna_pinyin.biaoqing</span>
+  - <span style="color:#ae81ff">luna_pinyin.classical</span>
+  - <span style="color:#ae81ff">luna_pinyin.website</span>
+  - <span style="color:#ae81ff">luna_pinyin.chat</span>
+  - <span style="color:#ae81ff">luna_pinyin.net</span>
+  - <span style="color:#ae81ff">luna_pinyin.movie</span>
+  - <span style="color:#ae81ff">luna_pinyin.computer</span>
+  - <span style="color:#ae81ff">luna_pinyin.history</span>
+  - <span style="color:#ae81ff">luna_pinyin.idiom</span>
+  - <span style="color:#ae81ff">luna_pinyin.sougou</span>
+...
 </code></pre></div><p><a href="http://pythonic.zoomquiet.top/data/20160628220349/index.html">参考资料</a></p>
 
     </div>

@@ -71,7 +71,7 @@ punctuator: import_preset: symbols symbols: &amp;#34;/fs&amp;#34;: [½,‰,¼,�
 # 载入朙月拼音扩充词库 &amp;#34;translator/dictionary&amp;#34;: luna_pinyin.extended # 改写拼写运算，使得含西文的词汇（位于 luna_pinyin.cn_en.dict.yaml 中）不影响简拼功能（注意，此功能只適用于朙月拼音系列方案，不适用于各类双拼方案） # 本条补丁只在「小狼毫 0.9.30」、「鼠须管 0.9.25 」、「Rime-1.2」及更高的版本中起作用。 &amp;#34;speller/algebra/@before 0&amp;#34;: xform/^([b-df-np-z])$/$1_/ 由上面的代码可知，只在luna_pinyin_simp.custom.yaml文件中添加了&amp;quot;translator/dictionary&amp;quot;: luna_pinyin.extended就把所有的词库都添加进去了，而在之前明明拷贝了四个文件到~/Library/Rime/目录下，为什么只载入luna_pinyin.extended就能把其他词库都加进来？
 原来在luna_pinyin_simp.custom.yaml文件中定义的字典是luna_pinyin.extended，而在luna_pinyin.extended.dict.yaml中通过import_tables将luna_pinyin,luna_pinyin.hanyu,luna_pinyin.poetry,luna_pinyin.cn_en导入进来了：
 import_tables: - luna_pinyin - luna_pinyin.hanyu - luna_pinyin.poetry - luna_pinyin.cn_en ... 所以，如果要添加新的词典，只要将待加入的词典放入到~/Library/Rime/目录下，然后在luna_pinyin.extended.dict.yaml的import_tables词库中添加新的词库即可：
-参考资料
+import_tables: - luna_pinyin - luna_pinyin.hanyu - luna_pinyin.poetry - luna_pinyin.cn_en - luna_pinyin.name - luna_pinyin.biaoqing - luna_pinyin.classical - luna_pinyin.website - luna_pinyin.chat - luna_pinyin.net - luna_pinyin.movie - luna_pinyin.computer - luna_pinyin.history - luna_pinyin.idiom - luna_pinyin.sougou ... 参考资料
 </content>
     </entry>
     
