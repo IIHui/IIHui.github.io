@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1235</span>
+<span class="leancloud-visitors-count">2563</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">3 分钟</span>
+<span class="leancloud-visitors-count">6 分钟</span>
 </span>
       </div>
     </header>
@@ -352,7 +352,7 @@ code.has-jax {
         System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>h<span style="color:#f92672">);</span> <span style="color:#75715e">//17.222221
 </span><span style="color:#75715e"></span>    <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
-</code></pre></div><h2 id="字符串数字转换">字符串数字转换</h2>
+</code></pre></div><h2 id="字符串数值转换">字符串数值转换</h2>
 <p>数字字符串转为<code>byte，short，int，long，float，double</code>等数据类型，或将字符串<code>ture,false</code>转换为相应的逻辑类型，可以使用<code>XXX.parseXXX()</code>，其中<code>XXX</code>代表<code>Byte,Short,Integer,Long,Float,Double,Boolean</code>:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">int</span> c <span style="color:#f92672">=</span> Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">parseInt</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;123&#34;</span><span style="color:#f92672">);</span>
 <span style="color:#66d9ef">short</span> d <span style="color:#f92672">=</span> Short<span style="color:#f92672">.</span><span style="color:#a6e22e">parseShort</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;34&#34;</span><span style="color:#f92672">);</span>
@@ -366,6 +366,72 @@ System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">int</span> myInt <span style="color:#f92672">=</span> 234<span style="color:#f92672">;</span>
 String myStr <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">+</span> myInt<span style="color:#f92672">;</span>
 System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>myStr<span style="color:#f92672">);</span>
+</code></pre></div><hr>
+<h1 id="流程控制">流程控制</h1>
+<h2 id="语句">语句</h2>
+<p>在<code>Java</code>中语句可以是以分号<code>;</code>结尾的简单语句，也可以是用一对花括号<code>{}</code>括起来的复合语句。复合语句也称为语句块，是指由花括号括起来的若干简单语句。复合语句<font color=Blue>定义变量的作用域</font>，复合语句中可以嵌套复合语句，但是<font color=red>不允许在两个嵌套的复合语句内声明两个同名的变量</font>。如下代码编译的时候会报错<code>Variable 'dd' is already defined in the scope</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>myStr<span style="color:#f92672">);</span>
+<span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">int</span> dd <span style="color:#f92672">=</span> 34<span style="color:#f92672">;</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>dd<span style="color:#f92672">);</span>
+    <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">int</span> dd <span style="color:#f92672">=</span> 45<span style="color:#f92672">;</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>dd<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h2 id="文件注释">文件注释</h2>
+<p>文件注释以<code>/**</code>开头，以<code>*/</code>结尾，这种注释主要用于描述类、数据和方法。它是使用<code>JDK</code>提供的<code>javadoc</code>命令所产生的扩展名为<code>.HTML</code>的文件，从而为程序提供文档说明。</p>
+<h2 id="条件语句">条件语句</h2>
+<h3 id="if语句">if语句</h3>
+<p>在<code>Java</code>中，<code>if()</code>和<code>else if()</code>括号中的<font color=red>条件表达式的结果必须为布尔值</font>，即<code>true</code>或者<code>false</code>，这与<code>C</code>或者<code>C++</code>截然不同：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>a <span style="color:#f92672">&gt;</span> 122<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span> <span style="color:#e6db74">&#34;a&gt;122&#34;</span><span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>a <span style="color:#f92672">&gt;</span> 100<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span> <span style="color:#e6db74">&#34;100 &lt; a &lt;= 122&#34;</span><span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span> <span style="color:#e6db74">&#34;a&lt;=100&#34;</span><span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="switch语句">switch语句</h3>
+<p><code>switch</code>多分支选择语句在执行时，首先计算圆括号中表达式的值，这个值<font color=red>必须是整型或字符型</font>，同时应与各个<code>case</code>后面的常量表达式值的类型相一致。</p>
+<p><code>switch</code>语句的每一个<code>case</code>判断，在一般情况下都应该有<code>break</code>语句，以指明这个分支执行完后，就跳出该<code>switch</code>语句。在某些特定的场合下可能不需要<code>break</code>语句，例如，要若干判读值<font color=Blue>共享一个分支时</font>，就可以实现由不同的判断语句流入相同的分支。</p>
+<h3 id="循环结构">循环结构</h3>
+<p><code>Java</code>中循环语句共有三种，分别为<code>while</code>语句，<code>do-while</code>语句和<code>for</code>语句。<code>while</code>语句先计算表达式的值，若表达式的值为真，则执行循环体。而<code>do-while</code>则是<font color=Blue>先执行一遍循环体</font>，再判断条件表达式的值。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">fibonacci</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> n<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>n <span style="color:#f92672">==</span> 0 <span style="color:#f92672">||</span> n <span style="color:#f92672">==</span> 1 <span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> n<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">int</span> k <span style="color:#f92672">=</span> 2<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">int</span> result <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span> k <span style="color:#f92672">&lt;=</span> n<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        result <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> j<span style="color:#f92672">;</span>
+        i <span style="color:#f92672">=</span> j<span style="color:#f92672">;</span>
+        j <span style="color:#f92672">=</span> result<span style="color:#f92672">;</span>
+        k<span style="color:#f92672">++;</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">return</span> result<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>对于<code>for</code>循环，首先计算<code>表达式1</code>的值，完成必要的初始化工作；再判断<code>条件表达式</code>的值，若为假，则退出循环；若为真，则执行循环体，执行完循环体后再返回<code>表达式2</code>，计算并修改循环条件，这样一轮循环就结束了。下一轮的循环从计算并判断<code>条件表达式</code>开始，若表达式的值仍为真，则继续循环，否则终止。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">for</span><span style="color:#f92672">(</span>表达式1<span style="color:#f92672">;</span> 条件表达式<span style="color:#f92672">;</span> 表达式2<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+ <span style="color:#75715e">//循环体
+</span><span style="color:#75715e"></span><span style="color:#f92672">}</span>
+</code></pre></div><p><code>for</code>循环语句的三个表达式都可以为空。但若条件表达式也为空，则表示当前循环是一个无限循环，需要在循环体中使用其他跳转语句来终止循环。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">sum</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> n<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">int</span> sum <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;=</span> n<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+        sum <span style="color:#f92672">+=</span> i<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">return</span> sum<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h1 id="数组">数组</h1>
+<h2 id="栈与堆内存">栈与堆内存</h2>
+<p><code>Java</code>把内存分为栈内存和堆内存。在方法中定义的一些基本类型变量和<font color=Blue>对象的引用变量</font>都在方法的栈内存中分配。堆内存用来存放<font color=red>由new运算符创建的对象和数组</font>，在堆中分配的内存，由<code>Java</code>虚拟机的垃圾回收器来管理。</p>
+<p>在堆中创建了一个对象或数组后，同时在栈中定义一个特殊的变量，让栈中这个变量的取值等于数组或对象在堆内存中的首地址，栈中这个变量就成为数组或对象的引用变量。引用变量<font color=red>实际上保存的是数组或对象在堆内存中的地址</font>（也称为对象的句柄）以后就可以在程序中使用栈的引用变量来访问堆中的数组或对象。</p>
+<h2 id="一维数组">一维数组</h2>
+<p>一维数组的使用要经过三个步骤：①声明数组；②创建空间；③创建数组元素并赋值。前两个步骤的语法如下所示。在声明的时候可以不给出数组的长度：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">数据类型<span style="color:#f92672">[]</span> 数组名<span style="color:#f92672">;</span>
+数组名 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> 数据类型<span style="color:#f92672">[</span>个数<span style="color:#f92672">];</span>
 </code></pre></div>
     </div>
     <footer class="post-footer">
@@ -538,7 +604,26 @@ System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span>
             <li><a href="#强制类型转换">强制类型转换</a></li>
           </ul>
         </li>
-        <li><a href="#字符串数字转换">字符串数字转换</a></li>
+        <li><a href="#字符串数值转换">字符串数值转换</a></li>
+      </ul>
+    </li>
+    <li><a href="#流程控制">流程控制</a>
+      <ul>
+        <li><a href="#语句">语句</a></li>
+        <li><a href="#文件注释">文件注释</a></li>
+        <li><a href="#条件语句">条件语句</a>
+          <ul>
+            <li><a href="#if语句">if语句</a></li>
+            <li><a href="#switch语句">switch语句</a></li>
+            <li><a href="#循环结构">循环结构</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#数组">数组</a>
+      <ul>
+        <li><a href="#栈与堆内存">栈与堆内存</a></li>
+        <li><a href="#一维数组">一维数组</a></li>
       </ul>
     </li>
   </ul>
