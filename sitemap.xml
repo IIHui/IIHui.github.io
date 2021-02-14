@@ -43,7 +43,7 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 设置文�
     </entry>
     
      <entry>
-        <title>鼠须管</title>
+        <title>鼠须管配置</title>
         <url>https://iihui.github.io/post/tool-squirrel/</url>
         <categories>
           <category>tool</category>
