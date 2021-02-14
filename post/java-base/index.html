@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">2563</span>
+<span class="leancloud-visitors-count">2737</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -432,7 +432,10 @@ System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span>
 <p>一维数组的使用要经过三个步骤：①声明数组；②创建空间；③创建数组元素并赋值。前两个步骤的语法如下所示。在声明的时候可以不给出数组的长度：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">数据类型<span style="color:#f92672">[]</span> 数组名<span style="color:#f92672">;</span>
 数组名 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> 数据类型<span style="color:#f92672">[</span>个数<span style="color:#f92672">];</span>
-</code></pre></div>
+</code></pre></div><p>数组用<code>new</code>分配内存空间的同时，每个元素<font color=red>都会自动赋一个默认值</font>，整数为<code>0</code>，浮点为<code>0.0</code>，字符为<code>&quot;\0&quot;</code>，布尔型号为<code>false</code>，引用型为<code>null</code>。在声明数组时，也可以将前面的两个步骤合并为一行，格式如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">数据类型 <span style="color:#f92672">[]</span> 数组名 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> 数据类型<span style="color:#f92672">[</span>个数<span style="color:#f92672">]</span>
+</code></pre></div><p>无论用哪种方式定义数组，都不能在声明的时候「数组名前」，都不能指定长度，否则会出现编译错误。</p>
+
     </div>
     <footer class="post-footer">
         
