@@ -108,6 +108,8 @@ class Test { private String str; public Test() { System.out.println(&amp;#34;tes
   静态初始化器一般不能由程序调用，是所属类被加载入内存时由系统调用执行。
   静态初始化器只执行一次，没有方法名，返回值和参数。
   class Test { private String str; public Test() { System.out.println(&amp;#34;test&amp;#34;); } public Test(String str) { this(); this.str = str; } static { System.out.println(&amp;#34;this is a test num&amp;#34;); } static { System.out.println(&amp;#34;second&amp;#34;); } } 在上面这个例子中，第一次使用Test类时，静态初始化器才会执行，不是在程序启动时就会执行。如果有多个静态初始化器，则它们在类的初始化时会依次执行。
+继承 Java中继是通过extends关键字来标识的，不支持多继承，一个类只能有一个直接父类。所有的类都直接或者间接继承java.lang.Object，即如果没有extends关键字则类默认继承自java.lang.Object。
+class Person { private String name; private int age; public Person() { System.out.println(&amp;#34;person init&amp;#34;); } } class Student extends Person { private String department; public Student() { System.out.println(&amp;#34;Student init&amp;#34;); } } 上面的例子中，如果执行Student student = new Student();则先自动调用父类的构造方法，帮助继承父类的成员初始化做准备，随后才会执行子类的构造方法。
 </content>
     </entry>
     

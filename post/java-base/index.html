@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">5880</span>
+<span class="leancloud-visitors-count">6101</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">12 分钟</span>
+<span class="leancloud-visitors-count">13 分钟</span>
 </span>
       </div>
     </header>
@@ -671,6 +671,25 @@ String 变量名 <span style="color:#f92672">=</span> <span style="color:#e6db74
     <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
 </code></pre></div><p>在上面这个例子中，<font color=red>第一次使用</font><code>Test</code>类时，静态初始化器才会执行，不是在程序启动时就会执行。如果有多个静态初始化器，则它们在类的初始化时会依次执行。</p>
+<h1 id="继承">继承</h1>
+<p><code>Java</code>中继是通过<code>extends</code>关键字来标识的，<font color=red>不支持多继承</font>，一个类只能有一个直接父类。所有的类都直接或者间接继承<code>java.lang.Object</code>，即如果没有<code>extends</code>关键字则类默认继承自<code>java.lang.Object</code>。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Person</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> String name<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> age<span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Person</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;person init&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Student</span> <span style="color:#66d9ef">extends</span> Person <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> String department<span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Student</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Student init&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>上面的例子中，如果执行<code>Student student = new Student();</code>则先自动调用父类的构造方法，<font color=Blue>帮助继承父类的成员初始化做准备</font>，随后才会执行子类的构造方法。</p>
 
     </div>
     <footer class="post-footer">
@@ -889,6 +908,7 @@ String 变量名 <span style="color:#f92672">=</span> <span style="color:#e6db74
         </li>
       </ul>
     </li>
+    <li><a href="#继承">继承</a></li>
   </ul>
 </nav></div>
     </div>
