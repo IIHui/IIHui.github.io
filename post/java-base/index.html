@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">3253</span>
+<span class="leancloud-visitors-count">3552</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">7 分钟</span>
+<span class="leancloud-visitors-count">8 分钟</span>
 </span>
       </div>
     </header>
@@ -456,7 +456,15 @@ System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span>
 <p>在<code>Java</code>中无论字符串常量还是字符串变量，<font color=red>都是用类来实现的</font>。程序中用到的字符串都可以分为两类，一类是创建之后不会再做修改和变动的字符串变量；另一类时创建之后允许再做修改的字符串变量。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">String 变量名<span style="color:#f92672">;</span>
 变量名 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;字符串&#34;</span><span style="color:#f92672">);</span>
-</code></pre></div><p>在上面的语句中，第一条只是声明字符串引用变量<code>变量名</code>，此时<code>变量名</code>的值为<code>null</code>；第二条语句则在堆内存中分配了内存，并将<code>变量名</code>指向了字符串的首地址。</p>
+</code></pre></div><p>在上面的语句中，第一条只是声明字符串引用变量<code>变量名</code>，此时<code>变量名</code>的值为<code>null</code>；第二条语句则在堆内存中分配了内存，并将<code>变量名</code>指向了字符串的首地址。也可以使用如下的方式创建字符串变量：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">String 变量名 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;字符串&#34;</span><span style="color:#f92672">);</span>
+String 变量名 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;字符串&#34;</span>
+</code></pre></div><p>利用<code>String</code>类创建的字符串变量，一旦被初始化或赋值，它的值和分配的内存内容就不可再改变。如果非要改变它的值，会产生一个新的字符串：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">testString</span><span style="color:#f92672">(){</span>
+    String str1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;test&#34;</span><span style="color:#f92672">;</span>       
+    str1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Good&#34;</span><span style="color:#f92672">;</span>              
+<span style="color:#f92672">}</span>                                                              
+</code></pre></div><p>在上面的例子中看起来是一个简单的字符串赋值，实际上重新申请了一个新的内存空间。程序首先产生<code>str1</code>的一个字符串对象，并在内存中分配了一段空间，由于又发现要重新赋值，在原来的空间中已经不可能再追加新的内容，系统不得不将这个对象放弃，再重新生产新的对象，虽然<code>str1</code><font color=Blue>指向的内存地址是同一个，但对象已经不再是同一个了</font>。</p>
 
     </div>
     <footer class="post-footer">
