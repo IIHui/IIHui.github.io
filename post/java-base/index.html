@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">2744</span>
+<span class="leancloud-visitors-count">3253</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">6 分钟</span>
+<span class="leancloud-visitors-count">7 分钟</span>
 </span>
       </div>
     </header>
@@ -434,7 +434,29 @@ System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span>
 数组名 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> 数据类型<span style="color:#f92672">[</span>个数<span style="color:#f92672">];</span>
 </code></pre></div><p>数组用<code>new</code>分配内存空间的同时，每个元素<font color=red>都会自动赋一个默认值</font>，整数为<code>0</code>，浮点为<code>0.0</code>，字符为<code>&quot;\0&quot;</code>，布尔型号为<code>false</code>，引用型为<code>null</code>。在声明数组时，也可以将前面的两个步骤合并为一行，格式如下：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">数据类型 <span style="color:#f92672">[]</span> 数组名 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> 数据类型<span style="color:#f92672">[</span>个数<span style="color:#f92672">]</span>
-</code></pre></div><p>无论用哪种方式定义数组，都不能在声明的时候「<font color=Blue>即在数组名前的方括号内</font>」，都不能指定长度，否则会出现编译错误。</p>
+</code></pre></div><p>一维数组定义时也可以分配空间和赋值，称为数组的初始化。使用这种方式时，不需要将数组的元素个数给出，编译器会根据所给的初始值个数来设置数组的长度：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">数据类型 <span style="color:#f92672">[]</span> 数组名 <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>初始值1<span style="color:#f92672">,</span>初始值2<span style="color:#f92672">,...,</span>初始值n<span style="color:#f92672">}</span>
+</code></pre></div><p>无论用哪种方式定义数组，都不能在声明的时候「<font color=Blue>即在数组名前的方括号内</font>」，都不能指定长度，否则会出现编译错误。对于一维数组，可以使用<code>foreach</code>语句：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">array</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>     
+    <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> a <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>10<span style="color:#f92672">];</span>       
+    a<span style="color:#f92672">[</span>3<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> 45<span style="color:#f92672">;</span>                   
+    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> item <span style="color:#f92672">:</span> a<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>         
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>item<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>                            
+<span style="color:#f92672">}</span>                                
+</code></pre></div><h2 id="二维数组">二维数组</h2>
+<p>在<code>Java</code>中没有真正的多维数组，<font color=Blue>多维数组只是数组的数组</font>。二维数组的声明方式与一维数组类似，内存的分配也是使用<code>new</code>运算符。其声明与分配内存的格式如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">数据类型 <span style="color:#f92672">[][]</span> 数组名<span style="color:#f92672">;</span>
+数组名 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> 数据类型<span style="color:#f92672">[</span>行数<span style="color:#f92672">][</span>列数<span style="color:#f92672">];</span>
+
+数据类型 <span style="color:#f92672">[][]</span> 数组名 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> 数据类型<span style="color:#f92672">[</span>行数<span style="color:#f92672">][</span>列数<span style="color:#f92672">];</span>
+
+数据类型 <span style="color:#f92672">[][]</span> 数组名 <span style="color:#f92672">=</span> <span style="color:#f92672">{{</span>第1行的初值<span style="color:#f92672">},{</span>第2行的初值<span style="color:#f92672">},</span> <span style="color:#f92672">...,</span> <span style="color:#f92672">{</span>第m行的初值<span style="color:#f92672">}}</span>
+</code></pre></div><h1 id="字符串">字符串</h1>
+<p>在<code>Java</code>中无论字符串常量还是字符串变量，<font color=red>都是用类来实现的</font>。程序中用到的字符串都可以分为两类，一类是创建之后不会再做修改和变动的字符串变量；另一类时创建之后允许再做修改的字符串变量。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">String 变量名<span style="color:#f92672">;</span>
+变量名 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;字符串&#34;</span><span style="color:#f92672">);</span>
+</code></pre></div><p>在上面的语句中，第一条只是声明字符串引用变量<code>变量名</code>，此时<code>变量名</code>的值为<code>null</code>；第二条语句则在堆内存中分配了内存，并将<code>变量名</code>指向了字符串的首地址。</p>
 
     </div>
     <footer class="post-footer">
@@ -627,8 +649,10 @@ System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span>
       <ul>
         <li><a href="#栈与堆内存">栈与堆内存</a></li>
         <li><a href="#一维数组">一维数组</a></li>
+        <li><a href="#二维数组">二维数组</a></li>
       </ul>
     </li>
+    <li><a href="#字符串">字符串</a></li>
   </ul>
 </nav></div>
     </div>
