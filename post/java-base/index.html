@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">7232</span>
+<span class="leancloud-visitors-count">7295</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -749,8 +749,15 @@ System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span>
 </span></code></pre></div><p>在上面的例子中，首先通过<code>Object</code>类的实例方法<code>getClass()</code>获取类，然后通过<code>Class</code>类的实例方法<code>getName()</code>获取类的名字。</p>
 <p>可以通过对象运算符<code>instanceof</code>来测试一个指定对象是否是指定类或它的子类的实例，若是则返回<code>true</code>，否则返回<code>false</code>。</p>
 <h1 id="抽象类">抽象类</h1>
-<p>抽象类类似于模板的作用，目的是根据它的格式来创建和修改新的类。但是不能直接由抽象类创建对象，<font color=red>只能通过抽象类派生出新的子类，再由子类来创建对象</font>。也就是说，抽象类是不能用<code>new</code>运算符来创建实例对象。</p>
-
+<p>抽象类类似于模板的作用，目的是根据它的格式来创建和修改新的类。但是不能直接由抽象类创建对象，<font color=red>只能通过抽象类派生出新的子类，再由子类来创建对象</font>。也就是说，抽象类是不能用<code>new</code>运算符来创建实例对象。抽象类的定义格式如下所示：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">类名</span> <span style="color:#f92672">{</span>
+   声明成员变量<span style="color:#f92672">;</span>
+   返回值的数据类型 <span style="color:#a6e22e">方法名</span><span style="color:#f92672">(</span>参数表<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#f92672">...</span>
+   <span style="color:#f92672">}</span>
+   <span style="color:#66d9ef">abstract</span> 返回值的数据类型 <span style="color:#a6e22e">方法名</span><span style="color:#f92672">(</span>参数表<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+</code></pre></div>
     </div>
     <footer class="post-footer">
         
