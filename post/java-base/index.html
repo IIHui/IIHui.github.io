@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">6101</span>
+<span class="leancloud-visitors-count">6205</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -690,6 +690,7 @@ String 变量名 <span style="color:#f92672">=</span> <span style="color:#e6db74
     <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
 </code></pre></div><p>上面的例子中，如果执行<code>Student student = new Student();</code>则先自动调用父类的构造方法，<font color=Blue>帮助继承父类的成员初始化做准备</font>，随后才会执行子类的构造方法。</p>
+<p>在执行子类的构造方法之前，如果没有用<code>super</code>来调用父类的特定的构造函数，则会调用父类中<font color=Blue>没有参数的构造方法</font>。如果父类只定义了有参构造方法，而子类的构造方法中又没用<code>super</code>来调用父类的构造函数，则会编译报错。</p>
 
     </div>
     <footer class="post-footer">
