@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">5590</span>
+<span class="leancloud-visitors-count">5880</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -633,11 +633,44 @@ String 变量名 <span style="color:#f92672">=</span> <span style="color:#e6db74
     <span style="color:#f92672">}</span>
 
     <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Test</span><span style="color:#f92672">(</span>String str<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">this</span><span style="color:#f92672">();</span> <span style="color:#75715e">//第一行
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">();</span> <span style="color:#75715e">//this调用构造函数必须放在第一行
 </span><span style="color:#75715e"></span>        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">str</span> <span style="color:#f92672">=</span> str<span style="color:#f92672">;</span>
     <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
 </code></pre></div><h3 id="静态初始化器">静态初始化器</h3>
+<p>静态初始化器是由关键字<code>static</code>修饰的一对花括号<code>{}</code>括起来的语句组。它的作用与类的构造方法有些相似，都是用来初始化工作的，但与构造方法有几点不同：</p>
+<ul>
+<li>
+<p>构造方法是对新创建的对象进行初始化，而静态初始化器是对类自身进行初始化。</p>
+</li>
+<li>
+<p>静态初始化器一般不能由程序调用，是所属类被加载入内存时由系统调用执行。</p>
+</li>
+<li>
+<p>静态初始化器只执行一次，没有方法名，返回值和参数。</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Test</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> String str<span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Test</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;test&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Test</span><span style="color:#f92672">(</span>String str<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">();</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">str</span> <span style="color:#f92672">=</span> str<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">static</span> <span style="color:#f92672">{</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;this is a test num&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">static</span> <span style="color:#f92672">{</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;second&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>在上面这个例子中，<font color=red>第一次使用</font><code>Test</code>类时，静态初始化器才会执行，不是在程序启动时就会执行。如果有多个静态初始化器，则它们在类的初始化时会依次执行。</p>
 
     </div>
     <footer class="post-footer">

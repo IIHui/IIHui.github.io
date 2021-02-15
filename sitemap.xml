@@ -103,7 +103,12 @@ public static void testString(){ String str1 = &amp;#34;test&amp;#34;; str1 = &a
   构造方法一般不能显式调用，而是由new来调用。
   默认构造方法 如果在定义类的时候，没有定义任何构造函数，编译器会自动生成一个默认构造函数，它没有参数，函数体中也没任何代码。如果class前面有public修饰，则默认构造方法也是public的。
 构造函数调用 构造函数可以重载，一个构造函数可以调用另一个构造函数，但是必须使用this关键字，否则编译会报错，而且this关键字必须写在构造方法内的第一行位置。
-class Test { private String str; public Test() { System.out.println(&amp;#34;test&amp;#34;); } public Test(String str) { this(); //第一行  this.str = str; } } 静态初始化器 </content>
+class Test { private String str; public Test() { System.out.println(&amp;#34;test&amp;#34;); } public Test(String str) { this(); //this调用构造函数必须放在第一行  this.str = str; } } 静态初始化器 静态初始化器是由关键字static修饰的一对花括号{}括起来的语句组。它的作用与类的构造方法有些相似，都是用来初始化工作的，但与构造方法有几点不同：
+  构造方法是对新创建的对象进行初始化，而静态初始化器是对类自身进行初始化。
+  静态初始化器一般不能由程序调用，是所属类被加载入内存时由系统调用执行。
+  静态初始化器只执行一次，没有方法名，返回值和参数。
+  class Test { private String str; public Test() { System.out.println(&amp;#34;test&amp;#34;); } public Test(String str) { this(); this.str = str; } static { System.out.println(&amp;#34;this is a test num&amp;#34;); } static { System.out.println(&amp;#34;second&amp;#34;); } } 在上面这个例子中，第一次使用Test类时，静态初始化器才会执行，不是在程序启动时就会执行。如果有多个静态初始化器，则它们在类的初始化时会依次执行。
+</content>
     </entry>
     
      <entry>
