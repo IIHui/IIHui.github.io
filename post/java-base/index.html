@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">4793</span>
+<span class="leancloud-visitors-count">5543</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">10 分钟</span>
+<span class="leancloud-visitors-count">12 分钟</span>
 </span>
       </div>
     </header>
@@ -599,6 +599,44 @@ String 变量名 <span style="color:#f92672">=</span> <span style="color:#e6db74
 <h2 id="对象的使用">对象的使用</h2>
 <p>创建新的对象之后，就可以对对象的成员进行访问。在对象名和对象成员之间用<code>.</code>相连，通过这种方式来引用成员，如下所示：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">对象名<span style="color:#f92672">.</span><span style="color:#a6e22e">对象成员</span>
+</code></pre></div><h2 id="参数传值">参数传值</h2>
+<p><code>Java</code>语言在给被调用方法的参数赋值时，只采取传值的方式。所以，基本类型数据传递的是数据的值本身；<font color=Blue>而引用类型数据传递的也是这个变量的本身，即对象的引用变量，而非对象本身</font>。</p>
+<p>通过方法调用，可以改变对象的内容，但对象的引用变量是不能改变的。简言之，就是当参数是基本数据类型时，是传值方式调用；而当参数是引用变量时，则是传地址方式调用。</p>
+<h2 id="方法重载">方法重载</h2>
+<p>重载是指相同的方法名称，如果参数个数不同，或者参数个数相同，但类型不同，则方法就具有不同的功能。方法的重载中参数的类型是关键，仅仅是参数的变量名不同是不行的。也就是说，<font color=red>参数的列表必须不同，即或者参数个数不同，或者参数类型不同，或者参数的顺序不同</font>。</p>
+<h2 id="构造方法">构造方法</h2>
+<p>构造方法是一种特殊的方法，它是在对象被创建时初始化对象成员的方法，构造方法的名称必须与它<font color=red>所在的类名完全相同</font>。构造方法没有返回值，但在定义构造方法时，构造方法名前不能用<code>void</code>来修饰，因为<font color=Blue>一个类的构造方法的返回值类型就是该类本身</font>：</p>
+<p>构造方法定义后，创建对象时就会自动调用它，因此构造方法不需要在程序中直接调用，而是在<font color=red>对象产生时自动执行</font>。如果在构造方法前添加<code>void</code>，就变成了普通方法，不会再自动调用了。构造方法的特殊性在于：</p>
+<ul>
+<li>
+<p>构造方法的方法名与类名相同。</p>
+</li>
+<li>
+<p>构造方法没有返回值，但不能写成<code>void</code>。</p>
+</li>
+<li>
+<p>构造方法的主要作用是完成类对象的初始化工作。</p>
+</li>
+<li>
+<p>构造方法一般不能显式调用，而是由<code>new</code>来调用。</p>
+</li>
+</ul>
+<h3 id="默认构造方法">默认构造方法</h3>
+<p>如果在定义类的时候，没有定义任何构造函数，编译器会自动生成一个默认构造函数，它<font color=Blue>没有参数，函数体中也没任何代码</font>。</p>
+<h3 id="构造函数调用">构造函数调用</h3>
+<p>构造函数可以重载，一个构造函数可以调用另一个构造函数，但是必须使用<code>this</code>关键字，否则编译会报错，而且<code>this</code>关键字<font color=red>必须写在构造方法内的第一行位置</font>。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Test</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> String str<span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Test</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;test&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Test</span><span style="color:#f92672">(</span>String str<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">();</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">str</span> <span style="color:#f92672">=</span> str<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
 </code></pre></div>
     </div>
     <footer class="post-footer">
@@ -806,6 +844,14 @@ String 变量名 <span style="color:#f92672">=</span> <span style="color:#e6db74
           </ul>
         </li>
         <li><a href="#对象的使用">对象的使用</a></li>
+        <li><a href="#参数传值">参数传值</a></li>
+        <li><a href="#方法重载">方法重载</a></li>
+        <li><a href="#构造方法">构造方法</a>
+          <ul>
+            <li><a href="#默认构造方法">默认构造方法</a></li>
+            <li><a href="#构造函数调用">构造函数调用</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
