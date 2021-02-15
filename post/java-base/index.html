@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">3552</span>
+<span class="leancloud-visitors-count">4542</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">8 分钟</span>
+<span class="leancloud-visitors-count">10 分钟</span>
 </span>
       </div>
     </header>
@@ -465,6 +465,125 @@ String 变量名 <span style="color:#f92672">=</span> <span style="color:#e6db74
     str1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Good&#34;</span><span style="color:#f92672">;</span>              
 <span style="color:#f92672">}</span>                                                              
 </code></pre></div><p>在上面的例子中看起来是一个简单的字符串赋值，实际上重新申请了一个新的内存空间。程序首先产生<code>str1</code>的一个字符串对象，并在内存中分配了一段空间，由于又发现要重新赋值，在原来的空间中已经不可能再追加新的内容，系统不得不将这个对象放弃，再重新生产新的对象，虽然<code>str1</code><font color=Blue>指向的内存地址是同一个，但对象已经不再是同一个了</font>。</p>
+<h1 id="类与对象">类与对象</h1>
+<p>类是对某一类事物的描述，是抽象的，概念上的定义；而对象则是实际存在的属于该类事物的具体个体，因而也称为实例<code>instance</code>。</p>
+<h2 id="修饰符">修饰符</h2>
+<h3 id="类修饰符">类修饰符</h3>
+<p>一个类<font color=red>可以有多个修饰符，且无先后顺序之分</font>，但<code>abstract</code>和<code>final</code>相互对立，所以不能同时应用在一个类的定义中，各个修饰符的定义如下：</p>
+<table>
+<thead>
+<tr>
+<th>修饰符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>public</td>
+<td>将一个类声明为公共类，它可以被任何对象访问</td>
+</tr>
+<tr>
+<td>abstract</td>
+<td>将一个类声明为抽象类，没有实现方法，需要子类提供方法的实现，所以不能创建该类的实例</td>
+</tr>
+<tr>
+<td>final</td>
+<td>将一个类声明为最终非继承类，不能被其他类继承</td>
+</tr>
+<tr>
+<td>缺省</td>
+<td>只有在相同的包中才能使用</td>
+</tr>
+</tbody>
+</table>
+<h3 id="成员变量修饰符">成员变量修饰符</h3>
+<p>成员变量的修饰符有访问控制修饰符，静态修饰符，最终修饰符，过渡修饰符和易失修饰符。一个成员变量<font color=Blue>可以被两个以上的修饰符同时修饰</font>，但有些不能同时存在，各个修饰符的含义如下所示：</p>
+<table>
+<thead>
+<tr>
+<th>修饰符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>public</td>
+<td>公共访问控制符，指定该变量为公共的，它可以被任何对象的方法访问。</td>
+</tr>
+<tr>
+<td>private</td>
+<td>私有访问控制符，指定该变量只允许自己类中方法访问，其他任何类（包括子类）中的方法均不能访问。</td>
+</tr>
+<tr>
+<td>protected</td>
+<td>保护访问控制符，指定只可以被它自己的类以及子类在同一包中的其他类访问，在子类中可以覆盖此变量。</td>
+</tr>
+<tr>
+<td>缺省</td>
+<td>表示在同一个包中的其他类可以访问此成员变量，而其他包中的类不能访问该成员变量。</td>
+</tr>
+<tr>
+<td>final</td>
+<td>最终修饰符，指定该变量的值不能改变。</td>
+</tr>
+<tr>
+<td>static</td>
+<td>静态修饰符，指定该变量被所有对象共享，即所有的实例都可使用该变量。</td>
+</tr>
+<tr>
+<td>transient</td>
+<td>过渡修饰符，指定该变量是一个系统保留，暂无特别作用的临时变量。</td>
+</tr>
+<tr>
+<td>volatile</td>
+<td>易失修饰符，指定该变量可以同时被几个线程控制和修改。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="成员方法修饰符">成员方法修饰符</h3>
+<p>在方法中定义修饰符是可选项。方法的修饰符较多，包括访问控制符、静态修饰符、抽象修饰符、最终修饰符、同步修饰符和本地修饰符：</p>
+<table>
+<thead>
+<tr>
+<th>修饰符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>public</td>
+<td>公共访问控制符，指定该方法为公共的，它可以被任何对象的方法访问。</td>
+</tr>
+<tr>
+<td>private</td>
+<td>私有访问控制符，指定该方法只允许自己类中方法访问，其他任何类（包括子类）中的方法均不能访问。</td>
+</tr>
+<tr>
+<td>protected</td>
+<td>保护访问控制符，指定该方法只可以被它自己的类以及子类在同一包中的其他类访问。</td>
+</tr>
+<tr>
+<td>缺省</td>
+<td>表示在同一个包中的其他类可以访问此成员方法，而其他包中的类不能访问该成员方法。</td>
+</tr>
+<tr>
+<td>final</td>
+<td>最终修饰符，指定该方法不能被重载。</td>
+</tr>
+<tr>
+<td>static</td>
+<td>静态修饰符，指定不需要实例化一个对象就可以激活的方法。</td>
+</tr>
+<tr>
+<td>synchronized</td>
+<td>同步修饰符，在多线程程序中，该修饰符用于在运行前，对它所属的方法加锁，以防止其他线程访问，运行结束后解锁。</td>
+</tr>
+<tr>
+<td>native</td>
+<td>本地修饰符，指定此方法的方法体是其他语言在程序外部编写的。</td>
+</tr>
+</tbody>
+</table>
 
     </div>
     <footer class="post-footer">
@@ -661,6 +780,17 @@ String 变量名 <span style="color:#f92672">=</span> <span style="color:#e6db74
       </ul>
     </li>
     <li><a href="#字符串">字符串</a></li>
+    <li><a href="#类与对象">类与对象</a>
+      <ul>
+        <li><a href="#修饰符">修饰符</a>
+          <ul>
+            <li><a href="#类修饰符">类修饰符</a></li>
+            <li><a href="#成员变量修饰符">成员变量修饰符</a></li>
+            <li><a href="#成员方法修饰符">成员方法修饰符</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
     </div>
