@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">6714</span>
+<span class="leancloud-visitors-count">6907</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -465,8 +465,27 @@ String 变量名 <span style="color:#f92672">=</span> <span style="color:#e6db74
     str1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Good&#34;</span><span style="color:#f92672">;</span>              
 <span style="color:#f92672">}</span>                                                              
 </code></pre></div><p>在上面的例子中看起来是一个简单的字符串赋值，实际上重新申请了一个新的内存空间。程序首先产生<code>str1</code>的一个字符串对象，并在内存中分配了一段空间，由于又发现要重新赋值，在原来的空间中已经不可能再追加新的内容，系统不得不将这个对象放弃，再重新生产新的对象，虽然<code>str1</code><font color=Blue>指向的内存地址是同一个，但对象已经不再是同一个了</font>。</p>
+<h2 id="字符串池">字符串池</h2>
 <p><code>Java</code>程序在执行时会维护一个字符串池<code>string pool</code>，对于一些可共享的字符串对象，会<font color=red>先在字符串池中查找是否有相同的字符串内容，如果有就直接返回</font>，而不是重新创建一个新的<code>String</code>对象，以减少内存占用。当在程序中直接使用双引号括起来的字符串时，该字符串就会在字符串池中。</p>
-<h1 id="类与对象">类与对象</h1>
+<h2 id="字符串判等">字符串判等</h2>
+<p><code>==</code>运算符用于比较两个变量本身的值，即两个对象在内存中的首地址；而<code>equal()</code>方法则是比较两个字符串中所<font color=red>包含的内容</font>是否相同：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">equalString</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>        
+    String s1<span style="color:#f92672">,</span> s2<span style="color:#f92672">,</span> s3 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;abc&#34;</span><span style="color:#f92672">,</span> s4 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;abc&#34;</span><span style="color:#f92672">;</span>
+    s1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;abc&#34;</span><span style="color:#f92672">);</span>               
+    s2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;abc&#34;</span><span style="color:#f92672">);</span>               
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>s1 <span style="color:#f92672">==</span> s2<span style="color:#f92672">);</span>   <span style="color:#75715e">//false      
+</span><span style="color:#75715e"></span>    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>s1<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span>s2<span style="color:#f92672">));</span>     <span style="color:#75715e">//true
+</span><span style="color:#75715e"></span>    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>s1 <span style="color:#f92672">==</span> s3<span style="color:#f92672">);</span>  <span style="color:#75715e">//false       
+</span><span style="color:#75715e"></span>    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>s1<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span>s3<span style="color:#f92672">));</span>    <span style="color:#75715e">//true
+</span><span style="color:#75715e"></span>    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>s3 <span style="color:#f92672">==</span> s4<span style="color:#f92672">);</span> <span style="color:#75715e">//true        
+</span><span style="color:#75715e"></span>    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>s3<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span>s4<span style="color:#f92672">));</span>  <span style="color:#75715e">//true  
+</span><span style="color:#75715e"></span><span style="color:#f92672">}</span>                                         
+</code></pre></div><p>而对于非字符串类型的变量来说，<code>==</code>运算符和<code>equal()</code>方法都是用来比较其所指向的对象在堆内存中的首地址，即是否指向同一个对象:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Test a <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Test<span style="color:#f92672">();</span>               
+Test b <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Test<span style="color:#f92672">();</span>               
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>a <span style="color:#f92672">==</span> b<span style="color:#f92672">);</span>    <span style="color:#75715e">//false    
+</span><span style="color:#75715e"></span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>a<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span>b<span style="color:#f92672">));</span>  <span style="color:#75715e">//false  
+</span></code></pre></div><h1 id="类与对象">类与对象</h1>
 <p>类是对某一类事物的描述，是抽象的，概念上的定义；而对象则是实际存在的属于该类事物的具体个体，因而也称为实例<code>instance</code>。</p>
 <h2 id="修饰符">修饰符</h2>
 <h3 id="类修饰符">类修饰符</h3>
@@ -917,7 +936,12 @@ String 变量名 <span style="color:#f92672">=</span> <span style="color:#e6db74
         <li><a href="#二维数组">二维数组</a></li>
       </ul>
     </li>
-    <li><a href="#字符串">字符串</a></li>
+    <li><a href="#字符串">字符串</a>
+      <ul>
+        <li><a href="#字符串池">字符串池</a></li>
+        <li><a href="#字符串判等">字符串判等</a></li>
+      </ul>
+    </li>
     <li><a href="#类与对象">类与对象</a>
       <ul>
         <li><a href="#修饰符">修饰符</a>
