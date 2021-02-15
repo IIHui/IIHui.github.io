@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">6907</span>
+<span class="leancloud-visitors-count">7232</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">14 分钟</span>
+<span class="leancloud-visitors-count">15 分钟</span>
 </span>
       </div>
     </header>
@@ -741,6 +741,15 @@ System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span>
 <span style="color:#f92672">}</span>
 </code></pre></div><p>所有已被<code>private</code>修饰符限定为私有的方法，以及所有包含在<code>final</code>类中的方法，都默认是<code>final</code>的，这些方法既不可能被子类继承，也不可能被覆盖。</p>
 <p>一个成员变量若被<code>static final</code>两个修饰符所限定时，它实际的含义就是常量。定义一个成员变量，若只用<code>final</code>修饰，而不用<code>static</code>修饰时，<font color=Blue>则必须且只能赋值一次</font>。</p>
+<h2 id="object类">Object类</h2>
+<p>在<code>Java</code>中所有类都直接或者间接继承自<code>java.lang.Object</code>，它定义了<code>public final Class getClass()</code>方法，这个方法返回运行时对象所属的类:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Class obj <span style="color:#f92672">=</span> a<span style="color:#f92672">.</span><span style="color:#a6e22e">getClass</span><span style="color:#f92672">();</span>                  
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>obj<span style="color:#f92672">);</span>  <span style="color:#75715e">//class test
+</span><span style="color:#75715e"></span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>obj<span style="color:#f92672">.</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">());</span>  <span style="color:#75715e">//Test     
+</span></code></pre></div><p>在上面的例子中，首先通过<code>Object</code>类的实例方法<code>getClass()</code>获取类，然后通过<code>Class</code>类的实例方法<code>getName()</code>获取类的名字。</p>
+<p>可以通过对象运算符<code>instanceof</code>来测试一个指定对象是否是指定类或它的子类的实例，若是则返回<code>true</code>，否则返回<code>false</code>。</p>
+<h1 id="抽象类">抽象类</h1>
+<p>抽象类类似于模板的作用，目的是根据它的格式来创建和修改新的类。但是不能直接由抽象类创建对象，<font color=red>只能通过抽象类派生出新的子类，再由子类来创建对象</font>。也就是说，抽象类是不能用<code>new</code>运算符来创建实例对象。</p>
 
     </div>
     <footer class="post-footer">
@@ -968,8 +977,10 @@ System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span>
       <ul>
         <li><a href="#构造方法执行">构造方法执行</a></li>
         <li><a href="#方法覆盖">方法覆盖</a></li>
+        <li><a href="#object类">Object类</a></li>
       </ul>
     </li>
+    <li><a href="#抽象类">抽象类</a></li>
   </ul>
 </nav></div>
     </div>

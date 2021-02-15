@@ -118,6 +118,10 @@ class Test { private String str; public Test() { System.out.println(&amp;#34;tes
 在子类中覆盖父类的方法时，可以扩大父类方法的权限，但不可以缩小父类方法的权限。在下面的例子中show方法在子类的权限可以改为public，但不能改为private:
 class Person { private String name; private int age; public Person() { System.out.println(&amp;#34;Person init&amp;#34;); } protected void show() { System.out.println(&amp;#34;Person show&amp;#34;); } } class Student extends Person { private String department; public Student() { System.out.println(&amp;#34;Student init&amp;#34;); } protected void show() { System.out.println(&amp;#34;Student show&amp;#34;); } } 所有已被private修饰符限定为私有的方法，以及所有包含在final类中的方法，都默认是final的，这些方法既不可能被子类继承，也不可能被覆盖。
 一个成员变量若被static final两个修饰符所限定时，它实际的含义就是常量。定义一个成员变量，若只用final修饰，而不用static修饰时，则必须且只能赋值一次。
+Object类 在Java中所有类都直接或者间接继承自java.lang.Object，它定义了public final Class getClass()方法，这个方法返回运行时对象所属的类:
+Class obj = a.getClass(); System.out.println(obj); //class test System.out.println(obj.getName()); //Test 在上面的例子中，首先通过Object类的实例方法getClass()获取类，然后通过Class类的实例方法getName()获取类的名字。
+可以通过对象运算符instanceof来测试一个指定对象是否是指定类或它的子类的实例，若是则返回true，否则返回false。
+抽象类 抽象类类似于模板的作用，目的是根据它的格式来创建和修改新的类。但是不能直接由抽象类创建对象，只能通过抽象类派生出新的子类，再由子类来创建对象。也就是说，抽象类是不能用new运算符来创建实例对象。
 </content>
     </entry>
     
