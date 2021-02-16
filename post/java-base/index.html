@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">9577</span>
+<span class="leancloud-visitors-count">9728</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -895,6 +895,12 @@ stu<span style="color:#f92672">.</span><span style="color:#a6e22e">show</span><s
 </li>
 <li>
 <p>当在<code>try</code>块中语句抛出一个异常时，其后的代码都不会被执行，所以此时可以通过<code>finally</code>语句块来提供统一的出口。</p>
+</li>
+<li>
+<p><code>finally</code>块是可以省略的，若省略，则在<code>catch</code>块结束后，程序跳转到<code>try-catch</code>块之后的语句继续运行。</p>
+</li>
+<li>
+<p>当<code>catch</code>块中包含<code>System.exit(0)</code>语句时，则不执行<code>finally</code>语句块，程序直接终止；而当<code>catch</code>块中包含<code>return</code>语句时，则执行完执行<code>finally</code>语句块，再会终止程序。</p>
 </li>
 </ul>
 

@@ -149,6 +149,8 @@ public void handleException() { int[] arr = {1, 2, 3, 4}; for (int i = 0; i &amp
   catch块中语句应该根据异常类型的不同而执行不同的操作，比较通用的做法是输出异常相关的信息，包括异常的名称，产生异常的方法名等。
   由于异常对象于catch块的匹配是按照catch块的先后排列顺序进行的，所以在处理异常时，应该认真设计各catch块的排列顺序。
   当在try块中语句抛出一个异常时，其后的代码都不会被执行，所以此时可以通过finally语句块来提供统一的出口。
+  finally块是可以省略的，若省略，则在catch块结束后，程序跳转到try-catch块之后的语句继续运行。
+  当catch块中包含System.exit(0)语句时，则不执行finally语句块，程序直接终止；而当catch块中包含return语句时，则执行完执行finally语句块，再会终止程序。
   </content>
     </entry>
     
