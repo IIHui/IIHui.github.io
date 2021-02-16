@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">9325</span>
+<span class="leancloud-visitors-count">9577</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">19 分钟</span>
+<span class="leancloud-visitors-count">20 分钟</span>
 </span>
       </div>
     </header>
@@ -883,7 +883,21 @@ stu<span style="color:#f92672">.</span><span style="color:#a6e22e">show</span><s
         <span style="color:#f92672">}</span>
     <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
-</code></pre></div>
+</code></pre></div><ul>
+<li>
+<p>异常的捕获过程中做了两个判断，第一个是<code>try</code>程序块中是否有异常产生；第二个是产生的异常是否和<code>catch</code>后面括号内预捕获的异常类型匹配。</p>
+</li>
+<li>
+<p><code>catch</code>块中语句应该根据异常类型的不同而执行不同的操作，比较通用的做法是输出异常相关的信息，包括异常的名称，产生异常的方法名等。</p>
+</li>
+<li>
+<p>由于异常对象于<code>catch</code>块的匹配是按照<code>catch</code>块的先后排列顺序进行的，所以在处理异常时，应该认真设计各<code>catch</code>块的排列顺序。</p>
+</li>
+<li>
+<p>当在<code>try</code>块中语句抛出一个异常时，其后的代码都不会被执行，所以此时可以通过<code>finally</code>语句块来提供统一的出口。</p>
+</li>
+</ul>
+
     </div>
     <footer class="post-footer">
         

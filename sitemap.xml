@@ -145,7 +145,11 @@ package 包名1[.包名2][.包名3][...] 经过package声明后，在同一文�
 package Test.myPackage 上面的例子指定包中的文件存储在文件夹test\myPackage中。实际上创建包就是在当前文件夹中创建一个子文件夹，语句中的.代表文件分隔符，即上面的语句创建了两个文件夹。第一个文件夹是test，第二个是myPackage，当前包中所有的类就存放在这个文件夹中。
 异常 异常本质上是程序运行期间发生的事件，这个事件将中断程序的正常执行，当在Java方法内部发生异常时，这个方法就会创建一个异常对象，并把它传递给运行时环境。
 Java中所说的异常都是Exception类及其子类，异常处理通过try,catch,finally,throw,throws五个关键字来实现的：
-public void handleException() { int[] arr = {1, 2, 3, 4}; for (int i = 0; i &amp;lt; 5; i&#43;&#43;) { try { System.out.println(arr[i] / i); } catch (ArrayIndexOutOfBoundsException e) { System.out.println(e.getLocalizedMessage()); } catch (ArithmeticException e) { System.out.println(e.getLocalizedMessage()); } catch (Exception e) { System.out.println(e.getLocalizedMessage()); } finally { System.out.println(&amp;#34;finally&amp;#34;); } } } </content>
+public void handleException() { int[] arr = {1, 2, 3, 4}; for (int i = 0; i &amp;lt; 5; i&#43;&#43;) { try { System.out.println(arr[i] / i); } catch (ArrayIndexOutOfBoundsException e) { System.out.println(e.getLocalizedMessage()); } catch (ArithmeticException e) { System.out.println(e.getLocalizedMessage()); } catch (Exception e) { System.out.println(e.getLocalizedMessage()); } finally { System.out.println(&amp;#34;finally&amp;#34;); } } }   异常的捕获过程中做了两个判断，第一个是try程序块中是否有异常产生；第二个是产生的异常是否和catch后面括号内预捕获的异常类型匹配。
+  catch块中语句应该根据异常类型的不同而执行不同的操作，比较通用的做法是输出异常相关的信息，包括异常的名称，产生异常的方法名等。
+  由于异常对象于catch块的匹配是按照catch块的先后排列顺序进行的，所以在处理异常时，应该认真设计各catch块的排列顺序。
+  当在try块中语句抛出一个异常时，其后的代码都不会被执行，所以此时可以通过finally语句块来提供统一的出口。
+  </content>
     </entry>
     
      <entry>
