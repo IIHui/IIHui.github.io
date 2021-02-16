@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">8740</span>
+<span class="leancloud-visitors-count">9325</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">18 分钟</span>
+<span class="leancloud-visitors-count">19 分钟</span>
 </span>
       </div>
     </header>
@@ -856,6 +856,33 @@ stu<span style="color:#f92672">.</span><span style="color:#a6e22e">show</span><s
         t<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
     <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
+</code></pre></div><h1 id="包">包</h1>
+<p>包是<code>Java</code>提供的一种区分类名的机制，每个包对应一个文件夹，包中还可以再有包，称为包的等级。在源文件中可以声明类所在的包，就像保存文件时要说明文件保存在哪个文件夹中。<font color=red>同一包中类名不能重复，不同包中的类名可以相同</font>。</p>
+<h2 id="创建包">创建包</h2>
+<p>若要创建自己的包，就必须以<code>package</code>语句作为<code>Java</code><font color=red>源文件的第一条语句</font>，指明该文件中定义的类所在的包，它的格式为：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> 包名1<span style="color:#f92672">[.</span><span style="color:#a6e22e">包名2</span><span style="color:#f92672">][.</span><span style="color:#a6e22e">包名3</span><span style="color:#f92672">][...]</span>
+</code></pre></div><p>经过<code>package</code>声明后，在同一文件内的所有类或接口都被纳入相同的包中。编译器把包对应于文件系统的文件夹进行管理，例如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> Test.myPackage
+</code></pre></div><p>上面的例子指定包中的文件存储在文件夹<code>test\myPackage</code>中。实际上创建包就是在当前文件夹中创建一个子文件夹，语句中的<code>.</code>代表文件分隔符，即上面的语句创建了两个文件夹。第一个文件夹是<code>test</code>，第二个是<code>myPackage</code>，当前包中所有的类就存放在这个文件夹中。</p>
+<h1 id="异常">异常</h1>
+<p>异常本质上是程序运行期间发生的事件，这个事件将中断程序的正常执行，当在<code>Java</code>方法内部发生异常时，这个方法就会<font color=red>创建一个异常对象，并把它传递给运行时环境</font>。</p>
+<p><code>Java</code>中所说的异常都是<code>Exception</code>类及其子类，异常处理通过<code>try,catch,finally,throw,throws</code>五个关键字来实现的：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">handleException</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> arr <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>1<span style="color:#f92672">,</span> 2<span style="color:#f92672">,</span> 3<span style="color:#f92672">,</span> 4<span style="color:#f92672">};</span>
+    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> 5<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>arr<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">/</span> i<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>ArrayIndexOutOfBoundsException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>e<span style="color:#f92672">.</span><span style="color:#a6e22e">getLocalizedMessage</span><span style="color:#f92672">());</span>
+        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>ArithmeticException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>e<span style="color:#f92672">.</span><span style="color:#a6e22e">getLocalizedMessage</span><span style="color:#f92672">());</span>
+        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>Exception e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>e<span style="color:#f92672">.</span><span style="color:#a6e22e">getLocalizedMessage</span><span style="color:#f92672">());</span>
+        <span style="color:#f92672">}</span> <span style="color:#66d9ef">finally</span> <span style="color:#f92672">{</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;finally&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
 </code></pre></div>
     </div>
     <footer class="post-footer">
@@ -1098,6 +1125,12 @@ stu<span style="color:#f92672">.</span><span style="color:#a6e22e">show</span><s
         <li><a href="#匿名内部类">匿名内部类</a></li>
       </ul>
     </li>
+    <li><a href="#包">包</a>
+      <ul>
+        <li><a href="#创建包">创建包</a></li>
+      </ul>
+    </li>
+    <li><a href="#异常">异常</a></li>
   </ul>
 </nav></div>
     </div>
