@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">10527</span>
+<span class="leancloud-visitors-count">10673</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -913,7 +913,6 @@ stu<span style="color:#f92672">.</span><span style="color:#a6e22e">show</span><s
 <p>如果一个方法抛出异常后，该方法内又没有处理异常的语句，则系统会将异常向上传递，由调用它的方法来处理这些异常，若上层调用方法中仍没有处理异常的语句，则可以再往上传递，直到传递到<code>main</code>方法，由<code>JVM</code>处理。</p>
 <h1 id="多线程">多线程</h1>
 <p>多线程是指在同一个进程中同时存在几个执行体，按几条不同的执行路径同时工作的情况。所以多线程编程的含义就是<font color=red>将一个程序分为几个可以同时并发执行的子任务</font>。</p>
-<h2 id="实现">实现</h2>
 <p><code>Java</code>中实现多线程的方法有两种，一种继承自<code>java.lang</code>包中的<code>Thread</code>类，另一种是用户在定义的自己类中实现<code>Runnable</code>接口。要在一个<code>Thread</code>子类中激活线程，必须要准备好下列两种事情：</p>
 <ul>
 <li>
@@ -923,6 +922,7 @@ stu<span style="color:#f92672">.</span><span style="color:#a6e22e">show</span><s
 <p>线程所要执行的代码必须写在<code>run</code>方法内。但一般不直接调用<code>run</code>方法，而是通过线程的<code>start</code>方法来启动线程。</p>
 </li>
 </ul>
+<h2 id="thread">Thread</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ThreadTest</span> <span style="color:#66d9ef">extends</span> Thread <span style="color:#f92672">{</span>
     <span style="color:#66d9ef">private</span> String who<span style="color:#f92672">;</span>
 
@@ -958,7 +958,9 @@ Mei正在运行<span style="color:#f92672">!</span>
 Hui正在运行<span style="color:#f92672">!</span>
 Hui正在运行<span style="color:#f92672">!</span>
 Hui正在运行<span style="color:#f92672">!</span>
-</code></pre></div>
+</code></pre></div><h2 id="runnable">Runnable</h2>
+<p>上面使用继承<code>Thread</code>的方式来创建线程，具有局限性。因为，如果类本身已经继承了某个父类，但<code>Java</code>不允许多继承，所以此时需要类来实现<code>Runnable</code>接口。<code>Runnable</code>接口定义在<code>java.lang</code>包中，其中只提供了一个抽象方法<code>run()</code>的声明，从本质上说，<font color=Blue>任何实现线程的类必须实现该接口</font>。</p>
+
     </div>
     <footer class="post-footer">
         
@@ -1213,7 +1215,8 @@ Hui正在运行<span style="color:#f92672">!</span>
     </li>
     <li><a href="#多线程">多线程</a>
       <ul>
-        <li><a href="#实现">实现</a></li>
+        <li><a href="#thread">Thread</a></li>
+        <li><a href="#runnable">Runnable</a></li>
       </ul>
     </li>
   </ul>
