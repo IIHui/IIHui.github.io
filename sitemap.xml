@@ -144,14 +144,18 @@ class Group { private int age; public class MoStu { String name; public MoStu(St
 package 包名1[.包名2][.包名3][...] 经过package声明后，在同一文件内的所有类或接口都被纳入相同的包中。编译器把包对应于文件系统的文件夹进行管理，例如：
 package Test.myPackage 上面的例子指定包中的文件存储在文件夹test\myPackage中。实际上创建包就是在当前文件夹中创建一个子文件夹，语句中的.代表文件分隔符，即上面的语句创建了两个文件夹。第一个文件夹是test，第二个是myPackage，当前包中所有的类就存放在这个文件夹中。
 异常 异常本质上是程序运行期间发生的事件，这个事件将中断程序的正常执行，当在Java方法内部发生异常时，这个方法就会创建一个异常对象，并把它传递给运行时环境。
-Java中所说的异常都是Exception类及其子类，异常处理通过try,catch,finally,throw,throws五个关键字来实现的：
-public void handleException() { int[] arr = {1, 2, 3, 4}; for (int i = 0; i &amp;lt; 5; i&#43;&#43;) { try { System.out.println(arr[i] / i); } catch (ArrayIndexOutOfBoundsException e) { System.out.println(e.getLocalizedMessage()); } catch (ArithmeticException e) { System.out.println(e.getLocalizedMessage()); } catch (Exception e) { System.out.println(e.getLocalizedMessage()); } finally { System.out.println(&amp;#34;finally&amp;#34;); } } }   异常的捕获过程中做了两个判断，第一个是try程序块中是否有异常产生；第二个是产生的异常是否和catch后面括号内预捕获的异常类型匹配。
+Java中所说的异常都是Exception类及其子类，异常处理通过try,catch,finally,throw,throws五个关键字来实现的。
+异常捕获 public void handleException() { int[] arr = {1, 2, 3, 4}; for (int i = 0; i &amp;lt; 5; i&#43;&#43;) { try { System.out.println(arr[i] / i); } catch (ArrayIndexOutOfBoundsException e) { System.out.println(e.getLocalizedMessage()); } catch (ArithmeticException e) { System.out.println(e.getLocalizedMessage()); } catch (Exception e) { System.out.println(e.getLocalizedMessage()); } finally { System.out.println(&amp;#34;finally&amp;#34;); } } }   异常的捕获过程中做了两个判断，第一个是try程序块中是否有异常产生；第二个是产生的异常是否和catch后面括号内预捕获的异常类型匹配。
   catch块中语句应该根据异常类型的不同而执行不同的操作，比较通用的做法是输出异常相关的信息，包括异常的名称，产生异常的方法名等。
   由于异常对象于catch块的匹配是按照catch块的先后排列顺序进行的，所以在处理异常时，应该认真设计各catch块的排列顺序。
   当在try块中语句抛出一个异常时，其后的代码都不会被执行，所以此时可以通过finally语句块来提供统一的出口。
   finally块是可以省略的，若省略，则在catch块结束后，程序跳转到try-catch块之后的语句继续运行。
   当catch块中包含System.exit(0)语句时，则不执行finally语句块，程序直接终止；而当catch块中包含return语句时，则执行完执行finally语句块，再会终止程序。
-  </content>
+  抛出异常 所有系统定义的运行时异常都可以由系统自动抛出。而指定方法抛出异常要使用throw或者throws来明确指定方法内抛出异常。一个方法声明抛出异常有两种方式，第一种是在方法内抛出异常对象，其中的异常类对象，是一个从Throwable派生的异常类对象：
+throw 异常类对象 第二种方式，在方法声明中添加throws子句，表示方法将抛出异常。带有throws子句的方法声明格式如下：
+[修饰符] 返回值类型 方法名([参数列表]) throws 异常类列表 通过上面两种方式抛出的异常，在方法中可以不使用try-catch-finally来处理异常，而交由调用此方法的程序来处理。
+如果一个方法抛出异常后，该方法内又没有处理异常的语句，则系统会将异常向上传递，由调用它的方法来处理这些异常，若上层调用方法中仍没有处理异常的语句，则可以再往上传递，直到传递到main方法，由JVM处理。
+</content>
     </entry>
     
      <entry>
