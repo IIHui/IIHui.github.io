@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">10775</span>
+<span class="leancloud-visitors-count">11008</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -979,13 +979,44 @@ Hui正在运行<span style="color:#f92672">!</span>
         <span style="color:#f92672">}</span>
     <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
-ThreadTestMo mei <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ThreadTestMo<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Mei&#34;</span><span style="color:#f92672">)</span>
-ThreadTestMo hui <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ThreadTestMo<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Hui&#34;</span><span style="color:#f92672">)</span>
+ThreadTestMo mei <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ThreadTestMo<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Mei&#34;</span><span style="color:#f92672">);</span>
+ThreadTestMo hui <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ThreadTestMo<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Hui&#34;</span><span style="color:#f92672">);</span>
 Thread thread1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread<span style="color:#f92672">(</span>mei<span style="color:#f92672">);</span>
 Thread thread2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread<span style="color:#f92672">(</span>hui<span style="color:#f92672">);</span>
 thread1<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
 thread2<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
 System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;main 方法执行结束&#34;</span><span style="color:#f92672">);</span>
+</code></pre></div><p>如果需要线程有序执行，就需要使用<code>join</code>方法。当某一线程调用<code>join</code>方法时，则其他线程会等到该线程结束后才开始执行。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">threadJoin</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    ThreadTestMo mei <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ThreadTestMo<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Mei&#34;</span><span style="color:#f92672">);</span>
+    ThreadTestMo hui <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ThreadTestMo<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Hui&#34;</span><span style="color:#f92672">);</span>
+    Thread thread1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread<span style="color:#f92672">(</span>mei<span style="color:#f92672">);</span>
+    Thread thread2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread<span style="color:#f92672">(</span>hui<span style="color:#f92672">);</span>
+    thread1<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+    <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+        thread1<span style="color:#f92672">.</span><span style="color:#a6e22e">join</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>InterruptedException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>e<span style="color:#f92672">.</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">());</span>
+    <span style="color:#f92672">}</span>
+    thread2<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+    <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+        thread2<span style="color:#f92672">.</span><span style="color:#a6e22e">join</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>InterruptedException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>e<span style="color:#f92672">.</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">());</span>
+    <span style="color:#f92672">}</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;测试方法运行完毕&#34;</span><span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+Mei正在运行<span style="color:#f92672">!</span>
+Mei正在运行<span style="color:#f92672">!</span>
+Mei正在运行<span style="color:#f92672">!</span>
+Mei正在运行<span style="color:#f92672">!</span>
+Mei正在运行<span style="color:#f92672">!</span>
+Hui正在运行<span style="color:#f92672">!</span>
+Hui正在运行<span style="color:#f92672">!</span>
+Hui正在运行<span style="color:#f92672">!</span>
+Hui正在运行<span style="color:#f92672">!</span>
+Hui正在运行<span style="color:#f92672">!</span>
+测试方法运行完毕
 </code></pre></div>
     </div>
     <footer class="post-footer">
