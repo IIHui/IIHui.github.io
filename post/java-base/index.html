@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">11413</span>
+<span class="leancloud-visitors-count">11651</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">23 分钟</span>
+<span class="leancloud-visitors-count">24 分钟</span>
 </span>
       </div>
     </header>
@@ -1055,7 +1055,17 @@ Hui正在运行<span style="color:#f92672">!</span>
 第二号窗口售机票第3号
 第三号窗口售机票第2号
 第一号窗口售机票第1号
-</code></pre></div>
+</code></pre></div><h2 id="多线程同步">多线程同步</h2>
+<p>为了保证互斥，<code>Java</code>使用<code>synchronized</code>关键字来标识同步的资源，这里的资源可以是一种类型的数据，也就是对象，也可以是一个方法，还可以是一段代码。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">synchronized</span> <span style="color:#f92672">(</span>对象<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+   临界代码段
+<span style="color:#f92672">}</span>
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">synchronized</span> 返回类型 <span style="color:#a6e22e">方法名</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+   方法体
+<span style="color:#f92672">}</span>
+</code></pre></div><p><code>synchronized</code>的功能：首先判断对象或方法的互斥锁是否存在，若在就获得互斥锁，然后就可以执行紧随其后的临界代码段或方法体；如果对象或方法的互斥锁不在，就进入等待状态，直到获得互斥锁。当被<code>synchronized</code>限定的代码段执行完，就自动释放互斥锁。</p>
+
     </div>
     <footer class="post-footer">
         
@@ -1313,6 +1323,7 @@ Hui正在运行<span style="color:#f92672">!</span>
         <li><a href="#thread">Thread</a></li>
         <li><a href="#runnable">Runnable</a></li>
         <li><a href="#数据共享">数据共享</a></li>
+        <li><a href="#多线程同步">多线程同步</a></li>
       </ul>
     </li>
   </ul>
