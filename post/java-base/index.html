@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">7917</span>
+<span class="leancloud-visitors-count">8573</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">16 分钟</span>
+<span class="leancloud-visitors-count">18 分钟</span>
 </span>
       </div>
     </header>
@@ -777,7 +777,43 @@ System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span>
 <p>接口可以作为一种引用类型来使用，任何实现了该接口的类的实例都可以存储在该接口类型的变量中，通过变量可以访问类中所实现接口中的方法。</p>
 </li>
 </ul>
+<h2 id="接口的继承">接口的继承</h2>
+<p>接口也可以继承性。定义一个接口时可通过<code>extends</code>关键字声明该新接口是某个已存在的父接口的子接口，它将继承父接口的所有变量与方法。</p>
+<p>与类的继承不同的是，<font color=red>一个接口可以有一个以上的父接口</font>，它们之间用逗号分隔，形成父接口列表，新接口将继承所有父接口中的变量与方法。</p>
+<p>虽然<code>Java</code>只支持类的单重继承机制，不支持类的多重继承，即一个类只能有一个直接父类。但是，他可以同时实现若干个接口，实际上就可以获得多个父类，即实现了多重继承。</p>
+<h1 id="内部类">内部类</h1>
+<p>内部类是<font color=Blue>定义在类中的类</font>，主要作用是将逻辑上相关的类放到一起。而匿名类是一种<font color=red>特殊的内部类，它没有类名，在定义类的同时，就生成了该类的一个实例</font>，由于不会在其他地方用到该类，所以不用取名字，因而又被称为匿名内部类。</p>
+<h2 id="定义">定义</h2>
+<p>定义内部类时只需要将类的定义置于一个用于封装它的类的内部即可，但不能与外部类同名，如果内部类还有内部类，则<font color=red>不能与任何一层内部类同名</font>。</p>
+<p>在封装它的类的内部使用内部类，与普通类的使用方式相同；但在外部使用内部类时，<font color=Blue>需要在内部类前冠以其所属外部类的名字</font>才能使用。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Group</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> age<span style="color:#f92672">;</span>
 
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MoStu</span> <span style="color:#f92672">{</span>
+        String name<span style="color:#f92672">;</span>
+
+        <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">MoStu</span><span style="color:#f92672">(</span>String name<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> name<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">show</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;MoStu show&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">show</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Group show&#34;</span><span style="color:#f92672">);</span>
+        MoStu stu <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> MoStu<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;test&#34;</span><span style="color:#f92672">);</span>
+        stu<span style="color:#f92672">.</span><span style="color:#a6e22e">show</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+Group group <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Group<span style="color:#f92672">();</span>
+group<span style="color:#f92672">.</span><span style="color:#a6e22e">show</span><span style="color:#f92672">();</span>
+</code></pre></div><p><code>Java</code>将内部类作为一个成员，就如同成员变量或成员方法。内部类可以被声明为<code>private</code>或<code>protected</code>。在内部类中可以直接引用它的外部类成员，包括静态成员、实例成员和私有成员。</p>
+<p>不能直接创建内部类的对象实例，必须使用外部类对象来创建内部类对象，对于上面的例子，可以使用如下方式在外部创建内部内的实例：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Group<span style="color:#f92672">.</span><span style="color:#a6e22e">MoStu</span> stu <span style="color:#f92672">=</span> group<span style="color:#f92672">.</span><span style="color:#a6e22e">new</span> <span style="color:#a6e22e">MoStu</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;outside&#34;</span><span style="color:#f92672">);</span>
+stu<span style="color:#f92672">.</span><span style="color:#a6e22e">show</span><span style="color:#f92672">();</span>
+</code></pre></div>
     </div>
     <footer class="post-footer">
         
@@ -1008,7 +1044,16 @@ System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span>
       </ul>
     </li>
     <li><a href="#抽象类">抽象类</a></li>
-    <li><a href="#接口">接口</a></li>
+    <li><a href="#接口">接口</a>
+      <ul>
+        <li><a href="#接口的继承">接口的继承</a></li>
+      </ul>
+    </li>
+    <li><a href="#内部类">内部类</a>
+      <ul>
+        <li><a href="#定义">定义</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
     </div>
