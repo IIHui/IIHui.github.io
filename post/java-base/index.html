@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">10673</span>
+<span class="leancloud-visitors-count">10775</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -960,7 +960,33 @@ Hui正在运行<span style="color:#f92672">!</span>
 Hui正在运行<span style="color:#f92672">!</span>
 </code></pre></div><h2 id="runnable">Runnable</h2>
 <p>上面使用继承<code>Thread</code>的方式来创建线程，具有局限性。因为，如果类本身已经继承了某个父类，但<code>Java</code>不允许多继承，所以此时需要类来实现<code>Runnable</code>接口。<code>Runnable</code>接口定义在<code>java.lang</code>包中，其中只提供了一个抽象方法<code>run()</code>的声明，从本质上说，<font color=Blue>任何实现线程的类必须实现该接口</font>。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ThreadTestMo</span> <span style="color:#66d9ef">implements</span> Runnable <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> String who<span style="color:#f92672">;</span>
 
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">ThreadTestMo</span><span style="color:#f92672">(</span>String str<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        who <span style="color:#f92672">=</span> str<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> 5<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+                Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">sleep</span><span style="color:#f92672">((</span><span style="color:#66d9ef">int</span><span style="color:#f92672">)</span> <span style="color:#f92672">(</span>1000 <span style="color:#f92672">*</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">random</span><span style="color:#f92672">()));</span>
+            <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>InterruptedException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>e<span style="color:#f92672">.</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">());</span>
+            <span style="color:#f92672">}</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>who <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;正在运行!&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+ThreadTestMo mei <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ThreadTestMo<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Mei&#34;</span><span style="color:#f92672">)</span>
+ThreadTestMo hui <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ThreadTestMo<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Hui&#34;</span><span style="color:#f92672">)</span>
+Thread thread1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread<span style="color:#f92672">(</span>mei<span style="color:#f92672">);</span>
+Thread thread2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread<span style="color:#f92672">(</span>hui<span style="color:#f92672">);</span>
+thread1<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+thread2<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;main 方法执行结束&#34;</span><span style="color:#f92672">);</span>
+</code></pre></div>
     </div>
     <footer class="post-footer">
         
