@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">11651</span>
+<span class="leancloud-visitors-count">11937</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -1065,6 +1065,30 @@ Hui正在运行<span style="color:#f92672">!</span>
    方法体
 <span style="color:#f92672">}</span>
 </code></pre></div><p><code>synchronized</code>的功能：首先判断对象或方法的互斥锁是否存在，若在就获得互斥锁，然后就可以执行紧随其后的临界代码段或方法体；如果对象或方法的互斥锁不在，就进入等待状态，直到获得互斥锁。当被<code>synchronized</code>限定的代码段执行完，就自动释放互斥锁。</p>
+<h2 id="线程通信">线程通信</h2>
+<p><code>java.lang.Object</code>类的<code>wait(),notify()</code>等方法为线程间的通信提供了有效手段，但<code>wait(),notify()</code><font color=red>只能在同步代码块里调用</font>。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th style="text-align:center">功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>public void wait()</td>
+<td style="text-align:center">如果一个正在执行的同步代码(synchronized)的线程A执行了wait()调用「在对象x上」，该线程暂停执行而进入对象x的等待队列，并释放已获得的对象x的互斥锁。线程A要一直等到其他线程在对象x上调用notify或notifyAll，才能够再重新获得对象x的互斥锁后继续执行。</td>
+</tr>
+<tr>
+<td>public void notify()</td>
+<td style="text-align:center">唤醒正在等待该对象互斥锁的第一个线程。</td>
+</tr>
+<tr>
+<td>public void notifyAll()</td>
+<td style="text-align:center">唤醒正在等待该对象互斥锁的所有线程，优先级高的先被唤醒。</td>
+</tr>
+</tbody>
+</table>
 
     </div>
     <footer class="post-footer">
@@ -1324,6 +1348,7 @@ Hui正在运行<span style="color:#f92672">!</span>
         <li><a href="#runnable">Runnable</a></li>
         <li><a href="#数据共享">数据共享</a></li>
         <li><a href="#多线程同步">多线程同步</a></li>
+        <li><a href="#线程通信">线程通信</a></li>
       </ul>
     </li>
   </ul>
