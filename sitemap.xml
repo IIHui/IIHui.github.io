@@ -159,7 +159,7 @@ throw 异常类对象 第二种方式，在方法声明中添加throws子句，�
 实现 Java中实现多线程的方法有两种，一种继承自java.lang包中的Thread类，另一种是用户在定义的自己类中实现Runnable接口。要在一个Thread子类中激活线程，必须要准备好下列两种事情：
   此类必须是继承自Thread类。
   线程所要执行的代码必须写在run方法内。但一般不直接调用run方法，而是通过线程的start方法来启动线程。
-  </content>
+  class ThreadTest extends Thread { private String who; public ThreadTest(String str) { this.who = str; } public void run() { for (int i = 0; i &amp;lt; 5; i&#43;&#43;) { try { sleep((int) (1000 * Math.random())); } catch (InterruptedException e) { //  } System.out.println(who &#43; &amp;#34;正在运行!&amp;#34;); } } } ThreadTest thread1 = new ThreadTest(&amp;#34; ThreadTest thread2 = new ThreadTest(&amp;#34; thread1.start(); thread2.start(); System.out.println(&amp;#34;main 方法执行结束&amp;#34;); Mei正在运行! Mei正在运行! Hui正在运行! Mei正在运行! Mei正在运行! Hui正在运行! Mei正在运行! Hui正在运行! Hui正在运行! Hui正在运行! </content>
     </entry>
     
      <entry>

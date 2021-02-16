@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">10356</span>
+<span class="leancloud-visitors-count">10527</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">21 分钟</span>
+<span class="leancloud-visitors-count">22 分钟</span>
 </span>
       </div>
     </header>
@@ -923,7 +923,42 @@ stu<span style="color:#f92672">.</span><span style="color:#a6e22e">show</span><s
 <p>线程所要执行的代码必须写在<code>run</code>方法内。但一般不直接调用<code>run</code>方法，而是通过线程的<code>start</code>方法来启动线程。</p>
 </li>
 </ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ThreadTest</span> <span style="color:#66d9ef">extends</span> Thread <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> String who<span style="color:#f92672">;</span>
 
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">ThreadTest</span><span style="color:#f92672">(</span>String str<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">who</span> <span style="color:#f92672">=</span> str<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> 5<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+                sleep<span style="color:#f92672">((</span><span style="color:#66d9ef">int</span><span style="color:#f92672">)</span> <span style="color:#f92672">(</span>1000 <span style="color:#f92672">*</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">random</span><span style="color:#f92672">()));</span>
+            <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>InterruptedException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                <span style="color:#75715e">//
+</span><span style="color:#75715e"></span>            <span style="color:#f92672">}</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>who <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;正在运行!&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+ThreadTest thread1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ThreadTest<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;
+</span><span style="color:#e6db74">ThreadTest thread2 = new ThreadTest(&#34;</span>
+thread1<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+thread2<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;main 方法执行结束&#34;</span><span style="color:#f92672">);</span>
+
+Mei正在运行<span style="color:#f92672">!</span>
+Mei正在运行<span style="color:#f92672">!</span>
+Hui正在运行<span style="color:#f92672">!</span>
+Mei正在运行<span style="color:#f92672">!</span>
+Mei正在运行<span style="color:#f92672">!</span>
+Hui正在运行<span style="color:#f92672">!</span>
+Mei正在运行<span style="color:#f92672">!</span>
+Hui正在运行<span style="color:#f92672">!</span>
+Hui正在运行<span style="color:#f92672">!</span>
+Hui正在运行<span style="color:#f92672">!</span>
+</code></pre></div>
     </div>
     <footer class="post-footer">
         
