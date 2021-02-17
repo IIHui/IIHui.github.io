@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">12066</span>
+<span class="leancloud-visitors-count">12084</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -393,7 +393,18 @@ System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span>
 <span style="color:#f92672">}</span>
 </code></pre></div><h3 id="switch语句">switch语句</h3>
 <p><code>switch</code>多分支选择语句在执行时，首先计算圆括号中表达式的值，这个值<font color=red>必须是整型或字符型</font>，同时应与各个<code>case</code>后面的常量表达式值的类型相一致。</p>
-<p><code>switch</code>语句的每一个<code>case</code>判断，在一般情况下都应该有<code>break</code>语句，以指明这个分支执行完后，就跳出该<code>switch</code>语句。在某些特定的场合下可能不需要<code>break</code>语句，例如，要若干判读值<font color=Blue>共享一个分支时</font>，就可以实现由不同的判断语句流入相同的分支。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">char</span> op <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;+&#39;</span><span style="color:#f92672">;</span>
+<span style="color:#66d9ef">switch</span> <span style="color:#f92672">(</span>op<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;+&#39;</span><span style="color:#f92672">:</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;+&#39;</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;-&#39;</span><span style="color:#f92672">:</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;-&#39;</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>
+        <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p><code>switch</code>语句的每一个<code>case</code>判断，在一般情况下都应该有<code>break</code>语句，以指明这个分支执行完后，就跳出该<code>switch</code>语句。在某些特定的场合下可能不需要<code>break</code>语句，例如，要若干判读值<font color=Blue>共享一个分支时</font>，就可以实现由不同的判断语句流入相同的分支。</p>
 <h3 id="循环结构">循环结构</h3>
 <p><code>Java</code>中循环语句共有三种，分别为<code>while</code>语句，<code>do-while</code>语句和<code>for</code>语句。<code>while</code>语句先计算表达式的值，若表达式的值为真，则执行循环体。而<code>do-while</code>则是<font color=Blue>先执行一遍循环体</font>，再判断条件表达式的值。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">fibonacci</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> n<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
