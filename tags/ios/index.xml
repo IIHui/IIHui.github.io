@@ -683,15 +683,6 @@
     </item>
     
     <item>
-      <title>XCode快捷键</title>
-      <link>https://iihui.github.io/post/xcode-quick/</link>
-      <pubDate>Tue, 27 Nov 2018 15:20:06 +0000</pubDate>
-      
-      <guid>https://iihui.github.io/post/xcode-quick/</guid>
-      <description>MAC键盘图标 ⌘——Command () ⌃ ——Control ⌥——Option (alt) ⇧——Shift ⇪——Caps Lock 快捷键 Command+R 运行 Command+B 编译 Command+. 停止 Command + Shift + K 清除工程 Command + K 清除控制台信息 Command + N 新建文件 Command + Shift + N 创建新工程 导航栏 Command+0~9 工程导航 Command + 0 快速打开实</description>
-    </item>
-    
-    <item>
       <title>OC 入门</title>
       <link>https://iihui.github.io/post/oc-tour/</link>
       <pubDate>Wed, 19 Sep 2018 14:29:51 +0000</pubDate>
