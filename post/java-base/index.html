@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">11957</span>
+<span class="leancloud-visitors-count">12052</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">24 分钟</span>
+<span class="leancloud-visitors-count">25 分钟</span>
 </span>
       </div>
     </header>
@@ -340,7 +340,7 @@ code.has-jax {
 </ul>
 <p>在一个表达式中若有整数类型为<code>short</code>或<code>byte</code>的数据参加运算，为了避免溢出，<code>Java</code>会将表达式中的<code>short</code>或<code>byte</code>类型自动转换为<code>int</code>。</p>
 <h3 id="强制类型转换">强制类型转换</h3>
-<p>如果要将较长的数据转换为较短的数据时，就要进行强制类型转换。强制类型转换的格式为：<code>(预转换的数据类型) 变量名</code>:</p>
+<p>如果要将较长的数据转换为较短的数据时，就要进行强制类型转换。强制类型转换的格式为：<code>(预转换的数据类型) 变量名</code>。在下例中<code>a/b</code>是整数相除，得到的还是整数，赋值给<code>g</code>的时候自动转换为浮点数；而在<code>(float)a/b</code>中先将<code>a</code>转换为浮点数，接着<code>b</code>自动转换为浮点数，所以<code>(float)a/b</code>计算的结果也为浮点数：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Convert</span> <span style="color:#f92672">{</span>
     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
         <span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> 155<span style="color:#f92672">;</span>
