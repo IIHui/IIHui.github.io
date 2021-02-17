@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">12052</span>
+<span class="leancloud-visitors-count">12066</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -464,11 +464,11 @@ String 变量名 <span style="color:#f92672">=</span> <span style="color:#e6db74
     String str1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;test&#34;</span><span style="color:#f92672">;</span>       
     str1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Good&#34;</span><span style="color:#f92672">;</span>              
 <span style="color:#f92672">}</span>                                                              
-</code></pre></div><p>在上面的例子中看起来是一个简单的字符串赋值，实际上重新申请了一个新的内存空间。程序首先产生<code>str1</code>的一个字符串对象，并在内存中分配了一段空间，由于又发现要重新赋值，在原来的空间中已经不可能再追加新的内容，系统不得不将这个对象放弃，再重新生产新的对象，虽然<code>str1</code><font color=Blue>指向的内存地址是同一个，但对象已经不再是同一个了</font>。</p>
+</code></pre></div><p>在上面的例子中看起来是一个简单的字符串赋值，<font color=red>实际上重新申请了一个新的内存空间</font>。程序首先产生<code>str1</code>的一个字符串对象，并在内存中分配了一段空间，由于又发现要重新赋值，在原来的空间中已经不可能再追加新的内容，系统不得不将这个对象放弃，再重新生产新的对象，虽然<code>str1</code><font color=Blue>指向的内存地址是同一个，但对象已经不再是同一个了</font>。</p>
 <h2 id="字符串池">字符串池</h2>
 <p><code>Java</code>程序在执行时会维护一个字符串池<code>string pool</code>，对于一些可共享的字符串对象，会<font color=red>先在字符串池中查找是否有相同的字符串内容，如果有就直接返回</font>，而不是重新创建一个新的<code>String</code>对象，以减少内存占用。当在程序中直接使用双引号括起来的字符串时，该字符串就会在字符串池中。</p>
 <h2 id="字符串判等">字符串判等</h2>
-<p><code>==</code>运算符用于比较两个变量本身的值，即两个对象在内存中的首地址；而<code>equal()</code>方法则是比较两个字符串中所<font color=red>包含的内容</font>是否相同：</p>
+<p><code>==</code>运算符用于比较两个变量本身的值，即<font color=red>两个对象在内存中的首地址</font>；而<code>equal()</code>方法则是比较两个字符串中所<font color=red>包含的内容</font>是否相同：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">equalString</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>        
     String s1<span style="color:#f92672">,</span> s2<span style="color:#f92672">,</span> s3 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;abc&#34;</span><span style="color:#f92672">,</span> s4 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;abc&#34;</span><span style="color:#f92672">;</span>
     s1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;abc&#34;</span><span style="color:#f92672">);</span>               
@@ -610,7 +610,7 @@ System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span>
 <p>成员变量是对象的一部分，它随着对象的创建而存在，而局部变量随着方法的调用产生，随着方法调用的结束而自动消失。</p>
 </li>
 <li>
-<p>成员变量是对象的一部分，而对象是存在于堆内存中，而局部变量是存在于栈内存中的。</p>
+<p>成员变量是对象的一部分，而对象是存在于堆内存中，所以<font color=red>成员变量也是在堆内存中，而局部变量是存在于栈内存中</font>的。</p>
 </li>
 <li>
 <p>成员变量如果没有被赋初值，则自动以类型的默认值赋值。而局部变量不会自动赋值，必须显式地赋值后才能使用。被<code>final</code>修饰但没有被<code>static</code>修饰的成员变量必须显式地赋值。</p>
