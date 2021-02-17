@@ -2652,6 +2652,10 @@ var height = window.innerHeight || document.documentElement.clientHeight|| docum
 Interface Builder IBOutlet Swift编译器在看到@IBOutlet声明时不会进行任何特殊处理。它存在的意义仅仅是提示XCode这个属性需要关联到storyboard或nib文件中的对象上。
 从storyboard中创建@IBOutlet变量或者操作方法，有两种方式。第一种是先在storyboard中选中某个对象，然后同时按住Control键和鼠标左键并拖动光标到辅助编辑器上，然后松开鼠标左键，便可得到如下界面：
 第二种方法也是先在storyboard中选中某个对象，然后按住鼠标右键，接着拖动光标到辅助编辑器上，最后放开鼠标右键，即可得到上图所示的界面。
+复制对象 除了从对象库中拖出一个对象，也可以按住option键不放，并拖动想要复制的对象，以生成副本。按住option键是告诉Interface Builder创建一个被拖动对象的副本。
+不可见对象 如果有不可见的用户界面元素，比如空白标签，但又希望能看到它们在storyboard中的位置，可以设置Editor→Canvas→Show Bounds Rectangles，便可看到空白标签：
+约束设置 打开视图结构文档缩略图，选中要设置的对象，按住鼠标右键同时拖动到某个对象上，然后松开鼠标右键，便可得到一个设置约束的灰色的浮动框，点击任意一个都会生效：
+在上图中，为了一次可以设置多个约束，需要一直按住shift键，然后点击需要设置的约束，便可设置多个约束，效果如下图所示：
 </content>
     </entry>
     
