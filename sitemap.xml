@@ -1986,7 +1986,7 @@ class MyManager { // private 修饰 private static let sharedManager: MyManager 
         <title>Papers教程</title>
         <url>https://iihui.github.io/post/tool-papers/</url>
         <categories>
-          <category>QA</category>
+          <category>Tool</category>
         </categories>
         <tags>
           <tag>Tool</tag>

@@ -34,5 +34,14 @@
       <description>Keyboard Maestro是一款神奇的软件，在我心里它和Alfred同样重要，是装机必备软件。使用它可以省去安装很多软件，这篇文章记录在平常工作中使用它的一些特性或技巧，以供后续查阅。 快捷输入 粘贴 键盘 打开应用 开启和关闭wifi 窗口 左半屏 右半屏 最大化 全</description>
     </item>
     
+    <item>
+      <title>Papers教程</title>
+      <link>https://iihui.github.io/post/tool-papers/</link>
+      <pubDate>Sun, 06 Jan 2019 22:39:26 +0000</pubDate>
+      
+      <guid>https://iihui.github.io/post/tool-papers/</guid>
+      <description>Papers这个软件对自己的定位为个人科研图书馆，其主要功能为文献收集(Find)、文献整理(Organize)、文献阅读(Read)和文献引用(Cite)。这篇教程主要目的是使用Papers的引用功能。 四个功能 现在开始对上面提到的4个功能</description>
+    </item>
+    
   </channel>
 </rss>
