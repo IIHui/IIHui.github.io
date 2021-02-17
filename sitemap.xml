@@ -1991,7 +1991,7 @@ class MyManager { // private 修饰 private static let sharedManager: MyManager 
         <tags>
           <tag>Tool</tag>
         </tags>
-        <content type="html">  Papers这个软件对自己的定位为个人科研图书馆，其主要功能为文献收集(Find)、文献整理(Organize)、文献阅读(Read)和文献引用(Cite)。这篇教程目的是使用Papers的第四个功能——引用。
+        <content type="html">  Papers这个软件对自己的定位为个人科研图书馆，其主要功能为文献收集(Find)、文献整理(Organize)、文献阅读(Read)和文献引用(Cite)。这篇教程主要目的是使用Papers的引用功能。
  四个功能 现在开始对上面提到的4个功能进行简介，以便对Papers这个软件有个初步的认识，同时也可以了解一下文献管理软件的基本功能特点。
 文献收集 文献收集：即把原来需要借助浏览器从谷歌学术等学术站点搜索文献的功能整合到Papers这个软件中。即可以在Papers软件中搜索文献，而不用切换到浏览器去搜索文献。但因为这是国外开发的一款软件，因此不支持如百度学术这样的中文学术搜索站点：
 文献整理 文献整理：利用Papers对收集到的学术资料进行整理。换句话说，就是对搜集到的文献资料进行分类整理，建立档案系统的过程。
