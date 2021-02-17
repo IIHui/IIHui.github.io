@@ -217,6 +217,7 @@ ascii_composer/switch_key: Caps_Lock: commit_code Control_L: noop Control_R: noo
         <content type="html"> layoutIfNeeded与setNeedsLayout setNeedsLayout setNeedsLayout当需要调整UIView子视图布局时，需要在主线程调用此方法。此方法记录调整布局请求并立即返回「即异步执行」，等待下一个更新周期更新视图。也就是说，这个方法不会强制立即更新，而是等待下一个更新周期，才进行刷新页面。因此，可以将多个视图布局更新合并到一个update cycle，有助于提高性能。
 layoutIfNeeded layoutIfNeeded方法一被调用，主线程会立即强制重新布局，它会从当前视图开始，一直到完成所有子视图的布局。如果没有待处理的布局更新，则该方法将直接退出，而不会修改布局，或调用任何与布局有关的方法。
 如果要立即刷新，要先调用setNeedsLayout，把标记设为需要布局，然后马上调用layoutIfNeeded，实现布局。在视图第一次显示之前，标记肯定是需要刷新的，所以直接调用layoutIfNeeded就会进行立即更新。
+参考资料
 </content>
     </entry>
     
