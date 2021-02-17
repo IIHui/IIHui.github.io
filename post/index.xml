@@ -31,7 +31,7 @@
       <pubDate>Fri, 12 Feb 2021 08:25:42 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/tool-squirrel/</guid>
-      <description>鼠须管输入法是Mac OS上一款高度可定制的输入法软件，它没有图形界面，设置全靠修改yaml文件来实现。这篇文章用于记录折腾鼠须管0.15.1时遇到的一些问题和解决方案，解决方案只对0.15.1有效。 横排显示 鼠须管默认是竖排显示候选词的，为了</description>
+      <description>鼠须管输入法是Mac OS上一款高度可定制的输入法软件，它没有图形界面，设置全靠修改yaml文件来实现。这篇文章用于记录折腾鼠须管0.15.1时遇到的一些问题和解决方案，解决方案只在0.15.1上实践过。 横排显示 鼠须管默认是竖排显示候选词的，</description>
     </item>
     
     <item>
@@ -743,6 +743,15 @@
       
       <guid>https://iihui.github.io/post/ios-singleton/</guid>
       <description>单例模式(Singleton Pattern)属于创建型模式，该模式涉及到一个单一的类，该类负责创建自己的对象，同时确保只有一个单例对象被创建。 第一种方式 利用Swift中全局变量的懒加载和全局变量初始化时默认使用dispatch_once以保</description>
+    </item>
+    
+    <item>
+      <title>papers教程</title>
+      <link>https://iihui.github.io/post/tool-papers/</link>
+      <pubDate>Sun, 06 Jan 2019 22:39:26 +0000</pubDate>
+      
+      <guid>https://iihui.github.io/post/tool-papers/</guid>
+      <description>Papers软件对自己的定位为个人科研图书馆，其主要功能包括文献收集(Find)、文献整理(Organize)、文献阅读(Read)和文献引用(Cite)。这篇教程目的是使用Papers的第四个功能——引用。 四个功能 现在开始对上面提到的4个</description>
     </item>
     
     <item>

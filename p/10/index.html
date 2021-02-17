@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
 <head>
-	<meta name="generator" content="Hugo 0.74.3" />
+	<meta name="generator" content="Hugo 0.80.0" />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
@@ -19,8 +19,8 @@
     <link href="https://iihui.github.io/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
     
     <link href="https://iihui.github.io/css/main.css" rel="stylesheet" type="text/css" />
-    <link href="https://iihui.github.io/css/custom.css" rel="stylesheet" type="text/css" />
     <link href="https://iihui.github.io/css/syntax.css" rel="stylesheet" type="text/css" />
+
     <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
@@ -39,9 +39,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/objectivec.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/clojure.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/cpp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/kotlin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/yaml.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-
-
 </head>
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 <div class="container one-collumn sidebar-position-left page-home  ">
@@ -181,8 +181,8 @@ code.has-jax {
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="https://iihui.github.io/post/js-image-clickedlistener/" itemprop="url">
-        img点击监听
+        <a class="post-title-link" href="https://iihui.github.io/post/ios-release/" itemprop="url">
+        流水线自动发布组件
         </a>
       </h1>
       <div class="post-meta">
@@ -191,8 +191,8 @@ code.has-jax {
     <i class="fa fa-calendar-o"></i>
 </span>
 <span class="post-meta-item-text">创建: </span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2019-01-08">
-    2019-01-08
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="0001-01-01">
+    0001-01-01
 </time>
 </span>
 &nbsp; | &nbsp;
@@ -201,8 +201,8 @@ code.has-jax {
     <i class="fa fa-calendar-check-o"></i>
 </span>
 <span class="post-meta-item-text">更新: </span>
-<time itemprop="dateUpdated" content="2019-01-08">
-    2019-01-08
+<time itemprop="dateUpdated" content="0001-01-01">
+    0001-01-01
 </time>
 </span> 
       
@@ -215,8 +215,8 @@ code.has-jax {
   <span class="post-meta-item-text">分类: </span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="https://iihui.github.io/categories/code" itemprop="url" rel="index">
-        <span itemprop="name">code</span>
+      <a href="https://iihui.github.io/categories/ios" itemprop="url" rel="index">
+        <span itemprop="name">iOS</span>
       </a>
       &nbsp; 
     </span>
@@ -230,1137 +230,18 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">593</span>
+<span class="leancloud-visitors-count">0</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">2 分钟</span>
+<span class="leancloud-visitors-count">0 分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    一篇图文笔记可能有多张图片，目前的需求为单击图片后开始预览图片。想到的解决思路有两种，第一种是为每张图片添加点击事件的监听，这种方式的麻烦在于要监听是否有新图片插入，一旦有新图片插入时则要对其加入点击事件的监听；第二种则是全局监听点击事件，
-    </div>
     
-    <div class="post-more-link text-center">
-    <a class="btn" href="https://iihui.github.io/post/js-image-clickedlistener/" rel="contents">
-      阅读全文 &raquo;
-    </a>
-    </div>
-    
-    <footer class="post-footer"><div class="post-eof"></div></footer>
-  </article>
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="https://iihui.github.io/post/post/js-image-clickedlistener/" itemprop="url">
-        img点击监听
-        </a>
-      </h1>
-      <div class="post-meta">
-      <span class="post-time">
-<span class="post-meta-item-icon">
-    <i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">创建: </span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2019-01-08">
-    2019-01-08
-</time>
-</span>
-&nbsp; | &nbsp;
-<span class="post-updated-time">
-<span class="post-meta-item-icon">
-    <i class="fa fa-calendar-check-o"></i>
-</span>
-<span class="post-meta-item-text">更新: </span>
-<time itemprop="dateUpdated" content="2019-01-08">
-    2019-01-08
-</time>
-</span> 
-      
-
-  <span class="post-category" >
-  &nbsp; | &nbsp;
-  <span class="post-meta-item-icon">
-    <i class="fa fa-folder-o"></i>
-  </span>
-  <span class="post-meta-item-text">分类: </span>
-  
-    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="https://iihui.github.io/categories/code" itemprop="url" rel="index">
-        <span itemprop="name">code</span>
-      </a>
-      &nbsp; 
-    </span>
-  
-</span>
-
-
-      <span>
-&nbsp; | &nbsp;
-<span class="post-meta-item-icon">
-    <i class="fa fa-file-word-o"></i>
-</span>
-<span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">593</span>
-&nbsp; | &nbsp;
-<span class="post-meta-item-icon">
-    <i class="fa fa-coffee"></i>
-</span>
-<span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">2 分钟</span>
-</span>
-      </div>
-    </header>
-    <div class="post-body" itemprop="articleBody">
-    一篇图文笔记可能有多张图片，目前的需求为单击图片后开始预览图片。想到的解决思路有两种，第一种是为每张图片添加点击事件的监听，这种方式的麻烦在于要监听是否有新图片插入，一旦有新图片插入时则要对其加入点击事件的监听；第二种则是全局监听点击事件，
-    </div>
-    
-    <div class="post-more-link text-center">
-    <a class="btn" href="https://iihui.github.io/post/post/js-image-clickedlistener/" rel="contents">
-      阅读全文 &raquo;
-    </a>
-    </div>
-    
-    <footer class="post-footer"><div class="post-eof"></div></footer>
-  </article>
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="https://iihui.github.io/post/ios-singleton/" itemprop="url">
-        单例模式
-        </a>
-      </h1>
-      <div class="post-meta">
-      <span class="post-time">
-<span class="post-meta-item-icon">
-    <i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">创建: </span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2019-01-07">
-    2019-01-07
-</time>
-</span>
-&nbsp; | &nbsp;
-<span class="post-updated-time">
-<span class="post-meta-item-icon">
-    <i class="fa fa-calendar-check-o"></i>
-</span>
-<span class="post-meta-item-text">更新: </span>
-<time itemprop="dateUpdated" content="2019-01-07">
-    2019-01-07
-</time>
-</span> 
-      
-
-  <span class="post-category" >
-  &nbsp; | &nbsp;
-  <span class="post-meta-item-icon">
-    <i class="fa fa-folder-o"></i>
-  </span>
-  <span class="post-meta-item-text">分类: </span>
-  
-    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="https://iihui.github.io/categories/code" itemprop="url" rel="index">
-        <span itemprop="name">code</span>
-      </a>
-      &nbsp; 
-    </span>
-  
-</span>
-
-
-      <span>
-&nbsp; | &nbsp;
-<span class="post-meta-item-icon">
-    <i class="fa fa-file-word-o"></i>
-</span>
-<span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">500</span>
-&nbsp; | &nbsp;
-<span class="post-meta-item-icon">
-    <i class="fa fa-coffee"></i>
-</span>
-<span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">1 分钟</span>
-</span>
-      </div>
-    </header>
-    <div class="post-body" itemprop="articleBody">
-    单例模式(Singleton Pattern)属于创建型模式，该模式涉及到一个单一的类，该类负责创建自己的对象，同时确保只有一个单例对象被创建。 第一种方式 利用Swift中全局变量的懒加载和全局变量初始化时默认使用dispatch_once以保
-    </div>
-    
-    <div class="post-more-link text-center">
-    <a class="btn" href="https://iihui.github.io/post/ios-singleton/" rel="contents">
-      阅读全文 &raquo;
-    </a>
-    </div>
-    
-    <footer class="post-footer"><div class="post-eof"></div></footer>
-  </article>
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="https://iihui.github.io/post/post/ios-singleton/" itemprop="url">
-        单例模式
-        </a>
-      </h1>
-      <div class="post-meta">
-      <span class="post-time">
-<span class="post-meta-item-icon">
-    <i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">创建: </span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2019-01-07">
-    2019-01-07
-</time>
-</span>
-&nbsp; | &nbsp;
-<span class="post-updated-time">
-<span class="post-meta-item-icon">
-    <i class="fa fa-calendar-check-o"></i>
-</span>
-<span class="post-meta-item-text">更新: </span>
-<time itemprop="dateUpdated" content="2019-01-07">
-    2019-01-07
-</time>
-</span> 
-      
-
-  <span class="post-category" >
-  &nbsp; | &nbsp;
-  <span class="post-meta-item-icon">
-    <i class="fa fa-folder-o"></i>
-  </span>
-  <span class="post-meta-item-text">分类: </span>
-  
-    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="https://iihui.github.io/categories/code" itemprop="url" rel="index">
-        <span itemprop="name">code</span>
-      </a>
-      &nbsp; 
-    </span>
-  
-</span>
-
-
-      <span>
-&nbsp; | &nbsp;
-<span class="post-meta-item-icon">
-    <i class="fa fa-file-word-o"></i>
-</span>
-<span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">500</span>
-&nbsp; | &nbsp;
-<span class="post-meta-item-icon">
-    <i class="fa fa-coffee"></i>
-</span>
-<span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">1 分钟</span>
-</span>
-      </div>
-    </header>
-    <div class="post-body" itemprop="articleBody">
-    单例模式(Singleton Pattern)属于创建型模式，该模式涉及到一个单一的类，该类负责创建自己的对象，同时确保只有一个单例对象被创建。 第一种方式 利用Swift中全局变量的懒加载和全局变量初始化时默认使用dispatch_once以保
-    </div>
-    
-    <div class="post-more-link text-center">
-    <a class="btn" href="https://iihui.github.io/post/post/ios-singleton/" rel="contents">
-      阅读全文 &raquo;
-    </a>
-    </div>
-    
-    <footer class="post-footer"><div class="post-eof"></div></footer>
-  </article>
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="https://iihui.github.io/post/ios-image-preview/" itemprop="url">
-        基于PageController的图片预览
-        </a>
-      </h1>
-      <div class="post-meta">
-      <span class="post-time">
-<span class="post-meta-item-icon">
-    <i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">创建: </span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2019-01-05">
-    2019-01-05
-</time>
-</span>
-&nbsp; | &nbsp;
-<span class="post-updated-time">
-<span class="post-meta-item-icon">
-    <i class="fa fa-calendar-check-o"></i>
-</span>
-<span class="post-meta-item-text">更新: </span>
-<time itemprop="dateUpdated" content="2019-01-05">
-    2019-01-05
-</time>
-</span> 
-      
-
-  <span class="post-category" >
-  &nbsp; | &nbsp;
-  <span class="post-meta-item-icon">
-    <i class="fa fa-folder-o"></i>
-  </span>
-  <span class="post-meta-item-text">分类: </span>
-  
-    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="https://iihui.github.io/categories/code" itemprop="url" rel="index">
-        <span itemprop="name">code</span>
-      </a>
-      &nbsp; 
-    </span>
-  
-</span>
-
-
-      <span>
-&nbsp; | &nbsp;
-<span class="post-meta-item-icon">
-    <i class="fa fa-file-word-o"></i>
-</span>
-<span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">16</span>
-&nbsp; | &nbsp;
-<span class="post-meta-item-icon">
-    <i class="fa fa-coffee"></i>
-</span>
-<span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">1 分钟</span>
-</span>
-      </div>
-    </header>
-    <div class="post-body" itemprop="articleBody">
-    参考资料 参考资料 参考资料 参考资料
-    </div>
-    
-    <footer class="post-footer"><div class="post-eof"></div></footer>
-  </article>
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="https://iihui.github.io/post/post/ios-image-preview/" itemprop="url">
-        基于PageController的图片预览
-        </a>
-      </h1>
-      <div class="post-meta">
-      <span class="post-time">
-<span class="post-meta-item-icon">
-    <i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">创建: </span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2019-01-05">
-    2019-01-05
-</time>
-</span>
-&nbsp; | &nbsp;
-<span class="post-updated-time">
-<span class="post-meta-item-icon">
-    <i class="fa fa-calendar-check-o"></i>
-</span>
-<span class="post-meta-item-text">更新: </span>
-<time itemprop="dateUpdated" content="2019-01-05">
-    2019-01-05
-</time>
-</span> 
-      
-
-  <span class="post-category" >
-  &nbsp; | &nbsp;
-  <span class="post-meta-item-icon">
-    <i class="fa fa-folder-o"></i>
-  </span>
-  <span class="post-meta-item-text">分类: </span>
-  
-    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="https://iihui.github.io/categories/code" itemprop="url" rel="index">
-        <span itemprop="name">code</span>
-      </a>
-      &nbsp; 
-    </span>
-  
-</span>
-
-
-      <span>
-&nbsp; | &nbsp;
-<span class="post-meta-item-icon">
-    <i class="fa fa-file-word-o"></i>
-</span>
-<span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">16</span>
-&nbsp; | &nbsp;
-<span class="post-meta-item-icon">
-    <i class="fa fa-coffee"></i>
-</span>
-<span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">1 分钟</span>
-</span>
-      </div>
-    </header>
-    <div class="post-body" itemprop="articleBody">
-    参考资料 参考资料 参考资料 参考资料
-    </div>
-    
-    <footer class="post-footer"><div class="post-eof"></div></footer>
-  </article>
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="https://iihui.github.io/post/ios-debug/" itemprop="url">
-        LLDB 调试
-        </a>
-      </h1>
-      <div class="post-meta">
-      <span class="post-time">
-<span class="post-meta-item-icon">
-    <i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">创建: </span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2019-01-04">
-    2019-01-04
-</time>
-</span>
-&nbsp; | &nbsp;
-<span class="post-updated-time">
-<span class="post-meta-item-icon">
-    <i class="fa fa-calendar-check-o"></i>
-</span>
-<span class="post-meta-item-text">更新: </span>
-<time itemprop="dateUpdated" content="2019-01-04">
-    2019-01-04
-</time>
-</span> 
-      
-
-  <span class="post-category" >
-  &nbsp; | &nbsp;
-  <span class="post-meta-item-icon">
-    <i class="fa fa-folder-o"></i>
-  </span>
-  <span class="post-meta-item-text">分类: </span>
-  
-    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="https://iihui.github.io/categories/code" itemprop="url" rel="index">
-        <span itemprop="name">code</span>
-      </a>
-      &nbsp; 
-    </span>
-  
-</span>
-
-
-      <span>
-&nbsp; | &nbsp;
-<span class="post-meta-item-icon">
-    <i class="fa fa-file-word-o"></i>
-</span>
-<span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">327</span>
-&nbsp; | &nbsp;
-<span class="post-meta-item-icon">
-    <i class="fa fa-coffee"></i>
-</span>
-<span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">1 分钟</span>
-</span>
-      </div>
-    </header>
-    <div class="post-body" itemprop="articleBody">
-    LLDB是一个庞大的工具,内置了许多有用的命令。 命令语法结构 &lt;command&gt; [&lt;subcommand&gt; [&lt;subcommand&gt;...]] &lt;action&gt; [-options [option-value]] [argument [argument...]] 其中： command和subcommand为LLDB调试命令的名称，命令和子命令按照层级结构来排列：一个命令对象为跟随其的子命令对象创建一个上下文，子命令又为其子命
-    </div>
-    
-    <div class="post-more-link text-center">
-    <a class="btn" href="https://iihui.github.io/post/ios-debug/" rel="contents">
-      阅读全文 &raquo;
-    </a>
-    </div>
-    
-    <footer class="post-footer"><div class="post-eof"></div></footer>
-  </article>
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="https://iihui.github.io/post/post/ios-debug/" itemprop="url">
-        LLDB 调试
-        </a>
-      </h1>
-      <div class="post-meta">
-      <span class="post-time">
-<span class="post-meta-item-icon">
-    <i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">创建: </span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2019-01-04">
-    2019-01-04
-</time>
-</span>
-&nbsp; | &nbsp;
-<span class="post-updated-time">
-<span class="post-meta-item-icon">
-    <i class="fa fa-calendar-check-o"></i>
-</span>
-<span class="post-meta-item-text">更新: </span>
-<time itemprop="dateUpdated" content="2019-01-04">
-    2019-01-04
-</time>
-</span> 
-      
-
-  <span class="post-category" >
-  &nbsp; | &nbsp;
-  <span class="post-meta-item-icon">
-    <i class="fa fa-folder-o"></i>
-  </span>
-  <span class="post-meta-item-text">分类: </span>
-  
-    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="https://iihui.github.io/categories/code" itemprop="url" rel="index">
-        <span itemprop="name">code</span>
-      </a>
-      &nbsp; 
-    </span>
-  
-</span>
-
-
-      <span>
-&nbsp; | &nbsp;
-<span class="post-meta-item-icon">
-    <i class="fa fa-file-word-o"></i>
-</span>
-<span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">327</span>
-&nbsp; | &nbsp;
-<span class="post-meta-item-icon">
-    <i class="fa fa-coffee"></i>
-</span>
-<span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">1 分钟</span>
-</span>
-      </div>
-    </header>
-    <div class="post-body" itemprop="articleBody">
-    LLDB是一个庞大的工具,内置了许多有用的命令。 命令语法结构 &lt;command&gt; [&lt;subcommand&gt; [&lt;subcommand&gt;...]] &lt;action&gt; [-options [option-value]] [argument [argument...]] 其中： command和subcommand为LLDB调试命令的名称，命令和子命令按照层级结构来排列：一个命令对象为跟随其的子命令对象创建一个上下文，子命令又为其子命
-    </div>
-    
-    <div class="post-more-link text-center">
-    <a class="btn" href="https://iihui.github.io/post/post/ios-debug/" rel="contents">
-      阅读全文 &raquo;
-    </a>
-    </div>
-    
-    <footer class="post-footer"><div class="post-eof"></div></footer>
-  </article>
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="https://iihui.github.io/post/ios-image-selector/" itemprop="url">
-        多图片选择
-        </a>
-      </h1>
-      <div class="post-meta">
-      <span class="post-time">
-<span class="post-meta-item-icon">
-    <i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">创建: </span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2019-01-04">
-    2019-01-04
-</time>
-</span>
-&nbsp; | &nbsp;
-<span class="post-updated-time">
-<span class="post-meta-item-icon">
-    <i class="fa fa-calendar-check-o"></i>
-</span>
-<span class="post-meta-item-text">更新: </span>
-<time itemprop="dateUpdated" content="2019-01-04">
-    2019-01-04
-</time>
-</span> 
-      
-
-  <span class="post-category" >
-  &nbsp; | &nbsp;
-  <span class="post-meta-item-icon">
-    <i class="fa fa-folder-o"></i>
-  </span>
-  <span class="post-meta-item-text">分类: </span>
-  
-    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="https://iihui.github.io/categories/code" itemprop="url" rel="index">
-        <span itemprop="name">code</span>
-      </a>
-      &nbsp; 
-    </span>
-  
-</span>
-
-
-      <span>
-&nbsp; | &nbsp;
-<span class="post-meta-item-icon">
-    <i class="fa fa-file-word-o"></i>
-</span>
-<span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">918</span>
-&nbsp; | &nbsp;
-<span class="post-meta-item-icon">
-    <i class="fa fa-coffee"></i>
-</span>
-<span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">2 分钟</span>
-</span>
-      </div>
-    </header>
-    <div class="post-body" itemprop="articleBody">
-    第一步 JSAPI中有个文件选择器，而文件选择器中有选择多个图片的功能。首先在WebviewController.swift中找到: case UrlSchema.fileSelectorSchema.rawValue: //文件选择器 fileSelectorService.presentFileSelector(self.webConfig, params: paramDic) 第二步 首先查看fileSelectorService的创建: fileprivate lazy var fileSelectorService: FileSelectorService = FileSelectorService(callbackDelegate: self) 而File
-    </div>
-    
-    <div class="post-more-link text-center">
-    <a class="btn" href="https://iihui.github.io/post/ios-image-selector/" rel="contents">
-      阅读全文 &raquo;
-    </a>
-    </div>
-    
-    <footer class="post-footer"><div class="post-eof"></div></footer>
-  </article>
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="https://iihui.github.io/post/post/ios-image-selector/" itemprop="url">
-        多图片选择
-        </a>
-      </h1>
-      <div class="post-meta">
-      <span class="post-time">
-<span class="post-meta-item-icon">
-    <i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">创建: </span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2019-01-04">
-    2019-01-04
-</time>
-</span>
-&nbsp; | &nbsp;
-<span class="post-updated-time">
-<span class="post-meta-item-icon">
-    <i class="fa fa-calendar-check-o"></i>
-</span>
-<span class="post-meta-item-text">更新: </span>
-<time itemprop="dateUpdated" content="2019-01-04">
-    2019-01-04
-</time>
-</span> 
-      
-
-  <span class="post-category" >
-  &nbsp; | &nbsp;
-  <span class="post-meta-item-icon">
-    <i class="fa fa-folder-o"></i>
-  </span>
-  <span class="post-meta-item-text">分类: </span>
-  
-    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="https://iihui.github.io/categories/code" itemprop="url" rel="index">
-        <span itemprop="name">code</span>
-      </a>
-      &nbsp; 
-    </span>
-  
-</span>
-
-
-      <span>
-&nbsp; | &nbsp;
-<span class="post-meta-item-icon">
-    <i class="fa fa-file-word-o"></i>
-</span>
-<span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">918</span>
-&nbsp; | &nbsp;
-<span class="post-meta-item-icon">
-    <i class="fa fa-coffee"></i>
-</span>
-<span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">2 分钟</span>
-</span>
-      </div>
-    </header>
-    <div class="post-body" itemprop="articleBody">
-    第一步 JSAPI中有个文件选择器，而文件选择器中有选择多个图片的功能。首先在WebviewController.swift中找到: case UrlSchema.fileSelectorSchema.rawValue: //文件选择器 fileSelectorService.presentFileSelector(self.webConfig, params: paramDic) 第二步 首先查看fileSelectorService的创建: fileprivate lazy var fileSelectorService: FileSelectorService = FileSelectorService(callbackDelegate: self) 而File
-    </div>
-    
-    <div class="post-more-link text-center">
-    <a class="btn" href="https://iihui.github.io/post/post/ios-image-selector/" rel="contents">
-      阅读全文 &raquo;
-    </a>
-    </div>
-    
-    <footer class="post-footer"><div class="post-eof"></div></footer>
-  </article>
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="https://iihui.github.io/post/post/swift-for-in/" itemprop="url">
-        Swift中for-in的各种姿势
-        </a>
-      </h1>
-      <div class="post-meta">
-      <span class="post-time">
-<span class="post-meta-item-icon">
-    <i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">创建: </span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2019-01-04">
-    2019-01-04
-</time>
-</span>
-&nbsp; | &nbsp;
-<span class="post-updated-time">
-<span class="post-meta-item-icon">
-    <i class="fa fa-calendar-check-o"></i>
-</span>
-<span class="post-meta-item-text">更新: </span>
-<time itemprop="dateUpdated" content="2019-01-04">
-    2019-01-04
-</time>
-</span> 
-      
-
-  <span class="post-category" >
-  &nbsp; | &nbsp;
-  <span class="post-meta-item-icon">
-    <i class="fa fa-folder-o"></i>
-  </span>
-  <span class="post-meta-item-text">分类: </span>
-  
-    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="https://iihui.github.io/categories/code" itemprop="url" rel="index">
-        <span itemprop="name">code</span>
-      </a>
-      &nbsp; 
-    </span>
-  
-</span>
-
-
-      <span>
-&nbsp; | &nbsp;
-<span class="post-meta-item-icon">
-    <i class="fa fa-file-word-o"></i>
-</span>
-<span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">594</span>
-&nbsp; | &nbsp;
-<span class="post-meta-item-icon">
-    <i class="fa fa-coffee"></i>
-</span>
-<span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">2 分钟</span>
-</span>
-      </div>
-    </header>
-    <div class="post-body" itemprop="articleBody">
-    Swift中只有一种形式的for循环，即for-in。但是for-in有多种形式，包括常规用法和区间循环。 常规用法 常规用法一般用于直接访问数组中的元素，分为直接访问和按索引访问： let arr = [34,78,789,-12] for item in arr{ print(item) } 在OC中是通过索引i来访问数组中的元素，在
-    </div>
-    
-    <div class="post-more-link text-center">
-    <a class="btn" href="https://iihui.github.io/post/post/swift-for-in/" rel="contents">
-      阅读全文 &raquo;
-    </a>
-    </div>
-    
-    <footer class="post-footer"><div class="post-eof"></div></footer>
-  </article>
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="https://iihui.github.io/post/swift-for-in/" itemprop="url">
-        Swift中for-in的各种姿势
-        </a>
-      </h1>
-      <div class="post-meta">
-      <span class="post-time">
-<span class="post-meta-item-icon">
-    <i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">创建: </span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2019-01-04">
-    2019-01-04
-</time>
-</span>
-&nbsp; | &nbsp;
-<span class="post-updated-time">
-<span class="post-meta-item-icon">
-    <i class="fa fa-calendar-check-o"></i>
-</span>
-<span class="post-meta-item-text">更新: </span>
-<time itemprop="dateUpdated" content="2019-01-04">
-    2019-01-04
-</time>
-</span> 
-      
-
-  <span class="post-category" >
-  &nbsp; | &nbsp;
-  <span class="post-meta-item-icon">
-    <i class="fa fa-folder-o"></i>
-  </span>
-  <span class="post-meta-item-text">分类: </span>
-  
-    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="https://iihui.github.io/categories/code" itemprop="url" rel="index">
-        <span itemprop="name">code</span>
-      </a>
-      &nbsp; 
-    </span>
-  
-</span>
-
-
-      <span>
-&nbsp; | &nbsp;
-<span class="post-meta-item-icon">
-    <i class="fa fa-file-word-o"></i>
-</span>
-<span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">594</span>
-&nbsp; | &nbsp;
-<span class="post-meta-item-icon">
-    <i class="fa fa-coffee"></i>
-</span>
-<span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">2 分钟</span>
-</span>
-      </div>
-    </header>
-    <div class="post-body" itemprop="articleBody">
-    Swift中只有一种形式的for循环，即for-in。但是for-in有多种形式，包括常规用法和区间循环。 常规用法 常规用法一般用于直接访问数组中的元素，分为直接访问和按索引访问： let arr = [34,78,789,-12] for item in arr{ print(item) } 在OC中是通过索引i来访问数组中的元素，在
-    </div>
-    
-    <div class="post-more-link text-center">
-    <a class="btn" href="https://iihui.github.io/post/swift-for-in/" rel="contents">
-      阅读全文 &raquo;
-    </a>
-    </div>
-    
-    <footer class="post-footer"><div class="post-eof"></div></footer>
-  </article>
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="https://iihui.github.io/post/ios-sort/" itemprop="url">
-        基本内排序算法Swift实现
-        </a>
-      </h1>
-      <div class="post-meta">
-      <span class="post-time">
-<span class="post-meta-item-icon">
-    <i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">创建: </span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-12-31">
-    2018-12-31
-</time>
-</span>
-&nbsp; | &nbsp;
-<span class="post-updated-time">
-<span class="post-meta-item-icon">
-    <i class="fa fa-calendar-check-o"></i>
-</span>
-<span class="post-meta-item-text">更新: </span>
-<time itemprop="dateUpdated" content="2018-12-31">
-    2018-12-31
-</time>
-</span> 
-      
-
-  <span class="post-category" >
-  &nbsp; | &nbsp;
-  <span class="post-meta-item-icon">
-    <i class="fa fa-folder-o"></i>
-  </span>
-  <span class="post-meta-item-text">分类: </span>
-  
-    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="https://iihui.github.io/categories/%E7%AE%97%E6%B3%95" itemprop="url" rel="index">
-        <span itemprop="name">算法</span>
-      </a>
-      &nbsp; 
-    </span>
-  
-</span>
-
-
-      <span>
-&nbsp; | &nbsp;
-<span class="post-meta-item-icon">
-    <i class="fa fa-file-word-o"></i>
-</span>
-<span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">3767</span>
-&nbsp; | &nbsp;
-<span class="post-meta-item-icon">
-    <i class="fa fa-coffee"></i>
-</span>
-<span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">8 分钟</span>
-</span>
-      </div>
-    </header>
-    <div class="post-body" itemprop="articleBody">
-    排序就是重新排列表中的元素，使表中的元素满足按关键字递增或者递减的排列过程。排序算法分为内排序和外排序。内排序是指排序期间元素全部放在内存中的排序；而外排序是指在排序期间元素太多，不能同时存放在内存中，必须在排序过程中根据要求，不断在内，外
-    </div>
-    
-    <div class="post-more-link text-center">
-    <a class="btn" href="https://iihui.github.io/post/ios-sort/" rel="contents">
-      阅读全文 &raquo;
-    </a>
-    </div>
-    
-    <footer class="post-footer"><div class="post-eof"></div></footer>
-  </article>
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="https://iihui.github.io/post/post/ios-sort/" itemprop="url">
-        基本内排序算法Swift实现
-        </a>
-      </h1>
-      <div class="post-meta">
-      <span class="post-time">
-<span class="post-meta-item-icon">
-    <i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">创建: </span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-12-31">
-    2018-12-31
-</time>
-</span>
-&nbsp; | &nbsp;
-<span class="post-updated-time">
-<span class="post-meta-item-icon">
-    <i class="fa fa-calendar-check-o"></i>
-</span>
-<span class="post-meta-item-text">更新: </span>
-<time itemprop="dateUpdated" content="2018-12-31">
-    2018-12-31
-</time>
-</span> 
-      
-
-  <span class="post-category" >
-  &nbsp; | &nbsp;
-  <span class="post-meta-item-icon">
-    <i class="fa fa-folder-o"></i>
-  </span>
-  <span class="post-meta-item-text">分类: </span>
-  
-    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="https://iihui.github.io/categories/%E7%AE%97%E6%B3%95" itemprop="url" rel="index">
-        <span itemprop="name">算法</span>
-      </a>
-      &nbsp; 
-    </span>
-  
-</span>
-
-
-      <span>
-&nbsp; | &nbsp;
-<span class="post-meta-item-icon">
-    <i class="fa fa-file-word-o"></i>
-</span>
-<span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">3767</span>
-&nbsp; | &nbsp;
-<span class="post-meta-item-icon">
-    <i class="fa fa-coffee"></i>
-</span>
-<span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">8 分钟</span>
-</span>
-      </div>
-    </header>
-    <div class="post-body" itemprop="articleBody">
-    排序就是重新排列表中的元素，使表中的元素满足按关键字递增或者递减的排列过程。排序算法分为内排序和外排序。内排序是指排序期间元素全部放在内存中的排序；而外排序是指在排序期间元素太多，不能同时存放在内存中，必须在排序过程中根据要求，不断在内，外
-    </div>
-    
-    <div class="post-more-link text-center">
-    <a class="btn" href="https://iihui.github.io/post/post/ios-sort/" rel="contents">
-      阅读全文 &raquo;
-    </a>
-    </div>
-    
-    <footer class="post-footer"><div class="post-eof"></div></footer>
-  </article>
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="https://iihui.github.io/post/ios-http/" itemprop="url">
-        iOS允许HTTP请求
-        </a>
-      </h1>
-      <div class="post-meta">
-      <span class="post-time">
-<span class="post-meta-item-icon">
-    <i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">创建: </span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-12-29">
-    2018-12-29
-</time>
-</span>
-&nbsp; | &nbsp;
-<span class="post-updated-time">
-<span class="post-meta-item-icon">
-    <i class="fa fa-calendar-check-o"></i>
-</span>
-<span class="post-meta-item-text">更新: </span>
-<time itemprop="dateUpdated" content="2018-12-29">
-    2018-12-29
-</time>
-</span> 
-      
-
-  <span class="post-category" >
-  &nbsp; | &nbsp;
-  <span class="post-meta-item-icon">
-    <i class="fa fa-folder-o"></i>
-  </span>
-  <span class="post-meta-item-text">分类: </span>
-  
-    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="https://iihui.github.io/categories/code" itemprop="url" rel="index">
-        <span itemprop="name">code</span>
-      </a>
-      &nbsp; 
-    </span>
-  
-</span>
-
-
-      <span>
-&nbsp; | &nbsp;
-<span class="post-meta-item-icon">
-    <i class="fa fa-file-word-o"></i>
-</span>
-<span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">125</span>
-&nbsp; | &nbsp;
-<span class="post-meta-item-icon">
-    <i class="fa fa-coffee"></i>
-</span>
-<span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">1 分钟</span>
-</span>
-      </div>
-    </header>
-    <div class="post-body" itemprop="articleBody">
-    在iOS 9之后，苹果默认要求App访问的url必须为https的安全链接，为了能在项目中请求Http链接，需要在项目中自动生成的Info.plist文件里，将App Transport Security Settings下的Allow Arbitrary Loads设置为YES「如果没有则先添加
-    </div>
-    
-    <div class="post-more-link text-center">
-    <a class="btn" href="https://iihui.github.io/post/ios-http/" rel="contents">
-      阅读全文 &raquo;
-    </a>
-    </div>
-    
-    <footer class="post-footer"><div class="post-eof"></div></footer>
-  </article>
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="https://iihui.github.io/post/post/ios-http/" itemprop="url">
-        iOS允许HTTP请求
-        </a>
-      </h1>
-      <div class="post-meta">
-      <span class="post-time">
-<span class="post-meta-item-icon">
-    <i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">创建: </span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-12-29">
-    2018-12-29
-</time>
-</span>
-&nbsp; | &nbsp;
-<span class="post-updated-time">
-<span class="post-meta-item-icon">
-    <i class="fa fa-calendar-check-o"></i>
-</span>
-<span class="post-meta-item-text">更新: </span>
-<time itemprop="dateUpdated" content="2018-12-29">
-    2018-12-29
-</time>
-</span> 
-      
-
-  <span class="post-category" >
-  &nbsp; | &nbsp;
-  <span class="post-meta-item-icon">
-    <i class="fa fa-folder-o"></i>
-  </span>
-  <span class="post-meta-item-text">分类: </span>
-  
-    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="https://iihui.github.io/categories/code" itemprop="url" rel="index">
-        <span itemprop="name">code</span>
-      </a>
-      &nbsp; 
-    </span>
-  
-</span>
-
-
-      <span>
-&nbsp; | &nbsp;
-<span class="post-meta-item-icon">
-    <i class="fa fa-file-word-o"></i>
-</span>
-<span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">125</span>
-&nbsp; | &nbsp;
-<span class="post-meta-item-icon">
-    <i class="fa fa-coffee"></i>
-</span>
-<span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">1 分钟</span>
-</span>
-      </div>
-    </header>
-    <div class="post-body" itemprop="articleBody">
-    在iOS 9之后，苹果默认要求App访问的url必须为https的安全链接，为了能在项目中请求Http链接，需要在项目中自动生成的Info.plist文件里，将App Transport Security Settings下的Allow Arbitrary Loads设置为YES「如果没有则先添加
-    </div>
-    
-    <div class="post-more-link text-center">
-    <a class="btn" href="https://iihui.github.io/post/post/ios-http/" rel="contents">
-      阅读全文 &raquo;
-    </a>
     </div>
     
     <footer class="post-footer"><div class="post-eof"></div></footer>
@@ -1381,6 +262,9 @@ code.has-jax {
 
 
 
+  
+  
+
 
 
 <nav class="pagination">
@@ -1389,11 +273,27 @@ code.has-jax {
         
     
         
-    
+        
+          <a class="page-number" href="https://iihui.github.io/p/2/">2</a>
+        
         
     
         
+        
+          <a class="page-number" href="https://iihui.github.io/p/3/">3</a>
+        
+        
     
+        
+        
+          <a class="page-number" href="https://iihui.github.io/p/4/">4</a>
+        
+        
+    
+        
+        
+          <a class="page-number" href="https://iihui.github.io/p/5/">5</a>
+        
         
     
         
@@ -1426,37 +326,7 @@ code.has-jax {
         
         
     
-        
-        
-          <a class="page-number" href="https://iihui.github.io/p/11/">11</a>
-        
-        
     
-        
-        
-          <a class="page-number" href="https://iihui.github.io/p/12/">12</a>
-        
-        
-    
-        
-        
-          <a class="page-number" href="https://iihui.github.io/p/13/">13</a>
-        
-        
-    
-        
-        
-          <a class="page-number" href="https://iihui.github.io/p/14/">14</a>
-        
-        
-    
-        
-    
-        
-    
-        
-    
-    <a class="extend next" rel="next" href="https://iihui.github.io/p/11/"><i class="fa fa-angle-right"></i></a>
 </nav>
 
 
@@ -1486,14 +356,14 @@ code.has-jax {
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="https://iihui.github.io/post/">
-        <span class="site-state-item-count">272</span>
+        <span class="site-state-item-count">145</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
     <div class="site-state-item site-state-categories">    
         <a href="https://iihui.github.io/categories/">      
          
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">18</span>
         
         <span class="site-state-item-name">分类</span>
         
@@ -1503,7 +373,7 @@ code.has-jax {
     <div class="site-state-item site-state-tags">
         <a href="https://iihui.github.io/tags/">
          
-        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-count">32</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -1569,10 +439,11 @@ code.has-jax {
       <div class="footer-inner">
         <div class="copyright" >
   <span itemprop="copyrightYear">  &copy; 
-  2017 - 2020</span>
+  2017 - 2021</span>
   <span class="with-love"><i class="fa fa-heart"></i></span>
   <span class="author" itemprop="copyrightHolder">Keep It Simple</span>
 </div>
+
 
 
 

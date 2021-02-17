@@ -13,7 +13,7 @@
       <pubDate>Fri, 12 Feb 2021 08:25:42 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/tool-squirrel/</guid>
-      <description>鼠须管输入法是Mac OS上一款高度可定制的输入法软件，它没有图形界面，设置全靠修改yaml文件来实现。这篇文章用于记录折腾鼠须管0.15.1时遇到的一些问题和解决方案，解决方案只对0.15.1有效。 横排显示 鼠须管默认是竖排显示候选词的，为了</description>
+      <description>鼠须管输入法是Mac OS上一款高度可定制的输入法软件，它没有图形界面，设置全靠修改yaml文件来实现。这篇文章用于记录折腾鼠须管0.15.1时遇到的一些问题和解决方案，解决方案只在0.15.1上实践过。 横排显示 鼠须管默认是竖排显示候选词的，</description>
     </item>
     
     <item>
@@ -32,6 +32,15 @@
       
       <guid>https://iihui.github.io/post/tool-maestro/</guid>
       <description>Keyboard Maestro是一款神奇的软件，在我心里它和Alfred同样重要，是装机必备软件。使用它可以省去安装很多软件，这篇文章记录在平常工作中使用它的一些特性或技巧，以供后续查阅。 快捷输入 粘贴 键盘 打开应用 开启和关闭wifi 窗口 左半屏 右半屏 最大化 全</description>
+    </item>
+    
+    <item>
+      <title>papers教程</title>
+      <link>https://iihui.github.io/post/tool-papers/</link>
+      <pubDate>Sun, 06 Jan 2019 22:39:26 +0000</pubDate>
+      
+      <guid>https://iihui.github.io/post/tool-papers/</guid>
+      <description>Papers软件对自己的定位为个人科研图书馆，其主要功能包括文献收集(Find)、文献整理(Organize)、文献阅读(Read)和文献引用(Cite)。这篇教程目的是使用Papers的第四个功能——引用。 四个功能 现在开始对上面提到的4个</description>
     </item>
     
   </channel>

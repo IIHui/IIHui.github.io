@@ -26,6 +26,15 @@
     </item>
     
     <item>
+      <title>papers教程</title>
+      <link>https://iihui.github.io/post/tool-papers/</link>
+      <pubDate>Sun, 06 Jan 2019 22:39:26 +0000</pubDate>
+      
+      <guid>https://iihui.github.io/post/tool-papers/</guid>
+      <description>Papers软件对自己的定位为个人科研图书馆，其主要功能包括文献收集(Find)、文献整理(Organize)、文献阅读(Read)和文献引用(Cite)。这篇教程目的是使用Papers的第四个功能——引用。 四个功能 现在开始对上面提到的4个</description>
+    </item>
+    
+    <item>
       <title>VirtualBox 虚拟机扩容</title>
       <link>https://iihui.github.io/post/tool-vb-resize/</link>
       <pubDate>Mon, 21 May 2018 07:39:06 +0000</pubDate>
