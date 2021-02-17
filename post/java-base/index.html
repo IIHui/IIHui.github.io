@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">11947</span>
+<span class="leancloud-visitors-count">11957</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -256,8 +256,8 @@ code.has-jax {
 <p>在<code>Java</code>中数据分为两大类，一类是基本数据类型<code>primitive type</code>，另一类是引用类型<code>reference types</code>。基本类型的数据<font color=red>所占的内存大小是固定</font>的，在内存中存放的是数据值本身。引用类型在内存中存放的是<font color=red>指向该数据的地址</font>，不是数值本身，它往往由多个基本数据组成。</p>
 <h2 id="基本数据类型">基本数据类型</h2>
 <p><code>Java</code>中共定义了<code>4</code>类<code>8</code>种基本类型，其中<code>4</code>种整型：<code>byte,short,int,long</code>，<font color=Blue>每种类型都是带符号</font>的；<code>2</code>种浮点型：<code>float，double</code>；<code>1</code>种逻辑型:<code>boolean</code>；<code>1</code>种字符型:<code>char</code>。</p>
-<p>整数有<code>3</code>种进制表示形式。八进制：以<code>0</code>开头，后跟多个<code>0～7</code>之间的数字。十六进制：以<code>0x</code>或<code>0X</code>开头，后跟多个<code>0～9</code>或者<code>a～f</code>之间的小写字母，或<code>A-F</code>之间的大写字母，<font color=red>字母大小写可以混输</font>。十进制：用多个<code>0～9</code>之间的数字表示，如果有两位及两位以上其首位不能为<code>0</code>。</p>
-<p>一个整数<font color=red>隐含为<code>int</code>型</font>，当要将一个整数强制转换为长整数时，需要在后面添加字母<code>l</code>或<code>L</code>。一个浮点数隐含为<code>double</code>型，若在一个浮点数后面添加<code>f</code>或者<code>F</code>，可以将其强制转换为<code>float</code>型。</p>
+<p>整数有<code>3</code>种进制表示形式。八进制：以<code>0</code>开头，后跟多个<code>0～7</code>之间的数字。十六进制：以<code>0x</code>或<code>0X</code>开头，后跟多个<code>0～9</code>或者<code>a～f</code>之间的小写字母，或<code>A-F</code>之间的大写字母，<font color=red>字母大小写可以混输</font>。十进制：用多个<code>0～9</code>之间的数字表示，如果有两位及两位以上数字，首位不能为<code>0</code>。</p>
+<p>一个整数常量<font color=red>隐含「默认」为<code>int</code>型</font>，当要将一个整数强制转换为长整数时，需要在后面添加字母<code>l</code>或<code>L</code>。一个浮点数常量隐含为<code>double</code>型，若在一个浮点数后面添加<code>f</code>或者<code>F</code>，可以将其强制转换为<code>float</code>型。</p>
 <table>
 <thead>
 <tr>
@@ -272,7 +272,7 @@ code.has-jax {
 <td>布尔型</td>
 <td>boolean</td>
 <td>1</td>
-<td>False</td>
+<td>false</td>
 </tr>
 <tr>
 <td>字节型</td>
@@ -338,7 +338,7 @@ code.has-jax {
 <p>转换后的数据类型的表示范围<font color=red>比转换前的类型大</font>。转换从短到长的优先关系为<code>byte→short→char→int→long→float→double</code>。</p>
 </li>
 </ul>
-<p>在一个表达式中若有整数类型为<code>short</code>或<code>byte</code>的数据参加运算，为了避免溢出，Java会将表达式中的<code>short</code>或<code>byte</code>类型自动转换为<code>int</code>。</p>
+<p>在一个表达式中若有整数类型为<code>short</code>或<code>byte</code>的数据参加运算，为了避免溢出，<code>Java</code>会将表达式中的<code>short</code>或<code>byte</code>类型自动转换为<code>int</code>。</p>
 <h3 id="强制类型转换">强制类型转换</h3>
 <p>如果要将较长的数据转换为较短的数据时，就要进行强制类型转换。强制类型转换的格式为：<code>(预转换的数据类型) 变量名</code>:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Convert</span> <span style="color:#f92672">{</span>
