@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">4255</span>
+<span class="leancloud-visitors-count">4384</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -451,6 +451,8 @@ sudo /usr/libexec/PlistBuddy -c <span style="color:#e6db74">&#39;Add :TICapsLock
     <span style="color:#f92672">Shift_L</span>: <span style="color:#ae81ff">commit_code</span>
     <span style="color:#f92672">Shift_R</span>: <span style="color:#ae81ff">noop</span>
 </code></pre></div><p><a href="https://mritd.com/2019/03/23/oh-my-rime/">参考资料</a></p>
+<h1 id="升级">升级</h1>
+<p>若从<code>0.15.1</code>升级到<code>0.15.2</code>后出现异常，可以先将<code>luna_pinyin.extended.dict.yaml</code>文件中<code>import_tables:</code>下面的代码先注释，然后重新部署，如果此时表现正常，则将<code>import_tables:</code>下的扩展词典一个个放开。</p>
 
     </div>
     <footer class="post-footer">
@@ -630,6 +632,7 @@ sudo /usr/libexec/PlistBuddy -c <span style="color:#e6db74">&#39;Add :TICapsLock
     <li><a href="#快捷符号">快捷符号</a></li>
     <li><a href="#增加词库">增加词库</a></li>
     <li><a href="#中英切换直接上屏">中英切换直接上屏</a></li>
+    <li><a href="#升级">升级</a></li>
   </ul>
 </nav></div>
     </div>
