@@ -202,7 +202,7 @@ punctuator: import_preset: symbols symbols: &amp;#34;/fs&amp;#34;: [½,‰,¼,�
 import_tables: - luna_pinyin - luna_pinyin.hanyu - luna_pinyin.poetry - luna_pinyin.cn_en ... 所以，如果要添加新的词典，只要将待加入的词典放入到~/Library/Rime/目录下，然后在luna_pinyin.extended.dict.yaml的import_tables词库中添加新的词库即可：
 import_tables: - luna_pinyin - luna_pinyin.hanyu - luna_pinyin.poetry - luna_pinyin.cn_en - luna_pinyin.name - luna_pinyin.biaoqing - luna_pinyin.classical - luna_pinyin.website - luna_pinyin.chat - luna_pinyin.net - luna_pinyin.movie - luna_pinyin.computer - luna_pinyin.history - luna_pinyin.idiom - luna_pinyin.sougou ... 中英切换直接上屏 在中文输入状态的时候输入英文，按shift键后字符上屏，然后还得回车一下，可以将shift设置为直接上屏，不需要再按回车：
 ascii_composer/switch_key: Caps_Lock: commit_code Control_L: noop Control_R: noop # 按下左 shift 英文字符直接上屏，不需要再次回车，输入法保持英文状态 Shift_L: commit_code Shift_R: noop 参考资料
-升级 若从0.15.1升级到0.15.2后出现异常，可以先将luna_pinyin.extended.dict.yaml文件中import_tables:下面的代码先注释，然后重新部署，如果此时表现正常，则将import_tables:下的扩展词典一个个放开。
+升级至0.15.2 若从0.15.1升级到0.15.2后出现异常，可以先将luna_pinyin.extended.dict.yaml文件中import_tables:下面的代码先注释，然后重新部署，如果此时表现正常，则将import_tables:下的扩展词典一个个放开。
 </content>
     </entry>
     
