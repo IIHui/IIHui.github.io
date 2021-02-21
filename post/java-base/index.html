@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">12125</span>
+<span class="leancloud-visitors-count">12127</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -353,7 +353,7 @@ code.has-jax {
 </span><span style="color:#75715e"></span>    <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
 </code></pre></div><h2 id="字符串数值转换">字符串数值转换</h2>
-<p>数值字符串转为<code>byte，short，int，long，float，double</code>等数据类型，或将逻辑字符串转换为相应的逻辑类型，均可以使用<code>XXX.parseXXX()</code>，其中<code>XXX</code>代表<code>Byte,Short,Integer,Long,Float,Double,Boolean</code>:</p>
+<p>数值字符串转为<code>byte，short，int，long，float，double</code>等数据类型，或将逻辑字符串转换为相应的逻辑类型，均可以使用<code>XXX.parseXXX()</code>，其中<code>XXX</code>代表<code>Byte,Short,Integer,Long,Float,Double,Boolean</code>类型:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">int</span> c <span style="color:#f92672">=</span> Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">parseInt</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;123&#34;</span><span style="color:#f92672">);</span>
 <span style="color:#66d9ef">short</span> d <span style="color:#f92672">=</span> Short<span style="color:#f92672">.</span><span style="color:#a6e22e">parseShort</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;34&#34;</span><span style="color:#f92672">);</span>
 <span style="color:#66d9ef">long</span> e <span style="color:#f92672">=</span> Long<span style="color:#f92672">.</span><span style="color:#a6e22e">parseLong</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;345&#34;</span><span style="color:#f92672">);</span>
@@ -673,10 +673,10 @@ System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span>
 <p>静态初始化器是由关键字<code>static</code>修饰的一对花括号<code>{}</code>括起来的语句组。它的作用与类的构造方法有些相似，都是用来初始化工作的，但与构造方法有几点不同：</p>
 <ul>
 <li>
-<p>构造方法是对新创建的对象进行初始化，而静态初始化器是对类自身进行初始化。</p>
+<p>构造方法是对新创建的对象进行初始化，而<font color=red>静态初始化器是对类自身进行初始化</font>。</p>
 </li>
 <li>
-<p>静态初始化器一般不能由程序调用，是所属类被加载入内存时由系统调用执行。</p>
+<p>静态初始化器一般不能由程序调用，是<font color=LightSeaGreen>所属类被加载入内存时由系统调用执行</font>。</p>
 </li>
 <li>
 <p>静态初始化器只执行一次，没有方法名，返回值和参数。</p>
@@ -702,9 +702,9 @@ System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span>
         System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;second&#34;</span><span style="color:#f92672">);</span>
     <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
-</code></pre></div><p>在上面这个例子中，<font color=red>第一次使用</font><code>Test</code>类时，静态初始化器才会执行，不是在程序启动时就会执行。如果有多个静态初始化器，则它们在类的初始化时会依次执行。</p>
+</code></pre></div><p>在上面这个例子中，<font color=red>第一次使用<code>Test</code>类时，静态初始化器才会执行，不是在程序启动时就会执行</font>。如果有多个静态初始化器，则它们在类的初始化时会依次执行。</p>
 <h1 id="继承">继承</h1>
-<p><code>Java</code>中继是通过<code>extends</code>关键字来标识的，<font color=red>不支持多继承</font>，一个类只能有一个直接父类。所有的类都直接或者间接继承<code>java.lang.Object</code>，即如果没有<code>extends</code>关键字则类默认继承自<code>java.lang.Object</code>。</p>
+<p><code>Java</code>中继是通过<code>extends</code>关键字来标识的，<font color=red>不支持多继承，一个类只能有一个直接父类</font>。所有的类都直接或者间接继承<code>java.lang.Object</code>，即如果没有<code>extends</code>关键字则类默认继承自<code>java.lang.Object</code>。</p>
 <h2 id="构造方法执行">构造方法执行</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Person</span> <span style="color:#f92672">{</span>
     <span style="color:#66d9ef">private</span> String name<span style="color:#f92672">;</span>
