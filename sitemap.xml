@@ -67,6 +67,8 @@ domain的匹配是根据请求URL中的域名从后向前进行匹配。path的�
 expires expires是http/1.0协议中的属性，在新的http/1.1协议之后expires已经由 max-age代替，两者的作用都是限制cookie的有效时间。
 expires属性指定一个具体的到期时间，到了指定时间以后，浏览器就不再保留这个 cookie。它的值是UTC格式，可以使用Date.prototype.toUTCString()进行格式转换。
 max-age属性则是指定从现在开始cookie存在的秒数，比如60 * 60 * 24 * 365（即一年）。过了这个时间以后，浏览器就不再保留这个cookie。如果同时指定了expires和max-age，那么max-age的值将优先生效。如果没有指定expires或 max-age属性，那么这个cookie就是Session Cookie，即它只在本次对话存在，一旦用户关闭浏览器窗口，浏览器将不会再保留这个cookie。
+secure 包含secure选项的cookie只有在当请求是HTTPS或者其他安全协议时，才能被发送至服务器。但要注意一点，secure选项只是限定了在安全情况下才可以传输给服务端，但并不代表你不能看到这个cookie。同时需要注意的是，如果想在客户端即网页中通过js去设置 secure类型的cookie，必须保证网页是 https 协议的。在http协议的网页中是无法设置secure类型cookie的。
+httpOnly httpOnly背后的意思是告之浏览器该cookie绝不能通过JavaScript的 document.cookie属性访问。
 参考资料
 </content>
     </entry>
