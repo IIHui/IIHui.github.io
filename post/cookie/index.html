@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1346</span>
+<span class="leancloud-visitors-count">1727</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">3 分钟</span>
+<span class="leancloud-visitors-count">4 分钟</span>
 </span>
       </div>
     </header>
@@ -284,6 +284,10 @@ code.has-jax {
 <p><code>path</code>则指定了该<code>cookie</code>所属的路径；<code>domain</code>和<code>path</code>两者一起来限制了该<code>cookie</code> 允许被哪些<code>URL</code>访问，当我们请求某个资源「<code>URL</code>」时只有当该<code>URL</code>域名能够同时与<code>domain</code>和<code>path</code>属性匹配时，浏览器才会将此<code>cookie</code>添加到该请求的<code>cookie</code>头部中。</p>
 <p><code>domain</code>的匹配是根据请求<code>URL</code>中的<font color=red>域名从后向前进行匹配</font>。<code>path</code>的匹配则是判断<code>URL</code>中的路径是否包含<code>path</code>, 例如：</p>
 <p><img src="https://i.loli.net/2021/02/21/s6qo7blfCRUMyzn.jpg" alt="-c"></p>
+<h1 id="expires">expires</h1>
+<p><code>expires</code>是<code>http/1.0</code>协议中的属性，在新的<code>http/1.1</code>协议之后<code>expires</code>已经由 <code>max-age</code>代替，两者的作用都是限制<code>cookie</code>的有效时间。</p>
+<p><code>expires</code>属性指定一个具体的到期时间，到了指定时间以后，浏览器就不再保留这个 <code>cookie</code>。它的值是<code>UTC</code>格式，可以使用<code>Date.prototype.toUTCString()</code>进行格式转换。</p>
+<p><code>max-age</code>属性则是指定从现在开始<code>cookie</code>存在的秒数，比如<code>60 * 60 * 24 * 365</code>（即一年）。过了这个时间以后，浏览器就不再保留这个<code>cookie</code>。如果同时指定了<code>expires</code>和<code>max-age</code>，那么<code>max-age</code>的值将优先生效。如果没有指定<code>expires</code>或 <code>max-age</code>属性，那么这个<code>cookie</code>就是<code>Session Cookie</code>，即它只在本次对话存在，一旦用户关闭浏览器窗口，浏览器将不会再保留这个<code>cookie</code>。</p>
 <p><a href="https://juejin.cn/post/6844903832678301703">参考资料</a></p>
 
     </div>
@@ -461,6 +465,7 @@ code.has-jax {
         <li><a href="#path">path</a></li>
       </ul>
     </li>
+    <li><a href="#expires">expires</a></li>
   </ul>
 </nav></div>
     </div>

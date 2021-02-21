@@ -64,6 +64,9 @@ cookie的作用就是对请求和响应的状态进行一个管理，服务端�
 Domain domain指定了该cookie所属的域名，默认情况下，domain会被设置为创建该cookie 时所在的域名。
 path path则指定了该cookie所属的路径；domain和path两者一起来限制了该cookie 允许被哪些URL访问，当我们请求某个资源「URL」时只有当该URL域名能够同时与domain和path属性匹配时，浏览器才会将此cookie添加到该请求的cookie头部中。
 domain的匹配是根据请求URL中的域名从后向前进行匹配。path的匹配则是判断URL中的路径是否包含path, 例如：
+expires expires是http/1.0协议中的属性，在新的http/1.1协议之后expires已经由 max-age代替，两者的作用都是限制cookie的有效时间。
+expires属性指定一个具体的到期时间，到了指定时间以后，浏览器就不再保留这个 cookie。它的值是UTC格式，可以使用Date.prototype.toUTCString()进行格式转换。
+max-age属性则是指定从现在开始cookie存在的秒数，比如60 * 60 * 24 * 365（即一年）。过了这个时间以后，浏览器就不再保留这个cookie。如果同时指定了expires和max-age，那么max-age的值将优先生效。如果没有指定expires或 max-age属性，那么这个cookie就是Session Cookie，即它只在本次对话存在，一旦用户关闭浏览器窗口，浏览器将不会再保留这个cookie。
 参考资料
 </content>
     </entry>
