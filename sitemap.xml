@@ -43,7 +43,7 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 设置文�
     </entry>
     
      <entry>
-        <title></title>
+        <title>Cookie简介</title>
         <url>https://iihui.github.io/post/cookie/</url>
         <categories>
           <category>iOS</category>
@@ -61,8 +61,9 @@ cookie的作用就是对请求和响应的状态进行一个管理，服务端�
   max-age为负数时:cookie只在浏览器会话期间存在，当用户关闭浏览器窗口后这些值也会随之销毁（生成的cookie临时存储于浏览器内存中）。
   max-age为0时:cookie将被立即销毁。
   属性介绍 cookie主要是用于管理服务端和客户端直接的状态，其本质上就是一堆存储在客户端的数据，每条cookie都有对应下面几个属性。
-Domain domain 指定了该 cookie 所属的域名，默认情况下，domain 会被设置为创建该 cookie 时所在的域名； 而 path 则指定了该 cookie 所属的路径； domain 和 path 两者一起来限制了该 cookie 允许被哪些 URL 访问， 当我们请求某个资源（URL）时只有当该 URL 域名能够同时被 domain 和 path 属性匹配时， 浏览器才会将此 cookie 添加到该请求的 cookie 头部中。
-domain 的匹配是根据请求 URL 中的域名从后向前进行匹配， path 的匹配则是根据 URL 中的路径按照路径的匹配规则判断 URL 中的路径是否包含 path, 例如：
+Domain domain指定了该cookie所属的域名，默认情况下，domain会被设置为创建该cookie 时所在的域名。
+path path则指定了该cookie所属的路径；domain和path两者一起来限制了该cookie 允许被哪些URL访问，当我们请求某个资源「URL」时只有当该URL域名能够同时与domain和path属性匹配时，浏览器才会将此cookie添加到该请求的cookie头部中。
+domain的匹配是根据请求URL中的域名从后向前进行匹配。path的匹配则是判断URL中的路径是否包含path, 例如：
 参考资料
 </content>
     </entry>

@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
-    <title> - Keep It Simple</title>
+    <title>Cookie简介 - Keep It Simple</title>
     <meta name="keywords" content="博客,思考,读书,笔记,技术,分享">
     
-    <meta property="og:title" content="">
+    <meta property="og:title" content="Cookie简介">
     <meta property="og:site_name" content="Keep It Simple">
     <meta property="og:image" content="/img/author.jpg"> 
-    <meta name="title" content=" - Keep It Simple" />
+    <meta name="title" content="Cookie简介 - Keep It Simple" />
     <meta name="description" content="Swift | Go | C&#43;&#43; "> 
     <link rel="shortcut icon" href="https://iihui.github.io/img/favicon.ico" />
     <link rel="apple-touch-icon" href="https://iihui.github.io/img/apple-touch-icon.png" />
@@ -193,7 +193,7 @@ code.has-jax {
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
         <a class="post-title-link" href="https://iihui.github.io/post/cookie/" itemprop="url">
-        
+        Cookie简介
         </a>
       </h1>
       <div class="post-meta">
@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1288</span>
+<span class="leancloud-visitors-count">1346</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -279,8 +279,10 @@ code.has-jax {
 <h1 id="属性介绍">属性介绍</h1>
 <p><code>cookie</code>主要是用于管理服务端和客户端直接的状态，其本质上就是一堆存储在客户端的数据，每条<code>cookie</code>都有对应下面几个属性。</p>
 <h2 id="domain">Domain</h2>
-<p>domain 指定了该 cookie 所属的域名，默认情况下，domain 会被设置为创建该 cookie 时所在的域名； 而 path 则指定了该 cookie 所属的路径； domain 和 path 两者一起来限制了该 cookie 允许被哪些 URL 访问， 当我们请求某个资源（URL）时只有当该 URL 域名能够同时被 domain 和 path 属性匹配时， 浏览器才会将此 cookie 添加到该请求的 cookie 头部中。</p>
-<p>domain 的匹配是根据请求 URL 中的域名从后向前进行匹配， path 的匹配则是根据 URL 中的路径按照路径的匹配规则判断 URL 中的路径是否包含 path, 例如：</p>
+<p><code>domain</code>指定了该<code>cookie</code>所属的域名，默认情况下，<code>domain</code>会被设置为创建该<code>cookie </code>时所在的域名。</p>
+<h2 id="path">path</h2>
+<p><code>path</code>则指定了该<code>cookie</code>所属的路径；<code>domain</code>和<code>path</code>两者一起来限制了该<code>cookie</code> 允许被哪些<code>URL</code>访问，当我们请求某个资源「<code>URL</code>」时只有当该<code>URL</code>域名能够同时与<code>domain</code>和<code>path</code>属性匹配时，浏览器才会将此<code>cookie</code>添加到该请求的<code>cookie</code>头部中。</p>
+<p><code>domain</code>的匹配是根据请求<code>URL</code>中的<font color=red>域名从后向前进行匹配</font>。<code>path</code>的匹配则是判断<code>URL</code>中的路径是否包含<code>path</code>, 例如：</p>
 <p><img src="https://i.loli.net/2021/02/21/s6qo7blfCRUMyzn.jpg" alt="-c"></p>
 <p><a href="https://juejin.cn/post/6844903832678301703">参考资料</a></p>
 
@@ -322,7 +324,7 @@ code.has-jax {
         </div>
         <div>
             <p style="margin-top:10px;">
-                标题：
+                标题：Cookie简介
                 <br />作者：阿呆<a target="_blank" href="https://iihui.github.io/"></a>
                 
                 <br />地址：https://iihui.github.io/post/cookie/
@@ -456,6 +458,7 @@ code.has-jax {
     <li><a href="#属性介绍">属性介绍</a>
       <ul>
         <li><a href="#domain">Domain</a></li>
+        <li><a href="#path">path</a></li>
       </ul>
     </li>
   </ul>
