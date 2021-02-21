@@ -70,6 +70,7 @@ max-age属性则是指定从现在开始cookie存在的秒数，比如60 * 60 * 
 secure 包含secure选项的cookie只有在当请求是HTTPS或者其他安全协议时，才能被发送至服务器。但要注意一点，secure选项只是限定了在安全情况下才可以传输给服务端，但并不代表你不能看到这个cookie。同时需要注意的是，如果想在客户端即网页中通过js去设置 secure类型的cookie，必须保证网页是 https 协议的。在http协议的网页中是无法设置secure类型cookie的。
 httpOnly httpOnly背后的意思是告之浏览器该cookie绝不能通过JavaScript的 document.cookie属性访问。
 参考资料
+session 参考资料
 </content>
     </entry>
     
