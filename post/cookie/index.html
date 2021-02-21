@@ -241,30 +241,48 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">812</span>
+<span class="leancloud-visitors-count">1288</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">2 分钟</span>
+<span class="leancloud-visitors-count">3 分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    <blockquote>
-<p><code>Cookie</code>是用户浏览器保存在本地的一小块数据，它会在浏览器下次<font color=red>向同一服务器再发起请求时</font>被携带并发送到服务器上。</p>
-</blockquote>
-<h1 id="简介">简介</h1>
-<p>标准的<code>http</code>协议是无状态的，也就是说<font color=red>服务端对于客户端的每次请求都认为它是一个新的请求</font>，上一次的会话和下一次的会话之间是没有任何联系。这时当用户访问服务端并进行登录后，客户端之后的请求服务端依然无法对客户端身份进行识别，如果将客户端与服务器之间的多次交互当做一个整体来看，那么服务端若想识别客户端的身份那么就需要将多次交互所涉及的数据（状态）保存下来。</p>
+    <h1 id="简介">简介</h1>
+<p>标准的<code>http</code>协议是<font color=LightSeaGreen>无状态的</font>，也就是说<font color=red>服务端对于客户端的每次请求都认为它是一个新的请求</font>，上一次的会话和下一次的会话之间是没有任何联系。这时当用户访问服务端并进行登录后，客户端之后的请求服务端依然无法对客户端身份进行识别，如果将客户端与服务器之间的多次交互当做一个整体来看，那么服务端若想识别客户端的身份那么就需要将多次交互所涉及的数据（状态）保存下来。</p>
 <p><code>cookie</code>的作用就是对请求和响应的状态进行一个管理，服务端通过在响应体中设置<code>cookie</code> (状态)，客户端会将<code>cookie</code>(状态) 存储起来，之后客户端的每个请求都将 <code>cookie</code> (状态)带上，这样服务端就能够对客户端的身份进行识别。</p>
-<p>在早期<code>cookie</code>还未出现之前有个最简单的办法就是在请求的页面中插入一个<code>token</code>，然后在下次请求时将这个<code>token</code>返回至服务器。这需要在页面的<code>form</code>表单中插入一个包含<code>token</code> 的隐藏域，或者将<code>token</code>放在<code>URL</code>的<code>query</code>字符串中来传递。这两种方法都需要手动操作，而且极易出错。而<code>cookie</code>则不同，一般情况下客户端会自动存储服务器发来的<code>cookie</code>, 并在之后的每次请求中自动带上<code>cookie</code>而无需客户端进行手动处理。</p>
-<h2 id="基本原理">基本原理</h2>
+<h2 id="早期实现">早期实现</h2>
+<p>在早期<code>cookie</code>还未出现之前有个最简单的办法就是在请求的页面中插入一个<code>token</code>，然后在下次请求时将这个<code>token</code>送至服务器。这需要在页面的<code>form</code>表单中插入一个包含<code>token</code> 的隐藏域，或者将<code>token</code>放在<code>URL</code>的<code>query</code>字符串中来传递。这两种方法都需要手动操作，而且极易出错。而<code>cookie</code>则不同，一般情况下客户端会自动存储服务器发来的<code>cookie</code>, 并在之后的每次请求中自动带上<code>cookie</code>而无需客户端进行手动处理。</p>
+<h1 id="基本原理">基本原理</h1>
 <p>当浏览器向服务器发送请求的时候，服务器会将少量的数据以<code>set-cookie</code>消息头的方式发送给客户端，浏览器一般会自动将<code>cookie</code>数据进行存储，当客户端再次访问服务器时，会将这些数据以<code>cookie</code>消息头的方式发送给服务器，服务端就可以根据<code>cookie</code>消息头来判别用户的身份或进行一些特别的处理并返回响应，如下图所示：</p>
 <p><img src="https://i.loli.net/2021/02/21/MVXiH8UQSsjT5wL.jpg" alt="-c"></p>
+<h1 id="生存期">生存期</h1>
+<p>从<code>cookie</code>的工作原理上可以知道<code>cookie</code>信息主要是存储在客户端的状态，而<code>cookie</code>在客户端的生存期则主要由属性<code>max-age</code>决定，<code>max-age</code>属性以秒为单位。<code>cookie</code>还有一个属性<code>expires</code>其作用和<code>max-age</code>是一样的。</p>
+<ul>
+<li>
+<p>默认情况下<code>cookie</code>只是暂时存在的，他们存储的值只在浏览器会话期间存在，当用户关闭浏览器窗口后这些值也会随之销毁（生成的<code>cookie</code>临时<font color=LightSeaGreen>存储于浏览器内存中</font>）。</p>
+</li>
+<li>
+<p><code>max-age</code>为正数: <code>cookie</code>会在<code>max-age</code>秒之后被销毁（会将状态存储于<code>cookie</code>文件中并存储于本地硬盘中）。</p>
+</li>
+<li>
+<p><code>max-age</code>为负数时:<code>cookie</code>只在浏览器会话期间存在，当用户关闭浏览器窗口后这些值也会随之销毁（生成的<code>cookie</code>临时存储于浏览器内存中）。</p>
+</li>
+<li>
+<p><code>max-age</code>为<code>0</code>时:<code>cookie</code>将被立即销毁。</p>
+</li>
+</ul>
+<h1 id="属性介绍">属性介绍</h1>
+<p><code>cookie</code>主要是用于管理服务端和客户端直接的状态，其本质上就是一堆存储在客户端的数据，每条<code>cookie</code>都有对应下面几个属性。</p>
+<h2 id="domain">Domain</h2>
+<p>domain 指定了该 cookie 所属的域名，默认情况下，domain 会被设置为创建该 cookie 时所在的域名； 而 path 则指定了该 cookie 所属的路径； domain 和 path 两者一起来限制了该 cookie 允许被哪些 URL 访问， 当我们请求某个资源（URL）时只有当该 URL 域名能够同时被 domain 和 path 属性匹配时， 浏览器才会将此 cookie 添加到该请求的 cookie 头部中。</p>
+<p>domain 的匹配是根据请求 URL 中的域名从后向前进行匹配， path 的匹配则是根据 URL 中的路径按照路径的匹配规则判断 URL 中的路径是否包含 path, 例如：</p>
+<p><img src="https://i.loli.net/2021/02/21/s6qo7blfCRUMyzn.jpg" alt="-c"></p>
 <p><a href="https://juejin.cn/post/6844903832678301703">参考资料</a></p>
-<h1 id="domain">Domain</h1>
-<p>Domain标识指定哪些主机可以接受<code>Cookie</code>。如果不指定，默认为当前文档的主机「不包含子域」。如果指定了 Domain，则一般包含子域名（子域名可以访问父域名的 Cookie）。</p>
 
     </div>
     <footer class="post-footer">
@@ -430,10 +448,16 @@ code.has-jax {
   <ul>
     <li><a href="#简介">简介</a>
       <ul>
-        <li><a href="#基本原理">基本原理</a></li>
+        <li><a href="#早期实现">早期实现</a></li>
       </ul>
     </li>
-    <li><a href="#domain">Domain</a></li>
+    <li><a href="#基本原理">基本原理</a></li>
+    <li><a href="#生存期">生存期</a></li>
+    <li><a href="#属性介绍">属性介绍</a>
+      <ul>
+        <li><a href="#domain">Domain</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
     </div>
