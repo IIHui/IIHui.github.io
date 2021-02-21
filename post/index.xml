@@ -31,7 +31,7 @@
       <pubDate>Fri, 12 Feb 2021 08:25:42 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/tool-squirrel/</guid>
-      <description>鼠须管是Mac OS上一款高度可定制的输入法软件，它没有图形设置界面，设置全靠修改yaml配置文件来实现。这篇文章用于记录折腾鼠须管0.15.1时遇到的一些问题和解决方案，解决方案只在0.15.1上实践过。 横排显示 鼠须管默认是竖排显示候选词的</description>
+      <description>鼠须管是macOS上一款高度可定制的输入法软件，它没有图形设置界面，全靠修改yaml配置文件来实现设置。这篇文章用于记录折腾鼠须管0.15.1时遇到的一些问题和解决方案，解决方案只在0.15.1版本上验证过有效性。 横排显示 鼠须管默认是竖排显</description>
     </item>
     
     <item>
