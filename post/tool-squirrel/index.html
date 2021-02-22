@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">4421</span>
+<span class="leancloud-visitors-count">4712</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">9 分钟</span>
+<span class="leancloud-visitors-count">10 分钟</span>
 </span>
       </div>
     </header>
@@ -452,7 +452,30 @@ sudo /usr/libexec/PlistBuddy -c <span style="color:#e6db74">&#39;Add :TICapsLock
     <span style="color:#f92672">Shift_R</span>: <span style="color:#ae81ff">noop</span>
 </code></pre></div><p><a href="https://mritd.com/2019/03/23/oh-my-rime/">参考资料</a></p>
 <h1 id="升级至0152">升级至0.15.2</h1>
-<p>若从<code>0.15.1</code>升级到<code>0.15.2</code>后出现异常，可以先将<code>luna_pinyin.extended.dict.yaml</code>文件中<code>import_tables</code>下面的词典先注释，然后重新部署，如果此时表现正常，再将<code>import_tables</code>下的扩展词典一个个慢慢放开。</p>
+<p>若从<code>0.15.1</code>升级到<code>0.15.2</code>后出现异常，可以先将<code>luna_pinyin_simp.custom.yaml</code>中的下面代码先注释：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># 载入朙月拼音扩充词库</span>
+  <span style="color:#f92672">&#34;translator/dictionary&#34;: </span><span style="color:#ae81ff">luna_pinyin.extended</span>
+  <span style="color:#75715e"># 改写拼写运算，使得含西文的词汇（位于 luna_pinyin.cn_en.dict.yaml 中）不影响简拼功能（注意，此功能只適用于朙月拼音系列方案，不适用于各类双拼方案）</span>
+  <span style="color:#75715e"># 本条补丁只在「小狼毫 0.9.30」、「鼠须管 0.9.25 」、「Rime-1.2」及更高的版本中起作用。</span>
+  <span style="color:#f92672">&#34;speller/algebra/@before 0&#34;: </span><span style="color:#ae81ff">xform/^([b-df-np-z])$/$1_/</span>
+</code></pre></div><p>接着将<code>luna_pinyin.extended.dict.yaml</code>文件中<code>import_tables</code>下的所有词典也都注释，即以<code>-</code>开头的词典：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">import_tables</span>:
+  - <span style="color:#ae81ff">luna_pinyin</span>
+  - <span style="color:#ae81ff">luna_pinyin.hanyu</span>
+  - <span style="color:#ae81ff">luna_pinyin.poetry</span>
+  - <span style="color:#ae81ff">luna_pinyin.cn_en</span>
+  - <span style="color:#ae81ff">luna_pinyin.name</span>
+  - <span style="color:#ae81ff">luna_pinyin.biaoqing</span>
+  - <span style="color:#ae81ff">luna_pinyin.classical</span>
+  - <span style="color:#ae81ff">luna_pinyin.website</span>
+  - <span style="color:#ae81ff">luna_pinyin.chat</span>
+  - <span style="color:#ae81ff">luna_pinyin.net</span>
+  - <span style="color:#ae81ff">luna_pinyin.movie</span>
+  - <span style="color:#ae81ff">luna_pinyin.computer</span>
+  - <span style="color:#ae81ff">luna_pinyin.history</span>
+  - <span style="color:#ae81ff">luna_pinyin.idiom</span>
+  - <span style="color:#ae81ff">luna_pinyin.sougou</span>
+</code></pre></div><p>然后部署，输入法正常之后将<code>luna_pinyin_simp.custom.yaml</code>中先前注释的代码都恢复，然后重新部署，如果依然正常，则将<code>luna_pinyin.extended.dict.yaml</code>文件中<code>import_tables</code>下面的扩展词典一个个慢慢放开。</p>
 
     </div>
     <footer class="post-footer">
