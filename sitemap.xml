@@ -267,6 +267,40 @@ layoutIfNeeded layoutIfNeeded方法一被调用，主线程会立即强制重新
     </entry>
     
      <entry>
+        <title>PromiseKit使用</title>
+        <url>https://iihui.github.io/post/ios-promisekit/</url>
+        <categories>
+          <category>iOS</category>
+        </categories>
+        <tags>
+          <tag>iOS</tag>
+        </tags>
+        <content type="html">  PromiseKit是简化异步编程的一种非必要方式，使用它可以提高代码的可读性和维护性，让代码更加优雅，它主要用于解决回调地狱问题。
+ 回调地狱 为了保证异步代码按顺序执行，通常将异步代码嵌套在回调函数中。如果异步方法过多，就会产生过多的回调，一层一层的嵌套，使得代码不清晰，难以维护。即产生所谓的回调地狱callback hell问题。下面的fetchJSON中，产生了3次回调，导致代码看起来比较费劲，可读性比较差：
+fetchJSON(fromURL: &amp;#34;someURL&amp;#34;) { response, results, error in switch response { case .success: fetchUserData(for: results) { response, results, error in switch response { case .success: loginUser(user: results) { response, _, error in switch response { case .success: // finally all of the callbacks are finished print(&amp;#34;Handle logic here&amp;#34;) case .fail: print(error) } } case .fail: print(error) } } case .fail: print(error) } } promise设计模式 promise设计模式，借用生活中的「承诺」一词来描述异步编程中的回调模型。「承诺」是一种对未来的期许，它有以下两个特点：
+  描述未来的一种状态或动作。
+  承诺具有不确定性，可以被兑现fullfill，也可能被拒绝rejected。
+  如果需要编写一个方法从网络获取图片，因为网络操作一般都是异步的，所以可以使用承诺模式实现这个方法。首先定义一个返回承诺对象的方法，它不直接返回Image，只有当请求到需要的图片时，这个承诺才会兑现，然后将Image传递到承诺对象中，否则承诺被拒绝（网络错误或者图片不存在）。
+无论兑现还是拒绝，这个承诺对象都会标记为已解决（resolve)，已解决的承诺会被销毁。如果既不兑现，也不拒绝，则这个承诺会一直有效，即「未解决」。
+PromiseKit链 在PromiseKit中，通过promise对象将异步任务串接起来的，一个典型的promise链如下所示：
+firstly { promise1() }.then { promise2() }.then { promise3() }.ensure { // something that should happen whatever the outcome 无论承诺是否兑现，都会执行ensure }.done { // all promises are success resolved }.catch { // handle error here 所有被rejected的承诺都会集中在这里处理 } promise对象状态 在PromiseKit中promise是一个对象。它保存异步数据操作，同时提供统一的异步数据操作事件处理的接口，PromiseKit对象
+  fulfilled指的是promise对象当前处理的异步事件已经成功完成；
+  rejected表示promise对象当前处理的异步事件没有成功。
+  promise对象执行完then和catch方法后，这两个方法会返回先前的promise对象，同时根据异步操作结果改变promise对象的状态。
+举个栗子 fetchJSON(fromURL: &amp;#34;someURL&amp;#34;) { response, results, error in switch response { case .success: fetchUserData(for: results) { response, results, error in switch response { case .success: loginUser(user: results) { response, _, error in switch response { case .success: // finally all of the callbacks are finished print(&amp;#34;Handle logic here&amp;#34;) case .fail: print(error) } } case .fail: print(error) } } case .fail: print(error) } } 上面的fetchJSON方法有3个回调，按照PromiseKit链接结构可以改造成3个方法，每个方法返回promise一个对象，然后依次串接起来，如下所示：
+func promiseFetchJSON() -&amp;gt; Promise&amp;lt;String: Any]&amp;gt; { return Promise&amp;lt;String: Any]&amp;gt; { seal in fetchJSON(fromURL: &amp;#34;someURL&amp;#34;, completion: { response, results, error in switch response { case .success: seal.fulfill(results) case .fail: seal.reject(error) } }) } } promise对象初始化的时候提供了seal对象，这个对象定义了回调完成的方法。接着依次改造promiseFetchUserData和promiseLoginUser，如下所示：
+func promiseFetchUserData(user: String: Any]) -&amp;gt; Promise&amp;lt;User&amp;gt; { return Promise&amp;lt;User&amp;gt; { seal in fetchUserData(for: user, completion: { response, results, error in switch response { case .success: seal.fulfill(results) case .fail: seal.reject(error) } }) } } func promiseLoginUser(user: User) -&amp;gt; Promise&amp;lt;Bool&amp;gt; { return Promise&amp;lt;Bool&amp;gt; { seal in loginUser(user: user, completion: { response, _, error in switch response { case .success: seal.fulfill(true) case .fail: seal.reject(error) } }) } } 最后，套用基本调用链格式，将各个返回promise对象的异步事件串起来，形成一个完整的调用链，如下所示：
+firstly { promiseFetchJSON() }.then { json in promiseFetchUserData(user: json) }.then { user in promiseLoginUser(user: user) }.ensure { // something that should happen whatever the outcome }.done { _ in // all promises are success resolved // handle final logic here }.catch { _ in // handle error here } then和done 在promise链中，done不再返回promise，它一般用于success部分，表示调用链无错误的运行，而then会返回promise对象：
+firstly { login() }.then { creds in fetch(avatar: creds.user) }.done { image in self.imageView = image } catch处理 每个promise都是一个表示单个异步任务的对象。如果任务失败，它的promise将成为rejected。产生rejected promises将跳过所有的then，执行后续所有catch。
+firstly { login() }.then { creds in //... }.done { image in //... }.catch { // 整个 chain 上的错误都到了这里 } ensure 无论chain在哪里结束，成功或者失败。ensure终将被执行，也可以使用finally来完成相同的功能，区别是finally没有返回值。
+firstly { // ... }.then { // ... }.done { // ... }.ensure { // ... }.catch { // ... } firstly { // ... }.done { // ... }.catch { // ... }.finally { //... } when多异步的同步 多个异步操作需要同步的时候，经常会使用group.enter()和group.leave()。在PromoiseKit中使用when来进行多个异步同步，使得多个异步操作变得更简单。
+// 并行操作 var result1: ...! var result2: ...! let group = DispatchGroup() group.enter() group.enter() operation1 { result1 = $0 group.leave() } operation2 { result2 = $0 group.leave() } group.notify(queue: .main) { finish(result1, result2) } 使用when之后，简化了多个异步操作的同步，使得代码变得清晰易懂，如下所示：
+firstly { when(fulfilled: operation1(), operation2()) }.done { result1, result2 in // ... } 主线程 所有then的blocks如果不特别指定，默认都是在主线程执行。
+参考资料 源码 入门 使用 使用 使用
+</content>
+    </entry>
+    
+     <entry>
         <title>Ruby 基础</title>
         <url>https://iihui.github.io/post/ruby-base/</url>
         <categories>
@@ -545,40 +579,6 @@ interface Study { fun readBooks() fun doHomework() } class Student(val sno: Stri
  基本步骤 声明enum对请求进行分类 enum LCYApi { case login(name: String, password: String) } 实现TargetType协议 TargetType协议定义了各个请求的url，参数和header等信息，如下所示：
 extension LCYApi: TargetType { var baseURL: URL { return NSURL.init(string: &amp;#34;http://test.com&amp;#34;)! as URL } var path: String { switch self { case .login: return &amp;#34;/login&amp;#34; } } var method: Method { return .post } //这个是做单元测试模拟的数据，必须要实现，只在单元测试文件中有作用 var sampleData: Data { return &amp;#34;&amp;#34;.data(using: String.Encoding.utf8)! } var task: Task { var parmeters: [String : Any] = [:] switch self { case .login(let name, let password): parmeters[&amp;#34;name&amp;#34;] = name parameters[&amp;#34;password&amp;#34;] = password } return .requestParameters(parameters: parmeters, encoding: URLEncoding.default) } //在请求头内添加公共请求参数，也可以通过自定义closure返回endpoint，在provider中添加 var headers: [String : String]? { return [&amp;#34;Content-type&amp;#34;: &amp;#34;application/json&amp;#34;] } } 定义Provider对象 在Moya中，是使用Provider对象发起网络请求的，因此在网络请求之前需要将Provider对象先创建好。Moya中Provider对象在销毁的时候会取消网络请求，为了得到正确的结果，必须保证在网络请求时Provider对象不会被释放。为了避免这种情况，可以将Provider实例设置为类成员变量，或者shared实例。
 let ApiProvider = MoyaProvider&amp;lt;LCYApi&amp;gt;() 发起网络请求 ApiProvider.request(LCYApi.login(name: &amp;#34;name&amp;#34;, password: &amp;#34;password&amp;#34;)) { result in switch result { case let .success(response): let data = response.data let statusCode = response.statusCode break case let .failure(error): break } } 参考资料
-</content>
-    </entry>
-    
-     <entry>
-        <title>PromiseKit使用</title>
-        <url>https://iihui.github.io/post/ios-promisekit/</url>
-        <categories>
-          <category>iOS</category>
-        </categories>
-        <tags>
-          <tag>iOS</tag>
-        </tags>
-        <content type="html">  PromiseKit是简化异步编程的一种非必要方式，使用它可以提高代码的可读性和维护性，让代码更加优雅，它主要用于解决回调地狱问题。
- 回调地狱 为了保证异步代码按顺序执行，通常将异步代码嵌套在回调函数中。如果异步方法过多，就会产生过多的回调，一层一层的嵌套，使得代码不清晰，难以维护。即产生所谓的回调地狱callback hell问题。下面的fetchJSON中，产生了3次回调，导致代码看起来比较费劲，可读性比较差：
-fetchJSON(fromURL: &amp;#34;someURL&amp;#34;) { response, results, error in switch response { case .success: fetchUserData(for: results) { response, results, error in switch response { case .success: loginUser(user: results) { response, _, error in switch response { case .success: // finally all of the callbacks are finished print(&amp;#34;Handle logic here&amp;#34;) case .fail: print(error) } } case .fail: print(error) } } case .fail: print(error) } } promise设计模式 promise设计模式，借用生活中的「承诺」一词来描述异步编程中的回调模型。「承诺」是一种对未来的期许，它有以下两个特点：
-  描述未来的一种状态或动作。
-  承诺具有不确定性，可以被兑现fullfill，也可能被拒绝rejected。
-  如果需要编写一个方法从网络获取图片，因为网络操作一般都是异步的，所以可以使用承诺模式实现这个方法。首先定义一个返回承诺对象的方法，它不直接返回Image，只有当请求到需要的图片时，这个承诺才会兑现，然后将Image传递到承诺对象中，否则承诺被拒绝（网络错误或者图片不存在）。
-无论兑现还是拒绝，这个承诺对象都会标记为已解决（resolve)，已解决的承诺会被销毁。如果既不兑现，也不拒绝，则这个承诺会一直有效，即「未解决」。
-PromiseKit链 在PromiseKit中，通过promise对象将异步任务串接起来的，一个典型的promise链如下所示：
-firstly { promise1() }.then { promise2() }.then { promise3() }.ensure { // something that should happen whatever the outcome 无论承诺是否兑现，都会执行ensure }.done { // all promises are success resolved }.catch { // handle error here 所有被rejected的承诺都会集中在这里处理 } promise对象状态 在PromiseKit中promise是一个对象。它保存异步数据操作，同时提供统一的异步数据操作事件处理的接口，PromiseKit对象
-  fulfilled指的是promise对象当前处理的异步事件已经成功完成；
-  rejected表示promise对象当前处理的异步事件没有成功。
-  promise对象执行完then和catch方法后，这两个方法会返回先前的promise对象，同时根据异步操作结果改变promise对象的状态。
-举个栗子 fetchJSON(fromURL: &amp;#34;someURL&amp;#34;) { response, results, error in switch response { case .success: fetchUserData(for: results) { response, results, error in switch response { case .success: loginUser(user: results) { response, _, error in switch response { case .success: // finally all of the callbacks are finished print(&amp;#34;Handle logic here&amp;#34;) case .fail: print(error) } } case .fail: print(error) } } case .fail: print(error) } } 上面的fetchJSON方法有3个回调，按照PromiseKit链接结构可以改造成3个方法，每个方法返回promise一个对象，然后依次串接起来，如下所示：
-func promiseFetchJSON() -&amp;gt; Promise&amp;lt;String: Any]&amp;gt; { return Promise&amp;lt;String: Any]&amp;gt; { seal in fetchJSON(fromURL: &amp;#34;someURL&amp;#34;, completion: { response, results, error in switch response { case .success: seal.fulfill(results) case .fail: seal.reject(error) } }) } } promise对象初始化的时候提供了seal对象，这个对象定义了回调完成的方法。接着依次改造promiseFetchUserData和promiseLoginUser，如下所示：
-func promiseFetchUserData(user: String: Any]) -&amp;gt; Promise&amp;lt;User&amp;gt; { return Promise&amp;lt;User&amp;gt; { seal in fetchUserData(for: user, completion: { response, results, error in switch response { case .success: seal.fulfill(results) case .fail: seal.reject(error) } }) } } func promiseLoginUser(user: User) -&amp;gt; Promise&amp;lt;Bool&amp;gt; { return Promise&amp;lt;Bool&amp;gt; { seal in loginUser(user: user, completion: { response, _, error in switch response { case .success: seal.fulfill(true) case .fail: seal.reject(error) } }) } } 最后，套用基本调用链格式，将各个返回promise对象的异步事件串起来，形成一个完整的调用链，如下所示：
-firstly { promiseFetchJSON() }.then { json in promiseFetchUserData(user: json) }.then { user in promiseLoginUser(user: user) }.ensure { // something that should happen whatever the outcome }.done { _ in // all promises are success resolved // handle final logic here }.catch { _ in // handle error here } then和done 在promise链中，done不再返回promise，它一般用于success部分，表示调用链无错误的运行，而then会返回promise对象：
-firstly { login() }.then { creds in fetch(avatar: creds.user) }.done { image in self.imageView = image } catch处理 每个promise都是一个表示单个异步任务的对象。如果任务失败，它的promise将成为rejected。产生rejected promises将跳过所有的then，执行后续所有catch。
-firstly { login() }.then { creds in //... }.done { image in //... }.catch { // 整个 chain 上的错误都到了这里 } ensure 无论chain在哪里结束，成功或者失败。ensure终将被执行，也可以使用finally来完成相同的功能，区别是finally没有返回值。
-firstly { // ... }.then { // ... }.done { // ... }.ensure { // ... }.catch { // ... } firstly { // ... }.done { // ... }.catch { // ... }.finally { //... } when多异步的同步 多个异步操作需要同步的时候，经常会使用group.enter()和group.leave()。在PromoiseKit中使用when来进行多个异步同步，使得多个异步操作变得更简单。
-// 并行操作 var result1: ...! var result2: ...! let group = DispatchGroup() group.enter() group.enter() operation1 { result1 = $0 group.leave() } operation2 { result2 = $0 group.leave() } group.notify(queue: .main) { finish(result1, result2) } 使用when之后，简化了多个异步操作的同步，使得代码变得清晰易懂，如下所示：
-firstly { when(fulfilled: operation1(), operation2()) }.done { result1, result2 in // ... } 主线程 所有then的blocks如果不特别指定，默认都是在主线程执行。
-参考资料 源码 入门 使用 使用 使用
 </content>
     </entry>
     
