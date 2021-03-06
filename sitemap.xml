@@ -313,7 +313,7 @@ when 多个异步操作需要同步的时候，经常会使用group.enter()和gr
 // 并行操作 var result1: ...! var result2: ...! let group = DispatchGroup() group.enter() group.enter() operation1 { result1 = $0 group.leave() } operation2 { result2 = $0 group.leave() } group.notify(queue: .main) { finish(result1, result2) } 使用when之后，简化了多个异步操作的同步，使得代码变得清晰易懂，如下所示：
 firstly { when(fulfilled: operation1(), operation2()) }.done { result1, result2 in // ... } race race的用法与when一样，只不过when是等所有的异步操作都执行完毕后才执行then的回调。而race只要一个异步操作执行完毕就立即执行then回调，其他没有执行完毕的异步操作仍然会继续执行，而不是停止。
 Guarantee Guarantee是Promise的变种、或者补充，其用法和Promise一样，大多情况下二者可以互相替换使用。与Promise状态可以是成功或者失败不同，Guarantee要确保永不失败，因此语法也更简单些，有它就不需要catch来捕获异常了。
-after after是一个延迟执行的方法，它就返回了一个Guarantee对象，因为延迟执行是一定不会失败的，所以我们只需要后续接done就行了。
+after after是一个延迟执行的方法，它就返回了一个Guarantee对象，因为延迟执行是一定不会失败的，所以我们只需要后续接done就行了：
 firstly { after(seconds: 0.1) }.done { // there is no way to add a `catch` because after cannot fail. } map map是指一次数据的变换，而不是一次事件。例如，我们要把从接口返回的json数据转换成对象，就可以用map，map返回的也是一个对象，但不是Promise。
 then方法要求输入一个promise值并返回一个promise，而map是根据先前 promise的结果，然后返回一个新的对象或值类型。
 compactMap compactMap与map类似，不过它是返回Optional。例如，我们返回nil，则整个链会产生PMKError.compactMap错误。？？
