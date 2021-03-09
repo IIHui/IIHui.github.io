@@ -55,28 +55,29 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 设置文�
 cookie的作用就是对请求和响应的状态进行一个管理，服务端通过在响应体中设置cookie (状态)，客户端会将cookie(状态) 存储起来，之后客户端的每个请求都将 cookie (状态)带上，这样服务端就能够对客户端的身份进行识别。
 早期实现 在早期cookie还未出现之前有个最简单的办法就是在请求的页面中插入一个token，然后在下次请求时将这个token送至服务器。这需要在页面的form表单中插入一个包含token 的隐藏域，或者将token放在URL的query字符串中来传递。这两种方法都需要手动操作，而且极易出错。而cookie则不同，一般情况下客户端会自动存储服务器发来的cookie, 并在之后的每次请求中自动带上cookie而无需客户端进行手动处理。
 基本原理 当浏览器向服务器发送请求的时候，服务器会将少量的数据以set-cookie消息头的方式发送给客户端，浏览器一般会自动将cookie数据进行存储，当客户端再次访问服务器时，会将这些数据以cookie消息头的方式发送给服务器，服务端就可以根据cookie消息头来判别用户的身份或进行一些特别的处理并返回响应，如下图所示：
-生存期 从cookie的工作原理可以知道cookies存储在客户端，而cookie在客户端的生存期则主要由属性max-age决定，而max-age属性以秒为单位，表示xx秒后失效。cookie还有一个属性expires，其作用与max-age相似，但其值直接表示到期时间。
-  默认情况下cookie只是暂时存在的，它们存储的值只在浏览器会话期间存在，当用户关闭浏览器窗口后这些值也会随之销毁，而生成的cookie临时存储于浏览器内存中。
-  max-age为正数: cookies会在max-age秒之后被销毁，cookie会存储到cookie文件中并保存本地硬盘中。
-  max-age为负数时:cookie只在浏览器会话期间存在，当用户关闭浏览器窗口后这些值也会随之销毁，生成的cookie临时存储于浏览器内存中。
-  max-age为0时:cookie将被立即销毁。
+生存期 从cookie的工作原理可以知道cookie存储在客户端，而cookie在客户端的生存期主要由属性max-age决定，而max-age属性以秒为单位，表示xxx秒后失效。cookie还有一个expires属性，其作用与max-age相似，但其值表示到期时间。
+  默认情况下cookie只是暂时存在的，它们存储的值只在浏览器会话期间存在，当用户关闭浏览器窗口后这些值也会随之销毁，生成的cookie只是临时存储于浏览器内存中，并未持久化。
+  若max-age为正数，表示cookie会在max-age秒之后被销毁，此时cookie会存储在文件中并保存本地硬盘。
+  若max-age为负数，表示cookie只在浏览器会话期间存在，当用户关闭浏览器窗口后这些值也会随之销毁，生成的cookie临时存储于浏览器内存中，并未持久化。
+  若max-age为0，表示cookie将被立即销毁。
   属性介绍 cookie主要是用于管理服务端和客户端直接的状态，其本质上就是一堆存储在客户端的数据，每条cookie都有对应下面几个属性。
 Domain domain指定了该cookie所属的域名，默认情况下，domain会被设置为创建该cookie 时所在的域名。
 path path则指定了该cookie所属的路径；domain和path两者一起来限制了该cookie 允许被哪些URL访问。当请求某个资源「URL」时只有当该URL域名能够同时与domain和path属性匹配时，浏览器才会将此cookie自动添加到该请求的cookie头部中。
 domain的匹配是根据请求URL中的域名从后向前进行匹配。path的匹配则是判断URL中的路径是否包含path, 例如：
-expires expires是http/1.0协议中的属性，在新的http/1.1协议之后expires已经由 max-age代替，两者的作用都是定义cookie的有效时间。
-expires指定一个具体的到期时间，到了这个指定的时间后，浏览器就不再保留这个 cookie。它的值是UTC格式，可以使用Date.prototype.toUTCString()进行格式转换。
-max-age属性则是指定从现在开始cookie存在的秒数，比如一年的有效期为60 * 60 * 24 * 365。过了这个时间以后，浏览器就不再保留这个cookie。如果同时指定了expires和max-age，那么max-age的值将优先生效。如果没有指定expires或 max-age属性，那么这个cookie就是Session Cookie，即它只在本次对话存在，一旦用户关闭浏览器窗口，浏览器将不会再保留这个cookie。
+expires expires是http/1.0协议中的属性，在新的http/1.1协议之后expires已经由 max-age代替，两者的作用都是定义cookie的有效时间，但值的含义不同。
+expires表示一个具体的到期时间，到了这个指定的时间后，浏览器就不再保留这个 cookie。它的值是UTC格式，可以使用Date.prototype.toUTCString()进行格式转换。
+max-age属性则是指定从现在开始cookie存在的秒数，比如一年的有效期为60 * 60 * 24 * 365。过了这个时间以后，浏览器就不再保留这个cookie。
+如果同时指定了expires和max-age，那么max-age的值将优先生效。如果没有指定expires或 max-age属性，那么这个cookie就是Session Cookie，即它只在本次对话存在，一旦用户关闭浏览器窗口，浏览器将不会再保留。
 secure 包含secure选项的cookie只有在当请求是HTTPS或者其他安全协议时，才能被发送至服务器。但要注意一点，secure选项只是限定了在安全情况下才可以传输给服务端，但并不代表你不能看到这个cookie。
 同时需要注意的是，如果想在客户端即网页中通过js去设置 secure类型的cookie，必须保证网页是https协议的。在http协议的网页中无法设置secure类型的cookie。
 httpOnly httpOnly背后的意思是告之浏览器该cookie绝不能通过JavaScript的 document.cookie属性访问。
 参考资料
 session 参考资料
-Ajax Ajax的全称是Asynchronous JavaScript and XML，译为异步的JavaScript和XML。Ajax是Web2.0技术的核心，由多种技术集合而成，使用Ajax技术不必刷新整个页面，只需对页面的局部进行更新，可以节省网络带宽，提高页面的加载速度，从而缩短用户等待时间，改善用户体验。
-传统的web应用，当提交一个表单请求给服务器，服务器接收到请求之后，返回一个全新的页面给浏览器。这种做法浪费了很多带宽，因为发送请求前和获得的新页面中有很多的html代码是相同的。由于每次用户的交互都需要向服务器发送请求，应用的访问时间取决于服务器的返回时间。
-而使用Ajax就不同了，因为Ajax只取回一些必须的数据，它使用SOAP、XML或者支持json的Web Service接口，在客户端利用JavaScript处理来自服务器的响应，这样客户端和服务器之间的数据交互就减少了，从而用户请求就得到了加速。
-Ajax是多种技术的组合，包括JavaScript异步数据获取技术，就是XMLHttpRequest以及xml以及Dom，还有表现技术XHTML和CSS。Ajax的核心是XMLHttpRequest，它是支持异步请求的技术，可以发送请求给服务器，并且不阻塞用户。其实XMLHttpRequest是JavaScript的一种语法子集，是它的一套API，支持发送GET和POST请求。该API是Ajax开发的核心，也是现在web技术的核心之一。通过这些技术，我们进行无序重新加载网页就可以发送和取回数据以完成交互。
-Ajax的全称是Asynchronous Javascript and XML。异步在这里简单地解释就是：向服务器发送请求的时候，不必等待结果，而是可以同时做其他的事情，等到有了结果我们可以再来处理这个事。如果不是这样的话，我们点完按钮，页面就会卡死在那里，其他的数据请求不会往下走，这样比等待刷新似乎更加讨厌。虽然提供异步通讯功能的组件默认情况下都是异步的，但它们也提供了同步选项，如果你好奇把那个选项改为false的话，你的页面就会卡死。
+Ajax Ajax的全称是Asynchronous JavaScript and XML，译为异步的JavaScript和XML。Ajax是Web2.0的技术核心，由多种技术集合而成。使用Ajax技术时不必刷新整个页面，只需对页面的局部进行更新，可以节省网络带宽，提高页面的加载速度，从而缩短用户等待时间，改善用户体验。
+传统的web应用，当提交一个表单请求给服务器，服务器接收到请求之后，返回一个全新的页面给浏览器。这种做法浪费了很多带宽，因为发送请求前和获得的新页面中有很多html代码是相同的。由于每次用户的交互都需要向服务器发送请求，应用的访问时间取决于服务器的返回时间。
+而使用Ajax就不同了，因为Ajax只取回一些必须的数据，它使用SOAP、XML或者支持JSON的Web Service接口，在客户端利用JavaScript处理来自服务器的响应，这样客户端和服务器之间的数据交互就减少了，从而用户请求就得到了加速。
+Ajax是多种技术的组合，包括JavaScript异步数据获取技术，就是XMLHttpRequest以及XML以及Dom，还有表现技术XHTML和CSS。Ajax的核心是XMLHttpRequest，它是支持异步请求的技术，可以发送请求给服务器，并且不阻塞用户。其实XMLHttpRequest是JavaScript的一种语法子集，是它的一套API，支持发送GET和POST请求。该API是Ajax开发的核心，也是现在web技术的核心之一。通过这些技术，我们进行无序重新加载网页就可以发送和取回数据以完成交互。
+Ajax的全称是Asynchronous Javascript and XML。异步在这里简单地解释就是：向服务器发送请求的时候，不必等待结果，而是可以同时做其他的事情，等到有了结果我们可以再来处理这个事。如果不是这样的话，我们点完按钮，页面就会卡死在那里，其他的数据请求不会往下走，这样比等待刷新似乎更加讨厌。虽然提供异步通讯功能的组件默认情况下都是异步的，但它们也提供了同步选项，如果你好奇把那个选项改为false的话，页面就会卡死。
 XML只是一种数据格式，在这件事里并不重要，在更新一行字的时候理论上说不需要这个格式，但如果我们更新很多内容，那么格式化的数据可以使我们有条理地去实现更新。现在大部分是用JSON来代替XML的，因为前者更加简洁，据说目前的解析速度也更快。多快好省，能省则省啊。
 总结：只要是JS调用异步通讯组件并使用格式化的数据来更新Web页面上的内容或操作过程，那么就应该算是使用Ajax。
 参考资料
