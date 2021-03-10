@@ -51,9 +51,9 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 设置文�
         <tags>
           <tag>iOS</tag>
         </tags>
-        <content type="html"> 简介 标准的http协议是无状态的，也就是说服务端对于客户端的每次请求都认为它是一个新的请求，上一次的会话和下一次的会话之间是没有任何联系。这时当用户访问服务端并进行登录后，客户端之后的请求服务端依然无法对客户端身份进行识别，如果将客户端与服务器之间的多次交互当做一个整体来看，那么服务端若想识别客户端的身份那么就需要将多次交互所涉及的数据（状态）保存下来。
-cookie的作用就是对请求和响应的状态进行一个管理，服务端通过在响应体中设置cookie (状态)，客户端会将cookie(状态) 存储起来，之后客户端的每个请求都将 cookie (状态)带上，这样服务端就能够对客户端的身份进行识别。
-早期实现 在早期cookie还未出现之前有个最简单的办法就是在请求的页面中插入一个token，然后在下次请求时将这个token送至服务器。这需要在页面的form表单中插入一个包含token 的隐藏域，或者将token放在URL的query字符串中来传递。这两种方法都需要手动操作，而且极易出错。而cookie则不同，一般情况下客户端会自动存储服务器发来的cookie, 并在之后的每次请求中自动带上cookie而无需客户端进行手动处理。
+        <content type="html"> 简介 标准的http协议是无状态的，也就是说服务端对于客户端的每次请求都认为它是一个新的请求，上一次的会话和下一次的会话之间是没有任何联系。当用户访问服务端并进行登录后，客户端之后的请求服务端依然无法对客户端身份进行识别。如果将客户端与服务器之间的多次交互当做一个整体来看，若服务端若想识别客户端的身份，就需要将多次交互所涉及的数据（状态）保存下来。
+cookie的作用就是对请求和响应的状态进行管理，服务端通过在响应体中设置cookie (状态)，客户端会将cookie(状态) 存储起来，之后客户端的每个请求都将 cookie (状态)带上，这样服务端就能够对客户端的身份进行识别。
+早期实现 在早期cookie还未出现之前有个最简单的办法就是在请求的页面中插入一个token，然后在下次请求时将这个token送至服务器。这需要在页面的form表单中插入一个包含token 的隐藏域，或者将token放在URL的query字符串中来传递。这两种方法都需要手动操作，而且极易出错。而cookie则不同，一般情况下客户端会自动存储服务器发来的cookie， 并在之后的每次请求中自动带上cookie，无需客户端进行手动处理。
 基本原理 当浏览器向服务器发送请求的时候，服务器会将少量的数据以set-cookie消息头的方式发送给客户端，浏览器一般会自动将cookie数据进行存储，当客户端再次访问服务器时，会将这些数据以cookie消息头的方式发送给服务器，服务端就可以根据cookie消息头来判别用户的身份或进行一些特别的处理并返回响应，如下图所示：
 生存期 从cookie的工作原理可以知道cookie存储在客户端，而cookie在客户端的生存期主要由属性max-age决定，而max-age属性以秒为单位，表示xxx秒后失效。cookie还有一个expires属性，其作用与max-age相似，但其值表示到期时间。
   默认情况下cookie只是暂时存在的，它们存储的值只在浏览器会话期间存在，当用户关闭浏览器窗口后这些值也会随之销毁，生成的cookie只是临时存储于浏览器内存中，并未持久化。
@@ -70,7 +70,7 @@ max-age属性则是指定从现在开始cookie存在的秒数，比如一年的�
 如果同时指定了expires和max-age，那么max-age的值将优先生效。如果没有指定expires或 max-age属性，那么这个cookie就是Session Cookie，即它只在本次对话存在，一旦用户关闭浏览器窗口，浏览器将不会再保留。
 secure 包含secure选项的cookie只有在当请求是HTTPS或者其他安全协议时，才能被发送至服务器。但要注意一点，secure选项只是限定了在安全情况下才可以传输给服务端，但并不代表你不能看到这个cookie。
 同时需要注意的是，如果想在客户端即网页中通过js去设置 secure类型的cookie，必须保证网页是https协议的。在http协议的网页中无法设置secure类型的cookie。
-httpOnly httpOnly背后的意思是告之浏览器该cookie绝不能通过JavaScript的 document.cookie属性访问。
+httpOnly httpOnly背后的意思是告诉浏览器该cookie绝不能通过JavaScript的 document.cookie属性访问。
 参考资料
 session 参考资料
 Ajax Ajax的全称是Asynchronous JavaScript and XML，译为异步的JavaScript和XML。Ajax是Web2.0的技术核心，由多种技术集合而成。使用Ajax技术时不必刷新整个页面，只需对页面的局部进行更新，可以节省网络带宽，提高页面的加载速度，从而缩短用户等待时间，改善用户体验。
@@ -2161,7 +2161,8 @@ class MyManager { // private 修饰 private static let sharedManager: MyManager 
  命令语法结构 &amp;lt;command&amp;gt; [&amp;lt;subcommand&amp;gt; [&amp;lt;subcommand&amp;gt;...]] &amp;lt;action&amp;gt; [-options [option-value]] [argument [argument...]] 其中：
  command和subcommand为LLDB调试命令的名称，命令和子命令按照层级结构来排列：一个命令对象为跟随其的子命令对象创建一个上下文，子命令又为其子命令创建一个上下文，依此类推。 action  上面的这些元素之间通过空格来分割，如果某一元素自身含有空格，则可以使用双引用。而如果元素中又包含双引号，则可以使用反斜杠；或者元素使用单引号。如下所示：
 (lldb) command [subcommand] -option &amp;#34;some \&amp;#34;quoted\&amp;#34; string&amp;#34; (lldb) command [subcommand] -option &amp;#39;some &amp;#34;quoted&amp;#34; string&amp;#39; 获取变量值和状态 使用expression和e可以获取和改变变量的值
-获取整个APP的状态和指定语言的命令  bugreport:生成当前应用状态的完整报告 frame:获取当前线程的当前栈帧的概述  参考资料 参考资料
+获取整个APP的状态和指定语言的命令  bugreport:生成当前应用状态的完整报告 frame:获取当前线程的当前栈帧的概述  参考资料
+不能安装 因为App是企业发布，偶尔有人反映安装不了，最近有人反映在iPhone8 Plus上遇到「无法安装XXX，请稍候再试」的情况，如下图所示： 这篇文章给出如下的建议：
 </content>
     </entry>
     
