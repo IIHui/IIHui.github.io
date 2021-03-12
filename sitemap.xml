@@ -2165,6 +2165,8 @@ class MyManager { // private 修饰 private static let sharedManager: MyManager 
 不能安装 无法安装 因为App是企业发布，偶尔有人反映安装不了，最近有人反映在iPhone8 Plus上遇到「无法安装XXX，请稍候再试」的情况，如下图所示： 这篇文章给出如下的建议：
 安装到最后变灰了 安装到一半变灰了，可以先清除Safari浏览器，然后再重启，通过ideviceinstaller -i 命令安装：
 参考资料
+手机发烫 手机发烫，调试时看到总是看到字体日志和safe_M_setObjectforKeyedSubscript-------object is nil相关信息，如下图红色框所示：
+CoreText note: Client requested name &amp;#34;.SFUI-Regular&amp;#34;, it will get TimesNewRomanPSMT rather than the intended font. All system UI font access should be through proper APIs such as CTFontCreateUIFontForLanguage() or &#43;[UIFont systemFontOfSize:]. 根据提示，设置CTFontLogSystemFontNameRequest符号端点，可以查看相关信息。
 </content>
     </entry>
     
