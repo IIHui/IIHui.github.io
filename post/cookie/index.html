@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">3066</span>
+<span class="leancloud-visitors-count">3069</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -256,7 +256,7 @@ code.has-jax {
 <p>标准的<code>http</code>协议是<font color=LightSeaGreen>无状态的</font>，也就是说<font color=red>服务端对于客户端的每次请求都认为它是一个新的请求</font>，上一次的会话和下一次的会话之间是没有任何联系。<font color=LightSeaGreen>当用户访问服务端并进行登录后，之后的客户端请求服务端依然无法对其身份进行识别</font>。如果将客户端与服务器之间的多次交互当做一个整体来看，服务端若想识别客户端的身份，就需要将多次交互所涉及的数据「或称为状态」保存下来。</p>
 <p><code>cookie</code>的作用就是对请求和响应的状态进行管理，服务端通过在响应体中设置<code>cookie</code> (状态)，客户端会将<code>cookie</code>(状态) 存储起来。之后<font color=red>客户端的每个请求</font>都将 <code>cookie</code> (状态)带上，这样服务端就能够对客户端的身份进行识别。</p>
 <h2 id="早期实现">早期实现</h2>
-<p>在早期<code>cookie</code>还未出现之前有个最简单的办法就是在请求的页面中插入一个<code>token</code>，然后在下次请求时将这个<code>token</code>送至服务器。这需要在页面的<code>form</code>表单中插入一个包含<code>token</code> 的隐藏域，或者将<code>token</code>放在<code>URL</code>的<code>query</code>字符串中来传递。这两种方法都需要手动操作，而且极易出错。而<code>cookie</code>则不同，一般情况下客户端会自动存储服务器发来的<code>cookie</code>， 并在之后的每次请求中自动带上<code>cookie</code>，无需客户端进行手动处理。</p>
+<p>在早期<code>cookie</code>还未出现之前有个最简单的办法，就是在请求的页面中插入一个<code>token</code>，然后在下次请求时将这个<code>token</code>送至服务器。这需要在页面的<code>form</code>表单中插入一个包含<code>token</code> 的隐藏域，或者将<code>token</code>放在<code>URL</code>的<code>query</code>字符串中来传递。这两种方法都需要手动操作，因此极易出错。而使用<code>cookie</code>则不同，一般情况下客户端会自动存储服务器发来的<code>cookie</code>，并在之后的每次请求中自动带上<code>cookie</code>，无需客户端进行手动处理。</p>
 <h1 id="基本原理">基本原理</h1>
 <p>当浏览器向服务器发送请求的时候，服务器会将少量的数据以<code>set-cookie</code>消息头的方式发送给客户端，浏览器一般会<font color=red>自动</font>将<code>cookie</code>数据进行存储，当客户端再次访问服务器时，会将这些数据以<code>cookie</code>消息头的方式发送给服务器，服务端就可以根据<code>cookie</code>消息头来判别用户的身份或进行一些特别的处理并返回响应，如下图所示：</p>
 <p><img src="https://i.loli.net/2021/02/21/MVXiH8UQSsjT5wL.jpg" alt="-c"></p>
