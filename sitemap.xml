@@ -61,10 +61,10 @@ cookie的作用就是对请求和响应的状态进行管理，服务端通过�
   若max-age为负数，行为与默认情况相同。表示cookie只在浏览器会话期间存在，当用户关闭浏览器窗口后这些值也会随之销毁，生成的cookie临时存储于浏览器内存中，并未做持久化。
   若max-age为0，表示cookie将被立即销毁，符合将在xxx秒后失效的表述。
   属性介绍 cookie主要是用于管理服务端和客户端直接的状态，其本质上就是一堆存储在客户端的数据，每条cookie都有对应下面几个属性。
-domain 属性domain指定了该cookie所属的域名。默认情况下，domain会被设置为创建该cookie 时所在的域名。某个域下的cookie如果希望能够被它的子域具有可见性（即可以读取），应该保证这个cookie在被Set的时候以.开头。
+domain 属性domain指定了该cookie所属的域名。默认情况下，domain会被设置为创建该cookie 时所在的域名。某个域下的cookie如果希望能够被它的子域具有可见性（即可以读取），应该保证这个cookie在被设置时以.开头。
 path 属性path指定了cookie所属的路径。domain和path两者一起来限制了cookie 允许被哪些URL访问。当请求某个资源「URL」时只有当该URL域名能够同时与domain和path属性匹配时，浏览器才会将此cookie自动添加到该请求的cookie头部中。
 属性domain的匹配是根据请求URL中的域名从后向前进行匹配。而属性path的匹配则是判断URL中的路径是否包含path：
-expires expires是http/1.0协议中的属性，在新的http/1.1协议之后expires已经由 max-age代替，两者的作用都是定义cookie的有效时间，但含义不同。
+expires 属性expires是http/1.0协议中的，在新的http/1.1协议之后expires已经由 max-age代替，两者的作用都是定义cookie的有效时间，但含义不同。
 expires表示一个具体的到期时间，到了这个指定的时间后，浏览器就不再保留这个 cookie。它的值是UTC格式，可以使用Date.prototype.toUTCString()进行格式转换。
 max-age属性则是指定从现在开始cookie存在的秒数，比如一年的有效期为60 * 60 * 24 * 365。过了这个时间以后，浏览器就不再保留这个cookie。
 如果同时指定了expires和max-age，那么max-age的值将优先生效。如果没有指定expires或 max-age属性，那么这个cookie就是Session Cookie，即它只在本次对话存在，一旦用户关闭浏览器窗口，浏览器将不会再保留。

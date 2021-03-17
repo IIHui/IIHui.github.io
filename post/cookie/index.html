@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">3161</span>
+<span class="leancloud-visitors-count">3158</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -279,13 +279,13 @@ code.has-jax {
 <h1 id="属性介绍">属性介绍</h1>
 <p><code>cookie</code>主要是用于管理服务端和客户端直接的状态，其本质上就是一堆存储在客户端的数据，每条<code>cookie</code>都有对应下面几个属性。</p>
 <h2 id="domain">domain</h2>
-<p>属性<code>domain</code>指定了该<code>cookie</code>所属的域名。默认情况下，<code>domain</code>会被设置为创建该<code>cookie </code>时所在的域名。某个域下的<code>cookie</code>如果希望能够被它的<font color=red>子域具有可见性</font>（即可以读取），应该保证这个<code>cookie</code>在被<code>Set</code>的时候以<code>.</code>开头。</p>
+<p>属性<code>domain</code>指定了该<code>cookie</code>所属的域名。默认情况下，<code>domain</code>会被设置为创建该<code>cookie </code>时所在的域名。某个域下的<code>cookie</code>如果希望能够被它的<font color=red>子域具有可见性</font>（即可以读取），应该保证这个<code>cookie</code>在被设置时以<code>.</code>开头。</p>
 <h2 id="path">path</h2>
 <p>属性<code>path</code>指定了<code>cookie</code>所属的路径。<code>domain</code>和<code>path</code>两者一起来限制了<code>cookie</code> 允许被哪些<code>URL</code>访问。当请求某个资源「<code>URL</code>」时只有当该<code>URL</code>域名能够同时与<code>domain</code>和<code>path</code>属性匹配时，浏览器才会将此<code>cookie</code>自动添加到该请求的<code>cookie</code>头部中。</p>
 <p>属性<code>domain</code>的匹配是根据请求<code>URL</code>中的<font color=red>域名从后向前进行匹配</font>。而属性<code>path</code>的匹配则是判断<code>URL</code>中的路径是否包含<code>path</code>：</p>
 <p><img src="https://i.loli.net/2021/02/21/s6qo7blfCRUMyzn.jpg" alt="-c"></p>
 <h1 id="expires">expires</h1>
-<p><code>expires</code>是<code>http/1.0</code>协议中的属性，在新的<code>http/1.1</code>协议之后<code>expires</code>已经由 <code>max-age</code>代替，两者的作用都是定义<code>cookie</code>的有效时间，但含义不同。</p>
+<p>属性<code>expires</code>是<code>http/1.0</code>协议中的，在新的<code>http/1.1</code>协议之后<code>expires</code>已经由 <code>max-age</code>代替，两者的作用都是定义<code>cookie</code>的有效时间，但含义不同。</p>
 <p><code>expires</code>表示一个具体的到期时间，到了这个指定的时间后，浏览器就不再保留这个 <code>cookie</code>。它的值是<code>UTC</code>格式，可以使用<code>Date.prototype.toUTCString()</code>进行格式转换。</p>
 <p><code>max-age</code>属性则是指定从现在开始<code>cookie</code>存在的秒数，比如一年的有效期为<code>60 * 60 * 24 * 365</code>。过了这个时间以后，浏览器就不再保留这个<code>cookie</code>。</p>
 <p>如果同时指定了<code>expires</code>和<code>max-age</code>，那么<code>max-age</code>的值将优先生效。如果没有指定<code>expires</code>或 <code>max-age</code>属性，那么这个<code>cookie</code>就是<code>Session Cookie</code>，即它<font color=red>只在本次对话存在</font>，一旦用户关闭浏览器窗口，浏览器将不会再保留。</p>
