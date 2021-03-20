@@ -264,10 +264,10 @@ code.has-jax {
 <p>从<code>cookie</code>的工作原理可以知道<code>cookie</code>存储在客户端，而<code>cookie</code>在客户端的生存期主要由属性<code>max-age</code>决定。<code>max-age</code>属性以秒为单位，表示将在<code>xxx</code>秒后失效。<code>cookie</code>还有一个<code>expires</code>属性，其作用与<code>max-age</code>相似，但其值表示到期具体时间。</p>
 <ul>
 <li>
-<p>默认情况下<code>cookie</code>只是<font color=LightSeaGreen>暂时存在</font>的。它们存储的值只在浏览器会话期间存在，当用户关闭浏览器窗口后这些值也会随之销毁，生成的<code>cookie</code><font color=red>只是临时存储于浏览器内存中，并未做持久化</font>。</p>
+<p>默认情况下<code>cookie</code>只是<font color=LightSeaGreen>暂时存在</font>的，只在浏览器会话期间存在，当用户关闭浏览器窗口后这些值也会随之销毁。因为生成的<code>cookie</code><font color=red>只是临时存储于浏览器内存中，并未做持久化处理</font>。</p>
 </li>
 <li>
-<p>若<code>max-age</code>为正数，表示<code>cookie</code>会在<code>max-age</code>秒之后被销毁，此时<code>cookie</code>会存储在文件中并保存本地硬盘。</p>
+<p>若<code>max-age</code>为正数，表示<code>cookie</code>会在<code>max-age</code>秒之后被销毁，此时<code>cookie</code>会做持久化处理，存储在本地文件中。</p>
 </li>
 <li>
 <p>若<code>max-age</code>为负数，行为与默认情况相同。表示<code>cookie</code>只在浏览器会话期间存在，当用户关闭浏览器窗口后这些值也会随之销毁，生成的<code>cookie</code><font color=red>临时存储于浏览器内存中，并未做持久化</font>。</p>
