@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">3342</span>
+<span class="leancloud-visitors-count">3384</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -297,9 +297,11 @@ code.has-jax {
 <p>属性<code>httpOnly</code>的意思是告诉浏览器该<code>cookie</code>不能通过<code>JavaScript</code>的 <code>document.cookie</code>属性访问。</p>
 <p><a href="https://juejin.cn/post/6844903832678301703">参考资料</a></p>
 <h1 id="session">session</h1>
-<p>会话跟踪是很重要的事情。理论上，一个用户的所有请求操作都应该属于同一个会话，而另一个用户的所有请求操作则应该属于另一个会话，二者不能混淆。例如，用户A在超市购买的任何商品都应该放在A的购物车内，不论是用户A什么时间购买的，这都是属于同一个会话的，不能放入用户B或用户C的购物车内，这不属于同一个会话</p>
-<p>会话「<code>Session</code>」用来跟踪用户的整个会话。<code>cookie</code>通过在客户端记录信息确定用户身份，<code>session</code>通过在服务器端记录信息确定用户身份。</p>
+<p>除了<code>cookie</code>还经常使用<code>session</code>来记录客户端状态。<code>session</code>是<font color=red>服务端使用的一种用来记录客户端状态的机制</font>，使用上比<code>cookie</code>简单一些，相应的也增加了服务器的存储压力。</p>
+<p>客户端浏览器访问服务器的时候，服务器把客户端信息以某种形式记录在服务器上，这就是<code>session</code>。客户端浏览器再次访问时只需要从该<code>session</code>中查找该客户的状态就可以了。</p>
+<p><code>session</code>机制就是通过检查服务器上的“客户明细表”来确认客户身份。<code>session</code>相当于程序在服务器上建立的一份客户档案，客户来访的时候只需要查询客户档案表就可以了。</p>
 <p><a href="https://labuladong.gitbook.io/algo/di-wu-zhang-ji-shu-wen-zhang-xi-lie/session-he-cookie">参考资料</a></p>
+<p><a href="https://www.jianshu.com/p/b5efddc433f5">参考资料</a></p>
 <h1 id="ajax">Ajax</h1>
 <p><code>Ajax</code>的全称是<code>Asynchronous JavaScript and XML</code>，译为异步的<code>JavaScript</code>和<code>XML</code>。<code>Ajax</code>是<code>Web2.0</code>的技术核心，由多种技术集合而成。使用<code>Ajax</code>技术时<font color=red>不必刷新整个页面，只需对页面的局部进行更新</font>，可以节省网络带宽，提高页面的加载速度，从而缩短用户等待时间，改善用户体验。</p>
 <p>传统的<code>web</code>应用，当提交一个表单请求给服务器，服务器接收到请求之后，<font color=red>返回一个全新的页面给浏览器</font>。这种做法浪费了很多带宽，因为发送请求前和获得的新页面中有很多<code>html</code>代码是相同的。由于每次用户的交互都需要向服务器发送请求，应用的访问时间取决于服务器的返回时间。</p>
