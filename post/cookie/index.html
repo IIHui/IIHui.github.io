@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">3156</span>
+<span class="leancloud-visitors-count">3157</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -258,7 +258,7 @@ code.has-jax {
 <h2 id="早期实现">早期实现</h2>
 <p>在早期<code>cookie</code>还未出现之前有个最简单的办法，就是在请求的页面中插入一个<code>token</code>，然后在下次请求时将这个<code>token</code>送至服务器。这需要在页面的<code>form</code>表单中插入一个包含<code>token</code> 的隐藏域，或者将<code>token</code>放在<code>URL</code>的<code>query</code>字符串中来传递。这两种方法都需要手动操作，因此极易出错。而使用<code>cookie</code>则不同，一般情况下客户端会<font color=red>自动存储</font>服务器发来的<code>cookie</code>，并在之后的每次请求中<font color=red>自动带上</font><code>cookie</code>，无需客户端进行手动处理。</p>
 <h1 id="基本原理">基本原理</h1>
-<p>当浏览器向服务器发送请求的时候，服务器会将少量的数据以<code>set-cookie</code>消息头的方式发送给客户端，浏览器一般<font color=red>会自动</font>将<code>cookie</code>数据进行存储，当客户端再次访问服务器时，会将这些数据以<code>cookie</code>消息头的方式发送给服务器，服务端就可以根据<code>cookie</code>消息头来判别用户的身份或进行一些特别的处理并返回响应，如下图所示：</p>
+<p>当浏览器向服务器发送请求的时候，服务器将少量数据以<code>set-cookie</code>消息头的方式发送给客户端。浏览器一般<font color=red>自动</font>将<code>cookie</code>数据进行存储，当客户端再次访问服务器时，会将这些数据以<code>cookie</code>消息头的方式发送给服务器，服务端就可以根据<code>cookie</code>消息头来判别用户的身份或进行一些特别的处理并返回响应，大致流程如下图所示：</p>
 <p><img src="https://i.loli.net/2021/02/21/MVXiH8UQSsjT5wL.jpg" alt="-c"></p>
 <h1 id="生存期">生存期</h1>
 <p>从<code>cookie</code>的工作原理可以知道<code>cookie</code>存储在客户端，而<code>cookie</code>在客户端的生存期主要由属性<code>max-age</code>决定。<code>max-age</code>属性以秒为单位，表示将在<code>xxx</code>秒后失效。<code>cookie</code>还有一个<code>expires</code>属性，其作用与<code>max-age</code>相似，但其值表示到期具体时间。</p>
