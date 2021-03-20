@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">3157</span>
+<span class="leancloud-visitors-count">3122</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -260,8 +260,18 @@ code.has-jax {
 <h1 id="基本原理">基本原理</h1>
 <p>当浏览器向服务器发送请求的时候，服务器将少量数据以<code>set-cookie</code>消息头的方式发送给客户端。浏览器一般<font color=red>自动</font>将<code>cookie</code>数据进行存储，当客户端再次访问服务器时，会将这些数据以<code>cookie</code>消息头的方式发送给服务器，服务端就可以根据<code>cookie</code>消息头来判别用户的身份或进行一些特别的处理并返回响应，大致流程如下图所示：</p>
 <p><img src="https://i.loli.net/2021/02/21/MVXiH8UQSsjT5wL.jpg" alt="-c"></p>
-<h1 id="生存期">生存期</h1>
-<p>从<code>cookie</code>的工作原理可以知道<code>cookie</code>存储在客户端，而<code>cookie</code>在客户端的生存期主要由属性<code>max-age</code>决定。<code>max-age</code>属性以秒为单位，表示将在<code>xxx</code>秒后失效。<code>cookie</code>还有一个<code>expires</code>属性，其作用与<code>max-age</code>相似，但其值表示到期具体时间。</p>
+<h1 id="属性介绍">属性介绍</h1>
+<p><code>cookie</code>主要是用于管理服务端和客户端直接的状态，其本质上就是一堆存储在客户端的数据，每条<code>cookie</code>都有对应下面几个属性。</p>
+<h2 id="domain">domain</h2>
+<p>属性<code>domain</code>指定了该<code>cookie</code>所属的域名。默认情况下，<code>domain</code>会被设置为创建该<code>cookie </code>时所在的域名。某个域下的<code>cookie</code>如果希望能够被它的<font color=red>子域具有可见性</font>（即可以读取），应该保证这个<code>cookie</code>在被设置时以<code>.</code>开头。</p>
+<h2 id="path">path</h2>
+<p>属性<code>path</code>指定了<code>cookie</code>所属的路径。<code>domain</code>和<code>path</code>两者一起来限制了<code>cookie</code> 允许被哪些<code>URL</code>访问。当请求某个资源「<code>URL</code>」时只有当该<code>URL</code>域名能够同时与<code>domain</code>和<code>path</code>属性匹配时，浏览器才会将此<code>cookie</code>自动添加到该请求的<code>cookie</code>头部中。</p>
+<p>属性<code>domain</code>的匹配是根据请求<code>URL</code>中的<font color=red>域名从后向前进行匹配</font>。而属性<code>path</code>的匹配则是判断<code>URL</code>中的路径是否包含<code>path</code>：</p>
+<p><img src="https://i.loli.net/2021/02/21/s6qo7blfCRUMyzn.jpg" alt="-c"></p>
+<h2 id="生存期">生存期</h2>
+<p>从<code>cookie</code>的工作原理可以知道<code>cookie</code>存储在客户端，而<code>cookie</code>在客户端的生存期主要由属性<code>max-age</code>或<code>expires</code>决定。属性<code>expires</code>是<code>http/1.0</code>协议中的，在新的<code>http/1.1</code>协议之后<code>expires</code>已经由 <code>max-age</code>代替。</p>
+<h3 id="max-age">max-age</h3>
+<p><code>max-age</code>属性以秒为单位，表示将在<code>xxx</code>秒后失效。根据其取值的不同，浏览器会做不同的处理，具体含义如下所示：</p>
 <ul>
 <li>
 <p>默认情况下<code>cookie</code>只是<font color=LightSeaGreen>暂时存在</font>的，只在浏览器会话期间存在，当用户关闭浏览器窗口后这些值也会随之销毁。因为生成的<code>cookie</code><font color=red>只是临时存储于浏览器内存中，并未做持久化处理</font>。</p>
@@ -276,16 +286,7 @@ code.has-jax {
 <p>若<code>max-age</code>为<code>0</code>，表示<code>cookie</code>将被立即销毁，符合将在<code>xxx</code>秒后失效的表述。</p>
 </li>
 </ul>
-<h1 id="属性介绍">属性介绍</h1>
-<p><code>cookie</code>主要是用于管理服务端和客户端直接的状态，其本质上就是一堆存储在客户端的数据，每条<code>cookie</code>都有对应下面几个属性。</p>
-<h2 id="domain">domain</h2>
-<p>属性<code>domain</code>指定了该<code>cookie</code>所属的域名。默认情况下，<code>domain</code>会被设置为创建该<code>cookie </code>时所在的域名。某个域下的<code>cookie</code>如果希望能够被它的<font color=red>子域具有可见性</font>（即可以读取），应该保证这个<code>cookie</code>在被设置时以<code>.</code>开头。</p>
-<h2 id="path">path</h2>
-<p>属性<code>path</code>指定了<code>cookie</code>所属的路径。<code>domain</code>和<code>path</code>两者一起来限制了<code>cookie</code> 允许被哪些<code>URL</code>访问。当请求某个资源「<code>URL</code>」时只有当该<code>URL</code>域名能够同时与<code>domain</code>和<code>path</code>属性匹配时，浏览器才会将此<code>cookie</code>自动添加到该请求的<code>cookie</code>头部中。</p>
-<p>属性<code>domain</code>的匹配是根据请求<code>URL</code>中的<font color=red>域名从后向前进行匹配</font>。而属性<code>path</code>的匹配则是判断<code>URL</code>中的路径是否包含<code>path</code>：</p>
-<p><img src="https://i.loli.net/2021/02/21/s6qo7blfCRUMyzn.jpg" alt="-c"></p>
-<h2 id="expires">expires</h2>
-<p>属性<code>expires</code>是<code>http/1.0</code>协议中的，在新的<code>http/1.1</code>协议之后<code>expires</code>已经由 <code>max-age</code>代替，两者的作用都是定义<code>cookie</code>的有效时间，但含义不同。</p>
+<h3 id="expires">expires</h3>
 <p><code>expires</code>表示一个具体的到期时间，到了这个指定的时间后，浏览器就不再保留这个 <code>cookie</code>。它的值是<code>UTC</code>格式，可以使用<code>Date.prototype.toUTCString()</code>进行格式转换。</p>
 <p><code>max-age</code>属性则是指定从现在开始<code>cookie</code>存在的秒数，比如一年的有效期为<code>60 * 60 * 24 * 365</code>。过了这个时间以后，浏览器就不再保留这个<code>cookie</code>。</p>
 <p>如果同时指定了<code>expires</code>和<code>max-age</code>，那么<code>max-age</code>的值将优先生效。如果没有指定<code>expires</code>或 <code>max-age</code>属性，那么这个<code>cookie</code>就是<code>Session Cookie</code>，即它<font color=red>只在本次对话存在</font>，一旦用户关闭浏览器窗口，浏览器将不会再保留。</p>
@@ -479,12 +480,16 @@ code.has-jax {
       </ul>
     </li>
     <li><a href="#基本原理">基本原理</a></li>
-    <li><a href="#生存期">生存期</a></li>
     <li><a href="#属性介绍">属性介绍</a>
       <ul>
         <li><a href="#domain">domain</a></li>
         <li><a href="#path">path</a></li>
-        <li><a href="#expires">expires</a></li>
+        <li><a href="#生存期">生存期</a>
+          <ul>
+            <li><a href="#max-age">max-age</a></li>
+            <li><a href="#expires">expires</a></li>
+          </ul>
+        </li>
         <li><a href="#secure">secure</a></li>
         <li><a href="#httponly">httpOnly</a></li>
       </ul>
