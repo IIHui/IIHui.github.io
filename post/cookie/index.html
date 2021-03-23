@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">3384</span>
+<span class="leancloud-visitors-count">3371</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -289,9 +289,9 @@ code.has-jax {
 <h3 id="expires">expires</h3>
 <p><code>expires</code>表示一个具体的到期时间，到了这个指定的时间后，浏览器就不再保留这个 <code>cookie</code>。它的值是<code>UTC</code>格式，可以使用<code>Date.prototype.toUTCString()</code>进行格式转换。</p>
 <p><code>max-age</code>属性则是指定从现在开始<code>cookie</code>存在的秒数，比如一年的有效期为<code>60 * 60 * 24 * 365</code>。过了这个时间以后，浏览器就不再保留这个<code>cookie</code>。</p>
-<p>如果同时指定了<code>expires</code>和<code>max-age</code>，那么<code>max-age</code>的值将优先生效。如果没有指定<code>expires</code>或 <code>max-age</code>属性，那么这个<code>cookie</code>就是<code>Session Cookie</code>，即它<font color=red>只在本次对话存在</font>，一旦用户关闭浏览器窗口，浏览器将不会再保留。</p>
+<p>如果同时指定了<code>expires</code>和<code>max-age</code>，那么<code>max-age</code>的值<font color=red>将优先生效</font>。如果没有指定<code>expires</code>或 <code>max-age</code>属性，那么这个<code>cookie</code>就是会话<code>Cookie</code>，即它<font color=red>只在本次对话存在</font>，一旦用户关闭浏览器窗口，浏览器将不再保留。</p>
 <h2 id="secure">secure</h2>
-<p>包含<code>secure</code>选项的<code>cookie</code>只有在当请求是<code>HTTPS</code>或者其他<font color=red>安全协议时</font>，才能被发送至服务器。但要注意一点，<code>secure</code>选项只是限定了在安全情况下才可以传输给服务端，但并不代表你不能看到这个<code>cookie</code>。</p>
+<p>包含<code>secure</code>选项的<code>cookie</code>只有在当请求是<code>HTTPS</code>或其他<font color=red>安全协议时</font>，才能被发送至服务器。但要注意，<code>secure</code>选项只是限定了在<font color=LightSeaGreen>安全情况下才可以传输给服务端</font>，但还是可以查看<code>cookie</code>的。</p>
 <p>同时需要注意的是，如果想在客户端即网页中通过<code>js</code>去设置 <code>secure</code>类型的<code>cookie</code>，必须保证网页是<code>https</code>协议的。在<code>http</code>协议的网页中无法设置<code>secure</code>类型的<code>cookie</code>。</p>
 <h2 id="httponly">httpOnly</h2>
 <p>属性<code>httpOnly</code>的意思是告诉浏览器该<code>cookie</code>不能通过<code>JavaScript</code>的 <code>document.cookie</code>属性访问。</p>

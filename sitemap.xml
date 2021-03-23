@@ -67,8 +67,8 @@ max-age max-age属性以秒为单位，表示将在xxx秒后失效。根据其�
   若max-age为0，表示cookie将被立即销毁，符合将在xxx秒后失效的表述。
   expires expires表示一个具体的到期时间，到了这个指定的时间后，浏览器就不再保留这个 cookie。它的值是UTC格式，可以使用Date.prototype.toUTCString()进行格式转换。
 max-age属性则是指定从现在开始cookie存在的秒数，比如一年的有效期为60 * 60 * 24 * 365。过了这个时间以后，浏览器就不再保留这个cookie。
-如果同时指定了expires和max-age，那么max-age的值将优先生效。如果没有指定expires或 max-age属性，那么这个cookie就是Session Cookie，即它只在本次对话存在，一旦用户关闭浏览器窗口，浏览器将不会再保留。
-secure 包含secure选项的cookie只有在当请求是HTTPS或者其他安全协议时，才能被发送至服务器。但要注意一点，secure选项只是限定了在安全情况下才可以传输给服务端，但并不代表你不能看到这个cookie。
+如果同时指定了expires和max-age，那么max-age的值将优先生效。如果没有指定expires或 max-age属性，那么这个cookie就是会话Cookie，即它只在本次对话存在，一旦用户关闭浏览器窗口，浏览器将不再保留。
+secure 包含secure选项的cookie只有在当请求是HTTPS或其他安全协议时，才能被发送至服务器。但要注意，secure选项只是限定了在安全情况下才可以传输给服务端，但还是可以查看cookie的。
 同时需要注意的是，如果想在客户端即网页中通过js去设置 secure类型的cookie，必须保证网页是https协议的。在http协议的网页中无法设置secure类型的cookie。
 httpOnly 属性httpOnly的意思是告诉浏览器该cookie不能通过JavaScript的 document.cookie属性访问。
 参考资料
