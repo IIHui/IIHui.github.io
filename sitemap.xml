@@ -293,7 +293,7 @@ firstly { promise1() }.then { promise2() }.then { promise3() }.ensure { // somet
 ensure类似于finally，不管事件是否错误，它都一定会得到执行，ensure不同于finally的是，它可以放在任何位置。
 done是事件结束的标志，它是必须要有的，只有上面的事件都执行成功时，才会最终执行done。
 而catch用于捕获异常，done之前的任何事件出现错误，都会直接进入catch块。
-promise对象状态 在PromiseKit中promise是一个对象。它保存异步数据操作，同时提供统一的异步数据操作事件处理的接口，PromiseKit对象
+promise对象状态 在PromiseKit中promise是一个对象。它保存异步数据操作，同时提供统一的异步数据操作事件处理的接口，PromiseKit对象。
   fulfilled指的是promise对象当前处理的异步事件已经成功完成
   rejected表示promise对象当前处理的异步事件没有成功
   promise对象执行完then和catch方法后，这两个方法会返回先前的promise对象，同时根据异步操作结果改变promise对象的状态。
