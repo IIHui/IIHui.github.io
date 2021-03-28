@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">3708</span>
+<span class="leancloud-visitors-count">3713</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -537,7 +537,7 @@ group.notify(queue: .main) {
 <h1 id="compactmap">compactMap</h1>
 <p><code>compactMap</code>与<code>map</code>类似，不过它是返回<code>Optional</code>。例如，我们返回<code>nil</code>，则整个链会产生<code>PMKError.compactMap</code>错误。？？</p>
 <h1 id="线程切换">线程切换</h1>
-<p>所有<code>then</code>的<code>blocks</code>如果不特别指定，默认都是在主线程执行。<code>PromiseKit</code>切换线程非常的方便和直观，只需要在方法中传入<code>on</code>的线程即可，哪个方法需要指定线程就在那个方法的<code>on</code>传入对应的线程：</p>
+<p>所有<code>then</code>的<code>blocks</code>如果不特别指定，默认都是在主线程执行。<code>PromiseKit</code>切换线程非常的方便和直观，只需要在方法中传入<code>on</code>的线程即可，哪个方法需要指定线程就在那个方法的<code>on</code>传入对应的线程，如下所示：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">firstly {
     user()
 }.then(on: DispatchQueue.global()) { user <span style="color:#66d9ef">in</span>

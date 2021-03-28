@@ -322,7 +322,7 @@ after after是一个延迟执行的方法，它就返回了一个Guarantee对象
 firstly { after(seconds: 0.1) }.done { // there is no way to add a `catch` because after cannot fail. } map map是指一次数据的变换，而不是一次事件。例如，我们要把从接口返回的json数据转换成对象，就可以用map，map返回的也是一个对象，但不是Promise。
 then方法要求输入一个promise值并返回一个promise，而map是根据先前 promise的结果，然后返回一个新的对象或值类型。
 compactMap compactMap与map类似，不过它是返回Optional。例如，我们返回nil，则整个链会产生PMKError.compactMap错误。？？
-线程切换 所有then的blocks如果不特别指定，默认都是在主线程执行。PromiseKit切换线程非常的方便和直观，只需要在方法中传入on的线程即可，哪个方法需要指定线程就在那个方法的on传入对应的线程：
+线程切换 所有then的blocks如果不特别指定，默认都是在主线程执行。PromiseKit切换线程非常的方便和直观，只需要在方法中传入on的线程即可，哪个方法需要指定线程就在那个方法的on传入对应的线程，如下所示：
 firstly { user() }.then(on: DispatchQueue.global()) { user in URLSession.shared.dataTask(.promise, with: user.imageUrl) }.compactMap(on: DispatchQueue.global()) { UIImage(data: $0) } 源码 入门 使用 使用 使用
 </content>
     </entry>
