@@ -247,7 +247,7 @@
       <pubDate>Wed, 29 Jul 2020 17:13:19 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/ios-navigation/</guid>
-      <description>仿导航栏添加阴影 // 设置阴影颜色 navBGView.layer.shadowColor = UIColor.lightGray.cgColor // 设置阴影偏移范围 navBGView.layer.shadowOffset = CGSize(width: 0, height: 1.8) // 设置阴影颜色的透明度 navBGView.layer.shadowOpacity = 0.2 // 设置阴影的半径 navBGView.layer.shadowRadius = 2.5 // 设置阴影路径 navBGView.layer.shadowPath = UIBezierPath.init(rect: navBGView.bounds).cgPath 通过设置1.2.3步仿导航栏的阴影就可以出现,如果对阴影有特别的需要,可再设置4.5这两个步骤。 参考资</description>
+      <description>仿导航栏添加阴影 // 设置阴影颜色 navBGView.layer.shadowColor = UIColor.lightGray.cgColor // 设置阴影偏移范围 navBGView.layer.shadowOffset = CGSize(width: 0, height: 1.8) // 设置阴影颜色的透明度 navBGView.layer.shadowOpacity = 0.2 // 设置阴影的半径 navBGView.layer.shadowRadius = 2.5 // 设置阴影路径 navBGView.layer.shadowPath = UIBezierPath.init(rect: navBGView.bounds).cgPath 通过设置1.2.3步仿导航栏的阴影就可以出现,如果对阴影有特别的需要,可再设置4.5这两个步骤。 禁用系</description>
     </item>
     
     <item>
