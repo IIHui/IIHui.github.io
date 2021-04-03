@@ -3604,10 +3604,10 @@ d4 := [4]int{5,3:10} fmt.Println(&amp;amp;d4,&amp;amp;d4[0],&amp;amp;d4[3])//&am
   具有相同签名的（参数和返回值列表，不包括参数名）的函数func，其中函数的参数顺序也属于签名的组成部分
   具有相同方法集（方法名，方法签名，不包括顺序）的接口interface
   容易被忽略的是struct tag它属于类型组成的一部分，而不仅仅是元数据描述
-  var a struct{ x int `x` s string `s` } var b struct{ x int s string } b=a //cannot use a (type struct { x int &amp;#34;x&amp;#34;; s string &amp;#34;s&amp;#34; })  //as type struct { x int; s string } in assignment fmt.Println(b)  未命名类型的转换规则   所属类型完全相同
+  var a struct{ x int `x` s string `s` } var b struct{ x int s string } b=a //cannot use a (type struct { x int &amp;#34;x&amp;#34;; s string &amp;#34;s&amp;#34; })  //as type struct { x int; s string } in assignment fmt.Println(b) 未命名类型的转换规则   所属类型完全相同
   基础类型相同，其中一个是未命名类型
   数据类型相同，将双向通道赋值给单向通道，且其中一个是未命名类型
-type data [2]int //data是使用数组新定义的类型  var d data =[2]int{1,2} //基础类型相同，其中一个是未命名类型 	doubleChan := make(chan int,3) //双向通道  var singleChan chan&amp;lt;- int = doubleChan //双向通道赋值给单向通道    </content>
+type data [2]int //data是使用数组新定义的类型  var d data =[2]int{1,2} //基础类型相同，其中一个是未命名类型 	doubleChan := make(chan int,3) //双向通道  var singleChan chan&amp;lt;- int = doubleChan //双向通道赋值给单向通道   </content>
     </entry>
     
      <entry>
