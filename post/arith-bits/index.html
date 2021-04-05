@@ -306,8 +306,7 @@ code.has-jax {
     <span style="color:#66d9ef">auto</span> sub <span style="color:#f92672">=</span> nonRecAddNoArithm(<span style="color:#f92672">~</span>b, <span style="color:#ae81ff">1</span>);
     <span style="color:#66d9ef">return</span> nonRecAddNoArithm(a, sub);
 }
-</code></pre></div><hr>
-<h1 id="交换两个数的值">交换两个数的值</h1>
+</code></pre></div><h1 id="交换两个数的值">交换两个数的值</h1>
 <p>在异或运算中，<font color=red>偶数个相同的数异或的结果为<code>0</code></font>；<font color=Blue>奇数个相同的数的异或的结果为还是当前数</font>；<font color=Orange>某个数和<code>0</code>进行异或的结果仍为原数</font>，并且<font color=Blue>异或运算是支持交换律</font>的：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">a <span style="color:#f92672">=</span> a <span style="color:#f92672">^</span> b;
 b <span style="color:#f92672">=</span> a <span style="color:#f92672">^</span> b;
@@ -317,7 +316,7 @@ a <span style="color:#f92672">=</span> a <span style="color:#f92672">^</span> b;
 a <span style="color:#f92672">=</span> a <span style="color:#f92672">^</span> b;
 b <span style="color:#f92672">=</span> a <span style="color:#f92672">^</span> b;
 </code></pre></div><h1 id="两个数较大者">两个数较大者</h1>
-<p>主要运用异或的特点：<font color=red>偶数个相同的数异或的结果为<code>0</code></font>；<font color=Blue>奇数个相同数异或结果还是当前数</font>；<font color=Orange>某个数和<code>0</code>进行异或的结果仍为原数</font>，并且异或运算是支持交换律的，对于<code>-1</code>来说其二进制位全部为<code>1</code>，</p>
+<p>主要运用异或的特点：<font color=red>偶数个相同的数异或的结果为<code>0</code></font>；<font color=Blue>奇数个相同数异或结果还是当前数</font>；<font color=Orange>某个数和<code>0</code>进行异或的结果仍为原数</font>，并且异或运算是支持交换律的，对于<code>-1</code>来说其二进制位全部为<code>1</code>。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">y <span style="color:#f92672">^</span> ((x <span style="color:#f92672">^</span> y) <span style="color:#f92672">&amp;</span> (<span style="color:#f92672">-</span>(x <span style="color:#f92672">&gt;=</span> y)) <span style="color:#75715e">//快速记忆：y 在前则找较大者
 </span></code></pre></div><h1 id="两个数较小者">两个数较小者</h1>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">x <span style="color:#f92672">^</span> ((x <span style="color:#f92672">^</span> y) <span style="color:#f92672">&amp;</span> (<span style="color:#f92672">-</span>( x <span style="color:#f92672">&gt;=</span> y)) <span style="color:#75715e">//快速记忆：x 在前则找较小者
