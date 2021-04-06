@@ -212,8 +212,8 @@ code.has-jax {
     <i class="fa fa-calendar-check-o"></i>
 </span>
 <span class="post-meta-item-text">更新: </span>
-<time itemprop="dateUpdated" content="2020-02-15">
-    2020-02-15
+<time itemprop="dateUpdated" content="2021-02-15">
+    2021-02-15
 </time>
 </span> 
       
@@ -226,8 +226,8 @@ code.has-jax {
   <span class="post-meta-item-text">分类: </span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="https://iihui.github.io/categories/code" itemprop="url" rel="index">
-        <span itemprop="name">code</span>
+      <a href="https://iihui.github.io/categories/ios" itemprop="url" rel="index">
+        <span itemprop="name">iOS</span>
       </a>
       &nbsp; 
     </span>
@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1172</span>
+<span class="leancloud-visitors-count">1166</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -255,18 +255,17 @@ code.has-jax {
     <blockquote>
 <p>访问权限用于限制部分代码被<font color=red>其它源文件或者模块访问</font>，目的是隐藏某些代码的实现细节。在<code>Swift</code>中可以设置类型(<font color=Blue>类、结构和枚举</font>)的访问权限，也可以设置<font color=red>属性和方法</font>的访问权限。<code>Swift</code>提供了<code>5</code>个访问级别，这些访问级别以<font color=red>模块和源文件</font>为区分粒度。</p>
 </blockquote>
-<h1 id="模块和源文件">模块和源文件</h1>
-<h2 id="模块">模块</h2>
+<h1 id="模块">模块</h1>
 <p>模块是指独立的代码单元，在<code>iOS</code>中框架或应用程序就是一个独立模块。在一个模块中可以用<code>import</code>关键字导入另一个模块。</p>
-<h2 id="源文件">源文件</h2>
+<h1 id="源文件">源文件</h1>
 <p>源文件即<code>Swift</code>中的<font color=Blue>源代码文件</font>，它通常属于一个模块，即一个框架（<code>Framework</code>）或者应用程序。</p>
 <h1 id="访问级别">访问级别</h1>
 <p><code>Swift</code>有5个级别的访问权限，从高到低依次为<code>open</code>，<code>public</code>，<code>internal</code>，<code>fileprivate</code>和<code>private</code>。它们遵循的原则是，高级别的变量不允许被定义为低级别变量的成员变量。例如，一个<code>private</code>的类中不应该出现<code>public</code>的<code>String</code>。但是，低级别的变量可以定义在高级别的变量中。例如，<code>public</code>的<code>class</code>中可以含有<code>private</code>的<code>Int</code>值。</p>
-<h2 id="open">open</h2>
+<h1 id="open">open</h1>
 <p><code>open</code>具有最高的访问权限。其修饰的类和方法可以在任意<code>Module</code>中被<font color=red>访问和重写</font>，它是<code>Swift3</code>中新添加的访问权限。</p>
-<h2 id="public">public</h2>
+<h1 id="public">public</h1>
 <p><code>public</code>的权限仅次于<code>open</code>。与<code>open</code>唯一的区别在于，它修饰的对象可以在任意<code>module</code>中被访问，但是不能被其他<code>module</code>重写或继承。</p>
-<h3 id="open与public的区别">open与public的区别</h3>
+<h2 id="open与public的区别">open与public的区别</h2>
 <p>虽然<code>open</code>和<code>public</code>都有最高的访问级别，但<code>open</code>访问权限<font color=red>只适用于修饰<code>class</code>和<code>class</code>的成员</font>，它与<code>public</code>有明显的不同：</p>
 <ul>
 <li>
@@ -298,11 +297,11 @@ open <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Subcla
     <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">bar</span>() {
     }
 }
-</code></pre></div><h2 id="internal">internal</h2>
+</code></pre></div><h1 id="internal">internal</h1>
 <p><code>internal</code>是默认的权限。它表示只能在当前定义的<code>module</code>中访问和重写。它可以被一个<code>module</code>中的多个文件访问，但不能被其他<code>module</code>访问。</p>
-<h2 id="fileprivate">fileprivate</h2>
+<h1 id="fileprivate">fileprivate</h1>
 <p>由<code>fileprivate</code>修饰的实体可以在<font color=red>当前文件内被访问</font>。若某个功能只要在文件内使用，则可以使用这个访问符修饰，这也是<code>Swift 3</code>新添加的权限。</p>
-<h2 id="private">private</h2>
+<h1 id="private">private</h1>
 <p><code>private</code>是最低阶别的访问权限，它的对象只能在定义的作用域内使用，离开了这个作用域，即时是同一个文件的其他作用域，也无法访问。</p>
 <hr>
 
@@ -468,25 +467,18 @@ open <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Subcla
     <div class="post-toc">
         <div class="post-toc-content"><nav id="TableOfContents">
   <ul>
-    <li><a href="#模块和源文件">模块和源文件</a>
+    <li><a href="#模块">模块</a></li>
+    <li><a href="#源文件">源文件</a></li>
+    <li><a href="#访问级别">访问级别</a></li>
+    <li><a href="#open">open</a></li>
+    <li><a href="#public">public</a>
       <ul>
-        <li><a href="#模块">模块</a></li>
-        <li><a href="#源文件">源文件</a></li>
+        <li><a href="#open与public的区别">open与public的区别</a></li>
       </ul>
     </li>
-    <li><a href="#访问级别">访问级别</a>
-      <ul>
-        <li><a href="#open">open</a></li>
-        <li><a href="#public">public</a>
-          <ul>
-            <li><a href="#open与public的区别">open与public的区别</a></li>
-          </ul>
-        </li>
-        <li><a href="#internal">internal</a></li>
-        <li><a href="#fileprivate">fileprivate</a></li>
-        <li><a href="#private">private</a></li>
-      </ul>
-    </li>
+    <li><a href="#internal">internal</a></li>
+    <li><a href="#fileprivate">fileprivate</a></li>
+    <li><a href="#private">private</a></li>
   </ul>
 </nav></div>
     </div>
