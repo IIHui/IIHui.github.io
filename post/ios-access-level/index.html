@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1166</span>
+<span class="leancloud-visitors-count">1173</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -260,11 +260,11 @@ code.has-jax {
 <h1 id="源文件">源文件</h1>
 <p>源文件即<code>Swift</code>中的<font color=Blue>源代码文件</font>，它通常属于一个模块，即一个框架（<code>Framework</code>）或者应用程序。</p>
 <h1 id="访问级别">访问级别</h1>
-<p><code>Swift</code>有5个级别的访问权限，从高到低依次为<code>open</code>，<code>public</code>，<code>internal</code>，<code>fileprivate</code>和<code>private</code>。它们遵循的原则是，高级别的变量不允许被定义为低级别变量的成员变量。例如，一个<code>private</code>的类中不应该出现<code>public</code>的<code>String</code>。但是，低级别的变量可以定义在高级别的变量中。例如，<code>public</code>的<code>class</code>中可以含有<code>private</code>的<code>Int</code>值。</p>
+<p><code>Swift</code>有5个级别的访问权限，从高到低依次为<code>open</code>，<code>public</code>，<code>internal</code>，<code>fileprivate</code>和<code>private</code>。它们遵循的原则是，<font color=red>高级别的变量不允许被定义为低级别变量的成员变量</font>。例如，一个<code>private</code>的类中不应该出现<code>public</code>的<code>String</code>。但是，低级别的变量可以定义在高级别的变量中。例如，<code>public</code>的<code>class</code>中可以含有<code>private</code>的<code>Int</code>值。</p>
 <h1 id="open">open</h1>
 <p><code>open</code>具有最高的访问权限。其修饰的类和方法可以在任意<code>Module</code>中被<font color=red>访问和重写</font>，它是<code>Swift3</code>中新添加的访问权限。</p>
 <h1 id="public">public</h1>
-<p><code>public</code>的权限仅次于<code>open</code>。与<code>open</code>唯一的区别在于，它修饰的对象可以在任意<code>module</code>中被访问，但是不能被其他<code>module</code>重写或继承。</p>
+<p><code>public</code>的权限仅次于<code>open</code>，它与<code>open</code>区别在于：<code>public</code>修饰的对象可以在任意<code>module</code>中被访问，但是不能被其他<code>module</code>重写或继承。</p>
 <h2 id="open与public的区别">open与public的区别</h2>
 <p>虽然<code>open</code>和<code>public</code>都有最高的访问级别，但<code>open</code>访问权限<font color=red>只适用于修饰<code>class</code>和<code>class</code>的成员</font>，它与<code>public</code>有明显的不同：</p>
 <ul>
@@ -275,7 +275,7 @@ code.has-jax {
 <p><code>public</code>修饰的成员只允许其他模块调用，但不能被外部模块重写<code>(override)</code>，本模块可以重写。而<code>open</code>修饰的成员既允许被其他模块调用，也允许成员被覆盖。</p>
 </li>
 <li>
-<p><code>open</code>和<code>public</code>如果是用于继承某个类的话，那么<code>open</code>和<code>public</code>必须是在父类的约束限定之下。例如：不能父类是用<code>public</code>修饰，而子类却用<code>open</code>修饰。</p>
+<p><code>open</code>和<code>public</code>如果是用于继承某个类的话，那么<code>open</code>和<code>public</code>必须是<font color=Blue>在父类的约束限定之下</font>。例如：不能父类是用<code>public</code>修饰，而子类却用<code>open</code>修饰。</p>
 </li>
 <li>
 <p>其他模块继承覆盖父类的成员时，也需要把成员声明为<code>open</code>。</p>
@@ -283,18 +283,22 @@ code.has-jax {
 </ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">open <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SubclassableParentClass</span> {
     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">foo</span>() {
+    <span style="color:#75715e">//</span>
     }
 
     open <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">bar</span>() {
+     <span style="color:#75715e">//</span>
     }
 
     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">baz</span>() {
+     <span style="color:#75715e">//</span>
     }
 }
 
 open <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SubclassC</span>: SubclassableParentClass {
     <span style="color:#75715e">//非法，成员没有被声明为open</span>
     <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">bar</span>() {
+    <span style="color:#75715e">//</span>
     }
 }
 </code></pre></div><h1 id="internal">internal</h1>
