@@ -2467,7 +2467,7 @@ Person *person = [Person alloc] init]; /* 作用:给对象绑定一个监听器(
   Swift中属性观察器 在Swift中有两个属性观察者willSet和didSet,类似于触发器。用来监控属性除初始化之外的属性值变化，当属性值发生变化时可以对此作出响应。
  不仅可以在属性值发生变化后触发didSet,也可以在属性值改变前触发willSet。 给属性添加观察者必须要声明清楚属性的类型，否则编译器报错。 willSet可以带一个newName的参数，没有的话，默认命名为newValue。 didSet 可以带一个oldName的参数，表示旧的值，不带的话，默认命名为oldValue。 属性初始化时，willSet和didSet不会调用。只有初始化上下文之外，属性值发生变化时才会调用。 即使设置的值和原来的一样，willSet和didSet也会被调用。  var firstName: String = &amp;#34;First&amp;#34; { willSet { //新值设置之前被调用，在此可以进行条件筛选，过滤数据 print(&amp;#34;willSet的新值是\(newValue)&amp;#34;) } didSet { //新值设置之后立即调用，在此可以进行条件筛选，过滤数据,可以直接绑定数据到UI上面 print(&amp;#34;didSet的旧值是\(oldValue)--- 新值是 \(firstName)&amp;#34;) self.nameLabel.text = firstName } }  Swift实现KVO值监听 利用设计模式中的观察者模式，观察者定义了对象之间的一对多依赖。当一个对象改变状态时，它的所有依赖者都会收到通知并自动更新。观察者模式适用在一个被观察者（数据源）要通知多个观察者的场景。
 参考资料 参考资料
- </content>
+</content>
     </entry>
     
      <entry>
