@@ -257,11 +257,11 @@ code.has-jax {
 </blockquote>
 <p><img src="https://i.loli.net/2020/11/11/pMNPe5OGJm9fYqF.jpg" alt="-c"></p>
 <h1 id="基本步骤">基本步骤</h1>
-<h3 id="声明enum对请求进行分类">声明enum对请求进行分类</h3>
+<h2 id="声明enum对请求进行分类">声明enum对请求进行分类</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">LCYApi</span> {
     <span style="color:#66d9ef">case</span> login(name: String, password: String)
 }
-</code></pre></div><h3 id="实现targettype协议">实现TargetType协议</h3>
+</code></pre></div><h2 id="实现targettype协议">实现TargetType协议</h2>
 <p><code>TargetType</code>协议定义了各个请求的<code>url</code>，参数和<code>header</code>等信息，如下所示：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">extension</span> <span style="color:#a6e22e">LCYApi</span>: TargetType {
     <span style="color:#66d9ef">var</span> baseURL: URL {
@@ -301,10 +301,10 @@ code.has-jax {
         <span style="color:#66d9ef">return</span> [<span style="color:#e6db74">&#34;Content-type&#34;</span>: <span style="color:#e6db74">&#34;application/json&#34;</span>]
     }
 }
-</code></pre></div><h3 id="定义provider对象">定义Provider对象</h3>
+</code></pre></div><h2 id="定义provider对象">定义Provider对象</h2>
 <p>在<code>Moya</code>中，是使用<code>Provider</code>对象发起网络请求的，因此在网络请求之前需要将<code>Provider</code>对象先创建好。<code>Moya</code>中<code>Provider</code>对象在销毁的时候会取消网络请求，为了得到正确的结果，必须保证在网络请求时<code>Provider</code>对象不会被释放。为了避免这种情况，可以将<code>Provider</code>实例设置为类成员变量，或者<code>shared</code>实例。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">let</span> ApiProvider = MoyaProvider&lt;LCYApi&gt;()
-</code></pre></div><h3 id="发起网络请求">发起网络请求</h3>
+</code></pre></div><h2 id="发起网络请求">发起网络请求</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">ApiProvider.request(LCYApi.login(name: <span style="color:#e6db74">&#34;name&#34;</span>, password: <span style="color:#e6db74">&#34;password&#34;</span>)) { result <span style="color:#66d9ef">in</span>
     <span style="color:#66d9ef">switch</span> result {
     <span style="color:#66d9ef">case</span> <span style="color:#66d9ef">let</span> .success(response):
@@ -481,14 +481,10 @@ code.has-jax {
   <ul>
     <li><a href="#基本步骤">基本步骤</a>
       <ul>
-        <li>
-          <ul>
-            <li><a href="#声明enum对请求进行分类">声明enum对请求进行分类</a></li>
-            <li><a href="#实现targettype协议">实现TargetType协议</a></li>
-            <li><a href="#定义provider对象">定义Provider对象</a></li>
-            <li><a href="#发起网络请求">发起网络请求</a></li>
-          </ul>
-        </li>
+        <li><a href="#声明enum对请求进行分类">声明enum对请求进行分类</a></li>
+        <li><a href="#实现targettype协议">实现TargetType协议</a></li>
+        <li><a href="#定义provider对象">定义Provider对象</a></li>
+        <li><a href="#发起网络请求">发起网络请求</a></li>
       </ul>
     </li>
   </ul>
