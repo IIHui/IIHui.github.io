@@ -602,7 +602,7 @@ interface Study { fun readBooks() fun doHomework() } class Student(val sno: Stri
         <tags>
           <tag>iOS</tag>
         </tags>
-        <content type="html">  Moya是对Alamofire的再次封装，用于管理网络请求。
+        <content type="html">  Moya是对Alamofire的再次封装，它定义了一个清晰的网络结构，通过枚举定义不同的请求；可以进行网络单元测试。Moya与Alamofire的区别如下所示：
  基本步骤 声明enum对请求进行分类 enum LCYApi { case login(name: String, password: String) } 实现TargetType协议 TargetType协议定义了各个请求的url，参数和header等信息，如下所示：
 extension LCYApi: TargetType { var baseURL: URL { return NSURL.init(string: &amp;#34;http://test.com&amp;#34;)! as URL } var path: String { switch self { case .login: return &amp;#34;/login&amp;#34; } } var method: Method { return .post } //这个是做单元测试模拟的数据，必须要实现，只在单元测试文件中有作用 var sampleData: Data { return &amp;#34;&amp;#34;.data(using: String.Encoding.utf8)! } var task: Task { var parmeters: [String : Any] = [:] switch self { case .login(let name, let password): parmeters[&amp;#34;name&amp;#34;] = name parameters[&amp;#34;password&amp;#34;] = password } return .requestParameters(parameters: parmeters, encoding: URLEncoding.default) } //在请求头内添加公共请求参数，也可以通过自定义closure返回endpoint，在provider中添加 var headers: [String : String]? { return [&amp;#34;Content-type&amp;#34;: &amp;#34;application/json&amp;#34;] } } 定义Provider对象 在Moya中，是使用Provider对象发起网络请求的，因此在网络请求之前需要将Provider对象先创建好。Moya中Provider对象在销毁的时候会取消网络请求，为了得到正确的结果，必须保证在网络请求时Provider对象不会被释放。为了避免这种情况，可以将Provider实例设置为类成员变量，或者shared实例。
 let ApiProvider = MoyaProvider&amp;lt;LCYApi&amp;gt;() 发起网络请求 ApiProvider.request(LCYApi.login(name: &amp;#34;name&amp;#34;, password: &amp;#34;password&amp;#34;)) { result in switch result { case let .success(response): let data = response.data let statusCode = response.statusCode break case let .failure(error): break } } 参考资料
