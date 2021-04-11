@@ -94,7 +94,7 @@
       <pubDate>Fri, 06 Nov 2020 10:49:11 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/ios-moya/</guid>
-      <description>Moya是对Alamofire的再次封装，它定义了一个清晰的网络结构，通过枚举定义不同的请求；可以进行网络单元测试。Moya与Alamofire的区别如下所示： 框架 使用 声明enum对请求进行分类 enum LCYApi { case login(name: String, password: String) } 实现TargetType协议</description>
+      <description>Moya是对Alamofire的再次封装，它定义了一个清晰的网络结构，通过枚举定义不同的请求；可以进行网络单元测试。Moya与Alamofire的区别如下所示： 框架 使用 Moya会提供一个Provider，使用前要做的就是定义自己的Targe</description>
     </item>
     
     <item>
