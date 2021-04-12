@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">628</span>
+<span class="leancloud-visitors-count">784</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -253,12 +253,22 @@ code.has-jax {
     </header>
     <div class="post-body" itemprop="articleBody">
     <blockquote>
-<p><code>Moya</code>是对<code>Alamofire</code>的再次封装，它定义了一个清晰的网络结构，通过枚举来定义不同的请求；可以进行网络单元测试，<code>Moya</code>与<code>Alamofire</code>的区别如下所示：</p>
+<p><code>Moya</code>是对<code>Alamofire</code>的再次封装，是一个高度抽象的网络库，它的理念是让你不用关心网络请求的底层实现细节，只需要关注业务。<code>Moya</code>采用桥接和组合来进行封装，默认桥接了<code>Almofire</code>。</p>
 </blockquote>
+<h1 id="优点">优点</h1>
+<p>官方给出了<code>Moya</code>的主要优点：</p>
+<ul>
+<li>编译时检查<code>API endpoint</code> 权限</li>
+<li>使用枚举定义各种不同<code>Target</code>，<code>endpoints</code></li>
+<li>把<code>stubs</code>当做一等公民，因此测试超级简单。</li>
+</ul>
+<h1 id="区别">区别</h1>
+<p><code>Moya</code>与<code>Alamofire</code>的区别如下所示：</p>
 <p><img src="https://i.loli.net/2021/04/10/Ca9Z6WGqsAm8zLl.jpg" alt="-c600"></p>
 <h1 id="框架">框架</h1>
 <p><img src="https://i.loli.net/2020/11/11/pMNPe5OGJm9fYqF.jpg" alt="-c"></p>
 <h1 id="概念">概念</h1>
+<p><code>Moya</code>使用<code>Provider，Target，EndPoint</code>来构建网络链，如下图所示</p>
 <p><img src="https://i.loli.net/2021/04/12/6CurRE5T41LJNwZ.jpg" alt="-c"></p>
 <h1 id="使用">使用</h1>
 <p><code>Moya</code>会提供一个<code>Provider</code>，使用前要做的就是定义自己的<code>Target</code>以初始化自定义的<code>Provider</code>，然后在需要进行网络请求的地方直接用即可。</p>
@@ -484,6 +494,8 @@ code.has-jax {
     <div class="post-toc">
         <div class="post-toc-content"><nav id="TableOfContents">
   <ul>
+    <li><a href="#优点">优点</a></li>
+    <li><a href="#区别">区别</a></li>
     <li><a href="#框架">框架</a></li>
     <li><a href="#概念">概念</a></li>
     <li><a href="#使用">使用</a>

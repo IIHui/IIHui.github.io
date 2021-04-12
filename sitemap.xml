@@ -66,8 +66,11 @@ PWA 参考资料 参考资料 参考资料 传闻即将支持 支持
         <tags>
           <tag>iOS</tag>
         </tags>
-        <content type="html">  Moya是对Alamofire的再次封装，它定义了一个清晰的网络结构，通过枚举来定义不同的请求；可以进行网络单元测试，Moya与Alamofire的区别如下所示：
- 框架 概念 使用 Moya会提供一个Provider，使用前要做的就是定义自己的Target以初始化自定义的Provider，然后在需要进行网络请求的地方直接用即可。
+        <content type="html">  Moya是对Alamofire的再次封装，是一个高度抽象的网络库，它的理念是让你不用关心网络请求的底层实现细节，只需要关注业务。Moya采用桥接和组合来进行封装，默认桥接了Almofire。
+ 优点 官方给出了Moya的主要优点：
+ 编译时检查API endpoint 权限 使用枚举定义各种不同Target，endpoints 把stubs当做一等公民，因此测试超级简单。  区别 Moya与Alamofire的区别如下所示：
+框架 概念 Moya使用Provider，Target，EndPoint来构建网络链，如下图所示
+使用 Moya会提供一个Provider，使用前要做的就是定义自己的Target以初始化自定义的Provider，然后在需要进行网络请求的地方直接用即可。
 声明enum对请求进行分类 enum LCYApi { case login(name: String, password: String) } 实现TargetType协议 TargetType协议定义了各个请求的url，参数和header等信息，如下所示：
 extension LCYApi: TargetType { var baseURL: URL { return NSURL.init(string: &amp;#34;http://test.com&amp;#34;)! as URL } var path: String { switch self { case .login: return &amp;#34;/login&amp;#34; } } var method: Method { return .post } //这个是做单元测试模拟的数据，必须要实现，只在单元测试文件中有作用 var sampleData: Data { return &amp;#34;&amp;#34;.data(using: String.Encoding.utf8)! } var task: Task { var parmeters: [String : Any] = [:] switch self { case .login(let name, let password): parmeters[&amp;#34;name&amp;#34;] = name parameters[&amp;#34;password&amp;#34;] = password } return .requestParameters(parameters: parmeters, encoding: URLEncoding.default) } //在请求头内添加公共请求参数，也可以通过自定义closure返回endpoint，在provider中添加 var headers: [String : String]? { return [&amp;#34;Content-type&amp;#34;: &amp;#34;application/json&amp;#34;] } } 定义Provider对象 在Moya中，是使用Provider对象发起网络请求的，因此在网络请求之前需要将Provider对象先创建好。Moya中Provider对象在销毁的时候会取消网络请求，为了得到正确的结果，必须保证在网络请求时Provider对象不会被释放。为了避免这种情况，可以将Provider实例设置为类成员变量，或者shared实例。
 let ApiProvider = MoyaProvider&amp;lt;LCYApi&amp;gt;() 发起网络请求 ApiProvider.request(LCYApi.login(name: &amp;#34;name&amp;#34;, password: &amp;#34;password&amp;#34;)) { result in switch result { case let .success(response): let data = response.data let statusCode = response.statusCode break case let .failure(error): break } } 参考资料
