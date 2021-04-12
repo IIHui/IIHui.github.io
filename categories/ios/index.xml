@@ -17,6 +17,15 @@
     </item>
     
     <item>
+      <title>Moya使用</title>
+      <link>https://iihui.github.io/post/ios-moya/</link>
+      <pubDate>Tue, 06 Apr 2021 10:49:11 +0000</pubDate>
+      
+      <guid>https://iihui.github.io/post/ios-moya/</guid>
+      <description>Moya是对Alamofire的再次封装，它定义了一个清晰的网络结构，通过枚举来定义不同的请求；可以进行网络单元测试，Moya与Alamofire的区别如下所示： 框架 概念 使用 Moya会提供一个Provider，使用前要做的就是定义自己的Ta</description>
+    </item>
+    
+    <item>
       <title>Cookie简介</title>
       <link>https://iihui.github.io/post/cookie/</link>
       <pubDate>Sat, 20 Feb 2021 19:05:10 +0000</pubDate>
@@ -95,15 +104,6 @@
       
       <guid>https://iihui.github.io/post/swift-tips/</guid>
       <description>柯里化 柯里化(curry)：把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下参数而且返回结果的新函数。 func addTo(_ adder: Int) -&amp;gt; (Int) -&amp;gt; Int { return { num in return num + adder } } let addTwo = addTo(2) // addTwo: Int -&amp;gt; Int let result = addTwo(6) // result = 8 柯⾥化是⼀种量产相似⽅法</description>
-    </item>
-    
-    <item>
-      <title>Moya使用</title>
-      <link>https://iihui.github.io/post/ios-moya/</link>
-      <pubDate>Fri, 06 Nov 2020 10:49:11 +0000</pubDate>
-      
-      <guid>https://iihui.github.io/post/ios-moya/</guid>
-      <description>Moya是对Alamofire的再次封装，它定义了一个清晰的网络结构，通过枚举定义不同的请求；可以进行网络单元测试。Moya与Alamofire的区别如下所示： 框架 使用 Moya会提供一个Provider，使用前要做的就是定义自己的Targe</description>
     </item>
     
     <item>

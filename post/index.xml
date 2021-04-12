@@ -26,6 +26,15 @@
     </item>
     
     <item>
+      <title>Moya使用</title>
+      <link>https://iihui.github.io/post/ios-moya/</link>
+      <pubDate>Tue, 06 Apr 2021 10:49:11 +0000</pubDate>
+      
+      <guid>https://iihui.github.io/post/ios-moya/</guid>
+      <description>Moya是对Alamofire的再次封装，它定义了一个清晰的网络结构，通过枚举来定义不同的请求；可以进行网络单元测试，Moya与Alamofire的区别如下所示： 框架 概念 使用 Moya会提供一个Provider，使用前要做的就是定义自己的Ta</description>
+    </item>
+    
+    <item>
       <title>Cookie简介</title>
       <link>https://iihui.github.io/post/cookie/</link>
       <pubDate>Sat, 20 Feb 2021 19:05:10 +0000</pubDate>
@@ -140,15 +149,6 @@
       
       <guid>https://iihui.github.io/post/kotlin-base/</guid>
       <description>变量和函数 常量 Kotlin中使用val来声明常量「val是value的缩写」，val声明的常量不可以再重新赋值，否则会报错。val对应Java中的final。 val str = &amp;#34;Hello world&amp;#34; 变量 Kotlin中使用var来声明变量「var是variable的缩写」</description>
-    </item>
-    
-    <item>
-      <title>Moya使用</title>
-      <link>https://iihui.github.io/post/ios-moya/</link>
-      <pubDate>Fri, 06 Nov 2020 10:49:11 +0000</pubDate>
-      
-      <guid>https://iihui.github.io/post/ios-moya/</guid>
-      <description>Moya是对Alamofire的再次封装，它定义了一个清晰的网络结构，通过枚举定义不同的请求；可以进行网络单元测试。Moya与Alamofire的区别如下所示： 框架 使用 Moya会提供一个Provider，使用前要做的就是定义自己的Targe</description>
     </item>
     
     <item>
