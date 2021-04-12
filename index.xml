@@ -6,7 +6,7 @@
     <description>Recent content on Keep It Simple</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 20 Feb 2021 19:05:10 +0000</lastBuildDate><atom:link href="https://iihui.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 12 Apr 2021 12:02:24 +0000</lastBuildDate><atom:link href="https://iihui.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hugo Next 主题</title>
       <link>https://iihui.github.io/post/hugo-next/</link>
@@ -14,6 +14,15 @@
       
       <guid>https://iihui.github.io/post/hugo-next/</guid>
       <description>从兰陵子处下载了Next主题，修改了主题目录下的config.toml配置文件(配置文件路径为themes/next/config.toml)。但发现有很多地方还是需要修改才能满足自己的需求，因为对前端了解较少，以此为记。 修改主题 首先从这里</description>
+    </item>
+    
+    <item>
+      <title>iOS PWA</title>
+      <link>https://iihui.github.io/post/ios-pwa/</link>
+      <pubDate>Mon, 12 Apr 2021 12:02:24 +0000</pubDate>
+      
+      <guid>https://iihui.github.io/post/ios-pwa/</guid>
+      <description>PWA PWA（Progressive web apps）译为渐进式Web应用，指的是运用现代的Web API以及传统的渐进式增强策略来创建跨平台Web应用程序。PWA没有统一的定义，可以理解为使用Web技术来创建App，不用打包，不用签名，可以离线工作，</description>
     </item>
     
     <item>

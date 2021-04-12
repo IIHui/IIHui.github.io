@@ -43,6 +43,21 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 设置文�
     </entry>
     
      <entry>
+        <title>iOS PWA</title>
+        <url>https://iihui.github.io/post/ios-pwa/</url>
+        <categories>
+          <category>iOS</category>
+        </categories>
+        <tags>
+          <tag>iOS</tag>
+        </tags>
+        <content type="html"> PWA  PWA（Progressive web apps）译为渐进式Web应用，指的是运用现代的Web API以及传统的渐进式增强策略来创建跨平台Web应用程序。PWA没有统一的定义，可以理解为使用Web技术来创建App，不用打包，不用签名，可以离线工作，如果你愿意，还可以添加到桌面上，看起来就和其他原生应用一样。
+ Service Works 对于iOS来说Service Workers &#43; Web App Manifest = PWA
+PWA 参考资料 参考资料 参考资料 传闻即将支持 支持
+</content>
+    </entry>
+    
+     <entry>
         <title>Cookie简介</title>
         <url>https://iihui.github.io/post/cookie/</url>
         <categories>
