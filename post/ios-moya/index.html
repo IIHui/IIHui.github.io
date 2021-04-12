@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">940</span>
+<span class="leancloud-visitors-count">970</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -278,7 +278,7 @@ code.has-jax {
     <span style="color:#66d9ef">case</span> login(name: String, password: String)
 }
 </code></pre></div><h2 id="遵循targettype协议">遵循TargetType协议</h2>
-<p><code>TargetType</code>协议定义了各个请求的<code>url</code>，参数和<code>header</code>等信息，按需实现各种<code>get</code>方法即可：</p>
+<p>遵循遵循开闭原则，让枚举的分类遵循<code>TargetType</code>协议。<code>TargetType</code>协议定义了各个请求的<code>url</code>，参数和<code>header</code>等信息，按需实现各种<code>get</code>方法即可：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">TargetType</span> {
 
     <span style="color:#75715e">/// The target&#39;s base `URL`.</span>
