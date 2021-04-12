@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">812</span>
+<span class="leancloud-visitors-count">940</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -277,8 +277,32 @@ code.has-jax {
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">LCYApi</span> {
     <span style="color:#66d9ef">case</span> login(name: String, password: String)
 }
-</code></pre></div><h2 id="实现targettype协议">实现TargetType协议</h2>
-<p><code>TargetType</code>协议定义了各个请求的<code>url</code>，参数和<code>header</code>等信息，如下所示：</p>
+</code></pre></div><h2 id="遵循targettype协议">遵循TargetType协议</h2>
+<p><code>TargetType</code>协议定义了各个请求的<code>url</code>，参数和<code>header</code>等信息，按需实现各种<code>get</code>方法即可：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">TargetType</span> {
+
+    <span style="color:#75715e">/// The target&#39;s base `URL`.</span>
+    <span style="color:#66d9ef">var</span> baseURL: URL { <span style="color:#66d9ef">get</span> }
+
+    <span style="color:#75715e">/// The path to be appended to `baseURL` to form the full `URL`.</span>
+    <span style="color:#66d9ef">var</span> path: String { <span style="color:#66d9ef">get</span> }
+
+    <span style="color:#75715e">/// The HTTP method used in the request.</span>
+    <span style="color:#66d9ef">var</span> method: Moya.Method { <span style="color:#66d9ef">get</span> }
+
+    <span style="color:#75715e">/// Provides stub data for use in testing.</span>
+    <span style="color:#66d9ef">var</span> sampleData: Data { <span style="color:#66d9ef">get</span> }
+
+    <span style="color:#75715e">/// The type of HTTP task to be performed.</span>
+    <span style="color:#66d9ef">var</span> task: Task { <span style="color:#66d9ef">get</span> }
+
+    <span style="color:#75715e">/// A Boolean value determining whether the embedded target performs Alamofire validation. Defaults to `false`.</span>
+    <span style="color:#66d9ef">var</span> validate: Bool { <span style="color:#66d9ef">get</span> }
+
+    <span style="color:#75715e">/// The headers to be used in the request.</span>
+    <span style="color:#66d9ef">var</span> headers: [String: String]? { <span style="color:#66d9ef">get</span> }
+}
+</code></pre></div><p>具体例子</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">extension</span> <span style="color:#a6e22e">LCYApi</span>: TargetType {
     <span style="color:#66d9ef">var</span> baseURL: URL {
         <span style="color:#66d9ef">return</span> NSURL.<span style="color:#66d9ef">init</span>(string: <span style="color:#e6db74">&#34;http://test.com&#34;</span>)<span style="color:#f92672">!</span> <span style="color:#66d9ef">as</span> URL
@@ -502,7 +526,7 @@ code.has-jax {
     <li><a href="#使用">使用</a>
       <ul>
         <li><a href="#声明enum对请求进行分类">声明enum对请求进行分类</a></li>
-        <li><a href="#实现targettype协议">实现TargetType协议</a></li>
+        <li><a href="#遵循targettype协议">遵循TargetType协议</a></li>
         <li><a href="#定义provider对象">定义Provider对象</a></li>
         <li><a href="#发起网络请求">发起网络请求</a></li>
       </ul>
