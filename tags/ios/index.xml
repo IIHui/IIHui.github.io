@@ -22,7 +22,7 @@
       <pubDate>Tue, 06 Apr 2021 10:49:11 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/ios-moya/</guid>
-      <description>Moya是一个高度抽象的网络库，它的理念是让你不用关心网络请求的底层实现细节，只需要关注业务。Moya采用桥接和组合来进行封装，默认桥接了Alamofire，可以认为对Alamofire进行了再次封装。 优点 官方给出了Moya的主要优点： 编译</description>
+      <description>Moya是一个高度抽象的网络库，它的理念是让使用者不必关心网络请求的底层实现细节，只需要关注业务。Moya采用桥接和组合来进行封装，默认桥接了Alamofire，可认为是对Alamofire进行了再次封装。 优点 官方给出了Moya的主要优点：</description>
     </item>
     
     <item>

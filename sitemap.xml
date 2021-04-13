@@ -66,9 +66,12 @@ PWA 参考资料 参考资料 参考资料 传闻即将支持 支持
         <tags>
           <tag>iOS</tag>
         </tags>
-        <content type="html">  Moya是一个高度抽象的网络库，它的理念是让你不用关心网络请求的底层实现细节，只需要关注业务。Moya采用桥接和组合来进行封装，默认桥接了Alamofire，可以认为对Alamofire进行了再次封装。
+        <content type="html">  Moya是一个高度抽象的网络库，它的理念是让使用者不必关心网络请求的底层实现细节，只需要关注业务。Moya采用桥接和组合来进行封装，默认桥接了Alamofire，可认为是对Alamofire进行了再次封装。
  优点 官方给出了Moya的主要优点：
- 编译时检查API endpoint 权限 使用枚举定义各种不同Target，endpoints 把stubs当做一等公民，因此测试超级简单。  区别 Moya与Alamofire的区别如下所示：
+  编译时检查API endpoint 权限
+  使用枚举定义各种不同Target，endpoints
+  把stubs当做一等公民，因此测试超级简单。
+  区别 Moya与Alamofire的区别如下所示：
 框架 概念 Moya使用Provider，Target，EndPoint来构建网络链，如下图所示
 使用 使用Moya分为几步，首先需要自定义一个枚举类型。然后遵循开闭原则，让枚举的分类遵循Moya的TargetType,按需实现定义的各种get方法。最后创建MoyaProvider对象发起网络请求。
 参考资料
