@@ -72,9 +72,9 @@ PWA 参考资料 参考资料 参考资料 传闻即将支持 支持
   使用枚举定义各种不同Target，endpoints。
   把stubs当做一等公民，因此测试变得十分简单。
   区别 模块 Moya使用面向协议编程POP来设计网络抽象层，因此它整体的逻辑结构并没有明显的继承关系。Moya的核心代码，可以分成以下几个模块：
-概念 Provider Provider是网络请求服务的提供者。通过一些初始化配置之后，在外部可以直接使用Provider来发起request。
+概念 Provider Provider是网络请求服务的提供者，通过一些初始化配置之后，在外部可以直接使用Provider来发起request。
 参考资料
-Request 使用Moya进行网络请求时，第一步需要进行配置，以生成一个Request。按照官方文档，首先需要创建一个枚举，遵守TargetType协议，并实现协议所规定的属性。
+Request 使用Moya进行网络请求时，第一步需要进行配置，以生成一个Request。按照官方文档，首先需要创建一个枚举类型，并使其遵守TargetType协议，然后实现协议所规定的属性。
 为什么要创建枚举来遵守协议，而不像OC那样创建类来遵守协议呢？实际上使用类或者结构体也是可行的。猜测使用枚举的原因是Swift的枚举功能比OC强大许多，使用枚举结合switch语句，使得API管理起来比较方便。Request的生成过程如下图所示：
 Moya使用Provider，Target，EndPoint来构建网络链，如下图所示
 使用 使用Moya分为几步，首先需要自定义一个枚举类型。然后遵循开闭原则，让枚举的分类遵循Moya的TargetType,按需实现定义的各种get方法。最后创建MoyaProvider对象发起网络请求。
