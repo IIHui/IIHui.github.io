@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1281</span>
+<span class="leancloud-visitors-count">1279</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -278,7 +278,7 @@ code.has-jax {
 <p><code>Provider</code>是网络请求服务的提供者，通过一些初始化配置之后，在外部可以直接使用<code>Provider</code>来发起<code>request</code>。</p>
 <p><a href="https://juejin.cn/post/6844903555841654797">参考资料</a></p>
 <h2 id="request">Request</h2>
-<p>使用<code>Moya</code>进行网络请求时，第一步需要进行配置，以生成一个<code>Request</code>。按照官方文档，首先需要创建一个枚举类型，并使其遵守<code>TargetType</code>协议，然后实现协议所规定的属性。</p>
+<p>使用<code>Moya</code>进行网络请求时，首先需要进行配置，以生成一个<code>Request</code>。按照官方文档，需要先创建一个枚举类型，并使其遵守<code>TargetType</code>协议，然后实现协议所规定的属性。</p>
 <p>为什么要创建枚举来遵守协议，而不像<code>OC</code>那样创建类来遵守协议呢？实际上使用类或者结构体也是可行的。猜测使用枚举的原因是<code>Swift</code>的枚举功能比<code>OC</code>强大许多，使用枚举结合<code>switch</code>语句，使得<code>API</code>管理起来比较方便。<code>Request</code>的生成过程如下图所示：</p>
 <p><img src="https://i.loli.net/2021/04/13/BUXd62R7bsfo3WS.jpg" alt="-c"></p>
 <p><code>Moya</code>使用<code>Provider，Target，EndPoint</code>来构建网络链，如下图所示</p>
