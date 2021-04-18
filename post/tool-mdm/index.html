@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">992</span>
+<span class="leancloud-visitors-count">1163</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">2 分钟</span>
+<span class="leancloud-visitors-count">3 分钟</span>
 </span>
       </div>
     </header>
@@ -270,6 +270,10 @@ code.has-jax {
 </li>
 </ul>
 <p>另外设备和<code>MDM</code>服务器之间数据传输都是以<code>XML</code>格式形式，以<code>PUT</code>请求的方式进行的，所以发送指令时，服务器要把指令封装成一个<code>XML</code>的文件同时要实现PUT请求相关操作处理。<code>APNs</code>所发送的仅仅是一个与设备本身相关的标示符，没有其他命令，目的就是唤醒设备去连接<code>MDM</code>服务器。</p>
+<h1 id="需要的操作">需要的操作</h1>
+<p>要实现一个完整的<code>MDM</code>服务，需要制作<code>APNs</code>推送证书、设备安装的配置文件、实现<code>https</code>通信、实现<code>MDM</code>相关协议、学习<code>MDM</code>协议相关命令及使用、一个<code>MDM</code>服务器（这里不作主要叙述，因为这些相关的都是有我们后台做的）。</p>
+<h2 id="证书制作">证书制作</h2>
+<p>这个证书就是<code>MDM Server</code>和<code>APNs</code>推送消息所需要的证书，当然和<code>APP</code>推送证书完全不同，虽然功能差不多。</p>
 <h1 id="发送指令">发送指令</h1>
 <p>所以完成一次指令推送经历以下过程：</p>
 <p>1、server 与APNs建立连接，发送数据。
@@ -442,6 +446,11 @@ code.has-jax {
         <div class="post-toc-content"><nav id="TableOfContents">
   <ul>
     <li><a href="#工作流程">工作流程</a></li>
+    <li><a href="#需要的操作">需要的操作</a>
+      <ul>
+        <li><a href="#证书制作">证书制作</a></li>
+      </ul>
+    </li>
     <li><a href="#发送指令">发送指令</a></li>
   </ul>
 </nav></div>
