@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">3373</span>
+<span class="leancloud-visitors-count">3714</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">7 分钟</span>
+<span class="leancloud-visitors-count">8 分钟</span>
 </span>
       </div>
     </header>
@@ -255,19 +255,6 @@ code.has-jax {
     <blockquote>
 <p><code>Moya</code>是一个高度抽象的网络库，它的理念是让使用者不必关心网络请求的底层实现细节，只需要关注业务。<code>Moya</code>采用桥接和组合来进行封装，默认桥接了<code>Alamofire</code>。它具有很强的可扩展性，可以轻松地将<code>RxSwift</code>、<code>PromiseKit</code>和<code>ObjectMapper</code>结合起来。</p>
 </blockquote>
-<h1 id="优点">优点</h1>
-<p>官方给出了<code>Moya</code>的主要优点：</p>
-<ul>
-<li>
-<p>编译时检查<code>API endpoint</code> 权限。</p>
-</li>
-<li>
-<p>使用枚举定义各种不同<code>Target</code>，<code>endpoints</code>。</p>
-</li>
-<li>
-<p>把<code>stubs</code>当做一等公民，因此测试变得十分简单。</p>
-</li>
-</ul>
 <h1 id="模块">模块</h1>
 <p><code>Moya</code>使用面向协议编程<code>POP</code>来设计网络抽象层，因此它整体的逻辑结构并没有明显的继承关系。<code>Moya</code>的核心代码，可以分成以下几个模块：</p>
 <p><img src="https://i.loli.net/2020/11/11/pMNPe5OGJm9fYqF.jpg" alt="-c"></p>
@@ -397,6 +384,40 @@ code.has-jax {
 <li>NetworkActivityPlugin</li>
 <li>NetworkLoggerPlugin</li>
 </ul>
+<h2 id="response">Response</h2>
+<p><code>Moya</code>并没有具体处理<code>Response</code>，只是将<code>Alamofire</code>返回的数据封装成<code>Moya.Response</code>。然后调用<code>convertResponseToResult</code>进一步封装成<code>Result&lt;Moya.Response，MoyaError&gt;</code>，并返回给上层：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">/// A public function responsible for converting the result of a `URLRequest` to a Result&lt;Moya.Response, MoyaError&gt;.</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">convertResponseToResult</span>(<span style="color:#66d9ef">_</span> response: HTTPURLResponse?, request: URLRequest?, data: Data?, error: Swift.Error?) -&gt;
+    Result&lt;Moya.Response, MoyaError&gt; {
+        <span style="color:#66d9ef">switch</span> (response, data, error) {
+        <span style="color:#66d9ef">case</span> <span style="color:#66d9ef">let</span> (.some(response), data, .<span style="color:#66d9ef">none</span>):
+            <span style="color:#66d9ef">let</span> response = Moya.Response(statusCode: response.statusCode, data: data ?? Data(), request: request, response: response)
+            <span style="color:#66d9ef">return</span> .success(response)
+        <span style="color:#66d9ef">case</span> <span style="color:#66d9ef">let</span> (.some(response), <span style="color:#66d9ef">_</span>, .some(error)):
+            <span style="color:#66d9ef">let</span> response = Moya.Response(statusCode: response.statusCode, data: data ?? Data(), request: request, response: response)
+            <span style="color:#66d9ef">let</span> error = MoyaError.underlying(error, response)
+            <span style="color:#66d9ef">return</span> .failure(error)
+        <span style="color:#66d9ef">case</span> <span style="color:#66d9ef">let</span> (<span style="color:#66d9ef">_</span>, <span style="color:#66d9ef">_</span>, .some(error)):
+            <span style="color:#66d9ef">let</span> error = MoyaError.underlying(error, <span style="color:#66d9ef">nil</span>)
+            <span style="color:#66d9ef">return</span> .failure(error)
+        <span style="color:#66d9ef">default</span>:
+            <span style="color:#66d9ef">let</span> error = MoyaError.underlying(NSError(domain: NSURLErrorDomain, code: NSURLErrorUnknown, userInfo: <span style="color:#66d9ef">nil</span>), <span style="color:#66d9ef">nil</span>)
+            <span style="color:#66d9ef">return</span> .failure(error)
+        }
+}
+</code></pre></div><p>如果想进一步将<code>Response</code>转换为<code>JSON</code>，可以使用<code>mapJSON</code>，其定义如下所示：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">mapJSON</span>(failsOnEmptyData: Bool = <span style="color:#66d9ef">true</span>) <span style="color:#66d9ef">throws</span> -&gt; Any {
+    <span style="color:#66d9ef">do</span> {
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">try</span> JSONSerialization.jsonObject(with: data, options: .allowFragments)
+    } <span style="color:#66d9ef">catch</span> {
+        <span style="color:#66d9ef">if</span> data.count <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>failsOnEmptyData {
+            <span style="color:#66d9ef">return</span> NSNull()
+        }
+        <span style="color:#66d9ef">throw</span> MoyaError.jsonMapping(<span style="color:#66d9ef">self</span>)
+    }
+}
+</code></pre></div><p>到这里，<code>Moya</code>所做的事情就很清楚了：它提供了一个面向协议的接口，用于编写网络请求；它提供了一个灵活的闭合接口，用于定制请求；它提供了插件，用于客户端介入每个节点的网络请求；它将原始请求数据返回给上层。</p>
+<h2 id="取消">取消</h2>
 <h1 id="使用">使用</h1>
 <p>使用<code>Moya</code>分为几步，首先需要自定义一个枚举类型。然后遵循<a href="https://www.omegaxyz.com/2018/06/14/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99%E4%B9%8B%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99/">开闭原则</a>，让定义的枚举分类遵循<code>TargetType</code>协议，然后按需实现协议中定义的各种<code>get</code>方法。最后创建<code>MoyaProvider</code>对象发起网络请求。</p>
 <p><a href="https://www.mdeditor.tw/pl/p9x5">参考资料</a></p>
@@ -648,13 +669,14 @@ code.has-jax {
     <div class="post-toc">
         <div class="post-toc-content"><nav id="TableOfContents">
   <ul>
-    <li><a href="#优点">优点</a></li>
     <li><a href="#模块">模块</a>
       <ul>
         <li><a href="#provider">Provider</a></li>
         <li><a href="#request">Request</a></li>
         <li><a href="#stub">Stub</a></li>
         <li><a href="#plugin">Plugin</a></li>
+        <li><a href="#response">Response</a></li>
+        <li><a href="#取消">取消</a></li>
       </ul>
     </li>
     <li><a href="#使用">使用</a>

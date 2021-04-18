@@ -52,11 +52,7 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 设置文�
           <tag>iOS</tag>
         </tags>
         <content type="html">  Moya是一个高度抽象的网络库，它的理念是让使用者不必关心网络请求的底层实现细节，只需要关注业务。Moya采用桥接和组合来进行封装，默认桥接了Alamofire。它具有很强的可扩展性，可以轻松地将RxSwift、PromiseKit和ObjectMapper结合起来。
- 优点 官方给出了Moya的主要优点：
-  编译时检查API endpoint 权限。
-  使用枚举定义各种不同Target，endpoints。
-  把stubs当做一等公民，因此测试变得十分简单。
-  模块 Moya使用面向协议编程POP来设计网络抽象层，因此它整体的逻辑结构并没有明显的继承关系。Moya的核心代码，可以分成以下几个模块：
+ 模块 Moya使用面向协议编程POP来设计网络抽象层，因此它整体的逻辑结构并没有明显的继承关系。Moya的核心代码，可以分成以下几个模块：
   Request包含TargetType、Endpoint、Cancellable类型。
   Provider是网络请求的枢纽，它将TargetType转换为Endpoint，再转换为URLRequest，最后让Alamofire做实质的网络请求。
   Response回调上层数据结构，支持filter、mapJSON等方法。
@@ -81,7 +77,10 @@ switch endpoint.sampleResponseClosure() { case .networkResponse(let statusCode, 
 由NSURLConnection发起的请求可以直接拦截。在拦截NSURLSession的时候稍微优点复杂。因为URLSession支持通过URLSessionConfiguration属性进行拦截。通常的做法是hook住URLSession的初始化方法init(configuration: URLSessionConfiguration, delegate: URLSessionDelegate?， delegateQueue: OperationQueue?)，然后用URLSessionConfiguration注册所需的拦截协议。
 Plugin Moya提供了一种插件机制，可以在网络请求的关键节点插入代码。可以插入的时机如下图所示：
 Moya共提供了4种插件：
- AccessTokenPlugin CredentialsPlugin NetworkActivityPlugin NetworkLoggerPlugin  使用 使用Moya分为几步，首先需要自定义一个枚举类型。然后遵循开闭原则，让定义的枚举分类遵循TargetType协议，然后按需实现协议中定义的各种get方法。最后创建MoyaProvider对象发起网络请求。
+ AccessTokenPlugin CredentialsPlugin NetworkActivityPlugin NetworkLoggerPlugin  Response Moya并没有具体处理Response，只是将Alamofire返回的数据封装成Moya.Response。然后调用convertResponseToResult进一步封装成Result&amp;lt;Moya.Response，MoyaError&amp;gt;，并返回给上层：
+/// A public function responsible for converting the result of a `URLRequest` to a Result&amp;lt;Moya.Response, MoyaError&amp;gt;. public func convertResponseToResult(_ response: HTTPURLResponse?, request: URLRequest?, data: Data?, error: Swift.Error?) -&amp;gt; Result&amp;lt;Moya.Response, MoyaError&amp;gt; { switch (response, data, error) { case let (.some(response), data, .none): let response = Moya.Response(statusCode: response.statusCode, data: data ?? Data(), request: request, response: response) return .success(response) case let (.some(response), _, .some(error)): let response = Moya.Response(statusCode: response.statusCode, data: data ?? Data(), request: request, response: response) let error = MoyaError.underlying(error, response) return .failure(error) case let (_, _, .some(error)): let error = MoyaError.underlying(error, nil) return .failure(error) default: let error = MoyaError.underlying(NSError(domain: NSURLErrorDomain, code: NSURLErrorUnknown, userInfo: nil), nil) return .failure(error) } } 如果想进一步将Response转换为JSON，可以使用mapJSON，其定义如下所示：
+func mapJSON(failsOnEmptyData: Bool = true) throws -&amp;gt; Any { do { return try JSONSerialization.jsonObject(with: data, options: .allowFragments) } catch { if data.count &amp;lt; 1 &amp;amp;&amp;amp; !failsOnEmptyData { return NSNull() } throw MoyaError.jsonMapping(self) } } 到这里，Moya所做的事情就很清楚了：它提供了一个面向协议的接口，用于编写网络请求；它提供了一个灵活的闭合接口，用于定制请求；它提供了插件，用于客户端介入每个节点的网络请求；它将原始请求数据返回给上层。
+取消 使用 使用Moya分为几步，首先需要自定义一个枚举类型。然后遵循开闭原则，让定义的枚举分类遵循TargetType协议，然后按需实现协议中定义的各种get方法。最后创建MoyaProvider对象发起网络请求。
 参考资料
 声明分类 Moya基于enum封装API，通过枚举不同端点的不同用法，以生成请求
 enum LCYApi { case login(name: String, password: String) } TargetType 遵循开闭原则，让上一步定义的枚举分类遵循TargetType协议。TargetType协议定义了各个请求的url，参数和header等信息，按需实现即可。下面是TargetType的定义：
