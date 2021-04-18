@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">4259</span>
+<span class="leancloud-visitors-count">4253</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -277,8 +277,7 @@ code.has-jax {
 </li>
 </ul>
 <h2 id="provider">Provider</h2>
-<p><img src="https://i.loli.net/2021/04/17/tTicu7UXIVsBrek.jpg" alt=""></p>
-<p>如上图所示，<code>Provider</code>是网络请求的枢纽，接受<code>TargetType</code>，并通过闭包调用回上层。下面是<code>Provider</code>是<code>init</code>方法：</p>
+<p><code>Provider</code>是网络请求的枢纽，接受<code>TargetType</code>，并通过闭包调用回上层。下面是<code>Provider</code>是<code>init</code>方法：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">/// Initializes a provider.</span>
 <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">init</span>(endpointClosure: @escaping EndpointClosure = MoyaProvider.defaultEndpointMapping,
             requestClosure: @escaping RequestClosure = MoyaProvider.defaultRequestMapping,
@@ -296,7 +295,7 @@ code.has-jax {
     <span style="color:#66d9ef">self</span>.callbackQueue = callbackQueue
 }
 </code></pre></div><p>在<code>init</code>方法中，<code>endpointClosure</code>将<code>TargetType</code>转换为<code>EndPoint</code>，其中<code>EndPoint</code>是<code>Moya</code>网络请求的一个中间状态。<code>requestClosure</code>把<code>EndPoint</code>转换为<code>URLRequest</code>。<code>Request</code>的生成过程如下图所示：</p>
-<p><img src="https://i.loli.net/2021/04/13/BUXd62R7bsfo3WS.jpg" alt="-c"></p>
+<p><img src="https://i.loli.net/2021/04/17/tTicu7UXIVsBrek.jpg" alt=""></p>
 <p><code>stubClosure</code>闭包模拟服务器端假数据用于<code>piling tests</code>。<code>rackInflights</code>表示是否需要跟踪重复的网络请求。</p>
 <h2 id="request">Request</h2>
 <p>使用<code>Moya</code>进行网络请求时，首先需要进行配置，以生成一个<code>Request</code>。按照官方文档，需要先创建一个枚举类型，并使其遵守<code>TargetType</code>协议，然后实现协议所规定的属性。</p>
