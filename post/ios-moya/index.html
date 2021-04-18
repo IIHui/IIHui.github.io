@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1408</span>
+<span class="leancloud-visitors-count">1609</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">3 分钟</span>
+<span class="leancloud-visitors-count">4 分钟</span>
 </span>
       </div>
     </header>
@@ -273,7 +273,23 @@ code.has-jax {
 <h1 id="模块">模块</h1>
 <p><code>Moya</code>使用面向协议编程<code>POP</code>来设计网络抽象层，因此它整体的逻辑结构并没有明显的继承关系。<code>Moya</code>的核心代码，可以分成以下几个模块：</p>
 <p><img src="https://i.loli.net/2020/11/11/pMNPe5OGJm9fYqF.jpg" alt="-c"></p>
-<h1 id="概念">概念</h1>
+<ul>
+<li>
+<p><code>Request</code>包含<code>TargetType、Endpoint、Cancellable</code>类型。</p>
+</li>
+<li>
+<p><code>Provider</code>是网络请求的枢纽，它将<code>TargetType</code>转换为<code>Endpoint</code>，再转换为<code>URLRequest</code>，让<code>Alamofire</code>实际执行。</p>
+</li>
+<li>
+<p><code>Response</code>回调上层数据结构，支持<code>filter、mapJSON</code>等方法。</p>
+</li>
+<li>
+<p><code>Alamofire</code>模块通过桥接将<code>alamofire</code>的细节隐藏在上层。</p>
+</li>
+<li>
+<p><code>Plguins</code> 是提供给外界的插件模块，共有<code>4</code>种。</p>
+</li>
+</ul>
 <h2 id="provider">Provider</h2>
 <p><code>Provider</code>是网络请求服务的提供者，通过一些初始化配置之后，在外部可以直接使用<code>Provider</code>来发起<code>request</code>。</p>
 <p><a href="https://juejin.cn/post/6844903555841654797">参考资料</a></p>
@@ -537,8 +553,7 @@ code.has-jax {
   <ul>
     <li><a href="#优点">优点</a></li>
     <li><a href="#区别">区别</a></li>
-    <li><a href="#模块">模块</a></li>
-    <li><a href="#概念">概念</a>
+    <li><a href="#模块">模块</a>
       <ul>
         <li><a href="#provider">Provider</a></li>
         <li><a href="#request">Request</a></li>
