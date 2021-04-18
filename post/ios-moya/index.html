@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">2955</span>
+<span class="leancloud-visitors-count">3312</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">6 分钟</span>
+<span class="leancloud-visitors-count">7 分钟</span>
 </span>
       </div>
     </header>
@@ -363,19 +363,32 @@ code.has-jax {
     }
 </code></pre></div><p><code>stub</code>是一个与测试相关的概念，它允许你返回一些虚假数据。<code>Moya</code>的<code>stub</code>原理很简单：如果<code>Provider</code>确定了<code>Stub</code>，它就会返回<code>Endpoint</code>的虚假数据；否则，它就会进行实际的网络请求。<code>Moya</code>通过<code>StubClosure</code>闭包来确定<code>stub</code>的模式：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">typealias</span> StubClosure = (Target) -&gt; Moya.StubBehavior
-</code></pre></div><p>而<code>Moya.StubBehavior</code>有三种模式，其中<code>never</code>表示不使用<code>Stub</code>；如果有数据返回，则返回<code>EndPoint</code>中定义的假数据，其定义如下所示：</p>
+</code></pre></div><p>而<code>Moya.StubBehavior</code>有三种模式，其中<code>never</code>表示不使用<code>Stub</code>，其定义如下所示：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">StubBehavior</span> {
     <span style="color:#66d9ef">case</span> never <span style="color:#75715e">//No Stub</span>
     <span style="color:#66d9ef">case</span> immediate <span style="color:#75715e">//Return data immediately</span>
     <span style="color:#66d9ef">case</span> delayed(seconds: TimeInterval)<span style="color:#75715e">//Delayed return of data</span>
 }
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">switch</span> endpoint.sampleResponseClosure() {
+</code></pre></div><p>如果有数据返回，则返回<code>EndPoint</code>中定义的假数据，并关闭请求：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">switch</span> endpoint.sampleResponseClosure() {
     <span style="color:#66d9ef">case</span> .networkResponse(<span style="color:#66d9ef">let</span> statusCode, <span style="color:#66d9ef">let</span> data):
         <span style="color:#66d9ef">let</span> response = Moya.Response(statusCode: statusCode, data: data, request: request, response: <span style="color:#66d9ef">nil</span>)
         completion(.success(response))
         <span style="color:#75715e">//...</span>
 }
-</code></pre></div><h1 id="使用">使用</h1>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">func</span> defaultEndpointMapping(<span style="color:#66d9ef">for</span> target: Target) -&gt; Endpoint {
+    <span style="color:#66d9ef">return</span> Endpoint(
+        url: URL(target: target).absoluteString,
+        sampleResponseClosure: { .networkResponse(<span style="color:#ae81ff">200</span>, target.sampleData) },
+        method: target.method,
+        task: target.task,
+        httpHeaderFields: target.headers
+    )
+}
+</code></pre></div><p><code>Moya</code>中使用简单粗暴的<code>stub</code>，但效果很好。如果不想使用<code>Moya</code>，但想返回虚假数据，这时需要使用<code>URLProtocol</code>，采用<code>URLProtocol</code>时，网络请求可以被拦截，可以将网络请求重定向到虚假数据。</p>
+<p>由<code>NSURLConnection</code>发起的请求可以直接拦截。在拦截<code>NSURLSession</code>的时候稍微优点复杂。因为<code>URLSession</code>支持通过<code>URLSessionConfiguration</code>属性进行拦截。通常的做法是<code>hook</code>住<code>URLSession</code>的初始化方法<code>init(configuration: URLSessionConfiguration, delegate: URLSessionDelegate?， delegateQueue: OperationQueue?)</code>，然后用<code>URLSessionConfiguration</code>注册所需的拦截协议。</p>
+<h2 id="plugin">Plugin</h2>
+<h1 id="使用">使用</h1>
 <p>使用<code>Moya</code>分为几步，首先需要自定义一个枚举类型。然后遵循<a href="https://www.omegaxyz.com/2018/06/14/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99%E4%B9%8B%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99/">开闭原则</a>，让定义的枚举分类遵循<code>TargetType</code>协议，然后按需实现协议中定义的各种<code>get</code>方法。最后创建<code>MoyaProvider</code>对象发起网络请求。</p>
 <p><a href="https://www.mdeditor.tw/pl/p9x5">参考资料</a></p>
 <h2 id="声明分类">声明分类</h2>
@@ -632,6 +645,7 @@ code.has-jax {
         <li><a href="#provider">Provider</a></li>
         <li><a href="#request">Request</a></li>
         <li><a href="#stub">Stub</a></li>
+        <li><a href="#plugin">Plugin</a></li>
       </ul>
     </li>
     <li><a href="#使用">使用</a>
