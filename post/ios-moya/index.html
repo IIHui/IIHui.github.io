@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1822</span>
+<span class="leancloud-visitors-count">1840</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -301,7 +301,9 @@ code.has-jax {
   <span style="color:#75715e">//...</span>
 }
 
-</code></pre></div><p>在<code>init</code>方法中，<code>endpointClosure</code>将<code>TargetType</code>转换为<code>EndPoint</code>，其中<code>EndPoint</code>是<code>Moya</code>网络请求的一个中间状态。<code>requestClosure</code>把<code>EndPoint</code>转换为<code>URLRequest</code>。<code>stubClosure</code>闭包模拟服务器端假数据用于<code>piling tests</code>。<code>rackInflights</code>表示是否需要跟踪重复的网络请求。</p>
+</code></pre></div><p>在<code>init</code>方法中，<code>endpointClosure</code>将<code>TargetType</code>转换为<code>EndPoint</code>，其中<code>EndPoint</code>是<code>Moya</code>网络请求的一个中间状态。<code>requestClosure</code>把<code>EndPoint</code>转换为<code>URLRequest</code>。<code>Request</code>的生成过程如下图所示：</p>
+<p><img src="https://i.loli.net/2021/04/13/BUXd62R7bsfo3WS.jpg" alt="-c"></p>
+<p><code>stubClosure</code>闭包模拟服务器端假数据用于<code>piling tests</code>。<code>rackInflights</code>表示是否需要跟踪重复的网络请求。</p>
 <h2 id="request">Request</h2>
 <p>使用<code>Moya</code>进行网络请求时，首先需要进行配置，以生成一个<code>Request</code>。按照官方文档，需要先创建一个枚举类型，并使其遵守<code>TargetType</code>协议，然后实现协议所规定的属性。</p>
 <p>为什么要创建枚举来遵守协议，而不像<code>OC</code>那样创建类来遵守协议呢？实际上使用类或者结构体也是可行的。猜测使用枚举的原因是<code>Swift</code>的枚举功能比<code>OC</code>强大许多，使用枚举结合<code>switch</code>语句，使得<code>API</code>管理起来比较方便。<code>Request</code>的生成过程如下图所示：</p>

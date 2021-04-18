@@ -77,7 +77,8 @@ PWA 参考资料 参考资料 参考资料 传闻即将支持 支持
   Response回调上层数据结构，支持filter、mapJSON等方法。
   Alamofire模块通过桥接将alamofire的细节隐藏在上层。   Plguins 是提供给外界的插件模块，共有4种。
   Provider 如上图所示，Provider是网络请求的枢纽，接受TargetType，并通过闭包调用回上层。下面是Provider是init方法：
-public init(endpointClosure: @escaping EndpointClosure = MoyaProvider.defaultEndpointMapping, requestClosure: @escaping RequestClosure = MoyaProvider.defaultRequestMapping, stubClosure: @escaping StubClosure = MoyaProvider.neverStub, manager: Manager = MoyaProvider&amp;lt;Target&amp;gt;.defaultAlamofireManager(), plugins: [PluginType] = [], trackInflights: Bool = false) { //... } 在init方法中，endpointClosure将TargetType转换为EndPoint，其中EndPoint是Moya网络请求的一个中间状态。requestClosure把EndPoint转换为URLRequest。stubClosure闭包模拟服务器端假数据用于piling tests。rackInflights表示是否需要跟踪重复的网络请求。
+public init(endpointClosure: @escaping EndpointClosure = MoyaProvider.defaultEndpointMapping, requestClosure: @escaping RequestClosure = MoyaProvider.defaultRequestMapping, stubClosure: @escaping StubClosure = MoyaProvider.neverStub, manager: Manager = MoyaProvider&amp;lt;Target&amp;gt;.defaultAlamofireManager(), plugins: [PluginType] = [], trackInflights: Bool = false) { //... } 在init方法中，endpointClosure将TargetType转换为EndPoint，其中EndPoint是Moya网络请求的一个中间状态。requestClosure把EndPoint转换为URLRequest。Request的生成过程如下图所示：
+stubClosure闭包模拟服务器端假数据用于piling tests。rackInflights表示是否需要跟踪重复的网络请求。
 Request 使用Moya进行网络请求时，首先需要进行配置，以生成一个Request。按照官方文档，需要先创建一个枚举类型，并使其遵守TargetType协议，然后实现协议所规定的属性。
 为什么要创建枚举来遵守协议，而不像OC那样创建类来遵守协议呢？实际上使用类或者结构体也是可行的。猜测使用枚举的原因是Swift的枚举功能比OC强大许多，使用枚举结合switch语句，使得API管理起来比较方便。Request的生成过程如下图所示：
 Moya使用Provider，Target，EndPoint来构建网络链，如下图所示
