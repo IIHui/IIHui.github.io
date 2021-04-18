@@ -6,7 +6,16 @@
     <description>Recent content in iOS on Keep It Simple</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 12 Apr 2021 12:02:24 +0000</lastBuildDate><atom:link href="https://iihui.github.io/tags/ios/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 16 Apr 2021 10:49:11 +0000</lastBuildDate><atom:link href="https://iihui.github.io/tags/ios/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Moya使用</title>
+      <link>https://iihui.github.io/post/ios-moya/</link>
+      <pubDate>Fri, 16 Apr 2021 10:49:11 +0000</pubDate>
+      
+      <guid>https://iihui.github.io/post/ios-moya/</guid>
+      <description>Moya是一个高度抽象的网络库，它的理念是让使用者不必关心网络请求的底层实现细节，只需要关注业务。Moya采用桥接和组合来进行封装，默认桥接了Alamofire。它具有很强的可扩展性，可以轻松地将RxSwift、PromiseKit和Obj</description>
+    </item>
+    
     <item>
       <title>iOS PWA</title>
       <link>https://iihui.github.io/post/ios-pwa/</link>
@@ -14,15 +23,6 @@
       
       <guid>https://iihui.github.io/post/ios-pwa/</guid>
       <description>PWA PWA（Progressive web apps）译为渐进式Web应用，指的是运用现代的Web API以及传统的渐进式增强策略来创建跨平台Web应用程序。PWA没有统一的定义，可以理解为使用Web技术来创建App，不用打包，不用签名，可以离线工作，</description>
-    </item>
-    
-    <item>
-      <title>Moya使用</title>
-      <link>https://iihui.github.io/post/ios-moya/</link>
-      <pubDate>Tue, 06 Apr 2021 10:49:11 +0000</pubDate>
-      
-      <guid>https://iihui.github.io/post/ios-moya/</guid>
-      <description>Moya是一个高度抽象的网络库，它的理念是让使用者不必关心网络请求的底层实现细节，只需要关注业务。Moya采用桥接和组合来进行封装，默认桥接了Alamofire。它具有很强的可扩展性，可以轻松地将RxSwift、PromiseKit和Obj</description>
     </item>
     
     <item>
