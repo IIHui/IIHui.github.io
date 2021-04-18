@@ -55,8 +55,9 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 设置文�
  模块 Moya使用面向协议编程POP来设计网络抽象层，因此它整体的逻辑结构并没有明显的继承关系。Moya的核心代码，可以分成以下几个模块：
   Request包含TargetType、Endpoint、Cancellable类型。
   Provider是网络请求的枢纽，它将TargetType转换为Endpoint，再转换为URLRequest，最后让Alamofire做实质的网络请求。
-  Response回调上层数据结构，支持filter、mapJSON等方法。
-  Alamofire模块通过桥接将alamofire的细节隐藏在上层。   Plguins 是提供给外界的插件模块，共有4种。
+  Response回调给上层，支持filter、mapJSON等方法。
+  Alamofire模块通过桥接将Alamofire的细节隐藏在上层，Moya和Alamofire的区别如下：
+  Plguins是插件模块，默认共有4种。
   Provider 如上图所示，Provider是网络请求的枢纽，接受TargetType，并通过闭包调用回上层。下面是Provider是init方法：
 public init(endpointClosure: @escaping EndpointClosure = MoyaProvider.defaultEndpointMapping, requestClosure: @escaping RequestClosure = MoyaProvider.defaultRequestMapping, stubClosure: @escaping StubClosure = MoyaProvider.neverStub, manager: Manager = MoyaProvider&amp;lt;Target&amp;gt;.defaultAlamofireManager(), plugins: [PluginType] = [], trackInflights: Bool = false) { //... } 在init方法中，endpointClosure将TargetType转换为EndPoint，其中EndPoint是Moya网络请求的一个中间状态。requestClosure把EndPoint转换为URLRequest。Request的生成过程如下图所示：
 stubClosure闭包模拟服务器端假数据用于piling tests。rackInflights表示是否需要跟踪重复的网络请求。

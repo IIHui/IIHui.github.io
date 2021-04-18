@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">4212</span>
+<span class="leancloud-visitors-count">4231</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -266,14 +266,14 @@ code.has-jax {
 <p><code>Provider</code>是网络请求的枢纽，它将<code>TargetType</code>转换为<code>Endpoint</code>，再转换为<code>URLRequest</code>，最后让<code>Alamofire</code>做实质的网络请求。</p>
 </li>
 <li>
-<p><code>Response</code>回调上层数据结构，支持<code>filter、mapJSON</code>等方法。</p>
+<p><code>Response</code>回调给上层，支持<code>filter、mapJSON</code>等方法。</p>
 </li>
 <li>
-<p><code>Alamofire</code>模块通过桥接将<code>alamofire</code>的细节隐藏在上层。
-<img src="https://i.loli.net/2021/04/10/Ca9Z6WGqsAm8zLl.jpg" alt="-c600"></p>
+<p><code>Alamofire</code>模块通过桥接将<code>Alamofire</code>的细节隐藏在上层，<code>Moya</code>和<code>Alamofire</code>的区别如下：</p>
+<p><img src="https://i.loli.net/2021/04/10/Ca9Z6WGqsAm8zLl.jpg" alt="-c600"></p>
 </li>
 <li>
-<p><code>Plguins</code> 是提供给外界的插件模块，共有<code>4</code>种。</p>
+<p><code>Plguins</code>是插件模块，默认共有<code>4</code>种。</p>
 </li>
 </ul>
 <h2 id="provider">Provider</h2>
