@@ -73,7 +73,7 @@ PWA 参考资料 参考资料 参考资料 传闻即将支持 支持
   把stubs当做一等公民，因此测试变得十分简单。
   区别 模块 Moya使用面向协议编程POP来设计网络抽象层，因此它整体的逻辑结构并没有明显的继承关系。Moya的核心代码，可以分成以下几个模块：
   Request包含TargetType、Endpoint、Cancellable类型。
-  Provider是网络请求的枢纽，它将TargetType转换为Endpoint，再转换为URLRequest，让Alamofire实际执行。
+  Provider是网络请求的枢纽，它将TargetType转换为Endpoint，再转换为URLRequest，最后让Alamofire做实质的网络请求。
   Response回调上层数据结构，支持filter、mapJSON等方法。
   Alamofire模块通过桥接将alamofire的细节隐藏在上层。
   Plguins 是提供给外界的插件模块，共有4种。
