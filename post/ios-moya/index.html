@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1613</span>
+<span class="leancloud-visitors-count">1709</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -290,7 +290,18 @@ code.has-jax {
 </li>
 </ul>
 <h2 id="provider">Provider</h2>
-<p><code>Provider</code>是网络请求服务的提供者，通过一些初始化配置之后，在外部可以直接使用<code>Provider</code>来发起<code>request</code>。</p>
+<p><img src="https://i.loli.net/2021/04/17/tTicu7UXIVsBrek.jpg" alt="">
+如上图所示，<code>Provider</code>是网络请求的枢纽，接受<code>TargetType</code>，并通过闭包调用回上层。下面是<code>Provider</code>是<code>init</code>方法</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">init</span>(endpointClosure: @escaping EndpointClosure = MoyaProvider.defaultEndpointMapping,
+            requestClosure: @escaping RequestClosure = MoyaProvider.defaultRequestMapping,
+            stubClosure: @escaping StubClosure = MoyaProvider.neverStub,
+            manager: Manager = MoyaProvider&lt;Target&gt;.defaultAlamofireManager(),
+            plugins: [PluginType] = [],
+            trackInflights: Bool = <span style="color:#66d9ef">false</span>) {
+  <span style="color:#75715e">//...</span>
+}
+
+</code></pre></div><p><code>Provider</code>是网络请求服务的提供者，通过一些初始化配置之后，在外部可以直接使用<code>Provider</code>来发起<code>request</code>。</p>
 <p><a href="https://juejin.cn/post/6844903555841654797">参考资料</a></p>
 <h2 id="request">Request</h2>
 <p>使用<code>Moya</code>进行网络请求时，首先需要进行配置，以生成一个<code>Request</code>。按照官方文档，需要先创建一个枚举类型，并使其遵守<code>TargetType</code>协议，然后实现协议所规定的属性。</p>
@@ -298,7 +309,6 @@ code.has-jax {
 <p><img src="https://i.loli.net/2021/04/13/BUXd62R7bsfo3WS.jpg" alt="-c"></p>
 <p><code>Moya</code>使用<code>Provider，Target，EndPoint</code>来构建网络链，如下图所示</p>
 <p><img src="https://i.loli.net/2021/04/12/6CurRE5T41LJNwZ.jpg" alt="-c"></p>
-<p><img src="https://i.loli.net/2021/04/17/tTicu7UXIVsBrek.jpg" alt=""></p>
 <h1 id="使用">使用</h1>
 <p>使用<code>Moya</code>分为几步，首先需要自定义一个枚举类型。然后遵循<a href="https://www.omegaxyz.com/2018/06/14/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99%E4%B9%8B%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99/">开闭原则</a>，让定义的枚举分类遵循<code>TargetType</code>协议，然后按需实现协议中定义的各种<code>get</code>方法。最后创建<code>MoyaProvider</code>对象发起网络请求。</p>
 <p><a href="https://www.mdeditor.tw/pl/p9x5">参考资料</a></p>
