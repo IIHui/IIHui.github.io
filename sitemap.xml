@@ -95,6 +95,22 @@ let ApiProvider = MoyaProvider&amp;lt;LCYApi&amp;gt;() 发起网络请求 ApiPro
     </entry>
     
      <entry>
+        <title>MDM</title>
+        <url>https://iihui.github.io/post/tool-mdm/</url>
+        <categories>
+          <category>iOS</category>
+        </categories>
+        <tags>
+          <tag>iOS</tag>
+        </tags>
+        <content type="html">  MDM是Moblie Device Management移动设备管理的简称，目的就是让企业能够方便的管理iPhone和Pad等移动设备。当企业大量的使用移动设备办公或涉及到一些安全限制时设备管理的作用就能明显的体现出来，通过MDM，IT人员能够在企业环境下安全地注册设备，无线配置和更新设置，监督公司政策的遵守情况，还能远程擦除或锁定被管理的设备。
+ 发送指令 所以完成一次指令推送经历以下过程：
+1、server 与APNs建立连接，发送数据。 2、当设备收到APNs推送消息时，主动连接server报告本身的状态空闲 3、server收到设备发来的状态信息，发出操作命令 4、设备收到命令执行，并返回数据 5、server响应，此次查询完成，连接关闭。
+参考资料
+</content>
+    </entry>
+    
+     <entry>
         <title>iOS PWA</title>
         <url>https://iihui.github.io/post/ios-pwa/</url>
         <categories>
