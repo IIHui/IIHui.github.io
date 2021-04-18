@@ -113,7 +113,7 @@ let ApiProvider = MoyaProvider&amp;lt;LCYApi&amp;gt;() 发起网络请求 ApiPro
 证书制作 这个证书就是MDM Server和APNs推送消息所需要的证书，当然和APP推送证书完全不同，虽然功能差不多。
 发送指令 所以完成一次指令推送经历以下过程：
 1、server 与APNs建立连接，发送数据。 2、当设备收到APNs推送消息时，主动连接server报告本身的状态空闲 3、server收到设备发来的状态信息，发出操作命令 4、设备收到命令执行，并返回数据 5、server响应，此次查询完成，连接关闭。
-参考资料
+参考资料 苹果官方
 </content>
     </entry>
     
