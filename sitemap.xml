@@ -51,13 +51,13 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 设置文�
         <tags>
           <tag>iOS</tag>
         </tags>
-        <content type="html">  Moya是一个高度抽象的网络库，它的理念是让使用者不必关心网络请求的底层实现细节，只需要关注业务。Moya采用桥接和组合来进行封装，默认桥接了Alamofire。它具有很强的可扩展性，可以轻松地将RxSwift、PromiseKit和ObjectMapper结合起来。
+        <content type="html">  Moya是一个高度抽象的网络库，它的理念是让使用者不必关心网络请求的底层实现细节，只需要关注业务。Moya采用桥接和组合来进行封装，默认桥接了Alamofire。Moya具有很强可扩展性，可以轻松地将RxSwift、PromiseKit和ObjectMapper结合起来。
  模块 Moya使用面向协议编程POP来设计网络抽象层，因此它整体的逻辑结构并没有明显的继承关系。Moya的核心代码，可以分成以下几个模块：
-  Request包含TargetType、Endpoint、Cancellable类型。
-  Provider是网络请求的枢纽，它将TargetType转换为Endpoint，再转换为URLRequest，最后让Alamofire做实质的网络请求。
-  Response回调给上层，支持filter、mapJSON等方法。
-  Alamofire模块通过桥接将Alamofire的细节隐藏在上层，Moya和Alamofire的区别如下：
-  Plguins是插件模块，默认共有4种。
+  Request模块包含TargetType、Endpoint、Cancellable类型。
+  Provider模块是网络请求的枢纽，它将TargetType转换为Endpoint，再转换为URLRequest，最后让Alamofire做实际的网络请求。
+  Response模块将回调给上层，支持filter、mapJSON等方法。
+  Alamofire模块通过桥接的方式将Alamofire的细节隐藏在上层，Moya和Alamofire的区别如下：
+  Plguins是插件模块，默认提供了4种插件。
   Provider Provider是网络请求的枢纽，接受TargetType，并通过闭包调用回上层。下面是Provider的init方法：
 /// Initializes a provider. public init(endpointClosure: @escaping EndpointClosure = MoyaProvider.defaultEndpointMapping, requestClosure: @escaping RequestClosure = MoyaProvider.defaultRequestMapping, stubClosure: @escaping StubClosure = MoyaProvider.neverStub, callbackQueue: DispatchQueue? = nil, manager: Manager = MoyaProvider&amp;lt;Target&amp;gt;.defaultAlamofireManager(), plugins: [PluginType] = [], trackInflights: Bool = false) { self.endpointClosure = endpointClosure self.requestClosure = requestClosure self.stubClosure = stubClosure self.manager = manager self.plugins = plugins self.trackInflights = trackInflights self.callbackQueue = callbackQueue } 在init方法中，endpointClosure将TargetType转换为EndPoint，其中EndPoint是Moya网络请求的一个中间状态。requestClosure把EndPoint转换为URLRequest。Request的生成过程如下图所示：
 stubClosure闭包模拟服务器端假数据用于piling tests。rackInflights表示是否需要跟踪重复的网络请求。

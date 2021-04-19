@@ -22,7 +22,7 @@
       <pubDate>Fri, 16 Apr 2021 10:49:11 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/ios-moya/</guid>
-      <description>Moya是一个高度抽象的网络库，它的理念是让使用者不必关心网络请求的底层实现细节，只需要关注业务。Moya采用桥接和组合来进行封装，默认桥接了Alamofire。它具有很强的可扩展性，可以轻松地将RxSwift、PromiseKit和Obj</description>
+      <description>Moya是一个高度抽象的网络库，它的理念是让使用者不必关心网络请求的底层实现细节，只需要关注业务。Moya采用桥接和组合来进行封装，默认桥接了Alamofire。Moya具有很强可扩展性，可以轻松地将RxSwift、PromiseKit和O</description>
     </item>
     
     <item>

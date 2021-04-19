@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">4352</span>
+<span class="leancloud-visitors-count">4367</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -253,27 +253,27 @@ code.has-jax {
     </header>
     <div class="post-body" itemprop="articleBody">
     <blockquote>
-<p><code>Moya</code>是一个高度抽象的网络库，它的理念是让使用者不必关心网络请求的底层实现细节，只需要关注业务。<code>Moya</code>采用桥接和组合来进行封装，默认桥接了<code>Alamofire</code>。它具有很强的可扩展性，可以轻松地将<code>RxSwift</code>、<code>PromiseKit</code>和<code>ObjectMapper</code>结合起来。</p>
+<p><code>Moya</code>是一个高度抽象的网络库，它的理念是让使用者不必关心网络请求的底层实现细节，只需要关注业务。<code>Moya</code>采用桥接和组合来进行封装，默认桥接了<code>Alamofire</code>。<code>Moya</code>具有很强可扩展性，可以轻松地将<code>RxSwift</code>、<code>PromiseKit</code>和<code>ObjectMapper</code>结合起来。</p>
 </blockquote>
 <h1 id="模块">模块</h1>
 <p><code>Moya</code>使用面向协议编程<code>POP</code>来设计网络抽象层，因此它整体的逻辑结构并没有明显的继承关系。<code>Moya</code>的核心代码，可以分成以下几个模块：</p>
 <p><img src="https://i.loli.net/2020/11/11/pMNPe5OGJm9fYqF.jpg" alt="-c"></p>
 <ul>
 <li>
-<p><code>Request</code>包含<code>TargetType、Endpoint、Cancellable</code>类型。</p>
+<p><code>Request</code>模块包含<code>TargetType、Endpoint、Cancellable</code>类型。</p>
 </li>
 <li>
-<p><code>Provider</code>是网络请求的枢纽，它将<code>TargetType</code>转换为<code>Endpoint</code>，再转换为<code>URLRequest</code>，最后让<code>Alamofire</code>做实质的网络请求。</p>
+<p><code>Provider</code>模块是网络请求的枢纽，它将<code>TargetType</code>转换为<code>Endpoint</code>，再转换为<code>URLRequest</code>，最后让<code>Alamofire</code>做实际的网络请求。</p>
 </li>
 <li>
-<p><code>Response</code>回调给上层，支持<code>filter、mapJSON</code>等方法。</p>
+<p><code>Response</code>模块将回调给上层，支持<code>filter、mapJSON</code>等方法。</p>
 </li>
 <li>
-<p><code>Alamofire</code>模块通过桥接将<code>Alamofire</code>的细节隐藏在上层，<code>Moya</code>和<code>Alamofire</code>的区别如下：</p>
+<p><code>Alamofire</code>模块通过桥接的方式将<code>Alamofire</code>的细节隐藏在上层，<code>Moya</code>和<code>Alamofire</code>的区别如下：</p>
 <p><img src="https://i.loli.net/2021/04/10/Ca9Z6WGqsAm8zLl.jpg" alt="-c600"></p>
 </li>
 <li>
-<p><code>Plguins</code>是插件模块，默认共有<code>4</code>种。</p>
+<p><code>Plguins</code>是插件模块，默认提供了<code>4</code>种插件。</p>
 </li>
 </ul>
 <h2 id="provider">Provider</h2>
