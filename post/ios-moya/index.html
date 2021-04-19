@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">4349</span>
+<span class="leancloud-visitors-count">4348</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -253,7 +253,7 @@ code.has-jax {
     </header>
     <div class="post-body" itemprop="articleBody">
     <blockquote>
-<p><code>Moya</code>是一个高度抽象的网络库，它的理念是让使用者不必关心网络请求的底层实现细节，只需要关注业务。<code>Moya</code>采用桥接和组合来进行封装，默认桥接了<code>Alamofire</code>。<code>Moya</code>具有很强可扩展性，可以轻松地将<code>RxSwift</code>、<code>PromiseKit</code>和<code>ObjectMapper</code>结合起来。</p>
+<p><code>Moya</code>是一个高度抽象的网络库，它的理念是让使用者不必关心网络请求的底层实现细节，只需要关注业务。<code>Moya</code>采用桥接和组合来进行封装，默认桥接了<code>Alamofire</code>。<code>Moya</code>具有很强的扩展性，可以轻松地将<code>RxSwift</code>、<code>PromiseKit</code>和<code>ObjectMapper</code>结合起来。</p>
 </blockquote>
 <h1 id="模块">模块</h1>
 <p><code>Moya</code>使用面向协议编程<code>POP</code>来设计网络抽象层，因此它整体的逻辑结构并没有明显的继承关系。<code>Moya</code>的核心代码，可以分成以下几个模块：</p>
@@ -304,13 +304,13 @@ code.has-jax {
 <p>如上图所示，<code>endpointClosure</code>将<code>TargetType</code>转换为<code>EndPoint</code>。<code>endpointClosure</code>为<code>EndpointClosure</code>类型，其定义如下：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">typealias</span> EndpointClosure = (Target) -&gt; Endpoint&lt;Target&gt;
 </code></pre></div><p>当<code>Provider</code>初始化时，<code>endpointClosure</code>有一个默认的值<code> MoyaProvider.defaultEndpointMapping</code>，其定义如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">func</span> defaultEndpointMapping(<span style="color:#66d9ef">for</span> target: Target) -&gt; Endpoint&lt;Target&gt; {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">func</span> defaultEndpointMapping(<span style="color:#66d9ef">for</span> target: Target) -&gt; Endpoint {
     <span style="color:#66d9ef">return</span> Endpoint(
-        url: url(<span style="color:#66d9ef">for</span>: target).absoluteString,
+        url: URL(target: target).absoluteString,
         sampleResponseClosure: { .networkResponse(<span style="color:#ae81ff">200</span>, target.sampleData) },
         method: target.method,
-        parameters: target.parameters,
-        parameterEncoding: target.parameterEncoding
+        task: target.task,
+        httpHeaderFields: target.headers
     )
 }
 </code></pre></div><p>接着<code>requestClosure</code>将<code>Endpoint</code>转换为<code>URLRequest</code>。<code>requestClosure</code>也有默认值<code>MoyaProvider.defaultRequestMapping</code>，这也是最后一次修改<code>Request</code>的机会，其定义如下：</p>
