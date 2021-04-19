@@ -258,7 +258,7 @@ code.has-jax {
 <h1 id="工作流程">工作流程</h1>
 <p><img src="https://i.loli.net/2021/04/18/152D8AVUNq7ECmW.jpg" alt="-c"></p>
 <p><img src="https://i.loli.net/2021/04/18/PZOlcYSnAwpR3fH.jpg" alt="-c"></p>
-<p>从上图可以看出要实现<code>MDM</code>服务须涉及到，苹果推送服务器<code>APNs</code>、自己或者第三方提供的<code>MDM</code>服务器、受管理的设备。实际中三者之间通过<code>HTTPS</code>相互通信，所以推送和普通<code>APP</code>推送一样必须要有推送证书。没有操作的情况下，除了设备本身和APNs之间保持连接，其他都不在连接状态。各自在系统中的作用如下：</p>
+<p>从上图可以看出要实现<code>MDM</code>服务须涉及到，苹果推送服务器<code>APNs</code>、自己或者第三方提供的<code>MDM</code>服务器、受管理的设备。实际中三者之间通过<code>HTTPS</code>相互通信，所以推送和普通<code>APP</code>推送一样必须要有推送证书。没有操作的情况下，除了设备本身和<code>APNs</code>之间保持连接，其他都不在连接状态。各自在系统中的作用如下：</p>
 <ul>
 <li>
 <p>MDM服务器：对于设备，通过它发送指令对设备进行管理，获取相关信息及操作，回应响应设备操作。对于<code>APNs</code>，向<code>APNs</code>发送一个命令，目的来唤醒设备去主动连接<code>MDM</code>服务器，报告其当前状态是否处于空闲（若设备空闲，<code>MDM</code>服务器会继续下一步操作比如开始发送指令）。</p>
@@ -267,10 +267,10 @@ code.has-jax {
 <p><code>APNs</code>：可看作其他两者之间的信使，主要就是转发<code>MDM</code>服务器指令给设备，意思告诉设备开始去连接服务器啦。</p>
 </li>
 <li>
-<p>设备：首先通过<code>Safari</code>访问服务器安装一个配置描述文件（下文叙述）并登记注册使其成为受管理的设备，当收到<code>APNs</code>指令后，根据已安装的配置文件的<code>url</code>连接<code>MDM</code>服务器并报告其状态，然后接受下一步命令。比如命令DeviceInformation（查询设备信息如ModelName、BatteryLevel、WiFiMAC等），设备收到<code>XML</code>格式的指令后再向服务器传送其相关查询的信息，如果不需要继续发送指令，服务器关闭连接。</p>
+<p>设备：首先通过<code>Safari</code>访问服务器安装一个配置描述文件（下文叙述）并登记注册使其成为受管理的设备，当收到<code>APNs</code>指令后，根据已安装的配置文件的<code>url</code>连接<code>MDM</code>服务器并报告其状态，然后接受下一步命令。比如命令<code>DeviceInformation</code>（查询设备信息如<code>ModelName、BatteryLevel、WiFiMAC</code>等），设备收到<code>XML</code>格式的指令后再向服务器传送其相关查询的信息，如果不需要继续发送指令，服务器关闭连接。</p>
 </li>
 </ul>
-<p>另外设备和<code>MDM</code>服务器之间数据传输都是以<code>XML</code>格式形式，以<code>PUT</code>请求的方式进行的，所以发送指令时，服务器要把指令封装成一个<code>XML</code>的文件同时要实现PUT请求相关操作处理。<code>APNs</code>所发送的仅仅是一个与设备本身相关的标示符，没有其他命令，目的就是唤醒设备去连接<code>MDM</code>服务器。</p>
+<p>另外设备和<code>MDM</code>服务器之间数据传输都是以<code>XML</code>格式形式，以<code>PUT</code>请求的方式进行的，所以发送指令时，服务器要把指令封装成一个<code>XML</code>的文件同时要实现<code>PUT</code>请求相关操作处理。<code>APNs</code>所发送的仅仅是一个与设备本身相关的标示符，没有其他命令，目的就是唤醒设备去连接<code>MDM</code>服务器。</p>
 <h1 id="需要的操作">需要的操作</h1>
 <p>要实现一个完整的<code>MDM</code>服务，需要制作<code>APNs</code>推送证书、设备安装的配置文件、实现<code>https</code>通信、实现<code>MDM</code>相关协议、学习<code>MDM</code>协议相关命令及使用、一个<code>MDM</code>服务器（这里不作主要叙述，因为这些相关的都是有我们后台做的）。</p>
 <h2 id="证书制作">证书制作</h2>
