@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">4348</span>
+<span class="leancloud-visitors-count">4332</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -314,14 +314,19 @@ code.has-jax {
     )
 }
 </code></pre></div><p>接着<code>requestClosure</code>将<code>Endpoint</code>转换为<code>URLRequest</code>。<code>requestClosure</code>也有默认值<code>MoyaProvider.defaultRequestMapping</code>，这也是最后一次修改<code>Request</code>的机会，其定义如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">func</span> defaultRequestMapping(<span style="color:#66d9ef">for</span> endpoint: Endpoint&lt;Target&gt;, closure: RequestResultClosure) {
-    <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> urlRequest = endpoint.urlRequest {<span style="color:#75715e">//When urlReuqest is valid, the closure is executed as success</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">func</span> defaultRequestMapping(<span style="color:#66d9ef">for</span> endpoint: Endpoint, closure: RequestResultClosure) {
+    <span style="color:#66d9ef">do</span> {
+        <span style="color:#66d9ef">let</span> urlRequest = <span style="color:#66d9ef">try</span> endpoint.urlRequest()
         closure(.success(urlRequest))
-    } <span style="color:#66d9ef">else</span> {<span style="color:#75715e">//Invalid, closure executed with faliure</span>
-        closure(.failure(MoyaError.requestMapping(endpoint.url)))
+    } <span style="color:#66d9ef">catch</span> MoyaError.requestMapping(<span style="color:#66d9ef">let</span> url) {
+        closure(.failure(MoyaError.requestMapping(url)))
+    } <span style="color:#66d9ef">catch</span> MoyaError.parameterEncoding(<span style="color:#66d9ef">let</span> error) {
+        closure(.failure(MoyaError.parameterEncoding(error)))
+    } <span style="color:#66d9ef">catch</span> {
+        closure(.failure(MoyaError.underlying(error, <span style="color:#66d9ef">nil</span>)))
     }
 }
-</code></pre></div><p>为什么在<code>TargetType-&gt;Endpoint-&gt;URLRequest</code>映射中使用闭包？这是为了平衡灵活性和易用性。对于大多数<code>API</code>请求来说，使用<code>Moya</code>提供的默认闭包映射就足够了，这样在大多数时候就不用担心这两个闭包的内容了，但有时会有一些额外的要求，比如在所有的<code>API</code>请求中增加一个额外的<code>HTTP Header</code>，此时开发者可以通过闭包来修改。</p>
+</code></pre></div><p>为什么在<code>TargetType-&gt;Endpoint-&gt;URLRequest</code>映射中使用闭包？这是为了平衡灵活性和易用性。对于大多数<code>API</code>请求，使用<code>Moya</code>提供的默认闭包映射就足够了，这样在大多数时候就不用担心这两个闭包的内容了，但有时会有一些额外的要求，比如在所有的<code>API</code>请求中增加一个额外的<code>HTTP Header</code>：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">let</span> endpointClosure = { (target: MyTarget) -&gt; Endpoint&lt;MyTarget&gt; <span style="color:#66d9ef">in</span>
     <span style="color:#66d9ef">let</span> defaultEndpoint = MoyaProvider.defaultEndpointMapping(<span style="color:#66d9ef">for</span>: target)
     <span style="color:#66d9ef">return</span> defaultEndpoint.adding(newHTTPHeaderFields: [<span style="color:#e6db74">&#34;APP_NAME&#34;</span>: <span style="color:#e6db74">&#34;MY_AWESOME_APP&#34;</span>])
@@ -335,7 +340,7 @@ code.has-jax {
 <p>有很多<code>URLRequest</code>的属性，其中大部分是不常见的，比如<code>allowCellularAccess</code>，不必在<code>Moya</code>层封装。</p>
 </li>
 </ul>
-<p><code>Endpoint</code>到<code>URLRequest</code>的映射是通过闭包回调来完成的，这意味着可以异步回调。为什么要引入<code>Endpoint</code>而不是直接映射到<code>URLRequest</code>呢？就是说，两步的闭包映射变成了一步的映射。这是为了确保<code>TargetType</code>保持不变（属性都是只读），同时提供了一个对外友好的<code>API</code>。通过<code>Endpoint</code>可以很容易的添加新的参数，<code>HttpHeader....</code>。</p>
+<p>从<code>Endpoint</code>到<code>URLRequest</code>的映射是通过闭包回调来完成的，这意味着可以异步回调。为什么要引入<code>Endpoint</code>而不是直接映射到<code>URLRequest</code>呢？就是说，两步的闭包映射变成了一步的映射。这是为了确保<code>TargetType</code>保持不变（属性都是只读），同时提供了一个对外友好的<code>API</code>。通过<code>Endpoint</code>可以很容易的添加新的参数，<code>HttpHeader....</code>。</p>
 <h2 id="stub">Stub</h2>
 <p>在<code>Provider</code>的初始化函数中，有一个<code>StubClosure</code>参数，<code>stub</code>是一个与测试相关的概念，它允许你返回一些虚假数据。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">init</span>(endpointClosure: @escaping EndpointClosure = MoyaProvider.defaultEndpointMapping,
