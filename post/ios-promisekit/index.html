@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">3713</span>
+<span class="leancloud-visitors-count">3714</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -496,7 +496,7 @@ code.has-jax {
 }
 </code></pre></div><p><a href="https://juejin.cn/post/6844903741112451080">参考自</a></p>
 <h1 id="when">when</h1>
-<p>多个异步操作需要同步的时候，经常会使用<code>group.enter()</code>和<code>group.leave()</code>。在<code>PromoiseKit</code>中使用<code>when</code>来进行多个异步同步，它提供了并行执行异步方法的能力，并且只在<font color=red>所有异步操作都执行完之后才会执行回调</font>。和其他的 <code>promise</code>链一样，<code>when</code>方法中任一异步操作发生错误，都会进入到下一个<code>catch</code>方法中。</p>
+<p>多个异步操作需要同步的时候，经常会使用<code>group.enter()</code>和<code>group.leave()</code>。在<code>PromoiseKit</code>中使用<code>when</code>来进行多个异步的同步，它提供了并行执行异步方法的能力，并且只在<font color=red>所有异步操作都执行完之后才会执行回调</font>。和其他的 <code>promise</code>链一样，<code>when</code>方法中任一异步操作发生错误，都会进入到下一个<code>catch</code>方法中。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">// 并行操作</span>
 <span style="color:#66d9ef">var</span> result1: ...<span style="color:#f92672">!</span>
 <span style="color:#66d9ef">var</span> result2: ...<span style="color:#f92672">!</span>
