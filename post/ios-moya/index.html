@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">4332</span>
+<span class="leancloud-visitors-count">4319</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -273,7 +273,7 @@ code.has-jax {
 <p><img src="https://i.loli.net/2021/04/10/Ca9Z6WGqsAm8zLl.jpg" alt="-c600"></p>
 </li>
 <li>
-<p><code>Plguins</code>是插件模块，默认提供了<code>4</code>种插件。</p>
+<p><code>Plguins</code>为插件模块，默认提供了<code>4</code>种插件。</p>
 </li>
 </ul>
 <h2 id="provider">Provider</h2>
@@ -299,7 +299,7 @@ code.has-jax {
 <p>其中<code>stubClosure</code>闭包模拟服务器端假数据用于<code>piling tests</code>。而<code>rackInflights</code>表示是否需要跟踪重复的网络请求。</p>
 <h2 id="request">Request</h2>
 <p>使用<code>Moya</code>进行网络请求时，首先需要进行配置，以生成一个<code>Request</code>。按照官方文档，需要先创建一个枚举类型，并使其遵守<code>TargetType</code>协议，然后实现协议所规定的属性。</p>
-<p>为什么要创建枚举来遵守协议，而不像<code>OC</code>那样创建类来遵守协议呢？实际上使用类或者结构体也是可行的。猜测使用枚举的原因是<code>Swift</code>的枚举功能比<code>OC</code>强大许多，使用枚举结合<code>switch</code>语句，使得<code>API</code>管理起来比较方便。</p>
+<p>为什么要创建枚举来遵守协议，而不是创建类来遵守协议呢？实际上使用类或者结构体也是可行的。使用枚举的原因是<code>Swift</code>的枚举功能比较强大，结合<code>switch</code>语句，使得<code>API</code>管理起来非常方便。</p>
 <p><img src="https://i.loli.net/2021/04/13/BUXd62R7bsfo3WS.jpg" alt="-c"></p>
 <p>如上图所示，<code>endpointClosure</code>将<code>TargetType</code>转换为<code>EndPoint</code>。<code>endpointClosure</code>为<code>EndpointClosure</code>类型，其定义如下：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">typealias</span> EndpointClosure = (Target) -&gt; Endpoint&lt;Target&gt;
