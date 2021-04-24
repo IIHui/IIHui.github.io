@@ -654,7 +654,7 @@ print(4 as Double) // print 4.0 print(4 as! Double) // crash  </content>
     </entry>
     
      <entry>
-        <title>Kotlin 基础</title>
+        <title>Kotlin基础</title>
         <url>https://iihui.github.io/post/kotlin-base/</url>
         <categories>
           <category>kotlin</category>
