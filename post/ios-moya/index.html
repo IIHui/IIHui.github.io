@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">4560</span>
+<span class="leancloud-visitors-count">4626</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -402,7 +402,7 @@ code.has-jax {
 </ul>
 <p>为什么要引入<code>Endpoint</code>而不是直接映射到<code>URLRequest</code>呢？就是说，两步的闭包映射变成了一步的映射。这是为了确保：<code>TargetType</code>保持不变（属性都是只读），同时提供了一个对外友好的<code>API</code>。通过<code>Endpoint</code>可以很容易添加新的参数、<code>HttpHeader</code>等。</p>
 <h2 id="stub">Stub</h2>
-<p><code>Stub</code>是一个与测试有关的概念，允许你返回一些假数据。在<code>Provider</code>的初始化函数中，有一个<code>StubClosure</code>参数：</p>
+<p><code>Stub</code>是一个与测试有关的概念，允许你返回一些假数据。在<code>Provider</code>的初始化函数中，有一个<code>stubClosure</code>参数，默认值为<code>MoyaProvider.neverStub</code>：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"> <span style="color:#75715e">/// Initializes a provider.</span>
 <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">init</span>(endpointClosure: @escaping EndpointClosure = MoyaProvider.defaultEndpointMapping,
             requestClosure: @escaping RequestClosure = MoyaProvider.defaultRequestMapping,
@@ -419,13 +419,17 @@ code.has-jax {
     <span style="color:#66d9ef">self</span>.trackInflights = trackInflights
     <span style="color:#66d9ef">self</span>.callbackQueue = callbackQueue
 }
-</code></pre></div><p>而<code>Moya</code>的<code>stub</code>原理很简单：如果<code>Provider</code>初始化时确定了需要使用<code>Stub</code>，它就会返回<code>Endpoint</code>中的虚假数据；否则，它就会进行实际的网络请求。<code>Moya</code>通过<code>StubClosure</code>闭包来确定<code>stub</code>的模式：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">typealias</span> StubClosure = (Target) -&gt; Moya.StubBehavior
-</code></pre></div><p>如上<code>StubClosure</code>返回<code>Moya.StubBehavior</code>，它有三种模式，其中<code>never</code>表示不使用<code>Stub</code>，其它两种表示需要返回假数据，其定义如下：</p>
+</code></pre></div><p>而<code>Moya</code>的<code>stub</code>原理很简单：如果<code>Provider</code>初始化时确定了需要使用<code>Stub</code>，它就会返回<code>Endpoint</code>中的假数据。否则，<code>Moya</code>就会进行实际的网络请求。<code>Moya</code>通过<code>StubClosure</code>闭包来确定<code>stub</code>的模式：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">/// Closure that decides if/how a request should be stubbed.</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">typealias</span> StubClosure = (Target) -&gt; Moya.StubBehavior
+</code></pre></div><p>如上定义<code>StubClosure</code>返回<code>Moya.StubBehavior</code>，它有三种模式，其中<code>never</code>表示不使用<code>Stub</code>，其它两种表示需要返回假数据。<code>Moya.StubBehavior</code>的定义如下：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">StubBehavior</span> {
-    <span style="color:#66d9ef">case</span> never <span style="color:#75715e">//No Stub</span>
-    <span style="color:#66d9ef">case</span> immediate <span style="color:#75715e">//Return data immediately</span>
-    <span style="color:#66d9ef">case</span> delayed(seconds: TimeInterval)<span style="color:#75715e">//Delayed return of data</span>
+    <span style="color:#75715e">/// Do not stub.</span>
+    <span style="color:#66d9ef">case</span> never
+    <span style="color:#75715e">/// Return a response immediately.</span>
+    <span style="color:#66d9ef">case</span> immediate
+    <span style="color:#75715e">/// Return a response after a delay.</span>
+    <span style="color:#66d9ef">case</span> delayed(seconds: TimeInterval)
 }
 </code></pre></div><p>如果有数据返回，则返回<code>EndPoint</code>中定义的假数据，并会关闭请求：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">switch</span> endpoint.sampleResponseClosure() {
