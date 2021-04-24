@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">4812</span>
+<span class="leancloud-visitors-count">4813</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -459,7 +459,7 @@ code.has-jax {
     )
 }
 </code></pre></div><p><code>Moya</code>中使用简单粗暴的<code>stub</code>，但效果很好。但如果不想使用<code>Moya</code>，也想返回假数据，这时需要<code>URLProtocol</code>，采用<code>URLProtocol</code>时，网络请求可以被拦截，从而将网络请求重定向到假数据。</p>
-<p>由<code>NSURLConnection</code>发起的请求可以直接拦截。在拦截<code>NSURLSession</code>的时候稍微优点复杂。因为<code>URLSession</code>支持通过<code>URLSessionConfiguration</code>属性进行拦截。通常的做法是<code>hook</code>住<code>URLSession</code>的初始化方法<code>init(configuration: URLSessionConfiguration, delegate: URLSessionDelegate?， delegateQueue: OperationQueue?)</code>，然后用<code>URLSessionConfiguration</code>注册所需的拦截协议。</p>
+<p>因为<code>NSURLConnection</code>发起的请求也可以直接拦截。拦截<code>NSURLSession</code>的时候稍微复杂一点。因为<code>URLSession</code>的拦截规则通过<code>URLSessionConfiguration</code>属性确定。通常的做法是<code>hook</code>住<code>URLSession</code>的初始化方法<code>init(configuration: URLSessionConfiguration, delegate: URLSessionDelegate?， delegateQueue: OperationQueue?)</code>，再用<code>URLSessionConfiguration</code>注册所需的拦截协议。</p>
 <h2 id="plugin">Plugin</h2>
 <p><code>Moya</code>提供了一种插件机制，可以在网络请求的关键节点插入代码。可以插入的时机如下图所示：</p>
 <p><img src="https://i.loli.net/2021/04/17/tTicu7UXIVsBrek.jpg" alt=""></p>
