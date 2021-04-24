@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">4626</span>
+<span class="leancloud-visitors-count">4812</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -431,14 +431,25 @@ code.has-jax {
     <span style="color:#75715e">/// Return a response after a delay.</span>
     <span style="color:#66d9ef">case</span> delayed(seconds: TimeInterval)
 }
-</code></pre></div><p>如果有数据返回，则返回<code>EndPoint</code>中定义的假数据，并会关闭请求：</p>
+</code></pre></div><p>如果使用<code>Stub</code>并且模式选择<code>StubBehavior.immediate</code>或<code>StubBehavior.delayed(seconds: TimeInterval)</code>，则返回返回<code>EndPoint</code>中定义的假数据，并关闭请求：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">switch</span> endpoint.sampleResponseClosure() {
-    <span style="color:#66d9ef">case</span> .networkResponse(<span style="color:#66d9ef">let</span> statusCode, <span style="color:#66d9ef">let</span> data):
-        <span style="color:#66d9ef">let</span> response = Moya.Response(statusCode: statusCode, data: data, request: request, response: <span style="color:#66d9ef">nil</span>)
-        completion(.success(response))
-        <span style="color:#75715e">//...</span>
+<span style="color:#66d9ef">case</span> .networkResponse(<span style="color:#66d9ef">let</span> statusCode, <span style="color:#66d9ef">let</span> data):
+    <span style="color:#66d9ef">let</span> response = Moya.Response(statusCode: statusCode, data: data, request: request, response: <span style="color:#66d9ef">nil</span>)
+    <span style="color:#66d9ef">let</span> result = validate(response)
+    plugins.forEach { $0.didReceive(result, target: target) }
+    completion(result)
+<span style="color:#66d9ef">case</span> .response(<span style="color:#66d9ef">let</span> customResponse, <span style="color:#66d9ef">let</span> data):
+    <span style="color:#66d9ef">let</span> response = Moya.Response(statusCode: customResponse.statusCode, data: data, request: request, response: customResponse)
+    <span style="color:#66d9ef">let</span> result = validate(response)
+    plugins.forEach { $0.didReceive(result, target: target) }
+    completion(result)
+<span style="color:#66d9ef">case</span> .networkError(<span style="color:#66d9ef">let</span> error):
+    <span style="color:#66d9ef">let</span> error = MoyaError.underlying(error, <span style="color:#66d9ef">nil</span>)
+    plugins.forEach { $0.didReceive(.failure(error), target: target) }
+    completion(.failure(error))
 }
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">func</span> defaultEndpointMapping(<span style="color:#66d9ef">for</span> target: Target) -&gt; Endpoint {
+</code></pre></div><p>而在默认的<code>Endpoint</code>即<code>defaultEndpointMapping</code>中<code>sampleResponseClosure</code>的值如下所示：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">func</span> defaultEndpointMapping(<span style="color:#66d9ef">for</span> target: Target) -&gt; Endpoint {
     <span style="color:#66d9ef">return</span> Endpoint(
         url: URL(target: target).absoluteString,
         sampleResponseClosure: { .networkResponse(<span style="color:#ae81ff">200</span>, target.sampleData) },
@@ -447,7 +458,7 @@ code.has-jax {
         httpHeaderFields: target.headers
     )
 }
-</code></pre></div><p><code>Moya</code>中使用简单粗暴的<code>stub</code>，但效果很好。如果不想使用<code>Moya</code>，但想返回虚假数据，这时需要使用<code>URLProtocol</code>，采用<code>URLProtocol</code>时，网络请求可以被拦截，可以将网络请求重定向到虚假数据。</p>
+</code></pre></div><p><code>Moya</code>中使用简单粗暴的<code>stub</code>，但效果很好。但如果不想使用<code>Moya</code>，也想返回假数据，这时需要<code>URLProtocol</code>，采用<code>URLProtocol</code>时，网络请求可以被拦截，从而将网络请求重定向到假数据。</p>
 <p>由<code>NSURLConnection</code>发起的请求可以直接拦截。在拦截<code>NSURLSession</code>的时候稍微优点复杂。因为<code>URLSession</code>支持通过<code>URLSessionConfiguration</code>属性进行拦截。通常的做法是<code>hook</code>住<code>URLSession</code>的初始化方法<code>init(configuration: URLSessionConfiguration, delegate: URLSessionDelegate?， delegateQueue: OperationQueue?)</code>，然后用<code>URLSessionConfiguration</code>注册所需的拦截协议。</p>
 <h2 id="plugin">Plugin</h2>
 <p><code>Moya</code>提供了一种插件机制，可以在网络请求的关键节点插入代码。可以插入的时机如下图所示：</p>
