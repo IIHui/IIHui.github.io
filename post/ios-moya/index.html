@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">4813</span>
+<span class="leancloud-visitors-count">4909</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -463,15 +463,23 @@ code.has-jax {
 <h2 id="plugin">Plugin</h2>
 <p><code>Moya</code>提供了一种插件机制，可以在网络请求的关键节点插入代码。可以插入的时机如下图所示：</p>
 <p><img src="https://i.loli.net/2021/04/17/tTicu7UXIVsBrek.jpg" alt=""></p>
-<p><code>Moya</code>共提供了<code>4</code>种插件：</p>
+<p>但要注意的是插件不是类型化的，所以不要在插件中尝试进行<code>JSON</code>解析，并将其传递给上层。<code>Moya</code>共提供了<code>4</code>种插件：</p>
 <ul>
-<li>AccessTokenPlugin</li>
-<li>CredentialsPlugin</li>
-<li>NetworkActivityPlugin</li>
-<li>NetworkLoggerPlugin</li>
+<li>
+<p>AccessTokenPlugin</p>
+</li>
+<li>
+<p>CredentialsPlugin</p>
+</li>
+<li>
+<p>NetworkActivityPlugin</p>
+</li>
+<li>
+<p>NetworkLoggerPlugin</p>
+</li>
 </ul>
 <h2 id="response">Response</h2>
-<p><code>Moya</code>并没有具体处理<code>Response</code>，只是将<code>Alamofire</code>返回的数据封装成<code>Moya.Response</code>。然后调用<code>convertResponseToResult</code>进一步封装成<code>Result&lt;Moya.Response，MoyaError&gt;</code>，并返回给上层：</p>
+<p><code>Moya</code>并没有具体处理<code>Response</code>，只是将<code>Alamofire</code>层返回的数据封装成<code>Moya.Response</code>。然后调用<code>convertResponseToResult</code>进一步封装成<code>Result&lt;Moya.Response, MoyaError&gt;</code>，并返回给上层：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">/// A public function responsible for converting the result of a `URLRequest` to a Result&lt;Moya.Response, MoyaError&gt;.</span>
 <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">convertResponseToResult</span>(<span style="color:#66d9ef">_</span> response: HTTPURLResponse?, request: URLRequest?, data: Data?, error: Swift.Error?) -&gt;
     Result&lt;Moya.Response, MoyaError&gt; {
@@ -491,8 +499,12 @@ code.has-jax {
             <span style="color:#66d9ef">return</span> .failure(error)
         }
 }
-</code></pre></div><p>如果想进一步将<code>Response</code>转换为<code>JSON</code>，可以使用<code>mapJSON</code>，其定义如下所示：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">mapJSON</span>(failsOnEmptyData: Bool = <span style="color:#66d9ef">true</span>) <span style="color:#66d9ef">throws</span> -&gt; Any {
+</code></pre></div><p>如果想进一步将<code>Moya.Response</code>转换为<code>JSON</code>对象，可以使用<code>Moya.Response</code>扩展中定义的<code>mapJSON</code>的方法：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">/// Maps data received from the signal into a JSON object.</span>
+<span style="color:#75715e">///</span>
+<span style="color:#75715e">/// - parameter failsOnEmptyData: A Boolean value determining</span>
+<span style="color:#75715e">/// whether the mapping should fail if the data is empty.</span>
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">mapJSON</span>(failsOnEmptyData: Bool = <span style="color:#66d9ef">true</span>) <span style="color:#66d9ef">throws</span> -&gt; Any {
     <span style="color:#66d9ef">do</span> {
         <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">try</span> JSONSerialization.jsonObject(with: data, options: .allowFragments)
     } <span style="color:#66d9ef">catch</span> {
