@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">4332</span>
+<span class="leancloud-visitors-count">4556</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">9 分钟</span>
+<span class="leancloud-visitors-count">10 分钟</span>
 </span>
       </div>
     </header>
@@ -334,6 +334,59 @@ code.has-jax {
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">let</span> endpointClosure = { (target: MyTarget) -&gt; Endpoint&lt;MyTarget&gt; <span style="color:#66d9ef">in</span>
     <span style="color:#66d9ef">let</span> defaultEndpoint = MoyaProvider.defaultEndpointMapping(<span style="color:#66d9ef">for</span>: target)
     <span style="color:#66d9ef">return</span> defaultEndpoint.adding(newHTTPHeaderFields: [<span style="color:#e6db74">&#34;APP_NAME&#34;</span>: <span style="color:#e6db74">&#34;MY_AWESOME_APP&#34;</span>])
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">open <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Endpoint</span> {
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">typealias</span> SampleResponseClosure = () -&gt; EndpointSampleResponse
+
+    <span style="color:#75715e">/// A string representation of the URL for the request.</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">let</span> url: String
+
+    <span style="color:#75715e">/// A closure responsible for returning an `EndpointSampleResponse`.</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">let</span> sampleResponseClosure: SampleResponseClosure
+
+    <span style="color:#75715e">/// The HTTP method for the request.</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">let</span> method: Moya.Method
+
+    <span style="color:#75715e">/// The `Task` for the request.</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">let</span> task: Task
+
+    <span style="color:#75715e">/// The HTTP header fields for the request.</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">let</span> httpHeaderFields: [String: String]?
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">init</span>(url: String,
+                sampleResponseClosure: @escaping SampleResponseClosure,
+                method: Moya.Method,
+                task: Task,
+                httpHeaderFields: [String: String]?) {
+
+        <span style="color:#66d9ef">self</span>.url = url
+        <span style="color:#66d9ef">self</span>.sampleResponseClosure = sampleResponseClosure
+        <span style="color:#66d9ef">self</span>.method = method
+        <span style="color:#66d9ef">self</span>.task = task
+        <span style="color:#66d9ef">self</span>.httpHeaderFields = httpHeaderFields
+    }
+
+    <span style="color:#75715e">/// Convenience method for creating a new `Endpoint` with the same properties as the receiver, but with added HTTP header fields.</span>
+    open <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">adding</span>(newHTTPHeaderFields: [String: String]) -&gt; Endpoint {
+        <span style="color:#66d9ef">return</span> Endpoint(url: url, sampleResponseClosure: sampleResponseClosure, method: method, task: task, httpHeaderFields: add(httpHeaderFields: newHTTPHeaderFields))
+    }
+
+    <span style="color:#75715e">/// Convenience method for creating a new `Endpoint` with the same properties as the receiver, but with replaced `task` parameter.</span>
+    open <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">replacing</span>(task: Task) -&gt; Endpoint {
+        <span style="color:#66d9ef">return</span> Endpoint(url: url, sampleResponseClosure: sampleResponseClosure, method: method, task: task, httpHeaderFields: httpHeaderFields)
+    }
+
+    fileprivate <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">add</span>(httpHeaderFields headers: [String: String]?) -&gt; [String: String]? {
+        <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> unwrappedHeaders = headers, unwrappedHeaders.isEmpty == <span style="color:#66d9ef">false</span> <span style="color:#66d9ef">else</span> {
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">self</span>.httpHeaderFields
+        }
+
+        <span style="color:#66d9ef">var</span> newHTTPHeaderFields = <span style="color:#66d9ef">self</span>.httpHeaderFields ?? [:]
+        unwrappedHeaders.forEach { key, value <span style="color:#66d9ef">in</span>
+            newHTTPHeaderFields[key] = value
+        }
+        <span style="color:#66d9ef">return</span> newHTTPHeaderFields
+    }
 }
 </code></pre></div><p>为什么要引入<code>requestClosure</code>来对外暴露底层<code>URLRequest</code>呢？认为有以下几个原因：</p>
 <ul>
