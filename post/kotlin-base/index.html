@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1945</span>
+<span class="leancloud-visitors-count">1944</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -318,9 +318,9 @@ println(test)
 }
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#66d9ef">val</span> count = <span style="color:#ae81ff">43</span>
 <span style="color:#66d9ef">var</span> str1 = <span style="color:#66d9ef">when</span> (count) {
-    <span style="color:#ae81ff">42</span> <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;chen&#34;</span>
-    <span style="color:#ae81ff">56</span> <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;cchen&#34;</span>
-    <span style="color:#66d9ef">else</span> <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;test&#34;</span>
+    <span style="color:#ae81ff">42</span> <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;42&#34;</span>
+    <span style="color:#ae81ff">56</span> <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;56&#34;</span>
+    <span style="color:#66d9ef">else</span> <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;else&#34;</span>
 }
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">getValue</span>(colorEnum: ColorEnum) = 
     <span style="color:#66d9ef">when</span>(colorEnum){
@@ -329,17 +329,17 @@ println(test)
         ColorEnum.GREEN <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">3</span>;
     }
 </code></pre></div><h3 id="不传参数">不传参数</h3>
-<p>可以不在<code>when</code>语句中传入参数。这种用法是将判断的表达式完整地写在<code>when</code>的结构体中，对于其他的一些情况很有用，如下所示：</p>
+<p>可以不在<code>when</code>语句中传入参数。这种用法是将判断的表达式完整地写在<code>when</code>结构体中，对于其他的一些情况很有用，如下所示：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">getScore1</span>(name: String) = <span style="color:#66d9ef">when</span> {
-    name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;Tom&#34;</span> <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">86</span>
-    name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;Jim&#34;</span> <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">77</span>
-    name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;Jack&#34;</span> <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">90</span>
-    <span style="color:#66d9ef">else</span> <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">0</span>
+    name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;A&#34;</span> <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">1</span>
+    name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;B&#34;</span> <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">2</span>
+    name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;C&#34;</span> <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">3</span>
+    <span style="color:#66d9ef">else</span> <span style="color:#f92672">-&gt;</span> -<span style="color:#ae81ff">1</span>
 }
 
 <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">getScore2</span>(name: String) = <span style="color:#66d9ef">when</span> {
     name.startsWith(<span style="color:#e6db74">&#34;test&#34;</span>) <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">89</span>
-    name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;Jack&#34;</span> <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">90</span>
+    name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;M&#34;</span> <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">90</span>
     <span style="color:#66d9ef">else</span> <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">4589</span>
 }
 </code></pre></div><h1 id="循环语句">循环语句</h1>
