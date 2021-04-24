@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">5376</span>
+<span class="leancloud-visitors-count">5436</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -478,6 +478,7 @@ code.has-jax {
 <p>NetworkLoggerPlugin</p>
 </li>
 </ul>
+<p>通过将插件的接口暴露给每个节点，<code>Moya</code>的插件功能不需要与核心代码耦合，但也给了外面足够的灵活性来插入任何你想要的代码。</p>
 <h2 id="response">Response</h2>
 <p><code>Moya</code>并没有具体处理<code>Response</code>，只是将<code>Alamofire</code>层返回的数据封装成<code>Moya.Response</code>。然后调用<code>convertResponseToResult</code>进一步封装成<code>Result&lt;Moya.Response, MoyaError&gt;</code>，并返回给上层：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">/// A public function responsible for converting the result of a `URLRequest` to a Result&lt;Moya.Response, MoyaError&gt;.</span>
