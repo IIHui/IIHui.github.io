@@ -303,7 +303,7 @@ code.has-jax {
 <p><img src="https://i.loli.net/2021/04/13/BUXd62R7bsfo3WS.jpg" alt="-c"></p>
 <p>如上图所示，<code>endpointClosure</code>将<code>TargetType</code>转换为<code>EndPoint</code>。<code>endpointClosure</code>为<code>EndpointClosure</code>类型，其定义如下：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">typealias</span> EndpointClosure = (Target) -&gt; Endpoint&lt;Target&gt;
-</code></pre></div><p>当<code>Provider</code>初始化时，<code>endpointClosure</code>有一个默认的值<code> MoyaProvider.defaultEndpointMapping</code>，其定义如下：</p>
+</code></pre></div><p>当<code>Provider</code>初始化时，<code>endpointClosure</code>有一个默认的值<code>MoyaProvider.defaultEndpointMapping</code>，其定义如下：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">func</span> defaultEndpointMapping(<span style="color:#66d9ef">for</span> target: Target) -&gt; Endpoint {
     <span style="color:#66d9ef">return</span> Endpoint(
         url: URL(target: target).absoluteString,
