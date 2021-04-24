@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">4556</span>
+<span class="leancloud-visitors-count">4558</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -388,16 +388,19 @@ code.has-jax {
         <span style="color:#66d9ef">return</span> newHTTPHeaderFields
     }
 }
-</code></pre></div><p>为什么要引入<code>requestClosure</code>来对外暴露底层<code>URLRequest</code>呢？认为有以下几个原因：</p>
+</code></pre></div><p>为什么要引入<code>RequestResultClosure</code>来对外暴露底层<code>URLRequest</code>呢？猜测有以下几个原因：</p>
 <ul>
 <li>
-<p>有些信息，比如<code>cookies</code>，在<code>URLRequest</code>创建之前是不知道的。</p>
+<p>有些信息，比如<code>cookies</code>，在<code>URLRequest</code>创建之前是不知道的</p>
 </li>
 <li>
 <p>有很多<code>URLRequest</code>的属性，其中大部分是不常见的，比如<code>allowCellularAccess</code>，不必在<code>Moya</code>层封装。</p>
 </li>
+<li>
+<p>从<code>Endpoint</code>到<code>URLRequest</code>的映射是通过闭包回调来完成的，这意味着可以异步回调。</p>
+</li>
 </ul>
-<p>从<code>Endpoint</code>到<code>URLRequest</code>的映射是通过闭包回调来完成的，这意味着可以异步回调。为什么要引入<code>Endpoint</code>而不是直接映射到<code>URLRequest</code>呢？就是说，两步的闭包映射变成了一步的映射。这是为了确保<code>TargetType</code>保持不变（属性都是只读），同时提供了一个对外友好的<code>API</code>。通过<code>Endpoint</code>可以很容易的添加新的参数，<code>HttpHeader....</code>。</p>
+<p>为什么要引入<code>Endpoint</code>而不是直接映射到<code>URLRequest</code>呢？就是说，两步的闭包映射变成了一步的映射。这是为了确保：<code>TargetType</code>保持不变（属性都是只读），同时提供了一个对外友好的<code>API</code>。通过<code>Endpoint</code>可以很容易添加新的参数、<code>HttpHeader</code>等。</p>
 <h2 id="stub">Stub</h2>
 <p>在<code>Provider</code>的初始化函数中，有一个<code>StubClosure</code>参数，<code>stub</code>是一个与测试相关的概念，它允许你返回一些虚假数据。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">init</span>(endpointClosure: @escaping EndpointClosure = MoyaProvider.defaultEndpointMapping,
