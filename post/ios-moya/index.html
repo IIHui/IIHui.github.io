@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">4909</span>
+<span class="leancloud-visitors-count">5008</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -515,8 +515,23 @@ code.has-jax {
     }
 }
 </code></pre></div><p>到这里，<code>Moya</code>所做的事情就很清楚了：它提供了一个面向协议的接口，用于编写网络请求；它提供了一个灵活的闭合接口，用于定制请求；它提供了插件，用于客户端介入每个节点的网络请求；它将原始请求数据返回给上层。</p>
-<h2 id="取消">取消</h2>
-<p><code>API</code>请求应该是可取消的。也就是说，在一个<code>API</code>请求被提出后，客户端应该能够有一个数据结构，可以取消该请求。<code>Moya</code>将协议<code>Cancellable</code>返回给客户端。</p>
+<h2 id="cancel">Cancel</h2>
+<p><code>API</code>请求应该是可取消的，即在一个<code>API</code>请求发出去后，客户端应该能够取消刚发出的请求。<code>Moya</code>发出请求后将<code>Cancellable</code>协议类型返回：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">/// Designated request-making method. Returns a `Cancellable` token to cancel the request later.</span>
+    @discardableResult
+    open <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">request</span>(<span style="color:#66d9ef">_</span> target: Target,
+                      callbackQueue: DispatchQueue? = .<span style="color:#66d9ef">none</span>,
+                      progress: ProgressBlock? = .<span style="color:#66d9ef">none</span>,
+                      completion: @escaping Completion) -&gt; Cancellable {
+
+        <span style="color:#66d9ef">let</span> callbackQueue = callbackQueue ?? <span style="color:#66d9ef">self</span>.callbackQueue
+        <span style="color:#66d9ef">return</span> requestNormal(target, callbackQueue: callbackQueue, progress: progress, completion: completion)
+    }
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">requestNormal</span>(<span style="color:#66d9ef">_</span> target: Target, callbackQueue: DispatchQueue?, progress: Moya.ProgressBlock?, completion: @escaping Moya.Completion) -&gt; Cancellable {
+   ...
+}
+</code></pre></div><p>从<code>Cancellable</code>的定义可以看出符合<code>the Minimum Knowledge Principle</code>原则，客户端不知道请求的是什么，唯一能做的就是取消请求：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">Cancellable</span> {
 
     <span style="color:#75715e">/// A Boolean value stating whether a request is cancelled.</span>
@@ -525,7 +540,7 @@ code.has-jax {
     <span style="color:#75715e">/// Cancels the represented request.</span>
     <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">cancel</span>()
 }
-</code></pre></div><p>这符合<code>the Minimum Knowledge Principle</code>原则，客户端不知道请求的是什么，唯一能做的就是取消请求。在内部实现中，引入了一个<code>CancellableWrapper</code>来包装实际的<code>Cancel</code>动作，它返回的是实际实现协议的类型。</p>
+</code></pre></div><p>在内部实现中，使用<code>CancellableWrapper</code>类包装实际的<code>Cancel</code>动作，它返回的是实际实现协议的类型。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CancellableWrapper</span>: Cancellable {
     <span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">var</span> innerCancellable: Cancellable = SimpleCancellable()
 
@@ -541,8 +556,11 @@ code.has-jax {
         isCancelled = <span style="color:#66d9ef">true</span>
     }
 }
-</code></pre></div><p>为什么需要<code>CancellableWrapper</code>来包装，因为对于没有实际发送的请求(参数错误)，取消动作是简单的<code>SimpleCancellable</code>。而对于实际的请求，<code>cancel</code>会取消实际的网络请求。在取消网络请求的时候需要使用信号量，以防止两个线程同时取消网络请求：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CancellableToken</span>: Cancellable, CustomDebugStringConvertible {
+</code></pre></div><p>为什么需要<code>CancellableWrapper</code>来进行一层包装？因为对于没有实际发送的请求，取消动作是简单的<code>SimpleCancellable</code>。而对于实际的请求，<code>cancel</code>取消的是实际的网络请求：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">cancellableToken.innerCancellable = <span style="color:#66d9ef">self</span>.performRequest(target, request: preparedRequest, callbackQueue: callbackQueue, progress: progress, completion: networkCompletion, endpoint: endpoint, stubBehavior: stubBehavior)
+</code></pre></div><p>在取消网络请求的时候需要使用信号量，以防止两个线程同时取消网络请求，造成混乱：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">/// Internal token that can be used to cancel requests</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CancellableToken</span>: Cancellable, CustomDebugStringConvertible {
     <span style="color:#66d9ef">let</span> cancelAction: () -&gt; Void
     <span style="color:#66d9ef">let</span> request: Request?
 
@@ -838,7 +856,7 @@ code.has-jax {
         <li><a href="#stub">Stub</a></li>
         <li><a href="#plugin">Plugin</a></li>
         <li><a href="#response">Response</a></li>
-        <li><a href="#取消">取消</a></li>
+        <li><a href="#cancel">Cancel</a></li>
       </ul>
     </li>
     <li><a href="#使用">使用</a>
