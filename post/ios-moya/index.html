@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">4319</span>
+<span class="leancloud-visitors-count">4338</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -304,14 +304,18 @@ code.has-jax {
 <p>如上图所示，<code>endpointClosure</code>将<code>TargetType</code>转换为<code>EndPoint</code>。<code>endpointClosure</code>为<code>EndpointClosure</code>类型，其定义如下：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">typealias</span> EndpointClosure = (Target) -&gt; Endpoint&lt;Target&gt;
 </code></pre></div><p>当<code>Provider</code>初始化时，<code>endpointClosure</code>有一个默认的值<code>MoyaProvider.defaultEndpointMapping</code>，其定义如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">func</span> defaultEndpointMapping(<span style="color:#66d9ef">for</span> target: Target) -&gt; Endpoint {
-    <span style="color:#66d9ef">return</span> Endpoint(
-        url: URL(target: target).absoluteString,
-        sampleResponseClosure: { .networkResponse(<span style="color:#ae81ff">200</span>, target.sampleData) },
-        method: target.method,
-        task: target.task,
-        httpHeaderFields: target.headers
-    )
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">/// These functions are default mappings to `MoyaProvider`&#39;s properties: endpoints, requests, manager, etc.</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">extension</span> <span style="color:#a6e22e">MoyaProvider</span> {
+    <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">func</span> defaultEndpointMapping(<span style="color:#66d9ef">for</span> target: Target) -&gt; Endpoint {
+        <span style="color:#66d9ef">return</span> Endpoint(
+            url: URL(target: target).absoluteString,
+            sampleResponseClosure: { .networkResponse(<span style="color:#ae81ff">200</span>, target.sampleData) },
+            method: target.method,
+            task: target.task,
+            httpHeaderFields: target.headers
+        )
+    }
+    ...
 }
 </code></pre></div><p>接着<code>requestClosure</code>将<code>Endpoint</code>转换为<code>URLRequest</code>。<code>requestClosure</code>也有默认值<code>MoyaProvider.defaultRequestMapping</code>，这也是最后一次修改<code>Request</code>的机会，其定义如下：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">func</span> defaultRequestMapping(<span style="color:#66d9ef">for</span> endpoint: Endpoint, closure: RequestResultClosure) {
