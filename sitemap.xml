@@ -43,6 +43,19 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 设置文�
     </entry>
     
      <entry>
+        <title>UISearchController</title>
+        <url>https://iihui.github.io/post/ios-uisearchcontroller/</url>
+        <categories>
+          <category>iOS</category>
+        </categories>
+        <tags>
+          <tag>iOS</tag>
+        </tags>
+        <content type="html"> 苹果 解决
+// 先override viewDidLayoutSubviews方法 override func viewDidLayoutSubviews() { super.viewDidLayoutSubviews() super.setNavigationBarHidden(true, animated: false) } // 然后再push的时候关闭动画 from.navigationController?.pushViewController(vc, animated: true) </content>
+    </entry>
+    
+     <entry>
         <title>Moya</title>
         <url>https://iihui.github.io/post/ios-moya/</url>
         <categories>

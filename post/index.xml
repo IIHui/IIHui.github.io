@@ -6,7 +6,7 @@
     <description>Recent content in Posts on Keep It Simple</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 16 Apr 2021 10:49:11 +0000</lastBuildDate><atom:link href="https://iihui.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 25 Apr 2021 11:44:21 +0000</lastBuildDate><atom:link href="https://iihui.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hugo Next 主题</title>
       <link>https://iihui.github.io/post/hugo-next/</link>
@@ -14,6 +14,15 @@
       
       <guid>https://iihui.github.io/post/hugo-next/</guid>
       <description>从兰陵子处下载了Next主题，修改了主题目录下的config.toml配置文件(配置文件路径为themes/next/config.toml)。但发现有很多地方还是需要修改才能满足自己的需求，因为对前端了解较少，以此为记。 修改主题 首先从这里</description>
+    </item>
+    
+    <item>
+      <title>UISearchController</title>
+      <link>https://iihui.github.io/post/ios-uisearchcontroller/</link>
+      <pubDate>Sun, 25 Apr 2021 11:44:21 +0000</pubDate>
+      
+      <guid>https://iihui.github.io/post/ios-uisearchcontroller/</guid>
+      <description>苹果 解决 // 先override viewDidLayoutSubviews方法 override func viewDidLayoutSubviews() { super.viewDidLayoutSubviews() super.setNavigationBarHidden(true, animated: false) } // 然后再push的时候关闭动画 from.navigationController?.pushViewController(vc, animated: true)</description>
     </item>
     
     <item>
