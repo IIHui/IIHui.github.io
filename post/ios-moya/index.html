@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">5436</span>
+<span class="leancloud-visitors-count">5457</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -266,7 +266,7 @@ code.has-jax {
 <p><code>Provider</code>模块是网络请求的枢纽，它将<code>TargetType</code>转换为<code>Endpoint</code>，再转换为<code>URLRequest</code>，最后让<code>Alamofire</code>做实际的网络请求。</p>
 </li>
 <li>
-<p><code>Response</code>模块将回调给上层，支持<code>filter、mapJSON</code>等方法。</p>
+<p><code>Response</code>模块将<code>Alamofire</code>的返回回调给上层，支持<code>filter、mapJSON</code>等方法。</p>
 </li>
 <li>
 <p><code>Alamofire</code>模块通过桥接的方式将<code>Alamofire</code>的细节隐藏在上层，<code>Moya</code>和<code>Alamofire</code>的区别如下：</p>
@@ -303,7 +303,7 @@ code.has-jax {
 <p><img src="https://i.loli.net/2021/04/13/BUXd62R7bsfo3WS.jpg" alt="-c"></p>
 <p>如上图所示，<code>endpointClosure</code>将<code>TargetType</code>转换为<code>EndPoint</code>。<code>endpointClosure</code>为<code>EndpointClosure</code>类型，其定义如下：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">typealias</span> EndpointClosure = (Target) -&gt; Endpoint&lt;Target&gt;
-</code></pre></div><p>当<code>Provider</code>初始化时，<code>endpointClosure</code>有一个默认的值<code>MoyaProvider.defaultEndpointMapping</code>，其定义如下：</p>
+</code></pre></div><p>当<code>Provider</code>初始化时，<code>endpointClosure</code>有一个默认值<code>MoyaProvider.defaultEndpointMapping</code>，其定义如下：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">/// These functions are default mappings to `MoyaProvider`&#39;s properties: endpoints, requests, manager, etc.</span>
 <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">extension</span> <span style="color:#a6e22e">MoyaProvider</span> {
     <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">func</span> defaultEndpointMapping(<span style="color:#66d9ef">for</span> target: Target) -&gt; Endpoint {
@@ -402,7 +402,7 @@ code.has-jax {
 </ul>
 <p>为什么要引入<code>Endpoint</code>而不是直接映射到<code>URLRequest</code>呢？就是说，两步的闭包映射变成了一步的映射。这是为了确保：<code>TargetType</code>保持不变（属性都是只读），同时提供了一个对外友好的<code>API</code>。通过<code>Endpoint</code>可以很容易添加新的参数、<code>HttpHeader</code>等。</p>
 <h2 id="stub">Stub</h2>
-<p><code>Stub</code>是一个与测试有关的概念，允许你返回一些假数据。在<code>Provider</code>的初始化函数中，有一个<code>stubClosure</code>参数，默认值为<code>MoyaProvider.neverStub</code>：</p>
+<p><code>Stub</code>是一个与测试相关的概念，允许返回一些假数据。在<code>Provider</code>的初始化函数中，有一个<code>stubClosure</code>参数，默认值为<code>MoyaProvider.neverStub</code>：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"> <span style="color:#75715e">/// Initializes a provider.</span>
 <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">init</span>(endpointClosure: @escaping EndpointClosure = MoyaProvider.defaultEndpointMapping,
             requestClosure: @escaping RequestClosure = MoyaProvider.defaultRequestMapping,
@@ -431,7 +431,7 @@ code.has-jax {
     <span style="color:#75715e">/// Return a response after a delay.</span>
     <span style="color:#66d9ef">case</span> delayed(seconds: TimeInterval)
 }
-</code></pre></div><p>如果使用<code>Stub</code>并且模式选择<code>StubBehavior.immediate</code>或<code>StubBehavior.delayed(seconds: TimeInterval)</code>，则返回返回<code>EndPoint</code>中定义的假数据，并关闭请求：</p>
+</code></pre></div><p>如果使用<code>Stub</code>并且模式选择<code>StubBehavior.immediate</code>或<code>StubBehavior.delayed(seconds: TimeInterval)</code>，则返回<code>EndPoint</code>中定义的假数据，并关闭请求：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">switch</span> endpoint.sampleResponseClosure() {
 <span style="color:#66d9ef">case</span> .networkResponse(<span style="color:#66d9ef">let</span> statusCode, <span style="color:#66d9ef">let</span> data):
     <span style="color:#66d9ef">let</span> response = Moya.Response(statusCode: statusCode, data: data, request: request, response: <span style="color:#66d9ef">nil</span>)
@@ -448,7 +448,7 @@ code.has-jax {
     plugins.forEach { $0.didReceive(.failure(error), target: target) }
     completion(.failure(error))
 }
-</code></pre></div><p>而在默认的<code>Endpoint</code>即<code>defaultEndpointMapping</code>中<code>sampleResponseClosure</code>的值如下所示：</p>
+</code></pre></div><p>而默认的<code>Endpoint</code>，即<code>defaultEndpointMapping</code>中<code>sampleResponseClosure</code>的值如下所示：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">func</span> defaultEndpointMapping(<span style="color:#66d9ef">for</span> target: Target) -&gt; Endpoint {
     <span style="color:#66d9ef">return</span> Endpoint(
         url: URL(target: target).absoluteString,
@@ -458,11 +458,11 @@ code.has-jax {
         httpHeaderFields: target.headers
     )
 }
-</code></pre></div><p><code>Moya</code>中使用简单粗暴的<code>stub</code>，但效果很好。但如果不想使用<code>Moya</code>，也想返回假数据，这时需要<code>URLProtocol</code>，采用<code>URLProtocol</code>时，网络请求可以被拦截，从而将网络请求重定向到假数据。</p>
+</code></pre></div><p><code>Moya</code>中使用简单粗暴的<code>stub</code>，但效果很好。如果不使用<code>Moya</code>，也想返回假数据，这时需要<code>URLProtocol</code>，采用<code>URLProtocol</code>时，网络请求可以被拦截，从而将网络请求重定向到假数据。</p>
 <p>因为<code>NSURLConnection</code>发起的请求也可以直接拦截。拦截<code>NSURLSession</code>的时候稍微复杂一点。因为<code>URLSession</code>的拦截规则通过<code>URLSessionConfiguration</code>属性确定。通常的做法是<code>hook</code>住<code>URLSession</code>的初始化方法<code>init(configuration: URLSessionConfiguration, delegate: URLSessionDelegate?， delegateQueue: OperationQueue?)</code>，再用<code>URLSessionConfiguration</code>注册所需的拦截协议。</p>
 <h2 id="plugin">Plugin</h2>
-<p><code>Moya</code>提供了一种插件机制，可以在网络请求的关键节点插入代码。可以插入的时机如下图所示：</p>
-<p><img src="https://i.loli.net/2021/04/17/tTicu7UXIVsBrek.jpg" alt=""></p>
+<p><code>Moya</code>提供了一种插件机制，可以在<font color=red>网络请求的关键节点插入代码</font>。从网络开始到结束全程可以插入额外代码时机如下所示：</p>
+<p><img src="https://i.loli.net/2021/04/17/tTicu7UXIVsBrek.jpg" alt="-c"></p>
 <p>但要注意的是插件不是类型化的，所以不要在插件中尝试进行<code>JSON</code>解析，并将其传递给上层。<code>Moya</code>共提供了<code>4</code>种插件：</p>
 <ul>
 <li>
@@ -478,7 +478,7 @@ code.has-jax {
 <p><code>NetworkLoggerPlugin</code></p>
 </li>
 </ul>
-<p>通过将插件的接口暴露给每个节点，<code>Moya</code>的插件功能不需要与核心代码耦合，但也给了外面足够的灵活性来插入任何你想要的代码。</p>
+<p>通过将插件的接口暴露给每个节点，<code>Moya</code>的插件功能<font color=Blue>不需要与核心代码耦合</font>，但也给了外面足够的灵活性来插入任何你想要的代码。</p>
 <h2 id="response">Response</h2>
 <p><code>Moya</code>并没有具体处理<code>Response</code>，只是将<code>Alamofire</code>层返回的数据封装成<code>Moya.Response</code>。然后调用<code>convertResponseToResult</code>进一步封装成<code>Result&lt;Moya.Response, MoyaError&gt;</code>，并返回给上层：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">/// A public function responsible for converting the result of a `URLRequest` to a Result&lt;Moya.Response, MoyaError&gt;.</span>
@@ -627,7 +627,7 @@ code.has-jax {
     <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">didReceive</span>(<span style="color:#66d9ef">_</span> result: Result&lt;Moya.Response, MoyaError&gt;, target: TargetType) { }
     <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">process</span>(<span style="color:#66d9ef">_</span> result: Result&lt;Moya.Response, MoyaError&gt;, target: TargetType) -&gt; Result&lt;Moya.Response, MoyaError&gt; { <span style="color:#66d9ef">return</span> result }
 }
-</code></pre></div><p>桥接隐藏了一些细节，因此将来某一天<code>Moya</code>不再潜在依赖<code>Alamofire</code>时，对上层没有任何影响，这也是解耦的一种方式。</p>
+</code></pre></div><p>桥接隐藏了一些细节，因此将来某一天<code>Moya</code>不再需要在底层依赖<code>Alamofire</code>时，对上层没有任何影响，这也是解耦的一种方式。</p>
 <h1 id="使用">使用</h1>
 <p>用<code>Moya</code>分为几步，首先需要自定义一个枚举类型。然后遵循<a href="https://www.omegaxyz.com/2018/06/14/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99%E4%B9%8B%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99/">开闭原则</a>，让定义的枚举分类遵循<code>TargetType</code>协议，然后按需实现协议中定义的各种<code>get</code>方法。最后创建<code>MoyaProvider</code>对象发起网络请求。</p>
 <h2 id="声明分类">声明分类</h2>
