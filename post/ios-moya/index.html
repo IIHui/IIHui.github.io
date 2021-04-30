@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">5457</span>
+<span class="leancloud-visitors-count">5455</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -500,7 +500,7 @@ code.has-jax {
             <span style="color:#66d9ef">return</span> .failure(error)
         }
 }
-</code></pre></div><p>如果想进一步将<code>Moya.Response</code>转换为<code>JSON</code>对象，可以使用<code>Moya.Response</code>扩展中定义的<code>mapJSON</code>的方法：</p>
+</code></pre></div><p>如果进一步想将<code>Moya.Response</code>转换为<code>JSON</code>对象，可以使用<code>Moya.Response</code>扩展中定义的<code>mapJSON</code>的方法：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">/// Maps data received from the signal into a JSON object.</span>
 <span style="color:#75715e">///</span>
 <span style="color:#75715e">/// - parameter failsOnEmptyData: A Boolean value determining</span>
@@ -515,7 +515,7 @@ code.has-jax {
         <span style="color:#66d9ef">throw</span> MoyaError.jsonMapping(<span style="color:#66d9ef">self</span>)
     }
 }
-</code></pre></div><p>到这里，<code>Moya</code>所做的事情就很清楚了：它提供了一个面向协议的接口，用于编写网络请求；它提供了一个灵活的闭合接口，用于定制请求；它提供了插件，用于客户端介入每个节点的网络请求；它将原始请求数据返回给上层。</p>
+</code></pre></div><p>至此<code>Moya</code>所做的事情就很清楚了：它提供了一个面向协议的接口，用于编写网络请求；它提供了一个灵活的闭合接口，用于定制请求；它提供了插件，用于客户端介入每个节点的网络请求；它将原始请求数据返回给上层。</p>
 <h2 id="cancel">Cancel</h2>
 <p><code>API</code>请求应该是可取消的，即在一个<code>API</code>请求发出去后，客户端应该能够取消刚发出的请求。<code>Moya</code>发出请求后将<code>Cancellable</code>协议类型返回：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">/// Designated request-making method. Returns a `Cancellable` token to cancel the request later.</span>
