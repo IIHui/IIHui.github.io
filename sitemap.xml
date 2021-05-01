@@ -3865,7 +3865,7 @@ N.test(n) (*N).test(&amp;amp;n) //test.n:,0xc42006e1c8,25 //test.n:,0xc42006e1d8
 var n N = 25 p := &amp;amp;n n&#43;&#43; t1 := n.test n&#43;&#43; t2 := p.test n&#43;&#43; fmt.Printf(&amp;#34;main.n:,%p,%d\n&amp;#34;, &amp;amp;n, n) t1() t2() //main.n:,0xc42000e258,28 //test.n:,0xc42000e278,26 //test.n:,0xc42000e288,27 当method value作为参数时，会复制含receiver在内的整个method value
 func call(m func()){ m() } var n N = 25 p := &amp;amp;n fmt.Printf(&amp;#34;main.n:,%p,%d\n&amp;#34;, &amp;amp;n, n) n&#43;&#43; call(n.test) n&#43;&#43; call(p.test) //main.n:,0xc42006e1a8,25 //test.n:,0xc42006e1c8,26 //test.n:,0xc42006e1d8,27 如果目标方法的receiver是指针类型，那么被复制的仅是指针
 只要receiver参数类型正确，使用nil同样可以执行
-type N int func (n N) value(){} func (n *N) pointer(){} var ptr *N ptr.pointer() (*N)(nil).pointer() (*N).pointer(nil) </content>
+type N int func (n N) value(){} func (n *N) pointer(){} var ptr *N ptr.pointer() (*N)(nil).pointer() (*N).pointer(nil)  </content>
     </entry>
     
      <entry>
