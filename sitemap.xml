@@ -68,7 +68,7 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 设置文�
  模块 Moya使用面向协议编程POP来设计网络抽象层，因此它整体的逻辑结构并没有明显的继承关系。Moya的核心代码，可以分成以下几个模块：
   Request模块包含TargetType、Endpoint、Cancellable类型。
   Provider模块是网络请求的枢纽，它将TargetType转换为Endpoint，再转换为URLRequest，最后让Alamofire做实际的网络请求。
-  Response模块将Alamofire的返回回调给上层，支持filter、mapJSON等方法。
+  Response模块将Alamofire的返回的数据回调给上层，支持filter、mapJSON等方法。
   Alamofire模块通过桥接的方式将Alamofire的细节隐藏在上层，Moya和Alamofire的区别如下：
   Plguins为插件模块，默认提供了4种插件。
   Provider Provider是网络请求的枢纽，接受TargetType，并通过闭包调用回上层。下面是Provider的init方法：
