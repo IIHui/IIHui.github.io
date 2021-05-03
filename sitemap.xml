@@ -43,6 +43,20 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 设置文�
     </entry>
     
      <entry>
+        <title>Swift 基础</title>
+        <url>https://iihui.github.io/post/swift-base/</url>
+        <categories>
+          <category>iOS</category>
+        </categories>
+        <tags>
+          <tag>iOS</tag>
+        </tags>
+        <content type="html"> 常量和变量 Swift的常量或者变量使用前必须先声明，使用let声明常量，使用var声明变量。常量赋初值之后就不能再改变，变量的值可以任意变化。
+显式声明 有两种方式声明变量，分别是显式和隐式。在变量声明时指明变量的类型则为显式声明，如下所示：
+var name: type = value var firstNumber: Int = 5 </content>
+    </entry>
+    
+     <entry>
         <title>UISearchController</title>
         <url>https://iihui.github.io/post/ios-uisearchcontroller/</url>
         <categories>

@@ -6,7 +6,7 @@
     <description>Recent content in Posts on Keep It Simple</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 25 Apr 2021 11:44:21 +0000</lastBuildDate><atom:link href="https://iihui.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 02 May 2021 09:06:07 +0000</lastBuildDate><atom:link href="https://iihui.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hugo Next 主题</title>
       <link>https://iihui.github.io/post/hugo-next/</link>
@@ -14,6 +14,15 @@
       
       <guid>https://iihui.github.io/post/hugo-next/</guid>
       <description>从兰陵子处下载了Next主题，修改了主题目录下的config.toml配置文件(配置文件路径为themes/next/config.toml)。但发现有很多地方还是需要修改才能满足自己的需求，因为对前端了解较少，以此为记。 修改主题 首先从这里</description>
+    </item>
+    
+    <item>
+      <title>Swift 基础</title>
+      <link>https://iihui.github.io/post/swift-base/</link>
+      <pubDate>Sun, 02 May 2021 09:06:07 +0000</pubDate>
+      
+      <guid>https://iihui.github.io/post/swift-base/</guid>
+      <description>常量和变量 Swift的常量或者变量使用前必须先声明，使用let声明常量，使用var声明变量。常量赋初值之后就不能再改变，变量的值可以任意变化。 显式声明 有两种方式声明变量，分别是显式和隐式。在变量声明时指明变量的类型则为显式声明，如下所示： var</description>
     </item>
     
     <item>
