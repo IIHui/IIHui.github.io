@@ -13,7 +13,7 @@
       <pubDate>Sun, 02 May 2021 18:42:28 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/ios-14/</guid>
-      <description>ViewController 设置初始的ViewController有两种方式，第一种是在属性检测器中勾选Is Initial View Controller，如下所示： 第二种方式是按住鼠标左键直接拖动代表初始ViewController的蓝色箭头到指定的ViewController上面再释</description>
+      <description>添加初始ViewController 设置初始的ViewController有两种方式，第一种是在属性检测器中勾选Is Initial View Controller，如下图所示： 第二种方式是按住鼠标左键直接拖动代表初始ViewController的蓝色箭头到指定的</description>
     </item>
     
     <item>
