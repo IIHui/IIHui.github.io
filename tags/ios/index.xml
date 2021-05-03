@@ -6,7 +6,16 @@
     <description>Recent content in iOS on Keep It Simple</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 02 May 2021 09:06:07 +0000</lastBuildDate><atom:link href="https://iihui.github.io/tags/ios/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 02 May 2021 18:42:28 +0000</lastBuildDate><atom:link href="https://iihui.github.io/tags/ios/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>iOS</title>
+      <link>https://iihui.github.io/post/ios-14/</link>
+      <pubDate>Sun, 02 May 2021 18:42:28 +0000</pubDate>
+      
+      <guid>https://iihui.github.io/post/ios-14/</guid>
+      <description>ViewController 设置初始的ViewController有两种方式，第一种是在属性检测器中勾选Is Initial View Controller，如下所示： 第二种方式在直接拖动初始ViewController的箭头到指定的ViewController上，如下图所示：</description>
+    </item>
+    
     <item>
       <title>Swift 基础</title>
       <link>https://iihui.github.io/post/swift-base/</link>

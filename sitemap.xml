@@ -43,6 +43,20 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 设置文�
     </entry>
     
      <entry>
+        <title>iOS</title>
+        <url>https://iihui.github.io/post/ios-14/</url>
+        <categories>
+          <category>iOS</category>
+        </categories>
+        <tags>
+          <tag>iOS</tag>
+        </tags>
+        <content type="html"> ViewController 设置初始的ViewController有两种方式，第一种是在属性检测器中勾选Is Initial View Controller，如下所示：
+第二种方式在直接拖动初始ViewController的箭头到指定的ViewController上，如下图所示：
+</content>
+    </entry>
+    
+     <entry>
         <title>Swift 基础</title>
         <url>https://iihui.github.io/post/swift-base/</url>
         <categories>
