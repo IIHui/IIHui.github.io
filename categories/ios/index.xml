@@ -22,7 +22,7 @@
       <pubDate>Sun, 02 May 2021 09:06:07 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/swift-base/</guid>
-      <description>常量和变量 Swift的常量或者变量使用前必须先声明，使用let声明常量，使用var声明变量。常量赋初值之后就不能再改变，变量的值可以任意变化。 显式声明 有两种方式声明变量，分别是显式和隐式。在变量声明时指明变量的类型则为显式声明，如下所示： var</description>
+      <description>语句 一个Swift文件包含多行文本。换行对于Swift来说是有意义的，代表一条语句的结束，因此Swift中一行一般只写一条语句。如果需要在一行中写多条语句，则需要分号隔开： print(&amp;#34;hello&amp;#34;) print(&amp;#34;world&amp;#34;) print(&amp;#34;hello&amp;#34;); print(&amp;#34;world&amp;#34;) 常量和变量 Swift的常量或者变量使用前必须先声明，使用le</description>
     </item>
     
     <item>
