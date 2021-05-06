@@ -43,6 +43,21 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 设置文�
     </entry>
     
      <entry>
+        <title>Xcode编译报错问题</title>
+        <url>https://iihui.github.io/post/ios-compiler/</url>
+        <categories>
+          <category>iOS</category>
+        </categories>
+        <tags>
+          <tag>iOS</tag>
+        </tags>
+        <content type="html"> XXX-Swift.h未找到 iOS 14.5.1编译报错 使用XCode 12.4在iOS 14.5.1的真机上编译时，打断点调试，出现如下的报错信息：
+查阅网上的资料，应该在Build Setting时将Debug的Optimization Level设置为None，如下所示：
+但是上述方法对于XCode 12.4却不生效。
+</content>
+    </entry>
+    
+     <entry>
         <title>iOS</title>
         <url>https://iihui.github.io/post/ios-14/</url>
         <categories>
@@ -1064,21 +1079,6 @@ enum TemperatureError: Error { case tooCold, tooHot } func getReactorTemperature
 enum Size: Comparable { case small case medium case large case extraLarge } let shirtSize = Size.small let personSize = Size.large if shirtSize &amp;lt; personSize { print(&amp;#34;T恤 太小了！&amp;#34;) } enum WorldCupResult: Comparable { case neverWon case winner(stars: Int) } let americanMen = WorldCupResult.neverWon let americanWomen = WorldCupResult.winner(stars: 4) let japaneseMen = WorldCupResult.neverWon let japaneseWomen = WorldCupResult.winner(stars: 1) let teams = [americanMen, americanWomen, japaneseMen, japaneseWomen] let sortedByWins = teams.sorted() print(sortedByWins) 在上面的排序过程会把未获得世界杯冠军的队伍放在前面，然后是日本女子队，再然后是美国女子队——两组winner的队被认为是大于两组neverWon的队，而winner(stars: 4)被认为是大于winner(stars: 1)。
  self的省略 在Swift 5.3之前，在闭包中对当前对象的属性或方法的引用，都要添加self，即便闭包不会产生引用循环时。而在Swift 5.3中没有这样的限制，可以去除self。
 参考资料
-</content>
-    </entry>
-    
-     <entry>
-        <title>Xcode编译报错问题</title>
-        <url>https://iihui.github.io/post/ios-compiler/</url>
-        <categories>
-          <category>iOS</category>
-        </categories>
-        <tags>
-          <tag>iOS</tag>
-        </tags>
-        <content type="html"> XXX-Swift.h未找到 iOS 14.5.1编译报错 使用XCode 12.4在iOS 14.5.1的真机上编译时，打断点调试，出现如下的报错信息：
-查阅网上的资料，应该在Build Setting时将Debug的Optimization Level设置为None，如下所示：
-但是上述方法对于XCode 12.4却不生效。
 </content>
     </entry>
     
