@@ -1076,7 +1076,10 @@ enum Size: Comparable { case small case medium case large case extraLarge } let 
         <tags>
           <tag>iOS</tag>
         </tags>
-        <content type="html"> XXX-Swift.h未找到 iOS 14.5.1编译报错 </content>
+        <content type="html"> XXX-Swift.h未找到 iOS 14.5.1编译报错 使用XCode 12.4在iOS 14.5.1的真机上编译时，打断点调试，出现如下的报错信息：
+查阅网上的资料，应该在Build Setting时将Debug的Optimization Level设置为None，如下所示：
+但是上述方法对于XCode 12.4却不生效。
+</content>
     </entry>
     
      <entry>

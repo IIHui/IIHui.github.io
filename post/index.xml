@@ -355,7 +355,7 @@
       <pubDate>Wed, 17 Jun 2020 10:06:46 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/ios-compiler/</guid>
-      <description>XXX-Swift.h未找到 iOS 14.5.1编译报错</description>
+      <description>XXX-Swift.h未找到 iOS 14.5.1编译报错 使用XCode 12.4在iOS 14.5.1的真机上编译时，打断点调试，出现如下的报错信息： 查阅网上的资料，应该在Build Setting时将Debug的Optimization Level设置</description>
     </item>
     
     <item>
