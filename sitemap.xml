@@ -53,10 +53,10 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 设置文�
         </tags>
         <content type="html"> 添加初始ViewController 设置初始的ViewController有两种方式，第一种是在属性检测器中勾选Is Initial View Controller，如下图所示：
 第二种方式是按住鼠标左键直接拖动代表初始ViewController的蓝色箭头到指定的ViewController上面再释放，就可以完成设置，如下图所示：
-添加Navi 网络调试 如果Mac和iOS设备在同一个局域网中，可以通过网络连接进行调试。首先在菜单栏进入到Window--&amp;gt;Devices and Simulators：
-然后找到相应的真机，鼠标左键选中，再勾选Connect via network，如下所示：
-勾选Connect via network之后，编译安装的时候选择刚刚的设备，会报错Xcode will continue when is connected，此时需要使用Connect via IP Address，然后输入真机的IP地址：
-</content>
+添加NavigationController 网络调试 如果Mac和iOS设备在同一局域网中，可以通过网络连接进行调试。首先在菜单栏进入到Window--&amp;gt;Devices and Simulators：
+然后找到相应的真机，鼠标左键单击选中，再勾选Connect via network，如下所示：
+勾选Connect via network后，编译安装的时候选择刚刚的设备，若报错Xcode will continue when xxx is connected，则需要使用Connect via IP Address，再输入真机的IP地址：
+禁用push返回手势 extension UIViewController { /// 禁止系统返回手势 func popGestureForbid() { if let gestures = self.navigationController?.interactivePopGestureRecognizer?.view?.gestureRecognizers { gestures.forEach({ $0.isEnabled = false }) } } } </content>
     </entry>
     
      <entry>
@@ -959,7 +959,7 @@ func newInt() *int { return new(int) } func newInt() *int { var dummy int return
           <tag>iOS</tag>
         </tags>
         <content type="html"> 仿导航栏添加阴影 // 设置阴影颜色 navBGView.layer.shadowColor = UIColor.lightGray.cgColor // 设置阴影偏移范围 navBGView.layer.shadowOffset = CGSize(width: 0, height: 1.8) // 设置阴影颜色的透明度 navBGView.layer.shadowOpacity = 0.2 // 设置阴影的半径 navBGView.layer.shadowRadius = 2.5 // 设置阴影路径 navBGView.layer.shadowPath = UIBezierPath.init(rect: navBGView.bounds).cgPath 通过设置1.2.3步仿导航栏的阴影就可以出现,如果对阴影有特别的需要,可再设置4.5这两个步骤。
-禁用系统返回手势 extension UIViewController { /// 禁止系统返回手势 func popGestureForbid() { if let gestures = self.navigationController?.interactivePopGestureRecognizer?.view?.gestureRecognizers { gestures.forEach({ $0.isEnabled = false }) } } } 参考资料
+参考资料
 </content>
     </entry>
     

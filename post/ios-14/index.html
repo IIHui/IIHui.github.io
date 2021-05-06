@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">370</span>
+<span class="leancloud-visitors-count">424</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -257,17 +257,27 @@ code.has-jax {
 <p><img src="https://i.loli.net/2021/05/03/8EMxYk4F1e6TZJO.jpg" alt="-c"></p>
 <p>第二种方式是按住鼠标左键直接拖动代表初始<code>ViewController</code>的蓝色箭头到指定的<code>ViewController</code>上面再释放，就可以完成设置，如下图所示：</p>
 <p><img src="https://i.loli.net/2021/05/03/SbhsynuI3N9DHm6.jpg" alt="-c"></p>
-<h1 id="添加navi">添加Navi</h1>
+<h1 id="添加navigationcontroller">添加NavigationController</h1>
 <p><img src="https://i.loli.net/2021/05/03/QcOaUtqZbowmSzN.jpg" alt="-c"></p>
 <h1 id="网络调试">网络调试</h1>
-<p>如果<code>Mac</code>和<code>iOS</code>设备在同一个局域网中，可以通过网络连接进行调试。首先在菜单栏进入到<code>Window--&gt;Devices and Simulators</code>：</p>
+<p>如果<code>Mac</code>和<code>iOS</code>设备在同一局域网中，可以通过网络连接进行调试。首先在菜单栏进入到<code>Window--&gt;Devices and Simulators</code>：</p>
 <p><img src="https://i.loli.net/2021/05/05/HP8MeGnZzLQg4fY.jpg" alt="-c"></p>
-<p>然后找到相应的真机，鼠标左键选中，再勾选<code>Connect via network</code>，如下所示：</p>
+<p>然后找到相应的真机，鼠标左键单击选中，再勾选<code>Connect via network</code>，如下所示：</p>
 <p><img src="https://i.loli.net/2021/05/05/CmlfhaE6kRDtP8q.jpg" alt="-c"></p>
-<p>勾选<code>Connect via network</code>之后，编译安装的时候选择刚刚的设备，会报错<code>Xcode will continue when is connected</code>，此时需要使用<code>Connect via IP Address</code>，然后输入真机的<code>IP</code>地址：</p>
+<p>勾选<code>Connect via network</code>后，编译安装的时候选择刚刚的设备，若报错<code>Xcode will continue when xxx is connected</code>，则需要使用<code>Connect via IP Address</code>，再输入真机的<code>IP</code>地址：</p>
 <p><img src="https://i.loli.net/2021/05/05/JXGoeT5kiUqu2gF.jpg" alt="-c"></p>
 <p><img src="https://i.loli.net/2021/05/05/weG4LStHWY6kd5D.jpg" alt="-c"></p>
+<h1 id="禁用push返回手势">禁用push返回手势</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">extension</span> <span style="color:#a6e22e">UIViewController</span> {
 
+    <span style="color:#75715e">/// 禁止系统返回手势</span>
+    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">popGestureForbid</span>() {
+        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> gestures = <span style="color:#66d9ef">self</span>.navigationController?.interactivePopGestureRecognizer?.view?.gestureRecognizers {
+            gestures.forEach({ $0.isEnabled = <span style="color:#66d9ef">false</span> })
+        }
+    }
+}
+</code></pre></div>
     </div>
     <footer class="post-footer">
         
@@ -431,8 +441,9 @@ code.has-jax {
         <div class="post-toc-content"><nav id="TableOfContents">
   <ul>
     <li><a href="#添加初始viewcontroller">添加初始ViewController</a></li>
-    <li><a href="#添加navi">添加Navi</a></li>
+    <li><a href="#添加navigationcontroller">添加NavigationController</a></li>
     <li><a href="#网络调试">网络调试</a></li>
+    <li><a href="#禁用push返回手势">禁用push返回手势</a></li>
   </ul>
 </nav></div>
     </div>
