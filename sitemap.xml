@@ -53,7 +53,7 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 设置文�
         </tags>
         <content type="html"> XXX-Swift.h未找到 iOS 14.5.1编译报错 使用XCode 12.4在iOS 14.5.1的真机上编译时，打断点调试时，不能正常打印出成员变量的值，出现如下的报错信息：
 查阅网上的资料，应该在Build Setting时将Debug的Optimization Level设置为None，如下所示：
-但是上述方法对于XCode 12.4调试iOS 14.5.1真机却不生效。
+但是上述方法对于XCode 12.4调试iOS 14.5.1真机却不生效。但新建一个demo工程，却可以正常调试，设置如下：
 </content>
     </entry>
     
