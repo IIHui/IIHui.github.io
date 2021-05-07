@@ -85,8 +85,9 @@ XCode 12.5 报错 Showing Recent Messages Application extensions and any librari
 添加NavigationController 网络调试 如果Mac和iOS设备在同一局域网中，可以通过网络连接进行调试。首先在菜单栏进入到Window--&amp;gt;Devices and Simulators：
 然后找到相应的真机，鼠标左键单击选中，再勾选Connect via network，如下所示：
 勾选Connect via network后，编译安装的时候选择刚刚的设备，若报错Xcode will continue when xxx is connected，则需要使用Connect via IP Address，再输入真机的IP地址：
-禁用push返回手势 extension UIViewController { /// 禁止系统返回手势 func popGestureForbid() { if let gestures = self.navigationController?.interactivePopGestureRecognizer?.view?.gestureRecognizers { gestures.forEach({ $0.isEnabled = false }) } } } 打开 从iOS 10以后UIApplication.shared.openURL就被废弃了，需要使用open func open(_ url: URL, options: [UIApplication.OpenExternalURLOptionsKey : Any] = [:], completionHandler completion: ((Bool) -&amp;gt; Void)? = nil)
-UIApplication.shared.open(url, options: [:], completionHandler: nil) 网址选项
+禁用push返回手势 extension UIViewController { /// 禁止系统返回手势 func popGestureForbid() { if let gestures = self.navigationController?.interactivePopGestureRecognizer?.view?.gestureRecognizers { gestures.forEach({ $0.isEnabled = false }) } } } 打开 从iOS 10以后UIApplication.shared.openURL就被废弃了，需要使用open func open(_ url: URL, options: [UIApplication.OpenExternalURLOptionsKey : Any] = [:], completionHandler completion: ((Bool) -&amp;gt; Void)? = nil)。
+options有个参数叫做universalLinksOnly。如果包含universalLinksOnly选项，则只有在配置了某个应用程序以打开URL时，URL才会打开。例如要打开YouTube视频，您必须安装YouTube应用。
+UIApplication.shared.open(url, options: [:], completionHandler: nil) 网址选项参考
 </content>
     </entry>
     

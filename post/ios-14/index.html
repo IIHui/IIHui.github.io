@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">502</span>
+<span class="leancloud-visitors-count">624</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -278,9 +278,10 @@ code.has-jax {
     }
 }
 </code></pre></div><h1 id="打开">打开</h1>
-<p>从<code>iOS 10</code>以后<code>UIApplication.shared.openURL</code>就被废弃了，需要使用<code>open func open(_ url: URL, options: [UIApplication.OpenExternalURLOptionsKey : Any] = [:], completionHandler completion: ((Bool) -&gt; Void)? = nil)</code></p>
+<p>从<code>iOS 10</code>以后<code>UIApplication.shared.openURL</code>就被废弃了，需要使用<code>open func open(_ url: URL, options: [UIApplication.OpenExternalURLOptionsKey : Any] = [:], completionHandler completion: ((Bool) -&gt; Void)? = nil)</code>。</p>
+<p><code>options</code>有个参数叫做<code>universalLinksOnly</code>。如果包含<code>universalLinksOnly</code>选项，则只有在配置了某个应用程序以打开URL时，URL才会打开。例如要打开<code>YouTube</code>视频，您必须安装<code>YouTube</code>应用。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">UIApplication.shared.open(url, options: [:], completionHandler: <span style="color:#66d9ef">nil</span>)
-</code></pre></div><p><a href="https://www.coder.work/article/438469">网址选项</a></p>
+</code></pre></div><p><a href="https://www.coder.work/article/438469">网址选项参考</a></p>
 
     </div>
     <footer class="post-footer">
