@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
-    <title>引入百度语音合成 - Keep It Simple</title>
+    <title>UIWindow - Keep It Simple</title>
     <meta name="keywords" content="博客,思考,读书,笔记,技术,分享">
     
-    <meta property="og:title" content="引入百度语音合成">
+    <meta property="og:title" content="UIWindow">
     <meta property="og:site_name" content="Keep It Simple">
     <meta property="og:image" content="/img/author.jpg"> 
-    <meta name="title" content="引入百度语音合成 - Keep It Simple" />
+    <meta name="title" content="UIWindow - Keep It Simple" />
     <meta name="description" content="Swift | Go | C&#43;&#43; "> 
     <link rel="shortcut icon" href="https://iihui.github.io/img/favicon.ico" />
     <link rel="apple-touch-icon" href="https://iihui.github.io/img/apple-touch-icon.png" />
@@ -192,8 +192,8 @@ code.has-jax {
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="https://iihui.github.io/post/ios-synthesizer/" itemprop="url">
-        引入百度语音合成
+        <a class="post-title-link" href="https://iihui.github.io/post/ios-window/" itemprop="url">
+        UIWindow
         </a>
       </h1>
       <div class="post-meta">
@@ -202,8 +202,8 @@ code.has-jax {
     <i class="fa fa-calendar-o"></i>
 </span>
 <span class="post-meta-item-text">创建: </span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2019-02-28">
-    2019-02-28
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2021-05-06">
+    2021-05-06
 </time>
 </span>
 &nbsp; | &nbsp;
@@ -212,8 +212,8 @@ code.has-jax {
     <i class="fa fa-calendar-check-o"></i>
 </span>
 <span class="post-meta-item-text">更新: </span>
-<time itemprop="dateUpdated" content="2019-02-28">
-    2019-02-28
+<time itemprop="dateUpdated" content="2021-05-06">
+    2021-05-06
 </time>
 </span> 
       
@@ -226,8 +226,8 @@ code.has-jax {
   <span class="post-meta-item-text">分类: </span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="https://iihui.github.io/categories/code" itemprop="url" rel="index">
-        <span itemprop="name">code</span>
+      <a href="https://iihui.github.io/categories/ios" itemprop="url" rel="index">
+        <span itemprop="name">iOS</span>
       </a>
       &nbsp; 
     </span>
@@ -241,131 +241,38 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">772</span>
+<span class="leancloud-visitors-count">188</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">2 分钟</span>
+<span class="leancloud-visitors-count">1 分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    <blockquote>
-<p>项目中需要用百度语音合成<code>SDK</code>，因此自己先建了一个工程作为引入测试一下，总结下来为<code>准备</code>&ndash;&gt;<code>导入</code>&ndash;&gt;<code>创建应用</code>&ndash;&gt;<code>测试</code>。</p>
-</blockquote>
-<h1 id="准备">准备</h1>
-<p>首先从<a href="http://ai.baidu.com/sdk">百度官网</a>下载百度语音合成的<code>SDK</code>,如下图所示首先在左边选择<font color=red>语音合成</font>，然后在右边选择<code>iOS</code>版的离在线融合<code>SDK</code>:</p>
-<p><img src="https://i.loli.net/2019/03/02/5c79f8c37d767.jpg" alt=""></p>
-<h1 id="导入">导入</h1>
-<p>有两部分需要导入，第一部分是导入百度语音合成所需的文件，第二部分是导入百度语音合成依赖的框架，下面分别讲解：</p>
-<h2 id="导入文件夹">导入文件夹</h2>
-<p>接着新建一个测试工程，并将下载到的<code>SDK</code>解压，将下面的<code>3</code>个文件夹导入到项目中，<code>3</code>个文件夹的名称如下图所示:</p>
-<p><img src="https://i.loli.net/2019/03/02/5c79f962a7c43.jpg" alt="">
-<img src="https://i.loli.net/2019/03/06/5c7f1e1220c29.jpg" alt=""></p>
-<hr>
-<h2 id="导入框架">导入框架</h2>
-<p>百度语音依赖如下红框里标识的<code>framework</code>，因此需要在<code>TARGETS--&gt;Build Phases-&gt;LikBinary With Libraries</code>中将这些<code>framework</code>导入到项目中：</p>
-<p><img src="https://i.loli.net/2019/03/02/5c79fa93daf6a.jpg" alt=""></p>
-<p><img src="https://i.loli.net/2019/03/02/5c79fc124def8.jpg" alt=""></p>
-<h1 id="创建应用">创建应用</h1>
-<p>要使用百度语音合成，<font color=red>首先需要创建相关的应用</font>，而创建应用的<font color=Blue>前提是有百度云帐号</font>。注册好百度云帐号之后登录，在控制台选择百度语音：</p>
-<p><img src="https://i.loli.net/2019/03/02/5c79fcdb21ce6.jpg" alt=""></p>
-<p>然后选择创建百度语音应用：</p>
-<p><img src="https://i.loli.net/2019/03/02/5c79fd0519511.jpg" alt=""></p>
-<p>接着填写相关信息，要注意的是语音包名要与<font color=red>测试工程的<code>Bundle Identifier</code>一致（称为绑定），才可以使用百度语音合成的离在线模式</font>:</p>
-<p><img src="https://i.loli.net/2019/03/02/5c79fdf4665af.jpg" alt=""></p>
-<hr>
-<h1 id="测试代码">测试代码</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Swift" data-lang="Swift"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">UIKit</span>
-
-<span style="color:#66d9ef">let</span> APP_ID = <span style="color:#e6db74">&#34;XXXXX&#34;</span>
-<span style="color:#66d9ef">let</span> API_KEY = <span style="color:#e6db74">&#34;XXXXX&#34;</span>
-<span style="color:#66d9ef">let</span> SECRET_KEY = <span style="color:#e6db74">&#34;XXXXX&#34;</span> 
-
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ViewController</span>: UIViewController, BDSSpeechSynthesizerDelegate {
-
-    fileprivate <span style="color:#66d9ef">var</span> synthesiser: BDSSpeechSynthesizer = BDSSpeechSynthesizer.sharedInstance()
-    <span style="color:#66d9ef">@IBOutlet</span> <span style="color:#66d9ef">weak</span> <span style="color:#66d9ef">var</span> synthesisButton: UIButton!
-    <span style="color:#66d9ef">@IBOutlet</span> <span style="color:#66d9ef">weak</span> <span style="color:#66d9ef">var</span> textView: UITextView!
-    <span style="color:#66d9ef">@IBOutlet</span> <span style="color:#66d9ef">weak</span> <span style="color:#66d9ef">var</span> offlineSwitch: UISwitch!
-
-    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">viewDidLoad</span>() {
-        <span style="color:#66d9ef">super</span>.viewDidLoad()
-        BDSSpeechSynthesizer.setLogLevel(BDS_PUBLIC_LOG_VERBOSE)
-        <span style="color:#66d9ef">self</span>.synthesiser.setSynthesizerDelegate(<span style="color:#66d9ef">self</span>)
-        <span style="color:#66d9ef">self</span>.textView.delegate = <span style="color:#66d9ef">self</span>
-        <span style="color:#66d9ef">self</span>.configOffline()
-    }
-
-    <span style="color:#66d9ef">@IBAction</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">clickedSynthesis</span>(<span style="color:#66d9ef">_</span> sender: UIButton) {
-        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> sentence = <span style="color:#66d9ef">self</span>.textView.text {
-            <span style="color:#66d9ef">self</span>.synthesiser.speakSentence(sentence, withError: <span style="color:#66d9ef">nil</span>)
-        }
-    }
-
-    <span style="color:#66d9ef">@IBAction</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">offlineSwitchClicked</span>(<span style="color:#66d9ef">_</span> sender: UISwitch) {
-        <span style="color:#66d9ef">if</span> sender.isOn {
-            <span style="color:#66d9ef">self</span>.configOffline()
-        } <span style="color:#66d9ef">else</span> {
-            <span style="color:#66d9ef">self</span>.configOnline()
-        }
-    }
-
-    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">configOnline</span>() {
-        <span style="color:#66d9ef">self</span>.synthesiser.setApiKey(API_KEY, withSecretKey: SECRET_KEY)
-        <span style="color:#66d9ef">var</span> error = <span style="color:#66d9ef">self</span>.synthesiser.setSynthParam(<span style="color:#ae81ff">4</span>, <span style="color:#66d9ef">for</span>: BDS_SYNTHESIZER_PARAM_PITCH)
-        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> err = error {
-            print(err.localizedDescription)
-        }
-        error = <span style="color:#66d9ef">self</span>.synthesiser.setSynthParam(<span style="color:#ae81ff">5</span>, <span style="color:#66d9ef">for</span>: BDS_SYNTHESIZER_PARAM_SPEED)
-        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> err = error {
-            print(err.localizedDescription)
-        }
-        error = <span style="color:#66d9ef">self</span>.synthesiser.setSynthParam(<span style="color:#ae81ff">9</span>, <span style="color:#66d9ef">for</span>: BDS_SYNTHESIZER_PARAM_VOLUME)
-        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> err = error {
-            print(err.localizedDescription)
-        }
-        <span style="color:#66d9ef">self</span>.synthesiser.unloadDomainDataFromOfflineEngine()
-    }
-
-    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">configOffline</span>() {
-        <span style="color:#66d9ef">let</span> offlineEngineSpeechData = Bundle.main.path(forResource: <span style="color:#e6db74">&#34;Chinese_And_English_Speech_Female&#34;</span>, ofType: <span style="color:#e6db74">&#34;dat&#34;</span>)
-        <span style="color:#66d9ef">let</span> offlineChineseAndEnglishTextData = Bundle.main.path(forResource: <span style="color:#e6db74">&#34;Chinese_And_English_Text&#34;</span>, ofType: <span style="color:#e6db74">&#34;dat&#34;</span>)
-
-        <span style="color:#66d9ef">let</span> error = <span style="color:#66d9ef">self</span>.synthesiser.loadOfflineEngine(offlineChineseAndEnglishTextData, speechDataPath: offlineEngineSpeechData, licenseFilePath: <span style="color:#66d9ef">nil</span>, withAppCode: APP_ID)
-        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> err = error {
-            print(err.localizedDescription)
-        }
-    }
-
-    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">synthesizerNewDataArrived</span>(<span style="color:#66d9ef">_</span> newData: Data!, dataFormat fmt: BDSAudioFormat, characterCount newLength: Int32, sentenceNumber SynthesizeSentence: Int) {
-        
-    }
-    
-    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">synthesizerErrorOccurred</span>(<span style="color:#66d9ef">_</span> error: Error!, speaking SpeakSentence: Int, synthesizing SynthesizeSentence: Int) {
-       print(error.localizedDescription)
-    }
-    
-    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">viewDidDisappear</span>(<span style="color:#66d9ef">_</span> animated: Bool) {
-        <span style="color:#66d9ef">super</span>.viewDidDisappear(animated)
-        <span style="color:#66d9ef">self</span>.synthesiser.speakSentence(<span style="color:#e6db74">&#34;进入后台&#34;</span>, withError: <span style="color:#66d9ef">nil</span>)
+    <h1 id="ios-1451-keywindow">iOS 14.5.1 keyWindow</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">show</span>() {
+    <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">self</span>.showTimes == <span style="color:#ae81ff">0</span> {
+        <span style="color:#75715e">// iOS 14.5.1上如果不记录keyWindow，调用self.dismissVC()后会导致dismiss后keyWindow发生变化</span>
+        <span style="color:#75715e">// 从而导致取topMost时为nil，路由不能正常push或present</span>
+        <span style="color:#66d9ef">self</span>.keyWindow = UIApplication.shared.keyWindow
+        <span style="color:#66d9ef">let</span> uiwindow = UIWindow(frame: UIScreen.main.bounds)
+        uiwindow.windowLevel = UIWindow.Level.normal
+        uiwindow.safeRootViewController = <span style="color:#66d9ef">self</span>
+        uiwindow.isHidden = <span style="color:#66d9ef">false</span>
+        uiwindow.backgroundColor = UIColor.clear
+        <span style="color:#66d9ef">self</span>.newWindow = uiwindow
+        <span style="color:#66d9ef">self</span>.showTimes <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
     }
 }
-
-<span style="color:#66d9ef">extension</span> <span style="color:#a6e22e">ViewController</span>: UITextViewDelegate {
-    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">textViewDidChange</span>(<span style="color:#66d9ef">_</span> textView: UITextView) {
-        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> text = textView.text {
-            <span style="color:#75715e">//self.synthesiser?.speakSentence(text, withError: nil)</span>
-            print(text)
-        }
-    }
+<span style="color:#66d9ef">@IBAction</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">cancelAction</span>(<span style="color:#66d9ef">_</span> sender: Any) {
+    <span style="color:#66d9ef">self</span>.dismissVC()
+    <span style="color:#75715e">// 恢复keyWindow，以解决iOS 14.5.1 keyWindow发生变化的情况</span>
+    <span style="color:#66d9ef">self</span>.keyWindow?.makeKeyAndVisible()
 }
-
-</code></pre></div><hr>
-<p><a href="https://blog.csdn.net/Feng512275/article/details/78056198">参考资料</a></p>
-
+</code></pre></div>
     </div>
     <footer class="post-footer">
         
@@ -381,16 +288,16 @@ code.has-jax {
         <div class="post-nav">
     <div class="post-nav-next post-nav-item">
     
-        <a href="https://iihui.github.io/post/ios-cocoapods-storage/" rel="next" title="Cocoapods 使用">
-        <i class="fa fa-chevron-left"></i> Cocoapods 使用
+        <a href="https://iihui.github.io/post/hugo-next/" rel="next" title="Hugo Next 主题">
+        <i class="fa fa-chevron-left"></i> Hugo Next 主题
         </a>
     
     </div>
 
     <div class="post-nav-prev post-nav-item">
     
-        <a href="https://iihui.github.io/post/ios-html-player/" rel="prev" title="H5视频播放">
-        H5视频播放 <i class="fa fa-chevron-right"></i>
+        <a href="https://iihui.github.io/post/ios-compiler/" rel="prev" title="Xcode编译报错问题">
+        Xcode编译报错问题 <i class="fa fa-chevron-right"></i>
         </a>
     
     </div>
@@ -404,10 +311,10 @@ code.has-jax {
         </div>
         <div>
             <p style="margin-top:10px;">
-                标题：引入百度语音合成
+                标题：UIWindow
                 <br />作者：阿呆<a target="_blank" href="https://iihui.github.io/"></a>
                 
-                <br />地址：https://iihui.github.io/post/ios-synthesizer/
+                <br />地址：https://iihui.github.io/post/ios-window/
                 <br />声明：自由转载-非商用-保持署名（创作共享4.0许可证）
             </p>
         </div>
@@ -528,15 +435,7 @@ code.has-jax {
     <div class="post-toc">
         <div class="post-toc-content"><nav id="TableOfContents">
   <ul>
-    <li><a href="#准备">准备</a></li>
-    <li><a href="#导入">导入</a>
-      <ul>
-        <li><a href="#导入文件夹">导入文件夹</a></li>
-        <li><a href="#导入框架">导入框架</a></li>
-      </ul>
-    </li>
-    <li><a href="#创建应用">创建应用</a></li>
-    <li><a href="#测试代码">测试代码</a></li>
+    <li><a href="#ios-1451-keywindow">iOS 14.5.1 keyWindow</a></li>
   </ul>
 </nav></div>
     </div>

@@ -6,7 +6,16 @@
     <description>Recent content in iOS on Keep It Simple</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 05 May 2021 10:06:46 +0000</lastBuildDate><atom:link href="https://iihui.github.io/categories/ios/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 06 May 2021 14:19:36 +0000</lastBuildDate><atom:link href="https://iihui.github.io/categories/ios/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>UIWindow</title>
+      <link>https://iihui.github.io/post/ios-window/</link>
+      <pubDate>Thu, 06 May 2021 14:19:36 +0000</pubDate>
+      
+      <guid>https://iihui.github.io/post/ios-window/</guid>
+      <description>iOS 14.5.1 keyWindow func show() { if self.showTimes == 0 { // iOS 14.5.1上如果不记录keyWindow，调用self.dismissVC()后会导致dismiss后keyWindow发生变化 // 从而导致取topMost时为nil，路由不能正常push或present self.keyWindow = UIApplication.shared.keyWindow let uiwindow</description>
+    </item>
+    
     <item>
       <title>Xcode编译报错问题</title>
       <link>https://iihui.github.io/post/ios-compiler/</link>

@@ -6,7 +6,7 @@
     <description>Recent content in Posts on Keep It Simple</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 05 May 2021 10:06:46 +0000</lastBuildDate><atom:link href="https://iihui.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 06 May 2021 14:19:36 +0000</lastBuildDate><atom:link href="https://iihui.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hugo Next 主题</title>
       <link>https://iihui.github.io/post/hugo-next/</link>
@@ -14,6 +14,15 @@
       
       <guid>https://iihui.github.io/post/hugo-next/</guid>
       <description>从兰陵子处下载了Next主题，修改了主题目录下的config.toml配置文件(配置文件路径为themes/next/config.toml)。但发现有很多地方还是需要修改才能满足自己的需求，因为对前端了解较少，以此为记。 修改主题 首先从这里</description>
+    </item>
+    
+    <item>
+      <title>UIWindow</title>
+      <link>https://iihui.github.io/post/ios-window/</link>
+      <pubDate>Thu, 06 May 2021 14:19:36 +0000</pubDate>
+      
+      <guid>https://iihui.github.io/post/ios-window/</guid>
+      <description>iOS 14.5.1 keyWindow func show() { if self.showTimes == 0 { // iOS 14.5.1上如果不记录keyWindow，调用self.dismissVC()后会导致dismiss后keyWindow发生变化 // 从而导致取topMost时为nil，路由不能正常push或present self.keyWindow = UIApplication.shared.keyWindow let uiwindow</description>
     </item>
     
     <item>
