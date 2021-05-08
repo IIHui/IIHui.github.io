@@ -67,7 +67,7 @@ func show() { if self.showTimes == 0 { // iOS 14.5.1上如果不记录keyWindow�
         <content type="html"> XXX-Swift.h未找到 iOS 14.5.1编译报错 使用XCode 12.4在iOS 14.5.1的真机上编译时，打断点调试时，不能正常打印出成员变量的值，出现如下的报错信息：
 查阅网上的资料，应该在Build Setting时将Debug的Optimization Level设置为None，如下所示：
 但是上述方法对于XCode 12.4调试iOS 14.5.1真机却不生效。但新建一个demo工程，却可以正常调试，设置如下：
-XCode 12.5 报错 Showing Recent Messages Application extensions and any libraries they link to must be built with the APPLICATION_EXTENSION_API_ONLY build setting set to YES.则需要将报错的Target的编译设置中的Require Only App-Extensions-Safe API置为YES，如下所示：
+XCode 12.5 报错 使用XCode 12.5编译项目报Showing Recent Messages Application extensions and any libraries they link to must be built with the APPLICATION_EXTENSION_API_ONLY build setting set to YES.。需要将报错的Target的编译设置中的Require Only App-Extensions-Safe API置为YES，如下所示：
 </content>
     </entry>
     
