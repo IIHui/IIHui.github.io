@@ -6,7 +6,7 @@
     <description>Recent content in Posts on Keep It Simple</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 06 May 2021 14:19:36 +0000</lastBuildDate><atom:link href="https://iihui.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 08 May 2021 08:52:46 +0000</lastBuildDate><atom:link href="https://iihui.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hugo Next 主题</title>
       <link>https://iihui.github.io/post/hugo-next/</link>
@@ -14,6 +14,15 @@
       
       <guid>https://iihui.github.io/post/hugo-next/</guid>
       <description>从兰陵子处下载了Next主题，修改了主题目录下的config.toml配置文件(配置文件路径为themes/next/config.toml)。但发现有很多地方还是需要修改才能满足自己的需求，因为对前端了解较少，以此为记。 修改主题 首先从这里</description>
+    </item>
+    
+    <item>
+      <title>Swift 5.3 新特性</title>
+      <link>https://iihui.github.io/post/swift-5.3/</link>
+      <pubDate>Sat, 08 May 2021 08:52:46 +0000</pubDate>
+      
+      <guid>https://iihui.github.io/post/swift-5.3/</guid>
+      <description>Swift 5.3引入了很多新特性，包括多尾闭包，多模式catch以及Swift Package Manager的一些重要改变。 多尾闭包 以前 在Swift5.3之前尾闭包提供了精简写法，但仅限于函数的最后一个参数为函数时。而当函数有多个函数类型的参数时，如果该函数类型</description>
     </item>
     
     <item>
@@ -356,15 +365,6 @@
       
       <guid>https://iihui.github.io/post/swift-defer/</guid>
       <description>从语言设计上来说，defer是为了进行资源清理和返回前避免重复执行相关的代码，而不是用来取巧的实现某些功能，这样做只会让代码的可读性降低。 典型用法 Swift中defer声明的block会在当前代码执行退出后调用，这种延迟调用特性，一般用来进</description>
-    </item>
-    
-    <item>
-      <title>Swift 5.3 新特性</title>
-      <link>https://iihui.github.io/post/swift-5.3/</link>
-      <pubDate>Sun, 28 Jun 2020 08:52:46 +0000</pubDate>
-      
-      <guid>https://iihui.github.io/post/swift-5.3/</guid>
-      <description>Swift 5.3引入了很多新特性，包括多尾闭包，多模式catch以及Swift Package Manager的一些重要改变。 多尾闭包 以前 在Swift5.3之前尾闭包提供了精简写法，但仅限于函数的最后一个参数为函数时。而当函数有多个函数类型的参数时，如果该函数类型</description>
     </item>
     
     <item>
