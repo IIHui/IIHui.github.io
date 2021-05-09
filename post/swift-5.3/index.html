@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1723</span>
+<span class="leancloud-visitors-count">1851</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -458,7 +458,17 @@ debugPrint(sizes.sorted())
         array.sorted()
     }
 }
-</code></pre></div>
+</code></pre></div><h1 id="didset">didSet</h1>
+<p>在<code>Swift 5.3</code>中，<code>didSet</code>发生了一些变化：</p>
+<ul>
+<li>
+<p>如果<code>didSet</code>中没有使用到<code>oldValue</code>，则不会调用<code>get</code>方法。这种称为<code>simple didset</code></p>
+</li>
+<li>
+<p>如果存在<code>simple didset</code>，但没有<code>will set</code>，则允许修改在原地发生「<code>allow modifications to happen in-place.</code>」</p>
+</li>
+</ul>
+
     </div>
     <footer class="post-footer">
         
@@ -650,6 +660,7 @@ debugPrint(sizes.sorted())
         <li><a href="#where">where</a></li>
       </ul>
     </li>
+    <li><a href="#didset">didSet</a></li>
   </ul>
 </nav></div>
     </div>
