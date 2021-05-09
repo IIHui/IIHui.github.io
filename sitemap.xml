@@ -64,8 +64,9 @@ enum Volume: Comparable { case low case medium case high private static func min
 enum Size: Comparable { case small(Int) case medium case large(Int) } let sizes: [Size] = [.medium, .small(4), .large(5), .large(1), .small(1)] debugPrint(sizes.sorted()) //[__lldb_expr_13.Size.small(1), __lldb_expr_13.Size.small(4), __lldb_expr_13.Size.medium, __lldb_expr_13.Size.large(1), __lldb_expr_13.Size.large(5)] self的省略 之前 在Swift 5.3之前，在闭包中对当前对象的属性或方法的引用，都要添加self，即便闭包不会产生循环引用时：
 struct SomeStruct { var x = 0 func doSomething(task: @escaping () -&amp;gt; Void) { task() } func test() { doSomething { debugPrint(self.x) } } } 现在 而在Swift 5.3中，在闭包中对当前对象的属性或方法的引用没有这样的限制，可以去除self，如下所示：
 struct SomeStruct { var x = 0 func doSomething(task: @escaping () -&amp;gt; Void) { task() } func test() { doSomething { debugPrint(x) } } } 还有一种新的方法在捕获列表中使用self，只需在捕获列表中加入[self]。这样就可以避免在闭包中反复使用self，如下所示：
-class SomeClass { var x = 0 func doSomething(task: @escaping () -&amp;gt; Void) { task() } func newTest() { doSomething { [self] in x &#43;= 1 x = x * 5 } } } 参考资料
-</content>
+class SomeClass { var x = 0 func doSomething(task: @escaping () -&amp;gt; Void) { task() } func newTest() { doSomething { [self] in x &#43;= 1 x = x * 5 } } } 但是对于在逃逸闭包中，为了防止循环引用时添加的[weak self]，在Swift 5.3中仍然不能省略，依旧需要添加。
+参考资料
+main入口 </content>
     </entry>
     
      <entry>
