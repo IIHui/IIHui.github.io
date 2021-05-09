@@ -359,12 +359,12 @@
     </item>
     
     <item>
-      <title>Swift5.3 新特性</title>
+      <title>Swift 5.3 新特性</title>
       <link>https://iihui.github.io/post/swift-5.3/</link>
       <pubDate>Sun, 28 Jun 2020 08:52:46 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/swift-5.3/</guid>
-      <description>Swift 5.3引入了很多新特性，包括多尾闭包，多模式catch以及Swift Package Manager的一些重要改变。 多尾闭包 在Swift5.3以前尾闭包提供了精简写法，但仅限于函数的最后一个参数为函数时。而当函数y有多个函数类型的参数时，如果该函数类型参</description>
+      <description>Swift 5.3引入了很多新特性，包括多尾闭包，多模式catch以及Swift Package Manager的一些重要改变。 多尾闭包 以前 在Swift5.3之前尾闭包提供了精简写法，但仅限于函数的最后一个参数为函数时。而当函数有多个函数类型的参数时，如果该函数类型</description>
     </item>
     
     <item>
