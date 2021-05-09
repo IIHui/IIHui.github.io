@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1057</span>
+<span class="leancloud-visitors-count">1199</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -283,8 +283,41 @@ UIView.animate(withDuration: <span style="color:#ae81ff">0.25</span>) {
 </code></pre></div><p>但是，这些尾闭包中<font color=red>第一个闭包被强制省略标签</font>。苹果的解释是：<font color=red>如果允许第一个尾闭包加上标签，那么开发者需要考虑是加好还是不加好，这会导致代码风格不一致，那么干脆禁了吧</font>。也就是除了第一个尾闭包需要省略标签之外，<font color=Blue>其余的尾闭包都需有标签</font>。</p>
 <p><a href="https://juejin.im/post/5ef57124e51d45347748f539">参考资料</a></p>
 <h1 id="多模式catch语句">多模式catch语句</h1>
-<p><code>Swift5.3</code>中引入了一个可以在<code>catch</code>块中捕获多个错误的<code>case</code>特性，这个特性可以减少错误处理时的重复代码，如下代码所示：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">TemperatureError</span>: Error {
+<p>在<code>Swift 5.3</code>之前，捕获同一类型<code>Error</code>只能有一个<code>catch</code>，然后再使用<code>switch</code>语句区分同一类型<code>Error</code>中具体的哪种错误，如下所示：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">TaskError</span>: Error {
+    <span style="color:#66d9ef">case</span> someRecoverableError
+    <span style="color:#66d9ef">case</span> someFailure(msg: String)
+    <span style="color:#66d9ef">case</span> anotherFailure(msg: String)
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">performTask</span>() <span style="color:#66d9ef">throws</span> -&gt; String {
+    <span style="color:#66d9ef">throw</span> TaskError.someFailure(msg: <span style="color:#e6db74">&#34;some Failure&#34;</span>)
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">recover</span>() {
+    <span style="color:#75715e">//</span>
+}
+
+<span style="color:#66d9ef">do</span> {
+    <span style="color:#66d9ef">try</span> performTask()
+} <span style="color:#66d9ef">catch</span> <span style="color:#66d9ef">let</span> error <span style="color:#66d9ef">as</span> TaskError {
+    <span style="color:#66d9ef">switch</span> error {
+    <span style="color:#66d9ef">case</span> .someFailure(<span style="color:#66d9ef">let</span> msg), .anotherFailure(<span style="color:#66d9ef">let</span> msg):
+        debugPrint(msg)
+    <span style="color:#66d9ef">case</span> .someRecoverableError:
+        recover()
+    }
+}
+
+</code></pre></div><p><code>Swift5.3</code>中可以使用多个<code>catch</code>块中捕获错误，这个特性提供了更好的可读性，并且可以减少代码行数：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">do</span> {
+    <span style="color:#66d9ef">try</span> performTask()
+} <span style="color:#66d9ef">catch</span> TaskError.someRecoverableError {
+    recover()
+} <span style="color:#66d9ef">catch</span> TaskError.someFailure(<span style="color:#66d9ef">let</span> msg), TaskError.anotherFailure(<span style="color:#66d9ef">let</span> msg) {
+    debugPrint(msg)
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">TemperatureError</span>: Error {
     <span style="color:#66d9ef">case</span> tooCold, tooHot
 }
 
@@ -309,13 +342,12 @@ UIView.animate(withDuration: <span style="color:#ae81ff">0.25</span>) {
     print(<span style="color:#e6db74">&#34;结果: </span><span style="color:#e6db74">\(</span>result<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
 } <span style="color:#66d9ef">catch</span> TemperatureError.tooHot, TemperatureError.tooCold {
    <span style="color:#75715e">// 捕获多个异常</span>
-    print(<span style="color:#e6db74">&#34;关闭反应堆&#34;</span>)
+    debugPrint(<span style="color:#e6db74">&#34;关闭反应堆&#34;</span>)
 } <span style="color:#66d9ef">catch</span> {
-    print(<span style="color:#e6db74">&#34;未知错误&#34;</span>)
+    debugPrint(<span style="color:#e6db74">&#34;未知错误&#34;</span>)
 }
 
-</code></pre></div><hr>
-<h1 id="枚举comparable">枚举Comparable</h1>
+</code></pre></div><h1 id="枚举comparable">枚举Comparable</h1>
 <p><code>Swift 5.3</code>中可以为枚举生成<code>Comparable</code>实现，但不强制要求声明关联值，或者如果有关联之，则要求关联值本身必须是<code>Comparable</code>的。这个特性使得可以在同类型的枚举实例之间用<code>&lt;，&gt;</code>进行比较。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Size</span>: Comparable {
     <span style="color:#66d9ef">case</span> small
