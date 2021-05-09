@@ -66,7 +66,8 @@ struct SomeStruct { var x = 0 func doSomething(task: @escaping () -&amp;gt; Void
 struct SomeStruct { var x = 0 func doSomething(task: @escaping () -&amp;gt; Void) { task() } func test() { doSomething { debugPrint(x) } } } 还有一种新的方法在捕获列表中使用self，只需在捕获列表中加入[self]。这样就可以避免在闭包中反复使用self，如下所示：
 class SomeClass { var x = 0 func doSomething(task: @escaping () -&amp;gt; Void) { task() } func newTest() { doSomething { [self] in x &#43;= 1 x = x * 5 } } } 但是对于在逃逸闭包中，为了防止循环引用时添加的[weak self]，在Swift 5.3中仍然不能省略，依旧需要添加。
 参考资料
-main入口 </content>
+main 直到Swift 5.3之前，开发一个Swift程序需要在main.swft文件中定义程序启动点。现在，能够用@main和静态func main()方法来标记一个结构或基类（在任何文件中），当程序启动时，它将被自动触发。
+@main struct TerminalApp { static func main() { debugPrint(&amp;#34;Hello Swift 5.3&amp;#34;) } } </content>
     </entry>
     
      <entry>
