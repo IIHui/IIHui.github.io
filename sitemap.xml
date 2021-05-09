@@ -67,7 +67,8 @@ struct SomeStruct { var x = 0 func doSomething(task: @escaping () -&amp;gt; Void
 class SomeClass { var x = 0 func doSomething(task: @escaping () -&amp;gt; Void) { task() } func newTest() { doSomething { [self] in x &#43;= 1 x = x * 5 } } } 但是对于在逃逸闭包中，为了防止循环引用时添加的[weak self]，在Swift 5.3中仍然不能省略，依旧需要添加。
 参考资料
 main 直到Swift 5.3之前，开发一个Swift程序需要在main.swft文件中定义程序启动点。现在，能够用@main和静态func main()方法来标记一个结构或基类（在任何文件中），当程序启动时，它将被自动触发。
-@main struct TerminalApp { static func main() { debugPrint(&amp;#34;Hello Swift 5.3&amp;#34;) } } </content>
+@main struct TerminalApp { static func main() { debugPrint(&amp;#34;Hello Swift 5.3&amp;#34;) } } 但是使用@main，如果main.swift文件已经存在，就不应该使用它，它应该在基类（或结构）中使用，而且只应该定义一次。
+</content>
     </entry>
     
      <entry>
