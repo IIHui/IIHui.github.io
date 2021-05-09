@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1612</span>
+<span class="leancloud-visitors-count">1691</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -440,7 +440,25 @@ debugPrint(sizes.sorted())
     }
 }
 </code></pre></div><p>但是使用<code>@main</code>，如果<code>main.swift</code>文件已经存在，就不应该使用它，它应该在基类（或结构）中使用，而且<font color=red>只应该定义一次</font>。</p>
+<h2 id="where">where</h2>
+<p>在<code>Swift 5.3</code>中可以在具有范型和扩展的函数中使用<code>where</code>子句，如下所示：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Stack</span>&lt;Element&gt; {
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">var</span> array = [Element]()
+    <span style="color:#66d9ef">mutating</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">push</span>(<span style="color:#66d9ef">_</span> item: Element) {
+        array.append(item)
+    }
 
+    <span style="color:#66d9ef">mutating</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">pop</span>() -&gt; Element? {
+        array.popLast()
+    }
+}
+
+<span style="color:#66d9ef">extension</span> <span style="color:#a6e22e">Stack</span> {
+    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">sorted</span>() -&gt; [Element] <span style="color:#66d9ef">where</span> Element: Comparable {
+        array.sorted()
+    }
+}
+</code></pre></div>
     </div>
     <footer class="post-footer">
         
@@ -627,7 +645,11 @@ debugPrint(sizes.sorted())
         <li><a href="#现在-3">现在</a></li>
       </ul>
     </li>
-    <li><a href="#main">main</a></li>
+    <li><a href="#main">main</a>
+      <ul>
+        <li><a href="#where">where</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
     </div>
