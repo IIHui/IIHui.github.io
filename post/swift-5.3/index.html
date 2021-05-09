@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1851</span>
+<span class="leancloud-visitors-count">1937</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -462,13 +462,18 @@ debugPrint(sizes.sorted())
 <p>在<code>Swift 5.3</code>中，<code>didSet</code>发生了一些变化：</p>
 <ul>
 <li>
-<p>如果<code>didSet</code>中没有使用到<code>oldValue</code>，则不会调用<code>get</code>方法。这种称为<code>simple didset</code></p>
+<p>如果<code>didSet</code>中没有使用到<code>oldValue</code>，则不会调用<code>get</code>方法，这意味着节省了内存和<code>CPU</code>的开销。这种方式称为<code>simple didset</code>。</p>
 </li>
 <li>
 <p>如果存在<code>simple didset</code>，但没有<code>will set</code>，则允许修改在原地发生「<code>allow modifications to happen in-place.</code>」</p>
 </li>
 </ul>
-
+<p><a href="https://juejin.cn/post/6854573210839547912">参考资料</a></p>
+<h1 id="float16">Float16</h1>
+<p>在<code>Swift 5.3</code>中标准库添加了<code>Float16</code>类型，<code>Float16</code>是一个半精度（16字节）的浮点值类型。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">debugPrint(Float16.pi) <span style="color:#75715e">//3.14</span>
+debugPrint(Float32.pi) <span style="color:#75715e">//3.1415925</span>
+</code></pre></div>
     </div>
     <footer class="post-footer">
         
@@ -661,6 +666,7 @@ debugPrint(sizes.sorted())
       </ul>
     </li>
     <li><a href="#didset">didSet</a></li>
+    <li><a href="#float16">Float16</a></li>
   </ul>
 </nav></div>
     </div>

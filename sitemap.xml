@@ -70,9 +70,11 @@ main 直到Swift 5.3之前，开发一个Swift程序需要在main.swft文件中�
 @main struct TerminalApp { static func main() { debugPrint(&amp;#34;Hello Swift 5.3&amp;#34;) } } 但是使用@main，如果main.swift文件已经存在，就不应该使用它，它应该在基类（或结构）中使用，而且只应该定义一次。
 where 在Swift 5.3中可以在具有范型和扩展的函数中使用where子句。如下所示sorted方法中要求Element遵循Comparable协议：
 struct Stack&amp;lt;Element&amp;gt; { private var array = [Element]() mutating func push(_ item: Element) { array.append(item) } mutating func pop() -&amp;gt; Element? { array.popLast() } } extension Stack { func sorted() -&amp;gt; [Element] where Element: Comparable { array.sorted() } } didSet 在Swift 5.3中，didSet发生了一些变化：
-  如果didSet中没有使用到oldValue，则不会调用get方法。这种称为simple didset
+  如果didSet中没有使用到oldValue，则不会调用get方法，这意味着节省了内存和CPU的开销。这种方式称为simple didset。
   如果存在simple didset，但没有will set，则允许修改在原地发生「allow modifications to happen in-place.」
-  </content>
+  参考资料
+Float16 在Swift 5.3中标准库添加了Float16类型，Float16是一个半精度（16字节）的浮点值类型。
+debugPrint(Float16.pi) //3.14 debugPrint(Float32.pi) //3.1415925 </content>
     </entry>
     
      <entry>
