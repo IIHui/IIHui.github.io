@@ -122,7 +122,10 @@ XCode 12.5 报错 使用XCode 12.5编译项目报Showing Recent Messages Applica
 勾选Connect via network后，编译安装的时候选择刚刚的设备，若报错Xcode will continue when xxx is connected，则需要使用Connect via IP Address，再输入真机的IP地址：
 禁用push返回手势 extension UIViewController { /// 禁止系统返回手势 func popGestureForbid() { if let gestures = self.navigationController?.interactivePopGestureRecognizer?.view?.gestureRecognizers { gestures.forEach({ $0.isEnabled = false }) } } } 打开 从iOS 10以后UIApplication.shared.openURL就被废弃了，需要使用open func open(_ url: URL, options: [UIApplication.OpenExternalURLOptionsKey : Any] = [:], completionHandler completion: ((Bool) -&amp;gt; Void)? = nil)。
 options有个参数叫做universalLinksOnly。如果包含universalLinksOnly选项，则只有在配置了某个应用程序以打开URL时，URL才会打开。例如要打开YouTube视频，您必须安装YouTube应用。
-UIApplication.shared.open(url, options: [:], completionHandler: nil) 网址选项参考
+UIApplication.shared.open(url, options: [:], completionHandler: nil) tabbar隐藏 对于TabViewController设置self.tabBarController?.hidesBottomBarWhenPushed = true后，如果是push到另一个界面，则底部的tabbar会隐藏。push到一个新界面后，但如果再使用替换window.rootViewController的方式打开一个另一个新界面，如果新打开的这个界面消失了，则回到原来的界面时，tabbar会显示。使用如下代码可以解决：
+private func hideTabBar() { if self.rootViewController is RootTabBarController, let navigationController = (self.rootViewController as? RootTabBarController)?.selectedViewController as? UINavigationController, navigationController.viewControllers.count &amp;gt; 1, let topViewController = navigationController.topViewController { navigationController.popViewController(animated: false) navigationController.pushViewController(topViewController, animated: false) } } 上面的思路是将原来push的界面先关掉，然后利用设置的self.tabBarController?.hidesBottomBarWhenPushed = true重新push一次，就可以把底部的tabbar隐藏。
+如果是在viewWillAppear里面手动将tabbar隐藏，而在viewWillDisapper中将tabbar显示，则不仅会影响整体的逻辑。隐藏时还会出现肉眼可见的黑边效果：
+override func viewWillAppear(_ animated: Bool) { super.viewWillAppear(animated) self.tabBarController?.tabBar.isHidden = true self.tabBarController?.tabBar.isTranslucent = true } override func viewWillDisappear(_ animated: Bool) { super.viewWillDisappear(animated) self.tabBarController?.tabBar.isHidden = false self.tabBarController?.tabBar.isTranslucent = false } 网址选项参考
 </content>
     </entry>
     

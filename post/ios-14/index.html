@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">624</span>
+<span class="leancloud-visitors-count">1092</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">2 分钟</span>
+<span class="leancloud-visitors-count">3 分钟</span>
 </span>
       </div>
     </header>
@@ -281,6 +281,29 @@ code.has-jax {
 <p>从<code>iOS 10</code>以后<code>UIApplication.shared.openURL</code>就被废弃了，需要使用<code>open func open(_ url: URL, options: [UIApplication.OpenExternalURLOptionsKey : Any] = [:], completionHandler completion: ((Bool) -&gt; Void)? = nil)</code>。</p>
 <p><code>options</code>有个参数叫做<code>universalLinksOnly</code>。如果包含<code>universalLinksOnly</code>选项，则只有在配置了某个应用程序以打开URL时，URL才会打开。例如要打开<code>YouTube</code>视频，您必须安装<code>YouTube</code>应用。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">UIApplication.shared.open(url, options: [:], completionHandler: <span style="color:#66d9ef">nil</span>)
+</code></pre></div><h1 id="tabbar隐藏">tabbar隐藏</h1>
+<p>对于<code>TabViewController</code>设置<code>self.tabBarController?.hidesBottomBarWhenPushed = true</code>后，如果是<code>push</code>到另一个界面，则底部的<code>tabbar</code>会隐藏。<code>push</code>到一个新界面后，但如果再使用替换<code>window.rootViewController</code>的方式打开一个另一个新界面，如果新打开的这个界面消失了，则回到原来的界面时，<code>tabbar</code>会显示。使用如下代码可以解决：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">hideTabBar</span>() {
+        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">self</span>.rootViewController <span style="color:#66d9ef">is</span> RootTabBarController,
+           <span style="color:#66d9ef">let</span> navigationController = (<span style="color:#66d9ef">self</span>.rootViewController <span style="color:#66d9ef">as</span>? RootTabBarController)?.selectedViewController <span style="color:#66d9ef">as</span>? UINavigationController,
+           navigationController.viewControllers.count <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>,
+           <span style="color:#66d9ef">let</span> topViewController = navigationController.topViewController {
+              navigationController.popViewController(animated: <span style="color:#66d9ef">false</span>)
+              navigationController.pushViewController(topViewController, animated: <span style="color:#66d9ef">false</span>)
+        }
+    }
+</code></pre></div><p>上面的思路是将原来<code>push</code>的界面先关掉，然后利用设置的<code>self.tabBarController?.hidesBottomBarWhenPushed = true</code>重新<code>push</code>一次，就可以把底部的<code>tabbar</code>隐藏。</p>
+<p>如果是在<code>viewWillAppear</code>里面手动将<code>tabbar</code>隐藏，而在<code>viewWillDisapper</code>中将<code>tabbar</code>显示，则不仅会影响整体的逻辑。隐藏时还会出现肉眼可见的黑边效果：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">viewWillAppear</span>(<span style="color:#66d9ef">_</span> animated: Bool) {
+    <span style="color:#66d9ef">super</span>.viewWillAppear(animated)
+    <span style="color:#66d9ef">self</span>.tabBarController?.tabBar.isHidden = <span style="color:#66d9ef">true</span>
+    <span style="color:#66d9ef">self</span>.tabBarController?.tabBar.isTranslucent = <span style="color:#66d9ef">true</span>
+}
+<span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">viewWillDisappear</span>(<span style="color:#66d9ef">_</span> animated: Bool) {
+    <span style="color:#66d9ef">super</span>.viewWillDisappear(animated)
+    <span style="color:#66d9ef">self</span>.tabBarController?.tabBar.isHidden = <span style="color:#66d9ef">false</span>
+    <span style="color:#66d9ef">self</span>.tabBarController?.tabBar.isTranslucent = <span style="color:#66d9ef">false</span>
+}
 </code></pre></div><p><a href="https://www.coder.work/article/438469">网址选项参考</a></p>
 
     </div>
@@ -450,6 +473,7 @@ code.has-jax {
     <li><a href="#网络调试">网络调试</a></li>
     <li><a href="#禁用push返回手势">禁用push返回手势</a></li>
     <li><a href="#打开">打开</a></li>
+    <li><a href="#tabbar隐藏">tabbar隐藏</a></li>
   </ul>
 </nav></div>
     </div>
