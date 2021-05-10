@@ -87,7 +87,7 @@ debugPrint(Float16.pi) //3.14 debugPrint(Float32.pi) //3.1415925 </content>
           <tag>iOS</tag>
         </tags>
         <content type="html"> KeyPath 在Swift 5.2中允许使用key path表达式来代替key path函数，如下所示:
-let cars: [Car] = [Car(brand: &amp;#34;Tesla&amp;#34;, isElectric: true), Car(brand: &amp;#34;Ford&amp;#34;, isElectric: false)] let electricCars1 = cars.filter { $0.isElectric } let electricCars2 = cars.filter { $0[keyPath: \Car.isElectric] } let electricCars3 = cars.filter(\.isElectric) </content>
+let cars: [Car] = [Car(brand: &amp;#34;Tesla&amp;#34;, isElectric: true), Car(brand: &amp;#34;Ford&amp;#34;, isElectric: false)] let electricCars1 = cars.filter { $0.isElectric } let electricCars2 = cars.filter { $0[keyPath: \Car.isElectric] } let electricCars3 = cars.filter(\.isElectric) 实例调用函数 </content>
     </entry>
     
      <entry>

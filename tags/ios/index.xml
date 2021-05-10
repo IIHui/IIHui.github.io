@@ -22,7 +22,7 @@
       <pubDate>Thu, 06 May 2021 23:01:46 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/swift-5.2/</guid>
-      <description>KeyPath 在Swift 5.2中允许使用key path表达式来代替key path函数，如下所示: let cars: [Car] = [Car(brand: &amp;#34;Tesla&amp;#34;, isElectric: true), Car(brand: &amp;#34;Ford&amp;#34;, isElectric: false)] let electricCars1 = cars.filter { $0.isElectric } let electricCars2 = cars.filter { $0[keyPath: \Car.isElectric] } let electricCars3 = cars.filter(\.isElectric)</description>
+      <description>KeyPath 在Swift 5.2中允许使用key path表达式来代替key path函数，如下所示: let cars: [Car] = [Car(brand: &amp;#34;Tesla&amp;#34;, isElectric: true), Car(brand: &amp;#34;Ford&amp;#34;, isElectric: false)] let electricCars1 = cars.filter { $0.isElectric } let electricCars2 = cars.filter { $0[keyPath: \Car.isElectric] } let electricCars3 = cars.filter(\.isElectric) 实例调用函数</description>
     </item>
     
     <item>
