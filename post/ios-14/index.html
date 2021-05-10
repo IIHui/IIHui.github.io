@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1092</span>
+<span class="leancloud-visitors-count">1099</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -282,7 +282,7 @@ code.has-jax {
 <p><code>options</code>有个参数叫做<code>universalLinksOnly</code>。如果包含<code>universalLinksOnly</code>选项，则只有在配置了某个应用程序以打开URL时，URL才会打开。例如要打开<code>YouTube</code>视频，您必须安装<code>YouTube</code>应用。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">UIApplication.shared.open(url, options: [:], completionHandler: <span style="color:#66d9ef">nil</span>)
 </code></pre></div><h1 id="tabbar隐藏">tabbar隐藏</h1>
-<p>对于<code>TabViewController</code>设置<code>self.tabBarController?.hidesBottomBarWhenPushed = true</code>后，如果是<code>push</code>到另一个界面，则底部的<code>tabbar</code>会隐藏。<code>push</code>到一个新界面后，但如果再使用替换<code>window.rootViewController</code>的方式打开一个另一个新界面，如果新打开的这个界面消失了，则回到原来的界面时，<code>tabbar</code>会显示。使用如下代码可以解决：</p>
+<p>在<code>TabViewController</code>中设置<code>self.tabBarController?.hidesBottomBarWhenPushed = true</code>后，如果<code>push</code>到另一个界面，则底部的<code>tabbar</code>会隐藏。<code>push</code>到一个界面后，但如果再使用替换<code>window.rootViewController</code>的方式打开一个另一个新的界面，如果新打开的这个界释放掉，再回到原来的界面时，<code>tabbar</code>会显示。此时，需要使用如下代码隐藏<code>tabbar</code>：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">hideTabBar</span>() {
         <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">self</span>.rootViewController <span style="color:#66d9ef">is</span> RootTabBarController,
            <span style="color:#66d9ef">let</span> navigationController = (<span style="color:#66d9ef">self</span>.rootViewController <span style="color:#66d9ef">as</span>? RootTabBarController)?.selectedViewController <span style="color:#66d9ef">as</span>? UINavigationController,
