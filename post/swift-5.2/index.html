@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">80</span>
+<span class="leancloud-visitors-count">104</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -259,7 +259,16 @@ code.has-jax {
 <span style="color:#66d9ef">let</span> electricCars2 = cars.filter { $0[keyPath: <span style="color:#960050;background-color:#1e0010">\</span>Car.isElectric] }
 <span style="color:#66d9ef">let</span> electricCars3 = cars.filter(<span style="color:#960050;background-color:#1e0010">\</span>.isElectric)
 </code></pre></div><h1 id="实例调用函数">实例调用函数</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">MyPow</span> {
+    <span style="color:#66d9ef">let</span> base: Double
+    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">callAsFunction</span>(x: Double) -&gt; Double {
+        <span style="color:#66d9ef">return</span> pow(base, x)
+    }
+}
 
+<span style="color:#66d9ef">let</span> base2Pow = MyPow(base: <span style="color:#ae81ff">2</span>)
+debugPrint(base2Pow(x: <span style="color:#ae81ff">3</span>))
+</code></pre></div>
     </div>
     <footer class="post-footer">
         
