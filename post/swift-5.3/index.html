@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1937</span>
+<span class="leancloud-visitors-count">1936</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -275,7 +275,7 @@ UIView.animate(withDuration: <span style="color:#ae81ff">0.25</span>, animations
 <p>而在<code>Swift 5.3</code>中，同一个函数的多尾闭包有了新的精简模式。现在在第一闭包之后可以使用标签的方式来使用尾闭包。这种新的写法把<font color=red>最后的连续几个闭包参数都算作是尾闭包</font>，这些闭包都可以放在圆括号外面。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">UIView.animate(withDuration: <span style="color:#ae81ff">0.3</span>) {
     <span style="color:#66d9ef">self</span>.view.alpha = <span style="color:#ae81ff">0</span>
-} completion: { <span style="color:#960050;background-color:#1e0010">——</span> <span style="color:#66d9ef">in</span>
+} completion: { <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span>
     <span style="color:#66d9ef">self</span>.view.removeFromSuperview()
 }
 </code></pre></div><p>但是，这些尾闭包中<font color=red>第一个闭包被强制省略标签</font>。苹果的解释是：<font color=Blue>如果允许第一个尾闭包加上标签，那么开发者需要考虑是加好还是不加好</font>，这会导致代码风格不一致，那么干脆禁了吧。也就是除了第一个尾闭包需要省略标签之外，<font color=red>其余的尾闭包都需有标签</font>。</p>

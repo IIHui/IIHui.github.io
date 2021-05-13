@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">646</span>
+<span class="leancloud-visitors-count">663</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -289,6 +289,10 @@ code.has-jax {
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">CoreText note: Client requested name <span style="color:#e6db74">&#34;.SFUI-Regular&#34;</span>, it will <span style="color:#66d9ef">get</span> TimesNewRomanPSMT rather than the intended font. 
 All system UI font access should be through proper APIs such <span style="color:#66d9ef">as</span> CTFontCreateUIFontForLanguage() or <span style="color:#f92672">+</span>[UIFont systemFontOfSize:].
 </code></pre></div><p>根据<a href="https://lvv.me/posts/2020/07/14_coretext_notes/">提示</a>，设置<code>CTFontLogSystemFontNameRequest</code>符号端点，可以查看相关信息。</p>
+<h2 id="start-a-web-server">Start a Web Server</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">python2 <span style="color:#f92672">-</span>m SimpleHTTPServer <span style="color:#ae81ff">50524</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">python3 <span style="color:#f92672">-</span>m http.server <span style="color:#f92672">--</span>cgi <span style="color:#ae81ff">50524</span>
+</code></pre></div><p><a href="https://css-tricks.com/snippets/html/start-a-web-server-with-one-terminal-command-on-os-x/">参考资料</a></p>
 
     </div>
     <footer class="post-footer">
@@ -464,6 +468,7 @@ All system UI font access should be through proper APIs such <span style="color:
         <li><a href="#无法安装">无法安装</a></li>
         <li><a href="#安装到最后变灰了">安装到最后变灰了</a></li>
         <li><a href="#手机发烫">手机发烫</a></li>
+        <li><a href="#start-a-web-server">Start a Web Server</a></li>
       </ul>
     </li>
   </ul>
