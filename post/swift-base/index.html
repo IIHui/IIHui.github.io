@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">835</span>
+<span class="leancloud-visitors-count">879</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -301,7 +301,7 @@ debugPrint(array)
 numbers[<span style="color:#ae81ff">1</span> ... <span style="color:#ae81ff">3</span>] = [<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">200</span>, <span style="color:#ae81ff">400</span>]
 debugPrint(numbers)
 </code></pre></div><h2 id="diff">diff</h2>
-<p><code>diff</code>可以返回两个数组的差异数组，</p>
+<p><code>diff</code>函数可以返回两个数组的差异：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">var</span> scores1 = [<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">81</span>, <span style="color:#ae81ff">95</span>, <span style="color:#ae81ff">98</span>, <span style="color:#ae81ff">99</span>, <span style="color:#ae81ff">65</span>, <span style="color:#ae81ff">87</span>]
 
 <span style="color:#66d9ef">var</span> scores2 = [<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">98</span>, <span style="color:#ae81ff">95</span>, <span style="color:#ae81ff">91</span>, <span style="color:#ae81ff">83</span>, <span style="color:#ae81ff">88</span>, <span style="color:#ae81ff">72</span>]
@@ -310,7 +310,16 @@ debugPrint(numbers)
 <span style="color:#66d9ef">let</span> newArr = scores1.applying(diff) ?? []
 
 debugPrint(newArr) <span style="color:#75715e">//[100, 98, 95, 91, 83, 88, 72]</span>
-</code></pre></div>
+</code></pre></div><h1 id="字典">字典</h1>
+<h2 id="初始化">初始化</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">let</span> countries = [<span style="color:#e6db74">&#34;US&#34;</span>: <span style="color:#e6db74">&#34;UnitedStates&#34;</span>, <span style="color:#e6db74">&#34;IN&#34;</span>: <span style="color:#e6db74">&#34;India&#34;</span>, <span style="color:#e6db74">&#34;UK&#34;</span>: <span style="color:#e6db74">&#34;UnitedKingdom&#34;</span>]
+<span style="color:#66d9ef">var</span> dic1 = [String: String]()
+<span style="color:#66d9ef">var</span> dic2 = [Int: String]()
+<span style="color:#66d9ef">var</span> dic3 = [String: AnyObject]()
+<span style="color:#66d9ef">var</span> dic4: [String: String] = [:]
+<span style="color:#66d9ef">var</span> dic5: [Int: String] = [:]
+</code></pre></div><h2 id="更新值">更新值</h2>
+
     </div>
     <footer class="post-footer">
         
@@ -493,6 +502,12 @@ debugPrint(newArr) <span style="color:#75715e">//[100, 98, 95, 91, 83, 88, 72]</
         <li><a href="#访问元素">访问元素</a></li>
         <li><a href="#数组切片">数组切片</a></li>
         <li><a href="#diff">diff</a></li>
+      </ul>
+    </li>
+    <li><a href="#字典">字典</a>
+      <ul>
+        <li><a href="#初始化">初始化</a></li>
+        <li><a href="#更新值">更新值</a></li>
       </ul>
     </li>
   </ul>
