@@ -73,7 +73,7 @@ struct Stack&amp;lt;Element&amp;gt; { private var array = [Element]() mutating f
   如果didSet中没有使用到oldValue，则不会调用get方法，这意味着节省了内存和CPU的开销。这种方式称为simple didset。
   如果存在simple didset，但没有will set，则允许修改在原地发生「allow modifications to happen in-place.」
   参考资料
-Float16 在Swift 5.3中标准库添加了Float16类型，Float16是一个半精度（16字节）的浮点值类型。
+Float16 因为在图像处理和机器学习领域，经常会使用Float16。所以Swift 5.3中标准库添加了Float16类型，Float16是一个半精度（16字节）的浮点值类型。
 debugPrint(Float16.pi) //3.14 debugPrint(Float32.pi) //3.1415925 </content>
     </entry>
     
