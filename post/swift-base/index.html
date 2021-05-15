@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">948</span>
+<span class="leancloud-visitors-count">1061</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">2 分钟</span>
+<span class="leancloud-visitors-count">3 分钟</span>
 </span>
       </div>
     </header>
@@ -333,9 +333,45 @@ debugPrint(countries)
 <h2 id="初始化-1">初始化</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">var</span> mySet1 = Set&lt;String&gt;()
 <span style="color:#66d9ef">var</span> mySet2 = Set([<span style="color:#e6db74">&#34;one&#34;</span>, <span style="color:#e6db74">&#34;two&#34;</span>, <span style="color:#e6db74">&#34;three&#34;</span>])
-</code></pre></div><h1 id="循环过滤">循环过滤</h1>
+</code></pre></div><h1 id="过滤">过滤</h1>
+<h2 id="where">where</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">for</span> number <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">1.</span>..<span style="color:#ae81ff">30</span> <span style="color:#66d9ef">where</span> number <span style="color:#f92672">%</span> <span style="color:#ae81ff">3</span> == <span style="color:#ae81ff">0</span> {
     debugPrint(number)
+}
+</code></pre></div><h2 id="for-case">for-case</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">var</span> worldSeriesWinners = [(<span style="color:#e6db74">&#34;Red Sox&#34;</span>, <span style="color:#ae81ff">2004</span>),
+                          (<span style="color:#e6db74">&#34;White Sox&#34;</span>, <span style="color:#ae81ff">2005</span>),
+                          (<span style="color:#e6db74">&#34;Cardinals&#34;</span>, <span style="color:#ae81ff">2006</span>),
+                          (<span style="color:#e6db74">&#34;Red Sox&#34;</span>, <span style="color:#ae81ff">2007</span>),
+                          (<span style="color:#e6db74">&#34;Phillies&#34;</span>, <span style="color:#ae81ff">2008</span>),
+                          (<span style="color:#e6db74">&#34;Yankees&#34;</span>, <span style="color:#ae81ff">2009</span>),
+                          (<span style="color:#e6db74">&#34;Giants&#34;</span>, <span style="color:#ae81ff">2010</span>),
+                          (<span style="color:#e6db74">&#34;Cardinals&#34;</span>, <span style="color:#ae81ff">2011</span>),
+                          (<span style="color:#e6db74">&#34;Giants&#34;</span>, <span style="color:#ae81ff">2012</span>),
+                          (<span style="color:#e6db74">&#34;Red Sox&#34;</span>, <span style="color:#ae81ff">2013</span>),
+                          (<span style="color:#e6db74">&#34;Giants&#34;</span>, <span style="color:#ae81ff">2014</span>), (<span style="color:#e6db74">&#34;Royals&#34;</span>, <span style="color:#ae81ff">2015</span>)]
+
+<span style="color:#66d9ef">for</span> <span style="color:#66d9ef">case</span> (<span style="color:#e6db74">&#34;Red Sox&#34;</span>, <span style="color:#66d9ef">let</span> year) <span style="color:#66d9ef">in</span> worldSeriesWinners {
+    debugPrint(year)
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">let</span> myNumbers: [Int?] = [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#66d9ef">nil</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#66d9ef">nil</span>, <span style="color:#ae81ff">6</span>]
+<span style="color:#66d9ef">for</span> <span style="color:#66d9ef">case</span> .some(<span style="color:#66d9ef">let</span> num) <span style="color:#66d9ef">in</span> myNumbers {
+    debugPrint(num)
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">let</span> myNumbers2: [Int?] = [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#66d9ef">nil</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#66d9ef">nil</span>, <span style="color:#ae81ff">6</span>]
+<span style="color:#66d9ef">for</span> <span style="color:#66d9ef">case</span> <span style="color:#66d9ef">let</span> num? <span style="color:#66d9ef">in</span> myNumbers2 <span style="color:#66d9ef">where</span> num <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span> {
+    debugPrint(num)
+}
+</code></pre></div><h2 id="if-case">if-case</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Identifier</span> {
+    <span style="color:#66d9ef">case</span> Name(String)
+    <span style="color:#66d9ef">case</span> Number(Int)
+    <span style="color:#66d9ef">case</span> NoIdentifier
+}
+
+<span style="color:#66d9ef">var</span> playerIdentifier = Identifier.Number(<span style="color:#ae81ff">2</span>)
+<span style="color:#66d9ef">if</span> <span style="color:#66d9ef">case</span> .Number(<span style="color:#66d9ef">let</span> num) = playerIdentifier {
+    debugPrint(<span style="color:#e6db74">&#34;Player&#39;s number is </span><span style="color:#e6db74">\(</span>num<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
 }
 </code></pre></div>
     </div>
@@ -534,7 +570,13 @@ debugPrint(countries)
         <li><a href="#初始化-1">初始化</a></li>
       </ul>
     </li>
-    <li><a href="#循环过滤">循环过滤</a></li>
+    <li><a href="#过滤">过滤</a>
+      <ul>
+        <li><a href="#where">where</a></li>
+        <li><a href="#for-case">for-case</a></li>
+        <li><a href="#if-case">if-case</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
     </div>
