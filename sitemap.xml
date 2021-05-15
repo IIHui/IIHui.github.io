@@ -157,7 +157,8 @@ print(&amp;#34;hello&amp;#34;) print(&amp;#34;world&amp;#34;) print(&amp;#34;hel
 var name: type = value var firstNumber: Int = 5 隐式声明 在变量声明时不指明变量的类型则为隐式声明。大部分情况下Swift足够智能，可以通过分配给他的值来计算出变量的类型。
 var name = value var firstNumber = 5 可选类型 当一个变量或者常量可能不存在值时，应该使用可选类型来声明。一个可选类型表示：一个变量可能有值也可能没有值。因为可选类型可能不包含值，所以在访问前需要判断是否为空。
 作用域和生命周期 在Swift中所有的事情都有作用域。作用域代表的是可见性，在Swift中很多东西都可以嵌套，形成一个嵌套层次。在嵌套层次中，当前层可以看到自己所在层的东西和上层的东西。
-</content>
+数组 声明 一般方式 let arrayOne = [12, 34, 667] let arrayTwo = [4, 5, 6] var arrayThree = [Int]() var arrayFour: [Int] = [] 特殊方式 Any可以代表任何类型的实例，包括函数类型。因此，在数组的定义时，使用Any可以保存不同类型的数据的数组：
+var myArray: [Any] = [1,&amp;#34;Two&amp;#34;] </content>
     </entry>
     
      <entry>

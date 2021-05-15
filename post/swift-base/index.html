@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">465</span>
+<span class="leancloud-visitors-count">556</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">1 分钟</span>
+<span class="leancloud-visitors-count">2 分钟</span>
 </span>
       </div>
     </header>
@@ -271,7 +271,17 @@ print(<span style="color:#e6db74">&#34;hello&#34;</span>); print(<span style="co
 <p>当一个变量或者常量可能不存在值时，应该使用可选类型来声明。一个可选类型表示：一个变量可能有值也可能没有值。因为可选类型可能不包含值，所以在访问前需要判断是否为空。</p>
 <h1 id="作用域和生命周期">作用域和生命周期</h1>
 <p>在<code>Swift</code>中所有的事情都有作用域。作用域代表的是可见性，在Swift中很多东西都可以嵌套，形成一个嵌套层次。在嵌套层次中，当前层可以看到自己所在层的东西和上层的东西。</p>
-
+<h1 id="数组">数组</h1>
+<h2 id="声明">声明</h2>
+<h3 id="一般方式">一般方式</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">let</span> arrayOne = [<span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">34</span>, <span style="color:#ae81ff">667</span>]
+<span style="color:#66d9ef">let</span> arrayTwo = [<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>]
+<span style="color:#66d9ef">var</span> arrayThree = [Int]()
+<span style="color:#66d9ef">var</span> arrayFour: [Int] = []
+</code></pre></div><h3 id="特殊方式">特殊方式</h3>
+<p><code>Any</code>可以代表任何类型的实例，包括函数类型。因此，在数组的定义时，使用<code>Any</code>可以保存不同类型的数据的数组：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">var</span> myArray: [Any] = [<span style="color:#ae81ff">1</span>,<span style="color:#e6db74">&#34;Two&#34;</span>]
+</code></pre></div>
     </div>
     <footer class="post-footer">
         
@@ -443,6 +453,16 @@ print(<span style="color:#e6db74">&#34;hello&#34;</span>); print(<span style="co
       </ul>
     </li>
     <li><a href="#作用域和生命周期">作用域和生命周期</a></li>
+    <li><a href="#数组">数组</a>
+      <ul>
+        <li><a href="#声明">声明</a>
+          <ul>
+            <li><a href="#一般方式">一般方式</a></li>
+            <li><a href="#特殊方式">特殊方式</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
     </div>
