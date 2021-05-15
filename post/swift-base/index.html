@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">898</span>
+<span class="leancloud-visitors-count">916</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -323,6 +323,11 @@ debugPrint(newArr) <span style="color:#75715e">//[100, 98, 95, 91, 83, 88, 72]</
 countries.updateValue(<span style="color:#e6db74">&#34;test&#34;</span>, forKey: <span style="color:#e6db74">&#34;US&#34;</span>)
 debugPrint(countries)
 countries[<span style="color:#e6db74">&#34;US&#34;</span>] = <span style="color:#e6db74">&#34;MoTest&#34;</span>
+debugPrint(countries)
+</code></pre></div><h2 id="移除值">移除值</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">var</span> countries = [<span style="color:#e6db74">&#34;US&#34;</span>: <span style="color:#e6db74">&#34;UnitedStates&#34;</span>, <span style="color:#e6db74">&#34;IN&#34;</span>: <span style="color:#e6db74">&#34;India&#34;</span>, <span style="color:#e6db74">&#34;UK&#34;</span>: <span style="color:#e6db74">&#34;UnitedKingdom&#34;</span>]
+countries[<span style="color:#e6db74">&#34;US&#34;</span>] = <span style="color:#66d9ef">nil</span>
+countries.removeValue(forKey: <span style="color:#e6db74">&#34;UK&#34;</span>)
 debugPrint(countries)
 </code></pre></div>
     </div>
@@ -513,6 +518,7 @@ debugPrint(countries)
       <ul>
         <li><a href="#初始化">初始化</a></li>
         <li><a href="#更新或添加">更新或添加</a></li>
+        <li><a href="#移除值">移除值</a></li>
       </ul>
     </li>
   </ul>
