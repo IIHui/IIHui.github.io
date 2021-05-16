@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1445</span>
+<span class="leancloud-visitors-count">1546</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">3 分钟</span>
+<span class="leancloud-visitors-count">4 分钟</span>
 </span>
       </div>
     </header>
@@ -451,6 +451,26 @@ debugPrint(countries)
 </code></pre></div><h2 id="协议中的where">协议中的where</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">for</span> (index, animal) <span style="color:#66d9ef">in</span> animals.enumerated() <span style="color:#66d9ef">where</span> animal <span style="color:#66d9ef">is</span> SeaAnimal { 
     print(<span style="color:#e6db74">&#34;Only Sea Animal: </span><span style="color:#e6db74">\(</span>index<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>) 
+}
+</code></pre></div><h1 id="范型">范型</h1>
+<p>可以同时定义多种类型的范型：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">testGeneric</span>&lt;T, E&gt;(a: T, b: E) {
+    <span style="color:#75715e">// Statements</span>
+}
+</code></pre></div><p>使用范型来交换变量的值：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">swapGeneric</span>&lt;T&gt;(a: <span style="color:#66d9ef">inout</span> T, b: <span style="color:#66d9ef">inout</span> T) {
+    <span style="color:#66d9ef">let</span> tmp = a
+    a = b
+    b = tmp
+}
+
+<span style="color:#66d9ef">var</span> a = <span style="color:#ae81ff">56</span>
+<span style="color:#66d9ef">var</span> b = <span style="color:#ae81ff">66</span>
+
+swapGeneric(a: &amp;a, b: &amp;b)
+</code></pre></div><p>使用范型的时候可以指定其满足某种协议：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">testGenericComparable</span>&lt;T: Comparable&gt;(a: T, b: T) -&gt; Bool {
+    a == b
 }
 </code></pre></div>
     </div>
@@ -663,6 +683,7 @@ debugPrint(countries)
         <li><a href="#协议中的where">协议中的where</a></li>
       </ul>
     </li>
+    <li><a href="#范型">范型</a></li>
   </ul>
 </nav></div>
     </div>
