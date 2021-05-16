@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1218</span>
+<span class="leancloud-visitors-count">1421</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -404,6 +404,49 @@ debugPrint(countries)
 
 <span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">Dog</span>: Name, Age, Fur {
     <span style="color:#66d9ef">var</span> breed: String { <span style="color:#66d9ef">get</span> <span style="color:#66d9ef">set</span> }
+}
+</code></pre></div><h2 id="协议组合">协议组合</h2>
+<p>协议组合是指允许类型符合一个以上的协议。这是面向协议的设计相对于面向对象的设计所具有的众多优势之一，因为在面向对象只能有一个父类。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">Name</span> {
+    <span style="color:#66d9ef">var</span> firstName: String { <span style="color:#66d9ef">get</span> <span style="color:#66d9ef">set</span> }
+    <span style="color:#66d9ef">var</span> lastName: String { <span style="color:#66d9ef">get</span> <span style="color:#66d9ef">set</span> }
+}
+
+<span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">Age</span> {
+    <span style="color:#66d9ef">var</span> age: Double { <span style="color:#66d9ef">get</span> <span style="color:#66d9ef">set</span> }
+}
+
+<span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">Fur</span> {
+    <span style="color:#66d9ef">var</span> furColor: UIColor { <span style="color:#66d9ef">get</span> <span style="color:#66d9ef">set</span> }
+}
+
+<span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">Hair</span> {
+    <span style="color:#66d9ef">var</span> hairColor: UIColor { <span style="color:#66d9ef">get</span> <span style="color:#66d9ef">set</span> }
+}
+
+<span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">Persion</span>: Name, Age, Hair {
+    <span style="color:#66d9ef">var</span> height: Double { <span style="color:#66d9ef">get</span> <span style="color:#66d9ef">set</span> }
+}
+
+<span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">Dog</span>: Name, Age, Fur {
+    <span style="color:#66d9ef">var</span> breed: String { <span style="color:#66d9ef">get</span> <span style="color:#66d9ef">set</span> }
+}
+
+<span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">Occupation</span> {
+    <span style="color:#66d9ef">var</span> occupationName: String { <span style="color:#66d9ef">get</span> <span style="color:#66d9ef">set</span> }
+    <span style="color:#66d9ef">var</span> yearlySalary: Double { <span style="color:#66d9ef">get</span> <span style="color:#66d9ef">set</span> }
+    <span style="color:#66d9ef">var</span> experienceYears: Double { <span style="color:#66d9ef">get</span> <span style="color:#66d9ef">set</span> }
+}
+
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Programmer</span>: Persion, Occupation {
+    <span style="color:#66d9ef">var</span> firstName: String
+    <span style="color:#66d9ef">var</span> lastName: String
+    <span style="color:#66d9ef">var</span> age: Double
+    <span style="color:#66d9ef">var</span> hairColor: UIColor
+    <span style="color:#66d9ef">var</span> height: Double
+    <span style="color:#66d9ef">var</span> occupationName: String
+    <span style="color:#66d9ef">var</span> yearlySalary: Double
+    <span style="color:#66d9ef">var</span> experienceYears: Double
 }
 </code></pre></div>
     </div>
@@ -612,6 +655,7 @@ debugPrint(countries)
     <li><a href="#协议">协议</a>
       <ul>
         <li><a href="#协议继承">协议继承</a></li>
+        <li><a href="#协议组合">协议组合</a></li>
       </ul>
     </li>
   </ul>
