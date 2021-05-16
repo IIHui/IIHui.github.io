@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1135</span>
+<span class="leancloud-visitors-count">1218</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -378,9 +378,34 @@ debugPrint(countries)
     debugPrint(<span style="color:#e6db74">&#34;Player is either XanderBogarts or Derek Jeter&#34;</span>)
 }
 </code></pre></div><h1 id="协议">协议</h1>
-<p>面向协议的编程过程中，需要使用到协议继承、协议组合，协议扩展。协议继承是指一个协议可以继承一个或者多个协议：</p>
 <p><img src="https://i.loli.net/2021/05/16/lY3sKSubFRZ5ovT.jpg" alt="-c"></p>
+<h2 id="协议继承">协议继承</h2>
+<p>面向协议的编程过程中，需要使用到协议继承、协议组合，协议扩展。协议继承是指一个协议可以继承一个或者多个协议：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">Name</span> {
+    <span style="color:#66d9ef">var</span> firstName: String { <span style="color:#66d9ef">get</span> <span style="color:#66d9ef">set</span> }
+    <span style="color:#66d9ef">var</span> lastName: String { <span style="color:#66d9ef">get</span> <span style="color:#66d9ef">set</span> }
+}
 
+<span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">Age</span> {
+    <span style="color:#66d9ef">var</span> age: Double { <span style="color:#66d9ef">get</span> <span style="color:#66d9ef">set</span> }
+}
+
+<span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">Fur</span> {
+    <span style="color:#66d9ef">var</span> furColor: UIColor { <span style="color:#66d9ef">get</span> <span style="color:#66d9ef">set</span> }
+}
+
+<span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">Hair</span> {
+    <span style="color:#66d9ef">var</span> hairColor: UIColor { <span style="color:#66d9ef">get</span> <span style="color:#66d9ef">set</span> }
+}
+
+<span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">Persion</span>: Name, Age, Hair {
+    <span style="color:#66d9ef">var</span> height: Double { <span style="color:#66d9ef">get</span> <span style="color:#66d9ef">set</span> }
+}
+
+<span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">Dog</span>: Name, Age, Fur {
+    <span style="color:#66d9ef">var</span> breed: String { <span style="color:#66d9ef">get</span> <span style="color:#66d9ef">set</span> }
+}
+</code></pre></div>
     </div>
     <footer class="post-footer">
         
@@ -584,7 +609,11 @@ debugPrint(countries)
         <li><a href="#if-case">if-case</a></li>
       </ul>
     </li>
-    <li><a href="#协议">协议</a></li>
+    <li><a href="#协议">协议</a>
+      <ul>
+        <li><a href="#协议继承">协议继承</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
     </div>
