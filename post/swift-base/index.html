@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1631</span>
+<span class="leancloud-visitors-count">1696</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -484,6 +484,14 @@ swapGeneric(a: &amp;a, b: &amp;b)
 
 <span style="color:#66d9ef">var</span> stringList = List&lt;String&gt;()
 <span style="color:#66d9ef">var</span> doubleList = List&lt;Double&gt;()
+</code></pre></div><h2 id="associated-types">Associated types</h2>
+<p>关联类型声明一个占位名称，可以在协议中代替类型使用，在协议被实现时，实际的类型才会确定：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">QueueProtocol</span> {
+    associatedtype QueueType
+    <span style="color:#66d9ef">mutating</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">add</span>(item: QueueType)
+    <span style="color:#66d9ef">mutating</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">getItem</span>() -&gt; QueueType?
+    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">count</span>() -&gt; Int
+}
 </code></pre></div>
     </div>
     <footer class="post-footer">
@@ -699,6 +707,7 @@ swapGeneric(a: &amp;a, b: &amp;b)
       <ul>
         <li><a href="#方法中使用范型">方法中使用范型</a></li>
         <li><a href="#范型类型">范型类型</a></li>
+        <li><a href="#associated-types">Associated types</a></li>
       </ul>
     </li>
   </ul>
