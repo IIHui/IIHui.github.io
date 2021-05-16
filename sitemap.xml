@@ -165,8 +165,8 @@ var scores1 = [100, 81, 95, 98, 99, 65, 87] var scores2 = [100, 98, 95, 91, 83, 
 protocol Name { var firstName: String { get set } var lastName: String { get set } } protocol Age { var age: Double { get set } } protocol Fur { var furColor: UIColor { get set } } protocol Hair { var hairColor: UIColor { get set } } protocol Persion: Name, Age, Hair { var height: Double { get set } } protocol Dog: Name, Age, Fur { var breed: String { get set } } 协议组合 协议组合是指允许类型符合一个以上的协议。这是面向协议的设计相对于面向对象的设计所具有的众多优势之一，因为在面向对象只能有一个父类。
 protocol Name { var firstName: String { get set } var lastName: String { get set } } protocol Age { var age: Double { get set } } protocol Fur { var furColor: UIColor { get set } } protocol Hair { var hairColor: UIColor { get set } } protocol Persion: Name, Age, Hair { var height: Double { get set } } protocol Dog: Name, Age, Fur { var breed: String { get set } } protocol Occupation { var occupationName: String { get set } var yearlySalary: Double { get set } var experienceYears: Double { get set } } struct Programmer: Persion, Occupation { var firstName: String var lastName: String var age: Double var hairColor: UIColor var height: Double var occupationName: String var yearlySalary: Double var experienceYears: Double } 协议中的where for (index, animal) in animals.enumerated() where animal is SeaAnimal { print(&amp;#34;Only Sea Animal: \(index)&amp;#34;) } 范型 可以同时定义多种类型的范型：
 func testGeneric&amp;lt;T, E&amp;gt;(a: T, b: E) { // Statements } 使用范型来交换变量的值：
-func swapGeneric&amp;lt;T&amp;gt;(a: inout T, b: inout T) { let tmp = a a = b b = tmp } var a = 56 var b = 66 swapGeneric(a: &amp;amp;a, b: &amp;amp;b) 使用范型的时候可以指定其满足某种协议：
-func testGenericComparable&amp;lt;T: Comparable&amp;gt;(a: T, b: T) -&amp;gt; Bool { a == b } </content>
+func swapGeneric&amp;lt;T&amp;gt;(a: inout T, b: inout T) { let tmp = a a = b b = tmp } var a = 56 var b = 66 swapGeneric(a: &amp;amp;a, b: &amp;amp;b) 使用范型的时候可以指定其满足某种协议或者某种类型：
+func testGenericComparable&amp;lt;T: Comparable&amp;gt;(a: T, b: T) -&amp;gt; Bool { a == b } func testFunction&amp;lt;T: MyClass, E: MyProtocol&amp;gt;(a: T, b: E) { // Statements } </content>
     </entry>
     
      <entry>
