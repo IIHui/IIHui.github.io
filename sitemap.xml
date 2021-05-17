@@ -168,7 +168,7 @@ func testGeneric&amp;lt;T, E&amp;gt;(a: T, b: E) { // Statements } 使用范型�
 func swapGeneric&amp;lt;T&amp;gt;(a: inout T, b: inout T) { let tmp = a a = b b = tmp } var a = 56 var b = 66 swapGeneric(a: &amp;amp;a, b: &amp;amp;b) 使用范型的时候可以指定其满足某种协议或者某种类型：
 func testGenericComparable&amp;lt;T: Comparable&amp;gt;(a: T, b: T) -&amp;gt; Bool { a == b } func testFunction&amp;lt;T: MyClass, E: MyProtocol&amp;gt;(a: T, b: E) { // Statements } 范型类型 不仅可以使用class定义范型类型，也可以在使用struct、enum时定义范型类型：
 class List&amp;lt;T&amp;gt; { // } var stringList = List&amp;lt;String&amp;gt;() var doubleList = List&amp;lt;Double&amp;gt;() Associated types 关联类型声明一个占位名称，可以在协议中代替类型使用，在协议被实现时，实际的类型才会确定：
-protocol QueueProtocol { associatedtype QueueType mutating func add(item: QueueType) mutating func getItem() -&amp;gt; QueueType? func count() -&amp;gt; Int } 错误处理 enum PlayerNumberError: Error { case NumberTooHigh(description: String) case NumberTooLow(description: String) case NumberAlreadyAssigned case NumberDoesNotExist } </content>
+protocol QueueProtocol { associatedtype QueueType mutating func add(item: QueueType) mutating func getItem() -&amp;gt; QueueType? func count() -&amp;gt; Int } 错误处理 错误定义 enum PlayerNumberError: Error { case NumberTooHigh(description: String) case NumberTooLow(description: String) case NumberAlreadyAssigned case NumberDoesNotExist } </content>
     </entry>
     
      <entry>
