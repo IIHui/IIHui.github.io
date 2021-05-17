@@ -157,7 +157,8 @@ print(&amp;#34;hello&amp;#34;) print(&amp;#34;world&amp;#34;) print(&amp;#34;hel
 var name: type = value var firstNumber: Int = 5 隐式声明 在变量声明时不指明变量的类型则为隐式声明。大部分情况下Swift足够智能，可以通过分配给他的值来计算出变量的类型。
 var name = value var firstNumber = 5 可选类型 当一个变量或者常量可能不存在值时，应该使用可选类型来声明。一个可选类型表示：一个变量可能有值也可能没有值。因为可选类型可能不包含值，所以在访问前需要判断是否为空。
 作用域和生命周期 在Swift中所有的事情都有作用域。作用域代表的是可见性，在Swift中很多东西都可以嵌套，形成一个嵌套层次。在嵌套层次中，当前层可以看到自己所在层的东西和上层的东西。
-数组 声明 一般方式 let arrayOne = [12, 34, 667] var arrayTwo = [4, 5, 6] var arrayThree = [Int]() var arrayFour: [Int] = [] 特殊方式 Any可以代表任何类型的实例，包括函数类型。因此，在数组的定义时，使用Any可以保存不同类型的数据的数组：
+数组 声明 数组的声明既可以使用一般的方式，也可以使用特殊方式来声明。特殊方式是指数组元素为Any类类型。
+一般方式 let arrayOne = [12, 34, 667] var arrayTwo = [4, 5, 6] var arrayThree = [Int]() var arrayFour: [Int] = [] 特殊方式 Any可以代表任何类型的实例，包括函数类型。因此，在数组的定义时，使用Any可以保存不同类型的数据的数组：
 var myArray: [Any] = [1,&amp;#34;Two&amp;#34;] 访问元素 数组元素的访问，包括以下标的形式访问数组中的任意一个元素，或者以first或last属性来访第一个或者最后一个元素：
 let arrayOne = [12, 34, 667] debugPrint(arrayOne[0], arrayOne[1], arrayOne[2]) var multiArray = [[1, 2], [3, 4], [5, 6]] let arr = multiArray[0] let value = multiArray[0][1] debugPrint(arr, value, arr.first, arr.last, multiArray.first, multiArray.last) 使用shuffle()或者shuffled()可以对数组进行重新洗牌，新生成一个随机序列。其中shuffle()会改变原数组的顺序：
 debugPrint(array, array.shuffled(), array.shuffled(), array) //[12, 34, 5, 89, 0, 1] [5, 1, 0, 89, 12, 34] [12, 34, 5, 89, 0, 1] [12, 34, 5, 89, 0, 1] array.shuffle() debugPrint(array) //[34, 0, 5, 12, 89, 1] 数组切片 var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] numbers[1 ... 3] = [100, 200, 400] debugPrint(numbers) diff diff函数可以返回两个数组的差异：
