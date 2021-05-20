@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1766</span>
+<span class="leancloud-visitors-count">1793</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -253,12 +253,12 @@ code.has-jax {
     </header>
     <div class="post-body" itemprop="articleBody">
     <h1 id="语句">语句</h1>
-<p>一个<code>Swift</code>文件包含多行文本。换行对于<code>Swift</code>来说是有意义的，代表一条语句的结束，因此<code>Swift</code>中一行一般只写一条语句。如果需要在一行中写多条语句，则需要分号隔开：</p>
+<p>一个<code>Swift</code>文件包含多行文本。换行对于<code>Swift</code>来说是有意义的，代表一条语句的结束，因此<code>Swift</code>中一行一般只写一条语句。如果需要在一行中写多条语句，则需要分号隔开，但不建议这样做：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">print(<span style="color:#e6db74">&#34;hello&#34;</span>) 
 print(<span style="color:#e6db74">&#34;world&#34;</span>)
 print(<span style="color:#e6db74">&#34;hello&#34;</span>); print(<span style="color:#e6db74">&#34;world&#34;</span>)
 </code></pre></div><h1 id="常量和变量">常量和变量</h1>
-<p><code>Swift</code>的常量或者变量使用前必须先声明，使用<code>let</code>声明常量，使用<code>var</code>声明变量。常量赋初值之后就不能再改变，变量的值可以任意变化。</p>
+<p><code>Swift</code>的常量或者变量使用前必须先声明，使用<code>let</code>声明常量，使用<code>var</code>声明变量。常量赋初值之后就不能再改变，如果尝试改变其值，则会报错；变量的值可以任意变化，随时修改。</p>
 <h2 id="显式声明">显式声明</h2>
 <p>有两种方式声明变量，分别是显式和隐式。在变量声明时<font color=red>指明变量的类型则为显式声明</font>，如下所示：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">var</span> name: type = value 

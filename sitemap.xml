@@ -151,8 +151,8 @@ override func viewWillAppear(_ animated: Bool) { super.viewWillAppear(animated) 
         <tags>
           <tag>iOS</tag>
         </tags>
-        <content type="html"> 语句 一个Swift文件包含多行文本。换行对于Swift来说是有意义的，代表一条语句的结束，因此Swift中一行一般只写一条语句。如果需要在一行中写多条语句，则需要分号隔开：
-print(&amp;#34;hello&amp;#34;) print(&amp;#34;world&amp;#34;) print(&amp;#34;hello&amp;#34;); print(&amp;#34;world&amp;#34;) 常量和变量 Swift的常量或者变量使用前必须先声明，使用let声明常量，使用var声明变量。常量赋初值之后就不能再改变，变量的值可以任意变化。
+        <content type="html"> 语句 一个Swift文件包含多行文本。换行对于Swift来说是有意义的，代表一条语句的结束，因此Swift中一行一般只写一条语句。如果需要在一行中写多条语句，则需要分号隔开，但不建议这样做：
+print(&amp;#34;hello&amp;#34;) print(&amp;#34;world&amp;#34;) print(&amp;#34;hello&amp;#34;); print(&amp;#34;world&amp;#34;) 常量和变量 Swift的常量或者变量使用前必须先声明，使用let声明常量，使用var声明变量。常量赋初值之后就不能再改变，如果尝试改变其值，则会报错；变量的值可以任意变化，随时修改。
 显式声明 有两种方式声明变量，分别是显式和隐式。在变量声明时指明变量的类型则为显式声明，如下所示：
 var name: type = value var firstNumber: Int = 5 隐式声明 在变量声明时不指明变量的类型则为隐式声明。大部分情况下Swift足够智能，可以通过分配给他的值来计算出变量的类型。
 var name = value var firstNumber = 5 可选类型 当一个变量或者常量可能不存在值时，应该使用可选类型来声明。一个可选类型表示：一个变量可能有值也可能没有值。因为可选类型可能不包含值，所以在访问前需要判断是否为空。
