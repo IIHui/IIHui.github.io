@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">2601</span>
+<span class="leancloud-visitors-count">2812</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -607,8 +607,31 @@ intQ2.add(item: <span style="color:#ae81ff">6</span>)
 
     players[player.number] = player
 }
+</code></pre></div><p>如果确定错误不会抛出，可以使用<code>try!</code>，<code>try!</code>会切断错误的传播。但不建议这样使用，因为一旦有错误，则会有运行时错误。</p>
+<p><code>Swift</code>提供了<code>try?</code>操作。它试图执行一个可能会抛出错误的操作，并将其转换为一个可选值；因此，如果抛出错误，操作的结果将是<code>nil</code>，如果没有抛出错误，则是操作的结果.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> player = <span style="color:#66d9ef">try</span>? myTeam.getPlayerByNumber(number: <span style="color:#ae81ff">34</span>) {
+    print(<span style="color:#e6db74">&#34;Player is </span><span style="color:#e6db74">\(</span>player.firstName<span style="color:#e6db74">)</span><span style="color:#e6db74"> </span><span style="color:#e6db74">\(</span>player.lastName<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
+}
 </code></pre></div><h2 id="捕获错误">捕获错误</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">do</span> {
+    <span style="color:#66d9ef">let</span> player = <span style="color:#66d9ef">try</span> myTeam.getPlayerByNumber(number: <span style="color:#ae81ff">34</span>)
+    print(<span style="color:#e6db74">&#34;Player is </span><span style="color:#e6db74">\(</span>player.firstName<span style="color:#e6db74">)</span><span style="color:#e6db74"> </span><span style="color:#e6db74">\(</span>player.lastName<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
+} <span style="color:#66d9ef">catch</span> PlayerNumberError.NumberDoesNotExist {
+    print(<span style="color:#e6db74">&#34;No player has that number&#34;</span>)
+}
 
+<span style="color:#66d9ef">do</span> {
+    <span style="color:#66d9ef">try</span> myTeam.addPlayer(player: (<span style="color:#e6db74">&#34;David&#34;</span>, <span style="color:#e6db74">&#34;Ortiz&#34;</span>, <span style="color:#ae81ff">34</span>))
+} <span style="color:#66d9ef">catch</span> PlayerNumberError.NumberTooHigh(<span style="color:#66d9ef">let</span> description) {
+    print(<span style="color:#e6db74">&#34;Error: </span><span style="color:#e6db74">\(</span>description<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
+} <span style="color:#66d9ef">catch</span> PlayerNumberError.NumberTooLow(<span style="color:#66d9ef">let</span> description) {
+    print(<span style="color:#e6db74">&#34;Error: </span><span style="color:#e6db74">\(</span>description<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
+} <span style="color:#66d9ef">catch</span> PlayerNumberError.NumberAlreadyAssigned {
+    print(<span style="color:#e6db74">&#34;Error: Number already assigned&#34;</span>)
+} <span style="color:#66d9ef">catch</span> {
+    print(<span style="color:#e6db74">&#34;Error: Unknown Error&#34;</span>)
+}
+</code></pre></div>
     </div>
     <footer class="post-footer">
         
