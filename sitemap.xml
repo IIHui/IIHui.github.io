@@ -171,7 +171,8 @@ func testGenericComparable&amp;lt;T: Comparable&amp;gt;(a: T, b: T) -&amp;gt; Bo
 class List&amp;lt;T&amp;gt; { var items = [T]() } var stringList = List&amp;lt;String&amp;gt;() var doubleList = List&amp;lt;Double&amp;gt;() struct GenericStruct&amp;lt;T&amp;gt; { // } enum GenericEnum&amp;lt;T&amp;gt; { // } 有条件扩展泛型 可以有条件地对泛型进行扩展，下面对List添加扩展，并要求其遵循Numeric协议：
 extension List where T: Numeric { func sum() -&amp;gt; T { items.reduce(0, &#43;) } } 有条件添加函数 从Swift 5.3中开始可以在泛型类型或者泛型类型扩展中，有条件添加方法：
 extension List { func sum() -&amp;gt; T where T: Numeric { items.reduce(0, &#43;) } func sorted() -&amp;gt; [T] where T: Comparable { items.sorted() } } Conditional conformance Conditional conformance允许泛型占位符遵循某种协议才遵循某种协议，如下所示：
-extension List: Equatable where T: Equatable { static func == (l1: List, l2: List) -&amp;gt; Bool { if l1.items.count != l2.items.count { return false } for (e1, e2) in zip(l1.items, l2.items) { if e1 != e2 { return false } } return true } } Associated types 关联类型声明一个占位名称，可以在协议中代替类型使用，在协议被实现时，实际的类型才会确定：
+extension List: Equatable where T: Equatable { static func == (l1: List, l2: List) -&amp;gt; Bool { if l1.items.count != l2.items.count { return false } for (e1, e2) in zip(l1.items, l2.items) { if e1 != e2 { return false } } return true } } 泛型下标 在Swift 4前，如果要使用泛型下标
+Associated types 关联类型声明一个占位名称，可以在协议中代替类型使用，在协议被实现时，实际的类型才会确定：
 protocol QueueProtocol { associatedtype QueueType mutating func add(item: QueueType) mutating func getItem() -&amp;gt; QueueType? func count() -&amp;gt; Int } 错误处理 错误定义 enum PlayerNumberError: Error { case NumberTooHigh(description: String) case NumberTooLow(description: String) case NumberAlreadyAssigned case NumberDoesNotExist } </content>
     </entry>
     
