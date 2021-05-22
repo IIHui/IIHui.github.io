@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">2358</span>
+<span class="leancloud-visitors-count">2473</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -556,7 +556,7 @@ swapGeneric(a: &amp;a, b: &amp;b)
         <span style="color:#66d9ef">return</span> items.count
     }
 }
-</code></pre></div><p>关联类型也可以和泛型关联：即在协议中使用关联类型，然后在定义泛型时实现刚刚定义的协议。在下面的定义中，</p>
+</code></pre></div><p>关联类型也可以和泛型关联：即在协议中使用关联类型，然后在定义泛型时实现刚刚定义的协议。在下面的定义中，泛型<code>GenericQueue</code>实现了<code>QueueProtocol</code>协议：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">GenericQueue</span>&lt;T&gt;: QueueProtocol {
     <span style="color:#66d9ef">var</span> items = [T]()
 
@@ -578,6 +578,8 @@ intQ2.add(item: <span style="color:#ae81ff">2</span>)
 intQ2.add(item: <span style="color:#ae81ff">4</span>)
 print(intQ2.getItem()<span style="color:#f92672">!</span>)
 intQ2.add(item: <span style="color:#ae81ff">6</span>)
+</code></pre></div><p>协议中使用关联类型时，也可以使用类型约束。当协议被实现时，为关联类型定义的类型必须继承于该类或符合类型约束所定义的协议，下面定义了一个带有类型约束的关联类型：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">associatedtype QueueType: Hashable
 </code></pre></div><h1 id="错误处理">错误处理</h1>
 <h2 id="错误定义">错误定义</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">PlayerNumberError</span>: Error {
