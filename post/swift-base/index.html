@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">3234</span>
+<span class="leancloud-visitors-count">3337</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -709,6 +709,31 @@ board[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>
         <span style="color:#66d9ef">return</span> retArray
     }
 }
+</code></pre></div><h2 id="动态成员查询">动态成员查询</h2>
+<p>动态成员查询可以调用一个将在运行时动态解析的属性：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">@dynamicMemberLookup
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">BaseballTeam</span> {
+    <span style="color:#66d9ef">let</span> city: String
+    <span style="color:#66d9ef">let</span> nickName: String
+    <span style="color:#66d9ef">let</span> wins: Double
+    <span style="color:#66d9ef">let</span> losses: Double
+    <span style="color:#66d9ef">let</span> year: Int
+    <span style="color:#66d9ef">subscript</span>(dynamicMember key: String) -&gt; String {
+        <span style="color:#66d9ef">switch</span> key {
+        <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;fullname&#34;</span>:
+            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">\(</span>city<span style="color:#e6db74">)</span><span style="color:#e6db74"> </span><span style="color:#e6db74">\(</span>nickName<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>
+        <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;percent&#34;</span>:
+            <span style="color:#66d9ef">let</span> per = wins <span style="color:#f92672">/</span> (wins <span style="color:#f92672">+</span> losses)
+            <span style="color:#66d9ef">return</span> String(per)
+        <span style="color:#66d9ef">default</span>:
+            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Unknown request&#34;</span>
+        }
+    }
+}
+
+<span style="color:#66d9ef">var</span> redsox = BaseballTeam(city: <span style="color:#e6db74">&#34;Boston&#34;</span>, nickName: <span style="color:#e6db74">&#34;Red Sox&#34;</span>, wins: <span style="color:#ae81ff">108</span>, losses: <span style="color:#ae81ff">54</span>, year: <span style="color:#ae81ff">2018</span>)
+
+print(<span style="color:#e6db74">&#34;The </span><span style="color:#e6db74">\(</span>redsox.fullname<span style="color:#e6db74">)</span><span style="color:#e6db74"> won </span><span style="color:#e6db74">\(</span>redsox.percent<span style="color:#e6db74">)</span><span style="color:#e6db74"> of their games in </span><span style="color:#e6db74">\(</span>redsox.year<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
 </code></pre></div>
     </div>
     <footer class="post-footer">
@@ -945,6 +970,7 @@ board[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>
         <li><a href="#静态下标">静态下标</a></li>
         <li><a href="#额外下标参数">额外下标参数</a></li>
         <li><a href="#多维下标">多维下标</a></li>
+        <li><a href="#动态成员查询">动态成员查询</a></li>
       </ul>
     </li>
   </ul>
