@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">2126</span>
+<span class="leancloud-visitors-count">2198</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -527,8 +527,14 @@ swapGeneric(a: &amp;a, b: &amp;b)
     }
 }
 </code></pre></div><h2 id="泛型下标">泛型下标</h2>
-<p>在<code>Swift 4</code>前，如果要使用泛型下标</p>
-<h2 id="associated-types">Associated types</h2>
+<p>在<code>Swift 4</code>前，如果要使用泛型下标，必须要在类或者结构体层面定义。从<code>Swift 4</code>开始，可以创建泛型下标，下标的返回类型或其参数都可以是泛型：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">subscript</span>&lt;T: Hashable&gt;(item: T) -&gt; Int {
+    <span style="color:#66d9ef">return</span> item.hashValue
+}
+<span style="color:#66d9ef">subscript</span>&lt;T&gt;(key: String) -&gt; T? {
+    <span style="color:#66d9ef">return</span> dictionary[key] <span style="color:#66d9ef">as</span>? T
+}
+</code></pre></div><h2 id="associated-types">Associated types</h2>
 <p>关联类型声明一个占位名称，可以在协议中代替类型使用，在协议被实现时，实际的类型才会确定：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">QueueProtocol</span> {
     associatedtype QueueType
