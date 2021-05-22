@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1833</span>
+<span class="leancloud-visitors-count">1864</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -454,13 +454,13 @@ debugPrint(countries)
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">for</span> (index, animal) <span style="color:#66d9ef">in</span> animals.enumerated() <span style="color:#66d9ef">where</span> animal <span style="color:#66d9ef">is</span> SeaAnimal { 
     print(<span style="color:#e6db74">&#34;Only Sea Animal: </span><span style="color:#e6db74">\(</span>index<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>) 
 }
-</code></pre></div><h1 id="范型">范型</h1>
-<h2 id="方法中使用范型">方法中使用范型</h2>
-<p>可以同时定义多种类型的范型：</p>
+</code></pre></div><h1 id="泛型">泛型</h1>
+<h2 id="方法中使用泛型">方法中使用泛型</h2>
+<p>可以同时定义多种类型的泛型泛型，习惯上使用<code>T</code>或者<code>E</code>作为泛型占位符：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">testGeneric</span>&lt;T, E&gt;(a: T, b: E) {
     <span style="color:#75715e">// Statements</span>
 }
-</code></pre></div><p>使用范型来交换变量的值：</p>
+</code></pre></div><p>使用泛型来交换变量的值：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">swapGeneric</span>&lt;T&gt;(a: <span style="color:#66d9ef">inout</span> T, b: <span style="color:#66d9ef">inout</span> T) {
     <span style="color:#66d9ef">let</span> tmp = a
     a = b
@@ -471,15 +471,15 @@ debugPrint(countries)
 <span style="color:#66d9ef">var</span> b = <span style="color:#ae81ff">66</span>
 
 swapGeneric(a: &amp;a, b: &amp;b)
-</code></pre></div><p>使用范型的时候可以指定其满足某种协议或者某种类型：</p>
+</code></pre></div><p>定义泛型方法时，可以指定其满足某种协议或者属于某种类型。有多个泛型可以部分指定，也可以全部指定遵循某个协议：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">testGenericComparable</span>&lt;T: Comparable&gt;(a: T, b: T) -&gt; Bool {
     a == b
 }
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">testFunction</span>&lt;T: MyClass, E: MyProtocol&gt;(a: T, b: E) {
     <span style="color:#75715e">// Statements</span>
 }
-</code></pre></div><h2 id="范型类型">范型类型</h2>
-<p>习惯上使用<code>T</code>或者<code>E</code>作为范型占位符。不仅可以使用<code>class</code>定义范型类，也可以在使用<code>struct</code>、<code>enum</code>时定义范型类型：</p>
+</code></pre></div><h2 id="泛型类型">泛型类型</h2>
+<p>不仅可以使用<code>class</code>定义泛型类，也可以在使用<code>struct</code>、<code>enum</code>时定义泛型类型：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">List</span>&lt;T&gt; {
     <span style="color:#66d9ef">var</span> items = [T]()
 }
@@ -721,10 +721,10 @@ swapGeneric(a: &amp;a, b: &amp;b)
         <li><a href="#协议中的where">协议中的where</a></li>
       </ul>
     </li>
-    <li><a href="#范型">范型</a>
+    <li><a href="#泛型">泛型</a>
       <ul>
-        <li><a href="#方法中使用范型">方法中使用范型</a></li>
-        <li><a href="#范型类型">范型类型</a></li>
+        <li><a href="#方法中使用泛型">方法中使用泛型</a></li>
+        <li><a href="#泛型类型">泛型类型</a></li>
         <li><a href="#associated-types">Associated types</a></li>
       </ul>
     </li>
