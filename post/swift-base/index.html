@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">2978</span>
+<span class="leancloud-visitors-count">3104</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">6 分钟</span>
+<span class="leancloud-visitors-count">7 分钟</span>
 </span>
       </div>
     </header>
@@ -632,7 +632,7 @@ intQ2.add(item: <span style="color:#ae81ff">6</span>)
     print(<span style="color:#e6db74">&#34;Error: Unknown Error&#34;</span>)
 }
 </code></pre></div><h1 id="自定义下标">自定义下标</h1>
-<p>默认情况下，下标在<code>Swift</code>中是访问集合列表或序列中的快捷方式。可以在一个类型中定义多个下标，调用的时候可以根据传过去的索引区分：</p>
+<p>默认情况下，下标在<code>Swift</code>中是访问集合列表或序列中的快捷方式。也可以在自定义类型中定义下标：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyNames</span> {
     <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">var</span> names = [<span style="color:#e6db74">&#34;Jon&#34;</span>, <span style="color:#e6db74">&#34;Kailey&#34;</span>, <span style="color:#e6db74">&#34;Kara&#34;</span>]
 
@@ -641,13 +641,46 @@ intQ2.add(item: <span style="color:#ae81ff">6</span>)
         <span style="color:#66d9ef">set</span> { names[index] = newValue }
     }
 }
-</code></pre></div><p>也可以定义只读的下标，有两种方式。一种是只显式<code>get</code>方法，不声明<code>set</code>方法；一种是不显式声明，直接返回：</p>
+</code></pre></div><h2 id="只读下标">只读下标</h2>
+<p>也可以定义只读的下标，有两种方式。一种是只显式<code>get</code>方法，不声明<code>set</code>方法；一种是不显式声明，直接返回：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">subscript</span>(index: Int) -&gt; String {
     <span style="color:#66d9ef">return</span> names[index]
 }
 
 <span style="color:#66d9ef">subscript</span>(index: Int) -&gt; String {
     <span style="color:#66d9ef">return</span> names[index]
+}
+</code></pre></div><h2 id="计算下标">计算下标</h2>
+<p>在定义下标时，可以如同定义计算属性：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">MathTable</span> {
+    <span style="color:#66d9ef">var</span> num: Int
+    <span style="color:#66d9ef">subscript</span>(index: Int) -&gt; Int {
+        <span style="color:#66d9ef">return</span> num <span style="color:#f92672">*</span> index
+    }
+}
+
+<span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Hello</span> {
+    <span style="color:#66d9ef">subscript</span>(name: String) -&gt; String {
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Hello </span><span style="color:#e6db74">\(</span>name<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>
+    }
+}
+</code></pre></div><h2 id="静态下标">静态下标</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Hello</span> {
+    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">subscript</span>(name: String) -&gt; String {
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Hello </span><span style="color:#e6db74">\(</span>name<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>
+    }
+}
+</code></pre></div><h2 id="额外下标参数">额外下标参数</h2>
+<p>可以在一个类型中定义多个下标，调用的时候可以根据传过去的索引名字区分：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">MathTable</span> {
+    <span style="color:#66d9ef">var</span> num: Int
+    <span style="color:#66d9ef">subscript</span>(multiply index: Int) -&gt; Int {
+        <span style="color:#66d9ef">return</span> num <span style="color:#f92672">*</span> index
+    }
+
+    <span style="color:#66d9ef">subscript</span>(add index: Int) -&gt; Int {
+        <span style="color:#66d9ef">return</span> num <span style="color:#f92672">+</span> index
+    }
 }
 </code></pre></div>
     </div>
@@ -878,7 +911,14 @@ intQ2.add(item: <span style="color:#ae81ff">6</span>)
         <li><a href="#捕获错误">捕获错误</a></li>
       </ul>
     </li>
-    <li><a href="#自定义下标">自定义下标</a></li>
+    <li><a href="#自定义下标">自定义下标</a>
+      <ul>
+        <li><a href="#只读下标">只读下标</a></li>
+        <li><a href="#计算下标">计算下标</a></li>
+        <li><a href="#静态下标">静态下标</a></li>
+        <li><a href="#额外下标参数">额外下标参数</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
     </div>
