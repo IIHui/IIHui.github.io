@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">2473</span>
+<span class="leancloud-visitors-count">2601</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">5 分钟</span>
+<span class="leancloud-visitors-count">6 分钟</span>
 </span>
       </div>
     </header>
@@ -588,7 +588,27 @@ intQ2.add(item: <span style="color:#ae81ff">6</span>)
     <span style="color:#66d9ef">case</span> NumberAlreadyAssigned
     <span style="color:#66d9ef">case</span> NumberDoesNotExist
 }
-</code></pre></div>
+</code></pre></div><h2 id="抛出错误">抛出错误</h2>
+<p>需要抛出错误时，需在方法定义中添加<code>throws</code>关键字。意思是告诉任何调用该方法的调用者，这个方法可能抛出错误，而且这个错误必须处理：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">typealias</span> BaseballPlayer = (firstName: String, lastName: String, number: Int)
+
+<span style="color:#66d9ef">mutating</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">addPlayer</span>(player: BaseballPlayer) <span style="color:#66d9ef">throws</span> {
+    <span style="color:#66d9ef">guard</span> player.number <span style="color:#f92672">&lt;</span> maxNumber <span style="color:#66d9ef">else</span> {
+        <span style="color:#66d9ef">throw</span> PlayerNumberError.NumberTooHigh(description: <span style="color:#e6db74">&#34;Max number is </span><span style="color:#e6db74">\(</span>maxNumber<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
+    }
+
+    <span style="color:#66d9ef">guard</span> player.number <span style="color:#f92672">&gt;</span> minNumber <span style="color:#66d9ef">else</span> {
+        <span style="color:#66d9ef">throw</span> PlayerNumberError.NumberTooLow(description: <span style="color:#e6db74">&#34;Min number is </span><span style="color:#e6db74">\(</span>minNumber<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
+    }
+
+    <span style="color:#66d9ef">guard</span> players[player.number] == <span style="color:#66d9ef">nil</span> <span style="color:#66d9ef">else</span> {
+        <span style="color:#66d9ef">throw</span> PlayerNumberError.NumberAlreadyAssigned
+    }
+
+    players[player.number] = player
+}
+</code></pre></div><h2 id="捕获错误">捕获错误</h2>
+
     </div>
     <footer class="post-footer">
         
@@ -813,6 +833,8 @@ intQ2.add(item: <span style="color:#ae81ff">6</span>)
     <li><a href="#错误处理">错误处理</a>
       <ul>
         <li><a href="#错误定义">错误定义</a></li>
+        <li><a href="#抛出错误">抛出错误</a></li>
+        <li><a href="#捕获错误">捕获错误</a></li>
       </ul>
     </li>
   </ul>
