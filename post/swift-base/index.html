@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">3104</span>
+<span class="leancloud-visitors-count">3202</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -682,6 +682,24 @@ intQ2.add(item: <span style="color:#ae81ff">6</span>)
         <span style="color:#66d9ef">return</span> num <span style="color:#f92672">+</span> index
     }
 }
+<span style="color:#66d9ef">var</span> table = MathTable(num: <span style="color:#ae81ff">5</span>)
+print(table[multiply: <span style="color:#ae81ff">4</span>]) <span style="color:#75715e">// Displays 20 because 5*4=20</span>
+print(table[add: <span style="color:#ae81ff">4</span>]) <span style="color:#75715e">// Displays 9 because 5+4=9</span>
+</code></pre></div><h2 id="多维下标">多维下标</h2>
+<p>一般的下标定义只有一个参数，但定义下标时可以有多个参数：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">TicTacToe</span> {
+    <span style="color:#66d9ef">var</span> board = [[<span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>], [<span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>], [<span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>]]
+
+    <span style="color:#66d9ef">subscript</span>(x: Int, y: Int) -&gt; String {
+        <span style="color:#66d9ef">get</span> { <span style="color:#66d9ef">return</span> board[x][y] }
+        <span style="color:#66d9ef">set</span> { board[x][y] = newValue }
+    }
+}
+<span style="color:#66d9ef">var</span> board = TicTacToe()
+
+board[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>] = <span style="color:#e6db74">&#34;x&#34;</span>
+
+board[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>] = <span style="color:#e6db74">&#34;o&#34;</span>
 </code></pre></div>
     </div>
     <footer class="post-footer">
@@ -917,6 +935,7 @@ intQ2.add(item: <span style="color:#ae81ff">6</span>)
         <li><a href="#计算下标">计算下标</a></li>
         <li><a href="#静态下标">静态下标</a></li>
         <li><a href="#额外下标参数">额外下标参数</a></li>
+        <li><a href="#多维下标">多维下标</a></li>
       </ul>
     </li>
   </ul>
