@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1864</span>
+<span class="leancloud-visitors-count">1876</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -471,11 +471,12 @@ debugPrint(countries)
 <span style="color:#66d9ef">var</span> b = <span style="color:#ae81ff">66</span>
 
 swapGeneric(a: &amp;a, b: &amp;b)
-</code></pre></div><p>定义泛型方法时，可以指定其满足某种协议或者属于某种类型。有多个泛型可以部分指定，也可以全部指定遵循某个协议：</p>
+</code></pre></div><p>定义泛型方法时，可以指定其遵循某种协议或者属于某种类型。有多个泛型占位符，可以部分指定遵循某种协议或者属于某种类型，也可以全部指定：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">testGenericComparable</span>&lt;T: Comparable&gt;(a: T, b: T) -&gt; Bool {
     a == b
 }
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">testFunction</span>&lt;T: MyClass, E: MyProtocol&gt;(a: T, b: E) {
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">testFunction</span>&lt;T: MyClass, E: MyProtocol&gt;(a: T, b: E) {
     <span style="color:#75715e">// Statements</span>
 }
 </code></pre></div><h2 id="泛型类型">泛型类型</h2>
