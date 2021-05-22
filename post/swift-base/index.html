@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">3464</span>
+<span class="leancloud-visitors-count">3923</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">7 分钟</span>
+<span class="leancloud-visitors-count">8 分钟</span>
 </span>
       </div>
     </header>
@@ -735,7 +735,72 @@ board[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>
 
 print(<span style="color:#e6db74">&#34;The </span><span style="color:#e6db74">\(</span>redsox.fullname<span style="color:#e6db74">)</span><span style="color:#e6db74"> won </span><span style="color:#e6db74">\(</span>redsox.percent<span style="color:#e6db74">)</span><span style="color:#e6db74"> of their games in </span><span style="color:#e6db74">\(</span>redsox.year<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
 </code></pre></div><h1 id="闭包">闭包</h1>
-<p>闭包是独立的代码块，可以在应用程序中传递和使用。我们可以把<code>Int</code>类型看作是包含<code>integer</code>的类型，<code>String</code>类型是包含字符串的类型。因此，<font color=red>闭包可以被认为包含代码块的类型</font>。这意味着可以把闭包分配一个变量，将其作为参数传递给函数，也可以从函数中返回，</p>
+<p>闭包是独立的代码块，可以在应用程序中传递和使用。我们可以把<code>Int</code>类型看作是包含<code>integer</code>的类型，<code>String</code>类型是包含字符串的类型。因此，<font color=red>闭包可以被认为包含代码块的类型</font>。这意味着可以把闭包分配一个变量，将其作为参数传递给函数，也可以从函数中返回。</p>
+<p>闭包可以捕捉和存储对任何变量或常量的引用，而这些变量或常量是在其定义的上下文中出现的。这被称为对变量或常量的<code>closing over</code>，在大多数情况下，<code>Swift</code>会为我们处理内存管理。唯一的例外是在创建强引用循环时。</p>
+<h2 id="简单闭包">简单闭包</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">let</span> clos1 = { () -&gt; Void <span style="color:#66d9ef">in</span>
+    print(<span style="color:#e6db74">&#34;Hello World&#34;</span>)
+}
+
+<span style="color:#66d9ef">let</span> clos2 = { (name: String) -&gt; Void <span style="color:#66d9ef">in</span>
+    print(<span style="color:#e6db74">&#34;Hello </span><span style="color:#e6db74">\(</span>name<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
+}
+
+<span style="color:#66d9ef">let</span> clos3 = { (name: String) -&gt; String <span style="color:#66d9ef">in</span>
+    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Hello </span><span style="color:#e6db74">\(</span>name<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>
+}
+</code></pre></div><h2 id="闭包的简明语法">闭包的简明语法</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">testFunction</span>(num: Int, handler: () -&gt; Void) {
+    <span style="color:#66d9ef">for</span> <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">0</span> ..<span style="color:#f92672">&lt;</span> num {
+        handler()
+    }
+}
+
+testFunction(num: <span style="color:#ae81ff">5</span>, handler: { print(<span style="color:#e6db74">&#34;Hello from Shorthand closure&#34;</span>) })
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">testFunction</span>(num: Int, handler: () -&gt; Void) {
+    <span style="color:#66d9ef">for</span> <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">0</span> ..<span style="color:#f92672">&lt;</span> num {
+        handler()
+    }
+}
+
+testFunction(num: <span style="color:#ae81ff">5</span>) {
+    print(<span style="color:#e6db74">&#34;Hello from Shorthand closure&#34;</span>)
+}
+</code></pre></div><h2 id="数组中使用闭包">数组中使用闭包</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">guests.map { name <span style="color:#66d9ef">in</span>
+    debugPrint(<span style="color:#e6db74">&#34;hello </span><span style="color:#e6db74">\(</span>name<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
+}
+
+guests.map { <span style="color:#e6db74">&#34;hello </span><span style="color:#e6db74">\(</span>$0<span style="color:#e6db74">)</span><span style="color:#e6db74"> &#34;</span> }
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">let</span> greetGuest = { (name: String) -&gt; Void <span style="color:#66d9ef">in</span>
+    print(<span style="color:#e6db74">&#34;Hello guest named </span><span style="color:#e6db74">\(</span>name<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
+}
+
+<span style="color:#66d9ef">let</span> sayGoodbye = { (name: String) -&gt; Void <span style="color:#66d9ef">in</span>
+    print(<span style="color:#e6db74">&#34;Goodbye </span><span style="color:#e6db74">\(</span>name<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
+}
+
+guests.map(greetGuest)
+guests.map(sayGoodbye)
+</code></pre></div><h2 id="不初始化数组">不初始化数组</h2>
+<p><code>Swift 5.2</code>为数组添加了一个不包含提前初始化的构造函数，如下所示：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">let</span> capacity = <span style="color:#ae81ff">20</span>
+<span style="color:#66d9ef">let</span> diceRolls = [Int](unsafeUninitializedCapacity: capacity) { buffer, initializedCount <span style="color:#66d9ef">in</span>
+    <span style="color:#66d9ef">for</span> x <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">0</span> ..<span style="color:#f92672">&lt;</span> capacity {
+        buffer[x] = Int.random(<span style="color:#66d9ef">in</span>: <span style="color:#ae81ff">1</span> ... <span style="color:#ae81ff">6</span>)
+    }
+    initializedCount = capacity
+}
+</code></pre></div><p>使用这种初始化器，有以下几点需要注意：</p>
+<ul>
+<li>
+<p>如果<code>initializedCount</code>不设置，则默认为<code>0</code>，此时所有的设置的值都会消失。</p>
+</li>
+<li>
+<p>初始化的元素个数<code>initializedCount</code>不能大于数组的容量<code>capacity</code>；如果初始化的元素个数小于数组的容量，则剩余的元素都是随机值。</p>
+</li>
+</ul>
+<h1 id="并发和并行">并发和并行</h1>
 
     </div>
     <footer class="post-footer">
@@ -975,7 +1040,15 @@ print(<span style="color:#e6db74">&#34;The </span><span style="color:#e6db74">\(
         <li><a href="#动态成员查询">动态成员查询</a></li>
       </ul>
     </li>
-    <li><a href="#闭包">闭包</a></li>
+    <li><a href="#闭包">闭包</a>
+      <ul>
+        <li><a href="#简单闭包">简单闭包</a></li>
+        <li><a href="#闭包的简明语法">闭包的简明语法</a></li>
+        <li><a href="#数组中使用闭包">数组中使用闭包</a></li>
+        <li><a href="#不初始化数组">不初始化数组</a></li>
+      </ul>
+    </li>
+    <li><a href="#并发和并行">并发和并行</a></li>
   </ul>
 </nav></div>
     </div>
