@@ -168,8 +168,8 @@ protocol Name { var firstName: String { get set } var lastName: String { get set
 func testGeneric&amp;lt;T, E&amp;gt;(a: T, b: E) { // Statements } 使用泛型来交换变量的值：
 func swapGeneric&amp;lt;T&amp;gt;(a: inout T, b: inout T) { let tmp = a a = b b = tmp } var a = 56 var b = 66 swapGeneric(a: &amp;amp;a, b: &amp;amp;b) 定义泛型方法时，可以指定其遵循某种协议或者属于某种类型。有多个泛型占位符，可以部分指定遵循某种协议或者属于某种类型，也可以全部指定：
 func testGenericComparable&amp;lt;T: Comparable&amp;gt;(a: T, b: T) -&amp;gt; Bool { a == b } func testFunction&amp;lt;T: MyClass, E: MyProtocol&amp;gt;(a: T, b: E) { // Statements } 泛型类型 不仅可以使用class定义泛型类，也可以在使用struct、enum时定义泛型类型：
-class List&amp;lt;T&amp;gt; { var items = [T]() } var stringList = List&amp;lt;String&amp;gt;() var doubleList = List&amp;lt;Double&amp;gt;() struct GenericStruct&amp;lt;T&amp;gt; { // } enum GenericEnum&amp;lt;T&amp;gt; { // } 有条件泛型扩展 可以有条件的对泛型进行扩展，下面
-Associated types 关联类型声明一个占位名称，可以在协议中代替类型使用，在协议被实现时，实际的类型才会确定：
+class List&amp;lt;T&amp;gt; { var items = [T]() } var stringList = List&amp;lt;String&amp;gt;() var doubleList = List&amp;lt;Double&amp;gt;() struct GenericStruct&amp;lt;T&amp;gt; { // } enum GenericEnum&amp;lt;T&amp;gt; { // } 有条件泛型扩展 可以有条件地对泛型进行扩展，下面对List添加扩展，并要求其遵循Numeric协议：
+extension List where T: Numeric { func sum() -&amp;gt; T { items.reduce(0, &#43;) } } Associated types 关联类型声明一个占位名称，可以在协议中代替类型使用，在协议被实现时，实际的类型才会确定：
 protocol QueueProtocol { associatedtype QueueType mutating func add(item: QueueType) mutating func getItem() -&amp;gt; QueueType? func count() -&amp;gt; Int } 错误处理 错误定义 enum PlayerNumberError: Error { case NumberTooHigh(description: String) case NumberTooLow(description: String) case NumberAlreadyAssigned case NumberDoesNotExist } </content>
     </entry>
     
