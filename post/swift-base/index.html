@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">3923</span>
+<span class="leancloud-visitors-count">4031</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">8 分钟</span>
+<span class="leancloud-visitors-count">9 分钟</span>
 </span>
       </div>
     </header>
@@ -801,7 +801,22 @@ guests.map(sayGoodbye)
 </li>
 </ul>
 <h1 id="并发和并行">并发和并行</h1>
-
+<h1 id="自定义值类型">自定义值类型</h1>
+<h2 id="值和类类型">值和类类型</h2>
+<p>在<code>Swift</code>中不支持值的递归类型，而允许类的递归类型。如下所示的值类型会报<code>Value type 'LinkedListValueType' cannot have a stored property that recursively contains it</code>错误：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">LinkedListValueType</span> {
+    <span style="color:#66d9ef">var</span> value: String
+    <span style="color:#66d9ef">var</span> next: LinkedListValueType?
+}
+</code></pre></div><p>应该声明类类型的递归类型：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LinkedListReferenceType</span> {
+    <span style="color:#66d9ef">var</span> value: String
+    <span style="color:#66d9ef">var</span> next: LinkedListReferenceType?
+    <span style="color:#66d9ef">init</span>(value: String) {
+        <span style="color:#66d9ef">self</span>.value = value
+    }
+}
+</code></pre></div>
     </div>
     <footer class="post-footer">
         
@@ -1049,6 +1064,11 @@ guests.map(sayGoodbye)
       </ul>
     </li>
     <li><a href="#并发和并行">并发和并行</a></li>
+    <li><a href="#自定义值类型">自定义值类型</a>
+      <ul>
+        <li><a href="#值和类类型">值和类类型</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
     </div>

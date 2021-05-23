@@ -190,7 +190,9 @@ struct TicTacToe { var board = [[&amp;#34;&amp;#34;, &amp;#34;&amp;#34;, &amp;#3
 let capacity = 20 let diceRolls = [Int](unsafeUninitializedCapacity: capacity) { buffer, initializedCount in for x in 0 ..&amp;lt; capacity { buffer[x] = Int.random(in: 1 ... 6) } initializedCount = capacity } 使用这种初始化器，有以下几点需要注意：
   如果initializedCount不设置，则默认为0，此时所有的设置的值都会消失。
   初始化的元素个数initializedCount不能大于数组的容量capacity；如果初始化的元素个数小于数组的容量，则剩余的元素都是随机值。
-  并发和并行 </content>
+  并发和并行 自定义值类型 值和类类型 在Swift中不支持值的递归类型，而允许类的递归类型。如下所示的值类型会报Value type &#39;LinkedListValueType&#39; cannot have a stored property that recursively contains it错误：
+struct LinkedListValueType { var value: String var next: LinkedListValueType? } 应该声明类类型的递归类型：
+class LinkedListReferenceType { var value: String var next: LinkedListReferenceType? init(value: String) { self.value = value } } </content>
     </entry>
     
      <entry>
