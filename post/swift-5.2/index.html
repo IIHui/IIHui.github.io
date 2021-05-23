@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">309</span>
+<span class="leancloud-visitors-count">413</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -272,6 +272,21 @@ code.has-jax {
 
 <span style="color:#66d9ef">let</span> base2Pow = MyPow(base: <span style="color:#ae81ff">2</span>)
 debugPrint(base2Pow(x: <span style="color:#ae81ff">3</span>))
+</code></pre></div><h1 id="下标默认值">下标默认值</h1>
+<p>在<code>Swift 5.2</code>中定义下标的时候，现在可以定义默认值参数。在下面的例子中，在下标越界的情况下，返回一个默认值：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Building</span> {
+    <span style="color:#66d9ef">var</span> floors: [String]
+
+    <span style="color:#66d9ef">subscript</span>(index: Int, <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">default</span>: String = <span style="color:#e6db74">&#34;Unknown&#34;</span>) -&gt; String {
+        <span style="color:#66d9ef">if</span> index <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>, index <span style="color:#f92672">&lt;</span> floors.count {
+            <span style="color:#66d9ef">return</span> floors[index]
+        } <span style="color:#66d9ef">else</span> {
+            <span style="color:#66d9ef">return</span> `<span style="color:#66d9ef">default</span>`
+        }
+    }
+}
+
+<span style="color:#66d9ef">let</span> building = Building(floors: [<span style="color:#e6db74">&#34;Ground Floor&#34;</span>, <span style="color:#e6db74">&#34;1st&#34;</span>, <span style="color:#e6db74">&#34;2nd&#34;</span>, <span style="color:#e6db74">&#34;3rd&#34;</span>])
 </code></pre></div>
     </div>
     <footer class="post-footer">
@@ -437,6 +452,7 @@ debugPrint(base2Pow(x: <span style="color:#ae81ff">3</span>))
   <ul>
     <li><a href="#keypath">KeyPath</a></li>
     <li><a href="#实例调用函数">实例调用函数</a></li>
+    <li><a href="#下标默认值">下标默认值</a></li>
   </ul>
 </nav></div>
     </div>
