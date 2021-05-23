@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">4628</span>
+<span class="leancloud-visitors-count">4629</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -328,7 +328,7 @@ debugPrint(newArr) <span style="color:#75715e">//[100, 98, 95, 91, 83, 88, 72]</
 <span style="color:#66d9ef">var</span> dic4: [String: String] = [:]
 <span style="color:#66d9ef">var</span> dic5: [Int: String] = [:]
 </code></pre></div><h2 id="更新或添加">更新或添加</h2>
-<p>字典中已有值的更新可以通过重新赋值或者调用<code>updateValue</code>函数来改变<code>key</code>对应的<code>value</code>，如果<code>key</code>在字典中不存在，则更新不生效：</p>
+<p>字典中已有值的更新或添加可以通过赋值或者调用<code>updateValue</code>函数来改变<code>key</code>对应的<code>value</code>，如果<code>key</code>在字典中不存在，则更新不生效：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">var</span> countries = [<span style="color:#e6db74">&#34;US&#34;</span>: <span style="color:#e6db74">&#34;UnitedStates&#34;</span>, <span style="color:#e6db74">&#34;IN&#34;</span>: <span style="color:#e6db74">&#34;India&#34;</span>, <span style="color:#e6db74">&#34;UK&#34;</span>: <span style="color:#e6db74">&#34;UnitedKingdom&#34;</span>]
 countries.updateValue(<span style="color:#e6db74">&#34;test&#34;</span>, forKey: <span style="color:#e6db74">&#34;US&#34;</span>)
 debugPrint(countries)
