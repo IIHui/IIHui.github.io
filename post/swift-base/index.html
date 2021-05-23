@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">4463</span>
+<span class="leancloud-visitors-count">4468</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -262,10 +262,11 @@ print(<span style="color:#e6db74">&#34;hello&#34;</span>); print(<span style="co
 <h2 id="显式声明">显式声明</h2>
 <p>有两种方式声明变量，即显式和隐式。在变量声明时<font color=red>明确指定变量的类型则为显式变量声明</font>，声明格式为<code>var name: type = value</code>：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">var</span> firstNumber: Int = <span style="color:#ae81ff">5</span>
+<span style="color:#66d9ef">let</span> firstNum: Int = <span style="color:#ae81ff">6</span>
 </code></pre></div><h2 id="隐式声明">隐式声明</h2>
 <p>在变量声明时<font color=red>不指明变量的类型，而是由编译器推断出相应的类型，</font>则为隐式声明。大部分情况下<code>Swift</code>足够智能，可以通过初始化值来推断出相应的类型：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">var</span> name = value 
-<span style="color:#66d9ef">var</span> firstNumber = <span style="color:#ae81ff">5</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">var</span> firstNumber = <span style="color:#ae81ff">5</span>
+<span style="color:#66d9ef">let</span> firstNum = <span style="color:#ae81ff">100</span>
 </code></pre></div><h2 id="可选类型">可选类型</h2>
 <p>当一个变量或者常量<font color=red>可能不存在值</font>时，应该使用可选类型来声明。一个可选类型表示一个变量<font color=red>可能有值也可能没有值</font>。因为可选类型可能不包含值，所以在访问前需要判断是否为<code>nil</code>。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">var</span> optionStr: String?
