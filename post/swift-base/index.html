@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">4401</span>
+<span class="leancloud-visitors-count">4463</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -335,12 +335,12 @@ debugPrint(countries)
 countries[<span style="color:#e6db74">&#34;US&#34;</span>] = <span style="color:#e6db74">&#34;MoTest&#34;</span>
 debugPrint(countries)
 </code></pre></div><h2 id="移除值">移除值</h2>
+<p>字典中已有值的移除可以通过重新赋值为<code>nil</code>或者调用<code>removeValue</code>函数来移除。如果<code>key</code>在字典中不存在，则移除不生效：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">var</span> countries = [<span style="color:#e6db74">&#34;US&#34;</span>: <span style="color:#e6db74">&#34;UnitedStates&#34;</span>, <span style="color:#e6db74">&#34;IN&#34;</span>: <span style="color:#e6db74">&#34;India&#34;</span>, <span style="color:#e6db74">&#34;UK&#34;</span>: <span style="color:#e6db74">&#34;UnitedKingdom&#34;</span>]
 countries[<span style="color:#e6db74">&#34;US&#34;</span>] = <span style="color:#66d9ef">nil</span>
 countries.removeValue(forKey: <span style="color:#e6db74">&#34;UK&#34;</span>)
 debugPrint(countries)
-</code></pre></div><hr>
-<h1 id="集合">集合</h1>
+</code></pre></div><h1 id="集合">集合</h1>
 <h2 id="初始化-1">初始化</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">var</span> mySet1 = Set&lt;String&gt;()
 <span style="color:#66d9ef">var</span> mySet2 = Set([<span style="color:#e6db74">&#34;one&#34;</span>, <span style="color:#e6db74">&#34;two&#34;</span>, <span style="color:#e6db74">&#34;three&#34;</span>])
