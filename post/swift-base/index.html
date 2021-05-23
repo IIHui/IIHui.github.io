@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">4205</span>
+<span class="leancloud-visitors-count">4242</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -847,6 +847,21 @@ guests.map(sayGoodbye)
 
     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">copy</span>() -&gt; BackendQueue&lt;T&gt; {
         <span style="color:#66d9ef">return</span> BackendQueue&lt;T&gt;(items)
+    }
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Queue</span> {
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">var</span> internalQueue = BackendQueue&lt;Int&gt;()
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">mutating</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">addItem</span>(item: Int) {
+        internalQueue.addItem(item: item)
+    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">mutating</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">getItem</span>() -&gt; Int? {
+        <span style="color:#66d9ef">return</span> internalQueue.getItem()
+    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">count</span>() -&gt; Int {
+        <span style="color:#66d9ef">return</span> internalQueue.count()
     }
 }
 </code></pre></div>
