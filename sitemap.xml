@@ -192,7 +192,8 @@ let capacity = 20 let diceRolls = [Int](unsafeUninitializedCapacity: capacity) {
   初始化的元素个数initializedCount不能大于数组的容量capacity；如果初始化的元素个数小于数组的容量，则剩余的元素都是随机值。
   并发和并行 自定义值类型 值和类类型 在Swift中不支持值的递归类型，而允许类的递归类型。如下所示的值类型会报Value type &#39;LinkedListValueType&#39; cannot have a stored property that recursively contains it错误：
 struct LinkedListValueType { var value: String var next: LinkedListValueType? } 应该声明类类型的递归类型：
-class LinkedListReferenceType { var value: String var next: LinkedListReferenceType? init(value: String) { self.value = value } } </content>
+class LinkedListReferenceType { var value: String var next: LinkedListReferenceType? init(value: String) { self.value = value } } 写复制 一般情况，当传递一个值类型，例如结构体，会创建一个新的副本。这意味着，如果一个大的结构体包含很多属性时，每次都要复制。为了解决这个问题，苹果在标准库中实现了写时复制。但是，自定义类型并未自动实现写复制。
+private class BackendQueue&amp;lt;T&amp;gt; { private var items = [T]() public init() { // } private init(_ items: [T]) { self.items = items } public func addItem(item: T) { items.append(item) } public func getItem() -&amp;gt; T? { if items.count &amp;gt; 0 { return items.remove(at: 0) } else { return nil } } public func count() -&amp;gt; Int { return items.count } public func copy() -&amp;gt; BackendQueue&amp;lt;T&amp;gt; { return BackendQueue&amp;lt;T&amp;gt;(items) } } </content>
     </entry>
     
      <entry>

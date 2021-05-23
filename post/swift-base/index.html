@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">4031</span>
+<span class="leancloud-visitors-count">4205</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -816,6 +816,39 @@ guests.map(sayGoodbye)
         <span style="color:#66d9ef">self</span>.value = value
     }
 }
+</code></pre></div><h2 id="写复制">写复制</h2>
+<p>一般情况，当传递一个值类型，例如结构体，会创建一个新的副本。这意味着，如果一个大的结构体包含很多属性时，每次都要复制。为了解决这个问题，苹果在<font color=red>标准库中实现了写时复制</font>。但是，自定义类型并未自动实现写复制。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BackendQueue</span>&lt;T&gt; {
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">var</span> items = [T]()
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">init</span>() {
+        <span style="color:#75715e">//</span>
+    }
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">init</span>(<span style="color:#66d9ef">_</span> items: [T]) {
+        <span style="color:#66d9ef">self</span>.items = items
+    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">addItem</span>(item: T) {
+        items.append(item)
+    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">getItem</span>() -&gt; T? {
+        <span style="color:#66d9ef">if</span> items.count <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> {
+            <span style="color:#66d9ef">return</span> items.remove(at: <span style="color:#ae81ff">0</span>)
+        } <span style="color:#66d9ef">else</span> {
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>
+        }
+    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">count</span>() -&gt; Int {
+        <span style="color:#66d9ef">return</span> items.count
+    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">copy</span>() -&gt; BackendQueue&lt;T&gt; {
+        <span style="color:#66d9ef">return</span> BackendQueue&lt;T&gt;(items)
+    }
+}
 </code></pre></div>
     </div>
     <footer class="post-footer">
@@ -1067,6 +1100,7 @@ guests.map(sayGoodbye)
     <li><a href="#自定义值类型">自定义值类型</a>
       <ul>
         <li><a href="#值和类类型">值和类类型</a></li>
+        <li><a href="#写复制">写复制</a></li>
       </ul>
     </li>
   </ul>
