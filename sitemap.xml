@@ -90,7 +90,8 @@ debugPrint(Float16.pi) //3.14 debugPrint(Float32.pi) //3.1415925 </content>
  KeyPath 在Swift 5.2中允许使用key path表达式来代替key path函数，如下所示使用cars.filter(\.isElectric)来代替key path函数：
 let cars: [Car] = [Car(brand: &amp;#34;Tesla&amp;#34;, isElectric: true), Car(brand: &amp;#34;Ford&amp;#34;, isElectric: false)] let electricCars1 = cars.filter { $0.isElectric } let electricCars2 = cars.filter { $0[keyPath: \Car.isElectric] } let electricCars3 = cars.filter(\.isElectric) 实例调用函数 这个新功能允许拥有名为callAsFunction的方法实例可以像函数一样被调用，如下所示base2Pow(x: 3)就是调用callAsFunction(x: Double)：
 struct MyPow { let base: Double func callAsFunction(x: Double) -&amp;gt; Double { return pow(base, x) } } let base2Pow = MyPow(base: 2) debugPrint(base2Pow(x: 3)) 下标默认值 在Swift 5.2中定义下标的时候，现在可以定义默认值参数。在下面的例子中，在下标越界的情况下，返回一个默认值：
-struct Building { var floors: [String] subscript(index: Int, default default: String = &amp;#34;Unknown&amp;#34;) -&amp;gt; String { if index &amp;gt;= 0, index &amp;lt; floors.count { return floors[index] } else { return `default` } } } let building = Building(floors: [&amp;#34;Ground Floor&amp;#34;, &amp;#34;1st&amp;#34;, &amp;#34;2nd&amp;#34;, &amp;#34;3rd&amp;#34;]) </content>
+struct Building { var floors: [String] subscript(index: Int, default default: String = &amp;#34;Unknown&amp;#34;) -&amp;gt; String { if index &amp;gt;= 0, index &amp;lt; floors.count { return floors[index] } else { return `default` } } } let building = Building(floors: [&amp;#34;Ground Floor&amp;#34;, &amp;#34;1st&amp;#34;, &amp;#34;2nd&amp;#34;, &amp;#34;3rd&amp;#34;]) Lazy filtering 在Swift 5.2前使用lazy filtering时，是从右到左运算。在Swift 5.2后运算顺序变成了从左到右，如下所示：
+let numbers1 = [1, 2, 3, 4, 5].lazy.filter { $0 % 2 == 0 }.filter { print($0); return true } _ = numbers1.count // 2  // 4 </content>
     </entry>
     
      <entry>
