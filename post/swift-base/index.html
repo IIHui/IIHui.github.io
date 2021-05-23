@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">4195</span>
+<span class="leancloud-visitors-count">4273</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -286,10 +286,10 @@ optionStr = <span style="color:#e6db74">&#34;Any Test&#34;</span>
 <span style="color:#66d9ef">var</span> arrayTwo = [Int]()
 <span style="color:#66d9ef">var</span> arrayThree: [Int] = []
 </code></pre></div><h2 id="特殊数组">特殊数组</h2>
-<p><code>Any</code>可以代表任何类型的实例，包括函数类型。因此，在数组的定义时，使用<code>Any</code>可以保存不同类型的数据的数组：</p>
+<p><code>Any</code>可以代表任何类型的实例，包括函数类型。因此，在数组的定义时，使用<code>Any</code>可以保存不同类型数据的数组：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">var</span> myArray: [Any] = [<span style="color:#ae81ff">1</span>,<span style="color:#e6db74">&#34;Two&#34;</span>]
 </code></pre></div><h2 id="访问元素">访问元素</h2>
-<p>数组元素的访问，包括以下标的形式访问数组中的任意一个元素，或者以<code>first</code>来访问第一个元素，使用<code>last</code>属性来访问最后一个元素：</p>
+<p>数组元素的访问，包括以下标的形式访问数组中的任意一个元素。还可以以<code>first</code>来访问第一个元素，使用<code>last</code>属性来访问最后一个元素：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">let</span> arrayOne = [<span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">34</span>, <span style="color:#ae81ff">667</span>]
 debugPrint(arrayOne[<span style="color:#ae81ff">0</span>], arrayOne[<span style="color:#ae81ff">1</span>], arrayOne[<span style="color:#ae81ff">2</span>])
 
@@ -297,18 +297,19 @@ debugPrint(arrayOne[<span style="color:#ae81ff">0</span>], arrayOne[<span style=
 <span style="color:#66d9ef">let</span> arr = multiArray[<span style="color:#ae81ff">0</span>]
 <span style="color:#66d9ef">let</span> value = multiArray[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">1</span>]
 debugPrint(arr, value, arr.first, arr.last, multiArray.first, multiArray.last)
-</code></pre></div><p>使用<code>shuffle()</code>或者<code>shuffled()</code>可以对数组进行重新洗牌，新生成一个随机序列。其中<code>shuffle()</code>会改变原数组的顺序：</p>
+</code></pre></div><p>使用<code>shuffle()</code>或者<code>shuffled()</code>可以对数组进行<font color=red>重新洗牌，新生成一个随机序列</font>。但调用<code>shuffle()</code>会改变原数组的顺序：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">debugPrint(array, array.shuffled(), array.shuffled(), array)
 <span style="color:#75715e">//[12, 34, 5, 89, 0, 1] [5, 1, 0, 89, 12, 34] [12, 34, 5, 89, 0, 1] [12, 34, 5, 89, 0, 1]</span>
 array.shuffle()
 debugPrint(array)
 <span style="color:#75715e">//[34, 0, 5, 12, 89, 1]</span>
 </code></pre></div><h2 id="数组切片">数组切片</h2>
+<p>数组切片是指以<code>range</code>的方式取数组中元素。下面的代码使用<code>range</code>的方式，以<code>numbers[1 ... 3] = [100, 200, 400]</code>方式整体改变数组中某些元素：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">var</span> numbers = [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">10</span>]
 numbers[<span style="color:#ae81ff">1</span> ... <span style="color:#ae81ff">3</span>] = [<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">200</span>, <span style="color:#ae81ff">400</span>]
 debugPrint(numbers)
 </code></pre></div><h2 id="diff">diff</h2>
-<p><code>diff</code>函数可以返回两个数组的差异：</p>
+<p><code>difference</code>函数可以返回两个数组的差异：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">var</span> scores1 = [<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">81</span>, <span style="color:#ae81ff">95</span>, <span style="color:#ae81ff">98</span>, <span style="color:#ae81ff">99</span>, <span style="color:#ae81ff">65</span>, <span style="color:#ae81ff">87</span>]
 
 <span style="color:#66d9ef">var</span> scores2 = [<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">98</span>, <span style="color:#ae81ff">95</span>, <span style="color:#ae81ff">91</span>, <span style="color:#ae81ff">83</span>, <span style="color:#ae81ff">88</span>, <span style="color:#ae81ff">72</span>]
