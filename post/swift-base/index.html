@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">4506</span>
+<span class="leancloud-visitors-count">4609</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">9 分钟</span>
+<span class="leancloud-visitors-count">10 分钟</span>
 </span>
       </div>
     </header>
@@ -319,7 +319,7 @@ debugPrint(numbers)
 
 debugPrint(newArr) <span style="color:#75715e">//[100, 98, 95, 91, 83, 88, 72]</span>
 </code></pre></div><h1 id="字典">字典</h1>
-<h2 id="初始化">初始化</h2>
+<h2 id="声明-1">声明</h2>
 <p>字典的声明与数组的声明一样，包括初始化隐式声明和指明类型两种。初始化隐式声明即通过编译器确定<code>key</code>和<code>value</code>类型：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">let</span> countries = [<span style="color:#e6db74">&#34;US&#34;</span>: <span style="color:#e6db74">&#34;UnitedStates&#34;</span>, <span style="color:#e6db74">&#34;IN&#34;</span>: <span style="color:#e6db74">&#34;India&#34;</span>, <span style="color:#e6db74">&#34;UK&#34;</span>: <span style="color:#e6db74">&#34;UnitedKingdom&#34;</span>]
 <span style="color:#66d9ef">var</span> dic1 = [String: String]()
@@ -342,15 +342,23 @@ countries.removeValue(forKey: <span style="color:#e6db74">&#34;UK&#34;</span>)
 debugPrint(countries)
 </code></pre></div><h1 id="集合">集合</h1>
 <p><code>Swift</code>中的集合是非有序集合，并且集合中每个元素都是唯一的，不可重复的。如果使用<code>for</code>循环来遍历集合，得到的<font color=red>顺序是随机的</font>。</p>
-<h2 id="初始化-1">初始化</h2>
+<h2 id="声明-2">声明</h2>
+<p>字典的声明与数组的声明一样，包括初始化隐式声明和指明类型两种。初始化隐式声明即通过编译器确定集合类型：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">var</span> mySet1 = Set&lt;String&gt;()
 <span style="color:#66d9ef">var</span> mySet2 = Set([<span style="color:#e6db74">&#34;one&#34;</span>, <span style="color:#e6db74">&#34;two&#34;</span>, <span style="color:#e6db74">&#34;three&#34;</span>])
+</code></pre></div><h2 id="插入">插入</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">mySet1.insert(<span style="color:#e6db74">&#34;test&#34;</span>)
+mySet2.insert(<span style="color:#e6db74">&#34;name&#34;</span>)
+</code></pre></div><h2 id="移除">移除</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">mySet1.remove(<span style="color:#e6db74">&#34;test&#34;</span>)
+mySet2.remove(<span style="color:#e6db74">&#34;name&#34;</span>)
 </code></pre></div><h1 id="过滤">过滤</h1>
+<p>过滤包括在集合中使用<code>where</code>子句，<code>for case</code>以及 <code>if case</code>或者<code>filter</code>函数等。</p>
 <h2 id="where">where</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">for</span> number <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">1.</span>..<span style="color:#ae81ff">30</span> <span style="color:#66d9ef">where</span> number <span style="color:#f92672">%</span> <span style="color:#ae81ff">3</span> == <span style="color:#ae81ff">0</span> {
     debugPrint(number)
 }
-</code></pre></div><h2 id="for-case">for-case</h2>
+</code></pre></div><h2 id="for-case">for case</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">var</span> worldSeriesWinners = [(<span style="color:#e6db74">&#34;Red Sox&#34;</span>, <span style="color:#ae81ff">2004</span>),
                           (<span style="color:#e6db74">&#34;White Sox&#34;</span>, <span style="color:#ae81ff">2005</span>),
                           (<span style="color:#e6db74">&#34;Cardinals&#34;</span>, <span style="color:#ae81ff">2006</span>),
@@ -374,7 +382,7 @@ debugPrint(countries)
 <span style="color:#66d9ef">for</span> <span style="color:#66d9ef">case</span> <span style="color:#66d9ef">let</span> num? <span style="color:#66d9ef">in</span> myNumbers2 <span style="color:#66d9ef">where</span> num <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span> {
     debugPrint(num)
 }
-</code></pre></div><h2 id="if-case">if-case</h2>
+</code></pre></div><h2 id="if-case">if case</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Identifier</span> {
     <span style="color:#66d9ef">case</span> Name(String)
     <span style="color:#66d9ef">case</span> Number(Int)
@@ -1056,21 +1064,23 @@ guests.map(sayGoodbye)
     </li>
     <li><a href="#字典">字典</a>
       <ul>
-        <li><a href="#初始化">初始化</a></li>
+        <li><a href="#声明-1">声明</a></li>
         <li><a href="#更新或添加">更新或添加</a></li>
         <li><a href="#移除值">移除值</a></li>
       </ul>
     </li>
     <li><a href="#集合">集合</a>
       <ul>
-        <li><a href="#初始化-1">初始化</a></li>
+        <li><a href="#声明-2">声明</a></li>
+        <li><a href="#插入">插入</a></li>
+        <li><a href="#移除">移除</a></li>
       </ul>
     </li>
     <li><a href="#过滤">过滤</a>
       <ul>
         <li><a href="#where">where</a></li>
-        <li><a href="#for-case">for-case</a></li>
-        <li><a href="#if-case">if-case</a></li>
+        <li><a href="#for-case">for case</a></li>
+        <li><a href="#if-case">if case</a></li>
       </ul>
     </li>
     <li><a href="#协议">协议</a>
