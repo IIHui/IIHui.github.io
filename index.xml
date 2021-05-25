@@ -31,7 +31,7 @@
       <pubDate>Thu, 06 May 2021 23:01:46 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/swift-5.2/</guid>
-      <description>Swift 5.2于2020年3月24号发布，添加了许多便利的特性。主要专注于改善开发者的体验并提供额外的语言功能，一些新的语言功能似乎是以增强函数式编程风格为导向的。 KeyPath 在Swift 5.2中允许使用key path表达式来代替key path函数，如下使</description>
+      <description>Swift 5.2于2020年3月24号发布，新增了许多便利的特性，主要专注于改善开发者的体验并提供额外的语言功能，一些新的功能大部分以增强函数式编程风格为导向的。 KeyPath 在Swift 5.2中允许使用key path表达式来代替key path函数，如下使用c</description>
     </item>
     
     <item>
