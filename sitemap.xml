@@ -2516,7 +2516,7 @@ $$ .a &#43; .h &#43; sourceFile = .framework$$
           <tag>iOS</tag>
         </tags>
         <content type="html"> 因为历史原因，在使用Swift编程时，常常需要用到OC类中的方法，此时就需要使用桥接文件来引入OC中的头文件，以告诉Swift。
-手动创建桥接文件 第一步 首先使用快捷键Command&#43;N来新建一个文件：  第二步 选择Header File:  第三步 给Header File命名：  第四步 点击工程配置，添加关联：  第五步 设置桥接文件的路径：  第六步 将要引入的OC头文件，加入到桥接文件中，例如：
+手动创建桥接文件 第一步 首先使用快捷键Command&#43;N来新建一个文件： 第二步 选择Header File: 第三步 给Header File命名： 第四步 点击工程配置，添加关联： 第五步 设置桥接文件的路径： 第六步 将要引入的OC头文件，加入到桥接文件中，例如：
 //透云QR解码 #import &amp;#34;TYQRViewController.h&amp;#34; //显示GIF的Label #import &amp;#34;UIImage&#43;GIF.h&amp;#34; #import &amp;#34;CFTextModel.h&amp;#34; #import &amp;#34;CFLabel.h&amp;#34; #import &amp;#34;CFTableViewCell.h&amp;#34; #import &amp;#34;CFTextView.h&amp;#34; // 百度语音 #import &amp;#34;BDSEventManager.h&amp;#34; #import &amp;#34;BDSASRDefines.h&amp;#34; #import &amp;#34;BDSASRParameters.h&amp;#34;  参考 参考资料
  </content>
     </entry>
