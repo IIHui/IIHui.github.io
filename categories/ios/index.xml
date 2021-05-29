@@ -6,7 +6,16 @@
     <description>Recent content in iOS on Keep It Simple</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 08 May 2021 08:52:46 +0000</lastBuildDate><atom:link href="https://iihui.github.io/categories/ios/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 28 May 2021 23:17:52 +0000</lastBuildDate><atom:link href="https://iihui.github.io/categories/ios/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>views</title>
+      <link>https://iihui.github.io/post/ios-views/</link>
+      <pubDate>Fri, 28 May 2021 23:17:52 +0000</pubDate>
+      
+      <guid>https://iihui.github.io/post/ios-views/</guid>
+      <description>UIView是UIResponder的子类，即它不仅是用户看到的界面，也是用户交互的界面，例如点击或者滑动。 视图层次结构是视图组织的主要模式。一个视图可以有子视图；一个子视图正好有一个直接的父视图。我们可以说有一棵视图树。这种层次结构允许视</description>
+    </item>
+    
     <item>
       <title>Swift 5.3 新特性</title>
       <link>https://iihui.github.io/post/swift-5.3/</link>
