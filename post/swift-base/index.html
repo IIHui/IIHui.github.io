@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">5202</span>
+<span class="leancloud-visitors-count">5312</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -416,6 +416,30 @@ mySet2.remove(<span style="color:#e6db74">&#34;name&#34;</span>)
 
     <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">description</span>() -&gt; String {
         <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;This burger has </span><span style="color:#e6db74">\(</span>calories<span style="color:#e6db74">)</span><span style="color:#e6db74"> calories&#34;</span>
+    }
+}
+</code></pre></div><p>协议的实现既可以在定义的时候，也可以在扩展中实现，下面就是在<code>Sauce</code>的扩展中实现<code>CalorieCountProtocol</code>协议，如下所示：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Sauce</span> {
+    <span style="color:#66d9ef">case</span> chili
+
+    <span style="color:#66d9ef">case</span> tomato
+}
+
+<span style="color:#66d9ef">extension</span> <span style="color:#a6e22e">Sauce</span>: CalorieCountProtocol {
+    <span style="color:#66d9ef">var</span> calories: Int {
+        <span style="color:#66d9ef">switch</span> <span style="color:#66d9ef">self</span> {
+        <span style="color:#66d9ef">case</span> .chili:
+
+            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">20</span>
+
+        <span style="color:#66d9ef">case</span> .tomato:
+
+            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">15</span>
+        }
+    }
+
+    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">description</span>() -&gt; String {
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;This sauce has </span><span style="color:#e6db74">\(</span>calories<span style="color:#e6db74">)</span><span style="color:#e6db74"> calories&#34;</span>
     }
 }
 </code></pre></div><h2 id="协议继承">协议继承</h2>
