@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">5017</span>
+<span class="leancloud-visitors-count">4991</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">11 分钟</span>
+<span class="leancloud-visitors-count">10 分钟</span>
 </span>
       </div>
     </header>
@@ -268,7 +268,7 @@ print(<span style="color:#e6db74">&#34;hello&#34;</span>); print(<span style="co
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">var</span> firstNumber = <span style="color:#ae81ff">5</span>
 <span style="color:#66d9ef">let</span> firstNum = <span style="color:#ae81ff">100</span>
 </code></pre></div><h2 id="可选类型">可选类型</h2>
-<p>当一个变量或者常量<font color=red>可能不存在值</font>时，应该使用可选类型来声明。一个可选类型表示一个变量<font color=red>可能有值也可能没有值</font>。因为可选类型可能不包含值，所以在访问前需要判断是否为<code>nil</code>。</p>
+<p>当一个变量或者常量<font color=red>可能不存在值</font>时，应该使用可选类型来声明。一个可选类型表示一个变量可能有值也可能没有值。可选类型可能不包含值，所以在访问前需要判断是否为<code>nil</code>。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">var</span> optionStr: String?
 optionStr = <span style="color:#e6db74">&#34;Any Test&#34;</span>
 
@@ -319,7 +319,7 @@ debugPrint(numbers)
 
 debugPrint(newArr) <span style="color:#75715e">//[100, 98, 95, 91, 83, 88, 72]</span>
 </code></pre></div><h1 id="字典">字典</h1>
-<p>字典有时被称为哈希表。<code>dictionary</code>保存一个键和一个值之间的配对集合。<code>key</code>可以是任何符合 <code>Hashable</code>协议的元素（就像集合中的元素），而<code>value</code>可以是任何类型。与数组不同，字典的内容不是按顺序存储的。</p>
+<p>字典有时被称为哈希表，保存键和值之间的配对集合。<code>key</code>可以是任何符合 <code>Hashable</code>协议的元素，而<code>value</code>可以是任何类型。与数组不同，字典的内容<font color=red>不是按顺序存储的</font>。</p>
 <h2 id="声明-1">声明</h2>
 <p>字典的声明与数组的声明一样，包括初始化隐式声明和指明类型两种。初始化隐式声明即通过编译器确定<code>key</code>和<code>value</code>类型：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">let</span> countries = [<span style="color:#e6db74">&#34;US&#34;</span>: <span style="color:#e6db74">&#34;UnitedStates&#34;</span>, <span style="color:#e6db74">&#34;IN&#34;</span>: <span style="color:#e6db74">&#34;India&#34;</span>, <span style="color:#e6db74">&#34;UK&#34;</span>: <span style="color:#e6db74">&#34;UnitedKingdom&#34;</span>]
