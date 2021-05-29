@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">4737</span>
+<span class="leancloud-visitors-count">4778</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -651,7 +651,7 @@ intQ2.add(item: <span style="color:#ae81ff">6</span>)
     print(<span style="color:#e6db74">&#34;Error: Unknown Error&#34;</span>)
 }
 </code></pre></div><h1 id="自定义下标">自定义下标</h1>
-<p>默认情况下，下标在<code>Swift</code>中是访问集合列表或序列中的快捷方式。也可以在自定义类型中定义下标：</p>
+<p>默认情况下，下标在<code>Swift</code>中是访问集合列表或序列中的快捷方式。也可以在自定义类型中定义下标，包括类、结构体、枚举和协议类型：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyNames</span> {
     <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">var</span> names = [<span style="color:#e6db74">&#34;Jon&#34;</span>, <span style="color:#e6db74">&#34;Kailey&#34;</span>, <span style="color:#e6db74">&#34;Kara&#34;</span>]
 
@@ -661,13 +661,19 @@ intQ2.add(item: <span style="color:#ae81ff">6</span>)
     }
 }
 </code></pre></div><h2 id="只读下标">只读下标</h2>
-<p>也可以定义只读的下标，有两种方式。一种是只显式<code>get</code>方法，不声明<code>set</code>方法；一种是不显式声明，直接返回：</p>
+<p>自定义的下标时，可以只定义只读的下标，有两种方式。一种是只显式声明<code>get</code>方法，不声明<code>set</code>方法；另一种是不显式声明，直接返回：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">subscript</span>(index: Int) -&gt; String {
     <span style="color:#66d9ef">return</span> names[index]
 }
 
 <span style="color:#66d9ef">subscript</span>(index: Int) -&gt; String {
     <span style="color:#66d9ef">return</span> names[index]
+}
+
+<span style="color:#66d9ef">subscript</span>(add index: Int) -&gt; Int {
+    <span style="color:#66d9ef">get</span> {
+        <span style="color:#66d9ef">return</span> num <span style="color:#f92672">+</span> index
+    }
 }
 </code></pre></div><h2 id="计算下标">计算下标</h2>
 <p>在定义下标时，可以如同定义计算属性：</p>
