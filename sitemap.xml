@@ -103,7 +103,7 @@ let numbers1 = [1, 2, 3, 4, 5].lazy.filter { $0 % 2 == 0 }.filter { print($0); r
         <tags>
           <tag>iOS</tag>
         </tags>
-        <content type="html"> iOS 14.5.1 keyWindow 升级到iOS 14.5.1后发现使用UIApplication.shared.keyWindow获取viewController时为空。经过排查是因为keyWindow发生了变化，为了防止这种变化，显示新的Window时，先保存keyWindow，释放新Window时再还原：
+        <content type="html"> iOS 14.5.1 keyWindow 升级到iOS 14.5.1后发现使用UIApplication.shared.keyWindow获取viewController时得到nil。经过排查发现是keyWindow发生了变化，为了防止这种变化，在显示新的Window时，先保存keyWindow，释放新Window后再还原：
 func show() { if self.showTimes == 0 { // iOS 14.5.1上如果不记录keyWindow，调用self.dismissVC()后会导致dismiss后keyWindow发生变化 // 从而导致取topMost时为nil，路由不能正常push或present self.keyWindow = UIApplication.shared.keyWindow let uiwindow = UIWindow(frame: UIScreen.main.bounds) uiwindow.windowLevel = UIWindow.Level.normal uiwindow.safeRootViewController = self uiwindow.isHidden = false uiwindow.backgroundColor = UIColor.clear self.newWindow = uiwindow self.showTimes &#43;= 1 } } @IBAction func cancelAction(_ sender: Any) { self.dismissVC() // 恢复keyWindow，以解决iOS 14.5.1 keyWindow发生变化的情况 self.keyWindow?.makeKeyAndVisible() } </content>
     </entry>
     
