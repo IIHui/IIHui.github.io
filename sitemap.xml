@@ -2210,7 +2210,7 @@ import Foundation //参考自 https://www.jianshu.com/p/e31eeb26cdce enum positi
     
      <entry>
         <title>Swift访问权限</title>
-        <url>https://iihui.github.io/post/ios-access-level/</url>
+        <url>https://iihui.github.io/post/swift-access-controller/</url>
         <categories>
           <category>iOS</category>
         </categories>
