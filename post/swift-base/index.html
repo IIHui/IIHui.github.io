@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">5443</span>
+<span class="leancloud-visitors-count">5457</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -478,7 +478,7 @@ debugPrint(foodArray.reduce(<span style="color:#ae81ff">0</span>) { $0 <span sty
     <span style="color:#66d9ef">var</span> breed: String { <span style="color:#66d9ef">get</span> <span style="color:#66d9ef">set</span> }
 }
 </code></pre></div><h2 id="协议组合">协议组合</h2>
-<p>协议组合是指允许类型符合一个以上的协议。这是面向协议的设计相对于面向对象的设计所具有的众多优势之一，因为在面向对象只能有一个父类。</p>
+<p>协议组合是指允许类型实现多个协议，这是面向协议的设计相对于面向对象的设计所具有的众多优势之一，因为对象只能有一个父类。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">Name</span> {
     <span style="color:#66d9ef">var</span> firstName: String { <span style="color:#66d9ef">get</span> <span style="color:#66d9ef">set</span> }
     <span style="color:#66d9ef">var</span> lastName: String { <span style="color:#66d9ef">get</span> <span style="color:#66d9ef">set</span> }
@@ -521,6 +521,7 @@ debugPrint(foodArray.reduce(<span style="color:#ae81ff">0</span>) { $0 <span sty
     <span style="color:#66d9ef">var</span> experienceYears: Double
 }
 </code></pre></div><h2 id="协议中的where">协议中的where</h2>
+<p>在对协议进行过滤时，可以使用<code>where</code>：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">for</span> (index, animal) <span style="color:#66d9ef">in</span> animals.enumerated() <span style="color:#66d9ef">where</span> animal <span style="color:#66d9ef">is</span> SeaAnimal { 
     print(<span style="color:#e6db74">&#34;Only Sea Animal: </span><span style="color:#e6db74">\(</span>index<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>) 
 }
