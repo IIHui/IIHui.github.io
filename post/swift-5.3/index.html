@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1988</span>
+<span class="leancloud-visitors-count">1989</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -371,7 +371,7 @@ UIView.animate(withDuration: <span style="color:#ae81ff">0.25</span>, animations
         <span style="color:#66d9ef">return</span> (lhs <span style="color:#f92672">!=</span> rhs) <span style="color:#f92672">&amp;&amp;</span> (lhs == <span style="color:#66d9ef">self</span>.minium(lhs, rhs))
     }
 }
-</code></pre></div><p>但是上面的代码极难维护，因为一旦添加一个枚举值，则需要更新<code>&lt;</code>和<code>minimum</code>方法，才能<code>Comparable</code>。</p>
+</code></pre></div><p>但是上面的代码极难维护，因为一旦添加一个枚举值，则需要更新<code>&lt;</code>和<code>minimum</code>方法，才能比较。</p>
 <h2 id="现在-2">现在</h2>
 <p>在<code>Swift 5.3</code>中，只要<code>enum</code>没有关联值或者只有一个<code>Comparable</code>的关联值，则会自动实现实现<code>&lt;</code>和<code>minimum</code>方法：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Size</span>: Comparable {
@@ -386,7 +386,7 @@ debugPrint(sizes.sorted())
 
 </code></pre></div><h1 id="self的省略">self的省略</h1>
 <h2 id="之前-1">之前</h2>
-<p>在<code>Swift 5.3</code>之前，在闭包中对当前对象的属性或方法的引用，都要添加<code>self</code>，即便闭包不会产生循环引用时：</p>
+<p>在<code>Swift 5.3</code>之前，在闭包中对当前对象的属性或方法的引用，都要明确添加<code>self</code>，即便闭包不会产生循环引用时，也必须要添加：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">SomeStruct</span> {
     <span style="color:#66d9ef">var</span> x = <span style="color:#ae81ff">0</span>
 
@@ -415,7 +415,7 @@ debugPrint(sizes.sorted())
         }
     }
 }
-</code></pre></div><p>还有一种新的方法在捕获列表中使用<code>self</code>，只需在捕获列表中加入<code>[self]</code>。这样就可以避免在闭包中反复使用<code>self</code>，如下所示：</p>
+</code></pre></div><p>还有一种新的方法在捕获列表中使用<code>self</code>，只需在捕获列表中加入<code>[self]</code>。这样就可以<font color=red>避免在闭包中反复使用<code>self</code></font>，如下所示：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SomeClass</span> {
     <span style="color:#66d9ef">var</span> x = <span style="color:#ae81ff">0</span>
 
