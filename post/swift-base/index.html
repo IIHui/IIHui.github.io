@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">4973</span>
+<span class="leancloud-visitors-count">5017</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">10 分钟</span>
+<span class="leancloud-visitors-count">11 分钟</span>
 </span>
       </div>
     </header>
@@ -919,6 +919,27 @@ guests.map(sayGoodbye)
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Mammal</span>: Animal {
     <span style="color:#66d9ef">let</span> hasFurOrHair: Bool = <span style="color:#66d9ef">true</span>
 }
+</code></pre></div><h1 id="结构体">结构体</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Reptile</span> {
+    <span style="color:#66d9ef">var</span> name: String
+
+    <span style="color:#66d9ef">var</span> sound: String
+
+    <span style="color:#66d9ef">var</span> numberOfLegs: Int
+
+    <span style="color:#66d9ef">var</span> breathesOxygen: Bool
+
+    <span style="color:#66d9ef">let</span> hasFurOrHair: Bool = <span style="color:#66d9ef">false</span>
+
+    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">makeSound</span>() {
+        print(sound)
+    }
+
+    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">description</span>() -&gt; String {
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Structure: Reptile name: </span><span style="color:#e6db74">\(</span>name<span style="color:#e6db74">)</span><span style="color:#e6db74"> sound: </span><span style="color:#e6db74">\(</span>sound<span style="color:#e6db74">)</span><span style="color:#e6db74"> numberOfLegs: </span><span style="color:#e6db74">\(</span>numberOfLegs<span style="color:#e6db74">)</span><span style="color:#e6db74"> breathesOxygen: </span><span style="color:#e6db74">\(</span>breathesOxygen<span style="color:#e6db74">)</span><span style="color:#e6db74"> hasFurOrHair: </span><span style="color:#e6db74">\(</span>hasFurOrHair<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>
+    }
+}
+
 </code></pre></div>
     </div>
     <footer class="post-footer">
@@ -1171,6 +1192,7 @@ guests.map(sayGoodbye)
       </ul>
     </li>
     <li><a href="#类">类</a></li>
+    <li><a href="#结构体">结构体</a></li>
   </ul>
 </nav></div>
     </div>
