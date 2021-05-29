@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">5084</span>
+<span class="leancloud-visitors-count">5202</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -402,14 +402,23 @@ mySet2.remove(<span style="color:#e6db74">&#34;name&#34;</span>)
     debugPrint(<span style="color:#e6db74">&#34;Player is either XanderBogarts or Derek Jeter&#34;</span>)
 }
 </code></pre></div><h1 id="协议">协议</h1>
+<p><img src="https://i.loli.net/2021/05/16/lY3sKSubFRZ5ovT.jpg" alt="-c"></p>
+<h2 id="声明-3">声明</h2>
 <p>协议中既可以声明方法，也可以声明属性。如下所示声明了<code>CalorieCountProtocol</code>协议，协议中既包含了方法也有属性：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">CalorieCountProtocol</span> {
     <span style="color:#66d9ef">var</span> calories: Int { <span style="color:#66d9ef">get</span> }
 
     <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">description</span>() -&gt; String
 }
-</code></pre></div><p><img src="https://i.loli.net/2021/05/16/lY3sKSubFRZ5ovT.jpg" alt="-c"></p>
-<h2 id="协议继承">协议继承</h2>
+</code></pre></div><p>下面类<code>Burger</code>实现了<code>CalorieCountProtocol</code>协议。虽然协议里面声明的是变量，但实现协议的时候使用了常量，这是因为协议定义的时候只需要实现<code>get</code>方法即可，并未要求<code>set</code>方法：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Burger</span>: CalorieCountProtocol {
+    <span style="color:#66d9ef">let</span> calories = <span style="color:#ae81ff">800</span>
+
+    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">description</span>() -&gt; String {
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;This burger has </span><span style="color:#e6db74">\(</span>calories<span style="color:#e6db74">)</span><span style="color:#e6db74"> calories&#34;</span>
+    }
+}
+</code></pre></div><h2 id="协议继承">协议继承</h2>
 <p>面向协议的编程过程中，需要使用到<font color=red>协议继承、协议组合，协议扩展</font>。协议继承是指一个协议可以继承一个或者多个协议：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">Name</span> {
     <span style="color:#66d9ef">var</span> firstName: String { <span style="color:#66d9ef">get</span> <span style="color:#66d9ef">set</span> }
@@ -1152,6 +1161,7 @@ guests.map(sayGoodbye)
     </li>
     <li><a href="#协议">协议</a>
       <ul>
+        <li><a href="#声明-3">声明</a></li>
         <li><a href="#协议继承">协议继承</a></li>
         <li><a href="#协议组合">协议组合</a></li>
         <li><a href="#协议中的where">协议中的where</a></li>
