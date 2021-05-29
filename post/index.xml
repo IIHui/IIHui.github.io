@@ -620,15 +620,6 @@
     </item>
     
     <item>
-      <title>飞书特色功能</title>
-      <link>https://iihui.github.io/post/ios-feishu/</link>
-      <pubDate>Tue, 11 Feb 2020 07:12:18 +0000</pubDate>
-      
-      <guid>https://iihui.github.io/post/ios-feishu/</guid>
-      <description>飞书把更多的需求优化倾向于团队成员，而不是管理者。所以它以「即时沟通」为中心，将在线文档、云盘、日历等功能全部整合在一起。 例如，可以在IM（即时通讯）界面直接创建文档，共同编辑，也可以在文档中进一步讨论细节问题；或是发起一个日程，在日程中直</description>
-    </item>
-    
-    <item>
       <title>iOS 可视化埋点</title>
       <link>https://iihui.github.io/post/ios-log-point/</link>
       <pubDate>Sun, 09 Feb 2020 16:54:52 +0000</pubDate>
