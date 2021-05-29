@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">5395</span>
+<span class="leancloud-visitors-count">5443</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -452,7 +452,7 @@ mySet2.remove(<span style="color:#e6db74">&#34;name&#34;</span>)
 
 debugPrint(foodArray.reduce(<span style="color:#ae81ff">0</span>) { $0 <span style="color:#f92672">+</span> $1.calories })
 </code></pre></div><h2 id="协议继承">协议继承</h2>
-<p>面向协议的编程过程中，需要使用到<font color=red>协议继承、协议组合，协议扩展</font>。协议继承是指一个协议可以继承一个或者多个协议：</p>
+<p>面向协议的编程过程中，需要使用<font color=red>协议继承、协议组合，协议扩展</font>。协议继承是指一个协议可以继承一个或者多个协议。如下所示，<code>Person</code>协议继承了<code>Name,Age,Hair</code>，而协议<code>Dog</code>继承了<code>Name, Age, Fur</code>：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">Name</span> {
     <span style="color:#66d9ef">var</span> firstName: String { <span style="color:#66d9ef">get</span> <span style="color:#66d9ef">set</span> }
     <span style="color:#66d9ef">var</span> lastName: String { <span style="color:#66d9ef">get</span> <span style="color:#66d9ef">set</span> }
@@ -470,7 +470,7 @@ debugPrint(foodArray.reduce(<span style="color:#ae81ff">0</span>) { $0 <span sty
     <span style="color:#66d9ef">var</span> hairColor: UIColor { <span style="color:#66d9ef">get</span> <span style="color:#66d9ef">set</span> }
 }
 
-<span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">Persion</span>: Name, Age, Hair {
+<span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">Person</span>: Name, Age, Hair {
     <span style="color:#66d9ef">var</span> height: Double { <span style="color:#66d9ef">get</span> <span style="color:#66d9ef">set</span> }
 }
 
