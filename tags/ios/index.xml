@@ -13,7 +13,7 @@
       <pubDate>Fri, 28 May 2021 23:17:52 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/ios-views/</guid>
-      <description>UIView是UIResponder的子类，即它不仅是用户看到的界面，也是用户交互的界面，例如点击或者滑动。 视图层次结构是视图组织的主要模式。一个视图可以有子视图；一个子视图正好有一个直接的父视图。我们可以说有一棵视图树。这种层次结构允许视</description>
+      <description>UIView是UIResponder的子类，即它不仅是用户看到的界面，也是用户交互的界面，例如点击或者滑动。 视图层次结构是视图组织的主要模式。一个视图可以有多个子视图，但只能有一个直接的父视图。如果一个视图被从界面中被移除，则它的子视图也会</description>
     </item>
     
     <item>
