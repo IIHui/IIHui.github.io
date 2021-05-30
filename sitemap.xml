@@ -60,7 +60,10 @@ window 和 root View view的最顶层view是window。window是UIWindow或者其�
 window scene architecture 从iOS 13开始App的window是由UIWindwScene来提供，这是于iOS 12以前的主架构最大的不同。
 在iOS 12以前，是基于window的架构，window是AppDelegate的一个属性，如果项目是在XCode 10或者之前创建的，则使用的是这种老架构。
 在iOS 13以后，是基于scene的架构，window是scene delegate的一个属性，如果项目是在XCode 11或之后创建的，则使用的是这种新架构。
-App Launchs </content>
+App Launches 应用程序最终包括对UIApplicationMain函数的一次调用。与Objective-C不同，一个典型的Swift项目不会在代码中明确地进行这一调用，它是在幕后为你调用的。
+iOS 13   UIAppplicationMain首先实例化UIApplication，并保留这个实例，作为共享的实例，在代码中可以使用UIApplication.shared来访问。接着根据@UIApplicationMain或@main来实例化AppDelegate，并保留这个实例，使得它在应用程序中的整个生命周期中都存在，在代码中可以使用UIApplication.shared.delegate来访问。
+  接着UIApplicationMain会调用
+  </content>
     </entry>
     
      <entry>

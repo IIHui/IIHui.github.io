@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">883</span>
+<span class="leancloud-visitors-count">1194</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">2 分钟</span>
+<span class="leancloud-visitors-count">3 分钟</span>
 </span>
       </div>
     </header>
@@ -265,7 +265,17 @@ code.has-jax {
 <p>从<code>iOS 13</code>开始App的<code>window</code>是由<code>UIWindwScene</code>来提供，这是于<code>iOS 12</code>以前的主架构最大的不同。</p>
 <p>在<code>iOS 12</code>以前，是基于<code>window</code>的架构，<code>window</code>是<code>AppDelegate</code>的一个属性，如果项目是在<code>XCode 10</code>或者之前创建的，则使用的是这种老架构。</p>
 <p>在<code>iOS 13</code>以后，是基于<code>scene</code>的架构，<code>window</code>是<code>scene delegate</code>的一个属性，如果项目是在<code>XCode 11</code>或之后创建的，则使用的是这种新架构。</p>
-<h2 id="app-launchs">App Launchs</h2>
+<h2 id="app-launches">App Launches</h2>
+<p>应用程序最终包括对<code>UIApplicationMain</code>函数的一次调用。与<code>Objective-C</code>不同，一个典型的<code>Swift</code>项目不会在代码中明确地进行这一调用，它是在幕后为你调用的。</p>
+<h3 id="ios-13">iOS 13</h3>
+<ol>
+<li>
+<p><code>UIAppplicationMain</code>首先实例化<code>UIApplication</code>，并保留这个实例，作为共享的实例，在代码中可以使用<code>UIApplication.shared</code>来访问。接着根据<code>@UIApplicationMain</code>或<code>@main</code>来实例化<code>AppDelegate</code>，并保留这个实例，使得它在应用程序中的整个生命周期中都存在，在代码中可以使用<code>UIApplication.shared.delegate</code>来访问。</p>
+</li>
+<li>
+<p>接着<code>UIApplicationMain</code>会调用</p>
+</li>
+</ol>
 
     </div>
     <footer class="post-footer">
@@ -433,7 +443,11 @@ code.has-jax {
       <ul>
         <li><a href="#window-和-root-view">window 和 root View</a></li>
         <li><a href="#window-scene-architecture">window scene architecture</a></li>
-        <li><a href="#app-launchs">App Launchs</a></li>
+        <li><a href="#app-launches">App Launches</a>
+          <ul>
+            <li><a href="#ios-13">iOS 13</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
