@@ -69,8 +69,7 @@ iOS 13 使用storyboard   UIAppplicationMain首先实例化UIApplication，并�
   如果scene使用了storyboard，则将storyboard中的初始化的viewController赋值给window实例的属性rootViewController。此时，初始ViewController的view变成了Window的唯一子视图。
   UIApplicationMain通过调用UIWindow实例方法makeKeyAndVisible，使你的应用程序的界面出现。
   scene的(_:willConnectTo:options:)被调用，给你更多的代码以运行的机会。
-  不适用storyboard 如果没有使用storyboard
-</content>
+  </content>
     </entry>
     
      <entry>
