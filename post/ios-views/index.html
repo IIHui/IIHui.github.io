@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">625</span>
+<span class="leancloud-visitors-count">883</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -259,7 +259,13 @@ code.has-jax {
 <p>一个视图的创建可能来自<code>nib</code>，也可能来自代码。不能说哪种方式更好，这取决于个人需求和倾向以及应用程序的整体架构。</p>
 <h2 id="window-和-root-view">window 和 root View</h2>
 <p><code>view</code>的最顶层<code>view</code>是<code>window</code>。<code>window</code>是<code>UIWindow</code>或者其子类的实例，<code>UIWindow</code>也是<code>UIView</code>的子类。一个可见的<code>window</code>构成了所有其他可见<code>view</code>的背景，也是所有可见视图的<code>superview</code>。一个<code>view</code>如果是可见的，那么它一定是某个可见<code>window</code>的子视图。</p>
-<p>在编程中，不会手动或者直接用子视图来填充<code>window</code>，是因为<code>window</code>和它所包含的视图之间的连接是是根视图控制器<code>rootViewController</code>。一旦一个<code>viewController</code>被实例化，并且赋值给<code>window</code>的<code>rootViewController</code>，则这个<code>viewController</code>的<code>main view</code>则会占据整个<code>window</code>，这个<code>main view</code>是<code>window</code>的唯一子视图。</p>
+<p>在编程中，我们不会手动或者直接用子视图来填充<code>window</code>，那是因为<code>window</code>和它所包含的视图之间的连接是是根视图控制器<code>rootViewController</code>。一旦一个<code>viewController</code>被实例化，并且赋值给<code>window</code>的<code>rootViewController</code>，则这个<code>viewController</code>的<code>main view</code>则会占据整个<code>window</code>。</p>
+<p>这个<code>main view</code>是<code>window</code>的唯一子视图，其他所有可见的视图都是根视图控制器<code>main view</code>的子视图（在一定深度上）。</p>
+<h2 id="window-scene-architecture">window scene architecture</h2>
+<p>从<code>iOS 13</code>开始App的<code>window</code>是由<code>UIWindwScene</code>来提供，这是于<code>iOS 12</code>以前的主架构最大的不同。</p>
+<p>在<code>iOS 12</code>以前，是基于<code>window</code>的架构，<code>window</code>是<code>AppDelegate</code>的一个属性，如果项目是在<code>XCode 10</code>或者之前创建的，则使用的是这种老架构。</p>
+<p>在<code>iOS 13</code>以后，是基于<code>scene</code>的架构，<code>window</code>是<code>scene delegate</code>的一个属性，如果项目是在<code>XCode 11</code>或之后创建的，则使用的是这种新架构。</p>
+<h2 id="app-launchs">App Launchs</h2>
 
     </div>
     <footer class="post-footer">
@@ -426,6 +432,8 @@ code.has-jax {
     <li>
       <ul>
         <li><a href="#window-和-root-view">window 和 root View</a></li>
+        <li><a href="#window-scene-architecture">window scene architecture</a></li>
+        <li><a href="#app-launchs">App Launchs</a></li>
       </ul>
     </li>
   </ul>

@@ -55,8 +55,12 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 设置文�
  UIView是UIResponder的子类，即它不仅是用户看到的界面，也是用户交互的界面，例如点击或者滑动。因此，视图层次结构也是响应者链的基础，尽管它与响应者链不完全相同。
 一个视图的创建可能来自nib，也可能来自代码。不能说哪种方式更好，这取决于个人需求和倾向以及应用程序的整体架构。
 window 和 root View view的最顶层view是window。window是UIWindow或者其子类的实例，UIWindow也是UIView的子类。一个可见的window构成了所有其他可见view的背景，也是所有可见视图的superview。一个view如果是可见的，那么它一定是某个可见window的子视图。
-在编程中，不会手动或者直接用子视图来填充window，是因为window和它所包含的视图之间的连接是是根视图控制器rootViewController。一旦一个viewController被实例化，并且赋值给window的rootViewController，则这个viewController的main view则会占据整个window，这个main view是window的唯一子视图。
-</content>
+在编程中，我们不会手动或者直接用子视图来填充window，那是因为window和它所包含的视图之间的连接是是根视图控制器rootViewController。一旦一个viewController被实例化，并且赋值给window的rootViewController，则这个viewController的main view则会占据整个window。
+这个main view是window的唯一子视图，其他所有可见的视图都是根视图控制器main view的子视图（在一定深度上）。
+window scene architecture 从iOS 13开始App的window是由UIWindwScene来提供，这是于iOS 12以前的主架构最大的不同。
+在iOS 12以前，是基于window的架构，window是AppDelegate的一个属性，如果项目是在XCode 10或者之前创建的，则使用的是这种老架构。
+在iOS 13以后，是基于scene的架构，window是scene delegate的一个属性，如果项目是在XCode 11或之后创建的，则使用的是这种新架构。
+App Launchs </content>
     </entry>
     
      <entry>
