@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1784</span>
+<span class="leancloud-visitors-count">1845</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -258,7 +258,7 @@ code.has-jax {
 <p><code>UIView</code>是<code>UIResponder</code>的子类，即它不仅是用户看到的界面，也是用户交互的界面，例如点击或者滑动。因此，视图层次结构也是响应者链的基础，尽管它与响应者链不完全相同。</p>
 <p>一个视图的创建可能来自<code>nib</code>，也可能来自代码。不能说哪种方式更好，这取决于个人需求和倾向以及应用程序的整体架构。</p>
 <h2 id="window-和-root-view">window 和 root View</h2>
-<p><code>view</code>的最顶层<code>view</code>是<code>window</code>。<code>window</code>是<code>UIWindow</code>或者其子类的实例，<code>UIWindow</code>也是<code>UIView</code>的子类。一个可见的<code>window</code>构成了所有其他可见<code>view</code>的背景，也是所有可见视图的<code>superview</code>。一个<code>view</code>如果是可见的，那么它一定是某个可见<code>window</code>的子视图。</p>
+<p><code>view</code>的最顶层视图是<code>window</code>。<code>window</code>是<code>UIWindow</code>或者其子类的实例，<code>UIWindow</code>也是<code>UIView</code>的子类。一个可见的<code>window</code>构成了所有其他可见<code>view</code>的背景，也是所有可见视图的<code>superview</code>。一个<code>view</code>如果是可见的，那么它一定是某个可见<code>window</code>的子视图。</p>
 <p>在编程中，我们不会手动或者直接用子视图来填充<code>window</code>，那是因为<code>window</code>和它所包含的视图之间的连接是是根视图控制器<code>rootViewController</code>。一旦一个<code>viewController</code>被实例化，并且赋值给<code>window</code>的<code>rootViewController</code>，则这个<code>viewController</code>的<code>main view</code>则会占据整个<code>window</code>。</p>
 <p>这个<code>main view</code>是<code>window</code>的唯一子视图，其他所有可见的视图都是根视图控制器<code>main view</code>的子视图（在一定深度上）。</p>
 <h2 id="window-scene-architecture">window scene architecture</h2>
@@ -296,6 +296,8 @@ code.has-jax {
 </li>
 </ol>
 <h2 id="subview-and-superview">Subview and Superview</h2>
+<h2 id="color">Color</h2>
+<p>视图可以通过其<code>backgroundColor</code>属性指定一个背景颜色，如果一个视图的背景色是<code>nil</code>，则该视图有一个透明的背景色。</p>
 
     </div>
     <footer class="post-footer">
@@ -473,6 +475,7 @@ code.has-jax {
           </ul>
         </li>
         <li><a href="#subview-and-superview">Subview and Superview</a></li>
+        <li><a href="#color">Color</a></li>
       </ul>
     </li>
   </ul>
