@@ -2406,6 +2406,7 @@ class MyManager { // private 修饰 private static let sharedManager: MyManager 
 CoreText note: Client requested name &amp;#34;.SFUI-Regular&amp;#34;, it will get TimesNewRomanPSMT rather than the intended font. All system UI font access should be through proper APIs such as CTFontCreateUIFontForLanguage() or &#43;[UIFont systemFontOfSize:]. 根据提示，设置CTFontLogSystemFontNameRequest符号端点，可以查看相关信息。
 Start a Web Server python2 -m SimpleHTTPServer 50524 python3 -m http.server --cgi 50524 参考资料
 mospecs is not clean The repo `cmbchina-mospecs` at `../../../../.cocoapods/repos/cmbchina-mospecs` is not clean 需要先删除mospecs然后添加mospecs。
+iOS-Universal Link 接入与微信分享的配置 微信分享的配置
 </content>
     </entry>
     
