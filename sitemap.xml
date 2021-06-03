@@ -1460,6 +1460,7 @@ git config --global core.ignorecase false errno54 在使用pod install时报了e
 原因是在拉取大文件时，缓存方面存在问题，因此需要加大缓存，如下所示：
 git config --global http.postBuffer 1048576000 git config --global https.postBuffer 1048576000 rebase 整合来自不同分支的修改主要有两种方法，一种是Merge，一种是rebase。Merge会把两个分支的最新快照（C3和C4），以及二者最近的共同祖先（C2）进行三方合并，合并的结果是生成一个新的快照（并提交）:
 还有一种方法：你可以提取在C4中引入的补丁和修改，然后在C3的基础上应用一次。 在 Git中，这种操作就叫做「变基」（rebase）。 你可以使用rebase命令将提交到某一分支上的所有修改都移至另一分支上，就好像「重新播放」一样。
+sourceTree
 参考资料
 </content>
     </entry>
