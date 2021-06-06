@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1796</span>
+<span class="leancloud-visitors-count">1808</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -335,7 +335,7 @@ code.has-jax {
     test1.foo()
     test2.foo()
 }
-</code></pre></div><p>上面的<code>_x</code>是属性包装器本身，它是<code>private</code>级别的。因此，从外部使用它会产生编译错误。属性包装器还可以通过定义投影值来暴露其他功能。投影值的名称与包装值相同，只是它以<code>$</code>开头。投影值使用<code>projectedValue</code>定义，可以<font color=red>返回任何类型的值作为其投影值</font>：</p>
+</code></pre></div><p>上面的<code>_x</code>是属性包装器本身，它是<code>private</code>级别的。因此，从外部使用它会产生编译错误。属性包装器还可以通过定义投影值来暴露其他功能。投影值的名称与包装值相同，只是它以<code>$</code>开头。投影值使用<code>projectedValue</code>定义，可以<font color=red>返回任何类型的值作为投影值</font>：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">@propertyWrapper
 <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Wrapper</span>&lt;T&gt; {
     <span style="color:#66d9ef">var</span> wrappedValue: T
@@ -372,7 +372,7 @@ code.has-jax {
     test1.<span style="color:#960050;background-color:#1e0010">$</span>x.foo()
     test2.<span style="color:#960050;background-color:#1e0010">$</span>x.foo()
 }
-</code></pre></div><p>在上面的例子中投影值投射成自己。因为投影值可以返回任何类型，在下面的例子中，投影是布尔类型：</p>
+</code></pre></div><p>在上面的例子中投影值返回的是包装器本身，也就是投影成自己。因为投影值可以返回任何类型，在下面的例子中，投影是布尔类型：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">@propertyWrapper
 <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">SmallNumber</span> {
     <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">var</span> number: Int
