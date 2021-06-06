@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">2126</span>
+<span class="leancloud-visitors-count">2121</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -541,40 +541,6 @@ code.has-jax {
     }
 }
 </code></pre></div><p><a href="https://davidlinnn.medium.com/thread-safety-in-ios-ca24049b2724">参考资料</a></p>
-<h2 id="测试代码">测试代码</h2>
-<p>在工程中<code>ConfigDataService</code>文件中相关的缓存变量都是数组，例如<code>static var desktopConfigItems: [MoConfigItemModel] = []</code>是线程不安全的，不使用原子属性包装器下面测试代码会闪退：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">testDemo</span>(){
-        <span style="color:#66d9ef">let</span> group = DispatchGroup()
-        <span style="color:#66d9ef">let</span> models:[MoConfigItemModel] = [MoConfigItemModel(),MoConfigItemModel()]
-        <span style="color:#66d9ef">for</span> <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">0.</span>.&lt;<span style="color:#ae81ff">2000</span> {
-            <span style="color:#66d9ef">let</span> delaySet = TimeInterval(arc4random() <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span>);
-            group.enter()
-            DispatchQueue.global().asyncAfter(deadline: .now() <span style="color:#f92672">+</span> delaySet) {
-                <span style="color:#66d9ef">self</span>.desktopConfigItems = models
-                group.leave()
-            }
-
-            <span style="color:#66d9ef">let</span> delaySetNil = TimeInterval(arc4random() <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span>);
-            group.enter()
-            DispatchQueue.global().asyncAfter(deadline: .now() <span style="color:#f92672">+</span> delaySetNil) {
-                <span style="color:#66d9ef">self</span>.desktopConfigItems.append(MoConfigItemModel())
-                group.leave()
-            }
-
-            <span style="color:#66d9ef">let</span> delayGet = TimeInterval(arc4random() <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span>)
-            group.enter()
-            DispatchQueue.global().asyncAfter(deadline: .now() <span style="color:#f92672">+</span> delayGet) {
-                <span style="color:#66d9ef">let</span> _ = <span style="color:#66d9ef">self</span>.allConfigItems
-                group.leave()
-            }
-        }
-
-        <span style="color:#66d9ef">let</span> success = group.wait(timeout: .now() <span style="color:#f92672">+</span> <span style="color:#ae81ff">12</span>)
-        <span style="color:#66d9ef">if</span> success == .success {
-            print(<span style="color:#e6db74">&#34;test&#34;</span>)
-        }
-    }
-</code></pre></div><h1 id="个性化设置">个性化设置</h1>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserConfigService</span> {
     <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">var</span> pid: String
     <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">let</span> split: String = <span style="color:#e6db74">&#34;...&#34;</span>
@@ -623,8 +589,40 @@ code.has-jax {
         }
     }
 }
-</code></pre></div><hr>
+</code></pre></div><h2 id="测试代码">测试代码</h2>
+<p>在工程中<code>ConfigDataService</code>文件中相关的缓存变量都是数组，例如<code>static var desktopConfigItems: [MoConfigItemModel] = []</code>是线程不安全的，不使用原子属性包装器下面测试代码会闪退：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">testDemo</span>(){
+        <span style="color:#66d9ef">let</span> group = DispatchGroup()
+        <span style="color:#66d9ef">let</span> models:[MoConfigItemModel] = [MoConfigItemModel(),MoConfigItemModel()]
+        <span style="color:#66d9ef">for</span> <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">0.</span>.&lt;<span style="color:#ae81ff">2000</span> {
+            <span style="color:#66d9ef">let</span> delaySet = TimeInterval(arc4random() <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span>);
+            group.enter()
+            DispatchQueue.global().asyncAfter(deadline: .now() <span style="color:#f92672">+</span> delaySet) {
+                <span style="color:#66d9ef">self</span>.desktopConfigItems = models
+                group.leave()
+            }
 
+            <span style="color:#66d9ef">let</span> delaySetNil = TimeInterval(arc4random() <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span>);
+            group.enter()
+            DispatchQueue.global().asyncAfter(deadline: .now() <span style="color:#f92672">+</span> delaySetNil) {
+                <span style="color:#66d9ef">self</span>.desktopConfigItems.append(MoConfigItemModel())
+                group.leave()
+            }
+
+            <span style="color:#66d9ef">let</span> delayGet = TimeInterval(arc4random() <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span>)
+            group.enter()
+            DispatchQueue.global().asyncAfter(deadline: .now() <span style="color:#f92672">+</span> delayGet) {
+                <span style="color:#66d9ef">let</span> _ = <span style="color:#66d9ef">self</span>.allConfigItems
+                group.leave()
+            }
+        }
+
+        <span style="color:#66d9ef">let</span> success = group.wait(timeout: .now() <span style="color:#f92672">+</span> <span style="color:#ae81ff">12</span>)
+        <span style="color:#66d9ef">if</span> success == .success {
+            print(<span style="color:#e6db74">&#34;test&#34;</span>)
+        }
+    }
+</code></pre></div>
     </div>
     <footer class="post-footer">
         
@@ -794,7 +792,6 @@ code.has-jax {
         <li><a href="#测试代码">测试代码</a></li>
       </ul>
     </li>
-    <li><a href="#个性化设置">个性化设置</a></li>
   </ul>
 </nav></div>
     </div>
