@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1697</span>
+<span class="leancloud-visitors-count">1710</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -253,7 +253,7 @@ code.has-jax {
     </header>
     <div class="post-body" itemprop="articleBody">
     <blockquote>
-<p>属性包装器<code>propertyWrapper</code>的作用对象是属性，它的思想是<font color=red>只可以通过</font><code>wrappedValue</code>的<code>get</code>和<code>set</code>方法来访问属性，这样就可以通过<code>get</code>和<code>set</code>方法来对属性进行包装。属性包装器是一种通用结构，它封装了<code>wrappedValue</code>属性的读写访问，并可以为其添加其他行为。如果需要限制属性值，向读写访问添加限制逻辑即可。</p>
+<p>属性包装器<code>propertyWrapper</code>的作用对象是属性，它的思想是<font color=red>只可以通过</font><code>wrappedValue</code>的<code>get</code>和<code>set</code>方法来访问属性，这样就可以通过<code>get</code>和<code>set</code>方法来对属性进行包装，提供特定功能的属性。属性包装器是一种通用结构，它封装了<code>wrappedValue</code>属性的读写访问，并可以为其<font color=Blue>添加其他行为</font>，也就是如果需要限制属性值，向读写访问添加限制逻辑即可。</p>
 </blockquote>
 <h1 id="基本使用">基本使用</h1>
 <p>属性包装器<code>propertyWrapper</code>是<code>Swift 5.1</code>引入，使用时必须满足两个条件。第一，必须使用<code>@propertyWrapper</code>声明。第二，必须具有非静态的<code>wrapppedValue</code>属性。</p>
