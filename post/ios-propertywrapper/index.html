@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">2084</span>
+<span class="leancloud-visitors-count">2126</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -575,7 +575,17 @@ code.has-jax {
         }
     }
 </code></pre></div><h1 id="个性化设置">个性化设置</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">/// 用户个性化配置的属性包装，需带默认值</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserConfigService</span> {
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">var</span> pid: String
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">let</span> split: String = <span style="color:#e6db74">&#34;...&#34;</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">init</span>(pid: String) {
+        <span style="color:#66d9ef">self</span>.pid = pid
+        <span style="color:#75715e">// 取巧的方式将id传递给属性包装器</span>
+        _loginRestriction.setId(id: <span style="color:#66d9ef">self</span>.pid)
+    }
+}
+<span style="color:#75715e">/// 用户个性化配置的属性包装，需带默认值</span>
 @propertyWrapper
 <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">UserConfigProperty</span>&lt;Value&gt; {
     <span style="color:#75715e">/// 自定UserDefaultsKey，详见其定义</span>
