@@ -117,7 +117,7 @@ debugPrint(Float16.pi) //3.14 debugPrint(Float32.pi) //3.1415925 </content>
         <tags>
           <tag>iOS</tag>
         </tags>
-        <content type="html">  Swift 5.2于2020年3月24号发布，新增了许多便利的特性，专注于改善开发者的体验和提供额外的语言功能，新的功能大部分以增强函数式编程风格为导向的。
+        <content type="html">  Swift 5.2于2020年3月24号发布，新增了许多便利的特性，专注于改善开发者的体验并提供额外的语言功能，新的功能大部分以增强函数式编程风格为导向的。
  KeyPath 在Swift 5.2中允许使用key path表达式来代替key path函数。下面的例子中，是使用cars.filter(\.isElectric)来代替key path函数：
 let cars: [Car] = [Car(brand: &amp;#34;Tesla&amp;#34;, isElectric: true), Car(brand: &amp;#34;Ford&amp;#34;, isElectric: false)] let electricCars1 = cars.filter { $0.isElectric } let electricCars2 = cars.filter { $0[keyPath: \Car.isElectric] } let electricCars3 = cars.filter(\.isElectric) 实例调用函数 这个新功能允许拥有名为callAsFunction方法的实例可以像函数一样被调用，如下所示base2Pow(x: 3)就是调用的是callAsFunction(x: Double)：
 struct MyPow { let base: Double func callAsFunction(x: Double) -&amp;gt; Double { return pow(base, x) } } let base2Pow = MyPow(base: 2) debugPrint(base2Pow(x: 3)) 下标默认值 在Swift 5.2中定义下标的时候，可以带默认值参数。在下面的例子中，在下标越界的情况下，返回一个默认值：
@@ -164,7 +164,7 @@ XCode 12.5 报错 使用XCode 12.5编译项目报Showing Recent Messages Applica
           <tag>iOS</tag>
         </tags>
         <content type="html"> 添加初始ViewController 设置初始的ViewController有两种方式，第一种是在属性检测器中勾选Is Initial View Controller，如下图所示：
-第二种方式是按住鼠标左键直接拖动代表初始ViewController的蓝色箭头到指定的ViewController上面再释放，就可以完成设置，如下图所示：
+第二种方式则是按住鼠标左键，然后直接拖动代表初始ViewController的蓝色箭头到指定的ViewController上面再释放，就可以完成设置，如下图所示：
 添加NavigationController 网络调试 如果Mac和iOS设备在同一局域网中，可以通过网络连接进行调试。首先在菜单栏进入到Window--&amp;gt;Devices and Simulators：
 然后找到相应的真机，鼠标左键单击选中，再勾选Connect via network，如下所示：
 勾选Connect via network后，编译安装的时候选择刚刚的设备，若报错Xcode will continue when xxx is connected，则需要使用Connect via IP Address，再输入真机的IP地址：
