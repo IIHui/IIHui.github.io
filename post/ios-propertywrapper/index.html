@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1808</span>
+<span class="leancloud-visitors-count">1843</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -372,7 +372,7 @@ code.has-jax {
     test1.<span style="color:#960050;background-color:#1e0010">$</span>x.foo()
     test2.<span style="color:#960050;background-color:#1e0010">$</span>x.foo()
 }
-</code></pre></div><p>在上面的例子中投影值返回的是包装器本身，也就是投影成自己。因为投影值可以返回任何类型，在下面的例子中，投影是布尔类型：</p>
+</code></pre></div><p>在上面的例子中投影值<font color=red>返回的是包装器本身</font>，也就是投影成自己。投影值可以返回任何类型的值，在下面的例子中，投影值是布尔类型：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">@propertyWrapper
 <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">SmallNumber</span> {
     <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">var</span> number: Int
@@ -411,8 +411,8 @@ code.has-jax {
     print(small.<span style="color:#960050;background-color:#1e0010">$</span>someNum) <span style="color:#75715e">// true</span>
 }
 </code></pre></div><p><a href="http://www.srcmini.com/23534.html">参考资料</a> <a href="https://docs.swift.org/swift-book/LanguageGuide/Properties.html">参考资料</a></p>
-<h1 id="减少重复">减少重复</h1>
-<p>使用属性包装器可以减少重复代码。我们通常使用<code>UserDefaults</code>来保存引导页是否已经显示过，如果没有<code>@propertyWrapper</code>时，一般使用如下所示代码：</p>
+<h1 id="减少重复代码">减少重复代码</h1>
+<p>使用属性包装器可以减少重复代码。我们通常使用<code>UserDefaults</code>来保存引导页是否已经展示过，如果没有<code>@propertyWrapper</code>时，可能会使用如下代码实现：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">extension</span> <span style="color:#a6e22e">UserDefaults</span> {
     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Keys</span> {
         <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">let</span> hasDisplayedGuideView = <span style="color:#e6db74">&#34;has_Displayed_guide_view&#34;</span>
@@ -436,7 +436,7 @@ code.has-jax {
         UserDefaults.standard.hasDisplayedGuideView = <span style="color:#66d9ef">false</span>
     }
 }
-</code></pre></div><p>如果需要再添加另一个引导项，则需要重复上面的代码。如果使用<code>@propertyWrapper</code>，可以减少上面的重复代码，如下所示：</p>
+</code></pre></div><p>如果后续需要再添加另一个引导项，则需要重复上面的代码。如果使用<code>@propertyWrapper</code>，可以减少上面的重复代码，如下所示：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">@propertyWrapper
 <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">UserDefault</span>&lt;T&gt; {
     <span style="color:#66d9ef">let</span> key: String
@@ -466,7 +466,7 @@ code.has-jax {
     UserDefaultConfig.speechGuide = <span style="color:#66d9ef">false</span>
     UserDefaultConfig.noteGuide = <span style="color:#66d9ef">true</span>
 }
-</code></pre></div><p>上面的属性包装器，对于基本类型都可以保存。但是对于非基本类型，如果要保存，就要借助于<code>Codable</code>才能保存：</p>
+</code></pre></div><p>因为<code>UserDefaults</code>本身只能存储基本类型，所以上面的包装的属性<code>UserDefault</code>，也只适用于基本类型都。对于非基本类型，就要借助于<code>Codable</code>才能保存：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">/// for codable</span>
 @available(swift <span style="color:#ae81ff">5.1</span>)
 @propertyWrapper
@@ -739,7 +739,7 @@ code.has-jax {
         <div class="post-toc-content"><nav id="TableOfContents">
   <ul>
     <li><a href="#基本使用">基本使用</a></li>
-    <li><a href="#减少重复">减少重复</a></li>
+    <li><a href="#减少重复代码">减少重复代码</a></li>
     <li><a href="#原子属性">原子属性</a>
       <ul>
         <li><a href="#测试代码">测试代码</a></li>
