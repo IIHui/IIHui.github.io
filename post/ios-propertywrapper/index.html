@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1846</span>
+<span class="leancloud-visitors-count">2084</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">4 分钟</span>
+<span class="leancloud-visitors-count">5 分钟</span>
 </span>
       </div>
     </header>
@@ -574,6 +574,45 @@ code.has-jax {
             print(<span style="color:#e6db74">&#34;test&#34;</span>)
         }
     }
+</code></pre></div><h1 id="个性化设置">个性化设置</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">/// 用户个性化配置的属性包装，需带默认值</span>
+@propertyWrapper
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">UserConfigProperty</span>&lt;Value&gt; {
+    <span style="color:#75715e">/// 自定UserDefaultsKey，详见其定义</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">var</span> key: UserDefaultsKey
+    <span style="color:#75715e">/// 默认值</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">var</span> defaultValue: Value
+    <span style="color:#75715e">/// 用户主键</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">var</span> id: String
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">init</span>(key: UserDefaultsKey, id: String, defaultValue: Value) {
+        <span style="color:#66d9ef">self</span>.key = key
+        <span style="color:#66d9ef">self</span>.defaultValue = defaultValue
+        <span style="color:#66d9ef">self</span>.id = id
+    }
+    
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">init</span>(key: UserDefaultsKey, defaultValue: Value) {
+        <span style="color:#66d9ef">self</span>.key = key
+        <span style="color:#66d9ef">self</span>.defaultValue = defaultValue
+        <span style="color:#75715e">// 因为属性包装器会在init方法之前执行，导致id无法初始化，因此先给id一个初始空值</span>
+        <span style="color:#66d9ef">self</span>.id = <span style="color:#e6db74">&#34;&#34;</span>
+    }
+    
+    <span style="color:#75715e">/// 因为属性包装器会在init方法之前执行，所以初始给了一个空值，此函数是为了修改真正的id</span>
+    <span style="color:#75715e">/// - Parameter id: id</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">mutating</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">setId</span>(id:String) {
+        <span style="color:#66d9ef">self</span>.id = id
+    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">var</span> wrappedValue: Value {
+        <span style="color:#66d9ef">get</span> {
+            <span style="color:#66d9ef">return</span> (UserDefaultsManager.standard.value(forKey: key, forId: id) <span style="color:#66d9ef">as</span>? Value) ?? defaultValue
+        }
+        <span style="color:#66d9ef">set</span> {
+            UserDefaultsManager.standard.<span style="color:#66d9ef">set</span>(value: newValue, forKey: key, forId: <span style="color:#66d9ef">self</span>.id)
+        }
+    }
+}
 </code></pre></div><hr>
 
     </div>
@@ -745,6 +784,7 @@ code.has-jax {
         <li><a href="#测试代码">测试代码</a></li>
       </ul>
     </li>
+    <li><a href="#个性化设置">个性化设置</a></li>
   </ul>
 </nav></div>
     </div>
