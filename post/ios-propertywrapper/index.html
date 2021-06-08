@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">2121</span>
+<span class="leancloud-visitors-count">2265</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -499,6 +499,36 @@ code.has-jax {
     <span style="color:#66d9ef">init</span>(key: String, defaultValue: T) {
         <span style="color:#66d9ef">self</span>.key = key
         <span style="color:#66d9ef">self</span>.defaultValue = defaultValue
+    }
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">/// 全局配置的属性包装，wrappedValue为可选值</span>
+@propertyWrapper
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">CodableGlobalConfigProperty</span>&lt;T: Codable&gt; {
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">var</span> key: UserDefaultsKey
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">init</span>(key: UserDefaultsKey) {
+        <span style="color:#66d9ef">self</span>.key = key
+    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">var</span> wrappedValue: T? {
+        <span style="color:#66d9ef">get</span> {
+            <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> data = UserDefaultsManager.standard.value(forKey: key) <span style="color:#66d9ef">as</span>? Data, <span style="color:#66d9ef">let</span> model = <span style="color:#66d9ef">try</span>? JSONDecoder().decode(T.<span style="color:#66d9ef">self</span>, from: data) {
+                <span style="color:#66d9ef">return</span> model
+            } <span style="color:#66d9ef">else</span> {
+                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>
+            }
+        }
+        <span style="color:#66d9ef">set</span> {
+            <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> value = newValue {
+                <span style="color:#75715e">// 此处不可与上面合并,因为要确保newValue为nil时删除key对应的值</span>
+                <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> jsonData = <span style="color:#66d9ef">try</span>? JSONEncoder().encode(value) {
+                    UserDefaultsManager.standard.<span style="color:#66d9ef">set</span>(value: jsonData, forKey: key)
+                }
+            } <span style="color:#66d9ef">else</span> {
+                UserDefaultsManager.standard.remove(forKey: key)
+            }
+        }
     }
 }
 </code></pre></div><p><a href="https://onevcat.com/2020/11/codable-default/">参考资料</a></p>
