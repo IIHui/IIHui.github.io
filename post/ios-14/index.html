@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1101</span>
+<span class="leancloud-visitors-count">1112</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -294,7 +294,7 @@ code.has-jax {
               navigationController.pushViewController(topViewController, animated: <span style="color:#66d9ef">false</span>)
         }
     }
-</code></pre></div><p>上面的思路是将原来<code>push</code>的界面先<code>pop</code>掉，然后利用已设置的<code>self.tabBarController?.hidesBottomBarWhenPushed = true</code>重新<code>push</code>一次，就可以把底部的<code>tabbar</code>隐藏。</p>
+</code></pre></div><p>上面的解决思路是将原来<code>push</code>的界面先<code>pop</code>掉，然后利用已设置的<code>self.tabBarController?.hidesBottomBarWhenPushed = true</code>属性，再重新<code>push</code>一次之前的界面，就可以把底部的<code>tabbar</code>隐藏。</p>
 <p>如果是在<code>viewWillAppear</code>里面手动将<code>tabbar</code>隐藏，而在<code>viewWillDisapper</code>中将<code>tabbar</code>显示，则不仅会影响整体的逻辑，而且还会出现肉眼可见的黑边：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">viewWillAppear</span>(<span style="color:#66d9ef">_</span> animated: Bool) {
     <span style="color:#66d9ef">super</span>.viewWillAppear(animated)
