@@ -97,14 +97,14 @@ struct SomeStruct { var x = 0 func doSomething(task: @escaping () -&amp;gt; Void
 struct SomeStruct { var x = 0 func doSomething(task: @escaping () -&amp;gt; Void) { task() } func test() { doSomething { debugPrint(x) } } } 还有一种新的方法在捕获列表中使用self，只需在捕获列表中加入[self]。这样就可以避免在闭包中反复使用self，如下所示：
 class SomeClass { var x = 0 func doSomething(task: @escaping () -&amp;gt; Void) { task() } func newTest() { doSomething { [self] in x &#43;= 1 x = x * 5 } } } 但是对于在逃逸闭包中，为了防止循环引用时添加的[weak self]，在Swift 5.3中仍然不能省略，依旧需要添加[weak self]。
 参考资料
-main 直到Swift 5.3之前，开发一个Swift程序需要在main.swft文件中定义程序启动点。现在，能够用@main和静态func main()方法来标记一个结构或基类（在任何文件中），当程序启动时，它将被自动触发。
-@main struct TerminalApp { static func main() { debugPrint(&amp;#34;Hello Swift 5.3&amp;#34;) } } 但是使用@main，如果main.swift文件已经存在，就不应该使用它，它应该在基类（或结构）中使用，而且只应该定义一次。
+main 直到Swift 5.3之前，开发一个Swift程序需要在main.swft文件中定义程序启动点。现在，能够用@main和静态func main()方法来标记一个结构或基类（在任何文件中），当程序启动时，它将被自动被调用：
+@main struct TerminalApp { static func main() { debugPrint(&amp;#34;Hello Swift 5.3&amp;#34;) } } 但使用@main时，如果main.swift文件已经存在，就不应该使用它。因为@main应该在基类或结构体中使用，而且只应该定义一次。
 where 在Swift 5.3中可以在具有泛型和扩展的函数中使用where子句。如下所示sorted方法中要求Element遵循Comparable协议：
-struct Stack&amp;lt;Element&amp;gt; { private var array = [Element]() mutating func push(_ item: Element) { array.append(item) } mutating func pop() -&amp;gt; Element? { array.popLast() } } extension Stack { func sorted() -&amp;gt; [Element] where Element: Comparable { array.sorted() } } didSet 在Swift 5.3中，didSet发生了一些变化：
+struct Stack&amp;lt;Element&amp;gt; { private var array = [Element]() mutating func push(_ item: Element) { array.append(item) } mutating func pop() -&amp;gt; Element? { array.popLast() } } extension Stack { // where  func sorted() -&amp;gt; [Element] where Element: Comparable { array.sorted() } } didSet 在Swift 5.3中，didSet发生了一些变化：
   如果didSet中没有使用到oldValue，则不会调用get方法，这意味着节省了内存和CPU的开销。这种方式称为simple didset。
   如果存在simple didset，但没有will set，则允许修改在原地发生「allow modifications to happen in-place.」
   参考资料
-Float16 因为在图像处理和机器学习领域，经常会使用Float16。所以Swift 5.3中标准库添加了Float16类型，Float16是一个半精度（16字节）的浮点值类型。
+Float16 因为在图像处理和机器学习领域，经常会使用Float16。所以Swift 5.3中标准库添加了Float16类型，Float16是一个半精度，即16位的浮点值类型。
 debugPrint(Float16.pi) //3.14 debugPrint(Float32.pi) //3.1415925 </content>
     </entry>
     
