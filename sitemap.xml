@@ -165,9 +165,9 @@ XCode 12.5 报错 使用XCode 12.5编译项目报Showing Recent Messages Applica
           <tag>iOS</tag>
         </tags>
         <content type="html"> 添加初始ViewController 设置初始的ViewController有两种方式，第一种是在属性检测器中勾选Is Initial View Controller，如下图所示：
-第二种方式则是按住鼠标左键，然后直接拖动代表初始ViewController的蓝色箭头到指定的ViewController上面再释放，就可以完成设置，如下图所示：
+第二种方式则是按住鼠标左键，然后直接拖动代表初始ViewController的蓝色箭头到指定的ViewController上面，然后再释放，就可以完成设置：
 添加NavigationController 网络调试 如果Mac和iOS设备在同一局域网中，可以通过网络连接进行调试。首先在菜单栏进入到Window--&amp;gt;Devices and Simulators：
-然后找到相应的真机，鼠标左键单击选中，再勾选Connect via network，如下所示：
+然后找到对应的真机，鼠标左键单击以选中，然后再勾选Connect via network，如下图所示：
 勾选Connect via network后，编译安装的时候选择刚刚的设备，若报错Xcode will continue when xxx is connected，则需要使用Connect via IP Address，再输入真机的IP地址：
 禁用push返回手势 extension UIViewController { /// 禁止系统返回手势 func popGestureForbid() { if let gestures = self.navigationController?.interactivePopGestureRecognizer?.view?.gestureRecognizers { gestures.forEach({ $0.isEnabled = false }) } } } open url 从iOS 10以后UIApplication.shared.openURL就被废弃了，需要使用open func open(_ url: URL, options: [UIApplication.OpenExternalURLOptionsKey : Any] = [:], completionHandler completion: ((Bool) -&amp;gt; Void)? = nil)。
 options有个参数叫做universalLinksOnly。如果包含universalLinksOnly选项，则只有在配置了某个应用程序以打开URL时，URL才会打开。例如要打开YouTube视频，您必须安装YouTube应用。
