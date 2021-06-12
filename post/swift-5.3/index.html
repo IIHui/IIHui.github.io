@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1989</span>
+<span class="leancloud-visitors-count">2003</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -282,7 +282,7 @@ UIView.animate(withDuration: <span style="color:#ae81ff">0.25</span>, animations
 <p><a href="https://juejin.im/post/5ef57124e51d45347748f539">参考资料</a></p>
 <h1 id="多模式catch语句">多模式catch语句</h1>
 <h2 id="以前-1">以前</h2>
-<p>在<code>Swift 5.3</code>之前，捕获同一类型<code>Error</code>只能有一个<code>catch</code>，然后再使用<code>switch</code>语句区分同一类型<code>Error</code>中具体的哪种错误，如下所示：</p>
+<p>在<code>Swift 5.3</code>之前，捕获<font color=red>同一类型</font><code>Error</code>只能有一个<code>catch</code>，然后再使用<code>switch</code>语句区分同一类型<code>Error</code>中具体的哪种错误，如下所示：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">TaskError</span>: Error {
     <span style="color:#66d9ef">case</span> someRecoverableError
     <span style="color:#66d9ef">case</span> someFailure(msg: String)
@@ -309,7 +309,7 @@ UIView.animate(withDuration: <span style="color:#ae81ff">0.25</span>, animations
 }
 
 </code></pre></div><h2 id="现在-1">现在</h2>
-<p><code>Swift 5.3</code>可以使用多个<code>catch</code>块捕获同一类型不同类错误，这个特性使得代码具有更好的可读性，能够减少代码行数：</p>
+<p><code>Swift 5.3</code>可以使用多个<code>catch</code>块捕获<font color=red>同一类型不同类错误</font>，这个特性使得代码具有更好的可读性，能够减少代码行数：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">do</span> {
     <span style="color:#66d9ef">try</span> performTask()
 } <span style="color:#66d9ef">catch</span> TaskError.someRecoverableError {
@@ -350,7 +350,7 @@ UIView.animate(withDuration: <span style="color:#ae81ff">0.25</span>, animations
 
 </code></pre></div><h1 id="枚举comparable">枚举Comparable</h1>
 <h2 id="之前">之前</h2>
-<p>在<code>Swift 5.3</code>之前，如果需要比较<code>enum</code>，则需要遵循<code>Comparable</code>协议，并且需要实现<code>&lt;</code>和<code>minimum</code>方法：</p>
+<p>在<code>Swift 5.3</code>之前，如果需要比较<code>enum</code>，则需要<code>enum</code>遵循<code>Comparable</code>协议，并且需要实现<code>&lt;</code>和<code>minimum</code>方法：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Volume</span>: Comparable {
     <span style="color:#66d9ef">case</span> low
     <span style="color:#66d9ef">case</span> medium
@@ -371,7 +371,7 @@ UIView.animate(withDuration: <span style="color:#ae81ff">0.25</span>, animations
         <span style="color:#66d9ef">return</span> (lhs <span style="color:#f92672">!=</span> rhs) <span style="color:#f92672">&amp;&amp;</span> (lhs == <span style="color:#66d9ef">self</span>.minium(lhs, rhs))
     }
 }
-</code></pre></div><p>但是上面的代码极难维护，因为一旦添加一个枚举值，则需要更新<code>&lt;</code>和<code>minimum</code>方法，才能比较。</p>
+</code></pre></div><p>但是上面的代码极难维护，因为如果添加一个枚举值，则需要更新<code>&lt;</code>和<code>minimum</code>方法，才能比较<code>enum</code>，否则会报错。</p>
 <h2 id="现在-2">现在</h2>
 <p>在<code>Swift 5.3</code>中，只要<code>enum</code>没有关联值或者只有一个<code>Comparable</code>的关联值，则会自动实现实现<code>&lt;</code>和<code>minimum</code>方法：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Size</span>: Comparable {
