@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">300</span>
+<span class="leancloud-visitors-count">371</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -252,17 +252,18 @@ code.has-jax {
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    <h1 id="xxx-swifth未找到">XXX-Swift.h未找到</h1>
+    <h1 id="xxx-swifth未找到">xxx-Swift.h未找到</h1>
+<p>如果报<code>xxx-Swift.h</code>未找到，则需要检查设置中的<code>Swift Compiler - General</code>下的<code>Objective-C Generated Interface Header Name</code>是否有对应的文件：</p>
 <p><img src="https://i.loli.net/2020/06/18/43Pl5XCeSwUgyzr.jpg" alt="-c"></p>
 <h1 id="ios-1451编译报错">iOS 14.5.1编译报错</h1>
 <p>使用<code>XCode 12.4</code>在<code>iOS 14.5.1</code>的真机上编译时，打断点调试时，不能正常打印出成员变量的值，出现如下的报错信息：</p>
 <p><img src="https://i.loli.net/2021/05/06/xZhqXCGdH6c71OI.jpg" alt="-c"></p>
-<p>查阅网上的资料，应该在<code>Build Setting</code>时将<code>Debug</code>的<code>Optimization Level</code>设置为<code>None</code>，如下所示：</p>
+<p>查阅网上的资料，应该在设置<code>Build Setting</code>时将<code>Debug</code>的<code>Optimization Level</code>设置为<code>None</code>，如下所示：</p>
 <p><img src="https://i.loli.net/2021/05/06/RvaCzw9msuLtK3d.jpg" alt="-c"></p>
-<p>但是上述方法对于<code>XCode 12.4</code>调试<code>iOS 14.5.1</code>真机却不生效。但新建一个<code>demo</code>工程，却可以正常调试，设置如下：</p>
+<p>但是上述方法对于在<code>XCode 12.4</code>中调试<code>iOS 14.5.1</code>真机却不生效。但新建一个<code>demo</code>工程，却可以正常调试，设置如下：</p>
 <p><img src="https://i.loli.net/2021/05/06/kQxieUvw5KAsDXu.jpg" alt=""></p>
-<h2 id="xcode-125-报错">XCode 12.5 报错</h2>
-<p>使用<code>XCode 12.5</code>编译项目报<code>Showing Recent Messages Application extensions and any libraries they link to must be built with the APPLICATION_EXTENSION_API_ONLY build setting set to YES.</code>。需要将报错的<code>Target</code>的编译设置中的<code>Require Only App-Extensions-Safe API</code>置为<code>YES</code>，如下所示：</p>
+<h1 id="xcode-125-报错">XCode 12.5 报错</h1>
+<p>使用<code>XCode 12.5</code>编译项目报<code>Showing Recent Messages Application extensions and any libraries they link to must be built with the APPLICATION_EXTENSION_API_ONLY build setting set to YES.</code>。需要将报错的<code>Target</code>的编译设置中的<code>Require Only App-Extensions-Safe API</code>置为<code>YES</code>即可：</p>
 <p><img src="https://i.loli.net/2021/05/07/EDn6sp1ewiv2HNB.jpg" alt="-c"></p>
 
     </div>
@@ -427,12 +428,9 @@ code.has-jax {
     <div class="post-toc">
         <div class="post-toc-content"><nav id="TableOfContents">
   <ul>
-    <li><a href="#xxx-swifth未找到">XXX-Swift.h未找到</a></li>
-    <li><a href="#ios-1451编译报错">iOS 14.5.1编译报错</a>
-      <ul>
-        <li><a href="#xcode-125-报错">XCode 12.5 报错</a></li>
-      </ul>
-    </li>
+    <li><a href="#xxx-swifth未找到">xxx-Swift.h未找到</a></li>
+    <li><a href="#ios-1451编译报错">iOS 14.5.1编译报错</a></li>
+    <li><a href="#xcode-125-报错">XCode 12.5 报错</a></li>
   </ul>
 </nav></div>
     </div>
