@@ -117,11 +117,11 @@ debugPrint(Float16.pi) //3.14 debugPrint(Float32.pi) //3.1415925 </content>
         <tags>
           <tag>iOS</tag>
         </tags>
-        <content type="html">  Swift 5.2于2020年3月24号发布，新增了许多便利的特性，专注于改善开发者的体验并提供额外的语言功能，新的功能大部分以增强函数式编程风格为导向的。
- KeyPath 在Swift 5.2中允许使用key path表达式来代替key path函数。下面的例子中，是使用cars.filter(\.isElectric)来代替key path函数：
+        <content type="html">  Swift 5.2于2020.03.24号发布，新增了许多便利的特性，专注于改善开发体验并，新的功能大部分以增强函数式编程风格为导向。
+ KeyPath 在Swift 5.2中允许使用key path表达式来代替key path函数。下面的例子中，使用cars.filter(\.isElectric)来代替key path函数：
 let cars: [Car] = [Car(brand: &amp;#34;Tesla&amp;#34;, isElectric: true), Car(brand: &amp;#34;Ford&amp;#34;, isElectric: false)] let electricCars1 = cars.filter { $0.isElectric } let electricCars2 = cars.filter { $0[keyPath: \Car.isElectric] } let electricCars3 = cars.filter(\.isElectric) 实例调用函数 这个新功能允许拥有名为callAsFunction方法的实例可以像函数一样被调用，如下所示base2Pow(x: 3)就是调用的是callAsFunction(x: Double)：
 struct MyPow { let base: Double func callAsFunction(x: Double) -&amp;gt; Double { return pow(base, x) } } let base2Pow = MyPow(base: 2) debugPrint(base2Pow(x: 3)) 下标默认值 在Swift 5.2中定义下标的时候，可以带默认值参数。在下面的例子中，在下标越界的情况下，返回一个默认值：
-struct Building { var floors: [String] subscript(index: Int, default default: String = &amp;#34;Unknown&amp;#34;) -&amp;gt; String { if index &amp;gt;= 0, index &amp;lt; floors.count { return floors[index] } else { return `default` } } } let building = Building(floors: [&amp;#34;Ground Floor&amp;#34;, &amp;#34;1st&amp;#34;, &amp;#34;2nd&amp;#34;, &amp;#34;3rd&amp;#34;]) Lazy filtering 在Swift 5.2前使用lazy filtering时，是从右到左运算。在Swift 5.2后运算顺序变成了从左到右。下面的代码在Swift 5.2前的输出为1，2，3，4，5，到Swift 5.2则为2,4，如下所示：
+struct Building { var floors: [String] subscript(index: Int, default default: String = &amp;#34;Unknown&amp;#34;) -&amp;gt; String { if index &amp;gt;= 0, index &amp;lt; floors.count { return floors[index] } else { return `default` } } } let building = Building(floors: [&amp;#34;Ground Floor&amp;#34;, &amp;#34;1st&amp;#34;, &amp;#34;2nd&amp;#34;, &amp;#34;3rd&amp;#34;]) Lazy filtering 在Swift 5.2前使用lazy filtering时，运算顺序从右到左。在Swift 5.2后运算顺序变成了从左到右。下面的代码在Swift 5.2前的输出为1，2，3，4，5，到Swift 5.2后则为2，4，如下所示：
 let numbers1 = [1, 2, 3, 4, 5].lazy.filter { $0 % 2 == 0 }.filter { print($0); return true } _ = numbers1.count // 2  // 4 </content>
     </entry>
     
