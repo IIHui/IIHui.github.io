@@ -88,7 +88,9 @@ CGRect有个insetBy(dx:dy:)方法可以把一个矩形很容易的嵌入到另�
 如果改变一个视图的bounds属性的size值，则会影响到其frame属性的size值。视图frame属性size的变化是围绕其中心点进行的，即中心点保持不变：
 let v1 = UIView(frame:CGRect(113, 111, 132, 194)) v1.backgroundColor = UIColor(red: 1, green: 0.4, blue: 1, alpha: 1) let v2 = UIView(frame:v1.bounds.insetBy(dx: 10, dy: 10)) v2.backgroundColor = UIColor(red: 0.5, green: 1, blue: 0, alpha: 1) self.view.addSubview(v1) v1.addSubview(v2) v2.bounds.size.height &#43;= 20 v2.bounds.size.width &#43;= 20 如果创建了一个视图，其bounds坐标系的零点(0.0,0.0)在左上角。因为一个子视图是相对于它的父视图的坐标系定位的，所以父视图的bounds原点的改变会导致子视图位置的变化：
 let v1 = UIView(frame:CGRect(113, 111, 132, 194)) v1.backgroundColor = UIColor(red: 1, green: 0.4, blue: 1, alpha: 1) let v2 = UIView(frame:v1.bounds.insetBy(dx: 10, dy: 10)) v2.backgroundColor = UIColor(red: 0.5, green: 1, blue: 0, alpha: 1) self.view.addSubview(v1) v1.addSubview(v2) v1.bounds.origin.x &#43;= 10 v1.bounds.origin.y &#43;= 10 center 同样地，若改变一个视图的frame属性的size值，也会改变其bounds属性的size值。但是，改变bounds的size大小时，不会改变其center属性。
-center代表子视图在父视图坐标系中的位置，明确地说
+center代表子视图在父视图坐标系中的位置，确切地说，它表示子视图的bounds center在父视图中的位置：
+let c = CGPoint(theView.bounds.midX, theView.bounds.midY) 改变视图的bounds不会改变的它的center，相应地改变视图的center不会改变bounds。即视图的center和bounds是相互独立的。bounds用于描述视图的大小，center用于描述视图在父视图中的位置。
+实际上视图的frame属性是bounds和center的方便形式。当改变视图的frame属性时，bounds和center也会随之发生变化，当改变bounds和center时，视图的frame也会随之发生改变。尽管如此，调整一个视图在父视图中的可靠方式是使用bounds和center属性。
 </content>
     </entry>
     
