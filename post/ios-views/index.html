@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
-    <title>views - Keep It Simple</title>
+    <title>视图 - Keep It Simple</title>
     <meta name="keywords" content="博客,思考,读书,笔记,技术,分享">
     
-    <meta property="og:title" content="views">
+    <meta property="og:title" content="视图">
     <meta property="og:site_name" content="Keep It Simple">
     <meta property="og:image" content="/img/author.jpg"> 
-    <meta name="title" content="views - Keep It Simple" />
+    <meta name="title" content="视图 - Keep It Simple" />
     <meta name="description" content="Swift | Go | C&#43;&#43; "> 
     <link rel="shortcut icon" href="https://iihui.github.io/img/favicon.ico" />
     <link rel="apple-touch-icon" href="https://iihui.github.io/img/apple-touch-icon.png" />
@@ -193,7 +193,7 @@ code.has-jax {
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
         <a class="post-title-link" href="https://iihui.github.io/post/ios-views/" itemprop="url">
-        views
+        视图
         </a>
       </h1>
       <div class="post-meta">
@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">5231</span>
+<span class="leancloud-visitors-count">5562</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">11 分钟</span>
+<span class="leancloud-visitors-count">12 分钟</span>
 </span>
       </div>
     </header>
@@ -307,6 +307,9 @@ code.has-jax {
 <p><code>scene</code>的<code>(_:willConnectTo:options:)</code>被调用。</p>
 </li>
 </ol>
+<p>如果App启动的时候没有使用<code>storyboard</code>，也就是说在老的架构中<code>Info.plist</code>中没有<code>Main storyboard file base name</code>条目。而在新的架构中，这意味着在<code>Application Scene Manifest</code>字典的<code>Application Scene Configuration</code>下没有<code>Storyboard Name</code>条目。</p>
+<p>此时需要在代码中完成<code>UIApplicationMain</code>在有<code>storyboard</code>的情况下自动完成的所有事情。在旧的架构下，需要在<code>app delegate</code>的<code>application(_:didFinishLaunchingWithOptions:)</code>中做这些事情。在新的架构下，需要<code>scene delegate</code>的<code>scene（_:willConnectTo:options:）</code>中做这些事情。</p>
+<p><img src="https://i.loli.net/2021/06/13/3Hik8Vt5TBoQ2uL.jpg" alt="-c"></p>
 <h1 id="可见性和透明度">可见性和透明度</h1>
 <p><code>view</code>的可见性和不透明度跟<code>3</code>个属性相关，他们分别是<code>isHidden</code>，<code>alpha</code>，<code>isOpaque</code>。</p>
 <h2 id="ishidden">isHidden</h2>
@@ -430,7 +433,7 @@ open <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">convert
         </div>
         <div>
             <p style="margin-top:10px;">
-                标题：views
+                标题：视图
                 <br />作者：阿呆<a target="_blank" href="https://iihui.github.io/"></a>
                 
                 <br />地址：https://iihui.github.io/post/ios-views/
