@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">4940</span>
+<span class="leancloud-visitors-count">5197</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">10 分钟</span>
+<span class="leancloud-visitors-count">11 分钟</span>
 </span>
       </div>
     </header>
@@ -275,7 +275,9 @@ code.has-jax {
 <p>如果需要新架构的App支持<code>iOS 12</code>以之前的系统，则需要将<code>SceneDelegate</code>的<code>window</code>属性复制到<code>AppDelegate</code>类中。然后在<code>AppDelegate</code>类将所有涉及<code>UISceneSession</code>的方法标记为<code>@available(iOS 13.0, *)</code>。最后在<code>SceneDelegate</code>类前将整个类标记为<code>@available(iOS 13.0, *)</code>。</p>
 <p>使用了上面的改动后，如果App运行在<code>iOS 13</code>及以后的系统中，则使用的是新架构，并且<code>SceneDelegate</code>持有<code>window</code>。如果在<code>iOS 12</code>及以前的系统中，则使用的是旧架构，<code>AppDelegate</code>持有<code>window</code>。</p>
 <h2 id="app-launches">App Launches</h2>
-<p>应用程序最终包括对<code>UIApplicationMain</code>函数的一次调用。与<code>Objective-C</code>不同，一个典型的<code>Swift</code>项目不会在代码中明确地进行这一调用，它是在幕后为你调用的。</p>
+<p>在启动时，你的应用程序如何首先拥有其<code>window</code>，以及该<code>window</code>如何被填充和显示？如果你的应用程序使用一个主故事板，这一切都会自动发生。但是，&ldquo;自动&quot;并不意味着&quot;通过魔术&rdquo;！</p>
+<p>启动时的程序是直接的和确定的，你的代码可以在其中起作用。知道一个应用程序是如何启动的是非常有用的，尤其是当配置错误，应用程序的启动出现问题时，就可以找出原因了。</p>
+<p>App启动时最终包括一次<code>UIApplicationMain</code>函数的调用。与<code>OC</code>不同，一个典型的<code>Swift</code>项目不会在代码中明确地进行这一调用，都是自动完成调用的。<code>UIApplicationMain</code>函数的调用创建了一些最重要的初始实例；如果你的应用程序使用一个主故事板，这些实例包括<code>window</code>和它的根视图控制器。</p>
 <h3 id="ios-13">iOS 13</h3>
 <h4 id="使用storyboard">使用storyboard</h4>
 <ol>
