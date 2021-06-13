@@ -310,6 +310,7 @@ code.has-jax {
 <p>如果App启动的时候没有使用<code>storyboard</code>，也就是说在老的架构中<code>Info.plist</code>中没有<code>Main storyboard file base name</code>条目。而在新的架构中，这意味着在<code>Application Scene Manifest</code>字典的<code>Application Scene Configuration</code>下没有<code>Storyboard Name</code>条目。</p>
 <p>此时需要在代码中完成<code>UIApplicationMain</code>在有<code>storyboard</code>的情况下自动完成的所有事情。在旧的架构下，需要在<code>app delegate</code>的<code>application(_:didFinishLaunchingWithOptions:)</code>中做这些事情。在新的架构下，需要<code>scene delegate</code>的<code>scene（_:willConnectTo:options:）</code>中做这些事情。</p>
 <p><img src="https://i.loli.net/2021/06/13/3Hik8Vt5TBoQ2uL.jpg" alt="-c"></p>
+<p><img src="https://i.loli.net/2021/06/13/NRzKBDfkLiSstFe.jpg" alt="-c"></p>
 <h1 id="可见性和透明度">可见性和透明度</h1>
 <p><code>view</code>的可见性和不透明度跟<code>3</code>个属性相关，他们分别是<code>isHidden</code>，<code>alpha</code>，<code>isOpaque</code>。</p>
 <h2 id="ishidden">isHidden</h2>
