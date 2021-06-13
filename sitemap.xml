@@ -78,7 +78,7 @@ UIApplicationMain的处理是如何进行的，取决于你的应用程序是使
   scene的(_:willConnectTo:options:)被调用。
   如果App启动的时候没有使用storyboard，也就是说在老的架构中Info.plist中没有Main storyboard file base name条目。而在新的架构中，这意味着在Application Scene Manifest字典的Application Scene Configuration下没有Storyboard Name条目。
 此时需要在代码中完成UIApplicationMain在有storyboard的情况下自动完成的所有事情。在旧的架构下，需要在app delegate的application(_:didFinishLaunchingWithOptions:)中做这些事情。在新的架构下，需要scene delegate的scene（_:willConnectTo:options:）中做这些事情。
-可见性和透明度 view的可见性和不透明度跟3个属性相关，他们分别是isHidden，alpha，isOpaque。
+引用window 可见性和透明度 view的可见性和不透明度跟3个属性相关，他们分别是isHidden，alpha，isOpaque。
 isHidden 视图。视图可以通过将其isHidden属性设置为true而变得不可见，并通过将其设置为false 而再次可见。被隐藏的视图（通常）不会收到触摸事件，所以对用户来说，就像该视图不存在一样。
 alpha 一个视图可以通过其alpha属性使其部分或完全透明。alpha属性值可以在0～1.0，1.0表示完全不透明，0.0表示透明。alpha属性既影响view的背景色也会影响其内容的透明度。
 如果一个视图显示了一个图像，并且有一个背景颜色，而它的alpha值小于1.0，那么背景颜色就会渗入到图像中。如果一个父试图的alpha值为0.5，则它的所有子视图的alpha都小于0.5，因为无论它们的alpha值是多少，都会相对于0.5绘制的。
