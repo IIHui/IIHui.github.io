@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1909</span>
+<span class="leancloud-visitors-count">2353</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">4 分钟</span>
+<span class="leancloud-visitors-count">5 分钟</span>
 </span>
       </div>
     </header>
@@ -299,7 +299,11 @@ code.has-jax {
 <h2 id="color">Color</h2>
 <p>视图可以通过其<code>backgroundColor</code>属性指定一个背景颜色，如果一个视图的背景色是<code>nil</code>，则该视图有一个透明的背景色。</p>
 <h1 id="可见性和透明度">可见性和透明度</h1>
-<p><code>view</code>的可见性和不透明度跟3个属性相关，他们分别是<code>isHidden</code>，<code>alpha</code>，<code>isOpaque</code>。</p>
+<p><code>view</code>的可见性和不透明度跟<code>3</code>个属性相关，他们分别是<code>isHidden</code>，<code>alpha</code>，<code>isOpaque</code>。视图。视图可以通过将其<code>isHidden</code>属性设置为<code>true</code>而变得不可见，并通过将其设置为<code>false</code> 而再次可见。被隐藏的视图（通常）不会收到触摸事件，所以对用户来说，就像该视图不存在一样。</p>
+<p>一个视图可以通过其<code>alpha</code>属性使其部分或完全透明。<code>alpha</code>属性值可以在<code>0～1.0</code>，<code>1.0</code>表示完全不透明，<code>0.0</code>表示透明。<code>alpha</code>属性既影响<code>view</code>的背景色也会影响其内容的透明度。</p>
+<p>如果一个视图显示了一个图像，并且有一个背景颜色，而它的<code>alpha</code>值小于<code>1.0</code>，那么背景颜色就会渗入到图像中。如果一个父试图的<code>alpha</code>值为<code>0.5</code>，则它的所有子视图的<code>alpha</code>都小于<code>0.5</code>，因为无论它们的<code>alpha</code>值是多少，都会相对于<code>0.5</code>绘制的。</p>
+<p>一个完全透明（或非常接近透明）的视图就像一个<code>isHidden</code>为真的视图：它和它的子视图都是不可见的，而且（通常）不能被触摸到。</p>
+<p>为了使事情更加复杂，颜色也有一个<code>alpha</code>值。一个视图的<code>alpha</code>值可以是<code>1.0</code>，但仍然有一个透明的背景，因为它的背景颜色的<code>alpha</code>值小于<code>1.0</code>。</p>
 
     </div>
     <footer class="post-footer">
