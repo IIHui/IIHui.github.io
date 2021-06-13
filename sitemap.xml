@@ -87,7 +87,7 @@ Bounds and Center 假设有一个父视图和子视图，子视图需要10个点
 CGRect有个insetBy(dx:dy:)方法可以把一个矩形很容易的嵌入到另一个矩形中。描述视图在其自身坐标中的矩形的CGRect是视图的bounds属性。
 如果改变一个视图的bounds的值，则会影响到其frame属性值。视图frame变化是围绕其中心点进行的，中心点保持不变：
 let v1 = UIView(frame:CGRect(113, 111, 132, 194)) v1.backgroundColor = UIColor(red: 1, green: 0.4, blue: 1, alpha: 1) let v2 = UIView(frame:v1.bounds.insetBy(dx: 10, dy: 10)) v2.backgroundColor = UIColor(red: 0.5, green: 1, blue: 0, alpha: 1) self.view.addSubview(v1) v1.addSubview(v2) v2.bounds.size.height &#43;= 20 v2.bounds.size.width &#43;= 20 如果创建了一个视图，其bounds坐标系的零点(0.0,0.0)在左上角。因为一个子视图是相对于它的父视图的坐标系定位的，所以父视图的bounds原点的改变会改变子视图的显示位置：
-</content>
+let v1 = UIView(frame:CGRect(113, 111, 132, 194)) v1.backgroundColor = UIColor(red: 1, green: 0.4, blue: 1, alpha: 1) let v2 = UIView(frame:v1.bounds.insetBy(dx: 10, dy: 10)) v2.backgroundColor = UIColor(red: 0.5, green: 1, blue: 0, alpha: 1) self.view.addSubview(v1) v1.addSubview(v2) v1.bounds.origin.x &#43;= 10 v1.bounds.origin.y &#43;= 10 </content>
     </entry>
     
      <entry>
