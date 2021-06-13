@@ -97,6 +97,7 @@ v2.center = v1.convert(v1.center, from:v1.superview) 另外一种更常见的方
 v2.center = CGPoint(v1.bounds.midX,v1.bounds.midY) transform transform 视图的transform属性可以改变视图的绘制方式，显示大小，位置和方向，但不会改变bounds和center属性。transform属性的值是一个CGAffineTransform结构体:
 public struct CGAffineTransform { public var a: CGFloat public var b: CGFloat public var c: CGFloat public var d: CGFloat public var tx: CGFloat public var ty: CGFloat public init() public init(a: CGFloat, b: CGFloat, c: CGFloat, d: CGFloat, tx: CGFloat, ty: CGFloat) } 默认情况下，一个视图的变换矩阵是CGAffineTransform.identity，即同一变换。它没有可见的效果，所以你不知道它的存在。你所应用的任何变换都是围绕视图的中心进行的，这个中心是保持不变的。
 transform3D 从iOS 13开始，视图有一个新的transform3D属性。这个属性其实是底层layer的transform属性，现在通过视图暴露出来了。
+Window坐标和屏幕座标 设备屏幕没有frame，但是有bounds。window没有父视图，但是它的frame是自动设置和设备屏幕的bounds匹配。window一般一开始就填满屏幕，并且通常会继续填满屏幕，因此大多数情况下，窗口坐标就是屏幕坐标。
 </content>
     </entry>
     

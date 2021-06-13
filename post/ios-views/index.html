@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">4283</span>
+<span class="leancloud-visitors-count">4408</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -380,6 +380,8 @@ open <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">convert
 </code></pre></div><p>默认情况下，一个视图的变换矩阵是<code>CGAffineTransform.identity</code>，即同一变换。它没有可见的效果，所以你不知道它的存在。你所应用的任何变换都是围绕视图的中心进行的，这个中心是保持不变的。</p>
 <h2 id="transform3d">transform3D</h2>
 <p>从<code>iOS 13</code>开始，视图有一个新的<code>transform3D</code>属性。这个属性其实是底层<code>layer</code>的<code>transform</code>属性，现在通过视图暴露出来了。</p>
+<h1 id="window坐标和屏幕座标">Window坐标和屏幕座标</h1>
+<p>设备屏幕没有<code>frame</code>，但是有<code>bounds</code>。<code>window</code>没有父视图，但是它的<code>frame</code>是自动设置和设备屏幕的<code>bounds</code>匹配。<code>window</code>一般一开始就填满屏幕，并且通常会继续填满屏幕，因此大多数情况下，窗口坐标就是屏幕坐标。</p>
 
     </div>
     <footer class="post-footer">
@@ -580,6 +582,7 @@ open <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">convert
         <li><a href="#transform3d">transform3D</a></li>
       </ul>
     </li>
+    <li><a href="#window坐标和屏幕座标">Window坐标和屏幕座标</a></li>
   </ul>
 </nav></div>
     </div>
