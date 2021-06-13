@@ -94,7 +94,9 @@ let c = CGPoint(theView.bounds.midX, theView.bounds.midY) 改变视图的bounds�
 每个视图都有自己的坐标系统（使用bounds来表达），并且一个视图坐标系统的与它的父视图的坐标系统有一个明确的关系，即center属性。因此，可以在同一窗口中的任何两个视图的坐标之间进行转换：
 open func convert(_ point: CGPoint, to view: UIView?) -&amp;gt; CGPoint open func convert(_ point: CGPoint, from view: UIView?) -&amp;gt; CGPoint open func convert(_ rect: CGRect, to view: UIView?) -&amp;gt; CGRect open func convert(_ rect: CGRect, from view: UIView?) -&amp;gt; CGRect 在convert方法中，第一个参数既可以是CGPoint也可以是CGRect，第二个参数是UIView，如果第二个参数为nil，则会认为是window。下面的例子是将v2放到v1的中心：
 v2.center = v1.convert(v1.center, from:v1.superview) 另外一种更常见的方式是将子视图的中心放在父视图bounds的中心位置，如下所示
-v2.center = CGPoint(v1.bounds.midX,v1.bounds.midY) transform 视图的transform属性可以改变视图的绘制方式，显示大小，位置和方向，但不会改变bounds和center属性。
+v2.center = CGPoint(v1.bounds.midX,v1.bounds.midY) transform transform 视图的transform属性可以改变视图的绘制方式，显示大小，位置和方向，但不会改变bounds和center属性。transform属性的值是一个CGAffineTransform结构体:
+public struct CGAffineTransform { public var a: CGFloat public var b: CGFloat public var c: CGFloat public var d: CGFloat public var tx: CGFloat public var ty: CGFloat public init() public init(a: CGFloat, b: CGFloat, c: CGFloat, d: CGFloat, tx: CGFloat, ty: CGFloat) } 默认情况下，一个视图的变换矩阵是CGAffineTransform.identity，即同一变换。它没有可见的效果，所以你不知道它的存在。你所应用的任何变换都是围绕视图的中心进行的，这个中心是保持不变的。
+transform3D 从iOS 13开始，视图有一个新的transform3D属性。这个属性其实是底层layer的transform属性，现在通过视图暴露出来了。
 </content>
     </entry>
     
