@@ -78,6 +78,7 @@ alpha 一个视图可以通过其alpha属性使其部分或完全透明。alpha�
 为了使事情更加复杂，颜色也有一个alpha值。一个视图的alpha值可以是1.0，但仍然有一个透明的背景，因为它的背景颜色的alpha值小于1.0。
 isOpaque isOpaque属性不同于isHidden和alpha，改变isOpaque属性值对视图的外观没有影响，只是对视图系统的提示。
 如果一个试图完全由不透明的物质填充并且它的alpha属性设置为1.0，那么视图就是完全不透明的，此时如果将视图的isOpaque属性设置为true来告知绘图系统这一事实，就可以更有效地进行绘制（对性能的拖累更小）。
+当设置isHidden和alpha的值时，isOpaque属性值并不会跟着变化。isOpaque属性值的设置完全取决你自己，它的默认值为true。
 </content>
     </entry>
     
