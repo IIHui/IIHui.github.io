@@ -70,6 +70,7 @@ iOS 13 使用storyboard   UIAppplicationMain首先实例化UIApplication，并�
   UIApplicationMain通过调用UIWindow实例方法makeKeyAndVisible，使你的应用程序的界面出现。
   scene的(_:willConnectTo:options:)被调用，给你更多的代码以运行的机会。
   Subview and Superview Color 视图可以通过其backgroundColor属性指定一个背景颜色，如果一个视图的背景色是nil，则该视图有一个透明的背景色。
+可见性和透明度 view的可见性和不透明度跟3个属性相关，他们分别是isHidden，alpha，isOpaque。
 </content>
     </entry>
     
