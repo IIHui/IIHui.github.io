@@ -57,9 +57,12 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 设置文�
 window 和 root View 视图层级结构的最顶层window。window表示UIWindow或其子类的实例，UIWindow也是UIView的子类。在App启动时，会创建和显示一个window，否则将会看到一片黑色。从iOS 13开始，你的应用程序可能在iPad上支持多个window；如果不支持，或者我们在iPhone上运行，你的应用程序将只有一个window，即the main window。
 一个可见的window构成了所有其他可见view的背景，也是所有可见视图的父视图superview。一个view如果是可见的，那么它一定是某个可见window的子视图。
 在实际编程中，我们不会手动或者直接用子视图来填充window，那是因为window和它所包含的视图之间的连接是根视图控制器rootViewController。一旦一个viewController被实例化，并且赋值给window的rootViewController属性，则这个viewController的主视图（即view属性），将会占据整个window，这个主视图也将是window的唯一直接子视图。其他所有可见的视图都是rootViewController的主视图的子视图（在一定深度上）。
-window scene architecture 从iOS 13开始App的window是由UIWindwScene来提供，这与iOS 12以前的主架构最大的不同。
-在iOS 12以前，是基于window的架构，window是AppDelegate的一个属性，如果项目是在XCode 10或者之前创建的，则使用的是这种老架构。
-在iOS 13以后，是基于scene的架构，window是scene delegate的一个属性，如果项目是在XCode 11或之后创建的，则使用的是这种新架构。
+window scene architecture 从iOS 13开始App的window是由UIWindowScene来提供，这与iOS 12相比，是一个最大的架构变化。
+  在iOS 12及以前，是基于window的架构，window是app delegate的一个属性，如果项目是在XCode 10或者之前创建的，则默认使用这种老架构。
+  在iOS 13及以后，是基于scene的架构，window是scene delegate的一个属性，如果项目是在XCode 11或之后创建的，则使用的是这种新架构。
+  一个老架构的App，如果在iOS 13及以后的版本中运行时，它会被赋予一个window scene，但是它不知道这个事实，并且功能不受影响，仍然运行在老架构上。但是，新架构的App不能运行在iOS 12及以前的系统。
+如果需要新架构的App支持iOS 12以之前的系统，则需要将SceneDelegate的window属性复制到AppDelegate类中。然后在AppDelegate类将所有涉及UISceneSession的方法标记为@available(iOS 13.0, *)。最后在SceneDelegate类前将整个类标记为@available(iOS 13.0, *)。
+使用了上面的改动后，如果App运行在iOS 13及以后的系统中，则使用的是新架构，并且SceneDelegate持有window。如果在iOS 12及以前的系统中，则使用的是旧架构，AppDelegate持有window。
 App Launches 应用程序最终包括对UIApplicationMain函数的一次调用。与Objective-C不同，一个典型的Swift项目不会在代码中明确地进行这一调用，它是在幕后为你调用的。
 iOS 13 使用storyboard   UIAppplicationMain首先实例化UIApplication，并保留这个实例，作为共享的实例，在代码中可以使用UIApplication.shared来访问。接着根据@UIApplicationMain或@main来实例化AppDelegate，并保留这个实例，使得它在应用程序中的整个生命周期中都存在，在代码中可以使用UIApplication.shared.delegate来访问。
   接着UIApplicationMain会调用AppDelegate的application(_:didFinishLaunchingWithOptions:)方法。

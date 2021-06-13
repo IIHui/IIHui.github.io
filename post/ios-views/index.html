@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">4552</span>
+<span class="leancloud-visitors-count">4940</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -262,9 +262,18 @@ code.has-jax {
 <p>一个可见的<code>window</code>构成了所有其他可见<code>view</code>的背景，也是所有可见视图的父视图<code>superview</code>。一个<code>view</code>如果是可见的，那么它一定是某个可见<code>window</code>的子视图。</p>
 <p>在实际编程中，我们不会手动或者直接用子视图来填充<code>window</code>，那是因为<code>window</code>和它所包含的视图之间的连接是根视图控制器<code>rootViewController</code>。一旦一个<code>viewController</code>被实例化，并且赋值给<code>window</code>的<code>rootViewController</code>属性，则这个<code>viewController</code>的主视图（即<code>view</code>属性），将会占据整个<code>window</code>，这个主视图也将是<code>window</code>的唯一直接子视图。其他所有可见的视图都是<code>rootViewController</code>的主视图的子视图（在一定深度上）。</p>
 <h2 id="window-scene-architecture">window scene architecture</h2>
-<p>从<code>iOS 13</code>开始<code>App</code>的<code>window</code>是由<code>UIWindwScene</code>来提供，这与<code>iOS 12</code>以前的主架构最大的不同。</p>
-<p>在<code>iOS 12</code>以前，是基于<code>window</code>的架构，<code>window</code>是<code>AppDelegate</code>的一个属性，如果项目是在<code>XCode 10</code>或者之前创建的，则使用的是这种老架构。</p>
-<p>在<code>iOS 13</code>以后，是基于<code>scene</code>的架构，<code>window</code>是<code>scene delegate</code>的一个属性，如果项目是在<code>XCode 11</code>或之后创建的，则使用的是这种新架构。</p>
+<p>从<code>iOS 13</code>开始<code>App</code>的<code>window</code>是由<code>UIWindowScene</code>来提供，这与<code>iOS 12</code>相比，是一个最大的架构变化。</p>
+<ul>
+<li>
+<p>在<code>iOS 12</code>及以前，是基于<code>window</code>的架构，<code>window</code>是<code>app delegate</code>的一个属性，如果项目是在<code>XCode 10</code>或者之前创建的，则默认使用这种老架构。</p>
+</li>
+<li>
+<p>在<code>iOS 13</code>及以后，是基于<code>scene</code>的架构，<code>window</code>是<code>scene delegate</code>的一个属性，如果项目是在<code>XCode 11</code>或之后创建的，则使用的是这种新架构。</p>
+</li>
+</ul>
+<p>一个老架构的<code>App</code>，如果在<code>iOS 13</code>及以后的版本中运行时，它会被赋予一个<code>window scene</code>，但是它不知道这个事实，并且功能不受影响，仍然运行在老架构上。但是，新架构的App不能运行在<code>iOS 12</code>及以前的系统。</p>
+<p>如果需要新架构的App支持<code>iOS 12</code>以之前的系统，则需要将<code>SceneDelegate</code>的<code>window</code>属性复制到<code>AppDelegate</code>类中。然后在<code>AppDelegate</code>类将所有涉及<code>UISceneSession</code>的方法标记为<code>@available(iOS 13.0, *)</code>。最后在<code>SceneDelegate</code>类前将整个类标记为<code>@available(iOS 13.0, *)</code>。</p>
+<p>使用了上面的改动后，如果App运行在<code>iOS 13</code>及以后的系统中，则使用的是新架构，并且<code>SceneDelegate</code>持有<code>window</code>。如果在<code>iOS 12</code>及以前的系统中，则使用的是旧架构，<code>AppDelegate</code>持有<code>window</code>。</p>
 <h2 id="app-launches">App Launches</h2>
 <p>应用程序最终包括对<code>UIApplicationMain</code>函数的一次调用。与<code>Objective-C</code>不同，一个典型的<code>Swift</code>项目不会在代码中明确地进行这一调用，它是在幕后为你调用的。</p>
 <h3 id="ios-13">iOS 13</h3>
