@@ -92,7 +92,10 @@ center代表子视图在父视图坐标系中的位置，确切地说，它表�
 let c = CGPoint(theView.bounds.midX, theView.bounds.midY) 改变视图的bounds不会改变的它的center，相应地改变视图的center不会改变bounds。即视图的center和bounds是相互独立的。bounds用于描述视图的大小，center用于描述视图在父视图中的位置。
 实际上视图的frame属性是bounds和center的方便形式。当改变视图的frame属性时，bounds和center也会随之发生变化，当改变bounds和center时，视图的frame也会随之发生改变。尽管如此，调整一个视图在父视图中的可靠方式是使用bounds和center属性。
 每个视图都有自己的坐标系统（使用bounds来表达），并且一个视图坐标系统的与它的父视图的坐标系统有一个明确的关系，即center属性。因此，可以在同一窗口中的任何两个视图的坐标之间进行转换：
-convert(_:to:) convert(_:from:) </content>
+open func convert(_ point: CGPoint, to view: UIView?) -&amp;gt; CGPoint open func convert(_ point: CGPoint, from view: UIView?) -&amp;gt; CGPoint open func convert(_ rect: CGRect, to view: UIView?) -&amp;gt; CGRect open func convert(_ rect: CGRect, from view: UIView?) -&amp;gt; CGRect 在convert方法中，第一个参数既可以是CGPoint也可以是CGRect，第二个参数是UIView，如果第二个参数为nil，则会认为是window。下面的例子是将v2放到v1的中心：
+v2.center = v1.convert(v1.center, from:v1.superview) 另外一种更常见的方式是将子视图的中心放在父视图bounds的中心位置，如下所示
+v2.center = CGPoint(v1.bounds.midX,v1.bounds.midY) transform 视图的transform属性可以改变视图的绘制方式，显示大小，位置和方向，但不会改变bounds和center属性。
+</content>
     </entry>
     
      <entry>
