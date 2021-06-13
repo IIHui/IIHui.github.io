@@ -70,11 +70,14 @@ iOS 13 使用storyboard   UIAppplicationMain首先实例化UIApplication，并�
   UIApplicationMain通过调用UIWindow实例方法makeKeyAndVisible，使你的应用程序的界面出现。
   scene的(_:willConnectTo:options:)被调用，给你更多的代码以运行的机会。
   Subview and Superview Color 视图可以通过其backgroundColor属性指定一个背景颜色，如果一个视图的背景色是nil，则该视图有一个透明的背景色。
-可见性和透明度 view的可见性和不透明度跟3个属性相关，他们分别是isHidden，alpha，isOpaque。视图。视图可以通过将其isHidden属性设置为true而变得不可见，并通过将其设置为false 而再次可见。被隐藏的视图（通常）不会收到触摸事件，所以对用户来说，就像该视图不存在一样。
-一个视图可以通过其alpha属性使其部分或完全透明。alpha属性值可以在0～1.0，1.0表示完全不透明，0.0表示透明。alpha属性既影响view的背景色也会影响其内容的透明度。
+可见性和透明度 view的可见性和不透明度跟3个属性相关，他们分别是isHidden，alpha，isOpaque。
+isHidden 视图。视图可以通过将其isHidden属性设置为true而变得不可见，并通过将其设置为false 而再次可见。被隐藏的视图（通常）不会收到触摸事件，所以对用户来说，就像该视图不存在一样。
+alpha 一个视图可以通过其alpha属性使其部分或完全透明。alpha属性值可以在0～1.0，1.0表示完全不透明，0.0表示透明。alpha属性既影响view的背景色也会影响其内容的透明度。
 如果一个视图显示了一个图像，并且有一个背景颜色，而它的alpha值小于1.0，那么背景颜色就会渗入到图像中。如果一个父试图的alpha值为0.5，则它的所有子视图的alpha都小于0.5，因为无论它们的alpha值是多少，都会相对于0.5绘制的。
 一个完全透明（或非常接近透明）的视图就像一个isHidden为真的视图：它和它的子视图都是不可见的，而且（通常）不能被触摸到。
 为了使事情更加复杂，颜色也有一个alpha值。一个视图的alpha值可以是1.0，但仍然有一个透明的背景，因为它的背景颜色的alpha值小于1.0。
+isOpaque isOpaque属性不同于isHidden和alpha，改变isOpaque属性值对视图的外观没有影响，只是对视图系统的提示。
+如果一个试图完全由不透明的物质填充并且它的alpha属性设置为1.0，那么视图就是完全不透明的，此时如果将视图的isOpaque属性设置为true来告知绘图系统这一事实，就可以更有效地进行绘制（对性能的拖累更小）。
 </content>
     </entry>
     
