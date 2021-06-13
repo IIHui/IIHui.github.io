@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">5570</span>
+<span class="leancloud-visitors-count">5561</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -255,10 +255,10 @@ code.has-jax {
     <blockquote>
 <p>视图（<code>view</code>）的层次结构是视图组织的主要模式。一个视图可以有多个子视图，但只能有一个直接父视图。若一个视图被从界面中被移除，则它的子视图也会被移除；若一个视图被隐藏，则它的子视图都会被隐藏；如果一个视图被移动，它的子视图也都会随之移动。也就是说，一个视图的变化会与作用到它的子视图中。</p>
 </blockquote>
-<p><code>UIView</code>是<code>UIResponder</code>的子类，即它不仅是用户能看到的界面，也是用户交互所用的界面。例如点击或者滑动，也就是说视图层次结构也是响应者链的基础，尽管它与响应者链不完全相同。</p>
-<p>一个视图的创建可能来自<code>nib</code>，也可能来自代码。不能说绝对的说哪种方式更好一些，这取决于个人需求和倾向以及应用程序的整体架构。</p>
+<p><code>UIView</code>是<code>UIResponder</code>的子类，即它<font color=Blue>不仅是用户能看到的界面，也是用户交互所用界面</font>。例如点击或者滑动，也就是说视图层次结构也是响应者链的基础，尽管它与响应者链不完全相同。</p>
+<p>一个视图的创建可能来自<code>nib</code>，也可能来自代码。不能绝对地说哪种方式更好一些，这取决于个人需求、倾向以及程序的整体架构。</p>
 <h1 id="window-和-root-view">window 和 root View</h1>
-<p>视图层级结构的最顶层<code>window</code>。<code>window</code>表示<code>UIWindow</code>或其子类的实例，<code>UIWindow</code>也是<code>UIView</code>的子类。在App启动时，会创建和显示一个<code>window</code>，否则将会看到一片黑色。从<code>iOS 13</code>开始，你的应用程序可能在<code>iPad</code>上支持多个<code>window</code>；如果不支持，或者我们在<code>iPhone</code>上运行，你的应用程序将只有一个<code>window</code>，即<code>the main window</code>。</p>
+<p>视图层级结构的最顶层<code>window</code>。<code>window</code>表示<code>UIWindow</code>或其子类的实例，<code>UIWindow</code>也是<code>UIView</code>的子类。在<code>App</code>启动时，会创建和显示一个<code>window</code>，否则将会看到一片黑色。从<code>iOS 13</code>开始，<code>App</code>可能在<code>iPad</code>上支持多个<code>window</code>；如果不支持，或者<code>App</code>在<code>iPhone</code>上运行，<code>App</code>将只有一个<code>window</code>，即<code>the main window</code>。</p>
 <p>一个可见的<code>window</code>构成了所有其他可见<code>view</code>的背景，也是所有可见视图的父视图<code>superview</code>。一个<code>view</code>如果是可见的，那么它一定是某个可见<code>window</code>的子视图。</p>
 <p>在实际编程中，我们不会手动或者直接用子视图来填充<code>window</code>，那是因为<code>window</code>和它所包含的视图之间的连接是根视图控制器<code>rootViewController</code>。一旦一个<code>viewController</code>被实例化，并且赋值给<code>window</code>的<code>rootViewController</code>属性，则这个<code>viewController</code>的主视图（即<code>view</code>属性），将会占据整个<code>window</code>，这个主视图也将是<code>window</code>的唯一直接子视图。其他所有可见的视图都是<code>rootViewController</code>的主视图的子视图（在一定深度上）。</p>
 <h2 id="window-scene-architecture">window scene architecture</h2>
