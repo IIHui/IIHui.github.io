@@ -64,10 +64,10 @@ window scene architecture 从iOS 13开始App的window默认由UIWindowScene来�
 如果需要新架构的App支持iOS 12以之前的系统，则需要将SceneDelegate的window属性复制到AppDelegate类中。然后在AppDelegate类将所有涉及UISceneSession的方法标记为@available(iOS 13.0, *)。最后在SceneDelegate类前将整个类标记为@available(iOS 13.0, *)。
 使用了上面的改动后，如果App运行在iOS 13及以后的系统中，则使用的是新架构，并且SceneDelegate持有window。如果在iOS 12及以前的系统中，则使用的是旧架构，AppDelegate持有window。
 如果想要在XCode 11以上创建的工程使用旧window架构，则需要先删除所有UISceneSession和SceneDelegate相关的代码，然后在info.plist中删除Application Scene Manifest入口，最后在AppDelegate中手动添加var window: UIWindow?即可。
-App Launches 在启动时，你的应用程序如何首先拥有其window，以及该window如何被填充和显示？如果你的应用程序使用一个主故事板，这一切都会自动发生。但是，&amp;ldquo;自动&amp;quot;并不意味着&amp;quot;通过魔术&amp;rdquo;！
-启动时的程序是直接的和确定的，你的代码可以在其中起作用。知道一个应用程序是如何启动的是非常有用的，尤其是当配置错误，应用程序的启动出现问题时，就可以找出原因了。
-App启动时最终包括一次UIApplicationMain函数的调用。与OC不同，一个典型的Swift项目不会在代码中明确地进行这一调用，都是自动完成调用的。UIApplicationMain函数的调用创建了一些最重要的初始实例；如果你的应用程序使用一个主故事板，这些实例包括window和它的根视图控制器。
-UIApplicationMain的处理是如何进行的，取决于你的应用程序是使用旧的还是新的架构。它们是两种完全不同的启动轨迹。
+App Launches 在启动时，你的应用程序如何首先拥有其window，以及该window如何被填充和显示？如果你的应用程序使用main storyboard，这一切都会自动完成。但是，「自动」并不意味着「通过魔术」。
+启动时的程序是直接和确定的，我们的代码可以在其中起作用。知道一个应用程序是如何启动的是非常有用的，尤其是当配置错误，应用程序的启动出现问题时，就可以找出原因了。
+App启动时最终包括一次UIApplicationMain函数的调用。与OC不同，一个典型的Swift项目不会在代码中明确地进行这一调用，都是自动完成调用的。UIApplicationMain函数的调用创建了一些最重要的初始实例；如果你的应用程序使用main storyboard，则这些实例包括window和它的根视图控制器。
+UIApplicationMain的处理是如何进行的，取决于你的应用程序是使用旧的window架构还是新的window架构，它们将会是两种完全不同的启动过程。
 新架构 以下是UIApplicationMain如何在iOS 13及更高版本上启动支持window scene的应用程序:
   UIAppplicationMain首先实例化UIApplication，并保留这个实例，将其作为共享的实例，可以在代码中可以使用UIApplication.shared来访问。接着根据@UIApplicationMain或@main来实例化AppDelegate，并保留这个实例，使得它在应用程序中的整个生命周期中都存在，在代码中可以使用UIApplication.shared.delegate来访问。
   接着UIApplicationMain会调用AppDelegate的application(_:didFinishLaunchingWithOptions:)方法。
