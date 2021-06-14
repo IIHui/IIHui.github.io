@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">6974</span>
+<span class="leancloud-visitors-count">7036</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">14 分钟</span>
+<span class="leancloud-visitors-count">15 分钟</span>
 </span>
       </div>
     </header>
@@ -356,7 +356,7 @@ code.has-jax {
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">myView.subviews.forEach {$0.removeFromSuperview()}
 </code></pre></div><h2 id="color">color</h2>
 <p>视图可以通过其<code>backgroundColor</code>属性设置一个背景色，如果<code>backgroundColor</code>属性值为<code>nil</code>，则视图的背景色为透明。</p>
-<p>自<code>iOS 13</code>开始出现了</p>
+<p>自<code>iOS 13</code>开始出现了暗色模式，为了适配需要使用动态颜色，即使用<code>UIColor</code>的初始化函数<code>init(dynamicProvider:)</code>来进行适配：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">v1.backgroundColor = UIColor { tc <span style="color:#66d9ef">in</span>
     <span style="color:#66d9ef">switch</span> tc.userInterfaceStyle {
     <span style="color:#66d9ef">case</span> .dark:
