@@ -93,7 +93,9 @@ subview and superview   如果一个视图从它的父视图中移除，则它�
   如果addSubview(_:)被调用，则视图将放在父视图的所有子视图的最后边，也就是之后才绘制，这意味着它出现在最前面。
   如果想要引用特定的某个视图，可能需要为视图事先安排一个属性，可能是outlet，也可以为视图事先设置tag属性值，然后通过调用viewWithTag(_:)来获取视图。
 没有提供一次性删除一个视图的所有子视图的方法。一个视图的子视图数组是内部子视图列表的一个不可变的副本。因此，需要使用for循环来删除所有子视图：
-myView.subviews.forEach {$0.removeFromSuperview()} 可见性和透明度 视图的可见性和不透明度跟3个属性相关，它们分别是isHidden，alpha，isOpaque，下面开始一一介绍。
+myView.subviews.forEach {$0.removeFromSuperview()} color 视图可以通过其backgroundColor属性设置一个背景色，如果backgroundColor属性值为nil，则视图的背景色为透明。
+自iOS 13开始出现了
+v1.backgroundColor = UIColor { tc in switch tc.userInterfaceStyle { case .dark: return UIColor(red: 0.3, green: 0.4, blue: 0.4, alpha: 1) case .light: return UIColor(red: 0, green: 0.1, blue: 0.1, alpha: 1) } } 可见性和透明度 视图的可见性和不透明度跟3个属性相关，它们分别是isHidden，alpha，isOpaque，下面开始一一介绍。
 isHidden 视图可以通过将其isHidden属性设置为true而变得不可见，并通过将其设置为false 而再次变成可见。被隐藏的视图（通常）不会收到触摸事件，所以对用户来说，就如同该视图不存在一样。
 alpha 一个视图可以通过其alpha属性使其部分或完全透明。alpha属性的取值可以在0～1.0，1.0表示完全不透明，0.0表示完全透明。alpha属性既能影响视图的背景色也会影响其内容的透明度。
 如果一个视图中显示了一个图像，并且有一个背景颜色，而它的alpha值小于1.0，那么背景颜色就会渗入到这个图像中。如果一个父视图的alpha值为0.5，则它的所有子视图的alpha都将小于0.5，因为无论这些子视图的alpha属性值是多少，都是相对于父视图的0.5来进行绘制的。
