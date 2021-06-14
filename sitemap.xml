@@ -77,8 +77,12 @@ UIApplicationMain的处理是如何进行的，取决于你的应用程序是使
   UIApplicationMain通过调用UIWindow实例方法makeKeyAndVisible，使你的应用程序的界面出现。
   scene的(_:willConnectTo:options:)被调用，在这个方法中也可以插入自己的代码。
   如果App启动时未使用storyboard，也就是说在老的架构中Info.plist中没有Main storyboard file base name条目。而在新的架构中，这意味着在Application Scene Manifest字典的Application Scene Configuration下没有Storyboard Name条目。
-此时需要在代码中完成有storyboard的情况下自动完成的所有事情。在旧的架构下，需要在app delegate的application(_:didFinishLaunchingWithOptions:)中做这些事情。在新的架构下，需要scene delegate的scene（_:willConnectTo:options:）中做这些事情。
-引用window 一旦app运行，有多种方法引用window：包括从视图中引用；从scene delegate中引用；从application中有引用。
+此时需要在代码中完成有storyboard的情况下自动完成的所有事情。在旧的架构下，需要在app delegate的application(_:didFinishLaunchingWithOptions:)中做这些事情。在新的架构下，需要scene delegate的scene（_:willConnectTo:options:）中做这些事情:
+  创建一个UIWindow的实例，并且将其赋值给SceneDelegate的window属性。通过调用UIWindow的初始化函数init(windowScene:)使得window和window scene来建立连接。
+  初始化一个视图控制器，并根据需要对其进行配置。
+  将上一步实例化的视图控制器赋值给window的rootViewController属性。
+  调用window的makeKeyAndVisible进行显示。
+  引用window 一旦app运行，有多种方法引用window：包括从视图中引用；从scene delegate中引用；从application中有引用。
 view 如果一个视图view在界面中，则视图能通过自己的window属性引用到包含它的窗口。你的代码可能会在一个有主视图的视图控制器中运行，所以self.view.window通常是引用窗口的最佳方式。
 也可以使用UIView的window属性来询问它是否最终被嵌入到窗口中；如果不是，它的window属性就是nil。一个window属性为nil的UIView是对用户不可见的。
 scene delegate scene delegate实例保存了window的引用，可以通过window属性来访问。即使用sceneDelegate.window来访问，但访问sceneDelegate需要先使用let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate。
