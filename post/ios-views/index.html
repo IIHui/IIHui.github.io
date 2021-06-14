@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">6188</span>
+<span class="leancloud-visitors-count">6250</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -284,32 +284,33 @@ code.has-jax {
 <p>以下是<code>UIApplicationMain</code>如何在<code>iOS 13</code>及更高版本上启动支持<code>window scene</code>的应用程序:</p>
 <ol>
 <li>
-<p><code>UIAppplicationMain</code>首先实例化<code>UIApplication</code>，并保留这个实例，将其作为共享的实例，可以在代码中可以使用<code>UIApplication.shared</code>来访问。接着根据<code>@UIApplicationMain</code>或<code>@main</code>来实例化<code>AppDelegate</code>，并保留这个实例，使得它在应用程序中的整个生命周期中都存在，在代码中可以使用<code>UIApplication.shared.delegate</code>来访问。</p>
+<p><code>UIAppplicationMain</code>首先实例化<code>UIApplication</code>，并保留这个实例，将其作为共享的实例，可以在代码中可以使用<code>UIApplication.shared</code>来访问。接着根据<code>@UIApplicationMain</code>或<code>@main</code>来实例化<code>AppDelegate</code>，并保留这个实例，使得它在应用程序中的整个生命周期中都存在，可以使用<code>UIApplication.shared.delegate</code>来访问。</p>
 </li>
 <li>
-<p>接着<code>UIApplicationMain</code>会调用<code>AppDelegate</code>的<code>application(_:didFinishLaunchingWithOptions:)</code>方法。</p>
+<p>接着<code>UIApplicationMain</code>会调用<code>AppDelegate</code>的<code>application(_:didFinishLaunchingWithOptions:)</code>方法，在这个方法中可以插入我们自己的代码。</p>
 </li>
 <li>
-<p><code>UIAppplicationMain</code>创建<code>UISceneSession</code>和<code>UIWindowScene</code>以及<code>UIWindwScene</code>的<code>delegate</code>的实例。</p>
+<p><code>UIAppplicationMain</code>创建<code>UISceneSession</code>和<code>UIWindowScene</code>以及<code>UIWindwScene</code>代理类<code>UIWindowSceneDelegate</code>的实例。
+<img src="https://i.loli.net/2021/06/14/iBw3vo62DLgqdSC.jpg" alt="-c"></p>
 </li>
 <li>
-<p><code>UIAppplicationMain</code>查看初始<code>scene</code>是否使用了<code>storyboard</code>，即在<code>info.plist</code>中是否有<code>Application Scene Manifest</code>，若有则对<code>storybaord</code>中的初始化<code>viewController</code>进行初始化。</p>
+<p><code>UIAppplicationMain</code>查看初始<code>scene</code>是否使用了<code>storyboard</code>，即在<code>info.plist</code>中的<code>Application Scene Manifest</code>字典下的<code>Scene Configuration</code>是否有<code>Storyboard Name</code>。若有，则对<code>storybaord</code>中指定的初始<code>viewController</code>进行初始化。</p>
 </li>
 <li>
-<p>如果<code>scene</code>使用了<code>storyboard</code>，<code>UIAppplicationMain</code>则会实例化一个<code>UIWindow</code>并将这个实例赋值给<code>scene</code>的<code>delegate</code>的<code>window</code>属性。</p>
+<p>如果<code>scene</code>使用了<code>storyboard</code>，<code>UIAppplicationMain</code>则会实例化一个<code>UIWindow</code>并将这个实例赋值给<code>SceneDelegate</code>的<code>window</code>属性。</p>
 </li>
 <li>
-<p>如果<code>scene</code>使用了<code>storyboard</code>，则将<code>storyboard</code>中的初始化的<code>viewController</code>赋值给<code>window</code>实例的属性<code>rootViewController</code>。此时，初始<code>ViewController</code>的<code>view</code>变成了<code>Window</code>的唯一子视图。</p>
+<p>如果<code>scene</code>使用了<code>storyboard</code>，则将<code>storyboard</code>中的初始的<code>viewController</code>赋值给<code>window</code>实例的<code>rootViewController</code>属性。此时，初始<code>ViewController</code>的<code>view</code>变成了<code>Window</code>的唯一子视图。</p>
 </li>
 <li>
 <p><code>UIApplicationMain</code>通过调用<code>UIWindow</code>实例方法<code>makeKeyAndVisible</code>，使你的应用程序的界面出现。</p>
 </li>
 <li>
-<p><code>scene</code>的<code>(_:willConnectTo:options:)</code>被调用。</p>
+<p><code>scene</code>的<code>(_:willConnectTo:options:)</code>被调用，在这个方法中也可以插入自己的代码。</p>
 </li>
 </ol>
-<p>如果App启动的时候没有使用<code>storyboard</code>，也就是说在老的架构中<code>Info.plist</code>中没有<code>Main storyboard file base name</code>条目。而在新的架构中，这意味着在<code>Application Scene Manifest</code>字典的<code>Application Scene Configuration</code>下没有<code>Storyboard Name</code>条目。</p>
-<p>此时需要在代码中完成<code>UIApplicationMain</code>在有<code>storyboard</code>的情况下自动完成的所有事情。在旧的架构下，需要在<code>app delegate</code>的<code>application(_:didFinishLaunchingWithOptions:)</code>中做这些事情。在新的架构下，需要<code>scene delegate</code>的<code>scene（_:willConnectTo:options:）</code>中做这些事情。</p>
+<p>如果App启动时未使用<code>storyboard</code>，也就是说在老的架构中<code>Info.plist</code>中没有<code>Main storyboard file base name</code>条目。而在新的架构中，这意味着在<code>Application Scene Manifest</code>字典的<code>Application Scene Configuration</code>下没有<code>Storyboard Name</code>条目。</p>
+<p>此时需要在代码中完成有<code>storyboard</code>的情况下自动完成的所有事情。在旧的架构下，需要在<code>app delegate</code>的<code>application(_:didFinishLaunchingWithOptions:)</code>中做这些事情。在新的架构下，需要<code>scene delegate</code>的<code>scene（_:willConnectTo:options:）</code>中做这些事情。</p>
 <p><img src="https://i.loli.net/2021/06/13/3Hik8Vt5TBoQ2uL.jpg" alt="-c"></p>
 <p><img src="https://i.loli.net/2021/06/13/NRzKBDfkLiSstFe.jpg" alt="-c"></p>
 <h2 id="引用window">引用window</h2>
