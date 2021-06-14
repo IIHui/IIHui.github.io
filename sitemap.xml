@@ -60,9 +60,10 @@ window 和 root View 视图层级结构的最顶层window。window表示UIWindow
 window scene architecture 从iOS 13开始App的window默认由UIWindowScene来提供，这与iOS 12及之前的版本相比，是架构上的最大变化：
   在iOS 12及以前，是基于window的架构，window是app delegate的一个属性，如果项目是在XCode 10或者之前创建的，则默认使用这种老架构。
   在iOS 13及以后，是基于scene的架构，window是scene delegate的一个属性，如果项目是在XCode 11或之后创建的，则使用的是这种新架构。
-  一个老架构的App，如果在iOS 13及以后的版本中运行时，它会被赋予一个window scene，但是它不知道这个事实，并且功能不受影响，仍然运行在老架构上。但是，新架构的App不能运行在iOS 12及以前的系统。
+  一个使用老window架构的App，如果在iOS 13及以后的版本中运行时，它会被赋予一个window scene，但是它不知道这个事实，并且功能不受影响，仍然运行在老架构上。但是，新window架构的App不能运行在iOS 12及以前的系统。
 如果需要新架构的App支持iOS 12以之前的系统，则需要将SceneDelegate的window属性复制到AppDelegate类中。然后在AppDelegate类将所有涉及UISceneSession的方法标记为@available(iOS 13.0, *)。最后在SceneDelegate类前将整个类标记为@available(iOS 13.0, *)。
 使用了上面的改动后，如果App运行在iOS 13及以后的系统中，则使用的是新架构，并且SceneDelegate持有window。如果在iOS 12及以前的系统中，则使用的是旧架构，AppDelegate持有window。
+如果想要在XCode 11以上创建的工程使用旧window架构，则需要先删除所有UISceneSession和SceneDelegate相关的代码，然后在info.plist中删除Application Scene Manifest入口，最后在AppDelegate中手动添加var window: UIWindow?即可。
 App Launches 在启动时，你的应用程序如何首先拥有其window，以及该window如何被填充和显示？如果你的应用程序使用一个主故事板，这一切都会自动发生。但是，&amp;ldquo;自动&amp;quot;并不意味着&amp;quot;通过魔术&amp;rdquo;！
 启动时的程序是直接的和确定的，你的代码可以在其中起作用。知道一个应用程序是如何启动的是非常有用的，尤其是当配置错误，应用程序的启动出现问题时，就可以找出原因了。
 App启动时最终包括一次UIApplicationMain函数的调用。与OC不同，一个典型的Swift项目不会在代码中明确地进行这一调用，都是自动完成调用的。UIApplicationMain函数的调用创建了一些最重要的初始实例；如果你的应用程序使用一个主故事板，这些实例包括window和它的根视图控制器。

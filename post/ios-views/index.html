@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">6016</span>
+<span class="leancloud-visitors-count">6177</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -271,9 +271,10 @@ code.has-jax {
 <p>在<code>iOS 13</code>及以后，是基于<code>scene</code>的架构，<code>window</code>是<code>scene delegate</code>的一个属性，如果项目是在<code>XCode 11</code>或之后创建的，则使用的是这种新架构。</p>
 </li>
 </ul>
-<p>一个老架构的<code>App</code>，如果在<code>iOS 13</code>及以后的版本中运行时，它会被赋予一个<code>window scene</code>，但是它不知道这个事实，并且功能不受影响，仍然运行在老架构上。但是，新架构的App不能运行在<code>iOS 12</code>及以前的系统。</p>
-<p>如果需要新架构的App支持<code>iOS 12</code>以之前的系统，则需要将<code>SceneDelegate</code>的<code>window</code>属性复制到<code>AppDelegate</code>类中。然后在<code>AppDelegate</code>类将所有涉及<code>UISceneSession</code>的方法标记为<code>@available(iOS 13.0, *)</code>。最后在<code>SceneDelegate</code>类前将整个类标记为<code>@available(iOS 13.0, *)</code>。</p>
+<p>一个使用老<code>window</code>架构的<code>App</code>，如果在<code>iOS 13</code>及以后的版本中运行时，它会被赋予一个<code>window scene</code>，但是它不知道这个事实，<font color=Blue>并且功能不受影响，仍然运行在老架构上</font>。但是，新<code>window</code>架构的<code>App</code>不能运行在<code>iOS 12</code>及以前的系统。</p>
+<p>如果需要新架构的<code>App</code>支持<code>iOS 12</code>以之前的系统，则需要将<code>SceneDelegate</code>的<code>window</code>属性复制到<code>AppDelegate</code>类中。然后在<code>AppDelegate</code>类将所有涉及<code>UISceneSession</code>的方法标记为<code>@available(iOS 13.0, *)</code>。最后在<code>SceneDelegate</code>类前将整个类标记为<code>@available(iOS 13.0, *)</code>。</p>
 <p>使用了上面的改动后，如果App运行在<code>iOS 13</code>及以后的系统中，则使用的是新架构，并且<code>SceneDelegate</code>持有<code>window</code>。如果在<code>iOS 12</code>及以前的系统中，则使用的是旧架构，<code>AppDelegate</code>持有<code>window</code>。</p>
+<p>如果想要在<code>XCode 11</code>以上创建的工程使用旧<code>window</code>架构，则需要先删除所有<code>UISceneSession</code>和<code>SceneDelegate</code>相关的代码，然后在<code>info.plist</code>中删除<code>Application Scene Manifest</code>入口，最后在<code>AppDelegate</code>中手动添加<code>var window: UIWindow?</code>即可。</p>
 <h2 id="app-launches">App Launches</h2>
 <p>在启动时，你的应用程序如何首先拥有其<code>window</code>，以及该<code>window</code>如何被填充和显示？如果你的应用程序使用一个主故事板，这一切都会自动发生。但是，&ldquo;自动&quot;并不意味着&quot;通过魔术&rdquo;！</p>
 <p>启动时的程序是直接的和确定的，你的代码可以在其中起作用。知道一个应用程序是如何启动的是非常有用的，尤其是当配置错误，应用程序的启动出现问题时，就可以找出原因了。</p>
