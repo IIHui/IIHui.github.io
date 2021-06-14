@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">6456</span>
+<span class="leancloud-visitors-count">6510</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -323,32 +323,32 @@ code.has-jax {
 </li>
 <li>
 <p>调用<code>window</code>的<code>makeKeyAndVisible</code>进行显示。</p>
-</li>
-</ol>
 <p><img src="https://i.loli.net/2021/06/13/3Hik8Vt5TBoQ2uL.jpg" alt="-c"></p>
 <p><img src="https://i.loli.net/2021/06/13/NRzKBDfkLiSstFe.jpg" alt="-c"></p>
+</li>
+</ol>
 <h2 id="引用window">引用window</h2>
-<p>一旦<code>app</code>运行，有多种方法引用<code>window</code>：包括从视图中引用；从<code>scene delegate</code>中引用；从<code>application</code>中有引用。</p>
+<p>一旦<code>app</code>运行，有多种方法引用<code>window</code>：➊包括从视图中引用；➋从<code>SceneDelegate</code>中引用；➌从<code>application</code>中引用。</p>
 <h2 id="view">view</h2>
-<p>如果一个视图<code>view</code>在界面中，则视图能通过自己的<code>window</code>属性引用到包含它的窗口。你的代码可能会在一个有主视图的视图控制器中运行，所以<code>self.view.window</code>通常是引用窗口的最佳方式。</p>
-<p>也可以使用<code>UIView</code>的<code>window</code>属性来询问它是否最终被嵌入到窗口中；如果不是，它的<code>window</code>属性就是<code>nil</code>。一个<code>window</code>属性为<code>nil</code>的<code>UIView</code>是对用户不可见的。</p>
+<p>如果一个视图<code>view</code>在界面中，则该视图能通过自己的<code>window</code>属性引用到包含它的<code>window</code>。你的代码可能会在一个有<code>main view</code>的视图控制器中运行，所以<code>self.view.window</code>通常是引用<code>window</code>的最佳方式。</p>
+<p>也可以使用<code>UIView</code>的<code>window</code>属性来询问它是否最终被嵌入到<code>window</code>中；如果未嵌入到<code>window</code>中，则它的<code>window</code>属性为<code>nil</code>。一个<code>window</code>属性为<code>nil</code>的视图是对用户不可见的。</p>
 <h2 id="scene-delegate">scene delegate</h2>
-<p><code>scene delegate</code>实例保存了<code>window</code>的引用，可以通过<code>window</code>属性来访问。即使用<code>sceneDelegate.window</code>来访问，但访问<code>sceneDelegate</code>需要先使用<code>let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate</code>。</p>
+<p><code>SceneDelegate</code>实例保存了<code>window</code>的引用，可以通过<code>window</code>属性来访问。即使用<code>sceneDelegate.window</code>来访问，但访问<code>sceneDelegate</code>需要先使用<code>let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate</code>。</p>
 <h2 id="application">application</h2>
 <p>共享的<code>application</code>实例也保存了<code>window</code>的引用，可以通过其<code>window</code>属性来访问，即<code>let w = UIApplication.shared.windows.first!</code>。</p>
 <h1 id="可见性和透明度">可见性和透明度</h1>
-<p><code>view</code>的可见性和不透明度跟<code>3</code>个属性相关，他们分别是<code>isHidden</code>，<code>alpha</code>，<code>isOpaque</code>。</p>
+<p>视图的可见性和不透明度跟<code>3</code>个属性相关，它们分别是<code>isHidden</code>，<code>alpha</code>，<code>isOpaque</code>，下面开始一一介绍。</p>
 <h2 id="ishidden">isHidden</h2>
-<p>视图。视图可以通过将其<code>isHidden</code>属性设置为<code>true</code>而变得不可见，并通过将其设置为<code>false</code> 而再次可见。被隐藏的视图（通常）不会收到触摸事件，所以对用户来说，就像该视图不存在一样。</p>
+<p>视图可以通过将其<code>isHidden</code>属性设置为<code>true</code>而变得不可见，并通过将其设置为<code>false</code> 而再次变成可见。被隐藏的视图（通常）不会收到触摸事件，所以对用户来说，就如同该视图不存在一样。</p>
 <h2 id="alpha">alpha</h2>
-<p>一个视图可以通过其<code>alpha</code>属性使其部分或完全透明。<code>alpha</code>属性值可以在<code>0～1.0</code>，<code>1.0</code>表示完全不透明，<code>0.0</code>表示透明。<code>alpha</code>属性既影响<code>view</code>的背景色也会影响其内容的透明度。</p>
-<p>如果一个视图显示了一个图像，并且有一个背景颜色，而它的<code>alpha</code>值小于<code>1.0</code>，那么背景颜色就会渗入到图像中。如果一个父试图的<code>alpha</code>值为<code>0.5</code>，则它的所有子视图的<code>alpha</code>都小于<code>0.5</code>，因为无论它们的<code>alpha</code>值是多少，都会相对于<code>0.5</code>绘制的。</p>
-<p>一个完全透明（或非常接近透明）的视图就像一个<code>isHidden</code>为真的视图：它和它的子视图都是不可见的，而且（通常）不能被触摸到。</p>
-<p>为了使事情更加复杂，颜色也有一个<code>alpha</code>值。一个视图的<code>alpha</code>值可以是<code>1.0</code>，但仍然有一个透明的背景，因为它的背景颜色的<code>alpha</code>值小于<code>1.0</code>。</p>
+<p>一个视图可以通过其<code>alpha</code>属性使其部分或完全透明。<code>alpha</code>属性的取值可以在<code>0～1.0</code>，<code>1.0</code>表示完全不透明，<code>0.0</code>表示完全透明。<code>alpha</code>属性既能影响视图的背景色也会影响其内容的透明度。</p>
+<p>如果一个视图中显示了一个图像，并且有一个背景颜色，而它的<code>alpha</code>值小于<code>1.0</code>，那么背景颜色就会渗入到这个图像中。如果一个父视图的<code>alpha</code>值为<code>0.5</code>，则它的所有子视图的<code>alpha</code>都将小于<code>0.5</code>，因为无论这些子视图的<code>alpha</code>属性值是多少，都是相对于父视图的<code>0.5</code>来进行绘制的。</p>
+<p>一个完全透明（或非常接近完全透明）的视图就像一个<code>isHidden</code>为<code>true</code>的视图：它和它的子视图都是不可见的，而且（通常）不能被触摸到。</p>
+<p>颜色也有一个<code>alpha</code>属性，这个值对于视图也有影响。一个视图的<code>alpha</code>值可以是<code>1.0</code>，但仍然有一个透明的背景，因为它的背景颜色的<code>alpha</code>值可能小于<code>1.0</code>。</p>
 <h2 id="isopaque">isOpaque</h2>
-<p><code>isOpaque</code>属性不同于<code>isHidden</code>和<code>alpha</code>，改变<code>isOpaque</code>属性值对视图的外观没有影响，只是对视图系统的提示。</p>
-<p>如果一个试图完全由不透明的物质填充并且它的<code>alpha</code>属性设置为<code>1.0</code>，那么视图就是完全不透明的，此时如果将视图的<code>isOpaque</code>属性设置为<code>true</code>来告知绘图系统这一事实，就可以更有效地进行绘制（对性能的拖累更小）。</p>
-<p>当设置<code>isHidden</code>和<code>alpha</code>的值时，<code>isOpaque</code>属性值并不会跟着变化。<code>isOpaque</code>属性值的设置完全取决你自己，它的默认值为<code>true</code>。</p>
+<p><code>isOpaque</code>属性不同于<code>isHidden</code>和<code>alpha</code>，改变<code>isOpaque</code>属性值<font color=Blue>对视图的外观没有影响，只是对视图系统的提示</font>。</p>
+<p>如果一个视图完全由不透明的物质填充并且它的<code>alpha</code>属性设置为<code>1.0</code>，那么视图就是完全不透明的，此时如果将视图的<code>isOpaque</code>属性设置为<code>true</code>，就可以更有效地进行绘制（对性能的拖累更小）。</p>
+<p>当设置<code>isHidden</code>和<code>alpha</code>的值时，<code>isOpaque</code>属性值<font color=red>并不会跟着变化</font>。<code>isOpaque</code>属性值的设置完全取决你自己，它的默认值为<code>true</code>。</p>
 <h1 id="frame">Frame</h1>
 <p>每个<code>view</code>由一个<code>frame</code>属性（是一个矩形<code>CGRect</code>），表示矩形在<font color=red>父视图的坐标系统中的位置</font>。默认情况下，父视图的坐标系将以左上角为原点，X坐标向右正向增长，Y坐标向下正向增长。</p>
 <p>设置视图的<code>frame</code>值既可以重新改变视图的位置，也可以调整的大小，或者同时改变位置和大小。视图的<code>frame</code>属性如果是<code>CGRect.zero</code>的话，则视图实际上是不可见的。</p>

@@ -82,19 +82,19 @@ UIApplicationMain的处理是如何进行的，取决于你的应用程序是使
   初始化一个视图控制器，并根据需要对其进行配置。
   将上一步实例化的视图控制器赋值给window的rootViewController属性。
   调用window的makeKeyAndVisible进行显示。
-  引用window 一旦app运行，有多种方法引用window：包括从视图中引用；从scene delegate中引用；从application中有引用。
-view 如果一个视图view在界面中，则视图能通过自己的window属性引用到包含它的窗口。你的代码可能会在一个有主视图的视图控制器中运行，所以self.view.window通常是引用窗口的最佳方式。
-也可以使用UIView的window属性来询问它是否最终被嵌入到窗口中；如果不是，它的window属性就是nil。一个window属性为nil的UIView是对用户不可见的。
-scene delegate scene delegate实例保存了window的引用，可以通过window属性来访问。即使用sceneDelegate.window来访问，但访问sceneDelegate需要先使用let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate。
+  引用window 一旦app运行，有多种方法引用window：➊包括从视图中引用；➋从SceneDelegate中引用；➌从application中引用。
+view 如果一个视图view在界面中，则该视图能通过自己的window属性引用到包含它的window。你的代码可能会在一个有main view的视图控制器中运行，所以self.view.window通常是引用window的最佳方式。
+也可以使用UIView的window属性来询问它是否最终被嵌入到window中；如果未嵌入到window中，则它的window属性为nil。一个window属性为nil的视图是对用户不可见的。
+scene delegate SceneDelegate实例保存了window的引用，可以通过window属性来访问。即使用sceneDelegate.window来访问，但访问sceneDelegate需要先使用let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate。
 application 共享的application实例也保存了window的引用，可以通过其window属性来访问，即let w = UIApplication.shared.windows.first!。
-可见性和透明度 view的可见性和不透明度跟3个属性相关，他们分别是isHidden，alpha，isOpaque。
-isHidden 视图。视图可以通过将其isHidden属性设置为true而变得不可见，并通过将其设置为false 而再次可见。被隐藏的视图（通常）不会收到触摸事件，所以对用户来说，就像该视图不存在一样。
-alpha 一个视图可以通过其alpha属性使其部分或完全透明。alpha属性值可以在0～1.0，1.0表示完全不透明，0.0表示透明。alpha属性既影响view的背景色也会影响其内容的透明度。
-如果一个视图显示了一个图像，并且有一个背景颜色，而它的alpha值小于1.0，那么背景颜色就会渗入到图像中。如果一个父试图的alpha值为0.5，则它的所有子视图的alpha都小于0.5，因为无论它们的alpha值是多少，都会相对于0.5绘制的。
-一个完全透明（或非常接近透明）的视图就像一个isHidden为真的视图：它和它的子视图都是不可见的，而且（通常）不能被触摸到。
-为了使事情更加复杂，颜色也有一个alpha值。一个视图的alpha值可以是1.0，但仍然有一个透明的背景，因为它的背景颜色的alpha值小于1.0。
+可见性和透明度 视图的可见性和不透明度跟3个属性相关，它们分别是isHidden，alpha，isOpaque，下面开始一一介绍。
+isHidden 视图可以通过将其isHidden属性设置为true而变得不可见，并通过将其设置为false 而再次变成可见。被隐藏的视图（通常）不会收到触摸事件，所以对用户来说，就如同该视图不存在一样。
+alpha 一个视图可以通过其alpha属性使其部分或完全透明。alpha属性的取值可以在0～1.0，1.0表示完全不透明，0.0表示完全透明。alpha属性既能影响视图的背景色也会影响其内容的透明度。
+如果一个视图中显示了一个图像，并且有一个背景颜色，而它的alpha值小于1.0，那么背景颜色就会渗入到这个图像中。如果一个父视图的alpha值为0.5，则它的所有子视图的alpha都将小于0.5，因为无论这些子视图的alpha属性值是多少，都是相对于父视图的0.5来进行绘制的。
+一个完全透明（或非常接近完全透明）的视图就像一个isHidden为true的视图：它和它的子视图都是不可见的，而且（通常）不能被触摸到。
+颜色也有一个alpha属性，这个值对于视图也有影响。一个视图的alpha值可以是1.0，但仍然有一个透明的背景，因为它的背景颜色的alpha值可能小于1.0。
 isOpaque isOpaque属性不同于isHidden和alpha，改变isOpaque属性值对视图的外观没有影响，只是对视图系统的提示。
-如果一个试图完全由不透明的物质填充并且它的alpha属性设置为1.0，那么视图就是完全不透明的，此时如果将视图的isOpaque属性设置为true来告知绘图系统这一事实，就可以更有效地进行绘制（对性能的拖累更小）。
+如果一个视图完全由不透明的物质填充并且它的alpha属性设置为1.0，那么视图就是完全不透明的，此时如果将视图的isOpaque属性设置为true，就可以更有效地进行绘制（对性能的拖累更小）。
 当设置isHidden和alpha的值时，isOpaque属性值并不会跟着变化。isOpaque属性值的设置完全取决你自己，它的默认值为true。
 Frame 每个view由一个frame属性（是一个矩形CGRect），表示矩形在父视图的坐标系统中的位置。默认情况下，父视图的坐标系将以左上角为原点，X坐标向右正向增长，Y坐标向下正向增长。
 设置视图的frame值既可以重新改变视图的位置，也可以调整的大小，或者同时改变位置和大小。视图的frame属性如果是CGRect.zero的话，则视图实际上是不可见的。
