@@ -87,7 +87,13 @@ view 如果一个视图view在界面中，则该视图能通过自己的window�
 也可以使用UIView的window属性来询问它是否最终被嵌入到window中；如果未嵌入到window中，则它的window属性为nil。一个window属性为nil的视图是对用户不可见的。
 scene delegate SceneDelegate实例保存了window的引用，可以通过window属性来访问。即使用sceneDelegate.window来访问，但访问sceneDelegate需要先使用let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate。
 application 共享的application实例也保存了window的引用，可以通过其window属性来访问，即let w = UIApplication.shared.windows.first!。
-可见性和透明度 视图的可见性和不透明度跟3个属性相关，它们分别是isHidden，alpha，isOpaque，下面开始一一介绍。
+subview and superview   如果一个视图从它的父视图中移除，则它的所有子视图也会被移除
+  一个视图的透明度会被它的子视图所继承。
+  视图可以选择性地限制其子视图的绘制，使其在视图之外的任何部分都不被显示。这就是所谓的剪裁，可以通过视图的clipsToBounds属性来设置。
+  如果addSubview(_:)被调用，则视图将放在父视图的所有子视图的最后边，也就是之后才绘制，这意味着它出现在最前面。
+  如果想要引用特定的某个视图，可能需要为视图事先安排一个属性，可能是outlet，也可以为视图事先设置tag属性值，然后通过调用viewWithTag(_:)来获取视图。
+没有提供一次性删除一个视图的所有子视图的方法。一个视图的子视图数组是内部子视图列表的一个不可变的副本。因此，需要使用for循环来删除所有子视图：
+myView.subviews.forEach {$0.removeFromSuperview()} 可见性和透明度 视图的可见性和不透明度跟3个属性相关，它们分别是isHidden，alpha，isOpaque，下面开始一一介绍。
 isHidden 视图可以通过将其isHidden属性设置为true而变得不可见，并通过将其设置为false 而再次变成可见。被隐藏的视图（通常）不会收到触摸事件，所以对用户来说，就如同该视图不存在一样。
 alpha 一个视图可以通过其alpha属性使其部分或完全透明。alpha属性的取值可以在0～1.0，1.0表示完全不透明，0.0表示完全透明。alpha属性既能影响视图的背景色也会影响其内容的透明度。
 如果一个视图中显示了一个图像，并且有一个背景颜色，而它的alpha值小于1.0，那么背景颜色就会渗入到这个图像中。如果一个父视图的alpha值为0.5，则它的所有子视图的alpha都将小于0.5，因为无论这些子视图的alpha属性值是多少，都是相对于父视图的0.5来进行绘制的。
@@ -96,11 +102,11 @@ alpha 一个视图可以通过其alpha属性使其部分或完全透明。alpha�
 isOpaque isOpaque属性不同于isHidden和alpha，改变isOpaque属性值对视图的外观没有影响，只是对视图系统的提示。
 如果一个视图完全由不透明的物质填充并且它的alpha属性设置为1.0，那么视图就是完全不透明的，此时如果将视图的isOpaque属性设置为true，就可以更有效地进行绘制（对性能的拖累更小）。
 当设置isHidden和alpha的值时，isOpaque属性值并不会跟着变化。isOpaque属性值的设置完全取决你自己，它的默认值为true。
-Frame 每个view由一个frame属性（是一个矩形CGRect），表示矩形在父视图的坐标系统中的位置。默认情况下，父视图的坐标系将以左上角为原点，X坐标向右正向增长，Y坐标向下正向增长。
-设置视图的frame值既可以重新改变视图的位置，也可以调整的大小，或者同时改变位置和大小。视图的frame属性如果是CGRect.zero的话，则视图实际上是不可见的。
-如果一个视图有一个你希望它采用的标准尺寸，特别是相对于它的内容（比如UIButton相对于它的标题），另一个办法是调用其sizeToFit方法。
-如果一个视图使用nib进行初始化的时候，那么不会调用init(frame:)，调用的是init(coder:)。
-Bounds and Center Bounds 假设有一个父视图和子视图，子视图需要10个点的嵌入，如下图所示，首先想到的是设置子视图的frame，但是怎么设置？
+Frame 每个view由一个frame属性（是一个矩形CGRect），表示在父视图的坐标系统中的位置。默认情况下，父视图的坐标系将以左上角为原点，X坐标向右正向增长，Y坐标向下正向增长。
+设置视图的frame值既可以重新改变视图的位置，也可以调整视图的大小，或者同时改变位置和大小。视图的frame属性值为CGRect.zero的话，则视图是不可见。
+如果一个视图有一个你希望它采用的标准尺寸，特别是相对于它的内容（比如UIButton相对于它的标题）而言，除了改变frame，还可以调用其sizeToFit方法。
+如果一个视图使用nib进行初始化，那么不会调用其init(frame:)，调用的为init(coder:)方法。
+Bounds and Center Bounds 假设有一个父视图和子视图，子视图需要有10个point的嵌入，如下图所示，首先想到的是设置子视图的frame，但是该怎么设置？
 CGRect有个insetBy(dx:dy:)方法可以把一个矩形很容易的嵌入到另一个矩形中。描述视图在其自身坐标中的矩形的CGRect是视图的bounds属性。
 如果改变一个视图的bounds属性的size值，则会影响到其frame属性的size值。视图frame属性size的变化是围绕其中心点进行的，即中心点保持不变：
 let v1 = UIView(frame:CGRect(113, 111, 132, 194)) v1.backgroundColor = UIColor(red: 1, green: 0.4, blue: 1, alpha: 1) let v2 = UIView(frame:v1.bounds.insetBy(dx: 10, dy: 10)) v2.backgroundColor = UIColor(red: 0.5, green: 1, blue: 0, alpha: 1) self.view.addSubview(v1) v1.addSubview(v2) v2.bounds.size.height &#43;= 20 v2.bounds.size.width &#43;= 20 如果创建了一个视图，其bounds坐标系的零点(0.0,0.0)在左上角。因为一个子视图是相对于它的父视图的坐标系定位的，所以父视图的bounds原点的改变会导致子视图位置的变化：

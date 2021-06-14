@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">6510</span>
+<span class="leancloud-visitors-count">6861</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">13 分钟</span>
+<span class="leancloud-visitors-count">14 分钟</span>
 </span>
       </div>
     </header>
@@ -336,7 +336,25 @@ code.has-jax {
 <p><code>SceneDelegate</code>实例保存了<code>window</code>的引用，可以通过<code>window</code>属性来访问。即使用<code>sceneDelegate.window</code>来访问，但访问<code>sceneDelegate</code>需要先使用<code>let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate</code>。</p>
 <h2 id="application">application</h2>
 <p>共享的<code>application</code>实例也保存了<code>window</code>的引用，可以通过其<code>window</code>属性来访问，即<code>let w = UIApplication.shared.windows.first!</code>。</p>
-<h1 id="可见性和透明度">可见性和透明度</h1>
+<h1 id="subview-and-superview">subview and superview</h1>
+<ul>
+<li>
+<p>如果一个视图从它的父视图中移除，则它的所有子视图也会被移除</p>
+</li>
+<li>
+<p>一个视图的透明度会被它的子视图所继承。</p>
+</li>
+<li>
+<p>视图可以选择性地限制其子视图的绘制，使其在视图之外的任何部分都不被显示。这就是所谓的剪裁，可以通过视图的<code>clipsToBounds</code>属性来设置。</p>
+</li>
+<li>
+<p>如果<code>addSubview(_:)</code>被调用，则视图将放在父视图的所有子视图的最后边，也就是之后才绘制，这意味着<font color=red>它出现在最前面</font>。</p>
+</li>
+</ul>
+<p>如果想要引用特定的某个视图，可能需要为视图事先安排一个属性，可能是<code>outlet</code>，也可以为视图事先设置<code>tag</code>属性值，然后通过调用<code>viewWithTag(_:)</code>来获取视图。</p>
+<p>没有提供一次性删除一个视图的所有子视图的方法。一个视图的子视图数组是内部子视图列表的一个不可变的副本。因此，需要使用<code>for</code>循环来删除所有子视图：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">myView.subviews.forEach {$0.removeFromSuperview()}
+</code></pre></div><h1 id="可见性和透明度">可见性和透明度</h1>
 <p>视图的可见性和不透明度跟<code>3</code>个属性相关，它们分别是<code>isHidden</code>，<code>alpha</code>，<code>isOpaque</code>，下面开始一一介绍。</p>
 <h2 id="ishidden">isHidden</h2>
 <p>视图可以通过将其<code>isHidden</code>属性设置为<code>true</code>而变得不可见，并通过将其设置为<code>false</code> 而再次变成可见。被隐藏的视图（通常）不会收到触摸事件，所以对用户来说，就如同该视图不存在一样。</p>
@@ -350,13 +368,13 @@ code.has-jax {
 <p>如果一个视图完全由不透明的物质填充并且它的<code>alpha</code>属性设置为<code>1.0</code>，那么视图就是完全不透明的，此时如果将视图的<code>isOpaque</code>属性设置为<code>true</code>，就可以更有效地进行绘制（对性能的拖累更小）。</p>
 <p>当设置<code>isHidden</code>和<code>alpha</code>的值时，<code>isOpaque</code>属性值<font color=red>并不会跟着变化</font>。<code>isOpaque</code>属性值的设置完全取决你自己，它的默认值为<code>true</code>。</p>
 <h1 id="frame">Frame</h1>
-<p>每个<code>view</code>由一个<code>frame</code>属性（是一个矩形<code>CGRect</code>），表示矩形在<font color=red>父视图的坐标系统中的位置</font>。默认情况下，父视图的坐标系将以左上角为原点，X坐标向右正向增长，Y坐标向下正向增长。</p>
-<p>设置视图的<code>frame</code>值既可以重新改变视图的位置，也可以调整的大小，或者同时改变位置和大小。视图的<code>frame</code>属性如果是<code>CGRect.zero</code>的话，则视图实际上是不可见的。</p>
-<p>如果一个视图有一个你希望它采用的标准尺寸，特别是相对于它的内容（比如<code>UIButton</code>相对于它的标题），另一个办法是调用其<code>sizeToFit</code>方法。</p>
-<p>如果一个视图使用<code>nib</code>进行初始化的时候，那么不会调用<code>init(frame:)</code>，调用的是<code>init(coder:)</code>。</p>
+<p>每个<code>view</code>由一个<code>frame</code>属性（是一个矩形<code>CGRect</code>），表示在<font color=red>父视图的坐标系统中的位置</font>。默认情况下，父视图的坐标系将以左上角为原点，X坐标向右正向增长，Y坐标向下正向增长。</p>
+<p>设置视图的<code>frame</code>值既可以重新改变视图的位置，也可以调整视图的大小，或者同时改变位置和大小。视图的<code>frame</code>属性值为<code>CGRect.zero</code>的话，则视图是不可见。</p>
+<p>如果一个视图有一个你希望它采用的标准尺寸，特别是相对于它的内容（比如<code>UIButton</code>相对于它的标题）而言，除了改变<code>frame</code>，还可以调用其<code>sizeToFit</code>方法。</p>
+<p>如果一个视图使用<code>nib</code>进行初始化，那么不会调用其<code>init(frame:)</code>，调用的为<code>init(coder:)</code>方法。</p>
 <h1 id="bounds-and-center">Bounds and Center</h1>
 <h2 id="bounds">Bounds</h2>
-<p>假设有一个父视图和子视图，子视图需要<code>10</code>个点的嵌入，如下图所示，首先想到的是设置子视图的<code>frame</code>，但是怎么设置？</p>
+<p>假设有一个父视图和子视图，子视图需要有<code>10</code>个<code>point</code>的嵌入，如下图所示，首先想到的是设置子视图的<code>frame</code>，但是该怎么设置？</p>
 <p><img src="https://i.loli.net/2021/06/13/QWCVUiwYv8MarSI.jpg" alt="-c"></p>
 <p><code>CGRect</code>有个<code>insetBy(dx:dy:)</code>方法可以把一个矩形很容易的嵌入到另一个矩形中。描述视图在其自身坐标中的矩形的<code>CGRect</code>是视图的<code>bounds</code>属性。</p>
 <p>如果改变一个视图的<code>bounds</code>属性的<code>size</code>值，则会影响到其<code>frame</code>属性的<code>size</code>值。视图<code>frame</code>属性<code>size</code>的变化是围绕其中心点进行的，即中心点保持不变：</p>
@@ -597,6 +615,7 @@ open <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">convert
         <li><a href="#application">application</a></li>
       </ul>
     </li>
+    <li><a href="#subview-and-superview">subview and superview</a></li>
     <li><a href="#可见性和透明度">可见性和透明度</a>
       <ul>
         <li><a href="#ishidden">isHidden</a></li>
