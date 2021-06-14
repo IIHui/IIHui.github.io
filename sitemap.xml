@@ -80,7 +80,9 @@ UIApplicationMain的处理是如何进行的，取决于你的应用程序是使
 此时需要在代码中完成UIApplicationMain在有storyboard的情况下自动完成的所有事情。在旧的架构下，需要在app delegate的application(_:didFinishLaunchingWithOptions:)中做这些事情。在新的架构下，需要scene delegate的scene（_:willConnectTo:options:）中做这些事情。
 引用window 一旦app运行，有多种方法引用window：包括从视图中引用；从scene delegate中引用；从application中有引用。
 view 如果一个视图view在界面中，则视图能通过自己的window属性引用到包含它的窗口。你的代码可能会在一个有主视图的视图控制器中运行，所以self.view.window通常是引用窗口的最佳方式。
-也可以使用UIView的window属性来询问它是否最终被嵌入到窗口中；如果不是，它的window属性就是nil。一个窗口属性为nil的UIView是对用户不可见的。
+也可以使用UIView的window属性来询问它是否最终被嵌入到窗口中；如果不是，它的window属性就是nil。一个window属性为nil的UIView是对用户不可见的。
+scene delegate scene delegate实例保存了window的引用，可以通过window属性来访问。即使用sceneDelegate.window来访问，但访问sceneDelegate需要先使用let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate。
+application 共享的application实例也保存了window的引用，可以通过其window属性来访问，即let w = UIApplication.shared.windows.first!。
 可见性和透明度 view的可见性和不透明度跟3个属性相关，他们分别是isHidden，alpha，isOpaque。
 isHidden 视图。视图可以通过将其isHidden属性设置为true而变得不可见，并通过将其设置为false 而再次可见。被隐藏的视图（通常）不会收到触摸事件，所以对用户来说，就像该视图不存在一样。
 alpha 一个视图可以通过其alpha属性使其部分或完全透明。alpha属性值可以在0～1.0，1.0表示完全不透明，0.0表示透明。alpha属性既影响view的背景色也会影响其内容的透明度。

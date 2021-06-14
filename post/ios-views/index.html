@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">5807</span>
+<span class="leancloud-visitors-count">6012</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -315,7 +315,11 @@ code.has-jax {
 <p>一旦<code>app</code>运行，有多种方法引用<code>window</code>：包括从视图中引用；从<code>scene delegate</code>中引用；从<code>application</code>中有引用。</p>
 <h2 id="view">view</h2>
 <p>如果一个视图<code>view</code>在界面中，则视图能通过自己的<code>window</code>属性引用到包含它的窗口。你的代码可能会在一个有主视图的视图控制器中运行，所以<code>self.view.window</code>通常是引用窗口的最佳方式。</p>
-<p>也可以使用<code>UIView</code>的<code>window</code>属性来询问它是否最终被嵌入到窗口中；如果不是，它的<code>window</code>属性就是<code>nil</code>。一个窗口属性为<code>nil</code>的<code>UIView</code>是对用户不可见的。</p>
+<p>也可以使用<code>UIView</code>的<code>window</code>属性来询问它是否最终被嵌入到窗口中；如果不是，它的<code>window</code>属性就是<code>nil</code>。一个<code>window</code>属性为<code>nil</code>的<code>UIView</code>是对用户不可见的。</p>
+<h2 id="scene-delegate">scene delegate</h2>
+<p><code>scene delegate</code>实例保存了<code>window</code>的引用，可以通过<code>window</code>属性来访问。即使用<code>sceneDelegate.window</code>来访问，但访问<code>sceneDelegate</code>需要先使用<code>let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate</code>。</p>
+<h2 id="application">application</h2>
+<p>共享的<code>application</code>实例也保存了<code>window</code>的引用，可以通过其<code>window</code>属性来访问，即<code>let w = UIApplication.shared.windows.first!</code>。</p>
 <h1 id="可见性和透明度">可见性和透明度</h1>
 <p><code>view</code>的可见性和不透明度跟<code>3</code>个属性相关，他们分别是<code>isHidden</code>，<code>alpha</code>，<code>isOpaque</code>。</p>
 <h2 id="ishidden">isHidden</h2>
@@ -573,6 +577,8 @@ open <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">convert
         </li>
         <li><a href="#引用window">引用window</a></li>
         <li><a href="#view">view</a></li>
+        <li><a href="#scene-delegate">scene delegate</a></li>
+        <li><a href="#application">application</a></li>
       </ul>
     </li>
     <li><a href="#可见性和透明度">可见性和透明度</a>
