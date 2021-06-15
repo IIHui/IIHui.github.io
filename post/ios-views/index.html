@@ -260,7 +260,7 @@ code.has-jax {
 <h1 id="window-和-root-view">window 和 root View</h1>
 <p>视图层级结构的最顶层<code>window</code>。<code>window</code>表示<code>UIWindow</code>或其子类的实例，<code>UIWindow</code>也是<code>UIView</code>的子类。在<code>App</code>启动时会创建和显示一个<code>window</code>，否则将会看到一片黑色。从<code>iOS 13</code>开始，<code>App</code>可能在<code>iPad</code>上支持多个<code>window</code>；如果不支持多<code>window</code>或<code>App</code>在<code>iPhone</code>上运行，<code>App</code>则只有一个<code>window</code>，即<code>the main window</code>。</p>
 <p>一个可见的<code>window</code>构成了所有其他可见<code>view</code>的背景，也是所有可见视图的父视图，即<code>superview</code>。一个<code>view</code>如果是可见的，那么它一定是某个可见<code>window</code>的子视图。</p>
-<p>在实际编程中，<font color=red>不会手动或者直接用子视图来填充</font><code>window</code>，因为<code>window</code>和它所包含的视图之间的连接是根视图控制器，即<code>rootViewController</code>。一旦一个<code>viewController</code>被实例化，并且赋值给<code>window</code>的<code>rootViewController</code>属性，则这个<code>viewController</code>的主视图（即<code>view</code>属性），将会填充整个<code>window</code>，这个主视图也将是<code>window</code>的唯一直接子视图。其他所有可见的视图在一定深度上都是<code>rootViewController</code>主视图的子视图。</p>
+<p>在实际编程中，<font color=red>不会手动或者直接用子视图来填充</font><code>window</code>，因为<code>window</code>和它所包含的视图之间的连接是<font color=red>根视图控制器</font>，即<code>rootViewController</code>。一旦一个<code>viewController</code>被实例化，并且赋值给<code>window</code>的<code>rootViewController</code>属性，则这个<code>viewController</code>的主视图（即<code>view</code>属性），将会填充整个<code>window</code>，这个主视图也将是<code>window</code>的唯一直接子视图。其他所有可见的视图在一定深度上都是<code>rootViewController</code>主视图的子视图。</p>
 <h2 id="window-scene-architecture">window scene architecture</h2>
 <p>从<code>iOS 13</code>开始<code>App</code>的<code>window</code>默认由<code>UIWindowScene</code>来提供，这与<code>iOS 12</code>及之前的版本相比，是架构上的最大变化：</p>
 <ul>
