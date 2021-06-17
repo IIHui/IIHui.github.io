@@ -273,7 +273,7 @@ code.has-jax {
 </ul>
 <p>一个使用老<code>window</code>架构的<code>App</code>，如果在<code>iOS 13</code>及以后的版本中运行时，它会被赋予一个<code>window scene</code>，但是它不知道这个事实，<font color=Blue>并且功能不受影响，仍然运行在老架构上</font>。但是，新<code>window</code>架构的<code>App</code>不能运行在<code>iOS 12</code>及以前的系统。</p>
 <p>如果需要新架构的<code>App</code>支持<code>iOS 12</code>以之前的系统，则需要将<code>SceneDelegate</code>的<code>window</code>属性复制到<code>AppDelegate</code>类中。然后在<code>AppDelegate</code>类<font color=red>将所有涉及</font><code>UISceneSession</code>的方法标记为<code>@available(iOS 13.0, *)</code>。最后在<code>SceneDelegate</code>类前将整个类标记为<code>@available(iOS 13.0, *)</code>。</p>
-<p>使用了上面的改动后，如果App运行在<code>iOS 13</code>及以后的系统中，则使用的是新架构，并且<code>SceneDelegate</code>持有<code>window</code>。如果在<code>iOS 12</code>及以前的系统中，则使用的是旧架构，<code>AppDelegate</code>持有<code>window</code>。</p>
+<p>使用了上面的改动后，如果App运行在<code>iOS 13</code>及以后的系统中，则<font color=red>使用的是新架构</font>，并且<code>SceneDelegate</code>持有<code>window</code>。如果在<code>iOS 12</code>及以前的系统中，则使用的是旧架构，<code>AppDelegate</code>持有<code>window</code>。</p>
 <p>如果想要在<code>XCode 11</code>以上创建的工程使用旧<code>window</code>架构，则需要先删除所有<code>UISceneSession</code>和<code>SceneDelegate</code>相关的代码，然后在<code>info.plist</code>中删除<code>Application Scene Manifest</code>入口，最后在<code>AppDelegate</code>中手动添加<code>var window: UIWindow?</code>即可。</p>
 <h2 id="app-launches">App Launches</h2>
 <p>在启动时，你的应用程序如何首先拥有其<code>window</code>，以及该<code>window</code>如何被填充和显示？如果你的应用程序使用<code>main storyboard</code>，这一切都会自动完成。但是，「自动」并不意味着「通过魔术」。</p>
@@ -331,7 +331,7 @@ code.has-jax {
 <p>一旦<code>app</code>运行，有多种方法引用<code>window</code>：➊包括从视图中引用；➋从<code>SceneDelegate</code>中引用；➌从<code>application</code>中引用。</p>
 <h2 id="view">view</h2>
 <p>如果一个视图<code>view</code>在界面中，则该视图能通过自己的<code>window</code>属性引用到包含它的<code>window</code>。你的代码可能会在一个有<code>main view</code>的视图控制器中运行，所以<code>self.view.window</code>通常是引用<code>window</code>的最佳方式。</p>
-<p>也可以使用<code>UIView</code>的<code>window</code>属性来询问它是否最终被嵌入到<code>window</code>中；如果未嵌入到<code>window</code>中，则它的<code>window</code>属性为<code>nil</code>。一个<code>window</code>属性为<code>nil</code>的视图是对用户不可见的。</p>
+<p>也可以使用<code>UIView</code>的<code>window</code>属性来询问它是否最终被嵌入到<code>window</code>中；如果未嵌入到<code>window</code>中，则它的<code>window</code>属性为<code>nil</code>。一个<code>window</code>属性为<code>nil</code>的视图是<font color=Blue>对用户不可见的</font>。</p>
 <h2 id="scene-delegate">scene delegate</h2>
 <p><code>SceneDelegate</code>实例保存了<code>window</code>的引用，可以通过<code>window</code>属性来访问。即使用<code>sceneDelegate.window</code>来访问，但访问<code>sceneDelegate</code>需要先使用<code>let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate</code>。</p>
 <h2 id="application">application</h2>
