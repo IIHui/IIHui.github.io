@@ -332,12 +332,12 @@ code.has-jax {
 <h2 id="引用window">引用window</h2>
 <p>一旦<code>app</code>运行，有多种方法引用<code>window</code>：➊包括从视图中引用；➋从<code>SceneDelegate</code>中引用；➌从<code>application</code>中引用。</p>
 <h2 id="view">view</h2>
-<p>如果一个视图<code>view</code>在界面中，则该视图能通过自己的<code>window</code>属性引用到包含它的<code>window</code>。你的代码可能会在一个有<code>main view</code>的视图控制器中运行，所以<code>self.view.window</code>通常是引用<code>window</code>的最佳方式。</p>
+<p>如果一个视图<code>view</code>在界面中，则该视图<font color=red>能通过自己的<code>window</code>属性引用到包含它的<code>window</code></font>。你的代码可能会在一个有<code>main view</code>的视图控制器中运行，所以<code>self.view.window</code>通常是引用<code>window</code>的最佳方式。</p>
 <p>也可以使用<code>UIView</code>的<code>window</code>属性来询问它是否最终被嵌入到<code>window</code>中；如果未嵌入到<code>window</code>中，则它的<code>window</code>属性为<code>nil</code>。一个<code>window</code>属性为<code>nil</code>的视图是<font color=Blue>对用户不可见的</font>。</p>
 <h2 id="scene-delegate">scene delegate</h2>
 <p><code>SceneDelegate</code>实例保存了<code>window</code>的引用，可以通过<code>window</code>属性来访问。即使用<code>sceneDelegate.window</code>来访问，但访问<code>sceneDelegate</code>需要先使用<code>let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate</code>。</p>
 <h2 id="application">application</h2>
-<p>共享的<code>application</code>实例也保存了<code>window</code>的引用，可以通过其<code>window</code>属性来访问，即<code>let w = UIApplication.shared.windows.first!</code>。</p>
+<p><font color=Blue>共享的<code>application</code>实例也保存了<code>window</code>的引用</font>，可以通过其<code>window</code>属性来访问，即<code>let w = UIApplication.shared.windows.first!</code>。</p>
 <h1 id="subview-and-superview">subview and superview</h1>
 <ul>
 <li>
@@ -357,7 +357,7 @@ code.has-jax {
 <p>没有提供一次性删除一个视图的所有子视图的方法。一个视图的子视图数组是内部子视图列表的一个不可变的副本。因此，需要使用<code>for</code>循环来删除所有子视图：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">myView.subviews.forEach {$0.removeFromSuperview()}
 </code></pre></div><h2 id="color">color</h2>
-<p>视图可以通过其<code>backgroundColor</code>属性设置一个背景色，如果<code>backgroundColor</code>属性值为<code>nil</code>，则视图的背景色为透明。</p>
+<p>视图可以通过其<code>backgroundColor</code>属性设置一个背景色，<font color=red>如果<code>backgroundColor</code>属性值为<code>nil</code>，则视图的背景色为透明</font>。</p>
 <p>自<code>iOS 13</code>开始出现了暗色模式，为了适配需要使用动态颜色，即使用<code>UIColor</code>的初始化函数<code>init(dynamicProvider:)</code>来进行适配：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">v1.backgroundColor = UIColor { tc <span style="color:#66d9ef">in</span>
     <span style="color:#66d9ef">switch</span> tc.userInterfaceStyle {
