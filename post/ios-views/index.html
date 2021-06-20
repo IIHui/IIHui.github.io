@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">7035</span>
+<span class="leancloud-visitors-count">7026</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -255,7 +255,7 @@ code.has-jax {
     <blockquote>
 <p>视图（<code>view</code>）的层次结构是视图组织的主要模式。<font color=red>一个视图可以有多个子视图，但只能有一个直接父视图</font>。若一个视图被从界面中被移除，则它的子视图也会被移除；若一个视图被隐藏，则它的子视图都会被隐藏；如果一个视图被移动，它的子视图也都会随之移动。也就是说，<font color=LightSeaGreen>一个视图的变化会与作用到它的子视图中</font>。</p>
 </blockquote>
-<p><code>UIView</code>是<code>UIResponder</code>的子类，即它<font color=Blue>不仅是用户能看到的界面，也是用户交互所用界面</font>。例如点击或者滑动，也就是说视图层次结构也是响应者链的基础，尽管它与响应者链不完全相同。</p>
+<p><code>UIView</code>是<code>UIResponder</code>的子类，即它<font color=Blue>不仅是用户能看到的界面，也是用户交互所用界面</font>。也就是说<font color=LightSeaGreen>视图层次结构也是响应者链的基础</font>，尽管它与响应者链不完全相同。</p>
 <p>一个视图的创建可能来自<code>nib</code>，也可能来自代码。不能绝对地说哪种方式更好一些，这取决于个人需求、倾向以及程序的整体架构。</p>
 <h1 id="window-和-root-view">window 和 root View</h1>
 <p>视图层级结构的<font color=red>最顶层</font>是<code>window</code>。<code>window</code>即表示<code>UIWindow</code>或其子类的实例，其中<code>UIWindow</code>也是<code>UIView</code>的一个子类。在<code>App</code>启动时会创建和显示一个<code>window</code>，否则将会看到一片黑色。</p>
