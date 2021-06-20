@@ -286,10 +286,10 @@ code.has-jax {
 <p>以下是<code>UIApplicationMain</code>如何在<code>iOS 13</code>及更高版本上启动支持<code>window scene</code>的应用程序:</p>
 <ol>
 <li>
-<p><code>UIAppplicationMain</code>首先实例化<code>UIApplication</code>，并保留这个实例，将其作为共享的实例，可以在代码中可以使用<code>UIApplication.shared</code>来访问。接着根据<code>@UIApplicationMain</code>或<code>@main</code>来实例化<code>AppDelegate</code>，并保留这个实例，使得它在应用程序中的整个生命周期中都存在，可以使用<code>UIApplication.shared.delegate</code>来访问。</p>
+<p><code>UIAppplicationMain</code>首先实例化<code>UIApplication</code>，并保留这个实例，<font color=Blue>将其作为共享的实例</font>，可以在代码中可以使用<code>UIApplication.shared</code>来访问。接着根据<code>@UIApplicationMain</code>或<code>@main</code>来实例化<code>AppDelegate</code>，并保留这个实例，使得它在应用程序中的整个生命周期中都存在，可以使用<code>UIApplication.shared.delegate</code>来访问。</p>
 </li>
 <li>
-<p>接着<code>UIApplicationMain</code>会调用<code>AppDelegate</code>的<code>application(_:didFinishLaunchingWithOptions:)</code>方法，在这个方法中可以插入我们自己的代码。</p>
+<p>接着<code>UIApplicationMain</code>会调用<code>AppDelegate</code>的<code>application(_:didFinishLaunchingWithOptions:)</code>方法，<font color=red>在这个方法中可以插入我们自己的代码</font>。</p>
 </li>
 <li>
 <p><code>UIAppplicationMain</code>创建<code>UISceneSession</code>和<code>UIWindowScene</code>以及<code>UIWindwScene</code>代理类<code>UIWindowSceneDelegate</code>的实例。
@@ -311,8 +311,8 @@ code.has-jax {
 <p><code>scene</code>的<code>(_:willConnectTo:options:)</code>被调用，在这个方法中也可以插入自己的代码。</p>
 </li>
 </ol>
-<p>如果App启动时未使用<code>storyboard</code>，也就是说在老的架构中<code>Info.plist</code>中没有<code>Main storyboard file base name</code>条目。而在新的架构中，这意味着在<code>Application Scene Manifest</code>字典的<code>Application Scene Configuration</code>下没有<code>Storyboard Name</code>条目。</p>
-<p>此时需要在代码中完成有<code>storyboard</code>的情况下自动完成的所有事情。在旧的架构下，需要在<code>app delegate</code>的<code>application(_:didFinishLaunchingWithOptions:)</code>中做这些事情。在新的架构下，需要<code>scene delegate</code>的<code>scene（_:willConnectTo:options:）</code>中做这些事情:</p>
+<p>如果<code>App</code>启动时未使用<code>storyboard</code>，也就是说在老的架构中<code>Info.plist</code>中没有<code>Main storyboard file base name</code>条目。而在新的架构中，这意味着在<code>Application Scene Manifest</code>字典的<code>Application Scene Configuration</code>下没有<code>Storyboard Name</code>条目。</p>
+<p>此时需要在代码中完成有<code>storyboard</code>的情况下<font color=Blue>自动完成的所有事情</font>。在旧的架构下，需要在<code>app delegate</code>的<code>application(_:didFinishLaunchingWithOptions:)</code>中做这些事情。在新的架构下，需要<code>scene delegate</code>的<code>scene（_:willConnectTo:options:）</code>中做这些事情:</p>
 <ol>
 <li>
 <p>创建一个<code>UIWindow</code>的实例，并且将其赋值给<code>SceneDelegate</code>的<code>window</code>属性。通过调用<code>UIWindow</code>的初始化函数<code>init(windowScene:)</code>使得<code>window</code>和<code>window scene</code>来建立连接。</p>
