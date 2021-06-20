@@ -54,8 +54,8 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 设置文�
         <content type="html">  视图（view）的层次结构是视图组织的主要模式。一个视图可以有多个子视图，但只能有一个直接父视图。若一个视图被从界面中被移除，则它的子视图也会被移除；若一个视图被隐藏，则它的子视图都会被隐藏；如果一个视图被移动，它的子视图也都会随之移动。也就是说，一个视图的变化会与作用到它的子视图中。
  UIView是UIResponder的子类，即它不仅是用户能看到的界面，也是用户交互所用界面。也就是说视图层次结构也是响应者链的基础，尽管它与响应者链不完全相同。
 一个视图的创建可能来自nib，也可能来自代码。不能绝对地说哪种方式更好一些，这取决于个人需求、倾向以及程序的整体架构。
-window 和 root View 视图层级结构的最顶层是window。window即表示UIWindow或其子类的实例，其中UIWindow也是UIView的一个子类。在App启动时会创建和显示一个window，否则将会看到一片黑色。
-从iOS 13开始，App可能在iPad上支持多个window；如果不支持多window或App在iPhone上运行，App则只有一个window，即the main window。
+window 和 root View 视图层级结构的最顶层是window。window是UIWindow或其子类的实例，其中UIWindow也是UIView的一个子类。
+在App启动时会创建和显示一个window，否则将会看到一片黑色。从iOS 13开始，App可能在iPad上支持多个window；如果不支持多window或App在iPhone上运行，则App只有一个window，即所说的the main window。
 一个可见的window构成了所有其他可见view的背景，也是所有可见视图的父视图。一个view如果是可见的，那么它一定是某个可见window的子视图。
 在实际编程中，不会手动或者直接用子视图来填充window，因为window和它所包含的视图之间的连接是根视图控制器，即rootViewController。一旦一个viewController被实例化，并且赋值给window的rootViewController属性，则这个viewController的主视图（即view属性），将会填充整个window，这个主视图也将是window的唯一直接子视图。其他所有可见的视图在一定深度上都是rootViewController主视图的子视图。
 window scene architecture 从iOS 13开始App的window默认由UIWindowScene来提供，这与iOS 12及之前的版本相比，是架构上的最大变化：
