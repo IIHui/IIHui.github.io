@@ -373,7 +373,7 @@ code.has-jax {
 <p>视图可以通过将其<code>isHidden</code>属性设置为<code>true</code>而变得不可见，并通过将其设置为<code>false</code> 而再次变成可见。<font color=red>被隐藏的视图（通常）不会收到触摸事件</font>，所以对用户来说，就如同该视图不存在一样。</p>
 <h2 id="alpha">alpha</h2>
 <p>一个视图可以通过其<code>alpha</code>属性使其部分或完全透明。<code>alpha</code>属性的取值可以在<code>0～1.0</code>，<code>1.0</code>表示完全不透明，<code>0.0</code>表示完全透明。<code>alpha</code>属性既能影响视图的背景色也会影响其内容的透明度。</p>
-<p>如果一个视图中显示了一个图像，并且有一个背景颜色，而它的<code>alpha</code>值小于<code>1.0</code>，那么背景颜色就会渗入到这个图像中。如果一个父视图的<code>alpha</code>值为<code>0.5</code>，则它的所有子视图的<code>alpha</code>都将小于<code>0.5</code>，因为无论这些子视图的<code>alpha</code>属性值是多少，都是相对于父视图的<code>0.5</code>来进行绘制的。</p>
+<p>如果一个视图中显示了一个图像，并且有一个背景颜色，而它的<code>alpha</code>值小于<code>1.0</code>，那么<font color=red>背景颜色就会渗入到这个图像中</font>。如果一个父视图的<code>alpha</code>值为<code>0.5</code>，则它的所有子视图的<code>alpha</code>都将小于<code>0.5</code>，因为无论这些子视图的<code>alpha</code>属性值是多少，都是相对于父视图的<code>0.5</code>来进行绘制的。</p>
 <p>一个完全透明（或非常接近完全透明）的视图就像一个<code>isHidden</code>为<code>true</code>的视图：它和它的子视图都是不可见的，而且（通常）不能被触摸到。</p>
 <p>颜色也有一个<code>alpha</code>属性，这个值对于视图也有影响。一个视图的<code>alpha</code>值可以是<code>1.0</code>，但仍然有一个透明的背景，因为它的背景颜色的<code>alpha</code>值可能小于<code>1.0</code>。</p>
 <h2 id="isopaque">isOpaque</h2>
