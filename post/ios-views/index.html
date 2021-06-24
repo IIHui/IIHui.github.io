@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">7027</span>
+<span class="leancloud-visitors-count">7034</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -278,9 +278,9 @@ code.has-jax {
 <p>使用了上面的改动后，如果App运行在<code>iOS 13</code>及以后的系统中，则<font color=red>使用的是新架构</font>，并且<code>SceneDelegate</code>持有<code>window</code>。如果在<code>iOS 12</code>及以前的系统中，则使用的是旧架构，<code>AppDelegate</code>持有<code>window</code>。</p>
 <p>如果想要在<code>XCode 11</code>以上创建的工程使用旧<code>window</code>架构，则需要<font color=red>先删除所有<code>UISceneSession</code>和<code>SceneDelegate</code>相关的代码</font>，然后在<code>info.plist</code>中删除<code>Application Scene Manifest</code>入口，最后在<code>AppDelegate</code>中<font color=Blue>手动添加<code>var window: UIWindow?</code>即可</font>。</p>
 <h2 id="app-launches">App Launches</h2>
-<p>在启动时，你的应用程序如何首先拥有其<code>window</code>，以及该<code>window</code>如何被填充和显示？如果你的应用程序使用<code>main storyboard</code>，这一切<font color=Blue>都会自动完成</font>。但是，「自动」并不意味着「通过魔术」。</p>
-<p>启动时的程序是直接和确定的，我们的代码可以在其中起作用。知道一个应用程序是如何启动的是非常有用的，尤其是当配置错误，应用程序的启动出现问题时，就可以找出原因了。</p>
-<p>App启动时<font color=red>最终包括一次<code>UIApplicationMain</code>函数的调用</font>。与<code>OC</code>不同，一个典型的<code>Swift</code>项目不会在代码中明确地进行这一调用，都是<font color=Blue>自动完成调用的</font>。<code>UIApplicationMain</code>函数的调用<font color=red>创建了一些最重要的初始实例</font>；如果你的应用程序使用<code>main storyboard</code>，则这些实例包括<code>window</code>和它的根视图控制器。</p>
+<p>在启动时，应用程序如何初始化<code>window</code>，以及该<code>window</code>如何被填充和显示？如果应用使用<code>main storyboard</code>，<code>window</code>的初始化和显示<font color=Blue>都会自动完成</font>。但是，「自动」并不意味着「通过魔术」。</p>
+<p>应用的启动时的程序是直接和确定的，我们的代码可以在其中起作用。知道一个应用程序是如何启动的是非常有用的，尤其是当配置错误，应用程序的启动出现问题时，就可以找出原因了。</p>
+<p><code>App</code>启动时<font color=red>最终包括一次<code>UIApplicationMain</code>函数的调用</font>。与<code>OC</code>不同，一个典型的<code>Swift</code>项目不会在代码中明确地进行这一调用，都是<font color=Blue>自动完成调用的</font>。<code>UIApplicationMain</code>函数的调用<font color=red>创建了一些最重要的初始实例</font>；如果你的应用程序使用<code>main storyboard</code>，则这些实例包括<code>window</code>和它的根视图控制器。</p>
 <p><code>UIApplicationMain</code>的处理是如何进行的，取决于你的应用程序是使用旧的<code>window</code>架构还是新的<code>window</code>架构，它们将会是两种完全不同的启动过程。</p>
 <h3 id="新架构">新架构</h3>
 <p>以下是<code>UIApplicationMain</code>如何在<code>iOS 13</code>及更高版本上启动支持<code>window scene</code>的应用程序:</p>
@@ -292,7 +292,7 @@ code.has-jax {
 <p>接着<code>UIApplicationMain</code>会调用<code>AppDelegate</code>的<code>application(_:didFinishLaunchingWithOptions:)</code>方法，<font color=red>在这个方法中可以插入我们自己的代码</font>。</p>
 </li>
 <li>
-<p><code>UIAppplicationMain</code>创建<code>UISceneSession</code>和<code>UIWindowScene</code>以及<code>UIWindwScene</code>代理类<code>UIWindowSceneDelegate</code>的实例。
+<p>然后<code>UIAppplicationMain</code>创建<code>UISceneSession</code>和<code>UIWindowScene</code>以及<code>UIWindwScene</code>代理类<code>UIWindowSceneDelegate</code>的实例。
 <img src="https://i.loli.net/2021/06/14/iBw3vo62DLgqdSC.jpg" alt="-c"></p>
 </li>
 <li>
