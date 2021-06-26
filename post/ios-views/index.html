@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">7278</span>
+<span class="leancloud-visitors-count">7564</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">15 分钟</span>
+<span class="leancloud-visitors-count">16 分钟</span>
 </span>
       </div>
     </header>
@@ -340,8 +340,11 @@ code.has-jax {
 <p><font color=Blue>共享的<code>application</code>实例也保存了<code>window</code>的引用</font>，可以通过其<code>window</code>属性来访问，即<code>let w = UIApplication.shared.windows.first!</code>。</p>
 <h1 id="subview-and-superview">subview and superview</h1>
 <p>在之前，一个视图<font color=red>恰好拥有自己的矩形区域</font>，即任何不属于该视图的子视图的视图都不能出现在该视图的里面。因为当该视图重新绘制其矩形区域时，<font color=Blue>它会擦除其他视图的重叠部分</font>。该视图的子视图的任何部分都不能出现在它的外面，因为该视图对它自己的矩形区域负责，而不是其他。</p>
-<p>从<code>macOS 10.5</code>开始，Apple为视图绘制引入了一个全新的架构，<font color=red>完全解除了上面的所说的那些限制。在<code>iOS</code>中，一个子视图的<font color=red>部分或全部可以出现在它的父视图之外</font>，一个视图可以与另一个视图重叠，可以部分或全部画在它的前面，而不成为它的子视图。</p>
+<p>从<code>macOS 10.5</code>开始，Apple为视图绘制引入了一个全新的架构，<font color=red>完全解除了上面的所说的那些限制</font>。在<code>iOS</code>中，一个子视图的<font color=Blue>部分或全部可以出现在它的父视图之外</font>，一个视图可以与另一个视图重叠，可以部分或全部画在它的前面，而不成为它的子视图。</p>
+<p>如下图所示，有<code>3</code>个不同背景色的视图，每个视图和其他视图都有重叠。仅从视觉效果上是无法了解视图的层次结构的：</p>
 <p><img src="https://i.loli.net/2021/06/26/7HWhtNXYSLz9U16.jpg" alt="-c"></p>
+<p>一个视图<font color=red>在视图层次结构中的位置是非常重要的</font>。首先，视图的层次结构决定了视图的绘制顺序。同一父视图的同级子视图有明确的绘制顺序：较早的同级子视图画在较晚的同级子视图之前，所以如果它们重叠，较早的子视图会出现在较晚的子视图后面。同样地，一个父视图被画在它的子视图之前，所以如果子视图与它们的父视图重叠，父视图就会出现在它们后面。</p>
+<p>如果是在<code>storyboard</code>中创建的视图或者<code>nib</code>，则视图的层级结构可以通过菜单栏的<code>Editor--&gt;Arrange</code>下面的子选项来改变：</p>
 <ul>
 <li>
 <p>如果一个视图从它的父视图中移除，则它的所有子视图也会被移除</p>
