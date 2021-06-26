@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">7842</span>
+<span class="leancloud-visitors-count">7947</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -370,7 +370,12 @@ code.has-jax {
 willMove(toSuperview:), didMoveToSuperview
 willMove(toWindow:), didMoveToWindow
 </code></pre></div><p>如果<code>addSubview(_:)</code>被调用，则视图将放在父视图的所有子视图的最后边，也就是最后才绘制，这意味着<font color=red>它将出现在最前面</font>。</p>
-<p>没有提供一次性删除一个视图的所有子视图的方法。一个视图的子视图数组是内部子视图列表的一个不可变的副本。因此，需要使用<code>for</code>循环来删除所有子视图：</p>
+<p>视图的子视图是有索引的，从0开始。有一些方法可以在给定的索引或特定视图的下面（后面）或上面（前面）插入一个子视图；可以通过索引交换两个同级视图；还可以将一个子视图一直移动到其同级的前面或后面。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">insertSubview(<span style="color:#66d9ef">_</span>:at:)
+insertSubview(<span style="color:#66d9ef">_</span>:belowSubview:), insertSubview(<span style="color:#66d9ef">_</span>:aboveSubview:)
+exchangeSubview(at:withSubviewAt:)
+bringSubviewToFront(<span style="color:#66d9ef">_</span>:), sendSubviewToBack(<span style="color:#66d9ef">_</span>:)
+</code></pre></div><p>但是，没有提供一次性删除一个视图的所有子视图的方法。一个视图的子视图数组是内部子视图列表的一个不可变的副本。因此，需要使用<code>for</code>循环来删除所有子视图：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">myView.subviews.forEach {$0.removeFromSuperview()}
 </code></pre></div><h2 id="color">color</h2>
 <p>视图可以通过其<code>backgroundColor</code>属性设置一个背景色，<font color=LightSeaGreen>如果<code>backgroundColor</code>属性值为<code>nil</code>，则视图的背景色为透明</font>。</p>
