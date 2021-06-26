@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">7728</span>
+<span class="leancloud-visitors-count">7783</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -363,9 +363,10 @@ code.has-jax {
 <p>如果一个视图的大小改变了，它的子视图也可能会自动调整大小。</p>
 </li>
 </ul>
-<p>视图均有<code>superview</code>和<code>subviews</code>属性，使用这两个属性可以追踪视图的层次结构</p>
-<p>如果<code>addSubview(_:)</code>被调用，则视图将放在父视图的所有子视图的最后边，也就是之后才绘制，这意味着<font color=red>它出现在最前面</font>。</p>
+<p>视图均有<code>superview</code>和<code>subviews</code>属性，使用这两个属性可以追踪视图的层次结构。使用视图的<code>isDescendant(of:)</code>方法可以判断一个视图是否是另一个视图的子视图（任意深度）。</p>
 <p>如果想要引用特定的某个视图，可能需要为视图事先安排一个属性，<font color=red>可能是<code>outlet</code></font>；也可以为视图<font color=Blue>事先设置<code>tag</code>属性值</font>，然后通过调用<code>viewWithTag(_:)</code>来获取视图。</p>
+<p>视图</p>
+<p>如果<code>addSubview(_:)</code>被调用，则视图将放在父视图的所有子视图的最后边，也就是最后才绘制，这意味着<font color=red>它将出现在最前面</font>。</p>
 <p>没有提供一次性删除一个视图的所有子视图的方法。一个视图的子视图数组是内部子视图列表的一个不可变的副本。因此，需要使用<code>for</code>循环来删除所有子视图：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">myView.subviews.forEach {$0.removeFromSuperview()}
 </code></pre></div><h2 id="color">color</h2>
