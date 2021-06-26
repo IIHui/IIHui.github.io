@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">7159</span>
+<span class="leancloud-visitors-count">7278</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -340,6 +340,7 @@ code.has-jax {
 <p><font color=Blue>共享的<code>application</code>实例也保存了<code>window</code>的引用</font>，可以通过其<code>window</code>属性来访问，即<code>let w = UIApplication.shared.windows.first!</code>。</p>
 <h1 id="subview-and-superview">subview and superview</h1>
 <p>在之前，一个视图<font color=red>恰好拥有自己的矩形区域</font>，即任何不属于该视图的子视图的视图都不能出现在该视图的里面。因为当该视图重新绘制其矩形区域时，<font color=Blue>它会擦除其他视图的重叠部分</font>。该视图的子视图的任何部分都不能出现在它的外面，因为该视图对它自己的矩形区域负责，而不是其他。</p>
+<p>从<code>macOS 10.5</code>开始，Apple为视图绘制引入了一个全新的架构，<font color=red>完全解除了上面的所说的那些限制。在<code>iOS</code>中，一个子视图的<font color=red>部分或全部可以出现在它的父视图之外</font>，一个视图可以与另一个视图重叠，可以部分或全部画在它的前面，而不成为它的子视图。</p>
 <ul>
 <li>
 <p>如果一个视图从它的父视图中移除，则它的所有子视图也会被移除</p>
