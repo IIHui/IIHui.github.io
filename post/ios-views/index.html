@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">7033</span>
+<span class="leancloud-visitors-count">7159</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -339,6 +339,7 @@ code.has-jax {
 <h3 id="application">application</h3>
 <p><font color=Blue>共享的<code>application</code>实例也保存了<code>window</code>的引用</font>，可以通过其<code>window</code>属性来访问，即<code>let w = UIApplication.shared.windows.first!</code>。</p>
 <h1 id="subview-and-superview">subview and superview</h1>
+<p>在之前，一个视图<font color=red>恰好拥有自己的矩形区域</font>，即任何不属于该视图的子视图的视图都不能出现在该视图的里面。因为当该视图重新绘制其矩形区域时，<font color=Blue>它会擦除其他视图的重叠部分</font>。该视图的子视图的任何部分都不能出现在它的外面，因为该视图对它自己的矩形区域负责，而不是其他。</p>
 <ul>
 <li>
 <p>如果一个视图从它的父视图中移除，则它的所有子视图也会被移除</p>
