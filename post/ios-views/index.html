@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">8685</span>
+<span class="leancloud-visitors-count">8793</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -421,11 +421,18 @@ bringSubviewToFront(<span style="color:#66d9ef">_</span>:), sendSubviewToBack(<s
 <p>如果一个视图使用<code>nib</code>进行初始化，<font color=red>那么不会调用其<code>init(frame:)</code>，调用的为<code>init(coder:)</code>方法</font>。</p>
 <h1 id="bounds-and-center">Bounds and Center</h1>
 <h2 id="bounds">Bounds</h2>
-<p>假设有一个父视图和子视图，而子视图需要有<code>10</code>个<code>point</code>的镶边，如下图所示，首先想到的是设置子视图的<code>frame</code>，但是该怎么设置？</p>
+<p>如下图所示，假设有一个父视图和子视图，子视图需要有<code>10</code>个<code>point</code>的镶边，首先想到的是设置子视图的<code>frame</code>，但是该怎么设置？</p>
 <p><img src="https://i.loli.net/2021/06/13/QWCVUiwYv8MarSI.jpg" alt="-c"></p>
-<p><code>CGRect</code>有个<code>insetBy(dx:dy:)</code>方法可以一个矩形中衍生出一个矩形并嵌入。但是应该从哪个矩形中嵌入内呢？不是从父视图的<code>frame</code>，因为<code>frame</code>代表一个视图在其父视图中的位置，并且是父视图的坐标系中的位置。</p>
-<p>应当找的是一个用来描述父视图在其自身坐标中的矩形<code>CGRect</code>，因为这是子视图的<code>frame</code>所要表达的<code>frame</code>。描述视图在其自身坐标中的矩形的<code>CGRect</code>是视图的<code>bounds</code>属性。</p>
+<p><code>CGRect</code>有个<code>insetBy(dx:dy:)</code>方法可以从一个矩形中衍生出另一个矩形并嵌入。但是应该从哪个矩形中嵌入内呢？不是从父视图的<code>frame</code>，因为<code>frame</code>代表一个视图在其父视图中的位置，并且是父视图的坐标系中的位置。</p>
+<p>应当找一个用来描述父视图在其自身坐标中的矩形<code>CGRect</code>，因为这是子视图的<code>frame</code>所要表达的<code>frame</code>。描述视图在其自身坐标中的矩形的<code>CGRect</code>是视图的<code>bounds</code>属性。</p>
 <p><font color=LightSeaGreen>如果改变一个视图的<code>bounds</code>属性的<code>size</code>值，则会影响到其<code>frame</code>属性的<code>size</code>值</font>。视图<code>frame</code>属性<code>size</code>的变化是围绕其中心点进行的，即中心点保持不变：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">let</span> v1 = UIView(frame:CGRect(<span style="color:#ae81ff">113</span>, <span style="color:#ae81ff">111</span>, <span style="color:#ae81ff">132</span>, <span style="color:#ae81ff">194</span>)) 
+v1.backgroundColor = UIColor(red: <span style="color:#ae81ff">1</span>, green: <span style="color:#ae81ff">0.4</span>, blue: <span style="color:#ae81ff">1</span>, alpha: <span style="color:#ae81ff">1</span>) 
+<span style="color:#66d9ef">let</span> v2 = UIView(frame:v1.bounds.insetBy(dx: <span style="color:#ae81ff">10</span>, dy: <span style="color:#ae81ff">10</span>)) 
+v2.backgroundColor = UIColor(red: <span style="color:#ae81ff">0.5</span>, green: <span style="color:#ae81ff">1</span>, blue: <span style="color:#ae81ff">0</span>, alpha: <span style="color:#ae81ff">1</span>)
+<span style="color:#66d9ef">self</span>.view.addSubview(v1) 
+v1.addSubview(v2) 
+</code></pre></div><p>如果改变一个视图的<code>bounds</code>的<code>size</code>，那么它的<code>frame</code>也会发生变化。视图的<code>frame</code>的变化是围绕其<code>center</code>来的&mdash;中心点不变：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">let</span> v1 = UIView(frame:CGRect(<span style="color:#ae81ff">113</span>, <span style="color:#ae81ff">111</span>, <span style="color:#ae81ff">132</span>, <span style="color:#ae81ff">194</span>)) 
 v1.backgroundColor = UIColor(red: <span style="color:#ae81ff">1</span>, green: <span style="color:#ae81ff">0.4</span>, blue: <span style="color:#ae81ff">1</span>, alpha: <span style="color:#ae81ff">1</span>) 
 <span style="color:#66d9ef">let</span> v2 = UIView(frame:v1.bounds.insetBy(dx: <span style="color:#ae81ff">10</span>, dy: <span style="color:#ae81ff">10</span>)) 
