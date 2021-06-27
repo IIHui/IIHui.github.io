@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">8468</span>
+<span class="leancloud-visitors-count">8494</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -401,14 +401,15 @@ bringSubviewToFront(<span style="color:#66d9ef">_</span>:), sendSubviewToBack(<s
 </code></pre></div><p>当你选择一个视图时，资产目录中的自定义命名颜色也会出现在库中和属性检查器中的颜色弹出菜单中:</p>
 <p><img src="https://i.loli.net/2021/06/27/6S3L2ejsEcHtanC.jpg" alt="-c"></p>
 <h1 id="可见性和透明度">可见性和透明度</h1>
-<p>视图的可见性和不透明度跟<code>3</code>个属性相关，它们分别是<code>isHidden</code>，<code>alpha</code>，<code>isOpaque</code>，下面开始一一介绍。</p>
+<p>视图的可见性和不透明度与<code>3</code>个属性相关，它们分别是<code>isHidden</code>，<code>alpha</code>和<code>isOpaque</code>，下面开始逐个介绍。</p>
 <h2 id="ishidden">isHidden</h2>
-<p>视图可以通过将其<code>isHidden</code>属性设置为<code>true</code>而变得不可见，并通过将其设置为<code>false</code> 而再次变成可见。<font color=red>被隐藏的视图（通常）不会收到触摸事件</font>，所以对用户来说，就如同该视图不存在一样。</p>
+<p>视图可以通过将<code>isHidden</code>属性设置为<code>true</code>而变得不可见，并通过将其设置为<code>false</code> 而再次变成可见，因为隐藏视图并不会导致该视图从其层级结构中删除。<font color=red>被隐藏的视图（通常）不会收到触摸事件</font>，所以对用户来说，就如同该视图不存在一样。</p>
 <h2 id="alpha">alpha</h2>
 <p>一个视图可以通过其<code>alpha</code>属性使其部分或完全透明。<code>alpha</code>属性的取值可以在<code>0～1.0</code>，<code>1.0</code>表示完全不透明，<code>0.0</code>表示完全透明。<code>alpha</code>属性既能影响视图的背景色也会影响其内容的透明度。</p>
-<p>如果一个视图中显示了一个图像，并且有一个背景颜色，而它的<code>alpha</code>值小于<code>1.0</code>，那么<font color=red>背景颜色就会渗入到这个图像中</font>。如果一个父视图的<code>alpha</code>值为<code>0.5</code>，则它的所有子视图的<code>alpha</code>都将小于<code>0.5</code>，因为无论这些子视图的<code>alpha</code>属性值是多少，都是相对于父视图的<code>0.5</code>来进行绘制的。</p>
+<p>如果一个视图中显示了一个图像，并且有一个背景颜色，而它的<code>alpha</code>值小于<code>1.0</code>，那么<font color=red>背景颜色就会渗入到这个图像中</font>。</p>
+<p>如果一个父视图的<code>alpha</code>值为<code>0.5</code>，则它的所有子视图的<code>alpha</code>都将小于<code>0.5</code>，因为无论这些子视图的<code>alpha</code>属性值是多少，都是相对于父视图的<code>0.5</code>来进行绘制的。</p>
 <p>一个完全透明（或非常接近完全透明）的视图就像一个<code>isHidden</code>为<code>true</code>的视图：它和它的子视图都是不可见的，而且（通常）不能被触摸到。</p>
-<p>颜色也有一个<code>alpha</code>属性，这个值对于视图也有影响。一个视图的<code>alpha</code>值可以是<code>1.0</code>，但仍然有一个透明的背景，因为它的背景颜色的<code>alpha</code>值可能小于<code>1.0</code>。</p>
+<p>颜色也有一个<code>alpha</code>属性，这个值对于视图也有影响。一个视图的<code>alpha</code>值可以是<code>1.0</code>，但仍然可能有一个透明的背景色，因为它的背景颜色的<code>alpha</code>值可能小于<code>1.0</code>。</p>
 <h2 id="isopaque">isOpaque</h2>
 <p><code>isOpaque</code>属性不同于<code>isHidden</code>和<code>alpha</code>，改变<code>isOpaque</code>属性值<font color=Blue>对视图的外观没有影响，只是对视图系统的提示</font>。</p>
 <p>如果一个视图完全由不透明的物质填充并且它的<code>alpha</code>属性设置为<code>1.0</code>，那么视图就是完全不透明的，此时如果将视图的<code>isOpaque</code>属性设置为<code>true</code>，就可以更有效地进行绘制（<font color=red>对性能的拖累更小</font>）。</p>
