@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">8067</span>
+<span class="leancloud-visitors-count">8073</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -316,7 +316,7 @@ code.has-jax {
 <p>而在新的架构下，需要在<code>SceneDelegate</code>中的<code>scene（_:willConnectTo:options:）</code>方法做下面这些事情:</p>
 <ol>
 <li>
-<p>创建一个<code>UIWindow</code>的实例，并且将其赋值给<code>SceneDelegate</code>的<code>window</code>属性。通过调用<code>UIWindow</code>的初始化方法<code>init(windowScene:)</code>使得<code>window</code>和<code>window scene</code>来建立连接。</p>
+<p>创建一个<code>UIWindow</code>的实例，并且将其赋值给<code>SceneDelegate</code>的<code>window</code>属性。通过<font color=LightSeaGreen>调用<code>UIWindow</code>的初始化方法<code>init(windowScene:)</code>使得<code>window</code>和<code>window scene</code>来建立连接</font>。</p>
 </li>
 <li>
 <p>初始化一个视图控制器，并根据需要对其进行设置。</p>
@@ -342,7 +342,7 @@ code.has-jax {
 <h3 id="application">application</h3>
 <p><font color=LightSeaGreen>共享的<code>application</code>实例也保存了<code>window</code>的引用</font>，可以通过其<code>window</code>属性来访问，即<code>let w = UIApplication.shared.windows.first!</code>。</p>
 <h1 id="subview-and-superview">subview and superview</h1>
-<p>在之前，一个视图<font color=red>恰好拥有自己的矩形区域，即任何不属于该视图的子视图的视图都不能出现在该视图的里面</font>。因为当该视图重新绘制其矩形区域时，<font color=Blue>它会擦除其他视图的重叠部分</font>。视图的子视图的任何部分都不能出现在它的外面，因为该视图对它自己的矩形区域负责，而不是其他。</p>
+<p>在以前，一个视图<font color=red>恰好拥有自己的矩形区域，即任何不属于该视图的子视图的视图都不能出现在该视图的里面</font>。因为当该视图重新绘制其矩形区域时，<font color=Blue>它会擦除其他视图的重叠部分</font>。视图的子视图的任何部分都不能出现在它的外面，因为该视图对它自己的矩形区域负责，而不是其他。</p>
 <p>从<code>macOS 10.5</code>开始，Apple为视图绘制引入了一个全新的架构，<font color=red>完全解除了上面的所说的那些限制</font>。在<code>iOS</code>中，一个子视图的<font color=Blue>部分或全部可以出现在它的父视图之外</font>，一个视图可以与另一个视图重叠，可以部分或全部画在它的前面，而不成为它的子视图。</p>
 <p>如下图所示，有<code>3</code>个不同背景色的视图，每个视图和其他视图都有重叠。仅从视觉效果上是无法了解视图的层次结构的：</p>
 <p><img src="https://i.loli.net/2021/06/26/7HWhtNXYSLz9U16.jpg" alt="-c"></p>
@@ -366,8 +366,8 @@ code.has-jax {
 <p>如果一个视图的大小改变了，它的子视图也可能会自动调整大小。</p>
 </li>
 </ul>
-<p>视图均有<code>superview</code>和<code>subviews</code>属性，使用这两个属性可以追踪视图的层次结构。使用视图的<code>isDescendant(of:)</code>方法可以判断一个视图是否是另一个视图的子视图（任意深度）。</p>
-<p>如果想要引用特定的某个视图，可能需要为视图事先安排一个属性，<font color=red>可能是<code>outlet</code></font>；也可以为视图<font color=Blue>事先设置<code>tag</code>属性值</font>，然后通过调用<code>viewWithTag(_:)</code>来获取视图。</p>
+<p>每个视图均有<code>superview</code>和<code>subviews</code>属性，使用这两个属性可以<font color=Blue>追踪视图的层次结构</font>。使用视图的<code>isDescendant(of:)</code>方法可以判断一个视图是否是另一个视图的子视图（任意深度）。</p>
+<p>如果想要<font color=red>引用特定的某个视图</font>，可能需要为视图事先安排一个标记，<font color=red>可以是<code>outlet</code></font>；也可以为视图<font color=Blue>事先设置<code>tag</code>属性值</font>，然后通过调用<code>viewWithTag(_:)</code>来获取该特定的视图。</p>
 <p>视图的添加、删除和移动等都有相应的事件，这些事件的响应需要子类化。然后通过覆盖如下的方法便可以看到对应的调用：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">willRemoveSubview(<span style="color:#66d9ef">_</span>:), didAddSubview(<span style="color:#66d9ef">_</span>:)
 willMove(toSuperview:), didMoveToSuperview
