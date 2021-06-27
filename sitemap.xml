@@ -126,7 +126,7 @@ isOpaque isOpaque属性不同于isHidden和alpha，改变isOpaque属性值对视
 如果一个视图完全由不透明的物质填充并且它的alpha属性设置为1.0，那么视图就是完全不透明的，此时如果将视图的isOpaque属性设置为true，就可以更有效地进行绘制（对性能的拖累更小），否则应当将isOpaque设置为false。
 当设置isHidden和alpha的值时，isOpaque属性值并不会跟着变化。isOpaque属性值的设置完全取决你自己，它的默认值为true。
 Frame 每个view由一个frame属性（是一个矩形CGRect），表示在父视图的坐标系统中的位置。默认情况下，父视图的坐标系将以左上角为原点，X坐标向右正向增长，Y坐标向下正向增长。
-设置视图的frame值既可以重新改变视图的位置，也可以调整视图的大小，或者同时改变位置和大小。视图的frame属性值为CGRect.zero的话，则视图是不可见。
+设置视图的frame值既可以重新改变视图的位置，也可以调整视图的大小，或者同时改变位置和大小。UIView的指定初始化方法是init(frame:)，可以通过这种方式指定视图的frame。若视图的frame属性值为CGRect.zero的话，则视图是不可见。
 如果一个视图有一个你希望它采用的标准尺寸，特别是相对于它的内容（比如UIButton相对于它的标题）而言，除了改变frame，还可以调用其sizeToFit方法。
 如果一个视图使用nib进行初始化，那么不会调用其init(frame:)，调用的为init(coder:)方法。
 Bounds and Center Bounds 假设有一个父视图和子视图，子视图需要有10个point的嵌入，如下图所示，首先想到的是设置子视图的frame，但是该怎么设置？
