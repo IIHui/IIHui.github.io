@@ -63,7 +63,7 @@ window scene architecture 从iOS 13开始App的window默认由UIWindowScene来�
   在iOS 12及以前，是基于window的架构，window是app delegate的一个属性。如果项目是在XCode 10或者之前创建的，则默认使用这种老架构。
   在iOS 13及以后，是基于scene的架构，window是scene delegate的一个属性。如果项目是在XCode 11或之后创建的，则默认使用的是这种新架构。
   使用老window架构的App，如果在iOS 13及以后的版本中运行时，它会被赋予一个window scene，但是它不知道这个事实，并且功能不受影响，仍然运行在老架构上。但是，新window架构的App不能运行在iOS 12及以前的系统。
-如果需要新架构的App支持iOS 12以之前的系统，则需要将SceneDelegate的window属性复制到AppDelegate类中。然后在AppDelegate类将所有涉及UISceneSession的方法标记为@available(iOS 13.0, *)。最后在SceneDelegate类前将整个类标记为@available(iOS 13.0, *)。
+如果需要新架构的App支持iOS 12以之前的系统，则需要将SceneDelegate的window属性复制到AppDelegate类中。然后在AppDelegate类中将所有涉及UISceneSession的方法标记为@available(iOS 13.0, *)。最后在SceneDelegate类前将整个类标记为@available(iOS 13.0, *)即可。
 使用了上面的改动后，如果App运行在iOS 13及以后的系统中，则使用的是新架构，并且SceneDelegate持有window。如果在iOS 12及以前的系统中，则使用的是旧架构，AppDelegate持有window。
 如果想要在XCode 11以上创建的工程使用旧window架构，则需要先删除所有UISceneSession和SceneDelegate相关的代码，然后在info.plist中删除Application Scene Manifest入口，最后在AppDelegate中手动添加var window: UIWindow?即可。
 App Launches 在启动时，应用程序如何初始化window，以及该window如何被填充和显示？如果应用使用main storyboard，window的初始化和显示都会自动完成。但是，「自动」并不意味着「通过魔术」。
@@ -73,20 +73,21 @@ UIApplicationMain的处理是如何进行的，取决于你的应用程序是使
 新架构 以下是UIApplicationMain如何在iOS 13及更高版本上启动支持window scene的应用程序:
   UIAppplicationMain首先实例化UIApplication，并保留这个实例，将其作为共享的实例，可以在代码中可以使用UIApplication.shared来访问。接着根据@UIApplicationMain或@main来实例化AppDelegate，并保留这个实例，使得它在应用程序中的整个生命周期中都存在，可以使用UIApplication.shared.delegate来访问。
   接着UIApplicationMain会调用AppDelegate的application(_:didFinishLaunchingWithOptions:)方法，在这个方法中可以插入我们自己的代码。
-  然后UIAppplicationMain创建UISceneSession和UIWindowScene以及UIWindwScene代理类UIWindowSceneDelegate的实例。   UIAppplicationMain查看初始scene是否使用了storyboard，即在info.plist中的Application Scene Manifest字典下的Scene Configuration是否有Storyboard Name。若有，则对storybaord中指定的初始viewController进行初始化。
+  然后UIAppplicationMain创建UISceneSession和UIWindowScene以及UIWindwScene代理类UIWindowSceneDelegate的实例。   UIAppplicationMain查看初始scene是否使用了storyboard，即查看info.plist中Application Scene Manifest字典下的Scene Configuration是否有Storyboard Name。若有，则对storybaord中指定的初始viewController进行实例化。
   如果scene使用了storyboard，UIAppplicationMain则会实例化一个UIWindow并将这个实例赋值给SceneDelegate的window属性。
-  如果scene使用了storyboard，则将storyboard中的初始的viewController赋值给window实例的rootViewController属性。此时，初始ViewController的view变成了Window的唯一子视图。
+  如果scene使用了storyboard，则将storyboard中那个已经实例化的初始ViewController赋值给上一步已经实例化window的rootViewController属性。此时，初始ViewController的view变成了Window的唯一子视图。
   UIApplicationMain通过调用UIWindow实例方法makeKeyAndVisible，使你的应用程序的界面出现。
   scene的(_:willConnectTo:options:)被调用，在这个方法中也可以插入自己的代码。
   如果App启动时未使用storyboard，也就是说在老的架构中Info.plist中没有Main storyboard file base name条目。而在新的架构中，这意味着在Application Scene Manifest字典的Application Scene Configuration下没有Storyboard Name条目。
-此时需要在代码中完成有storyboard的情况下自动完成的所有事情。在旧的架构下，需要在app delegate的application(_:didFinishLaunchingWithOptions:)中做这些事情。在新的架构下，需要scene delegate的scene（_:willConnectTo:options:）中做这些事情:
-  创建一个UIWindow的实例，并且将其赋值给SceneDelegate的window属性。通过调用UIWindow的初始化函数init(windowScene:)使得window和window scene来建立连接。
-  初始化一个视图控制器，并根据需要对其进行配置。
+此时需要在代码中完成有storyboard的情况下自动完成的所有事情。在旧的架构下，需要在app delegate的application(_:didFinishLaunchingWithOptions:)中做这些事情。
+而在新的架构下，需要在SceneDelegate中的scene（_:willConnectTo:options:）方法做下面这些事情:
+  创建一个UIWindow的实例，并且将其赋值给SceneDelegate的window属性。通过调用UIWindow的初始化方法init(windowScene:)使得window和window scene来建立连接。
+  初始化一个视图控制器，并根据需要对其进行设置。
   将上一步实例化的视图控制器赋值给window的rootViewController属性。
   调用window的makeKeyAndVisible进行显示。
   引用window 一旦app运行，有多种方法引用window：➊包括从视图中引用；➋从SceneDelegate中引用；➌从application中引用。
 view 如果一个视图view在界面中，则该视图能通过自己的window属性引用到包含它的window。你的代码可能会在一个有main view的视图控制器中运行，所以self.view.window通常是引用window的最佳方式。
-也可以使用UIView的window属性来询问它是否最终被嵌入到window中；如果未嵌入到window中，则它的window属性为nil。一个window属性为nil的视图是对用户不可见的。
+也可以使用UIView的window属性来询问它是否最终被嵌入到window中。如果未嵌入到window中，则它的window属性为nil。一个window属性为nil的视图是对用户不可见的。
 scene delegate SceneDelegate实例保存了window的引用，可以通过window属性来访问。即使用sceneDelegate.window来访问，但访问sceneDelegate需要先使用let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate。
 application 共享的application实例也保存了window的引用，可以通过其window属性来访问，即let w = UIApplication.shared.windows.first!。
 subview and superview 在之前，一个视图恰好拥有自己的矩形区域，即任何不属于该视图的子视图的视图都不能出现在该视图的里面。因为当该视图重新绘制其矩形区域时，它会擦除其他视图的重叠部分。该视图的子视图的任何部分都不能出现在它的外面，因为该视图对它自己的矩形区域负责，而不是其他。
