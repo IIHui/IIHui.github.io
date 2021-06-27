@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">8068</span>
+<span class="leancloud-visitors-count">8067</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -275,7 +275,7 @@ code.has-jax {
 </ul>
 <p>使用老<code>window</code>架构的<code>App</code>，如果在<code>iOS 13</code>及以后的版本中运行时，它会被赋予一个<code>window scene</code>，但是它不知道这个事实，<font color=Blue>并且功能不受影响，仍然运行在老架构上</font>。但是，<font color=red>新<code>window</code>架构的<code>App</code>不能运行在<code>iOS 12</code>及以前的系统</font>。</p>
 <p>如果需要新架构的<code>App</code>支持<code>iOS 12</code>以之前的系统，则需要<font color=LightSeaGreen>将<code>SceneDelegate</code>的<code>window</code>属性复制到<code>AppDelegate</code>类中</font>。然后在<code>AppDelegate</code>类中<font color=red>将所有涉及</font><code>UISceneSession</code>的方法标记为<code>@available(iOS 13.0, *)</code>。最后在<code>SceneDelegate</code>类前将<font color=red>整个类</font>标记为<code>@available(iOS 13.0, *)</code>即可。</p>
-<p>使用了上面的改动后，如果<code>App</code>运行在<code>iOS 13</code>及以后的系统中，则<font color=red>使用的是新架构</font>，并且<code>SceneDelegate</code>持有<code>window</code>。如果在<code>iOS 12</code>及以前的系统中，则使用的是旧架构，<code>AppDelegate</code>持有<code>window</code>。</p>
+<p>进行如上的改动后，如果<code>App</code>运行在<code>iOS 13</code>及以后的系统中，则<font color=red>使用的是新架构</font>，并且<code>SceneDelegate</code>持有<code>window</code>。如果在<code>iOS 12</code>及以前的系统中，则使用的是旧架构，<code>AppDelegate</code>持有<code>window</code>。</p>
 <p>如果想要在<code>XCode 11</code>以上创建的工程使用旧<code>window</code>架构，则需要<font color=red>先删除所有<code>UISceneSession</code>和<code>SceneDelegate</code>相关的代码</font>，然后在<code>info.plist</code>中删除<code>Application Scene Manifest</code>入口，最后在<code>AppDelegate</code>中<font color=LightSeaGreen>手动添加</font><code>var window: UIWindow?</code>即可</font>。</p>
 <h2 id="app-launches">App Launches</h2>
 <p>在启动时，应用程序如何初始化<code>window</code>，以及该<code>window</code>如何被填充和显示？如果应用使用<code>main storyboard</code>，<code>window</code>的初始化和显示<font color=Blue>都会自动完成</font>。但是，「自动」并不意味着「通过魔术」。</p>
