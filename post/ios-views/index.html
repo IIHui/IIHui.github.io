@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">8063</span>
+<span class="leancloud-visitors-count">8062</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -342,7 +342,7 @@ code.has-jax {
 <h3 id="application">application</h3>
 <p><font color=LightSeaGreen>共享的<code>application</code>实例也保存了<code>window</code>的引用</font>，可以通过其<code>window</code>属性来访问，即<code>let w = UIApplication.shared.windows.first!</code>。</p>
 <h1 id="subview-and-superview">subview and superview</h1>
-<p>在之前，一个视图<font color=red>恰好拥有自己的矩形区域</font>，即任何不属于该视图的子视图的视图都不能出现在该视图的里面。因为当该视图重新绘制其矩形区域时，<font color=Blue>它会擦除其他视图的重叠部分</font>。该视图的子视图的任何部分都不能出现在它的外面，因为该视图对它自己的矩形区域负责，而不是其他。</p>
+<p>在之前，一个视图<font color=red>恰好拥有自己的矩形区域，即任何不属于该视图的子视图的视图都不能出现在该视图的里面</font>。因为当该视图重新绘制其矩形区域时，<font color=Blue>它会擦除其他视图的重叠部分</font>。视图的子视图的任何部分都不能出现在它的外面，因为该视图对它自己的矩形区域负责，而不是其他。</p>
 <p>从<code>macOS 10.5</code>开始，Apple为视图绘制引入了一个全新的架构，<font color=red>完全解除了上面的所说的那些限制</font>。在<code>iOS</code>中，一个子视图的<font color=Blue>部分或全部可以出现在它的父视图之外</font>，一个视图可以与另一个视图重叠，可以部分或全部画在它的前面，而不成为它的子视图。</p>
 <p>如下图所示，有<code>3</code>个不同背景色的视图，每个视图和其他视图都有重叠。仅从视觉效果上是无法了解视图的层次结构的：</p>
 <p><img src="https://i.loli.net/2021/06/26/7HWhtNXYSLz9U16.jpg" alt="-c"></p>
@@ -378,7 +378,7 @@ willMove(toWindow:), didMoveToWindow
 insertSubview(<span style="color:#66d9ef">_</span>:belowSubview:), insertSubview(<span style="color:#66d9ef">_</span>:aboveSubview:)
 exchangeSubview(at:withSubviewAt:)
 bringSubviewToFront(<span style="color:#66d9ef">_</span>:), sendSubviewToBack(<span style="color:#66d9ef">_</span>:)
-</code></pre></div><p>但是，没有提供一次性删除一个视图的所有子视图的方法。一个视图的子视图数组是内部子视图列表的一个不可变的副本。因此，需要使用<code>for</code>循环来删除所有子视图：</p>
+</code></pre></div><p>但是，<font color=Blue>没有提供一次性删除一个视图的所有子视图的方法</font>。一个视图的子视图数组是内部子视图列表的一个不可变的副本。因此，需要使用<code>for</code>循环来删除所有子视图：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">myView.subviews.forEach {$0.removeFromSuperview()}
 </code></pre></div><h2 id="color">color</h2>
 <p>视图可以通过其<code>backgroundColor</code>属性设置一个背景色，<font color=LightSeaGreen>如果<code>backgroundColor</code>属性值为<code>nil</code>，则视图的背景色为透明</font>。</p>
