@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">7974</span>
+<span class="leancloud-visitors-count">8063</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">16 分钟</span>
+<span class="leancloud-visitors-count">17 分钟</span>
 </span>
       </div>
     </header>
@@ -335,8 +335,10 @@ code.has-jax {
 <h3 id="view">view</h3>
 <p>如果一个视图<code>view</code>在界面中，则该视图<font color=red>能通过自己的<code>window</code>属性引用到包含它的<code>window</code></font>。你的代码可能会在一个有<code>main view</code>的视图控制器中运行，所以<code>self.view.window</code>通常是引用<code>window</code>的最佳方式。</p>
 <p>也可以使用<code>UIView</code>的<code>window</code>属性<font color=LightSeaGreen>来询问它是否最终被嵌入到<code>window</code>中</font>。如果未嵌入到<code>window</code>中，则它的<code>window</code>属性为<code>nil</code>。一个<code>window</code>属性为<code>nil</code>的视图是<font color=Blue>对用户不可见的</font>。</p>
-<h3 id="scene-delegate">scene delegate</h3>
-<p><code>SceneDelegate</code>实例保存了<code>window</code>的引用，可以通过<code>window</code>属性来访问。即使用<code>sceneDelegate.window</code>来访问，但访问<code>sceneDelegate</code>需要先使用<code>let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate</code>。</p>
+<h3 id="scenedelegate-或appdelegate">sceneDelegate 或appDelegate</h3>
+<p><code>SceneDelegate</code>实例保存了<code>window</code>的引用，可以通过<code>window</code>属性来访问。即使用<code>sceneDelegate.window</code>来访问。</p>
+<p>但访问<code>sceneDelegate</code>需要先使用<code>let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate</code>来获取。</p>
+<p>如果使用的是旧<code>window</code>架构，则需要使用<code>AppDelegate</code>来访问，即<code> UIApplication.shared.delegate?.window</code>。</p>
 <h3 id="application">application</h3>
 <p><font color=LightSeaGreen>共享的<code>application</code>实例也保存了<code>window</code>的引用</font>，可以通过其<code>window</code>属性来访问，即<code>let w = UIApplication.shared.windows.first!</code>。</p>
 <h1 id="subview-and-superview">subview and superview</h1>
@@ -647,7 +649,7 @@ open <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">convert
         <li><a href="#引用window">引用window</a>
           <ul>
             <li><a href="#view">view</a></li>
-            <li><a href="#scene-delegate">scene delegate</a></li>
+            <li><a href="#scenedelegate-或appdelegate">sceneDelegate 或appDelegate</a></li>
             <li><a href="#application">application</a></li>
           </ul>
         </li>

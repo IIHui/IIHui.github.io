@@ -88,7 +88,9 @@ UIApplicationMain的处理是如何进行的，取决于你的应用程序是使
   引用window 一旦app运行，有多种方法引用window：➊包括从视图中引用；➋从SceneDelegate中引用；➌从application中引用。
 view 如果一个视图view在界面中，则该视图能通过自己的window属性引用到包含它的window。你的代码可能会在一个有main view的视图控制器中运行，所以self.view.window通常是引用window的最佳方式。
 也可以使用UIView的window属性来询问它是否最终被嵌入到window中。如果未嵌入到window中，则它的window属性为nil。一个window属性为nil的视图是对用户不可见的。
-scene delegate SceneDelegate实例保存了window的引用，可以通过window属性来访问。即使用sceneDelegate.window来访问，但访问sceneDelegate需要先使用let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate。
+sceneDelegate 或appDelegate SceneDelegate实例保存了window的引用，可以通过window属性来访问。即使用sceneDelegate.window来访问。
+但访问sceneDelegate需要先使用let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate来获取。
+如果使用的是旧window架构，则需要使用AppDelegate来访问，即 UIApplication.shared.delegate?.window。
 application 共享的application实例也保存了window的引用，可以通过其window属性来访问，即let w = UIApplication.shared.windows.first!。
 subview and superview 在之前，一个视图恰好拥有自己的矩形区域，即任何不属于该视图的子视图的视图都不能出现在该视图的里面。因为当该视图重新绘制其矩形区域时，它会擦除其他视图的重叠部分。该视图的子视图的任何部分都不能出现在它的外面，因为该视图对它自己的矩形区域负责，而不是其他。
 从macOS 10.5开始，Apple为视图绘制引入了一个全新的架构，完全解除了上面的所说的那些限制。在iOS中，一个子视图的部分或全部可以出现在它的父视图之外，一个视图可以与另一个视图重叠，可以部分或全部画在它的前面，而不成为它的子视图。
