@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">8244</span>
+<span class="leancloud-visitors-count">8468</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -394,7 +394,12 @@ bringSubviewToFront(<span style="color:#66d9ef">_</span>:), sendSubviewToBack(<s
     }
 }
 </code></pre></div><p>从<code>iOS 13</code>开始，系统提供了许多预置的动态颜色，其中大部分的名称都是以<code>.system</code>开头的，比如<code>.systemYellow</code>；其他的则是描述其作用的语义名称，比如<code>.label</code>。</p>
+<p>现在可以在资产目录中设计一个自定义命名的颜色。当创建一个新的颜色集时，属性检查器中的 「外观」弹出菜单显示为「任意」、「暗色」，并且有两个颜色色块，一个用于暗色模式，另一个用于其他一切；依次选择每个色块并在属性检查器中设计颜色：</p>
 <p><img src="https://i.loli.net/2021/06/27/knrG5zj296RLqmD.jpg" alt="-c"></p>
+<p>上面自定义命名的颜色，就是动态的。比方说，我们在资产目录中的颜色集被称为<code>myDarkColor</code>，那么可以使用如下方式使用:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">v.backgroundColor = UIColor(named: <span style="color:#e6db74">&#34;myDarkColor&#34;</span>)
+</code></pre></div><p>当你选择一个视图时，资产目录中的自定义命名颜色也会出现在库中和属性检查器中的颜色弹出菜单中:</p>
+<p><img src="https://i.loli.net/2021/06/27/6S3L2ejsEcHtanC.jpg" alt="-c"></p>
 <h1 id="可见性和透明度">可见性和透明度</h1>
 <p>视图的可见性和不透明度跟<code>3</code>个属性相关，它们分别是<code>isHidden</code>，<code>alpha</code>，<code>isOpaque</code>，下面开始一一介绍。</p>
 <h2 id="ishidden">isHidden</h2>

@@ -112,6 +112,9 @@ myView.subviews.forEach {$0.removeFromSuperview()} color 视图可以通过其ba
 color是UIColor，通常使用red,blue,green和alpha（其值为0~1）之间组成，如下所示：
 v.backgroundColor = UIColor(red: 0, green: 0.1, blue: 0.1, alpha: 1) 自iOS 13开始出现了暗色模式，为了适配需要使用动态颜色，即使用UIColor的初始化函数init(dynamicProvider:)来进行适配，下面是创建一个自定义的动态颜色：
 v1.backgroundColor = UIColor { tc in switch tc.userInterfaceStyle { case .dark: return UIColor(red: 0.3, green: 0.4, blue: 0.4, alpha: 1) case .light: return UIColor(red: 0, green: 0.1, blue: 0.1, alpha: 1) } } 从iOS 13开始，系统提供了许多预置的动态颜色，其中大部分的名称都是以.system开头的，比如.systemYellow；其他的则是描述其作用的语义名称，比如.label。
+现在可以在资产目录中设计一个自定义命名的颜色。当创建一个新的颜色集时，属性检查器中的 「外观」弹出菜单显示为「任意」、「暗色」，并且有两个颜色色块，一个用于暗色模式，另一个用于其他一切；依次选择每个色块并在属性检查器中设计颜色：
+上面自定义命名的颜色，就是动态的。比方说，我们在资产目录中的颜色集被称为myDarkColor，那么可以使用如下方式使用:
+v.backgroundColor = UIColor(named: &amp;#34;myDarkColor&amp;#34;) 当你选择一个视图时，资产目录中的自定义命名颜色也会出现在库中和属性检查器中的颜色弹出菜单中:
 可见性和透明度 视图的可见性和不透明度跟3个属性相关，它们分别是isHidden，alpha，isOpaque，下面开始一一介绍。
 isHidden 视图可以通过将其isHidden属性设置为true而变得不可见，并通过将其设置为false 而再次变成可见。被隐藏的视图（通常）不会收到触摸事件，所以对用户来说，就如同该视图不存在一样。
 alpha 一个视图可以通过其alpha属性使其部分或完全透明。alpha属性的取值可以在0～1.0，1.0表示完全不透明，0.0表示完全透明。alpha属性既能影响视图的背景色也会影响其内容的透明度。
