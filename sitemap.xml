@@ -130,7 +130,7 @@ Frame 每个view由一个frame属性（是一个矩形CGRect），表示在父�
 如果一个视图有一个你希望它采用的标准尺寸，特别是相对于它的内容（比如UIButton相对于它的标题）而言，除了改变frame，还可以调用其sizeToFit方法。
 如果一个视图使用nib进行初始化，那么不会调用其init(frame:)，调用的为init(coder:)方法。
 Bounds and Center Bounds 如下图所示，假设有一个父视图和子视图，子视图需要有10个point的镶边，首先想到的是设置子视图的frame，但是该怎么设置？
-CGRect有个insetBy(dx:dy:)方法可以从一个矩形中衍生出另一个矩形并嵌入。但是应该从哪个矩形中嵌入内呢？不是从父视图的frame，因为frame代表一个视图在其父视图中的位置，并且是父视图的坐标系中的位置。
+CGRect有个insetBy(dx:dy:)方法可以从一个矩形中衍生出另一个矩形并嵌入。但是应该从哪个矩形中嵌入呢？不是从父视图的frame，因为frame代表一个视图在其父视图中的位置，并且是父视图的坐标系中的位置。
 应当找一个用来描述父视图在其自身坐标中的矩形CGRect，因为这是子视图的frame所要表达的frame。描述视图在其自身坐标中的矩形的CGRect是视图的bounds属性。
 如果改变一个视图的bounds属性的size值，则会影响到其frame属性的size值。视图frame属性size的变化是围绕其中心点进行的，即中心点保持不变：
 let v1 = UIView(frame:CGRect(113, 111, 132, 194)) v1.backgroundColor = UIColor(red: 1, green: 0.4, blue: 1, alpha: 1) let v2 = UIView(frame:v1.bounds.insetBy(dx: 10, dy: 10)) v2.backgroundColor = UIColor(red: 0.5, green: 1, blue: 0, alpha: 1) self.view.addSubview(v1) v1.addSubview(v2) 如果改变一个视图的bounds的size，那么它的frame也会发生变化。视图的frame的变化是围绕其center来的&amp;mdash;中心点不变：
