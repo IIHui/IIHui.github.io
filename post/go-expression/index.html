@@ -271,16 +271,14 @@ code.has-jax {
 </span><span style="color:#75715e"></span>}
 <span style="color:#a6e22e">p</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">a</span>
 <span style="color:#f92672">*</span><span style="color:#a6e22e">p</span><span style="color:#f92672">++</span> <span style="color:#75715e">//优先级一样等价于(*p)++
-</span></code></pre></div><hr>
-<h2 id="指针类型">指针类型</h2>
+</span></code></pre></div><h2 id="指针类型">指针类型</h2>
 <p>指针类型支持相等运算符，但<font color=red>不支持做加减运算和类型转换</font>。</p>
 <p>指针<font color=red>没有专门指向成员的<code>-&gt;</code> 运算符</font>，统一使用<code>.</code>来选择表达式，编译器会自动做转换。</p>
 <p>零长度对象的地址是否相等和<font color=Blue>具体的实现版本有关</font>，但是绝对不等于<code>nil</code>。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span> <span style="color:#66d9ef">struct</span>{}
 print(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">a</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">b</span>)                    <span style="color:#75715e">//xc420039f56 0xc420039f56
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">a</span> <span style="color:#f92672">==</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">b</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">a</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span>) <span style="color:#75715e">//true false
-</span></code></pre></div><hr>
-<h2 id="复合类型初始化">复合类型初始化</h2>
+</span></code></pre></div><h2 id="复合类型初始化">复合类型初始化</h2>
 <p>对复合类型（数组、切片、字典、结构体）变量初始化时，要遵循如下原则</p>
 <ul>
 <li>
@@ -296,7 +294,6 @@ print(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">a</spa
 <p>允许多行，但<font color=red>每行须以逗号或者右花括号结束</font>。</p>
 </li>
 </ul>
-<hr>
 <h2 id="流控制">流控制</h2>
 <p>Go语言中仅支持三种控制语句，分别是<code>if</code>、<code>switch</code>、<code>for</code>。不同于其他语言，这3种控制语句中<font color=red>均可以有预处理语句</font>「大多数情况下是变量定义」。</p>
 <h3 id="if-语句">if 语句</h3>
