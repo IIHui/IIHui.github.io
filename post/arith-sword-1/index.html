@@ -305,7 +305,6 @@ CMyString <span style="color:#f92672">&amp;</span>CMyString<span style="color:#f
 }
 </code></pre></div><p>在这个赋值操作符重载函数中，首先创建了一个临时变量<code>tmp</code>，<font color=red>如果分配内存不成功的话，那么会抛出<code>bad_alloc</code>异常，此时也不会修改原来的对象实例</font>。</p>
 <p>如果正常分配的话，因为<font color=Blue><code>tmp</code>是临时变量，所以在<code>if</code>的作用域结束之后，那么会自动调用析构函数，此时就会析构掉<code>tmp.pdata</code>所指向的内存</font>。因为<code>tmp.pdata</code>已经和<code>pdata</code>交换了，所以这相当于自动调用析构函数释放实例的内存。</p>
-<hr>
 <h2 id="从尾到头打印链表">从尾到头打印链表</h2>
 <p>从尾到头打印链表中的元素，有两种解决方法，一种是递归算法，另一种是利用栈来实现非递归算法。下面是递归算法的实现：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">recPrintLinkedList</span>(LinkedNode <span style="color:#f92672">*</span>head)
