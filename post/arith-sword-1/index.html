@@ -382,8 +382,7 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
 {
   <span style="color:#66d9ef">return</span> stack2.top();
 }
-</code></pre></div><hr>
-<h2 id="两个队列实现一个栈">两个队列实现一个栈</h2>
+</code></pre></div><h2 id="两个队列实现一个栈">两个队列实现一个栈</h2>
 <p><font color=red>总是保持一个队列是空</font>，出栈的时候将不空的那个队列的前$n-1$个元素都放到空的那个队列里，然后出剩下的那一个元素；入队的时候入到不空的那个队列里。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span>  T<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">queueStack</span>
 {
@@ -443,8 +442,7 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
     <span style="color:#66d9ef">else</span>
        <span style="color:#66d9ef">throw</span> <span style="color:#a6e22e">string</span>(<span style="color:#e6db74">&#34;Error!&#34;</span>);
 }
-</code></pre></div><hr>
-<h2 id="快速排序">快速排序</h2>
+</code></pre></div><h2 id="快速排序">快速排序</h2>
 <p>快速排序中，基准元素的选择有<code>3</code>种方式：①选择待排序区间左边的第一个元素。②选择待排序空间的中间元素。③随机从待排序区间中选择一个元素。下面的代码是随机选择基准元素：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">quickSortPartition</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>input, <span style="color:#66d9ef">int</span> length, <span style="color:#66d9ef">int</span> start, <span style="color:#66d9ef">int</span> end)
 {
@@ -489,8 +487,7 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
     <span style="color:#66d9ef">if</span> (end <span style="color:#f92672">&gt;</span> index)
         quickSortMore(input,length,index<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>,end);
 }
-</code></pre></div><hr>
-<h2 id="旋转数组中的最小值">旋转数组中的最小值</h2>
+</code></pre></div><h2 id="旋转数组中的最小值">旋转数组中的最小值</h2>
 <p>把<font color=Blue>一个数组的最开始的若干元素移动到数组的末尾</font>，称之为数组的旋转。输入一个递增的数组的一个旋转，找到数组中的最小元素。</p>
 <p>最简单的方法是从头到尾遍历一遍数组，就可以找到最小的元素，但是<font color=red>这种方法没有用到旋转数组的前部和后部是有序这一特点</font>。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">findSpinArrayMin</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">int</span> length)
