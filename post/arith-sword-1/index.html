@@ -534,8 +534,7 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
     }
     <span style="color:#66d9ef">return</span> result;
 }
-</code></pre></div><hr>
-<h2 id="斐波那契数列">斐波那契数列</h2>
+</code></pre></div><h2 id="斐波那契数列">斐波那契数列</h2>
 <p>首先根据定义很容易想到递归算法，但是递归算法会重复计算很多次，所以实际上浪费了很多资源</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">long</span> <span style="color:#66d9ef">long</span> <span style="color:#a6e22e">recFibonacci</span>(<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> n)
 {
@@ -561,8 +560,7 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
 
     <span style="color:#66d9ef">return</span> result;
 }
-</code></pre></div><hr>
-<h2 id="数组的整数次方">数组的整数次方</h2>
+</code></pre></div><h2 id="数组的整数次方">数组的整数次方</h2>
 <p>实现函数<code>double power(double base,int exponent)</code>,求 <code>base</code>的<code>expoent</code>次方，不使用库函数，同时不考虑大数问题。但是在这个问题上需要考虑base接近于0的情况。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">double</span> <span style="color:#a6e22e">power</span>(<span style="color:#66d9ef">double</span> base, <span style="color:#66d9ef">int</span> exponent)
 {
@@ -607,8 +605,7 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
 
     <span style="color:#66d9ef">return</span> result;
 }
-</code></pre></div><hr>
-<h2 id="打印1到最大的n位数">打印1到最大的n位数</h2>
+</code></pre></div><h2 id="打印1到最大的n位数">打印1到最大的n位数</h2>
 <p>输入数字 n，打印1到最大的 n 位十进制数</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">printNdigits</span>(<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> n)
 {
@@ -697,8 +694,7 @@ T <span style="color:#f92672">&amp;</span>stackQueue<span style="color:#f92672">
         recPrintNdigits(digits,length,index<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>);
     }
 }
-</code></pre></div><hr>
-<h2 id="在o1时间内删除节点">在O(1)时间内删除节点</h2>
+</code></pre></div><h2 id="在o1时间内删除节点">在O(1)时间内删除节点</h2>
 <p>在 $O(1)$ 时间复杂度内删除某个节点,假设要删除的节点一定在链表中。如果删除的不是尾节点，则只要将它的下一个节点的数据移到该节点即可。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">deleteLinkedNode</span>(LinkedNode <span style="color:#f92672">*</span> <span style="color:#f92672">&amp;</span>root, LinkedNode <span style="color:#f92672">*</span> key)
 {
