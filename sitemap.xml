@@ -56,7 +56,7 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 设置文�
 然后选中Profile，在Build Configuration一栏中选择Debug，在Executable一栏中选择要调试的App，然后点close即可完成设置，如下图：
 唤起Instruments 设置完成后，便可在菜单栏的Product目录下看到Profile不再是灰色，点击选中便可唤出Instrucments面板，然后选中Leaks:
 Leaks 上一步选中Leaks后，便会打开Leaks面板，点击左上角的红色圆圈按钮，便可进行内存检测，如下图所示：
-如果在运行中过程中在下图上半部分的Leaks栏中发现有红色X，则说明有内存泄漏。鼠标点击Leaks这一栏，就可以看到内存泄漏的具体信息：
+定位代码 如果在运行中过程中在下图上半部分的Leaks栏中发现有红色X，则说明有内存泄漏。鼠标点击Leaks这一栏，就可以看到内存泄漏的具体信息：
 </content>
     </entry>
     
