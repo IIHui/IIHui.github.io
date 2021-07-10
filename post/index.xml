@@ -6,7 +6,7 @@
     <description>Recent content in Posts on Keep It Simple</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 28 May 2021 23:17:52 +0000</lastBuildDate><atom:link href="https://iihui.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 09 Jul 2021 21:55:28 +0000</lastBuildDate><atom:link href="https://iihui.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hugo Next 主题</title>
       <link>https://iihui.github.io/post/hugo-next/</link>
@@ -14,6 +14,15 @@
       
       <guid>https://iihui.github.io/post/hugo-next/</guid>
       <description>从兰陵子处下载了Next主题，修改了主题目录下的config.toml配置文件(配置文件路径为themes/next/config.toml)。但发现有很多地方还是需要修改才能满足自己的需求，因为对前端了解较少，以此为记。 修改主题 首先从这里</description>
+    </item>
+    
+    <item>
+      <title>Leaks内存检测</title>
+      <link>https://iihui.github.io/post/ios-leaks/</link>
+      <pubDate>Fri, 09 Jul 2021 21:55:28 +0000</pubDate>
+      
+      <guid>https://iihui.github.io/post/ios-leaks/</guid>
+      <description>最近有用户反馈App出现了闪退现象，但是查后台发现并没有崩溃日志上传，猜测是发生了内存溢出，App被系统杀掉了。为了验证此猜测，需要使用XCode的Leaks工具，这篇文件用于介绍使用Leaks。</description>
     </item>
     
     <item>

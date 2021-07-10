@@ -43,6 +43,19 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 设置文�
     </entry>
     
      <entry>
+        <title>Leaks内存检测</title>
+        <url>https://iihui.github.io/post/ios-leaks/</url>
+        <categories>
+          <category>iOS</category>
+        </categories>
+        <tags>
+          <tag>iOS</tag>
+        </tags>
+        <content type="html">  最近有用户反馈App出现了闪退现象，但是查后台发现并没有崩溃日志上传，猜测是发生了内存溢出，App被系统杀掉了。为了验证此猜测，需要使用XCode的Leaks工具，这篇文件用于介绍使用Leaks。
+ </content>
+    </entry>
+    
+     <entry>
         <title>视图</title>
         <url>https://iihui.github.io/post/ios-views/</url>
         <categories>
