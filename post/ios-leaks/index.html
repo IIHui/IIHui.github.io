@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">98</span>
+<span class="leancloud-visitors-count">262</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -255,6 +255,11 @@ code.has-jax {
     <blockquote>
 <p>最近有用户反馈<code>App</code>出现了闪退现象，但是查后台发现并没有崩溃日志上传，猜测是发生了内存溢出，<code>App</code>被系统杀掉了。为了验证此猜测，需要使用<code>XCode</code>的<code>Leaks</code>工具，这篇文件用于介绍使用<code>Leaks</code>。</p>
 </blockquote>
+<h1 id="设置">设置</h1>
+<p>首先在<code>XCode</code>的菜单栏中找到<code>Product</code>，然后看子菜单中的<code>Profile</code>是否为灰色，若为灰色表示不能使用，需要<code>schems</code>处选择<code>Edit Scheme ...</code>，如下所示：</p>
+<p><img src="https://i.loli.net/2021/07/10/yt1OKXGImoWAfDi.jpg" alt="-c"></p>
+<p>然后选中<code>Profile</code>，在<code>Build Configuration</code>一栏中选择<code>Debug</code>，在<code>Excuted</code>一栏中选择要调试的<code>App</code>，然后点<code>close</code>即可完成设置，如下图：</p>
+<p><img src="https://i.loli.net/2021/07/10/R3OB5bCiPvpKdYG.jpg" alt="-c"></p>
 
     </div>
     <footer class="post-footer">
@@ -416,7 +421,11 @@ code.has-jax {
     
 <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
     <div class="post-toc">
-        <div class="post-toc-content"><nav id="TableOfContents"></nav></div>
+        <div class="post-toc-content"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#设置">设置</a></li>
+  </ul>
+</nav></div>
     </div>
 </section>
 
