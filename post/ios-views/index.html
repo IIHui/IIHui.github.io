@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">8820</span>
+<span class="leancloud-visitors-count">8822</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -418,9 +418,9 @@ sendSubviewToBack(<span style="color:#66d9ef">_</span>:)
 <p>如果一个视图完全由不透明的物质填充并且它的<code>alpha</code>属性设置为<code>1.0</code>，那么视图就是完全不透明的，此时如果将视图的<code>isOpaque</code>属性设置为<code>true</code>，就可以更有效地进行绘制（<font color=red>对性能的拖累更小</font>），否则应当将<code>isOpaque</code>设置为<code>false</code>。</p>
 <p>当设置<code>isHidden</code>和<code>alpha</code>的值时，<code>isOpaque</code>属性值<font color=red>并不会跟着变化</font>。<code>isOpaque</code>属性值的设置完全取决你自己，它的默认值为<code>true</code>。</p>
 <h1 id="frame">Frame</h1>
-<p>每个<code>view</code>由一个<code>frame</code>属性（是一个矩形<code>CGRect</code>），表示在<font color=red>父视图的坐标系统中的位置</font>。默认情况下，父视图的坐标系将以左上角为原点，X坐标向右正向增长，Y坐标向下正向增长。</p>
+<p>每个<code>view</code>都有<code>frame</code>属性（是一个由<code>CGRect</code>表示的矩形，表示在<font color=red>父视图的坐标系统中的位置</font>。默认情况下，父视图的坐标系将以左上角为原点，<code>X</code>坐标向右正向增长，<code>Y</code>坐标向下正向增长。</p>
 <p>设置视图的<code>frame</code>值<font color=Blue>既可以重新改变视图的位置，也可以调整视图的大小，或者同时改变位置和大小</font>。<code>UIView</code>的指定初始化方法是<code>init(frame:)</code>，可以通过这种方式指定视图的<code>frame</code>。若视图的<code>frame</code>属性值为<code>CGRect.zero</code>的话，则视图是不可见。</p>
-<p>如果一个视图有一个你希望它采用的标准尺寸，特别是相对于它的内容（比如<code>UIButton</code>相对于它的标题）而言，除了改变<code>frame</code>，还可以调用其<code>sizeToFit</code>方法。</p>
+<p>如果一个视图有一个你希望它采用的标准尺寸，特别是相对于它的内容（例如<code>UIButton</code>相对于它的标题）而言，除了改变<code>frame</code>，还可以调用其<code>sizeToFit</code>方法。</p>
 <p>如果一个视图使用<code>nib</code>进行初始化，<font color=red>那么不会调用其<code>init(frame:)</code>，调用的为<code>init(coder:)</code>方法</font>。</p>
 <h1 id="bounds-and-center">Bounds and Center</h1>
 <h2 id="bounds">Bounds</h2>
