@@ -112,8 +112,7 @@ UIApplicationMain的处理是如何进行的，取决于你的应用程序是使
   引用window 一旦app运行，有多种方法引用window：➊包括从视图中引用；➋从SceneDelegate中引用；➌从application中引用。
 view 如果一个视图view在界面中，则该视图能通过自己的window属性引用到包含它的window。你的代码可能会在一个有main view的视图控制器中运行，所以self.view.window通常是引用window的最佳方式。
 也可以使用UIView的window属性来询问它是否最终被嵌入到window中。如果未嵌入到window中，则它的window属性为nil。一个window属性为nil的视图是对用户不可见的。
-sceneDelegate 或appDelegate SceneDelegate实例保存了window的引用，可以通过window属性来访问。即使用sceneDelegate.window来访问。
-但访问sceneDelegate需要先使用let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate来获取。
+sceneDelegate 或appDelegate SceneDelegate实例保存了window的引用，可以通过window属性来访问。即使用sceneDelegate.window来访问。但访问sceneDelegate需要先使用let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate来获取。
 如果使用的是旧window架构，则需要使用AppDelegate来访问，即 UIApplication.shared.delegate?.window。
 application 共享的application实例也保存了window的引用，可以通过其window属性来访问，即let w = UIApplication.shared.windows.first!。
 subview and superview 在以前，一个视图恰好拥有自己的矩形区域，即任何不属于该视图的子视图的视图都不能出现在该视图的里面。因为当该视图重新绘制其矩形区域时，它会擦除其他视图的重叠部分。视图的子视图的任何部分都不能出现在它的外面，因为该视图对它自己的矩形区域负责，而不是其他。
@@ -123,22 +122,21 @@ subview and superview 在以前，一个视图恰好拥有自己的矩形区域�
 如果是在storyboard中创建的视图或者nib，则视图的层级结构可以通过菜单栏的Editor--&amp;gt;Arrange下面的子选项来改变：
   如果一个视图从它的父视图中移除，则它的所有子视图也会被移除
   一个视图的透明度会被它的子视图所继承。
-  视图可以选择性地限制其子视图的绘制，使其在视图之外的任何部分都不被显示。这就是所谓的剪裁，可以通过视图的clipsToBounds属性来设置。
+  视图可以选择性地限制其子视图的绘制，使其在视图之外的任何部分都不被显示，这就是所谓的剪裁，可以通过视图的clipsToBounds属性来设置。
   在内存管理的意义上，父视图拥有它的子视图，就像一个数组拥有它的元素一样：它保留它的子视图，并且当一个子视图从这个视图的子视图集合中移除时，或者当父级视图本身不存在时，才会释放该子视图。
   如果一个视图的大小改变了，它的子视图也可能会自动调整大小。
   每个视图均有superview和subviews属性，使用这两个属性可以追踪视图的层次结构。使用视图的isDescendant(of:)方法可以判断一个视图是否是另一个视图的子视图（任意深度）。
 如果想要引用特定的某个视图，可能需要为视图事先安排一个标记，可以是outlet；也可以为视图事先设置tag属性值，然后通过调用viewWithTag(_:)来获取该特定的视图。
 视图的添加、删除和移动等都有相应的事件，这些事件的响应需要子类化。然后通过覆盖如下的方法便可以看到对应的调用：
-willRemoveSubview(_:), didAddSubview(_:) willMove(toSuperview:), didMoveToSuperview willMove(toWindow:), didMoveToWindow 如果addSubview(_:)被调用，则视图将放在父视图的所有子视图的最后边「即最上边」，也就是最后才绘制，这意味着它将出现在最前面。
+willRemoveSubview(_:) didAddSubview(_:) willMove(toSuperview:) didMoveToSuperview willMove(toWindow:) didMoveToWindow 如果addSubview(_:)被调用，则视图将放在父视图的所有子视图的最后边「即最上边」，也就是最后才绘制，这意味着它将出现在最前面。
 视图的子视图是有索引的，从0开始。可以在给定的索引或特定视图的下面（后面）或上面（前面）插入一个子视图；也可以通过索引交换两个同级视图；还可以将一个子视图一直移动到其同级的前面或后面。
-insertSubview(_:at:) insertSubview(_:belowSubview:), insertSubview(_:aboveSubview:) exchangeSubview(at:withSubviewAt:) bringSubviewToFront(_:), sendSubviewToBack(_:) 但是，没有提供一次性删除一个视图的所有子视图的方法。一个视图的子视图数组是内部子视图列表的一个不可变的副本。因此，需要使用for循环来删除所有子视图：
-myView.subviews.forEach {$0.removeFromSuperview()} color 视图可以通过其backgroundColor属性设置一个背景色，如果backgroundColor属性值为nil，则视图的背景色为透明。
-color是UIColor，通常使用red,blue,green和alpha（其值为0~1）之间组成，如下所示：
-v.backgroundColor = UIColor(red: 0, green: 0.1, blue: 0.1, alpha: 1) 自iOS 13开始出现了暗色模式，为了适配需要使用动态颜色，即使用UIColor的初始化函数init(dynamicProvider:)来进行适配，下面是创建一个自定义的动态颜色：
-v1.backgroundColor = UIColor { tc in switch tc.userInterfaceStyle { case .dark: return UIColor(red: 0.3, green: 0.4, blue: 0.4, alpha: 1) case .light: return UIColor(red: 0, green: 0.1, blue: 0.1, alpha: 1) } } 从iOS 13开始，系统提供了许多预置的动态颜色，其中大部分的名称都是以.system开头的，比如.systemYellow；其他的则是描述其作用的语义名称，比如.label。
-现在可以在资产目录中设计一个自定义命名的颜色。当创建一个新的颜色集时，属性检查器中的 「外观」弹出菜单显示为「任意」、「暗色」，并且有两个颜色色块，一个用于暗色模式，另一个用于其他一切；依次选择每个色块并在属性检查器中设计颜色：
+insertSubview(_:at:) insertSubview(_:belowSubview:) insertSubview(_:aboveSubview:) exchangeSubview(at:withSubviewAt:) bringSubviewToFront(_:) sendSubviewToBack(_:) 但是，没有提供一次性删除一个视图的所有子视图的方法。一个视图的子视图数组是内部子视图列表的一个不可变的副本。因此，需要使用for循环来删除所有子视图：
+myView.subviews.forEach {$0.removeFromSuperview()} color 视图可以通过其backgroundColor属性设置一个背景色，如果backgroundColor属性值为nil，则视图的背景色为透明。backgroundColor即是UIColor的实例，通常使用red,blue,green和alpha（其值为0~1）来定义：
+v.backgroundColor = UIColor(red: 0, green: 0.1, blue: 0.1, alpha: 1) 自iOS 13开始出现了深色模式，为了适配需要使用动态颜色，即使用UIColor的初始化函数init(dynamicProvider:)来进行适配，下面是创建一个自定义的动态颜色：
+v1.backgroundColor = UIColor { tc in switch tc.userInterfaceStyle { case .dark: return UIColor(red: 0.3, green: 0.4, blue: 0.4, alpha: 1) case .light: return UIColor(red: 0, green: 0.1, blue: 0.1, alpha: 1) } } 从iOS 13开始，系统提供了许多预置的动态颜色，其中大部分的名称都是以.system开头的，比如.systemYellow，其它的则是描述其作用的语义名称，比如.label。
+现在可以在资产目录中设计一个自定义命名的颜色。当创建一个新的颜色集时，属性检查器中的 「外观」弹出菜单显示为「任意」、「暗色」，并且有两个颜色色块，一个用于深色模式，另一个用于其它一切；依次选择每个色块并在属性检查器中设计颜色：
 上面自定义命名的颜色，就是动态的。比方说，我们在资产目录中的颜色集被称为myDarkColor，那么可以使用如下方式使用:
-v.backgroundColor = UIColor(named: &amp;#34;myDarkColor&amp;#34;) 当你选择一个视图时，资产目录中的自定义命名颜色也会出现在库中和属性检查器中的颜色弹出菜单中:
+v.backgroundColor = UIColor(named: &amp;#34;myDarkColor&amp;#34;) 当你选择一个视图时，资产目录中的自定义命名颜色也会出现在库中和属性检查器中的颜色弹出菜单中，如下图所示：
 可见性和透明度 视图的可见性和不透明度与3个属性相关，它们分别是isHidden，alpha和isOpaque，下面开始逐个介绍。
 isHidden 视图可以通过将isHidden属性设置为true而变得不可见，并通过将其设置为false 而再次变成可见，因为隐藏视图并不会导致该视图从其层级结构中删除。被隐藏的视图（通常）不会收到触摸事件，所以对用户来说，就如同该视图不存在一样。
 alpha 一个视图可以通过其alpha属性使其部分或完全透明。alpha属性的取值可以在0～1.0，1.0表示完全不透明，0.0表示完全透明。alpha属性既能影响视图的背景色也会影响其内容的透明度。

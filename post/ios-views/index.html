@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">8806</span>
+<span class="leancloud-visitors-count">8820</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -336,8 +336,7 @@ code.has-jax {
 <p>如果一个视图<code>view</code>在界面中，则该视图<font color=red>能通过自己的<code>window</code>属性引用到包含它的<code>window</code></font>。你的代码可能会在一个有<code>main view</code>的视图控制器中运行，所以<code>self.view.window</code>通常是引用<code>window</code>的最佳方式。</p>
 <p>也可以使用<code>UIView</code>的<code>window</code>属性<font color=LightSeaGreen>来询问它是否最终被嵌入到<code>window</code>中</font>。如果未嵌入到<code>window</code>中，则它的<code>window</code>属性为<code>nil</code>。一个<code>window</code>属性为<code>nil</code>的视图是<font color=Blue>对用户不可见的</font>。</p>
 <h3 id="scenedelegate-或appdelegate">sceneDelegate 或appDelegate</h3>
-<p><code>SceneDelegate</code>实例保存了<code>window</code>的引用，可以通过<code>window</code>属性来访问。即使用<code>sceneDelegate.window</code>来访问。</p>
-<p>但访问<code>sceneDelegate</code>需要先使用<code>let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate</code>来获取。</p>
+<p><code>SceneDelegate</code>实例保存了<code>window</code>的引用，可以通过<code>window</code>属性来访问。即使用<code>sceneDelegate.window</code>来访问。但访问<code>sceneDelegate</code>需要先使用<code>let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate</code>来获取。</p>
 <p>如果使用的是旧<code>window</code>架构，则需要使用<code>AppDelegate</code>来访问，即<code> UIApplication.shared.delegate?.window</code>。</p>
 <h3 id="application">application</h3>
 <p><font color=LightSeaGreen>共享的<code>application</code>实例也保存了<code>window</code>的引用</font>，可以通过其<code>window</code>属性来访问，即<code>let w = UIApplication.shared.windows.first!</code>。</p>
@@ -357,7 +356,7 @@ code.has-jax {
 <p>一个视图的<font color=red>透明度会被它的子视图所继承</font>。</p>
 </li>
 <li>
-<p>视图可以选择性地限制其子视图的绘制，使其在视图之外的任何部分都不被显示。这就是所谓的剪裁，<font color=red>可以通过视图的<code>clipsToBounds</code>属性来设置</font>。</p>
+<p>视图可以选择性地限制其子视图的绘制，<font color=red>使其在视图之外的任何部分都不被显示</font>，这就是所谓的剪裁，<font color=red>可以通过视图的<code>clipsToBounds</code>属性来设置</font>。</p>
 </li>
 <li>
 <p>在内存管理的意义上，父视图拥有它的子视图，就像一个数组拥有它的元素一样：它保留它的子视图，并且当一个子视图从这个视图的子视图集合中移除时，或者当父级视图本身不存在时，才会释放该子视图。</p>
@@ -369,22 +368,26 @@ code.has-jax {
 <p>每个视图均有<code>superview</code>和<code>subviews</code>属性，使用这两个属性可以<font color=Blue>追踪视图的层次结构</font>。使用视图的<code>isDescendant(of:)</code>方法可以判断一个视图是否是另一个视图的子视图（任意深度）。</p>
 <p>如果想要<font color=red>引用特定的某个视图</font>，可能需要为视图事先安排一个标记，<font color=red>可以是<code>outlet</code></font>；也可以为视图<font color=Blue>事先设置<code>tag</code>属性值</font>，然后通过调用<code>viewWithTag(_:)</code>来获取该特定的视图。</p>
 <p>视图的添加、删除和移动等都有相应的事件，<font color=Blue>这些事件的响应需要子类化</font>。然后通过覆盖如下的方法便可以看到对应的调用：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">willRemoveSubview(<span style="color:#66d9ef">_</span>:), didAddSubview(<span style="color:#66d9ef">_</span>:)
-willMove(toSuperview:), didMoveToSuperview
-willMove(toWindow:), didMoveToWindow
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">willRemoveSubview(<span style="color:#66d9ef">_</span>:)
+didAddSubview(<span style="color:#66d9ef">_</span>:)
+willMove(toSuperview:)
+didMoveToSuperview
+willMove(toWindow:)
+didMoveToWindow
 </code></pre></div><p>如果<code>addSubview(_:)</code>被调用，则视图将放在父视图的所有子视图的最后边「即最上边」，也就是最后才绘制，这意味着<font color=red>它将出现在最前面</font>。</p>
-<p>视图的子视图是有索引的，从0开始。可以在给定的索引或特定视图的下面（后面）或上面（前面）插入一个子视图；也可以通过索引交换两个同级视图；还可以将一个子视图一直移动到其同级的前面或后面。</p>
+<p>视图的<font color=Blue>子视图是有索引的</font>，从0开始。可以在给定的索引或特定视图的下面（后面）或上面（前面）插入一个子视图；也可以通过索引交换两个同级视图；还可以将一个子视图一直移动到其同级的前面或后面。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">insertSubview(<span style="color:#66d9ef">_</span>:at:)
-insertSubview(<span style="color:#66d9ef">_</span>:belowSubview:), insertSubview(<span style="color:#66d9ef">_</span>:aboveSubview:)
+insertSubview(<span style="color:#66d9ef">_</span>:belowSubview:)
+insertSubview(<span style="color:#66d9ef">_</span>:aboveSubview:)
 exchangeSubview(at:withSubviewAt:)
-bringSubviewToFront(<span style="color:#66d9ef">_</span>:), sendSubviewToBack(<span style="color:#66d9ef">_</span>:)
+bringSubviewToFront(<span style="color:#66d9ef">_</span>:)
+sendSubviewToBack(<span style="color:#66d9ef">_</span>:)
 </code></pre></div><p>但是，<font color=Blue>没有提供一次性删除一个视图的所有子视图的方法</font>。一个视图的子视图数组是内部子视图列表的一个不可变的副本。因此，需要使用<code>for</code>循环来删除所有子视图：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">myView.subviews.forEach {$0.removeFromSuperview()}
 </code></pre></div><h2 id="color">color</h2>
-<p>视图可以通过其<code>backgroundColor</code>属性设置一个背景色，<font color=LightSeaGreen>如果<code>backgroundColor</code>属性值为<code>nil</code>，则视图的背景色为透明</font>。</p>
-<p><code>color</code>是<code>UIColor</code>，通常使用<code>red,blue,green</code>和<code>alpha</code>（其值为<code>0~1</code>）之间组成，如下所示：</p>
+<p>视图可以通过其<code>backgroundColor</code>属性设置一个背景色，<font color=LightSeaGreen>如果<code>backgroundColor</code>属性值为<code>nil</code>，则视图的背景色为透明</font>。<code>backgroundColor</code>即是<code>UIColor</code>的实例，通常使用<code>red,blue,green</code>和<code>alpha</code>（其值为<code>0~1</code>）来定义：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">v.backgroundColor = UIColor(red: <span style="color:#ae81ff">0</span>, green: <span style="color:#ae81ff">0.1</span>, blue: <span style="color:#ae81ff">0.1</span>, alpha: <span style="color:#ae81ff">1</span>)
-</code></pre></div><p>自<code>iOS 13</code>开始出现了暗色模式，为了适配需要使用<font color=Blue>动态颜色</font>，即使用<code>UIColor</code>的初始化函数<code>init(dynamicProvider:)</code>来进行适配，下面是创建一个自定义的动态颜色：</p>
+</code></pre></div><p>自<code>iOS 13</code>开始出现了深色模式，为了适配需要使用<font color=Blue>动态颜色</font>，即使用<code>UIColor</code>的初始化函数<code>init(dynamicProvider:)</code>来进行适配，下面是创建一个自定义的动态颜色：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">v1.backgroundColor = UIColor { tc <span style="color:#66d9ef">in</span>
     <span style="color:#66d9ef">switch</span> tc.userInterfaceStyle {
     <span style="color:#66d9ef">case</span> .dark:
@@ -393,12 +396,12 @@ bringSubviewToFront(<span style="color:#66d9ef">_</span>:), sendSubviewToBack(<s
         <span style="color:#66d9ef">return</span> UIColor(red: <span style="color:#ae81ff">0</span>, green: <span style="color:#ae81ff">0.1</span>, blue: <span style="color:#ae81ff">0.1</span>, alpha: <span style="color:#ae81ff">1</span>)
     }
 }
-</code></pre></div><p>从<code>iOS 13</code>开始，系统提供了许多预置的动态颜色，其中大部分的名称都是以<code>.system</code>开头的，比如<code>.systemYellow</code>；其他的则是描述其作用的语义名称，比如<code>.label</code>。</p>
-<p>现在可以在资产目录中设计一个自定义命名的颜色。当创建一个新的颜色集时，属性检查器中的 「外观」弹出菜单显示为「任意」、「暗色」，并且有两个颜色色块，一个用于暗色模式，另一个用于其他一切；依次选择每个色块并在属性检查器中设计颜色：</p>
+</code></pre></div><p>从<code>iOS 13</code>开始，系统提供了许多预置的动态颜色，其中大部分的名称都是以<code>.system</code>开头的，比如<code>.systemYellow</code>，其它的则是描述其作用的语义名称，比如<code>.label</code>。</p>
+<p>现在可以在资产目录中设计一个自定义命名的颜色。当创建一个新的颜色集时，属性检查器中的 「外观」弹出菜单显示为「任意」、「暗色」，并且有两个颜色色块，一个用于深色模式，另一个用于其它一切；依次选择每个色块并在属性检查器中设计颜色：</p>
 <p><img src="https://i.loli.net/2021/06/27/knrG5zj296RLqmD.jpg" alt="-c"></p>
 <p>上面自定义命名的颜色，就是动态的。比方说，我们在资产目录中的颜色集被称为<code>myDarkColor</code>，那么可以使用如下方式使用:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">v.backgroundColor = UIColor(named: <span style="color:#e6db74">&#34;myDarkColor&#34;</span>)
-</code></pre></div><p>当你选择一个视图时，资产目录中的自定义命名颜色也会出现在库中和属性检查器中的颜色弹出菜单中:</p>
+</code></pre></div><p>当你选择一个视图时，资产目录中的自定义命名颜色也会出现在库中和属性检查器中的颜色弹出菜单中，如下图所示：</p>
 <p><img src="https://i.loli.net/2021/06/27/6S3L2ejsEcHtanC.jpg" alt="-c"></p>
 <h1 id="可见性和透明度">可见性和透明度</h1>
 <p>视图的可见性和不透明度与<code>3</code>个属性相关，它们分别是<code>isHidden</code>，<code>alpha</code>和<code>isOpaque</code>，下面开始逐个介绍。</p>
