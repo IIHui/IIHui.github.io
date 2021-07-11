@@ -43,7 +43,7 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 设置文�
     </entry>
     
      <entry>
-        <title>Leaks内存检测</title>
+        <title>使用Leaks内存检测</title>
         <url>https://iihui.github.io/post/ios-leaks/</url>
         <categories>
           <category>iOS</category>
