@@ -60,6 +60,7 @@ Leaks 上一步选中Leaks后，便会打开Leaks面板，点击左上角的红�
 但是默认情况下，Leaks选择的是Leaks by Backtrace，如果要定位内存泄漏代码，则需要选择Call Tree，如下图所示：
 然后选择底部的Call Tree在弹窗中选择Invert Call Tree和Hide System Libraries，即可显示出具体内存泄漏的代码：
 假如还是不能显示内存泄漏的代码，则需要在Build Setting中搜索debug，然后在Debug Infomation Format中的debug或release行选择DWAARF with dSYM File，如下图所示：
+下面两个图中第一个是没有设置DWAARF with dSYM File的结果，不能显示具体的调用信息；而第二个图是设置了DWAARF with dSYM File后的结果，能显示调用信息：
 参考资料
 </content>
     </entry>
