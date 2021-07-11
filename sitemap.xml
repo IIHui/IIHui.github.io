@@ -51,7 +51,7 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 设置文�
         <tags>
           <tag>iOS</tag>
         </tags>
-        <content type="html">  最近有用户反馈App出现了闪退现象，但是查后台发现并没有崩溃日志上传，猜测是发生了内存溢出，App被系统杀掉了。为了验证此猜测，需要使用XCode的Leaks工具，这篇文件用于介绍使用Leaks。
+        <content type="html">  最近有用户反馈App出现了闪退现象，但是查后台发现并没有崩溃日志上传，猜测是发生了内存溢出，App被系统杀掉而没有崩溃日志产生。为了验证此猜测，需要使用XCode的Leaks工具，这篇文件用于介绍使用Leaks。
  设置 首先在XCode的菜单栏中找到Product，然后看子菜单中的Profile是否为灰色，若为灰色表示不能使用，需要schems处选择Edit Scheme ...，如下所示：
 然后选中Profile，在Build Configuration一栏中选择Debug，在Executable一栏中选择要调试的App，然后点close即可完成设置，如下图：
 唤起Instruments 设置完成后，便可在菜单栏的Product目录下看到Profile不再是灰色，点击选中便可唤出Instrucments面板，然后选中Leaks:
