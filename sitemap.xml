@@ -55,8 +55,8 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 设置文�
  设置 首先在XCode的菜单栏中找到Product，然后看子菜单中的Profile是否为灰色，若为灰色表示不能使用，需要schems处选择Edit Scheme ...，如下所示：
 然后选中Profile，在Build Configuration一栏中选择Debug，在Executable一栏中选择要调试的App，然后点close即可完成设置，如下图：
 唤起Instruments 设置完成后，便可在菜单栏的Product目录下看到Profile不再是灰色，点击选中便可唤出Instrucments面板，然后选中Leaks:
-Leaks 上一步选中Leaks后，便会打开Leaks面板，点击左上角的红色圆圈按钮，便可进行内存检测，如下图所示：
-定位代码 如果在运行中过程中，在面板中上半部分的Leaks栏中如果发现有红色x，则说明有内存泄漏。此时，鼠标点击Leaks这一栏，就可以看到内存泄漏的具体信息：
+Allocations 上一步选中Leaks后，便会打开Leaks面板，点击左上角的红色圆圈按钮，便可进行内存检测，如下图所示所中Allocations便可查看内存分配情况：
+Leaks 如果在运行中过程中，在面板中上半部分的Leaks栏中如果发现有红色x，则说明有内存泄漏。此时，鼠标点击Leaks这一栏，就可以看到内存泄漏的具体信息：
 但是默认情况下，Leaks选择的是Leaks by Backtrace，如果要定位内存泄漏代码，则需要选择Call Tree，如下图所示：
 然后选择底部的Call Tree在弹窗中选择Invert Call Tree和Hide System Libraries，即可显示出具体内存泄漏的代码：
 假如还是不能显示内存泄漏的代码，则需要在Build Setting中搜索debug，然后在Debug Infomation Format中的debug或release行选择DWAARF with dSYM File，如下图所示：

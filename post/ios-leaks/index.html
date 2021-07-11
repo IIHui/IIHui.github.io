@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">792</span>
+<span class="leancloud-visitors-count">812</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -265,10 +265,11 @@ code.has-jax {
 <h1 id="唤起instruments">唤起Instruments</h1>
 <p>设置完成后，便可在菜单栏的<code>Product</code>目录下看到<code>Profile</code>不再是灰色，点击选中便可唤出<code>Instrucments</code>面板，然后选中<code>Leaks</code>:</p>
 <p><img src="https://i.loli.net/2021/07/10/HbVLIjnZmJtxyQA.jpg" alt="-c"></p>
-<h1 id="leaks">Leaks</h1>
-<p>上一步选中<code>Leaks</code>后，便会打开<code>Leaks</code>面板，点击左上角的红色圆圈按钮，便可进行内存检测，如下图所示：</p>
+<h1 id="allocations">Allocations</h1>
+<p>上一步选中<code>Leaks</code>后，便会打开<code>Leaks</code>面板，点击左上角的红色圆圈按钮，便可进行内存检测，如下图所示所中<code>Allocations</code>便可查看内存分配情况：</p>
 <p><img src="https://i.loli.net/2021/07/10/3EnYgDwXep5Pb8N.jpg" alt="-c"></p>
-<h2 id="定位代码">定位代码</h2>
+<p><img src="https://i.loli.net/2021/07/11/lyB6jDoYubPGZSO.jpg" alt="-c"></p>
+<h1 id="leaks">Leaks</h1>
 <p>如果在运行中过程中，在面板中上半部分的<code>Leaks</code>栏中如果发现有红色<code>x</code>，则说明有内存泄漏。此时，鼠标点击<code>Leaks</code>这一栏，就可以看到内存泄漏的具体信息：</p>
 <p><img src="https://i.loli.net/2021/07/11/OezmoINBTbgXSvx.jpg" alt="-c"></p>
 <p>但是默认情况下，<code>Leaks</code>选择的是<code>Leaks by Backtrace</code>，如果要定位内存泄漏代码，则需要选择<code>Call Tree</code>，如下图所示：</p>
@@ -447,11 +448,8 @@ code.has-jax {
   <ul>
     <li><a href="#设置">设置</a></li>
     <li><a href="#唤起instruments">唤起Instruments</a></li>
-    <li><a href="#leaks">Leaks</a>
-      <ul>
-        <li><a href="#定位代码">定位代码</a></li>
-      </ul>
-    </li>
+    <li><a href="#allocations">Allocations</a></li>
+    <li><a href="#leaks">Leaks</a></li>
   </ul>
 </nav></div>
     </div>
