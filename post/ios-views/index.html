@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">8919</span>
+<span class="leancloud-visitors-count">9217</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">18 分钟</span>
+<span class="leancloud-visitors-count">19 分钟</span>
 </span>
       </div>
     </header>
@@ -501,7 +501,9 @@ v1.transform = CGAffineTransform(rotationAngle: <span style="color:#ae81ff">45</
 </code></pre></div><h2 id="transform3d">transform3D</h2>
 <p>从<code>iOS 13</code>开始，视图有一个新的<code>transform3D</code>属性。这个属性其实是底层<code>layer</code>的<code>transform</code>属性，现在通过视图暴露出来了。</p>
 <h1 id="window坐标和屏幕座标">Window坐标和屏幕座标</h1>
-<p>设备屏幕没有<code>frame</code>，但有<code>bounds</code>。<code>window</code>没有父视图，但是<font color=red>它的<code>frame</code>是自动设置和设备屏幕的<code>bounds</code>匹配</font>。<code>window</code>一般一开始就填满屏幕，并且通常会继续填满屏幕，因此大多数情况下，窗口坐标就是屏幕坐标。</p>
+<p>设备的屏幕没有<code>frame</code>，但有<code>bounds</code>。<code>window</code>没有父视图，但是<font color=red>它的<code>frame</code>是自动和设备屏幕的<code>bounds</code>相匹配的</font>。<code>window</code>一般一开始就填满屏幕，并且通常会继续填满屏幕，因此<font color=LightSeaGreen>大多数情况下，窗口坐标就是屏幕坐标</font>。</p>
+<p>在<code>iOS 7</code>及之前，屏幕坐标是不变的，<code>transform</code>属性是应用旋转能力的核心：因为<code>window</code>的<code>frame</code>和<code>bounds</code>被锁定在屏幕上，应用的界面通过对根视图应用旋转变换来补偿设备方向的变化，从而使其原点移动到用户现在看到的视图的左上方。</p>
+<p>但<code>iOS 8</code>引入了一个重大变化：当应用程序旋转以补偿设备的旋转时，屏幕（以及随之而来的窗口）是旋转的。当应用程序的界面旋转时，故事中的任何视图&ndash;无论是窗口、根视图还是其任何子视图&ndash;都没有收到旋转变换。取而代之的是屏幕边界尺寸的换位（以及窗口边界和根视图边界尺寸的相应换位）：在纵向方向上，尺寸是高过宽，但在横向方向上，尺寸是宽过高。</p>
 
     </div>
     <footer class="post-footer">

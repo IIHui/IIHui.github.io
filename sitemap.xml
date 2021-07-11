@@ -166,7 +166,9 @@ v2.center = v1.convert(v1.center, from:v1.superview) 另外一种更常见的方
 v2.center = CGPoint(v1.bounds.midX,v1.bounds.midY) transform transform 视图的transform属性可以改变视图的绘制方式，显示大小，位置和方向，但不会改变bounds和center属性。transform属性值是一个CGAffineTransform结构体，代表代表3×3变换矩阵9个值中的6个（另外3个值是常数，所以没有必要在结构中表示它们）：
 public struct CGAffineTransform { public var a: CGFloat public var b: CGFloat public var c: CGFloat public var d: CGFloat public var tx: CGFloat public var ty: CGFloat public init() public init(a: CGFloat, b: CGFloat, c: CGFloat, d: CGFloat, tx: CGFloat, ty: CGFloat) } 默认情况下，一个视图的变换矩阵是CGAffineTransform.identity，即同一变换，它没有可见的效果，所以你不知道它的存在。任何变换都是围绕视图的中心进行的，这个中心点一定是保持不变的。
 let v1 = UIView(frame:CGRect(113, 111, 132, 194)) v1.backgroundColor = UIColor(red: 1, green: 0.4, blue: 1, alpha: 1) let v2 = UIView(frame:v1.bounds.insetBy(dx: 10, dy: 10)) v2.backgroundColor = UIColor(red: 0.5, green: 1, blue: 0, alpha: 1) self.view.addSubview(v1) v1.addSubview(v2) v1.transform = CGAffineTransform(rotationAngle: 45 * .pi/180) print(v1.frame) transform3D 从iOS 13开始，视图有一个新的transform3D属性。这个属性其实是底层layer的transform属性，现在通过视图暴露出来了。
-Window坐标和屏幕座标 设备屏幕没有frame，但有bounds。window没有父视图，但是它的frame是自动设置和设备屏幕的bounds匹配。window一般一开始就填满屏幕，并且通常会继续填满屏幕，因此大多数情况下，窗口坐标就是屏幕坐标。
+Window坐标和屏幕座标 设备的屏幕没有frame，但有bounds。window没有父视图，但是它的frame是自动和设备屏幕的bounds相匹配的。window一般一开始就填满屏幕，并且通常会继续填满屏幕，因此大多数情况下，窗口坐标就是屏幕坐标。
+在iOS 7及之前，屏幕坐标是不变的，transform属性是应用旋转能力的核心：因为window的frame和bounds被锁定在屏幕上，应用的界面通过对根视图应用旋转变换来补偿设备方向的变化，从而使其原点移动到用户现在看到的视图的左上方。
+但iOS 8引入了一个重大变化：当应用程序旋转以补偿设备的旋转时，屏幕（以及随之而来的窗口）是旋转的。当应用程序的界面旋转时，故事中的任何视图&amp;ndash;无论是窗口、根视图还是其任何子视图&amp;ndash;都没有收到旋转变换。取而代之的是屏幕边界尺寸的换位（以及窗口边界和根视图边界尺寸的相应换位）：在纵向方向上，尺寸是高过宽，但在横向方向上，尺寸是宽过高。
 </content>
     </entry>
     
