@@ -13,7 +13,7 @@
       <pubDate>Fri, 09 Jul 2021 21:55:28 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/ios-leaks/</guid>
-      <description>最近有用户反馈App出现了闪退现象，但是查后台发现并没有崩溃日志上传，猜测是发生了内存溢出，App被系统杀掉而没有崩溃日志产生。为了验证此猜测，需要使用XCode的Leaks工具，这篇文件用于介绍使用Leaks。 设置 首先在XCode的菜单栏</description>
+      <description>最近有用户反馈App出现了闪退现象，但是后台并未发现有崩溃日志上传，猜测是发生了内存溢出，App直接被系统杀掉而没有崩溃日志产生。为了验证此猜测，需要使用XCode的Leaks工具，这篇文件简单介绍使用Leaks的步骤。 设置 首先在XCode</description>
     </item>
     
     <item>

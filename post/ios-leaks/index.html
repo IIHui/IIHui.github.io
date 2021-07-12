@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">878</span>
+<span class="leancloud-visitors-count">886</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -253,7 +253,7 @@ code.has-jax {
     </header>
     <div class="post-body" itemprop="articleBody">
     <blockquote>
-<p>最近有用户反馈<code>App</code>出现了闪退现象，但是查后台发现并没有崩溃日志上传，猜测是发生了内存溢出，<code>App</code>被系统杀掉而没有崩溃日志产生。为了验证此猜测，需要使用<code>XCode</code>的<code>Leaks</code>工具，这篇文件用于介绍使用<code>Leaks</code>。</p>
+<p>最近有用户反馈<code>App</code>出现了闪退现象，但是后台并未发现有崩溃日志上传，猜测是发生了内存溢出，<code>App</code>直接被系统杀掉而没有崩溃日志产生。为了验证此猜测，需要使用<code>XCode</code>的<code>Leaks</code>工具，这篇文件简单介绍使用<code>Leaks</code>的步骤。</p>
 </blockquote>
 <h1 id="设置">设置</h1>
 <p>首先在<code>XCode</code>的菜单栏中找到<code>Product</code>，然后看子菜单中的<code>Profile</code>是否为灰色，若为灰色表示不能使用，需要<code>schems</code>处选择<code>Edit Scheme ...</code>，如下所示：</p>
@@ -266,20 +266,20 @@ code.has-jax {
 <p>设置完成后，便可在菜单栏的<code>Product</code>目录下看到<code>Profile</code>不再是灰色，点击选中便可唤出<code>Instrucments</code>面板，然后再在其中选中<code>Leaks</code>即可:</p>
 <p><img src="https://i.loli.net/2021/07/10/HbVLIjnZmJtxyQA.jpg" alt="-c"></p>
 <h1 id="allocations">Allocations</h1>
-<p>上一步选中<code>Leaks</code>后，便会打开<code>Leaks</code>面板，点击左上角的红色圆圈按钮，便可进行内存检测，如下图所示所中<code>Allocations</code>便可查看内存分配情况：</p>
+<p>上一步选中<code>Leaks</code>后，便会打开<code>Leaks</code>面板，点击左上角的红色圆圈按钮，便可进行内存检测，如下图所示在上半部分选中<code>Allocations</code>行便可查看内存分配情况：</p>
 <p><img src="https://i.loli.net/2021/07/10/3EnYgDwXep5Pb8N.jpg" alt="-c"></p>
 <p><img src="https://i.loli.net/2021/07/11/lyB6jDoYubPGZSO.jpg" alt="-c"></p>
 <h1 id="leaks">Leaks</h1>
-<p>如果在运行中过程中，在面板中上半部分的<code>Leaks</code>栏中如果发现有红色<code>x</code>，则说明有内存泄漏。此时，鼠标点击<code>Leaks</code>这一栏，就可以看到内存泄漏的具体信息：</p>
+<p>如果在运行中过程中，在面板中上半部分的<code>Leaks</code>栏中发现有红色<code>x</code>，则说明有内存泄漏。此时，鼠标点击<code>Leaks</code>这一栏，就可以看到内存泄漏的具体信息：</p>
 <p><img src="https://i.loli.net/2021/07/11/OezmoINBTbgXSvx.jpg" alt="-c"></p>
 <h2 id="调用栈">调用栈</h2>
-<p>但是默认情况下，<code>Leaks</code>选择的是<code>Leaks by Backtrace</code>，如果要定位内存泄漏代码，则需要选择<code>Call Tree</code>，如下图所示：</p>
+<p>但是默认情况下，<code>Leaks</code>显示的是<code>Leaks by Backtrace</code>，如果要定位内存泄漏代码，则需要选择<code>Call Tree</code>，如下图所示：</p>
 <p><img src="https://i.loli.net/2021/07/10/Kiko97DBEFrLyvU.jpg" alt="-c"></p>
-<p>然后选择底部的<code>Call Tree</code>在弹窗中选择<code>Invert Call Tree</code>和<code>Hide System Libraries</code>，即可显示出具体内存泄漏的代码：</p>
+<p>然后选择底部的<code>Call Tree</code>，在弹窗中再选择<code>Invert Call Tree</code>和<code>Hide System Libraries</code>，即可显示出具体内存泄漏的代码：</p>
 <p><img src="https://i.loli.net/2021/07/11/PBzaVODmbxevk6c.jpg" alt="-c"></p>
 <p>假如还是不能显示内存泄漏的代码，则需要在<code>Build Setting</code>中搜索<code>debug</code>，然后在<code>Debug Infomation Format</code>中的<code>debug</code>或<code>release</code>行选择<code>DWAARF with dSYM File</code>，如下图所示：</p>
 <p><img src="https://i.loli.net/2021/07/11/1nVb8JBgjeGcwdR.jpg" alt="-c"></p>
-<p>下面三个图中第一个是没有设置<code>DWAARF with dSYM File</code>的结果，不能显示具体的调用信息；而第二和第三个是设置了<code>DWAARF with dSYM File</code>后的结果，能显示调用信息：</p>
+<p>下面三个图中第一个是没有设置<code>DWARF with dSYM File</code>的结果，不能显示具体的调用信息；而第二和第三个是设置了<code>DWARF with dSYM File</code>后的结果，能显示调用信息：</p>
 <p><img src="https://i.loli.net/2021/07/11/281MrFBNYGAZjnk.jpg" alt="-c"></p>
 <p><img src="https://i.loli.net/2021/07/11/ZDNS4lG3fag9sz5.jpg" alt="-c"></p>
 <p><img src="https://i.loli.net/2021/07/11/wUTfkyuirXlKhes.jpg" alt="-c"></p>
