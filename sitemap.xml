@@ -51,17 +51,17 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 设置文�
         <tags>
           <tag>iOS</tag>
         </tags>
-        <content type="html">  最近有用户反馈App出现了闪退现象，但是后台并未发现有崩溃日志上传，猜测是发生了内存溢出，App直接被系统杀掉而没有崩溃日志产生。为了验证此猜测，需要使用XCode的Leaks工具，这篇文件简单介绍使用Leaks的步骤。
- 设置 首先在XCode的菜单栏中找到Product，然后看子菜单中的Profile是否为灰色，若为灰色表示不能使用，需要schems处选择Edit Scheme ...，如下所示：
-然后选中Profile，在Build Configuration一栏中选择Debug，在Executable一栏中选择要调试的App，然后点close即可完成设置，如下图：
-Instruments 设置完成后，便可在菜单栏的Product目录下看到Profile不再是灰色，点击选中便可唤出Instrucments面板，然后再在其中选中Leaks即可:
-Allocations 上一步选中Leaks后，便会打开Leaks面板，点击左上角的红色圆圈按钮，便可进行内存检测，如下图所示在上半部分选中Allocations行便可查看内存分配情况：
-Leaks 如果在运行中过程中，在面板中上半部分的Leaks栏中发现有红色x，则说明有内存泄漏。此时，鼠标点击Leaks这一栏，就可以看到内存泄漏的具体信息：
-调用栈 但是默认情况下，Leaks显示的是Leaks by Backtrace，如果要定位内存泄漏代码，则需要选择Call Tree，如下图所示：
-然后选择底部的Call Tree，在弹窗中再选择Invert Call Tree和Hide System Libraries，即可显示出具体内存泄漏的代码：
-假如还是不能显示内存泄漏的代码，则需要在Build Setting中搜索debug，然后在Debug Infomation Format中的debug或release行选择DWAARF with dSYM File，如下图所示：
+        <content type="html">  最近有用户反馈App出现了闪退现象，但是后台并未发现有崩溃日志上传，猜测是发生了内存溢出，App直接被系统杀掉而没有崩溃日志产生。为了验证此猜测，需要使用XCode的Leaks工具，这篇文章简单介绍使用Leaks的步骤。
+ 设置 首先在XCode的菜单栏中找到Product，然后查看子菜单中的Profile是否为灰色，若为灰色表示不能使用，需要一些设置，首先从schems处选择Edit Scheme ...，如下所示：
+然后选中Profile，在Build Configuration一栏中选中Debug，在Executable一栏中选择要调试的App，然后点close即可完成设置，如下图所示：
+Instruments 设置完成后，便可在菜单栏的Product目录下看到Profile不再为灰色，点击选中便可唤出Instrucments面板，然后再在其中选中Leaks即可:
+Allocations 上一步选中Leaks后，便会打开Leaks面板，点击左上角的红色圆圈按钮，便可进行内存检测，在下图上半部分选中Allocations行，便可查看内存分配情况：
+Leaks 如果在运行过程中，面板中上半部分的Leaks栏中出现红色x，则说明有内存泄漏。此时，鼠标点击Leaks这一栏，即可看到内存泄漏的具体信息：
+调用栈 默认情况下，Leaks显示的是Leaks by Backtrace，如果要定位内存泄漏代码，则需要先选择Call Tree，如下图所示：
+然后选择底部的Call Tree，在弹窗中再选中Invert Call Tree和Hide System Libraries，即可显示出具体内存泄漏的代码：
+假如还是不能显示内存泄漏的代码，则需要在Build Setting中搜索debug，然后在Debug Information Format中的debug或release行选中DWAARF with dSYM File，如下图所示：
 下面三个图中第一个是没有设置DWARF with dSYM File的结果，不能显示具体的调用信息；而第二和第三个是设置了DWARF with dSYM File后的结果，能显示调用信息：
-内存引用 如果想要查看内存泄漏引用图，则需要将Call Tree选项改为Cycles &amp;amp; Roots即可查看，但不是所有的都可以查看，如下图所示：
+内存引用 如果想要查看内存泄漏引用图，则需要将Call Tree选项改为Cycles &amp;amp; Roots，但不是所有的都可以查看，效果如下图所示：
 参考资料
 </content>
     </entry>
@@ -1031,9 +1031,10 @@ interface Study { fun readBooks() fun doHomework() } class Student(val sno: Stri
 https抓包 安装好描述文件之后，就可以进行抓包，默认http的请求都可以直接查看，但是https的请求不能直接查看，需要设置。有两种方式可以设置，一种是直接在SSL Proxying Settings中设置，另外一种是在请求地址目录上选中然后右键设置Enable SSL Proxying。
 第一种 打开charles，在菜单栏中选择Proxy，再选择SSL Proxying Settings，如下图所示：
 然后出现如下界面，点击Add，把需要抓包的https请求地址加上：
-第二种 第二种方式，是在带锁的https请求上右键，选中Enable SSL Proxying，然后下次就可以查看https请求的内容，如下图所示：
+第二种 第二种方式，是在带锁的https请求上右键，选中Enable SSL Proxying，然后下次有同样的请求就可以到请求的具体内容了，如下图所示：
 下图一带锁的标志表示还不能查看的https请求，设置Enable SSL Proxying之后才能查看，下图二设置之后的，蓝色表示可以查看具体的请求信息：
- 参考资料
+额外设置 如果抓包之后不能看到具体资源的名称，则需要到设置--&amp;gt;通用--&amp;gt;关于本机--证书信任设置查看Charles Proxy CA ...是否信任，如果未信任打开即可：
+参考资料
 </content>
     </entry>
     
