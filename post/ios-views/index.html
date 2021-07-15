@@ -424,7 +424,7 @@ sendSubviewToBack(<span style="color:#66d9ef">_</span>:)
 <p>如果一个视图使用<code>nib</code>进行初始化，<font color=red>那么不会调用其<code>init(frame:)</code>，调用的为<code>init(coder:)</code>方法</font>。</p>
 <h1 id="bounds-and-center">Bounds and Center</h1>
 <h2 id="bounds">Bounds</h2>
-<p>如下图所示，假设有一个父视图和子视图，子视图需要有<code>10</code>个<code>point</code>的镶边，首先想到的是设置子视图的<code>frame</code>，但是该怎么设置？</p>
+<p>如下图所示，假设有一个父视图和子视图，子视图需要有<code>10</code>个<code>point</code>的镶边，首先想到的是设置子视图的<code>frame</code>，但该怎么设置？</p>
 <p><img src="https://i.loli.net/2021/06/13/QWCVUiwYv8MarSI.jpg" alt="-c"></p>
 <p><code>CGRect</code>有个<code>insetBy(dx:dy:)</code>方法可以从一个矩形中衍生出另一个矩形并嵌入。但是应该从哪个矩形中嵌入呢？不是从父视图的<code>frame</code>，因为<code>frame</code>代表一个视图在其父视图中的位置，并且是父视图的坐标系中的位置。</p>
 <p>应当找一个用来描述在其自身坐标中与父视图矩形相关的<code>CGRect</code>，因为这是子视图的<code>frame</code>所要表达的坐标。描述视图在其自身坐标中的矩形<code>CGRect</code>是视图的<code>bounds</code>属性。</p>
@@ -468,7 +468,7 @@ open <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">convert
 open <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">convert</span>(<span style="color:#66d9ef">_</span> rect: CGRect, from view: UIView?) -&gt; CGRect
 </code></pre></div><p>在<code>convert</code>方法中，第一个参数既可以是<code>CGPoint</code>也可以是<code>CGRect</code>，第二个参数是<code>UIView</code>，如果第二个参数为<code>nil</code>，则会认为是<code>window</code>。下面的例子是将<code>v2</code>放到<code>v1</code>的中心：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">v2.center = v1.convert(v1.center, from:v1.superview)
-</code></pre></div><p>另外一种更常见的方式是将子视图的中心放在父视图<code>bounds</code>的中心位置，如下所示</p>
+</code></pre></div><p>另外一种更常见的方式是将子视图的中心放在父视图<code>bounds</code>的中心位置，如下所示：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">v2.center = CGPoint(v1.bounds.midX,v1.bounds.midY)
 </code></pre></div><h1 id="transform">transform</h1>
 <h2 id="transform-1">transform</h2>

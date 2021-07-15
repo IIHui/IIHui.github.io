@@ -151,7 +151,7 @@ Frame 每个view都有frame属性（是一个由CGRect表示的矩形，表示�
 设置视图的frame值既可以重新改变视图的位置，也可以调整视图的大小，或者同时改变位置和大小。UIView的指定初始化方法是init(frame:)，可以通过这种方式指定视图的frame。若视图的frame属性值为CGRect.zero的话，则视图是不可见。
 如果一个视图有一个你希望它采用的标准尺寸，特别是相对于它的内容（例如UIButton相对于它的标题）而言，除了改变frame，还可以调用其sizeToFit方法。
 如果一个视图使用nib进行初始化，那么不会调用其init(frame:)，调用的为init(coder:)方法。
-Bounds and Center Bounds 如下图所示，假设有一个父视图和子视图，子视图需要有10个point的镶边，首先想到的是设置子视图的frame，但是该怎么设置？
+Bounds and Center Bounds 如下图所示，假设有一个父视图和子视图，子视图需要有10个point的镶边，首先想到的是设置子视图的frame，但该怎么设置？
 CGRect有个insetBy(dx:dy:)方法可以从一个矩形中衍生出另一个矩形并嵌入。但是应该从哪个矩形中嵌入呢？不是从父视图的frame，因为frame代表一个视图在其父视图中的位置，并且是父视图的坐标系中的位置。
 应当找一个用来描述在其自身坐标中与父视图矩形相关的CGRect，因为这是子视图的frame所要表达的坐标。描述视图在其自身坐标中的矩形CGRect是视图的bounds属性。
 let v1 = UIView(frame:CGRect(113, 111, 132, 194)) v1.backgroundColor = UIColor(red: 1, green: 0.4, blue: 1, alpha: 1) let v2 = UIView(frame:v1.bounds.insetBy(dx: 10, dy: 10)) v2.backgroundColor = UIColor(red: 0.5, green: 1, blue: 0, alpha: 1) self.view.addSubview(v1) v1.addSubview(v2) 如果改变一个视图的bounds的size，那么它的frame也会发生变化。视图的frame的变化是围绕其center来的&amp;mdash;中心点不变。下面的代码只出现一个矩形，子视图完全覆盖父视图：
@@ -162,7 +162,7 @@ let c = CGPoint(theView.bounds.midX, theView.bounds.midY) 改变视图的bounds�
 实际上视图的frame属性是bounds和center的简便形式。当改变视图的frame属性时，bounds和center也会随之发生变化，当改变bounds和center时，视图的frame也会随之发生改变。尽管如此，调整一个视图在父视图中的可靠方式是使用bounds和center属性。
 每个视图都有自己的坐标系统（使用bounds来表达），并且一个视图坐标系统的与它的父视图的坐标系统有一个明确的关系，即center属性。因此，可以在同一窗口中的任何两个视图的坐标之间进行转换：
 open func convert(_ point: CGPoint, to view: UIView?) -&amp;gt; CGPoint open func convert(_ point: CGPoint, from view: UIView?) -&amp;gt; CGPoint open func convert(_ rect: CGRect, to view: UIView?) -&amp;gt; CGRect open func convert(_ rect: CGRect, from view: UIView?) -&amp;gt; CGRect 在convert方法中，第一个参数既可以是CGPoint也可以是CGRect，第二个参数是UIView，如果第二个参数为nil，则会认为是window。下面的例子是将v2放到v1的中心：
-v2.center = v1.convert(v1.center, from:v1.superview) 另外一种更常见的方式是将子视图的中心放在父视图bounds的中心位置，如下所示
+v2.center = v1.convert(v1.center, from:v1.superview) 另外一种更常见的方式是将子视图的中心放在父视图bounds的中心位置，如下所示：
 v2.center = CGPoint(v1.bounds.midX,v1.bounds.midY) transform transform 视图的transform属性可以改变视图的绘制方式，显示大小，位置和方向，但不会改变bounds和center属性。transform属性值是一个CGAffineTransform结构体，代表代表3×3变换矩阵9个值中的6个（另外3个值是常数，所以没有必要在结构中表示它们）：
 public struct CGAffineTransform { public var a: CGFloat public var b: CGFloat public var c: CGFloat public var d: CGFloat public var tx: CGFloat public var ty: CGFloat public init() public init(a: CGFloat, b: CGFloat, c: CGFloat, d: CGFloat, tx: CGFloat, ty: CGFloat) } 默认情况下，一个视图的变换矩阵是CGAffineTransform.identity，即同一变换，它没有可见的效果，所以你不知道它的存在。任何变换都是围绕视图的中心进行的，这个中心点一定是保持不变的。
 let v1 = UIView(frame:CGRect(113, 111, 132, 194)) v1.backgroundColor = UIColor(red: 1, green: 0.4, blue: 1, alpha: 1) let v2 = UIView(frame:v1.bounds.insetBy(dx: 10, dy: 10)) v2.backgroundColor = UIColor(red: 0.5, green: 1, blue: 0, alpha: 1) self.view.addSubview(v1) v1.addSubview(v2) v1.transform = CGAffineTransform(rotationAngle: 45 * .pi/180) print(v1.frame) transform3D 从iOS 13开始，视图有一个新的transform3D属性。这个属性其实是底层layer的transform属性，现在通过视图暴露出来了。
@@ -1032,7 +1032,7 @@ https抓包 安装好描述文件之后，就可以进行抓包，默认http的�
 第一种 打开charles，在菜单栏中选择Proxy，再选择SSL Proxying Settings，如下图所示：
 然后出现如下界面，点击Add，把需要抓包的https请求地址加上：
 第二种 第二种方式，是在带锁的https请求上右键，选中Enable SSL Proxying，然后下次有同样的请求就可以到请求的具体内容了，如下图所示：
-下图一带锁的标志表示还不能查看的https请求，设置Enable SSL Proxying之后才能查看，下图二设置之后的，蓝色表示可以查看具体的请求信息：
+下图一带锁的标志表示的是不能查看的https请求，需要设置Enable SSL Proxying之后才能查看，下图二设置之后的，蓝色表示可以查看具体的请求信息：
 额外设置 如果抓包之后不能看到具体资源的名称，则需要到设置--&amp;gt;通用--&amp;gt;关于本机--证书信任设置查看Charles Proxy CA ...是否信任，如果未信任打开即可：
 参考资料
 </content>
