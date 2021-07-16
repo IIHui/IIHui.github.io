@@ -1021,16 +1021,16 @@ interface Study { fun readBooks() fun doHomework() } class Student(val sno: Stri
         <tags>
           <tag>iOS</tag>
         </tags>
-        <content type="html">  charles是一款用于iOS的抓包工具，可以将它设置成网络访问的代理服务器，使得所有的网络访问请求都通过它来完成，从而实现网络封包的截取和分析，以作为网络访问的监视器。当App连接charles代理访问互联网时，charles可以监控这个App发送和接收的所有数据，这些信息包括request,response和headers（包含cookies与caching）。
- 安装证书 首先打开charles，然后点击菜单栏的Help，选择SSL Proxing，然后选择Install Charles Root Certificate on a Mobile Device or Remote Browser，如下图所示：
-接着会出现如下图的提示：
-根据提示，首先在手机上设置代理(具体代理的设置要根据相应的提示)，具体步骤如下所示：
-输入chls.pro/ssl后，charles会弹出下面的提示，然后点击允许：
-接着打开Safari浏览器，输入chls.pro/ssl，再点击前往，然后弹出下载配置描述文件，点击允许，下载好之后打开设置，然后会出现已下载描述文件步骤如下图所示：
+        <content type="html">  charles是一款用于iOS抓包的工具，可以将它设置成网络访问的代理服务器，使得所有网络访问请求都通过它来完成，从而实现网络封包的截取和分析，以作为网络访问的监视器。当App连接charles代理访问互联网时，charles可以监控这个App发送和接收的所有数据，这些信息包括request,response和headers（包含cookies与caching）。
+ 安装证书 首先打开charles，再点击菜单栏的Help，选择SSL Proxing，接着选中Install Charles Root Certificate on a Mobile Device or Remote Browser，如下图所示：
+然后会出现如下图提示：
+根据提示，应该在手机上先设置代理(代理的具体设置要根据相应的提示进行)，步骤如下所示：
+打开Safari浏览器，输入chls.pro/ssl，再点击前往，然后弹出下载配置描述文件，点击允许，下载好之后打开设置，然后会出现已下载描述文件步骤如下图所示：
 点击已下载描述文件，会弹出下面的界面，再点击安装，接着会有警告，再次点击安装，如下图所示：
-https抓包 安装好描述文件之后，就可以进行抓包，默认http的请求都可以直接查看，但是https的请求不能直接查看，需要设置。有两种方式可以设置，一种是直接在SSL Proxying Settings中设置，另外一种是在请求地址目录上选中然后右键设置Enable SSL Proxying。
-第一种 打开charles，在菜单栏中选择Proxy，再选择SSL Proxying Settings，如下图所示：
-然后出现如下界面，点击Add，把需要抓包的https请求地址加上：
+如果在浏览器中输入chls.pro/ssl之前或者之后，若Mac OS上弹出如下的提示，则需要点击允许：
+https抓包 安装好描述文件之后，就可以抓包，默认http的请求都可以直接查看，但是https的请求不能直接查看，需要设置。有两种方式设置，第一种是直接在SSL Proxying Settings中设置，另外一种是在请求地址目录上选中然后右键设置Enable SSL Proxying。
+第一种 打开charles，在菜单栏中选中Proxy，再选中SSL Proxying Settings，如下图所示：
+然后出现如下界面，点击Add按钮，把需要抓包的https请求地址加上：
 第二种 第二种方式，是在带锁的https请求上右键，选中Enable SSL Proxying，然后下次有同样的请求就可以到请求的具体内容了，如下图所示：
 下图一带锁的标志表示的是不能查看的https请求，需要设置Enable SSL Proxying之后才能查看，下图二设置之后的，蓝色表示可以查看具体的请求信息：
 额外设置 如果抓包之后不能看到具体资源的名称，则需要到设置--&amp;gt;通用--&amp;gt;关于本机--证书信任设置查看Charles Proxy CA ...是否信任，如果未信任打开即可：
@@ -1056,7 +1056,7 @@ https抓包 安装好描述文件之后，就可以进行抓包，默认http的�
 也可以通过safeAreaLayoutGuide或者bottomLayoutGuide达到适配的目的，代码如下所示：
 safeAreaLayoutGuide private func setupUI(){ let view = UIView() view.backgroundColor = .red self.view.addSubview(view) view.snp.makeConstraints(){ maker in maker.bottom.equalToSuperview() maker.top.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).inset(60) maker.leading.equalToSuperview() maker.trailing.equalToSuperview() } } bottomLayoutGuide private func setupUI(){ let view = UIView() view.backgroundColor = .red self.view.addSubview(view) view.snp.makeConstraints(){ maker in maker.top.equalTo(self.bottomLayoutGuide.snp.top .inset(-60) maker.bottom.equalToSuperview() maker.leading.equalToSuperview() maker.trailing.equalToSuperview() } } 顶部适配 同样顶部的适配可以使用safeAreaLayoutGuide或者bottomLayoutGuide达到目的，代码如下所示：
 safeAreaLayoutGuide private func setupUI2() { let topView = UIView() topView.backgroundColor = .blue self.view.addSubview(topView) topView.snp.makeConstraints { maker in maker.leading.equalToSuperview() maker.trailing.equalToSuperview() maker.top.equalToSuperview() maker.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.top).inset(60) } } topLayoutGuide private func setupUI3() { let topView = UIView() topView.backgroundColor = .blue self.view.addSubview(topView) topView.snp.makeConstraints { maker in maker.leading.equalToSuperview() maker.trailing.equalToSuperview() maker.top.equalToSuperview() maker.bottom.equalTo(self.topLayoutGuide.snp.bottom).inset(-60) } } 参考资料
-</content>
+强制竖屏 class ViewController: UIViewController { override func viewDidLoad() { super.viewDidLoad() let value = UIInterfaceOrientation.portrait.rawValue UIDevice.current.setValue(value, forKey: &amp;#34;orientation&amp;#34;) } override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return .portrait } override var shouldAutorotate: Bool { return true } } </content>
     </entry>
     
      <entry>
