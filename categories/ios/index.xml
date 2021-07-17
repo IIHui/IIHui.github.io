@@ -53,15 +53,6 @@
     </item>
     
     <item>
-      <title>UIWindow</title>
-      <link>https://iihui.github.io/post/ios-window/</link>
-      <pubDate>Thu, 06 May 2021 14:19:36 +0000</pubDate>
-      
-      <guid>https://iihui.github.io/post/ios-window/</guid>
-      <description>iOS 14.5.1 keyWindow 升级到iOS 14.5.1后发现使用UIApplication.shared.keyWindow获取RootViewController为nil。经排查发现keyWindow发生了变化，为了防止这种变化，在显示新的Window时，先保存</description>
-    </item>
-    
-    <item>
       <title>Xcode编译报错问题</title>
       <link>https://iihui.github.io/post/ios-compiler/</link>
       <pubDate>Wed, 05 May 2021 10:06:46 +0000</pubDate>

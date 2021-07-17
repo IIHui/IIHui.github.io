@@ -257,7 +257,6 @@ code.has-jax {
 </blockquote>
 <h1 id="强制竖屏">强制竖屏</h1>
 <p>最近在调其它<code>SDK</code>的时候，要求某个界面是竖屏的，发现按约定传了相关的参数，还是会横竖屏切换。于是告诉对方，首先在工程的<code>info.plist</code>中添加<a href="https://stackoverflow.com/questions/34608826/what-is-the-impact-of-the-requires-full-screen-option-in-xcode-for-an-iphone-o">Require Full Screen</a>，并将值置为<code>Yes</code>，然后在<code>ViewController</code>中添加如下代码：</p>
-<p><img src="https://i.loli.net/2021/07/17/7EDrCNhBZT6SAa2.jpg" alt="-c"></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ViewController</span>: UIViewController {
     <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">viewDidLoad</span>() {
         <span style="color:#66d9ef">super</span>.viewDidLoad()
@@ -273,19 +272,20 @@ code.has-jax {
         <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
     }
 }
-</code></pre></div><h1 id="keywindow发生变化">keyWindow发生变化</h1>
+</code></pre></div><p><img src="https://i.loli.net/2021/07/17/7EDrCNhBZT6SAa2.jpg" alt="-c"></p>
+<h1 id="keywindow发生变化">keyWindow发生变化</h1>
 <p>升级到<code>iOS 14.5.1</code>后发现使用<code>UIApplication.shared.keyWindow</code>获取<code>RootViewController</code>为<code>nil</code>。经排查发现<code>keyWindow</code>发生了变化，为了防止这种变化，在显示新的<code>Window</code>时，先保存<code>keyWindow</code>，释放新后再还原即可：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">show</span>() {
     <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">self</span>.showTimes == <span style="color:#ae81ff">0</span> {
         <span style="color:#75715e">// iOS 14.5.1上如果不记录keyWindow，调用self.dismissVC()后会导致dismiss后keyWindow发生变化</span>
         <span style="color:#75715e">// 从而导致取topMost时为nil，路由不能正常push或present</span>
         <span style="color:#66d9ef">self</span>.keyWindow = UIApplication.shared.keyWindow
-        <span style="color:#66d9ef">let</span> uiwindow = UIWindow(frame: UIScreen.main.bounds)
-        uiwindow.windowLevel = UIWindow.Level.normal
-        uiwindow.safeRootViewController = <span style="color:#66d9ef">self</span>
-        uiwindow.isHidden = <span style="color:#66d9ef">false</span>
-        uiwindow.backgroundColor = UIColor.clear
-        <span style="color:#66d9ef">self</span>.newWindow = uiwindow
+        <span style="color:#66d9ef">let</span> window = UIWindow(frame: UIScreen.main.bounds)
+        window.windowLevel = UIWindow.Level.normal
+        window.safeRootViewController = <span style="color:#66d9ef">self</span>
+        window.isHidden = <span style="color:#66d9ef">false</span>
+        window.backgroundColor = UIColor.clear
+        <span style="color:#66d9ef">self</span>.newWindow = window
         <span style="color:#66d9ef">self</span>.showTimes <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
     }
 }
@@ -388,7 +388,7 @@ code.has-jax {
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="https://iihui.github.io/post/">
-        <span class="site-state-item-count">155</span>
+        <span class="site-state-item-count">154</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
