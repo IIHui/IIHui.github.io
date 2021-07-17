@@ -52,8 +52,9 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 设置文�
           <tag>iOS</tag>
         </tags>
         <content type="html">  最近有用户反馈App出现了闪退现象，但后台并未发现有崩溃日志上传，猜测发生了内存溢出，导致App直接被系统杀掉而没有崩溃日志。为了验证此猜测，需要使用XCode的Leaks工具，这篇文章简单介绍使用Leaks的步骤。
- 设置 首先在XCode的菜单栏中找到Product，然后查看子菜单中的Profile是否为灰色。若Profile为灰色表示该功能不能使用，需要一些设置。首先从schemes处选择Edit Scheme ...，如下所示：
-然后选中Profile，在Build Configuration一栏中选中Debug，在Executable一栏中选择要调试的App，然后点close即可完成设置，如下图所示：
+ 设置 首先在XCode的菜单栏中找到Product，然后查看子菜单中的Profile是否为灰色。若Profile如下图所示为灰色表示该功能不能使用，需要做一些额外的设置。
+如下图所示，首先从schemes处选择Edit Scheme ...才可以设置Profile：
+接着选中Profile，在Build Configuration一栏选中Debug，并在Executable一栏选中要调试的App，最后选中close即可完成设置，如下图所示：
 Instruments 设置完成后，便可在菜单栏的Product目录下看到Profile不再为灰色，点击选中便可唤出Instrucments面板，然后再在其中选中Leaks即可:
 Allocations 上一步选中Leaks后，便会打开Leaks面板，点击左上角的红色圆圈按钮，便可进行内存检测，在下图上半部分选中Allocations行，便可查看内存分配情况：
 Leaks 如果在运行过程中，面板中上半部分的Leaks栏中出现红色x，则说明有内存泄漏。此时，鼠标点击Leaks这一栏，即可看到内存泄漏的具体信息：
@@ -1892,7 +1893,7 @@ NSArray* arrStr = @[@&amp;#34;english&amp;#34;,@&amp;#34;franch&amp;#34;,@&amp;#
     </entry>
     
      <entry>
-        <title>工具使用备忘录</title>
+        <title>工具备忘录</title>
         <url>https://iihui.github.io/post/tool-usage/</url>
         <categories>
           <category>code</category>

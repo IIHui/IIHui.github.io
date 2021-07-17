@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">897</span>
+<span class="leancloud-visitors-count">919</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -256,11 +256,12 @@ code.has-jax {
 <p>最近有用户反馈<code>App</code>出现了闪退现象，但后台并未发现有崩溃日志上传，猜测发生了内存溢出，导致<code>App</code>直接被系统杀掉而没有崩溃日志。为了验证此猜测，需要使用<code>XCode</code>的<code>Leaks</code>工具，这篇文章简单介绍使用<code>Leaks</code>的步骤。</p>
 </blockquote>
 <h1 id="设置">设置</h1>
-<p>首先在<code>XCode</code>的菜单栏中找到<code>Product</code>，然后查看子菜单中的<code>Profile</code>是否为灰色。若<code>Profile</code>为灰色表示该功能不能使用，需要一些设置。首先从<code>schemes</code>处选择<code>Edit Scheme ...</code>，如下所示：</p>
+<p>首先在<code>XCode</code>的菜单栏中找到<code>Product</code>，然后查看子菜单中的<code>Profile</code>是否为灰色。若<code>Profile</code>如下图所示为灰色表示该功能不能使用，需要做一些额外的设置。</p>
 <p><img src="https://i.loli.net/2021/07/11/z1ELBCNaDT5b23M.jpg" alt="-c500"></p>
+<p>如下图所示，首先从<code>schemes</code>处选择<code>Edit Scheme ...</code>才可以设置<code>Profile</code>：</p>
 <p><img src="https://i.loli.net/2021/07/11/LdJOpjtT3VKhZHe.jpg" alt="-c"></p>
 <p><img src="https://i.loli.net/2021/07/10/yt1OKXGImoWAfDi.jpg" alt="-c500"></p>
-<p>然后选中<code>Profile</code>，在<code>Build Configuration</code>一栏中选中<code>Debug</code>，在<code>Executable</code>一栏中选择要调试的<code>App</code>，然后点<code>close</code>即可完成设置，如下图所示：</p>
+<p>接着选中<code>Profile</code>，在<code>Build Configuration</code>一栏选中<code>Debug</code>，并在<code>Executable</code>一栏选中要调试的<code>App</code>，最后选中<code>close</code>即可完成设置，如下图所示：</p>
 <p><img src="https://i.loli.net/2021/07/10/R3OB5bCiPvpKdYG.jpg" alt="-c"></p>
 <h1 id="instruments">Instruments</h1>
 <p>设置完成后，便可在菜单栏的<code>Product</code>目录下看到<code>Profile</code>不再为灰色，点击选中便可唤出<code>Instrucments</code>面板，然后再在其中选中<code>Leaks</code>即可:</p>
