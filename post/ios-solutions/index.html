@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1056</span>
+<span class="leancloud-visitors-count">1054</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -296,9 +296,7 @@ code.has-jax {
     <span style="color:#66d9ef">self</span>.keyWindow?.makeKeyAndVisible()
 }
 </code></pre></div><h1 id="uialertview-无法用">UIAlertView 无法用</h1>
-<blockquote>
-<p>测试<a href="https://github.com/kstenerud/KSCrash">KSCrash</a>时使用<code>XCode 12.3</code>新建了一个工程，写了相关测试代码之后报<code>UIAlertView is deprecated and unavailable for UIScene based applications, please use UIAlertController</code>错误，然后参照<a href="https://stackoverflow.com/questions/58188069/uialertview-is-deprecated-and-unavailable-for-uiscene-based-applications-please">stackover</a>上的回答，解决了报错问题。</p>
-</blockquote>
+<p>测试<a href="https://github.com/kstenerud/KSCrash">KSCrash</a>时使用<code>XCode 12.3</code>新建了一个工程，写了相关测试代码之后报<code>UIAlertView is deprecated and unavailable for UIScene based applications, please use UIAlertController</code>错误，参照<a href="https://stackoverflow.com/questions/58188069/uialertview-is-deprecated-and-unavailable-for-uiscene-based-applications-please">stackover</a>上的回答，解决了报错问题。</p>
 <h2 id="第一步">第一步</h2>
 <p>解决这个问题的核心是要删除<code>UIScene</code>相关的信息，主要分为四步。首先删除工程中的<code>SceneDelegate.swift</code>文件，如下图所示：</p>
 <p><img src="https://i.loli.net/2020/12/26/i2yRd81MkAP5347.jpg" alt="-c"></p>
@@ -318,7 +316,7 @@ code.has-jax {
 <p>接着在<code>AppDelegate.swift</code>中添加<code>var window: UIWindow?</code>，也就补回原本在<code>SceneDelegate.swift</code>中的<code>var window: UIWindow?</code>，如下图所示：</p>
 <p><img src="https://i.loli.net/2020/12/26/IPVk2mlouOrWvXw.jpg" alt="-c"></p>
 <h2 id="第四步">第四步</h2>
-<p>最后在<code>Info.plist</code>文件中删除<code>Application Scene Manifest</code>这一项，然后清除工程的缓存，再编译就不会报错：</p>
+<p>最后在<code>Info.plist</code>文件中删除<code>Application Scene Manifest</code>这一项，然后清除工程的缓存，再编译就不会报错。</p>
 <p><img src="https://i.loli.net/2020/12/26/8BwLCWr7XYesEv4.jpg" alt="-c"></p>
 <hr>
 
@@ -414,7 +412,7 @@ code.has-jax {
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="https://iihui.github.io/post/">
-        <span class="site-state-item-count">154</span>
+        <span class="site-state-item-count">153</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
