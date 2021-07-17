@@ -59,7 +59,7 @@ func show() { if self.showTimes == 0 { // iOS 14.5.1上如果不记录keyWindow�
 第二步 然后在AppDelegate.swift中删除UIScene中相关的代码，即删除下面两个函数，如下所示：
 func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -&amp;gt; UISceneConfiguration { // Called when a new scene session is being created. // Use this method to select a configuration to create the new scene with. return UISceneConfiguration(name: &amp;#34;Default Configuration&amp;#34;, sessionRole: connectingSceneSession.role) } func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set&amp;lt;UISceneSession&amp;gt;) { // Called when the user discards a scene session. // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions. // Use this method to release any resources that were specific to the discarded scenes, as they will not return. } 第三步 接着在AppDelegate.swift中添加var window: UIWindow?，也就补回原本在SceneDelegate.swift中的var window: UIWindow?，如下图所示：
 第四步 如下图所示，最后在Info.plist文件中删除Application Scene Manifest这一项，然后清除工程的缓存，再编译就不会报错：
- </content>
+ 禁用push返回手势 extension UIViewController { /// 禁止系统返回手势 func popGestureForbid() { if let gestures = self.navigationController?.interactivePopGestureRecognizer?.view?.gestureRecognizers { gestures.forEach({ $0.isEnabled = false }) } } } </content>
     </entry>
     
      <entry>
@@ -275,7 +275,7 @@ XCode 12.5 报错 使用XCode 12.5编译项目报Showing Recent Messages Applica
 添加NavigationController 网络调试 如果Mac和iOS设备在同一局域网中，可以通过网络连接进行调试。首先在菜单栏进入到Window--&amp;gt;Devices and Simulators：
 然后找到对应的真机，鼠标左键单击以选中，然后再勾选Connect via network，如下图所示：
 勾选Connect via network后，编译安装的时候选择刚刚的设备，若报错Xcode will continue when xxx is connected，则需要使用Connect via IP Address，再输入真机的IP地址：
-禁用push返回手势 extension UIViewController { /// 禁止系统返回手势 func popGestureForbid() { if let gestures = self.navigationController?.interactivePopGestureRecognizer?.view?.gestureRecognizers { gestures.forEach({ $0.isEnabled = false }) } } } open url 从iOS 10以后UIApplication.shared.openURL就被废弃了，需要使用open func open(_ url: URL, options: [UIApplication.OpenExternalURLOptionsKey : Any] = [:], completionHandler completion: ((Bool) -&amp;gt; Void)? = nil)。
+open url 从iOS 10以后UIApplication.shared.openURL就被废弃了，需要使用open func open(_ url: URL, options: [UIApplication.OpenExternalURLOptionsKey : Any] = [:], completionHandler completion: ((Bool) -&amp;gt; Void)? = nil)。
 options有个参数叫做universalLinksOnly。如果包含universalLinksOnly选项，则只有在配置了某个应用程序以打开URL时，URL才会打开。例如要打开YouTube视频，您必须安装YouTube应用。
 UIApplication.shared.open(url, options: [:], completionHandler: nil) 网址选项
 tabbar隐藏 在TabViewController中设置self.tabBarController?.hidesBottomBarWhenPushed = true后，如果push到另一个界面，则底部的tabbar会隐藏。

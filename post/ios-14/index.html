@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1113</span>
+<span class="leancloud-visitors-count">1074</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -267,17 +267,7 @@ code.has-jax {
 <p>勾选<code>Connect via network</code>后，编译安装的时候选择刚刚的设备，若报错<code>Xcode will continue when xxx is connected</code>，则需要使用<code>Connect via IP Address</code>，再输入真机的<code>IP</code>地址：</p>
 <p><img src="https://i.loli.net/2021/05/05/JXGoeT5kiUqu2gF.jpg" alt="-c"></p>
 <p><img src="https://i.loli.net/2021/05/05/weG4LStHWY6kd5D.jpg" alt="-c"></p>
-<h1 id="禁用push返回手势">禁用push返回手势</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">extension</span> <span style="color:#a6e22e">UIViewController</span> {
-
-    <span style="color:#75715e">/// 禁止系统返回手势</span>
-    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">popGestureForbid</span>() {
-        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> gestures = <span style="color:#66d9ef">self</span>.navigationController?.interactivePopGestureRecognizer?.view?.gestureRecognizers {
-            gestures.forEach({ $0.isEnabled = <span style="color:#66d9ef">false</span> })
-        }
-    }
-}
-</code></pre></div><h1 id="open-url">open url</h1>
+<h1 id="open-url">open url</h1>
 <p>从<code>iOS 10</code>以后<code>UIApplication.shared.openURL</code>就被废弃了，需要使用<code>open func open(_ url: URL, options: [UIApplication.OpenExternalURLOptionsKey : Any] = [:], completionHandler completion: ((Bool) -&gt; Void)? = nil)</code>。</p>
 <p><code>options</code>有个参数叫做<code>universalLinksOnly</code>。如果包含<code>universalLinksOnly</code>选项，则只有在配置了某个应用程序以打开<code>URL</code>时，<code>URL</code>才会打开。例如要打开<code>YouTube</code>视频，您必须安装<code>YouTube</code>应用。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">UIApplication.shared.open(url, options: [:], completionHandler: <span style="color:#66d9ef">nil</span>)
@@ -473,7 +463,6 @@ code.has-jax {
     <li><a href="#添加初始viewcontroller">添加初始ViewController</a></li>
     <li><a href="#添加navigationcontroller">添加NavigationController</a></li>
     <li><a href="#网络调试">网络调试</a></li>
-    <li><a href="#禁用push返回手势">禁用push返回手势</a></li>
     <li><a href="#open-url">open url</a></li>
     <li><a href="#tabbar隐藏">tabbar隐藏</a></li>
   </ul>

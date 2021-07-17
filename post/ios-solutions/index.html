@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1060</span>
+<span class="leancloud-visitors-count">1099</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -319,7 +319,17 @@ code.has-jax {
 <p>如下图所示，最后在<code>Info.plist</code>文件中删除<code>Application Scene Manifest</code>这一项，然后清除工程的缓存，再编译就不会报错：</p>
 <p><img src="https://i.loli.net/2020/12/26/8BwLCWr7XYesEv4.jpg" alt="-c"></p>
 <hr>
+<h1 id="禁用push返回手势">禁用push返回手势</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">extension</span> <span style="color:#a6e22e">UIViewController</span> {
 
+    <span style="color:#75715e">/// 禁止系统返回手势</span>
+    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">popGestureForbid</span>() {
+        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> gestures = <span style="color:#66d9ef">self</span>.navigationController?.interactivePopGestureRecognizer?.view?.gestureRecognizers {
+            gestures.forEach({ $0.isEnabled = <span style="color:#66d9ef">false</span> })
+        }
+    }
+}
+</code></pre></div>
     </div>
     <footer class="post-footer">
         
@@ -492,6 +502,7 @@ code.has-jax {
         <li><a href="#第四步">第四步</a></li>
       </ul>
     </li>
+    <li><a href="#禁用push返回手势">禁用push返回手势</a></li>
   </ul>
 </nav></div>
     </div>
