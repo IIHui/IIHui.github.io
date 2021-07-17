@@ -43,6 +43,18 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 设置文�
     </entry>
     
      <entry>
+        <title>解决方案</title>
+        <url>https://iihui.github.io/post/ios-solutions/</url>
+        <categories>
+          <category>iOS</category>
+        </categories>
+        <tags>
+          <tag>iOS</tag>
+        </tags>
+        <content type="html"> 强制竖屏 class ViewController: UIViewController { override func viewDidLoad() { super.viewDidLoad() let value = UIInterfaceOrientation.portrait.rawValue UIDevice.current.setValue(value, forKey: &amp;#34;orientation&amp;#34;) } override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return .portrait } override var shouldAutorotate: Bool { return true } } </content>
+    </entry>
+    
+     <entry>
         <title>使用Leaks内存检测</title>
         <url>https://iihui.github.io/post/ios-leaks/</url>
         <categories>
