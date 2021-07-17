@@ -1900,14 +1900,15 @@ NSArray* arrStr = @[@&amp;#34;english&amp;#34;,@&amp;#34;franch&amp;#34;,@&amp;#
         <tags>
           <tag>vs</tag>
         </tags>
-        <content type="html">  使用Mac时候会安装各种工具，例如Visual Studio Code，XCode，itemr2，AppCode等等。在这些工具的使用过程中，经常也会遇到一些问题，查了之后容易忘记，以此为记，以期节省时间。
+        <content type="html">  使用Mac开发时会安装各种工具，例如Visual Studio Code，XCode，itemr2，AppCode等等。在这些工具的使用过程中，经常也会遇到一些问题，解决之后也容易忘记，这篇文章用来记录解决方法，以期后续能节省时间。
  Visual Studio Code 列模式 快捷键为shift &#43; option &#43; 单击，即可开启列模式，然后鼠标拖动，即可选择范围：
 生成html模版 首先新建一个文件，保存为后缀为html，然后输入!,再键入Tab，则可按提示生成html模版文件。
 AppCode 列模式 直接按住option即可进入列选择模式，然后拖动鼠标，即可选择相应的范围，如下图所示:
-iterm2 设置为默认终端 因为经常使用iterm2，所以想将其设置为默认的终端，还好iterm2本身支持修改，只要在应用的菜单栏，点击Make Iterm2 to default Term如下图所示：
+ iterm2 设置为默认终端 因为经常使用iterm2，所以想将其设置为默认的终端，还好iterm2本身支持修改，只要在应用的菜单栏，点击Make Iterm2 to default Term如下图所示：
 常用快捷键   CMD&#43;D 纵向将当前窗口分为大小相同的两个窗口
   SHIFT&#43;CMD&#43;D 横行将当前窗口分为大小相同的两个窗口
-  homebrew 替换源 使用homebrew安装软件时，默认会先进行更新，由于国内访问访问github不稳定，导致更新的时候特别慢。可行的方法是替换源，对于homebrew而言，需要替换4个模块的镜像：
+  设置滚动 iterm2默认只有1000行的显示历史，可以在设置中更改，如下图所示：
+ homebrew 替换源 使用homebrew安装软件时，默认会先进行更新，由于国内访问访问github不稳定，导致更新的时候特别慢。可行的方法是替换源，对于homebrew而言，需要替换4个模块的镜像：
  Homebrew Homebrew Core Homebrew Cask Homebrew-bottles  最全的是中科大镜像，其他家都缺少第4个，所以换了前三个后，执行brew update依然很慢，具体替换方式如下：
 # 替换 Homebrew git -C &amp;#34;$(brew --repo)&amp;#34; remote set-url origin https://mirrors.ustc.edu.cn/brew.git # 替换 Homebrew Core git -C &amp;#34;$(brew --repo homebrew/core)&amp;#34; remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git # 替换 Homebrew Cask git -C &amp;#34;$(brew --repo homebrew/cask)&amp;#34; remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git # 替换 Homebrew-bottles # 对于 bash 用户： echo &amp;#39;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles&amp;#39; &amp;gt;&amp;gt; ~/.bash_profile source ~/.bash_profile # 对于 zsh 用户： echo &amp;#39;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles&amp;#39; &amp;gt;&amp;gt; ~/.zshrc source ~/.zshrc 参考资料
  ideviceinstaller 安装App 使用ideviceinstaller安装App，若Mac上只连了一台手机，直接使用如下命令：
@@ -1915,7 +1916,7 @@ ideviceinstaller -i xxx.ipa 如果连接了多部手机，需要更加设备的U
 ideviceinstaller -u xxx -i xxx.ipa 如果要查看连接到电脑上的所有手机的UDID，需要使用如下命令：
 idevice_id -l 如果要查看详信息，需要用到ideviceinfo命令，下面的-s选项表示只是展示一些简单的信息：
 ideviceinfo -s 查看安装的App 如果要查看手机安装的第三方App，则使用如下命令：
-ideviceinstaller -l 卸载应用 ideviceinstaller -u [udid] -U [bundleId]  word默认语言 defaults write com.microsoft.Word AppleLanguages &amp;#39;(&amp;#34;zh-cn&amp;#34;)&amp;#39; defaults write com.microsoft.Powerpoint AppleLanguages &amp;#39;(&amp;#34;zh-cn&amp;#34;)&amp;#39; defaults write com.microsoft.Excel AppleLanguages &amp;#39;(&amp;#34;zh-cn&amp;#34;)&amp;#39; </content>
+ideviceinstaller -l 卸载应用 ideviceinstaller -u [udid] -U [bundleId]  word 修改默认语言 defaults write com.microsoft.Word AppleLanguages &amp;#39;(&amp;#34;zh-cn&amp;#34;)&amp;#39; defaults write com.microsoft.Powerpoint AppleLanguages &amp;#39;(&amp;#34;zh-cn&amp;#34;)&amp;#39; defaults write com.microsoft.Excel AppleLanguages &amp;#39;(&amp;#34;zh-cn&amp;#34;)&amp;#39; </content>
     </entry>
     
      <entry>
