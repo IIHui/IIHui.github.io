@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">38</span>
+<span class="leancloud-visitors-count">165</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -253,8 +253,9 @@ code.has-jax {
     </header>
     <div class="post-body" itemprop="articleBody">
     <h1 id="强制竖屏">强制竖屏</h1>
+<p>最近在调其它<code>SDK</code>的时候，要求某个界面是竖屏的，发现按约定传了相关的参数，但还是会横竖屏切换。于是给了对方下面的方案，首先在工程的<code>info.plist</code>中添加<code>Require Full Screen</code>，并将值置为<code>Yes</code>，然后在<code>ViewController</code>中添加如下代码：</p>
+<p><img src="https://i.loli.net/2021/07/17/7EDrCNhBZT6SAa2.jpg" alt="-c"></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ViewController</span>: UIViewController {
-
     <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">viewDidLoad</span>() {
         <span style="color:#66d9ef">super</span>.viewDidLoad()
         <span style="color:#66d9ef">let</span> value = UIInterfaceOrientation.portrait.rawValue
@@ -269,8 +270,7 @@ code.has-jax {
         <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
     }
 }
-</code></pre></div><p><img src="https://i.loli.net/2021/07/17/7EDrCNhBZT6SAa2.jpg" alt="-c"></p>
-
+</code></pre></div>
     </div>
     <footer class="post-footer">
         

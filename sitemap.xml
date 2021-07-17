@@ -51,7 +51,8 @@ summaryLength = 100 #放在同themes同级的config.toml上才有效 设置文�
         <tags>
           <tag>iOS</tag>
         </tags>
-        <content type="html"> 强制竖屏 class ViewController: UIViewController { override func viewDidLoad() { super.viewDidLoad() let value = UIInterfaceOrientation.portrait.rawValue UIDevice.current.setValue(value, forKey: &amp;#34;orientation&amp;#34;) } override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return .portrait } override var shouldAutorotate: Bool { return true } } </content>
+        <content type="html"> 强制竖屏 最近在调其它SDK的时候，要求某个界面是竖屏的，发现按约定传了相关的参数，但还是会横竖屏切换。于是给了对方下面的方案，首先在工程的info.plist中添加Require Full Screen，并将值置为Yes，然后在ViewController中添加如下代码：
+class ViewController: UIViewController { override func viewDidLoad() { super.viewDidLoad() let value = UIInterfaceOrientation.portrait.rawValue UIDevice.current.setValue(value, forKey: &amp;#34;orientation&amp;#34;) } override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return .portrait } override var shouldAutorotate: Bool { return true } } </content>
     </entry>
     
      <entry>
