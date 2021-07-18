@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1420</span>
+<span class="leancloud-visitors-count">1557</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">3 分钟</span>
+<span class="leancloud-visitors-count">4 分钟</span>
 </span>
       </div>
     </header>
@@ -331,7 +331,7 @@ code.has-jax {
     }
 }
 </code></pre></div><h1 id="webview特殊字符">webView特殊字符</h1>
-<p>如果<code>UIWebview</code>中加载的<code>html</code>文件中含有<code>\n</code>,<code>'</code>等特殊字符时，则将会看到为一片空白。因此加载之前，需要将这些特殊字符进行如下处理:</p>
+<p>如果<code>UIWebview</code>中加载的<code>html</code>文件中含有<code>\n</code>,<code>'</code>等特殊字符时，将会看到为一片空白。因此加载之前，需要将这些特殊字符进行如下处理:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Swift" data-lang="Swift"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HTMLUtils</span> {
     <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">escapsedHTML</span>(html: String) -&gt; String{
         <span style="color:#66d9ef">var</span> result = html
@@ -345,7 +345,10 @@ code.has-jax {
         <span style="color:#66d9ef">return</span> result
     }
 }
-</code></pre></div>
+</code></pre></div><h1 id="允许http请求">允许http请求</h1>
+<p>在<code>iOS 9</code>之后，苹果要求<code>App</code>访问的<code>url</code>需要是<code>https</code>的安全链接，为了能在项目中请求<code>http</code>链接，需要在项目中的<code>info.plist</code>文件中将<code>App Transport Security Settings</code>下的<code>Allow Arbitrary Loads</code>设置为<code>YES</code>，（如果没有则需先在<code>info.plist</code>文件添加）:</p>
+<p><img src="https://i.loli.net/2018/12/29/5c26e4944a70d.jpg" alt=""></p>
+
     </div>
     <footer class="post-footer">
         
@@ -520,6 +523,7 @@ code.has-jax {
     </li>
     <li><a href="#禁用返回手势">禁用返回手势</a></li>
     <li><a href="#webview特殊字符">webView特殊字符</a></li>
+    <li><a href="#允许http请求">允许http请求</a></li>
   </ul>
 </nav></div>
     </div>
