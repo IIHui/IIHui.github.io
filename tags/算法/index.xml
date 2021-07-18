@@ -9,10 +9,10 @@
     <lastBuildDate>Mon, 31 Dec 2018 09:21:01 +0000</lastBuildDate><atom:link href="https://iihui.github.io/tags/%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>基本内排序算法Swift实现</title>
-      <link>https://iihui.github.io/post/ios-sort/</link>
+      <link>https://iihui.github.io/post/swift-sort/</link>
       <pubDate>Mon, 31 Dec 2018 09:21:01 +0000</pubDate>
       
-      <guid>https://iihui.github.io/post/ios-sort/</guid>
+      <guid>https://iihui.github.io/post/swift-sort/</guid>
       <description>排序就是重新排列表中的元素，使表中的元素满足按关键字递增或者递减的排列过程。排序算法分为内排序和外排序。内排序是指排序期间元素全部放在内存中的排序；而外排序是指在排序期间元素太多，不能同时全部存放在内存中，必须在排序过程中根据要求，不断在内</description>
     </item>
     

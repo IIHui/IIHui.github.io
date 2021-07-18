@@ -57,10 +57,11 @@ class ViewController: UIViewController { override func viewDidLoad() { super.vie
 func show() { if self.showTimes == 0 { // iOS 14.5.1上如果不记录keyWindow，调用self.dismissVC()后会导致dismiss后keyWindow发生变化 // 从而导致取topMost时为nil，路由不能正常push或present self.keyWindow = UIApplication.shared.keyWindow let window = UIWindow(frame: UIScreen.main.bounds) window.windowLevel = UIWindow.Level.normal window.safeRootViewController = self window.isHidden = false window.backgroundColor = UIColor.clear self.newWindow = window self.showTimes &#43;= 1 } } @IBAction func cancelAction(_ sender: Any) { self.dismissVC() // 恢复keyWindow，以解决iOS 14.5.1 keyWindow发生变化的情况 self.keyWindow?.makeKeyAndVisible() } UIAlertView 无法用 测试KSCrash时使用XCode 12.3新建了一个工程，写了相关测试代码之后报UIAlertView is deprecated and unavailable for UIScene based applications, please use UIAlertController错误，参照stackover上的回答，解决了报错问题。
 第一步 解决这个问题的核心是要删除UIScene相关的信息，主要分为四步。首先删除工程中的SceneDelegate.swift文件，如下图所示：
 第二步 然后在AppDelegate.swift中删除UIScene中相关的代码，即删除application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions)和 application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set&amp;lt;UISceneSession&amp;gt;)两个函数，如下所示：
-func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -&amp;gt; UISceneConfiguration { // Called when a new scene session is being created. // Use this method to select a configuration to create the new scene with. return UISceneConfiguration(name: &amp;#34;Default Configuration&amp;#34;, sessionRole: connectingSceneSession.role) } func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set&amp;lt;UISceneSession&amp;gt;) { // Called when the user discards a scene session. // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions. // Use this method to release any resources that were specific to the discarded scenes, as they will not return. } 第三步 接着在AppDelegate.swift中添加var window: UIWindow?，即补回原本在SceneDelegate.swift中的var window: UIWindow?，如下图所示：
+func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -&amp;gt; UISceneConfiguration { // Called when a new scene session is being created. // Use this method to select a configuration to create the new scene with. return UISceneConfiguration(name: &amp;#34;Default Configuration&amp;#34;, sessionRole: connectingSceneSession.role) } func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set&amp;lt;UISceneSession&amp;gt;) { // Called when the user discards a scene session. // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions. // Use this method to release any resources that were specific to the discarded scenes, as they will not return. } 第三步 接着在AppDelegate.swift中添加var window: UIWindow?，即补回原本在SceneDelegate.swift中的var window: UIWindow?，如下所示：
 第四步 如下图所示，最后在Info.plist文件中删除Application Scene Manifest这一项，然后清除工程的缓存，再编译就不会报错：
  禁用返回手势 对于push的界面，默认有「边缘返回」手势。但有时候需要禁止系统的「边缘返回」手势，可以为UIViewController写一个扩展方法，然后按需使用：
-// 参考自https://juejin.cn/post/6860656306630590477 extension UIViewController { /// 禁止系统返回手势 func popGestureForbid() { if let gestures = self.navigationController?.interactivePopGestureRecognizer?.view?.gestureRecognizers { gestures.forEach({ $0.isEnabled = false }) } } } </content>
+// 参考自https://juejin.cn/post/6860656306630590477 extension UIViewController { /// 禁止系统返回手势 func popGestureForbid() { if let gestures = self.navigationController?.interactivePopGestureRecognizer?.view?.gestureRecognizers { gestures.forEach({ $0.isEnabled = false }) } } } webView特殊字符 如果UIWebview中加载的html文件中含有\n,&#39;等特殊字符时，则将会看到为一片空白。因此加载之前，需要将这些特殊字符进行如下处理:
+class HTMLUtils { static func escapsedHTML(html: String) -&amp;gt; String{ var result = html if !result.isEmpty{ result = result.replacingOccurrences(of: &amp;#34;\\&amp;#34;, with: &amp;#34;\\\\&amp;#34;) result = result.replacingOccurrences(of: &amp;#34;\&amp;#34;&amp;#34;, with: &amp;#34;\\\&amp;#34;&amp;#34;) result = result.replacingOccurrences(of: &amp;#34;&amp;#39;&amp;#34;, with: &amp;#34;\\&amp;#39;&amp;#34;) result = result.replacingOccurrences(of: &amp;#34;\r&amp;#34;, with: &amp;#34;\\r&amp;#34;) result = result.replacingOccurrences(of: &amp;#34;\n&amp;#34;, with: &amp;#34;\\n&amp;#34;) } return result } } </content>
     </entry>
     
      <entry>
@@ -2233,19 +2234,6 @@ import Foundation //参考自 https://www.jianshu.com/p/e31eeb26cdce enum positi
     </entry>
     
      <entry>
-        <title>UIWebview 加载含特殊字符网页</title>
-        <url>https://iihui.github.io/post/ios-webview-html/</url>
-        <categories>
-          <category>code</category>
-        </categories>
-        <tags>
-          <tag>iOS</tag><tag>UIWebView</tag>
-        </tags>
-        <content type="html">  UIWebview中加载的html文件中如果含有\n,&#39;等特殊字符时，显示为一片空白。查阅资料得知需要将这些特殊字符进行预处理。
- 预处理 class HTMLUtils{ static func escapsedHTML(html: String)-&amp;gt;String{ var result = html if !result.isEmpty{ result = result.replacingOccurrences(of: &amp;#34;\\&amp;#34;, with: &amp;#34;\\\\&amp;#34;) result = result.replacingOccurrences(of: &amp;#34;\&amp;#34;&amp;#34;, with: &amp;#34;\\\&amp;#34;&amp;#34;) result = result.replacingOccurrences(of: &amp;#34;&amp;#39;&amp;#34;, with: &amp;#34;\\&amp;#39;&amp;#34;) result = result.replacingOccurrences(of: &amp;#34;\r&amp;#34;, with: &amp;#34;\\r&amp;#34;) result = result.replacingOccurrences(of: &amp;#34;\n&amp;#34;, with: &amp;#34;\\n&amp;#34;) } return result } }  </content>
-    </entry>
-    
-     <entry>
         <title>JS事件捕获</title>
         <url>https://iihui.github.io/post/js-event/</url>
         <categories>
@@ -2547,7 +2535,7 @@ var step = -3 for i in stride(from: 10, through: 0, by: step){ print(i, terminat
     
      <entry>
         <title>基本内排序算法Swift实现</title>
-        <url>https://iihui.github.io/post/ios-sort/</url>
+        <url>https://iihui.github.io/post/swift-sort/</url>
         <categories>
           <category>算法</category>
         </categories>
