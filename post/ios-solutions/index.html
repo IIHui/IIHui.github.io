@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1139</span>
+<span class="leancloud-visitors-count">1245</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -301,7 +301,7 @@ code.has-jax {
 <p>解决这个问题的核心是要删除<code>UIScene</code>相关的信息，主要分为四步。首先删除工程中的<code>SceneDelegate.swift</code>文件，如下图所示：</p>
 <p><img src="https://i.loli.net/2020/12/26/i2yRd81MkAP5347.jpg" alt="-c"></p>
 <h2 id="第二步">第二步</h2>
-<p>然后在<code>AppDelegate.swift</code>中删除<code>UIScene</code>中相关的代码，即删除下面两个函数，如下所示：</p>
+<p>然后在<code>AppDelegate.swift</code>中删除<code>UIScene</code>中相关的代码，即删除<code>application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions)</code>和<code> application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set&lt;UISceneSession&gt;)</code>两个函数，如下所示：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">application</span>(<span style="color:#66d9ef">_</span> application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -&gt; UISceneConfiguration {
     <span style="color:#75715e">// Called when a new scene session is being created.</span>
     <span style="color:#75715e">// Use this method to select a configuration to create the new scene with.</span>
@@ -313,14 +313,14 @@ code.has-jax {
     <span style="color:#75715e">// Use this method to release any resources that were specific to the discarded scenes, as they will not return.</span>
 }
 </code></pre></div><h2 id="第三步">第三步</h2>
-<p>接着在<code>AppDelegate.swift</code>中添加<code>var window: UIWindow?</code>，也就补回原本在<code>SceneDelegate.swift</code>中的<code>var window: UIWindow?</code>，如下图所示：</p>
+<p>接着在<code>AppDelegate.swift</code>中添加<code>var window: UIWindow?</code>，即补回原本在<code>SceneDelegate.swift</code>中的<code>var window: UIWindow?</code>，如下图所示：</p>
 <p><img src="https://i.loli.net/2020/12/26/IPVk2mlouOrWvXw.jpg" alt="-c"></p>
 <h2 id="第四步">第四步</h2>
 <p>如下图所示，最后在<code>Info.plist</code>文件中删除<code>Application Scene Manifest</code>这一项，然后清除工程的缓存，再编译就不会报错：</p>
 <p><img src="https://i.loli.net/2020/12/26/8BwLCWr7XYesEv4.jpg" alt="-c"></p>
 <hr>
 <h1 id="禁用返回手势">禁用返回手势</h1>
-<p>对于<code>push</code>过去的界面，有时候需要禁止系统的返回手势，最好的方法是写一个扩展，按需使用：</p>
+<p>对于<code>push</code>的界面，默认有<font color=red>「边缘返回」手势。但有时候需要禁止系统的「边缘返回」手势，可以为<code>UIViewController</code>写一个扩展方法，然后按需使用：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">extension</span> <span style="color:#a6e22e">UIViewController</span> {
 
     <span style="color:#75715e">/// 禁止系统返回手势</span>
