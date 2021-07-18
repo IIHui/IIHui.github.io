@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1245</span>
+<span class="leancloud-visitors-count">1291</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -320,9 +320,9 @@ code.has-jax {
 <p><img src="https://i.loli.net/2020/12/26/8BwLCWr7XYesEv4.jpg" alt="-c"></p>
 <hr>
 <h1 id="禁用返回手势">禁用返回手势</h1>
-<p>对于<code>push</code>的界面，默认有<font color=red>「边缘返回」手势。但有时候需要禁止系统的「边缘返回」手势，可以为<code>UIViewController</code>写一个扩展方法，然后按需使用：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">extension</span> <span style="color:#a6e22e">UIViewController</span> {
-
+<p>对于<code>push</code>的界面，默认有<font color=red>「边缘返回」</font>手势。但有时候需要禁止系统的「边缘返回」手势，可以为<code>UIViewController</code>写一个扩展方法，然后按需使用：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">// 参考自https://juejin.cn/post/6860656306630590477</span>
+<span style="color:#66d9ef">extension</span> <span style="color:#a6e22e">UIViewController</span> {
     <span style="color:#75715e">/// 禁止系统返回手势</span>
     <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">popGestureForbid</span>() {
         <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> gestures = <span style="color:#66d9ef">self</span>.navigationController?.interactivePopGestureRecognizer?.view?.gestureRecognizers {
