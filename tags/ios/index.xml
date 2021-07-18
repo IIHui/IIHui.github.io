@@ -206,15 +206,6 @@
     </item>
     
     <item>
-      <title>UIImage</title>
-      <link>https://iihui.github.io/post/ios-image/</link>
-      <pubDate>Wed, 05 Aug 2020 11:46:48 +0000</pubDate>
-      
-      <guid>https://iihui.github.io/post/ios-image/</guid>
-      <description>iOS开发的时候经常遇到要处理图片，这篇文章记录一下一些图片处理函数</description>
-    </item>
-    
-    <item>
       <title>UITabBarController</title>
       <link>https://iihui.github.io/post/ios-uitabbar/</link>
       <pubDate>Sun, 02 Aug 2020 21:04:47 +0000</pubDate>

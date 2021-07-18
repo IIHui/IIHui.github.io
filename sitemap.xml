@@ -1067,19 +1067,6 @@ safeAreaLayoutGuide private func setupUI2() { let topView = UIView() topView.bac
     </entry>
     
      <entry>
-        <title>UIImage</title>
-        <url>https://iihui.github.io/post/ios-image/</url>
-        <categories>
-          <category>iOS</category>
-        </categories>
-        <tags>
-          <tag>iOS</tag>
-        </tags>
-        <content type="html">  iOS开发的时候经常遇到要处理图片，这篇文章记录一下一些图片处理函数
- </content>
-    </entry>
-    
-     <entry>
         <title>UITabBarController</title>
         <url>https://iihui.github.io/post/ios-uitabbar/</url>
         <categories>
