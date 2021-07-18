@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">3255</span>
+<span class="leancloud-visitors-count">3444</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -537,7 +537,6 @@ navBGView.layer.shadowPath = UIBezierPath.<span style="color:#66d9ef">init</span
 <h2 id="图片不放xcassets中">图片不放xcassets中</h2>
 <p>启动页用到的图片资源，不要放入到<code>*.xcassets</code>中，应该直接放到工程目录下，如下图所示：</p>
 <p><img src="https://i.loli.net/2020/07/01/6HJwQTxmz28LfI3.jpg" alt="-c"></p>
-<hr>
 <h2 id="图片需要改名">图片需要改名</h2>
 <p>如果启动页的图片资源需要修改，那应该将图片重命名，不要使用上次的命令，如果使用上次的名字，启动的时候还是会读缓存图片：</p>
 <p><img src="https://i.loli.net/2020/07/01/8ew7Tad9fkIyqtZ.jpg" alt="-c"></p>
@@ -550,7 +549,41 @@ navBGView.layer.shadowPath = UIBezierPath.<span style="color:#66d9ef">init</span
    } <span style="color:#66d9ef">catch</span> <span style="color:#66d9ef">let</span> error {
     printDebug(msg: error.localizedDescription)
 }
-</code></pre></div>
+</code></pre></div><h1 id="图片处理">图片处理</h1>
+<h2 id="添加外圆">添加外圆</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">/// 将图片裁剪为带外围⭕️的圆形图</span>
+<span style="color:#75715e">/// - Parameters:</span>
+<span style="color:#75715e">///   - rail: 外围圆的宽度</span>
+<span style="color:#75715e">///   - color: 外围圆的颜色</span>
+<span style="color:#75715e">/// - Returns: 生成新的图片</span>
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">circleImageWidthRail</span>(rail: CGFloat, color: UIColor) -&gt; UIImage? {
+    <span style="color:#66d9ef">let</span> size = CGSize(width: <span style="color:#66d9ef">self</span>.size.width <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> rail, height: <span style="color:#66d9ef">self</span>.size.height <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> rail)
+    UIGraphicsBeginImageContextWithOptions(size, <span style="color:#66d9ef">false</span>, <span style="color:#ae81ff">0</span>)
+    <span style="color:#66d9ef">let</span> path = UIBezierPath(ovalIn: CGRect(x: <span style="color:#ae81ff">0</span>, y: <span style="color:#ae81ff">0</span>, width: size.width, height: size.height))
+    color.<span style="color:#66d9ef">set</span>()
+    path.fill()
+    <span style="color:#66d9ef">let</span> imgPath = UIBezierPath(ovalIn: CGRect(x: rail, y: rail, width: <span style="color:#66d9ef">self</span>.size.width, height: <span style="color:#66d9ef">self</span>.size.height))
+    imgPath.addClip()
+    <span style="color:#66d9ef">self</span>.draw(at: CGPoint(x: rail, y: rail))
+    <span style="color:#66d9ef">let</span> newImg = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    <span style="color:#66d9ef">return</span> newImg
+}
+</code></pre></div><h2 id="裁剪为圆形">裁剪为圆形</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">/// 将图片裁剪为圆形图</span>
+<span style="color:#75715e">/// - Returns:生成新的图片</span>
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">circleImage</span>() -&gt; UIImage? {
+    UIGraphicsBeginImageContextWithOptions(<span style="color:#66d9ef">self</span>.size, <span style="color:#66d9ef">false</span>, <span style="color:#ae81ff">0</span>)
+    <span style="color:#66d9ef">let</span> imgPath = UIBezierPath(ovalIn: CGRect(x: <span style="color:#ae81ff">0</span>, y: <span style="color:#ae81ff">0</span>, width: <span style="color:#66d9ef">self</span>.size.width, height: <span style="color:#66d9ef">self</span>.size.height))
+    imgPath.addClip()
+    <span style="color:#66d9ef">self</span>.draw(at: CGPoint(x: <span style="color:#ae81ff">0</span>, y: <span style="color:#ae81ff">0</span>))
+    <span style="color:#66d9ef">let</span> newImg = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    <span style="color:#66d9ef">return</span> newImg
+}
+</code></pre></div><p><a href="https://stackoverflow.com/questions/29046571/cut-a-uiimage-into-a-circle/29046647">参考资料</a></p>
+<hr>
+
     </div>
     <footer class="post-footer">
         
@@ -747,6 +780,12 @@ navBGView.layer.shadowPath = UIBezierPath.<span style="color:#66d9ef">init</span
         <li><a href="#图片不放xcassets中">图片不放xcassets中</a></li>
         <li><a href="#图片需要改名">图片需要改名</a></li>
         <li><a href="#清理启动页缓存">清理启动页缓存</a></li>
+      </ul>
+    </li>
+    <li><a href="#图片处理">图片处理</a>
+      <ul>
+        <li><a href="#添加外圆">添加外圆</a></li>
+        <li><a href="#裁剪为圆形">裁剪为圆形</a></li>
       </ul>
     </li>
   </ul>
