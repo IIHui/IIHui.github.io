@@ -319,7 +319,7 @@
       <pubDate>Wed, 29 Jul 2020 19:21:23 +0000</pubDate>
       
       <guid>https://iihui.github.io/post/ios-date/</guid>
-      <description>毫秒级时间戳距当前时间 /// 将毫秒级别的时间戳转换为约定的格式，0～60秒显示几秒前，1～60分显示xx分钟前，1～24小时显示xx小时前，1～10天显示xx天前，否则显示yyyy-MM-dd /// - Parameter timeStamp: 毫秒级别时间戳字符串 /// - Returns: 转换后的字符串 private func</description>
+      <description></description>
     </item>
     
     <item>
