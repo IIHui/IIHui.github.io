@@ -530,15 +530,6 @@
     </item>
     
     <item>
-      <title>H5视频播放</title>
-      <link>https://iihui.github.io/post/ios-html-player/</link>
-      <pubDate>Mon, 25 Feb 2019 08:52:09 +0000</pubDate>
-      
-      <guid>https://iihui.github.io/post/ios-html-player/</guid>
-      <description>近期APP出现了在iPhone上拍的视频，同步到Android手机后播放不了的问题，第一直觉应该是iPhone上录制视频所使用的编码不兼容Android。经过沟通，了解到播放视频是用H5嵌入的，因为手边没有视频播放源码和可测试的Androi</description>
-    </item>
-    
-    <item>
       <title>半透明的悬浮提示窗</title>
       <link>https://iihui.github.io/post/ios-alert-window/</link>
       <pubDate>Sun, 24 Feb 2019 19:50:43 +0000</pubDate>
