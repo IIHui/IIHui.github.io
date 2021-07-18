@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">3444</span>
+<span class="leancloud-visitors-count">4341</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">7 分钟</span>
+<span class="leancloud-visitors-count">9 分钟</span>
 </span>
       </div>
     </header>
@@ -583,7 +583,45 @@ navBGView.layer.shadowPath = UIBezierPath.<span style="color:#66d9ef">init</span
 }
 </code></pre></div><p><a href="https://stackoverflow.com/questions/29046571/cut-a-uiimage-into-a-circle/29046647">参考资料</a></p>
 <hr>
+<h1 id="网络调试">网络调试</h1>
+<p>如果<code>Mac</code>和<code>iOS</code>设备在<font color=Blue>同一局域网中</font>，可以通过网络连接进行调试。首先在菜单栏进入到<code>Window--&gt;Devices and Simulators</code>：</p>
+<p><img src="https://i.loli.net/2021/05/05/HP8MeGnZzLQg4fY.jpg" alt="-c"></p>
+<p>然后找到对应的真机，鼠标左键单击以选中，然后再勾选<code>Connect via network</code>，如下图所示：</p>
+<p><img src="https://i.loli.net/2021/05/05/CmlfhaE6kRDtP8q.jpg" alt="-c"></p>
+<p>勾选<code>Connect via network</code>后，编译安装的时候选择刚刚的设备，若报错<code>Xcode will continue when xxx is connected</code>，则需要使用<code>Connect via IP Address</code>，再输入真机的<code>IP</code>地址：</p>
+<p><img src="https://i.loli.net/2021/05/05/JXGoeT5kiUqu2gF.jpg" alt="-c"></p>
+<p><img src="https://i.loli.net/2021/05/05/weG4LStHWY6kd5D.jpg" alt="-c"></p>
+<h1 id="open-url">open url</h1>
+<p>从<code>iOS 10</code>以后<code>UIApplication.shared.openURL</code>就被废弃了，需要使用<code>open func open(_ url: URL, options: [UIApplication.OpenExternalURLOptionsKey : Any] = [:], completionHandler completion: ((Bool) -&gt; Void)? = nil)</code>。</p>
+<p><code>options</code>有个参数叫做<code>universalLinksOnly</code>。如果包含<code>universalLinksOnly</code>选项，则只有在配置了某个应用程序以打开<code>URL</code>时，<code>URL</code>才会打开。例如要打开<code>YouTube</code>视频，您必须安装<code>YouTube</code>应用。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">UIApplication.shared.open(url, options: [:], completionHandler: <span style="color:#66d9ef">nil</span>)
+</code></pre></div><p><a href="https://www.coder.work/article/438469">网址选项</a></p>
+<h1 id="tabbar隐藏">tabbar隐藏</h1>
+<p>在<code>TabViewController</code>中设置<code>self.tabBarController?.hidesBottomBarWhenPushed = true</code>后，如果<code>push</code>到另一个界面，则底部的<code>tabbar</code>会隐藏。</p>
+<p><code>push</code>到一个界面后，但如果再使用替换<code>window.rootViewController</code>的方式打开一个另一个新的界面，如果新打开的这个界释放掉，再回到原来的界面时，<code>tabbar</code>会显示。此时，需要使用如下代码隐藏<code>tabbar</code>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">hideTabBar</span>() {
+        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">self</span>.rootViewController <span style="color:#66d9ef">is</span> RootTabBarController,
+           <span style="color:#66d9ef">let</span> navigationController = (<span style="color:#66d9ef">self</span>.rootViewController <span style="color:#66d9ef">as</span>? RootTabBarController)?.selectedViewController <span style="color:#66d9ef">as</span>? UINavigationController,
+           navigationController.viewControllers.count <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>,
+           <span style="color:#66d9ef">let</span> topViewController = navigationController.topViewController {
+              navigationController.popViewController(animated: <span style="color:#66d9ef">false</span>)
+              navigationController.pushViewController(topViewController, animated: <span style="color:#66d9ef">false</span>)
+        }
+    }
+</code></pre></div><p>上面的解决思路是将原来<code>push</code>的界面先<code>pop</code>掉，然后利用已设置的<code>self.tabBarController?.hidesBottomBarWhenPushed = true</code>属性，再重新<code>push</code>一次之前的界面，就可以把底部的<code>tabbar</code>隐藏。</p>
+<p>如果是在<code>viewWillAppear</code>里面手动将<code>tabbar</code>隐藏，而在<code>viewWillDisapper</code>中将<code>tabbar</code>显示，则不仅会影响整体的逻辑，而且还会出现肉眼可见的黑边：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">viewWillAppear</span>(<span style="color:#66d9ef">_</span> animated: Bool) {
+    <span style="color:#66d9ef">super</span>.viewWillAppear(animated)
+    <span style="color:#66d9ef">self</span>.tabBarController?.tabBar.isHidden = <span style="color:#66d9ef">true</span>
+    <span style="color:#66d9ef">self</span>.tabBarController?.tabBar.isTranslucent = <span style="color:#66d9ef">true</span>
+}
 
+<span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">viewWillDisappear</span>(<span style="color:#66d9ef">_</span> animated: Bool) {
+    <span style="color:#66d9ef">super</span>.viewWillDisappear(animated)
+    <span style="color:#66d9ef">self</span>.tabBarController?.tabBar.isHidden = <span style="color:#66d9ef">false</span>
+    <span style="color:#66d9ef">self</span>.tabBarController?.tabBar.isTranslucent = <span style="color:#66d9ef">false</span>
+}
+</code></pre></div>
     </div>
     <footer class="post-footer">
         
@@ -788,6 +826,9 @@ navBGView.layer.shadowPath = UIBezierPath.<span style="color:#66d9ef">init</span
         <li><a href="#裁剪为圆形">裁剪为圆形</a></li>
       </ul>
     </li>
+    <li><a href="#网络调试">网络调试</a></li>
+    <li><a href="#open-url">open url</a></li>
+    <li><a href="#tabbar隐藏">tabbar隐藏</a></li>
   </ul>
 </nav></div>
     </div>
