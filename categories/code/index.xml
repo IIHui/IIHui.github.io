@@ -215,15 +215,6 @@
     </item>
     
     <item>
-      <title>iOS允许HTTP请求</title>
-      <link>https://iihui.github.io/post/ios-http/</link>
-      <pubDate>Sat, 29 Dec 2018 11:05:00 +0000</pubDate>
-      
-      <guid>https://iihui.github.io/post/ios-http/</guid>
-      <description>在iOS 9之后，苹果默认要求App访问的url必须为https的安全链接，为了能在项目中请求Http链接，需要在项目中自动生成的Info.plist文件里，将App Transport Security Settings下的Allow Arbitrary Loads设置为YES「如果没有则先添加</description>
-    </item>
-    
-    <item>
       <title>Framework</title>
       <link>https://iihui.github.io/post/ios-framework/</link>
       <pubDate>Tue, 25 Dec 2018 11:45:01 +0000</pubDate>

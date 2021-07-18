@@ -314,15 +314,6 @@
     </item>
     
     <item>
-      <title>时间相关处理</title>
-      <link>https://iihui.github.io/post/ios-date/</link>
-      <pubDate>Wed, 29 Jul 2020 19:21:23 +0000</pubDate>
-      
-      <guid>https://iihui.github.io/post/ios-date/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>富文本</title>
       <link>https://iihui.github.io/post/ios-richtext/</link>
       <pubDate>Wed, 29 Jul 2020 18:59:27 +0000</pubDate>
@@ -851,15 +842,6 @@
       
       <guid>https://iihui.github.io/post/swift-sort/</guid>
       <description>排序就是重新排列表中的元素，使表中的元素满足按关键字递增或者递减的排列过程。排序算法分为内排序和外排序。内排序是指排序期间元素全部放在内存中的排序；而外排序是指在排序期间元素太多，不能同时全部存放在内存中，必须在排序过程中根据要求，不断在内</description>
-    </item>
-    
-    <item>
-      <title>iOS允许HTTP请求</title>
-      <link>https://iihui.github.io/post/ios-http/</link>
-      <pubDate>Sat, 29 Dec 2018 11:05:00 +0000</pubDate>
-      
-      <guid>https://iihui.github.io/post/ios-http/</guid>
-      <description>在iOS 9之后，苹果默认要求App访问的url必须为https的安全链接，为了能在项目中请求Http链接，需要在项目中自动生成的Info.plist文件里，将App Transport Security Settings下的Allow Arbitrary Loads设置为YES「如果没有则先添加</description>
     </item>
     
     <item>

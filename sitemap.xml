@@ -1188,18 +1188,6 @@ func newInt() *int { return new(int) } func newInt() *int { var dummy int return
     </entry>
     
      <entry>
-        <title>时间相关处理</title>
-        <url>https://iihui.github.io/post/ios-date/</url>
-        <categories>
-          <category>iOS</category>
-        </categories>
-        <tags>
-          <tag>iOS</tag>
-        </tags>
-        <content type="html">  </content>
-    </entry>
-    
-     <entry>
         <title>富文本</title>
         <url>https://iihui.github.io/post/ios-richtext/</url>
         <categories>
@@ -2547,19 +2535,6 @@ var step = -3 for i in stride(from: 10, through: 0, by: step){ print(i, terminat
 //计数排序，时间复杂度为O(n&#43;K),空间复杂度为O(n&#43;K),稳定的排序算法 static func countSort(data: [Int]) -&amp;gt; [Int]? { guard let arr = preCountSort(data: data), let max = arr.max() else return nil } var countArr = [Int](repeating: 0, count: max &#43; 1) for item in arr { countArr[item] &#43;= 1 } for i in 1 ..&amp;lt; countArr.count { countArr[i] &#43;= countArr[i - 1] } var result = [Int](repeating: 0, count: arr.count) for i in stride(from: arr.count - 1, through: 0, by: -1) { result[countArr[arr[i]] - 1] = arr[i] countArr[arr[i]] -= 1 } let realResult = postCountSort(data: data, result: result) return realResult } static private func preCountSort(data: [Int]) -&amp;gt; [Int]? { guard let min = data.min() else { return nil } if min &amp;lt; 0 { let adder = abs(min) let result = data.map { $0 &#43; adder } return result } else { return data } } static private func postCountSort(data: [Int], result: [Int]) -&amp;gt; [Int]? guard data.count == result.count, let min = data.min() else { return nil } var realResult = result if min &amp;lt; 0 { realResult = result.map { $0 &#43; min } } return realResult } 参考资料
  基数排序 基数排序(Radix Sort)是桶排序的扩展，它的基本思想是：将整数按位数切割成不同的数字，然后按每个位数分别比较。具体做法是：将所有待比较数值统一为同样的数位长度，数位较短的数前面补零。然后，从最低位开始，依次进行一次排序。这样从最低位排序一直到最高位排序完成以后,待排序序列就变成一个有序序列。
 //十进制的基数排序 static func radixSort(data: [Int]) -&amp;gt; [Int]? { guard var arr = preRadixSort(data: data), let max = arr.max() else { return nil } var assist = 1 while assist &amp;lt;= max { inRadixSort(data: &amp;amp;arr, assist: assist, radix: 10) assist *= 10 } return arr } static private func preRadixSort(data: [Int]) -&amp;gt; [Int]? { for item in data { if item &amp;lt; 0 { return nil } } return data } static private func inRadixSort(data: inout [Int], assist: Int, radix: Int) { var countArr = [Int](repeating: 0, count: 10) for item in data { countArr[(item / assist) % radix] &#43;= 1 } var tmpArr = data for i in 1 ..&amp;lt; countArr.count { countArr[i] &#43;= countArr[i - 1] } for i in stride(from: data.count - 1, through: 0, by: -1) { tmpArr[countArr[(data[i] / assist) % radix] - 1] = data[i] countArr[(data[i] / assist) % radix] -= 1 } data = tmpArr } 总结  </content>
-    </entry>
-    
-     <entry>
-        <title>iOS允许HTTP请求</title>
-        <url>https://iihui.github.io/post/ios-http/</url>
-        <categories>
-          <category>code</category>
-        </categories>
-        <tags>
-          <tag>iOS</tag>
-        </tags>
-        <content type="html"> 在iOS 9之后，苹果默认要求App访问的url必须为https的安全链接，为了能在项目中请求Http链接，需要在项目中自动生成的Info.plist文件里，将App Transport Security Settings下的Allow Arbitrary Loads设置为YES「如果没有则先添加这两项」:
- </content>
     </entry>
     
      <entry>
