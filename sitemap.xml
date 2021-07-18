@@ -72,7 +72,10 @@ class ViewController: UIViewController { override func viewDidLoad() { super.vie
 if self.captureSession.canAddOutput(self.captureMovieFileOutput) { self.captureSession.addOutput(self.captureMovieFileOutput) if let outPutConnection = self.captureMovieFileOutput.connection(withMediaType:AVMediaTypeVideo){ let out = self.captureMovieFileOutput.outputSettings(for: outPutConnection) } } 改变编码 因此需要显式指定视频的输出编码格式，而不是使用之前的默认编码格式，代码片段如下：
 if self.captureSession.canAddOutput(self.captureMovieFileOutput) { self.captureSession.addOutput(self.captureMovieFileOutput) if let outPutConnection = self.captureMovieFileOutput.connection(withMediaType:AVMediaTypeVideo){ if #available(iOS 10.0, *){ let outputSettings = [AVVideoCodecKey:AVVideoCodecH264] self.captureMovieFileOutput.setOutputSettings(outputSettings, for: outPutConnection) //let out = self.captureMovieFileOutput.outputSettings(for: outPutConnection) } } } 播放代码 为了测试改变编码后生成的视频文件能否在Chrome浏览器中播放，需要写出相应的H5播放代码，如下所示：
 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;utf-8&amp;#34; /&amp;gt; &amp;lt;meta http-equiv=&amp;#34;X-UA-Compatible&amp;#34; content=&amp;#34;IE=edge&amp;#34;&amp;gt; &amp;lt;title&amp;gt;Page Title&amp;lt;/title&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width, initial-scale=1&amp;#34;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;video id=&amp;#34;video&amp;#34; src=&amp;#34;video13.mp4&amp;#34; controls = &amp;#34;true&amp;#34; poster=&amp;#34;images.jpg&amp;#34; /*视频封面*/ preload=&amp;#34;auto&amp;#34; webkit-playsinline=&amp;#34;true&amp;#34; /*这个属性是ios 10中设置可以 让视频在小窗内播放，也就是不是全屏播放*/ playsinline=&amp;#34;true&amp;#34; /*IOS微信浏览器支持小窗内播放*/ x-webkit-airplay=&amp;#34;allow&amp;#34; x5-video-player-type=&amp;#34;h5&amp;#34; /*启用H5播放器,是wechat安卓版特性*/ x5-video-player-fullscreen=&amp;#34;true&amp;#34; /*全屏设置， 设置为 true 是防止横屏*/ x5-video-orientation=&amp;#34;portraint&amp;#34; //播放器支付的方向， landscape横屏，portraint竖屏，默认值为竖屏 &amp;lt;/video&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; 然后发现使用这段代码在修改编码之前不可播放视频，修改编码之后可以播放相应的视频。最后在找到Android测试机发现也是可以的，至此问题解决。
- </content>
+ 启动页 最近App改版，启动页也要随之需要修改，但是修改lanuchScreen.storyboard里的图片和样式之后，发现部分手机并未立即生效。解决这个问题，主要分为三个步骤
+图片不放xcassets中 启动页用到的图片资源，不要放入到*.xcassets中，应该直接放到工程目录下，如下图所示：
+ 图片需要改名 如果启动页的图片资源需要修改，那应该将图片重命名，不要使用上次的命令，如果使用上次的名字，启动的时候还是会读缓存图片：
+清理启动页缓存 let path = libraryPath.appendingPathComponent(&amp;#34;SplashBoard&amp;#34;).appendingPathComponent(&amp;#34;Snapshots&amp;#34;) do { if FileManager.default.fileExists(atPath: path.path){ try FileManager.default.removeItem(at: path) } } catch let error { printDebug(msg: error.localizedDescription) } </content>
     </entry>
     
      <entry>
@@ -1237,21 +1240,6 @@ func newInt() *int { return new(int) } func newInt() *int { var dummy int return
         </tags>
         <content type="html"> class RecommendView: UIView { @IBOutlet weak var imageView: UIImageView! @IBOutlet weak var subTitleLbl: UILabel! @IBOutlet weak var titleLbl: UILabel! @IBOutlet var contentView: UIView! override init(frame: CGRect) { //每一步都必须实现父初始化 super.init(frame: frame) contentView = loadViewFromNib() contentView.frame = bounds addSubview(contentView) } //可视化IB初始化调用 required init?(coder aDecoder: NSCoder) { super.init(coder: aDecoder) contentView = loadViewFromNib() contentView.frame = bounds addSubview(contentView) } //MARK：自定义方法 func loadViewFromNib() -&amp;gt; UIView { let nib = UINib(nibName: String(describing: RecommendView.self), bundle: Bundle(for: RecommendView.self)) let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView return view } } 参考资料
 </content>
-    </entry>
-    
-     <entry>
-        <title>启动页修改</title>
-        <url>https://iihui.github.io/post/ios-lanuch/</url>
-        <categories>
-          <category>iOS</category>
-        </categories>
-        <tags>
-          <tag>iOS</tag>
-        </tags>
-        <content type="html">  最近App改版，启动页也要随之修改，但是修改lanuchScreen.storyboard里的图片和样式之后并未立即生效。解决这个问题，主要分为三个步骤
- 图片不放xcassets中 启动页用到的图片资源，不要放入到*.xcassets中，应该直接放到工程目录下，如下图所示：
- 图片需要改名 如果启动页的图片资源需要修改，那应该将图片重命名，不要使用上次的命令，如果使用上次的名字，启动的时候还是会读缓存图片：
-清理启动页缓存 let path = libraryPath.appendingPathComponent(&amp;#34;SplashBoard&amp;#34;).appendingPathComponent(&amp;#34;Snapshots&amp;#34;) do { if FileManager.default.fileExists(atPath: path.path){ try FileManager.default.removeItem(at: path) } } catch let error { printDebug(msg: error.localizedDescription) } </content>
     </entry>
     
      <entry>

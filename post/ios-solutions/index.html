@@ -241,7 +241,7 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">3015</span>
+<span class="leancloud-visitors-count">3255</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
@@ -532,7 +532,25 @@ navBGView.layer.shadowPath = UIBezierPath.<span style="color:#66d9ef">init</span
 &lt;/<span style="color:#f92672">html</span>&gt;
 </code></pre></div><p>然后发现使用这段代码在修改编码之前不可播放视频，修改编码之后可以播放相应的视频。最后在找到<code>Android</code>测试机发现也是可以的，至此问题解决。</p>
 <hr>
-
+<h1 id="启动页">启动页</h1>
+<p>最近<code>App</code>改版，启动页也要随之需要修改，但是修改<code>lanuchScreen.storyboard</code>里的图片和样式之后，发现部分手机并未立即生效。解决这个问题，主要分为三个步骤</p>
+<h2 id="图片不放xcassets中">图片不放xcassets中</h2>
+<p>启动页用到的图片资源，不要放入到<code>*.xcassets</code>中，应该直接放到工程目录下，如下图所示：</p>
+<p><img src="https://i.loli.net/2020/07/01/6HJwQTxmz28LfI3.jpg" alt="-c"></p>
+<hr>
+<h2 id="图片需要改名">图片需要改名</h2>
+<p>如果启动页的图片资源需要修改，那应该将图片重命名，不要使用上次的命令，如果使用上次的名字，启动的时候还是会读缓存图片：</p>
+<p><img src="https://i.loli.net/2020/07/01/8ew7Tad9fkIyqtZ.jpg" alt="-c"></p>
+<h2 id="清理启动页缓存">清理启动页缓存</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">let</span> path = libraryPath.appendingPathComponent(<span style="color:#e6db74">&#34;SplashBoard&#34;</span>).appendingPathComponent(<span style="color:#e6db74">&#34;Snapshots&#34;</span>)
+<span style="color:#66d9ef">do</span> {
+    <span style="color:#66d9ef">if</span> FileManager.<span style="color:#66d9ef">default</span>.fileExists(atPath: path.path){
+        <span style="color:#66d9ef">try</span> FileManager.<span style="color:#66d9ef">default</span>.removeItem(at: path)
+     }
+   } <span style="color:#66d9ef">catch</span> <span style="color:#66d9ef">let</span> error {
+    printDebug(msg: error.localizedDescription)
+}
+</code></pre></div>
     </div>
     <footer class="post-footer">
         
@@ -625,7 +643,7 @@ navBGView.layer.shadowPath = UIBezierPath.<span style="color:#66d9ef">init</span
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="https://iihui.github.io/post/">
-        <span class="site-state-item-count">146</span>
+        <span class="site-state-item-count">145</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -722,6 +740,13 @@ navBGView.layer.shadowPath = UIBezierPath.<span style="color:#66d9ef">init</span
         <li><a href="#确认编码">确认编码</a></li>
         <li><a href="#改变编码">改变编码</a></li>
         <li><a href="#播放代码">播放代码</a></li>
+      </ul>
+    </li>
+    <li><a href="#启动页">启动页</a>
+      <ul>
+        <li><a href="#图片不放xcassets中">图片不放xcassets中</a></li>
+        <li><a href="#图片需要改名">图片需要改名</a></li>
+        <li><a href="#清理启动页缓存">清理启动页缓存</a></li>
       </ul>
     </li>
   </ul>

@@ -260,15 +260,6 @@
     </item>
     
     <item>
-      <title>启动页修改</title>
-      <link>https://iihui.github.io/post/ios-lanuch/</link>
-      <pubDate>Wed, 01 Jul 2020 19:22:27 +0000</pubDate>
-      
-      <guid>https://iihui.github.io/post/ios-lanuch/</guid>
-      <description>最近App改版，启动页也要随之修改，但是修改lanuchScreen.storyboard里的图片和样式之后并未立即生效。解决这个问题，主要分为三个步骤 图片不放xcassets中 启动页用到的图片资源，不要放入到*.xcassets中，应该直</description>
-    </item>
-    
-    <item>
       <title>Swift 范型</title>
       <link>https://iihui.github.io/post/swift-generirs/</link>
       <pubDate>Tue, 30 Jun 2020 08:58:17 +0000</pubDate>
