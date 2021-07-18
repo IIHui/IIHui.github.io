@@ -86,7 +86,7 @@ tabbar隐藏 在TabViewController中设置self.tabBarController?.hidesBottomBarW
 push到一个界面后，但如果再使用替换window.rootViewController的方式打开一个另一个新的界面，如果新打开的这个界释放掉，再回到原来的界面时，tabbar会显示。此时，需要使用如下代码隐藏tabbar：
 private func hideTabBar() { if self.rootViewController is RootTabBarController, let navigationController = (self.rootViewController as? RootTabBarController)?.selectedViewController as? UINavigationController, navigationController.viewControllers.count &amp;gt; 1, let topViewController = navigationController.topViewController { navigationController.popViewController(animated: false) navigationController.pushViewController(topViewController, animated: false) } } 上面的解决思路是将原来push的界面先pop掉，然后利用已设置的self.tabBarController?.hidesBottomBarWhenPushed = true属性，再重新push一次之前的界面，就可以把底部的tabbar隐藏。
 如果是在viewWillAppear里面手动将tabbar隐藏，而在viewWillDisapper中将tabbar显示，则不仅会影响整体的逻辑，而且还会出现肉眼可见的黑边：
-override func viewWillAppear(_ animated: Bool) { super.viewWillAppear(animated) self.tabBarController?.tabBar.isHidden = true self.tabBarController?.tabBar.isTranslucent = true } override func viewWillDisappear(_ animated: Bool) { super.viewWillDisappear(animated) self.tabBarController?.tabBar.isHidden = false self.tabBarController?.tabBar.isTranslucent = false } </content>
+override func viewWillAppear(_ animated: Bool) { super.viewWillAppear(animated) self.tabBarController?.tabBar.isHidden = true self.tabBarController?.tabBar.isTranslucent = true } override func viewWillDisappear(_ animated: Bool) { super.viewWillDisappear(animated) self.tabBarController?.tabBar.isHidden = false self.tabBarController?.tabBar.isTranslucent = false }  </content>
     </entry>
     
      <entry>
