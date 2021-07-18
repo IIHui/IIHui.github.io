@@ -502,14 +502,5 @@
       <description>快捷键 键盘图标 ⌘——Command () ⌃ ——Control ⌥——Option (alt) ⇧——Shift ⇪——Caps Lock 快捷键 Command+R 运行 Command+B 编译 Command+. 停止 Command + Shift + K 清除工程 Command + K 清除控制台信息 Command + N 新建文件 Command + Shift + N 创建新工程 导航栏 Command+0~9 工程导航 Command + 0 快速打开实</description>
     </item>
     
-    <item>
-      <title>流水线自动发布组件</title>
-      <link>https://iihui.github.io/post/ios-release/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://iihui.github.io/post/ios-release/</guid>
-      <description></description>
-    </item>
-    
   </channel>
 </rss>
