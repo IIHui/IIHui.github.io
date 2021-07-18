@@ -241,13 +241,13 @@ code.has-jax {
     <i class="fa fa-file-word-o"></i>
 </span>
 <span class="post-meta-item-text">字数: </span>
-<span class="leancloud-visitors-count">1970</span>
+<span class="leancloud-visitors-count">2331</span>
 &nbsp; | &nbsp;
 <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
 </span>
 <span class="post-meta-item-text">阅读: </span>
-<span class="leancloud-visitors-count">4 分钟</span>
+<span class="leancloud-visitors-count">5 分钟</span>
 </span>
       </div>
     </header>
@@ -295,7 +295,7 @@ code.has-jax {
     <span style="color:#75715e">// 恢复keyWindow，以解决iOS 14.5.1 keyWindow发生变化的情况</span>
     <span style="color:#66d9ef">self</span>.keyWindow?.makeKeyAndVisible()
 }
-</code></pre></div><h1 id="uialertview-无法用">UIAlertView 无法用</h1>
+</code></pre></div><h1 id="uialertview-deprecated">UIAlertView deprecated</h1>
 <p>测试<a href="https://github.com/kstenerud/KSCrash">KSCrash</a>时使用<code>XCode 12.3</code>新建了一个工程，写了相关测试代码之后报<code>UIAlertView is deprecated and unavailable for UIScene based applications, please use UIAlertController</code>错误，参照<a href="https://stackoverflow.com/questions/58188069/uialertview-is-deprecated-and-unavailable-for-uiscene-based-applications-please">stackover</a>上的回答，解决了报错问题。</p>
 <h2 id="第一步">第一步</h2>
 <p>解决这个问题的核心是要删除<code>UIScene</code>相关的信息，主要分为四步。首先删除工程中的<code>SceneDelegate.swift</code>文件，如下图所示：</p>
@@ -394,7 +394,95 @@ navBGView.layer.shadowPath = UIBezierPath.<span style="color:#66d9ef">init</span
         <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;未知时间&#34;</span>
     }
 }
-</code></pre></div>
+</code></pre></div><h1 id="gif显示">GIF显示</h1>
+<p><code>Gif</code>的显示有两种方式：一种是通过<code>UIWebview</code>，另一种是通过<code>UIImageView</code>的方式。使用<code>UIWebview</code>的显示的<code>gif</code>是不可以暂停。</p>
+<h2 id="uiwebview">UIWebView</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">UIKit</span>
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ViewController</span>: UIViewController {
+
+    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">viewDidLoad</span>() {
+        <span style="color:#66d9ef">super</span>.viewDidLoad()
+        <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> path = Bundle.main.path(forResource: <span style="color:#e6db74">&#34;demo&#34;</span>, ofType:<span style="color:#e6db74">&#34;gif&#34;</span>) <span style="color:#66d9ef">else</span>{
+            <span style="color:#66d9ef">return</span>
+        }
+        <span style="color:#66d9ef">let</span> url = URL(fileURLWithPath: path)
+        
+        <span style="color:#66d9ef">do</span>{
+            <span style="color:#66d9ef">let</span> gifData  = <span style="color:#66d9ef">try</span> Data(contentsOf: url)
+            <span style="color:#66d9ef">let</span> webView = UIWebView()
+            webView.frame = CGRect(x: <span style="color:#ae81ff">0</span>, y: <span style="color:#ae81ff">100</span>, width: <span style="color:#66d9ef">self</span>.view.frame.width, height: <span style="color:#ae81ff">600</span>)
+            webView.scalesPageToFit = <span style="color:#66d9ef">true</span>
+            webView.load(gifData, mimeType: <span style="color:#e6db74">&#34;image/gif&#34;</span>, textEncodingName: String(), baseURL: NSURL() <span style="color:#66d9ef">as</span> URL)
+            <span style="color:#66d9ef">self</span>.view.addSubview(webView)
+        }<span style="color:#66d9ef">catch</span>{}
+
+    }
+}
+</code></pre></div><h2 id="uiimageview">UIImageView</h2>
+<p>使用<code>UIImageView</code>播放GIF有两个要点：一是从<code>gif</code>文件中获取图片数组，二是获取<code>gif</code>文件的播放时长。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">UIKit</span>
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ViewController</span>: UIViewController {
+
+    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">viewDidLoad</span>() {
+        <span style="color:#66d9ef">super</span>.viewDidLoad()
+        
+        <span style="color:#66d9ef">let</span> imageView = UIImageView()
+        imageView.frame = CGRect(x: <span style="color:#ae81ff">0</span>, y: <span style="color:#ae81ff">100</span>, width: <span style="color:#66d9ef">self</span>.view.frame.width, height: <span style="color:#ae81ff">600</span>)
+        <span style="color:#66d9ef">self</span>.view.addSubview(imageView)
+        
+        <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> path = Bundle.main.path(forResource: <span style="color:#e6db74">&#34;demo&#34;</span>, ofType:<span style="color:#e6db74">&#34;gif&#34;</span>) <span style="color:#66d9ef">else</span>{
+            <span style="color:#66d9ef">return</span>
+        }
+        <span style="color:#66d9ef">let</span> url = URL(fileURLWithPath: path)
+
+        <span style="color:#66d9ef">do</span>{
+            <span style="color:#66d9ef">let</span> gifData  = <span style="color:#66d9ef">try</span> Data(contentsOf: url)
+            <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> imageSource = CGImageSourceCreateWithData(gifData <span style="color:#66d9ef">as</span> CFData, <span style="color:#66d9ef">nil</span>) <span style="color:#66d9ef">else</span> {
+                <span style="color:#66d9ef">return</span>
+            }
+            <span style="color:#66d9ef">let</span> imageCount = CGImageSourceGetCount(imageSource)
+
+            <span style="color:#66d9ef">var</span> images = [UIImage]()
+            <span style="color:#66d9ef">var</span> gifDuration:TimeInterval = <span style="color:#ae81ff">0</span>
+            <span style="color:#66d9ef">for</span> index <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">0.</span>.&lt;imageCount{
+                <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> cgImage = CGImageSourceCreateImageAtIndex(imageSource, index, <span style="color:#66d9ef">nil</span>) <span style="color:#66d9ef">else</span>{
+                    <span style="color:#66d9ef">return</span>
+                }
+                <span style="color:#66d9ef">let</span> image = UIImage(cgImage: cgImage)
+                images.append(image)
+                <span style="color:#66d9ef">if</span> index == <span style="color:#ae81ff">0</span>{
+                   imageView.image = image
+                }
+
+                <span style="color:#66d9ef">var</span> tmpProperty:NSDictionary?
+                <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> tmp = CGImageSourceCopyPropertiesAtIndex(imageSource, index, <span style="color:#66d9ef">nil</span>){
+                    tmpProperty = tmp <span style="color:#66d9ef">as</span> NSDictionary
+                    <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> property = tmpProperty{
+                        <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> gifDic = property[kCGImagePropertyGIFDelayTime] <span style="color:#66d9ef">as</span>? NSDictionary <span style="color:#66d9ef">else</span>{
+                            <span style="color:#66d9ef">continue</span>
+                        }
+                        
+                        <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> imageDuration = gifDic[kCGImagePropertyGIFDelayTime] <span style="color:#66d9ef">as</span>? NSNumber <span style="color:#66d9ef">else</span>{
+                            <span style="color:#66d9ef">continue</span>
+                        }
+                        gifDuration <span style="color:#f92672">+=</span> imageDuration.doubleValue
+                    }
+                }
+            }
+
+            imageView.animationImages = images
+            imageView.animationDuration = gifDuration
+            imageView.animationRepeatCount = <span style="color:#ae81ff">10</span>
+            imageView.startAnimating()
+        } <span style="color:#66d9ef">catch</span>{
+           <span style="color:#75715e">//</span>
+        }
+    }
+}
+</code></pre></div><p><a href="http://gcblog.github.io/2017/11/14/Gif%E6%92%AD%E6%94%BE%E4%B8%8E%E6%9A%82%E5%81%9C/">参考资料</a></p>
+
     </div>
     <footer class="post-footer">
         
@@ -487,7 +575,7 @@ navBGView.layer.shadowPath = UIBezierPath.<span style="color:#66d9ef">init</span
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="https://iihui.github.io/post/">
-        <span class="site-state-item-count">148</span>
+        <span class="site-state-item-count">147</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -559,7 +647,7 @@ navBGView.layer.shadowPath = UIBezierPath.<span style="color:#66d9ef">init</span
   <ul>
     <li><a href="#强制竖屏">强制竖屏</a></li>
     <li><a href="#keywindow变化">keyWindow变化</a></li>
-    <li><a href="#uialertview-无法用">UIAlertView 无法用</a>
+    <li><a href="#uialertview-deprecated">UIAlertView deprecated</a>
       <ul>
         <li><a href="#第一步">第一步</a></li>
         <li><a href="#第二步">第二步</a></li>
@@ -572,6 +660,12 @@ navBGView.layer.shadowPath = UIBezierPath.<span style="color:#66d9ef">init</span
     <li><a href="#允许http请求">允许http请求</a></li>
     <li><a href="#仿导航栏添加阴影">仿导航栏添加阴影</a></li>
     <li><a href="#毫秒级时间戳距当前时间">毫秒级时间戳距当前时间</a></li>
+    <li><a href="#gif显示">GIF显示</a>
+      <ul>
+        <li><a href="#uiwebview">UIWebView</a></li>
+        <li><a href="#uiimageview">UIImageView</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
     </div>

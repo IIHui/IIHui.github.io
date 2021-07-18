@@ -980,15 +980,6 @@
     </item>
     
     <item>
-      <title>Gif的播放与暂停</title>
-      <link>https://iihui.github.io/post/ios-gif/</link>
-      <pubDate>Thu, 13 Dec 2018 08:25:45 +0000</pubDate>
-      
-      <guid>https://iihui.github.io/post/ios-gif/</guid>
-      <description>Gif的播放有两种方式，一种是通过UIWebview；一种是通过UIImageView的方式。使用UIWebview的缺点是不可以暂停。 UIWebView import UIKit class ViewController: UIViewController { override func viewDidLoad() { super.viewDidLoad() guard let path = Bundle.main.path(forResource: &amp;#34;demo&amp;#34;, ofType:&amp;#34;gif&amp;#34;) else{ return } let url = URL(fileURLWithPath: path) do{ let gifData = try Data(contentsOf: url) let webView = UIWebView() webView.frame = CGRect(x: 0, y: 100, width: self.view.frame.width, height: 600) webView.scalesPageToFit = true webView.load(gifData,</description>
-    </item>
-    
-    <item>
       <title>iOS视频开发入门</title>
       <link>https://iihui.github.io/post/ios-video/</link>
       <pubDate>Wed, 12 Dec 2018 10:55:40 +0000</pubDate>
