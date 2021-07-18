@@ -864,6 +864,36 @@ static func testDemo(){ let group = DispatchGroup() let models:[MoConfigItemMode
     </entry>
     
      <entry>
+        <title>调试</title>
+        <url>https://iihui.github.io/post/ios-debug/</url>
+        <categories>
+          <category>code</category>
+        </categories>
+        <tags>
+          <tag>iOS</tag>
+        </tags>
+        <content type="html"> LLDB LLDB是一个庞大的工具,内置了许多有用的命令。
+命令语法结构 &amp;lt;command&amp;gt; [&amp;lt;subcommand&amp;gt; [&amp;lt;subcommand&amp;gt;...]] &amp;lt;action&amp;gt; [-options [option-value]] [argument [argument...]] 其中：
+ command和subcommand为LLDB调试命令的名称，命令和子命令按照层级结构来排列：一个命令对象为跟随其的子命令对象创建一个上下文，子命令又为其子命令创建一个上下文，依此类推。 action  上面的这些元素之间通过空格来分割，如果某一元素自身含有空格，则可以使用双引用。而如果元素中又包含双引号，则可以使用反斜杠；或者元素使用单引号。如下所示：
+(lldb) command [subcommand] -option &amp;#34;some \&amp;#34;quoted\&amp;#34; string&amp;#34; (lldb) command [subcommand] -option &amp;#39;some &amp;#34;quoted&amp;#34; string&amp;#39; 获取变量值和状态 使用expression和e可以获取和改变变量的值
+获取整个APP的状态和指定语言的命令  bugreport:生成当前应用状态的完整报告 frame:获取当前线程的当前栈帧的概述  参考资料
+不能安装 无法安装 因为App是企业发布，偶尔有人反映安装不了，最近有人反映在iPhone8 Plus上遇到「无法安装XXX，请稍候再试」的情况，如下图所示： 这篇文章给出如下的建议：
+安装到最后变灰了 安装到一半变灰了，可以先清除Safari浏览器，然后再重启，通过ideviceinstaller -i 命令安装：
+参考资料
+手机发烫 手机发烫，调试时看到总是看到字体日志和safe_M_setObjectforKeyedSubscript-------object is nil相关信息，如下图红色框所示：
+CoreText note: Client requested name &amp;#34;.SFUI-Regular&amp;#34;, it will get TimesNewRomanPSMT rather than the intended font. All system UI font access should be through proper APIs such as CTFontCreateUIFontForLanguage() or &#43;[UIFont systemFontOfSize:]. 根据提示，设置CTFontLogSystemFontNameRequest符号端点，可以查看相关信息。
+开启网络服务 Start a Web Server python2 -m SimpleHTTPServer 50524 python3 -m http.server --cgi 50524 参考资料
+mospecs is not clean The repo `cmbchina-mospecs` at `../../../../.cocoapods/repos/cmbchina-mospecs` is not clean 需要先删除mospecs然后添加mospecs。
+微信分享 iOS-Universal Link 接入与微信分享的配置 微信分享的配置
+Safari调试  在Mac上调试iOS WebView既需要在Mac上的Safari浏览器上开启开发者选项，也需要在iOS设备上开启Web检查功能。
+ 开启Mac的开发者菜单 首先需要开启Mac上Safari浏览器的显示开发者菜单选项。即先进入到Safari浏览器中的设置，然后点击最右边的高级，再勾选在菜单栏中显示开发菜单，如下图所示：
+开启iOS上Safari上的Web检查 然后开启iOS设备中Safari里的网页检查器，设置路径为：设置--&amp;gt;Safari-&amp;gt;高级-&amp;gt;网页检查器：
+开始调试 将手机连接到Mac上，打开WebView页面，然后在Mac上的Safari浏览器中的开发者菜单中找到对应的iOS设备：
+ 参考资料
+</content>
+    </entry>
+    
+     <entry>
         <title>KSCrash</title>
         <url>https://iihui.github.io/post/ios-kscrash/</url>
         <categories>
@@ -1671,18 +1701,6 @@ cmake_minimum_required(VERSION 3.15) project(test) set(CMAKE_CXX_STANDARD 14) se
     </entry>
     
      <entry>
-        <title>iOS开发使用Safari调试WebView</title>
-        <url>https://iihui.github.io/post/ios-debug-safari/</url>
-        <categories>
-          <category>iOS</category>
-        </categories>
-        <tags>
-          <tag>iOS</tag>
-        </tags>
-        <content type="html"> </content>
-    </entry>
-    
-     <entry>
         <title>where 关键字</title>
         <url>https://iihui.github.io/post/ios-where/</url>
         <categories>
@@ -2401,36 +2419,6 @@ class MyManager { // private 修饰 private static let sharedManager: MyManager 
           <tag>iOS</tag>
         </tags>
         <content type="html"> 参考资料 参考资料 参考资料 参考资料
-</content>
-    </entry>
-    
-     <entry>
-        <title>LLDB 调试</title>
-        <url>https://iihui.github.io/post/ios-debug/</url>
-        <categories>
-          <category>code</category>
-        </categories>
-        <tags>
-          <tag>iOS</tag>
-        </tags>
-        <content type="html"> LLDB LLDB是一个庞大的工具,内置了许多有用的命令。
-命令语法结构 &amp;lt;command&amp;gt; [&amp;lt;subcommand&amp;gt; [&amp;lt;subcommand&amp;gt;...]] &amp;lt;action&amp;gt; [-options [option-value]] [argument [argument...]] 其中：
- command和subcommand为LLDB调试命令的名称，命令和子命令按照层级结构来排列：一个命令对象为跟随其的子命令对象创建一个上下文，子命令又为其子命令创建一个上下文，依此类推。 action  上面的这些元素之间通过空格来分割，如果某一元素自身含有空格，则可以使用双引用。而如果元素中又包含双引号，则可以使用反斜杠；或者元素使用单引号。如下所示：
-(lldb) command [subcommand] -option &amp;#34;some \&amp;#34;quoted\&amp;#34; string&amp;#34; (lldb) command [subcommand] -option &amp;#39;some &amp;#34;quoted&amp;#34; string&amp;#39; 获取变量值和状态 使用expression和e可以获取和改变变量的值
-获取整个APP的状态和指定语言的命令  bugreport:生成当前应用状态的完整报告 frame:获取当前线程的当前栈帧的概述  参考资料
-不能安装 无法安装 因为App是企业发布，偶尔有人反映安装不了，最近有人反映在iPhone8 Plus上遇到「无法安装XXX，请稍候再试」的情况，如下图所示： 这篇文章给出如下的建议：
-安装到最后变灰了 安装到一半变灰了，可以先清除Safari浏览器，然后再重启，通过ideviceinstaller -i 命令安装：
-参考资料
-手机发烫 手机发烫，调试时看到总是看到字体日志和safe_M_setObjectforKeyedSubscript-------object is nil相关信息，如下图红色框所示：
-CoreText note: Client requested name &amp;#34;.SFUI-Regular&amp;#34;, it will get TimesNewRomanPSMT rather than the intended font. All system UI font access should be through proper APIs such as CTFontCreateUIFontForLanguage() or &#43;[UIFont systemFontOfSize:]. 根据提示，设置CTFontLogSystemFontNameRequest符号端点，可以查看相关信息。
-开启网络服务 Start a Web Server python2 -m SimpleHTTPServer 50524 python3 -m http.server --cgi 50524 参考资料
-mospecs is not clean The repo `cmbchina-mospecs` at `../../../../.cocoapods/repos/cmbchina-mospecs` is not clean 需要先删除mospecs然后添加mospecs。
-微信分享 iOS-Universal Link 接入与微信分享的配置 微信分享的配置
-Safari调试  在Mac上调试iOS WebView既需要在Mac上的Safari浏览器上开启开发者选项，也需要在iOS设备上开启Web检查功能。
- 开启Mac的开发者菜单 首先需要开启Mac上Safari浏览器的显示开发者菜单选项。即先进入到Safari浏览器中的设置，然后点击最右边的高级，再勾选在菜单栏中显示开发菜单，如下图所示：
-开启iOS上Safari上的Web检查 然后开启iOS设备中Safari里的网页检查器，设置路径为：设置--&amp;gt;Safari-&amp;gt;高级-&amp;gt;网页检查器：
-开始调试 将手机连接到Mac上，打开WebView页面，然后在Mac上的Safari浏览器中的开发者菜单中找到对应的iOS设备：
- 参考资料
 </content>
     </entry>
     

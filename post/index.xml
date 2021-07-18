@@ -188,6 +188,15 @@
     </item>
     
     <item>
+      <title>调试</title>
+      <link>https://iihui.github.io/post/ios-debug/</link>
+      <pubDate>Mon, 04 Jan 2021 14:15:45 +0000</pubDate>
+      
+      <guid>https://iihui.github.io/post/ios-debug/</guid>
+      <description>LLDB LLDB是一个庞大的工具,内置了许多有用的命令。 命令语法结构 &amp;lt;command&amp;gt; [&amp;lt;subcommand&amp;gt; [&amp;lt;subcommand&amp;gt;...]] &amp;lt;action&amp;gt; [-options [option-value]] [argument [argument...]] 其中： command和subcommand为LLDB调试命令的名称，命令和子命令按照层级结构来排列：一个命令对象为跟随其的子命令对象创建一个上下文，子命令又为其子</description>
+    </item>
+    
+    <item>
       <title>KSCrash</title>
       <link>https://iihui.github.io/post/ios-kscrash/</link>
       <pubDate>Sat, 26 Dec 2020 17:33:11 +0000</pubDate>
@@ -521,15 +530,6 @@
     </item>
     
     <item>
-      <title>iOS开发使用Safari调试WebView</title>
-      <link>https://iihui.github.io/post/ios-debug-safari/</link>
-      <pubDate>Thu, 27 Feb 2020 06:14:27 +0000</pubDate>
-      
-      <guid>https://iihui.github.io/post/ios-debug-safari/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>where 关键字</title>
       <link>https://iihui.github.io/post/ios-where/</link>
       <pubDate>Sat, 22 Feb 2020 20:49:20 +0000</pubDate>
@@ -779,15 +779,6 @@
       
       <guid>https://iihui.github.io/post/ios-image-preview/</guid>
       <description>参考资料 参考资料 参考资料 参考资料</description>
-    </item>
-    
-    <item>
-      <title>LLDB 调试</title>
-      <link>https://iihui.github.io/post/ios-debug/</link>
-      <pubDate>Fri, 04 Jan 2019 14:15:45 +0000</pubDate>
-      
-      <guid>https://iihui.github.io/post/ios-debug/</guid>
-      <description>LLDB LLDB是一个庞大的工具,内置了许多有用的命令。 命令语法结构 &amp;lt;command&amp;gt; [&amp;lt;subcommand&amp;gt; [&amp;lt;subcommand&amp;gt;...]] &amp;lt;action&amp;gt; [-options [option-value]] [argument [argument...]] 其中： command和subcommand为LLDB调试命令的名称，命令和子命令按照层级结构来排列：一个命令对象为跟随其的子命令对象创建一个上下文，子命令又为其子</description>
     </item>
     
     <item>

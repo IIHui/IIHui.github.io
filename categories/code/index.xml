@@ -6,7 +6,7 @@
     <description>Recent content in Code on Keep It Simple</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 24 Mar 2020 09:36:27 +0000</lastBuildDate><atom:link href="https://iihui.github.io/categories/code/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 04 Jan 2021 14:15:45 +0000</lastBuildDate><atom:link href="https://iihui.github.io/categories/code/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hugo Next 主题</title>
       <link>https://iihui.github.io/post/hugo-next/</link>
@@ -14,6 +14,15 @@
       
       <guid>https://iihui.github.io/post/hugo-next/</guid>
       <description>从兰陵子处下载了Next主题，修改了主题目录下的config.toml配置文件(配置文件路径为themes/next/config.toml)。但发现有很多地方还是需要修改才能满足自己的需求，因为对前端了解较少，以此为记。 修改主题 首先从这里</description>
+    </item>
+    
+    <item>
+      <title>调试</title>
+      <link>https://iihui.github.io/post/ios-debug/</link>
+      <pubDate>Mon, 04 Jan 2021 14:15:45 +0000</pubDate>
+      
+      <guid>https://iihui.github.io/post/ios-debug/</guid>
+      <description>LLDB LLDB是一个庞大的工具,内置了许多有用的命令。 命令语法结构 &amp;lt;command&amp;gt; [&amp;lt;subcommand&amp;gt; [&amp;lt;subcommand&amp;gt;...]] &amp;lt;action&amp;gt; [-options [option-value]] [argument [argument...]] 其中： command和subcommand为LLDB调试命令的名称，命令和子命令按照层级结构来排列：一个命令对象为跟随其的子命令对象创建一个上下文，子命令又为其子</description>
     </item>
     
     <item>
@@ -176,15 +185,6 @@
       
       <guid>https://iihui.github.io/post/ios-image-preview/</guid>
       <description>参考资料 参考资料 参考资料 参考资料</description>
-    </item>
-    
-    <item>
-      <title>LLDB 调试</title>
-      <link>https://iihui.github.io/post/ios-debug/</link>
-      <pubDate>Fri, 04 Jan 2019 14:15:45 +0000</pubDate>
-      
-      <guid>https://iihui.github.io/post/ios-debug/</guid>
-      <description>LLDB LLDB是一个庞大的工具,内置了许多有用的命令。 命令语法结构 &amp;lt;command&amp;gt; [&amp;lt;subcommand&amp;gt; [&amp;lt;subcommand&amp;gt;...]] &amp;lt;action&amp;gt; [-options [option-value]] [argument [argument...]] 其中： command和subcommand为LLDB调试命令的名称，命令和子命令按照层级结构来排列：一个命令对象为跟随其的子命令对象创建一个上下文，子命令又为其子</description>
     </item>
     
     <item>
